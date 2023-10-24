@@ -1,0 +1,782 @@
+  @media only screen and (max-width: 1223px) {
+    #cautionTextNumber {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .ticker-container {
+      width: 97%;
+      left: 0;
+    }
+
+    .container,
+    .container-fluid,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+  }
+
+  @media only screen and (max-width: 1024px) {
+    li#spacing {
+      width: 25%;
+    }
+
+    .topNav .logo {
+      width: 8%;
+    }
+
+    li#logo {
+      width: 18%;
+    }
+
+    .header .DesktopMenu #promoSld {
+      width: 77%;
+    }
+
+    .boxelem {
+      font-size: 12px;
+    }
+
+    .backgradiant>.container-fluid {
+      padding: 0;
+    }
+
+    #map-canvas svg {
+      width: 100px;
+    }
+
+    .dealbox .modeofpay .inlineDiv {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .backgradiant .headerBox {
+      padding: 0;
+    }
+
+    .mobile_image_min {
+      height: 130px;
+    }
+  }
+
+  @media only screen and (max-width: 991px) {
+    .marquee__item a {
+      font-size: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .ticker-container .breakng-news span {
+      font-size: 12px;
+    }
+
+    .dot-sep {
+      height: 12px;
+      width: 12px;
+      display: inline-block;
+      background-image: url(https://tribune.com.pk/images/favicon.ico);
+      background-repeat: no-repeat;
+      margin-top: 0;
+      vertical-align: middle;
+      background-size: 12px;
+    }
+
+    .ticker-container .breakng-news {
+      height: 28px;
+      width: 30px;
+      display: inline;
+      float: left;
+    }
+
+    .marquee__item {
+      padding: 0;
+      display: inline-block;
+      will-change: transform;
+      -webkit-animation: marquee 150s linear infinite;
+      animation: marquee 150s linear infinite;
+    }
+
+    .ticker-container {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 823px) {
+    li#logo {
+      width: 18%;
+    }
+
+    li#spacing {
+      width: 5%;
+    }
+
+    .topNav .logo {
+      width: 4%;
+      display: none;
+    }
+
+    span#Notloggedin {
+      font-size: 11px;
+    }
+
+    .boxelem {
+      font-size: 11px;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    span#logotext {
+      font-size: 11px;
+    }
+
+    .searchResultWithFilter .search {
+      width: 100%;
+    }
+
+    #myNavBar #promoSld {
+      display: none;
+    }
+
+    .flightDeals,
+    .travelplan,
+    .newAlert {
+      box-shadow: none !important;
+    }
+
+    .fswTabs li.selected .tabsCircle {
+      border: 1px solid #fff !important;
+      background: #fff !important;
+    }
+
+    .dealbox {
+      width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .multicity .searchCityFrom,
+    .multicity .searchCityTo,
+    .searchengineRows .searchCityFrom,
+    .searchengineRows .searchCityTo {
+      width: 100% !important;
+    }
+
+    .searchBtn {
+      position: relative !important;
+      left: 0 !important;
+      top: 0 !important;
+    }
+
+    .mainSearch .departDateWidth,
+    .mainSearch .returnDate {
+      width: 48.8% !important;
+    }
+
+  }
+
+  @media only screen and (max-width: 812px) {
+    span#logotext {
+      font-size: 11px;
+    }
+
+    .chatBot {
+      width: 49%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    li#spacing {
+      display: none;
+    }
+
+    li#logo {
+      width: 29%;
+      text-align: right;
+    }
+
+    .mainLinks li#logo {
+      width: 21%;
+      margin-right: 0;
+    }
+
+    #logo #logobox img {
+      width: 100%;
+      max-width: 142px;
+    }
+
+    .RoundTripNew .amenityRow>.inlineDiv {
+      width: 48%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .mainLinks li#logo {
+      width: 23%;
+      margin-right: 0;
+    }
+
+    .container,
+    .container-fluid,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .FlightSearch_main {
+      display: none;
+    }
+
+    .mob_res_hero {
+      display: block;
+    }
+
+    .mypadding {
+      padding-left: 0px !important;
+    }
+
+    :where(.css-dev-only-do-not-override-1wazalj).ant-picker {
+      width: 100%;
+    }
+
+    .date-field,
+    select {
+      border: 0px solid #0000003b;
+    }
+    .input_date_mob
+    {
+      border: 1px solid #0000003b;
+      border-radius: 4px;
+    }
+  }
+
+  @media only screen and (max-width: 667px) {
+
+    .moredeals {
+      display: block;
+    }
+
+    .DesktopMenu {
+      display: none;
+    }
+
+    .MobileMenu {
+      display: block;
+      position: relative;
+    }
+
+    .inlineDiv {
+      vertical-align: middle;
+    }
+
+    .mobileLogo {
+      width: 22%;
+      margin-top: 7px;
+      text-align: right;
+      margin-top: 8px;
+      margin-bottom: 3px;
+      padding-left: 11px;
+    }
+
+    .hdrLogo img {
+      max-width: 135px;
+    }
+
+    .CustMenuIcon {
+      position: absolute;
+      right: 11px;
+      top: 10px;
+      text-align: right;
+    }
+
+    .headerBox {
+      min-height: 34px;
+      box-shadow: none;
+    }
+
+    .mobheight {
+      min-height: 41px;
+    }
+
+    .mini ul#myNavBar {
+      padding: 0;
+      text-align: center;
+    }
+
+    #myNavBar>li {
+      vertical-align: middle;
+      width: 23%;
+    }
+
+    div#logotext {
+      font-size: 10px;
+    }
+
+    .headerBox,
+    .maxcontainer {
+      padding: 0;
+    }
+
+    .row {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .custRequestCall .row:nth-child(7) {
+      margin-bottom: 10px;
+    }
+
+    .onscroll {
+      box-shadow: none;
+    }
+
+    .headerBox.mini.onscroll {
+      top: 0;
+      box-shadow: 0 6px 7px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .backgradiant {
+      background-color: #fff;
+    }
+
+    .topNav {
+      display: none;
+    }
+
+    .footerBox .chatBot {
+      width: 60%;
+    }
+
+    .uanNum {
+      position: absolute;
+      right: 20%;
+      top: 5%;
+      font-weight: 800;
+    }
+
+  }
+
+  @media only screen and (max-width: 480px) {
+    .loggedIn {
+      border: 1px solid #ccc5c5;
+      line-height: 28px;
+    }
+
+    div#logotext {
+      font-size: 10px;
+    }
+
+    .MobileMenu .hdrLogo img {
+      width: 100%;
+    }
+
+    .icon-caret {
+      border-top: 5px solid;
+      border-right: 5px solid transparent;
+      border-left: 4px solid transparent;
+      margin-left: 9px;
+    }
+
+    .headerBox.mini.onscroll {
+      top: 6px;
+    }
+
+    #myNavBar>li {
+      width: 24%;
+    }
+
+    .mobileLogo {
+      width: 37%;
+      margin-top: 7px;
+      text-align: right;
+      margin-top: 8px;
+      margin-bottom: 3px;
+    }
+
+    .hdrLogo img {
+      max-width: 135px;
+    }
+
+    .mainChatAlertSld.inlineDiv {
+      display: none;
+    }
+
+    .chatBot {
+      display: none;
+    }
+
+    .footerBox .chatBot {
+      width: 80%;
+    }
+
+    .whatsapp_chat {
+      position: fixed;
+      bottom: 2%;
+      right: 3%;
+      z-index: 101;
+      display: block;
+    }
+
+    .mainboticon p.chatFirstMessage {
+      right: 24%;
+    }
+
+    .custbrandLogos {
+      margin-top: 10px;
+    }
+
+    .chatalertmessage .owl-item.active {
+      font-size: 13px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .MobileMenu .headerBox.mini.onscroll {
+      top: 6px;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .CustMenuIcon {
+      width: 40%;
+    }
+
+    #myNavBar>li {
+      width: 23.5%;
+    }
+
+    #myNavBar>li {
+      width: 23%;
+    }
+
+    div#logotext {
+      font-size: 9px;
+    }
+  }
+
+  @media only screen and (max-width:320px) {
+    .uanNum {
+      font-size: 12px;
+    }
+  }
+
+  @media only screen and (max-width:544px) {
+    .banner_absolute {
+      bottom: 10px;
+      left: 25px;
+    }
+  }
+
+  @media only screen and (max-width: 393px) {
+    .banner_absolute {
+      bottom: 6px;
+      left: 16px;
+    }
+  }
+
+  @media only screen and (max-width:390px) {
+    .chatalertmessage .owl-item.active {
+      height: 80px;
+    }
+  }
+
+  @media only screen and (max-width:375px) {
+    .newNoti {
+      top: -2px;
+      right: 10px;
+      font-size: 6px;
+    }
+
+    .uanNum {
+      font-size: 13px;
+    }
+
+    .mainboticon p.chatFirstMessage {
+      right: 24%;
+    }
+
+    .chatalertmessage .owl-item.active {
+      height: 80px;
+    }
+
+    .chatFirstMessage {
+      top: 15%;
+    }
+
+    .mainChatAlertSld.inlineDiv {
+      width: 80%;
+      position: absolute;
+      right: 22%;
+      display: none;
+    }
+  }
+
+
+
+
+
+
+
+
+  /* //////////////////////////////////// Kashif Husssain ///////////////// */
+
+  @media only screen and (max-width: 360px) {
+    .bike_content {
+      font-size: 12px;
+    }
+  }
+
+
+  @media only screen and (max-width: 1024px) {
+    .mobile_image_width {
+      width: 100px;
+    }
+
+    .image_width {
+      width: 40px;
+    }
+
+    .branch_para {
+      padding-top: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .selectTypeClassMob {
+
+      top: 45%;
+    }
+
+    .selectTypeClassMob {
+      width: 60%;
+    }
+
+    .cityImagesBox {
+      height: 150px;
+    }
+  }
+
+  @media only screen and (max-width: 657px) {
+    .selectTypeClassMob {
+
+      top: 41%;
+    }
+  }
+
+  @media only screen and (max-width: 611px) {
+    .selectTypeClassMob {
+
+      top: 44%;
+    }
+
+    .selectTypeClassMob {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .selectTypeClassMob {
+      top: 35%;
+    }
+
+    .cityImagesBox {
+      height: 100px;
+    }
+
+    .imageOverlay {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 412px) {
+    .selectTypeClassMob {
+      top: 34%;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    .selectTypeClassMob {
+      top: 41%;
+    }
+  }
+
+  @media only screen and (max-width: 313px) {
+    .selectTypeClassMob {
+      top: 47%;
+    }
+  }
+
+  /* *********************************** */
+
+  @media only screen and (max-width: 823px) {
+    .css-t5z32e-MuiInputBase-root .MuiInputBase-input {
+      padding: 5px 10px 5px 10px !important;
+    }
+  }
+
+
+
+
+  @media only screen and (max-width: 653px) {
+    .css-t5z32e-MuiInputBase-root .MuiInputBase-input {
+      padding: 5px 6px 5px 6px !important;
+    }
+  }
+
+  @media only screen and (max-width: 363px) {
+    .css-t5z32e-MuiInputBase-root .MuiInputBase-input {
+      padding: 5px 7px 5px 7px !important;
+    }
+  }
+
+  @media only screen and (max-width: 393px) {
+    .css-1ekj1ta-MuiInputBase-root .MuiInputBase-input {
+
+      padding: 5px 5px 5px 5px !important;
+    }
+  }
+
+  @media only screen and (max-width: 820px) {
+    .css-1ekj1ta-MuiInputBase-root .MuiInputBase-input {
+
+      padding: 5px 10px 5px 10px !important;
+    }
+  }
+
+  @media only screen and (max-width:482px) {
+    .fd_total_price {
+      font-size: 16px;
+    }
+
+    .fd_book_button {
+      font-size: 11px;
+    }
+  }
+
+  @media only screen and (max-width:901px) {
+    .trip_info ul li {
+      padding: 3px 4px 5px 4px;
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width:857px) {
+    .trip_info ul li {
+      padding: 3px 4px 5px 4px;
+      font-size: 12px;
+    }
+
+    .classTypeSty {
+      font-size: 14px;
+    }
+  }
+
+  @media only screen and (max-width:823px) {
+    .fd_update_search {
+      margin-top: 17px;
+    }
+  }
+
+  /* --------------------------------------------------- */
+  @media only screen and (max-width:499px) {
+    .review_spacing {
+      font-size: 18px;
+    }
+
+    .iti_header_timer {
+      font-size: 13px;
+    }
+
+    .header_count_down {
+      font-size: 17px;
+      padding-left: 20px;
+    }
+
+    .iti_heading {
+      padding-top: 4px;
+      padding-bottom: 3px;
+      padding-left: 15px;
+      padding-right: 18px;
+    }
+  }
+
+  @media only screen and (max-width:767px) {
+    .scrollable_y {
+      display: none;
+    }
+
+    .search_bar_components {
+      margin-left: 0;
+    }
+
+    .continue_button {
+      padding: 10px 30px;
+      margin-top: 15px;
+      margin-right: 8px;
+    }
+
+    .expandmore_done {
+      color: var(--color-blue);
+      cursor: pointer;
+      margin-left: 0;
+    }
+
+    .google_map_spacing {
+      margin-top: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media only screen and (max-width:500px) {
+    .short_flight_name {
+      padding-right: 60px;
+    }
+  }
+
+  @media only screen and (max-width:530px) {
+    .adult_precautions {
+      font-size: 13px;
+    }
+
+    .precaution_data {
+      font-size: 12px;
+    }
+
+    .policy_check_main {
+      margin-left: 5px;
+    }
+
+    .warning_terms_alert {
+      padding-left: 10px;
+    }
+  }
+
+  @media only screen and (max-width:420px) {
+    .review_spacing {
+      font-size: 16px;
+    }
+
+    .iti_header_timer {
+      font-size: 12px;
+    }
+
+    .header_count_down {
+      font-size: 16px;
+    }
+  }
