@@ -16,7 +16,7 @@ const About = () => {
           <div className='about_container'>
             <img src={images.FMAbout} alt="" width ='500px'  />
           </div>
-          <h5 className='about_details'>Why Choose Us </h5>
+          <h5 className='about_details'>Why Choose Us  </h5>
           <div className='about_us_content'>
               <p className='about_first_para'>Travel Channel International (Pvt) Limited is Pakistan's leading travel company with numerous sales outlets across Pakistan. Established in 2003, we have evolved to be one of the finest in travel industry.</p>
               <p className='about_sec_para'>Keeping our vision of <span className='about_moto'>"Excellence in Travel Services"</span>, we strive to provide great customer services, ease of booking and value for your money. Through continuous improvement in our infrastructure, technology and our people, we are providing seamless travel experience to our customers.</p>
