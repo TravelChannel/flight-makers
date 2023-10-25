@@ -24,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           yarn install
-          yarn run build --if-present
+          yarn build --if-present
 
   deploy:
     runs-on: ubuntu-latest
