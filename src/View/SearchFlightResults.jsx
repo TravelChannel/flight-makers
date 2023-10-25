@@ -60,7 +60,7 @@ const SearchFlightResult = () => {
     }, 4000000);
     return () => clearTimeout(timer);
 
-  }, [searchDataArr]);
+  },[searchDataArr]);
 
   const getCombinedData = apiData.map((item, index) => ({
     ...item,
