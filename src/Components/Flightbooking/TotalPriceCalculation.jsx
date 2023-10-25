@@ -66,11 +66,11 @@ const TotalPriceCalculation = () => {
                         </div>
                     </div>
 
-                    {exchangeRateUsed !== undefined ? (
+                    {/* {exchangeRateUsed !== undefined ? (
                         <marquee className="marquee_tag mt-3">
                             {`Exchange Rate: ${exchangeRateUsed}`}
                         </marquee>
-                    ) : null}
+                    ) : null} */}
                 </div>
             </div>
         </Fragment>
