@@ -22,13 +22,13 @@ import SearchButton from '../Commom/SearchButton.jsx';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
+import './SearchEngineCSS.css';
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 const dateFormat = 'YYYY-MM-DD';
 const antDateFormat = 'D MMM, YYYY';
 
 const FlightSearch = (props) => {
-
   const location = useLocation();
   // let {searchDataArr} = useSelector((state) => state.searchDataReducer);
   const shouldShowPrecautions = () => {
@@ -530,6 +530,10 @@ const FlightSearch = (props) => {
             <div className="search_flight_calander">
               {(tripActiveTab === 1 || tripActiveTab === 2) && (
                 <div className="d-flex justify-content-between searchFlightField">
+
+
+
+                
                   <Select
                     value={departure}
                     placeholder="Leaving From"

@@ -5271,10 +5271,8 @@ a:hover {
 }
 
 
-:where(.css-dev-only-do-not-override-1wazalj).ant-picker
+/* :where(.css-dev-only-do-not-override-1wazalj).ant-picker
 {
-    /* font-size: 37px !important; */
-    /* margin-top: 10px !important; */
     width: 32%;
     border: 1px solid #727483;
     border-radius: 10px;
@@ -5292,7 +5290,7 @@ input::placeholder
 :where(.css-dev-only-do-not-override-1wazalj).ant-picker .ant-picker-input >input
 {
   font-size: 16px !important;
-}
+} */
 
 .classTypeSty
 {
@@ -5320,7 +5318,7 @@ input::placeholder
   height: 48px;
 }
 
-.inputDeprturFlight .ant-select-selector::before {
+/* .inputDeprturFlight .ant-select-selector::before {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewBox='0 0 20 17' fill='%23808080'%3E%3Cpath d='M1.37578 16.4977V15.4977H18.3758V16.4977H1.37578ZM2.95078 11.4227L0.675781 7.49766L1.52578 7.29766L3.32578 8.84766L8.72578 7.39766L4.67578 0.547657L5.75078 0.222656L12.6008 6.34766L17.8258 4.94766C18.2091 4.84766 18.5551 4.91832 18.8638 5.15966C19.1718 5.40166 19.3258 5.71432 19.3258 6.09766C19.3258 6.36432 19.2508 6.59766 19.1008 6.79766C18.9508 6.99766 18.7508 7.13099 18.5008 7.19766L2.95078 11.4227Z'%3E%3C/path%3E%3C/svg%3E");
   position: absolute;
   left: 12px;
@@ -5353,26 +5351,25 @@ input::placeholder
 
   color: rgb(92, 92, 92);
 }
-:where(.css-dev-only-do-not-override-1wazalj).ant-select-single.ant-select-show-arrow .ant-select-selection-item, :where(.css-dev-only-do-not-override-1wazalj).ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder
-{
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
   color: rgb(92, 92, 92);
 }
-:where(.css-dev-only-do-not-override-1wazalj).ant-select-single:not(.ant-select-customize-input) .ant-select-selector
-{
-  height: 48px;
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: 48px !important;
 }
-:where(.css-dev-only-do-not-override-1wazalj).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
   border: 1px solid #727483;
   border-radius: 10px;
 }
-:where(.css-dev-only-do-not-override-1wazalj).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+
+.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
   border: 1px solid #727483;
   border-radius: 10px;
 }
-:where(.css-dev-only-do-not-override-1wazalj).ant-select .ant-select-arrow
-{
+
+.ant-select .ant-select-arrow {
   display: none;
-}
+}  */
 .deletIconSty
 {
   margin-top: 12px;
