@@ -50,6 +50,8 @@ const DateComparision = (props) => {
           slidesToShow: 3,
           slidesToScroll: 3,
         },
+      },
+      {
         breakpoint: 512,
         settings: {
           slidesToShow: 2,
