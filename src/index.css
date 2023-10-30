@@ -5874,3 +5874,11 @@ div:where(.swal2-icon).swal2-error {
 .writeUs_main{
   text-align: center;
 }
+.write_us_label{
+  padding:10px 0px;
+  font-weight: bold;
+}
+.write_dropdown{
+padding:10px 0px;
+text-align: center;
+}

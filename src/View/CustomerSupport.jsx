@@ -3,11 +3,19 @@ import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FAQs from "../Components/Commom/FAQs";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const Customersupport = () =>{
     const [isbgColor , setBgColor] = useState(1);
     const [inputPNR, setInputPNR] = useState('');
+    const [policy, setpolicy] = useState('refund');
 
+    const handleChange = (event) => {
+        setpolicy(event.target.value);
+    };
     const handleInputChange = (event) => {
         setInputPNR(event.target.value);
     };
@@ -69,27 +77,84 @@ const Customersupport = () =>{
                  {isbgColor===2 &&(
                    <Fragment>
                  <div className="writeUs_main">
+                 <label className='write_us_label'>Recieved From <span className="required_sign">*</span></label>
                  <Box
-                    component="form"
-                    sx={{
-                        '& > :not(style)': {
-                        m: 1,
-                        width: '400px', 
-                        '@media (max-width: 600px)': {
-                            width: '100%', 
-                        },
-                        },
-                    }}
-                    noValidate
-                    autoComplete="off"
+                            sx={{
+                                width: 400,
+                                paddingTop: 0,
+                                maxWidth: '100%',
+                                margin: '0 auto'
+                            }}
                     >
-                    <TextField 
-                        id="outlined-basic"
-                        label="Outlined" 
-                        variant="outlined"
-                        sx={{ width: '100%' }}
-                    />
+                            <TextField
+                               fullWidth
+                                size="small"
+                                label="Enter Name"
+                            />
+                 </Box>
+                 <label className='write_us_label'>Phone<span className="required_sign">*</span></label>
+                 <Box
+                            sx={{
+                                width: 400,
+                                paddingTop: 0,
+                                maxWidth: '100%',
+                                margin: '0 auto'
+                            }}
+                    >
+                            <TextField
+                               fullWidth
+                                size="small"
+                                label="Enter Phone No"
+                            />
+                 </Box>
+                 <div className="write_dropdown">
+                 <label className='write_us_label'>Option of Request <span className="required_sign">*</span></label>
+                 <Box sx={{ 
+                    maxWidth: 400,
+                     margin: '0 auto'
+                     }}>
+                <FormControl
+                 fullWidth
+                 size="small"
+                 
+
+                 >
+                    <InputLabel id="demo-simple-select-label">Policy</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={policy}
+                    label="Age"
+                    onChange={handleChange}
+                    >
+                    <MenuItem value={'refund'}>Refund Ticket</MenuItem>
+                    <MenuItem value={'cancle'}>Cancle Ticket</MenuItem>
+                    {/* <MenuItem value={30}>Thirty</MenuItem> */}
+                    </Select>
+                </FormControl>
                 </Box>
+                 </div>
+                 <div>
+                 <label className='write_us_label'>Ticket No<span className="required_sign">*</span></label>
+                 <Box
+                            sx={{
+                                width: 400,
+                                paddingTop: 0,
+                                maxWidth: '100%',
+                                margin: '0 auto'
+                            }}
+                    >
+                            <TextField
+                               fullWidth
+                                size="small"
+                                label="Enter Ticket No"
+                            />
+                 </Box>
+                 </div>
+                 <div className="col-md-4 cs_booking_btn">
+                        <div className="btn btn-primary btn-block" target="_blank" >Refund Payment</div>
+                </div>
+                
                  </div>
                    </Fragment>
                     )
