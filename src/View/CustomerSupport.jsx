@@ -1,27 +1,43 @@
-import React, { useState } from "react";
+import {React, useState,Fragment}from "react";
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import FAQs from "../Components/Commom/FAQs";
 
-const Customersupport = () => {
+const Customersupport = () =>{
+    const [isbgColor , setBgColor] = useState(1);
     const [inputPNR, setInputPNR] = useState('');
+
     const handleInputChange = (event) => {
         setInputPNR(event.target.value);
     };
+    const handlebgColor = (e) =>{
+        setBgColor(e);
+    }
+
     const handlerBookingCheck = () => {
         const PNRNumber = inputPNR;
-        setInputPNR('')
+        setInputPNR('');
         const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
         const target = '_blank';
 
         window.open(url, target);
     }
-    return (
-        <div className="container bg-white">
+    return(
+       <div className="container">
             <div className='contact_us_heading d-flex justify-content-center'>
-                <SupportAgentRoundedIcon className='contact_detail_icon align-self-center' /><h1>Customer Support</h1>
+            <SupportAgentRoundedIcon className='contact_detail_icon align-self-center'/><h3>Customer Support</h3>
             </div>
             <div className="CS_body">
+                <div className="cs_top_menu d-flex justify-content-start">
+                    <p className={`cs_menu_content rounded ${isbgColor===1 ? 'print_title rounded':''}`} onClick={()=>handlebgColor(1)}>Print Your Ticket</p>
+                    <p className={`write_title  cs_menu_content  ${isbgColor===2 ? 'print_title rounded':''}`} onClick={()=>handlebgColor(2)}>Write to Us</p>
+                    <p className={`faq_title cs_menu_content ${isbgColor===3 ? 'print_title rounded':''}`} onClick={()=>handlebgColor(3)}>FAQ</p>
+                </div>
+                <div className="support_methodes_main">
+                 {isbgColor===1 &&(
+                       <Fragment>
+                       <div className="CS_body">
                 <div className="support_methodes_main">
                     <div className="print_ticket text-center">
                         <label className='booking_heading'>Enter Your Booking ID <span className="required_sign">*</span></label>
@@ -46,7 +62,46 @@ const Customersupport = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            {/* </div> */}
+                       </Fragment>
+                    )
+                 }
+                 {isbgColor===2 &&(
+                   <Fragment>
+                 <div className="writeUs_main">
+                 <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': {
+                        m: 1,
+                        width: '400px', 
+                        '@media (max-width: 600px)': {
+                            width: '100%', 
+                        },
+                        },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                    >
+                    <TextField 
+                        id="outlined-basic"
+                        label="Outlined" 
+                        variant="outlined"
+                        sx={{ width: '100%' }}
+                    />
+                </Box>
+                 </div>
+                   </Fragment>
+                    )
+                 }
+                 {isbgColor===3 &&(
+                   <FAQs/>
+                    )
+                 }
+                </div>
+            </div>
+           
+       </div>
     );
 }
 

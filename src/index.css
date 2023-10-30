@@ -5863,3 +5863,14 @@ div:where(.swal2-icon).swal2-error {
 .ticket_book_heading{
   font-weight: bold;
 }
+
+/* -----------------------after deployment ---------------------- */
+
+.css-zun73v  {
+  padding: 0 !important;
+}
+
+/* ----------Write to  us ------------------------------------- */
+.writeUs_main{
+  text-align: center;
+}

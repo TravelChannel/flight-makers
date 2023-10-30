@@ -249,9 +249,9 @@
       padding-left: 0px !important;
     }
 
-    :where(.css-dev-only-do-not-override-1wazalj).ant-picker {
+    /* :where(.css-dev-only-do-not-override-1wazalj).ant-picker {
       width: 100%;
-    }
+    } */
 
     .date-field,
     select {
