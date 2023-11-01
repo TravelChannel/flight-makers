@@ -129,7 +129,6 @@ const Customersupport = () =>{
                     >
                     <MenuItem value={'refund'}>Refund Ticket</MenuItem>
                     <MenuItem value={'cancle'}>Cancle Ticket</MenuItem>
-                    {/* <MenuItem value={30}>Thirty</MenuItem> */}
                     </Select>
                 </FormControl>
                 </Box>
@@ -163,6 +162,7 @@ const Customersupport = () =>{
                    <FAQs/>
                     )
                  }
+                 
                 </div>
             </div>
            

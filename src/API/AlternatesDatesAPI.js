@@ -139,6 +139,7 @@ export const fetchPriceRates = async (departure, arrival,futureDate,futureDate1,
         const combinedArray = getDates.map((date, index) => ({
           date: date,
           price: getPrice[index],
+          
         }));
         
         // console.log(result);
