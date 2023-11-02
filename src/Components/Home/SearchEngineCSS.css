@@ -71,7 +71,6 @@ input::placeholder {
   display: none;
 } 
 
-
 /* ----------------Media Query for Search Engine */
 
 @media only screen and (max-width: 768px){
