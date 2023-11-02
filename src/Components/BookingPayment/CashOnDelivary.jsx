@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import PrivacyPolicyCheck from './Comman/PrivacyPolicyCheck';
 const CashOnDelivary = () => {
-
+  // console.log('methode',selected )
   const [checked, setChecked] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
   const handleEmpty =(event)=>{
@@ -47,7 +47,7 @@ const CashOnDelivary = () => {
         <PayAtBranch subChild={false}/>
       </div>
       <div className= 'privacy_policy_hero'>
-         <PrivacyPolicyCheck checked={checked} setChecked={setChecked}  isEmpty={isEmpty} />
+         <PrivacyPolicyCheck checked={checked} setChecked={setChecked}  isEmpty={isEmpty}  />
     </div>
     </div>
   )

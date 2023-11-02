@@ -34,7 +34,7 @@ const BookingPayment = () => {
          <div className="book_payment_hero">
             <div className="paymethodes_main">
                <div>
-                  <FlightBookingHeader pageTitle="Pay to Secure Your Booking" icons="BookingPayment" setTimer="180" />
+                  <FlightBookingHeader pageTitle="Pay to Secure Your Booking" icons="BookingPayment" setTimer="1800" />
                </div>
                {!isMobile && (
                   <div className='row'>

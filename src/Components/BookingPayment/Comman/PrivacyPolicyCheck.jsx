@@ -57,7 +57,6 @@ const PrivacyPolicyCheck = (props) => {
             {
                 !isMobile && (
                     <div>
-                        <div className='d-flex justify-content-between'>
                             <div className='policy_check_main d-flex justify-content-start'>
                                 <div className='align-self-center'>
                                     <Checkbox
@@ -67,31 +66,37 @@ const PrivacyPolicyCheck = (props) => {
                                     />
                                 </div>
                                 <div className='privacy_policy_content '>
-                                    <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked'>booking policy, <br /></span> <span className='privacy_policy_linked'>privacy policy</span>, and <span className='privacy_policy_linked'>terms and conditions</span> of faremakers.
+                                    <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked'>booking policy,</span> <span className='privacy_policy_linked'>privacy policy</span>, and <span className='privacy_policy_linked'>terms and conditions</span> of faremakers.
                                     </p>
                                 </div>
                             </div>
+                            <div>
+                            {!checked ? (<p className='warning_terms_alert'>Please accept the terms and conditions to proceed with this booking. </p>
+                            ) : ('')}
+                            </div>
 
-                            <div className='d-flex justify-content-start'>
+                            <div className='d-flex justify-content-end'>
                                 <div className='align-self-center pay_content_right' >
                                     <h5 className='total_payment_detail'><strong>{totalTicketPrice.toLocaleString()} PKR</strong></h5>
                                     <p className='payment_subtitle'>total inclusive, of all taxes</p>
                                 </div>
                                 <div className="move_payment_button">
                                     <button
-                                        onClick={payOnlineHandler}
+                                        onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
                                         type="button"
                                         className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
                                         disabled={!checked || isEmpty}  >
-                                        Pay Now
+                                        {
+                                                paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
+                                                   <p> Pay Now</p>
+                                                ) : (
+                                                   <p> Submit</p>
+                                                )
+                                                }
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            {!checked ? (<p className='warning_terms_alert'>Please accept the terms and conditions to proceed with this booking. </p>
-                            ) : ('')}
-                        </div>
+                       
                     </div>
                 )
             }
