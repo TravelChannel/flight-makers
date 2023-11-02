@@ -1,52 +1,25 @@
-// import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { serachFlightData } from '../Store/action';
+import React, {Fragment}from 'react';
+import RefundPolicyData from '../Constant/RefundPolicyData';
+import PolicyOutlinedIcon from '@mui/icons-material/PolicyOutlined';
+import ReuseableTermsAndCondition from '../Components/Commom/ReuseableTermsAndCondition';
+import * as images from '../Constant/images';
+const Refundpolicy = () => {
+  return (
+    <Fragment>
+        
+    <div className='container bg-white'>
+        <div className="terms_Hero">   
+            <div className='about_us_heading d-flex justify-content-center'>
+            <PolicyOutlinedIcon className='about_us_icon align-self-center'/><h3>Refund Policy</h3>
+            </div>
+             <ReuseableTermsAndCondition TermsConditionsData = {RefundPolicyData} />
+        </div>
+        <div className=' refund_detail_image text-center'>
+            <img src={images.refundPolicy} alt=""  width='60%'/>
+        </div>
+    </div>
+   </Fragment>
+  )
+}
 
-// const MyComponent = () => {
-//   const dispatch = useDispatch();
-//   const adultQuant = '1';
-//   const childQuant = '1';
-//   const infantsQuant = '0';
-//   const activeClassTab = 'bussiness';
-//   const selectedDates = '22 june';
-//   const departure = 'lhr';
-//   const arrival = 'isb';
-
-//   const handleClick = () => {
-    
-//     const searchDataObj = {
-//       adults: adultQuant,
-//       children: childQuant,
-//       infants: infantsQuant,
-//       classtype: activeClassTab,
-//       date: selectedDates,
-//       departure: departure,
-//       arrival: arrival,
-//     };
-//     dispatch(serachFlightData(searchDataObj));
-//     console.log(searchDataObj);
-//   };
-
-//   const myData = useSelector((state) => state.searchflightdata);
-//   // console.log(myData)
-//   const myDataArray = Object.values(myData);
-//   return (
-//     <div>
-//       <button onClick={handleClick}>Save Message</button>
-     
-//       <h2>Search History</h2>
-//        {myDataArray && myDataArray.length > 0 ? (
-//         <ul>
-//           {myDataArray.map((search, index) => (
-//             <li key={index}>{search.adults}</li>
-//           ))}
-//         </ul>
-//       ) : (
-//         <p>No search history available.</p>
-//       )}
-//     </div>
-//   );
-// };
-
-
-// export default MyComponent;
+export default Refundpolicy;

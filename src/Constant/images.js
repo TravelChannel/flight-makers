@@ -76,6 +76,9 @@ import FMAbout from '../../src/assets/FMAbout.png';
 import SCBank from '../../src/assets/icon/SCBank.png';
 import MBBank from '../../src/assets/icon/MB-bank.png';
 
+
+import refundPolicy from '../../src/assets/refundPolicy.jpeg'
+
 export const extra_baggages = [
     nill_Bagg,   
     standerd_Bagg,
@@ -85,5 +88,5 @@ export default faremakerlogo ;
 
 export {bankicon,whatsappicon,cautionicon,hbllogo,payprologo,iatalogo,mastercardlogo,digicertlogo,visacardlogo,jazzcash_Logo,hotellogo,planelogo,UAN,Mail,FMAbout,SCBank,MBBank,
     planeImage,hotelImage,sunUmbrellaImage,qaterLogo,dubaiPics,lahorePics,karachiPics,islamabadPics,londonPics,pakistanMap,mobileScaner,officeLocation
-    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg
+    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy
 };

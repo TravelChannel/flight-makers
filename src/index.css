@@ -5884,4 +5884,35 @@ padding:10px 0px;
 text-align: center;
 }
 
+/* ---------------------Terms and Conditions Start ---------------------------- */
+.terms_body{
+  margin:20px 10px;
+  /* padding:10px 0px; */
+  text-align: justify;
+ border: 1px solid #ddd;
+ border-radius: 4px;
+}
+.terms_heading{
+  color:#F26223;
+  padding:10px 0px;
+ border-bottom: 1px solid #ddd;
+}
+.terms_inner_heading{
+  padding:0px 10px;
+}
+.terms_inner_body{
+  padding:10px 20px;
+  color: #333;
+  font-size:14px;
+  line-height: 1.42857143;
+}
+.terms_Hero{
+  margin-top:10px;
+  padding-bottom:10px;
+}
+.refund_detail_image{
+  padding:20px 0px;
+}
+
+/* ---------------------Terms and Conditions end ---------------------------- */
 
