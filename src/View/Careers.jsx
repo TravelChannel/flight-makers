@@ -1,45 +1,28 @@
-// import { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import fetchSearchResult  from '../API/SearchFlightResult.js';
+import React from 'react'
+import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
+import * as images from '../Constant/images';
+const Careers = () => {
+  return (
+    <div className='container bg-white'>
+         <div className='about_us_heading d-flex justify-content-center'>
+            <ApartmentOutlinedIcon className='about_us_icon align-self-center'/><h3>Careers</h3>
+        </div>
+        <div className='career_main d-flex justify-content-center w-100'>
+            <div className='align-self-center'>
+                <h3 className='hiring_heading text-center pb-3'>We are Hiring !</h3>
+                <h5>
+                    If you want to apply, please send your resume at:
+                    <a className='career_link' href='mailto:careers@faremakers.com'>
+                    careers@faremakers.com
+                    </a>
+                </h5>
+            </div>
+            <div>
+                <img src={images.career} alt="" width='330px'/>
+            </div>
+        </div>
+    </div>
+  )
+}
 
-// const SearchResult = () => {
-//   const location = useLocation();
-//   const { searchDataArr } = location.state;
-//   const [loading, setLoading] = useState(true);
-//   const [apiData, setApiData] = useState([]);
-
-//   const fetchData = async () => {
-//     try {
-//       const data = await fetchSearchResult(searchDataArr);
-//       console.log(data);
-//       setApiData(data);
-//       setLoading(false);
-//     } catch (error) {
-//       console.error(error);
-//       // Handle the error here
-//     }
-//   };
-  
-//   useEffect(() => {
-//     fetchData();
-//   }, [searchDataArr]);
-
-//   return (
-//     <div>
-//       {loading ? (
-//         <p>Loading...</p>
-//       ) : (
-//         <div>
-//           {/* Render the fetched data */}
-//           {apiData && (
-//             <div>
-//               {/* Display the fetched data */}
-//             </div>
-//           )}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default SearchResult;
+export default Careers;

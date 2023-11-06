@@ -5916,3 +5916,21 @@ text-align: center;
 
 /* ---------------------Terms and Conditions end ---------------------------- */
 
+/* ---------------------Careers Start ---------------------------- */
+.hiring_heading{
+  color:#36c;
+  font-weight:600;
+}
+.career_link{
+  font-size:18px;
+  cursor:pointer;
+  color:#36c;
+  padding-left:3px;
+}
+
+/* ---------------------Careers end ---------------------------- */
+
+
+
+
+
