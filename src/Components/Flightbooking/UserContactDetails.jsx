@@ -43,17 +43,17 @@ const UserContactDetails = (props) => {
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
-    setFormData(prevFormData => {
-      const updatedData = [...prevFormData];  // Create a copy of the previous state array
+
+    setFormData((prevFormData) => {
+      const updatedData = [...prevFormData];
       updatedData[index] = {
         ...updatedData[index],
-        [name]: value
+        [name]: value,
       };
       return updatedData;
     });
-  }
+  };
 
-  // console.log(formData);
   const handlePhoneNumberChange = (value) => {
     setPhoneNumber(value);
   };
@@ -333,22 +333,28 @@ const UserContactDetails = (props) => {
                               </div>
                               <div className='row p-0 m-0'>
                                 <div className='col-md-4 mb-3'>
-                                  <TextField
-                                    id="outlined-fname-input"
-                                    label="First Name"
-                                    type="alphbatic"
-                                    className='fname_textfield'
-                                    size="small"
-                                    name={`fname${index}`}
-                                    onChange={(e) => handleInputChange(e, index)}
-                                    InputProps={{
-                                      endAdornment: (
-                                        <InputAdornment>
-                                          <ErrorOutlineIcon className="fname_detailed_icon" onClick={handleOpenDialog} />
-                                        </InputAdornment>
-                                      )
-                                    }}
-                                  />
+                                <TextField
+                                        id="outlined-fname-input"
+                                        label="First Name"
+                                        type="text"
+                                        className="fname_textfield"
+                                        size="small"
+                                        name={`fname${index}`}
+                                        onKeyPress={(e) => {
+                                          const charCode = e.charCode;
+                                          if (!/^[A-Za-z]+$/.test(String.fromCharCode(charCode))) {
+                                            e.preventDefault();
+                                          }
+                                        }}
+                                        onChange={(e) => handleInputChange(e, index)}
+                                        InputProps={{
+                                          endAdornment: (
+                                            <InputAdornment>
+                                              <ErrorOutlineIcon className="fname_detailed_icon" onClick={handleOpenDialog} />
+                                            </InputAdornment>
+                                          )
+                                        }}
+                                      />
                                   <Popover
                                     open={isDialogOpen}
                                     onClose={HandleCloseDialog}
@@ -378,6 +384,12 @@ const UserContactDetails = (props) => {
                                     type="text"
                                     className='fname_textfield'
                                     size="small"
+                                    onKeyPress={(e)=>{
+                                      const charCode = e.charCode;
+                                      if (!/^[A-Za-z]+$/.test(String.fromCharCode(charCode))) {
+                                            e.preventDefault();
+                                          }
+                                    }}
                                     onChange={(e) => handleInputChange(e, index)}
                                     InputProps={{
                                       endAdornment: (
@@ -440,18 +452,59 @@ const UserContactDetails = (props) => {
                                     <div className="passanger_gender_input">
                                       <p className="dob_heading">CNIC No:</p>
                                       <TextField name={`cnic${index}`}
-                                        onChange={(e) => handleInputChange(e, index)} id="outlined-basic" placeholder="CNIC No" variant="outlined" size="small" />
+
+                                          id="outlined-basic" 
+                                          placeholder="CNIC No"
+                                          variant="outlined" 
+                                          size="small" 
+                                          onKeyPress={(e) => {
+                                          const charCode = e.charCode;
+                                          const inputValue = e.target.value;
+                                          const isAlphanumeric = /^[A-Za-z0-9]$/.test(String.fromCharCode(charCode));
+                                          if (!isAlphanumeric || inputValue.length >= 13) {
+                                            e.preventDefault(); 
+                                          }
+                                        }}
+                                        onChange={(e) => {
+                                          const inputValue = e.target.value;
+                                          if (inputValue.length > 13) {
+                                            e.target.value = inputValue.slice(0, 13);
+                                          }
+                                          handleInputChange(e, index);
+                                        }}
+                                          />
                                     </div>
                                   </div>
                                   :
                                   null
                                 }
                                 <div className='col-md-4 mb-3'>
-                                  <div className="fname_textfield">
-                                    <p className="dob_heading">Passport No:</p>
-                                    <TextField name={`passport${index}`}
-                                      onChange={(e) => handleInputChange(e, index)} id="outlined-basic" placeholder="Passport No" variant="outlined" size="small" />
-                                  </div>
+                                <div className="fname_textfield">
+                                      <p className="dob_heading">Passport No:</p>
+                                      <TextField
+                                        name={`passport${index}`}
+                                        id="outlined-basic"
+                                        placeholder="Passport No"
+                                        variant="outlined"
+                                        size="small"
+                                        onKeyPress={(e) => {
+                                          const charCode = e.charCode;
+                                          const inputValue = e.target.value;
+                                          const isAlphanumeric = /^[A-Za-z0-9]$/.test(String.fromCharCode(charCode));
+                                          if (!isAlphanumeric || inputValue.length >= 9) {
+                                            e.preventDefault(); 
+                                          }
+                                        }}
+                                        onChange={(e) => {
+                                          const inputValue = e.target.value;
+                                          if (inputValue.length > 9) {
+                                            e.target.value = inputValue.slice(0, 9);
+                                          }
+                                          handleInputChange(e, index);
+                                        }}
+                                      />
+                                    </div>
+
                                 </div>
                                 {index < adults + children ?
                                   <div className='col-md-4 mb-3'>
