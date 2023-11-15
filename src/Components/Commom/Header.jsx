@@ -7,7 +7,6 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import WifiCallingIcon from "@mui/icons-material/WifiCalling";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import LoginIcon from "@mui/icons-material/Login";
 import { CSSTransition } from "react-transition-group";
 
@@ -162,13 +161,12 @@ const Header = () => {
                                 <CloseIcon onClick={closeMenu} />
                         </div>
                     </div>
-                    <ul>
-                        <li> <GroupsIcon className="mob_menu_icon"/> About Us</li>
-                        <li> <WifiCallingIcon className="mob_menu_icon"/>Contact Us</li>
-                        <li> <SupportAgentIcon className="mob_menu_icon"/>Support</li>
-                        <li> <AccountBalanceIcon className="mob_menu_icon"/>Banks</li>
-                        <li> <ManageAccountsIcon className="mob_menu_icon"/>Account </li>
-                        <li><LoginIcon className="mob_menu_icon"/> Login</li>
+                    <ul >
+                      <li><a href="/aboutus" className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</a></li>
+                      <li><a href="/contactus" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
+                      <li><a href="/customer-support" className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/> Support</a></li>
+                      <li><a href="/banks" className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</a></li>
+                      <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li>
                     </ul>
                 </div>
              </CSSTransition>

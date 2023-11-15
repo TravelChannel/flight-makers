@@ -1,26 +1,26 @@
 import React, { Fragment, useState, useEffect } from "react";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import SortIcon from '@mui/icons-material/Sort';
-import DoneIcon from '@mui/icons-material/Done';
+// import SortIcon from '@mui/icons-material/Sort';
+// import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import { CSSTransition } from "react-transition-group";
 import Filters from "./Comman/Filter.jsx";
 
 const SideBarFilters = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [openSort, isOpenSort] = useState(false);
+  // const [openSort, isOpenSort] = useState(false);
   const [openFilter, isOpenFilter] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Price');
-  const handleSort = () => {
-    isOpenSort(!openSort);
-  }
+  // const [selectedOption, setSelectedOption] = useState('Price');
+  // const handleSort = () => {
+  //   isOpenSort(!openSort);
+  // }
   const handlefilter = () => {
     isOpenFilter(!openFilter);
   }
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    isOpenSort(false);
-  };
+  // const handleOptionClick = (option) => {
+  //   setSelectedOption(option);
+  //   isOpenSort(false);
+  // };
   const closeFilters = () => {
     isOpenFilter(false);
   }
@@ -38,16 +38,16 @@ const SideBarFilters = () => {
     <Fragment>
       {isMobile ? (
         <div className=" pl-0  pr_own mob_background_filter">
-          <div className="filter_main_mob d-flex justify-content-between">
-            <div className="filter_Sort background_color_sort">
+          <div className="filter_main_mob d-flex justify-content-end">
+            {/* <div className="filter_Sort background_color_sort">
               <span><SortIcon /> </span> <span className="sort_font" onClick={handleSort}>Sort</span>
-            </div>
+            </div> */}
             <div className="filter_Sort">
               <span><FilterAltIcon /> </span> <span className="sort_font" onClick={handlefilter}>Filters</span>
             </div>
           </div>
 
-          {openSort && (
+          {/* {openSort && (
             <Fragment>
               <div className="main_sort_card d-flex justify-content-between w-75">
                 <div className=" sort_width ">
@@ -73,7 +73,7 @@ const SideBarFilters = () => {
                 </div>
               </div>
             </Fragment>
-          )}
+          )} */}
           <CSSTransition
             in={openFilter}
             timeout={1000}
@@ -95,11 +95,11 @@ const SideBarFilters = () => {
                     <Filters />
                   </div>
                 </div>
-                <div className="disply_mob_filter_card overlay">
+                {/* <div className="disply_mob_filter_card overlay">
                   <div className=" d-flex justify-content-center  mob_filter_button " >
                     <h4>APPLY</h4>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </CSSTransition>
