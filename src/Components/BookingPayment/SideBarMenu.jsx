@@ -231,7 +231,6 @@ const [isEmpty , setIsEmpty] = useState(true);
                 </div>
                <div className='mob_flight_card'>
                     <CashOnDelivary checked = {checked} setChecked = {setChecked} isEmpty={isEmpty} setIsEmpty={setIsEmpty} />
-                    <PrivacyPolicyCheck checked = {checked} setChecked = {setChecked} isEmpty={isEmpty}/>
               </div>
           </div>
             </CSSTransition>

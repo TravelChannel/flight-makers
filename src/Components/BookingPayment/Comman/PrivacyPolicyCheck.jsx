@@ -119,20 +119,27 @@ const PrivacyPolicyCheck = (props) => {
                         <div>
                             {!checked ? (<p className='warning_terms_alert'>Please accept the terms and conditions to proceed with this booking. </p>
                             ) : ('')}
-                        </div>
+                            </div>
                         <div className={`${isBtnCenter ? 'd-flex justify-content-center pay_btn_cneter' : 'd-flex justify-content-end'}`}>
                             <div className='align-self-center pay_content_right' >
                                 <h5 className='total_payment_detail'><strong> {totalTicketPrice.toLocaleString()} PKR</strong></h5>
                                 <p className='payment_subtitle'>total inclusive, of all taxes</p>
                             </div>
                             <div className="move_payment_button">
-                                <button
-                                    type="button"
-                                    className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
-                                    disabled={checked && isEmpty}  >
-                                    Pay Now
-                                </button>
-                            </div>
+                                    <button
+                                        onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
+                                        type="button"
+                                        className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
+                                        disabled={!checked || isEmpty}  >
+                                        {
+                                                paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
+                                                   <p> Pay Now</p>
+                                                ) : (
+                                                   <p> Submit</p>
+                                                )
+                                                }
+                                    </button>
+                                </div>
                         </div>
 
                     </div>
