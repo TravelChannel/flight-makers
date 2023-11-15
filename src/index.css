@@ -5929,6 +5929,20 @@ text-align: center;
 }
 
 /* ---------------------Careers end ---------------------------- */
+/* ---------------------Terms of Services Start ---------------------------- */
+.services_content{
+  background-color: #fff;
+  padding:20px;
+}
+.services_content_typography{
+  padding:10px;
+  color: #333;
+  font-size:14px;
+ text-align:justify;
+}
+/* ---------------------Terms of Services end ---------------------------- */
+
+
 .mob_menu_txtcolor{
  color:white;
 }
