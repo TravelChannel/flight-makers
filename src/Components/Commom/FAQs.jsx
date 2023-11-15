@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const FAQs = () => {
   return (
-    <div>
+    <div className='container bg-white'>
                     <Accordion className="accordation_main">
                         <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}

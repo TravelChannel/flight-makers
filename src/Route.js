@@ -14,8 +14,9 @@ import FlightTicketBooking from './View/Flightbooking';
 import BookingPayment from './View/BookingPayment';
 import SignUp from './Components/Commom/Signup';
 import FMBanks from './View/FMBanks';
-
+import FAQs from './Components/Commom/FAQs';
 import { Routes, Route } from 'react-router-dom';
+
 
 const AppRouter = () => {
   return (
@@ -36,6 +37,8 @@ const AppRouter = () => {
         <Route path="/bookingpayment" element={<BookingPayment />} />
         <Route path="/GetPNRItinerary" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
+        <Route path="/FAQs" element={<FAQs/>} />
+
         {/* Catch-all route for unknown routes */}
         
       </Routes>
