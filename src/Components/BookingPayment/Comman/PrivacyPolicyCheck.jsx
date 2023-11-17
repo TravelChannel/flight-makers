@@ -80,7 +80,7 @@ const PrivacyPolicyCheck = (props) => {
                                     <h5 className='total_payment_detail'><strong>{totalTicketPrice.toLocaleString()} PKR</strong></h5>
                                     <p className='payment_subtitle'>total inclusive, of all taxes</p>
                                 </div>
-                                <div className="move_payment_button">
+                                <div className="move_payment_button ">
                                     <button
                                         onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
                                         type="button"
@@ -96,7 +96,6 @@ const PrivacyPolicyCheck = (props) => {
                                     </button>
                                 </div>
                             </div>
-                       
                     </div>
                 )
             }
@@ -125,7 +124,7 @@ const PrivacyPolicyCheck = (props) => {
                                 <h5 className='total_payment_detail'><strong> {totalTicketPrice.toLocaleString()} PKR</strong></h5>
                                 <p className='payment_subtitle'>total inclusive, of all taxes</p>
                             </div>
-                            <div className="move_payment_button">
+                            <div className="move_payment_button p-3">
                                     <button
                                         onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
                                         type="button"

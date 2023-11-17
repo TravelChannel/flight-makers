@@ -10,7 +10,7 @@ import PayOnline from '../BookingPayment/PayOnline';
 import JazzCashPay from '../BookingPayment/JazzCashPay';
 import PayAtBranch from '../BookingPayment/PayAtBranch';
 import CashOnDelivary from '../BookingPayment/CashOnDelivary';
-import PrivacyPolicyCheck from './Comman/PrivacyPolicyCheck';
+
 
 const  SideBarMenu = ({selectedMethode,setSelectedMethode,setSubMenuSelected}) => {
 // const [openCard , setOpenCard] = useState(true);

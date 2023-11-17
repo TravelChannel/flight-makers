@@ -104,7 +104,7 @@ const PayAtBranch = (props) => {
       </div>
       <div className="google_map_spacing">{googleMap}</div>
     </div>
-    {(props.subChild) ? 
+    {(props.subChild) ?
       <div className='privacy_policy_hero'>
          <PrivacyPolicyCheck checked={checked} setChecked={setChecked}/>
       </div>
