@@ -5942,9 +5942,12 @@ text-align: center;
 }
 /* ---------------------Terms of Services end ---------------------------- */
 
-
 .mob_menu_txtcolor{
  color:white;
+}
+
+.mob_data_typo{
+  padding-right:5px;
 }
 
 

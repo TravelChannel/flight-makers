@@ -7,10 +7,10 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { CSSTransition } from "react-transition-group";
 import CloseIcon from '@mui/icons-material/Close';
 import PayOnline from '../BookingPayment/PayOnline';
-import PrivacyPolicyCheck from '../BookingPayment/Comman/PrivacyPolicyCheck';
 import JazzCashPay from '../BookingPayment/JazzCashPay';
 import PayAtBranch from '../BookingPayment/PayAtBranch';
 import CashOnDelivary from '../BookingPayment/CashOnDelivary';
+import PrivacyPolicyCheck from './Comman/PrivacyPolicyCheck';
 
 const  SideBarMenu = ({selectedMethode,setSelectedMethode,setSubMenuSelected}) => {
 // const [openCard , setOpenCard] = useState(true);
@@ -185,7 +185,7 @@ const [isEmpty , setIsEmpty] = useState(true);
                     </div>
                 <div className='mob_flight_card'>
                   <JazzCashPay/>
-                  <PrivacyPolicyCheck checked = {checked} setChecked = {setChecked} isEmpty={isEmpty}/>
+                  {/* <PrivacyPolicyCheck checked = {checked} setChecked = {setChecked} isEmpty={isEmpty}/> */}
                  </div>
             </div>
             </CSSTransition>
@@ -207,8 +207,7 @@ const [isEmpty , setIsEmpty] = useState(true);
                   </div>
              </div>
               <div className='mob_flight_card'>
-            <PayAtBranch/>
-            <PrivacyPolicyCheck checked = {checked} setChecked = {setChecked} isEmpty={isEmpty}/>
+            <PayAtBranch subChild={true}/>
             </div>
            </div>
             </CSSTransition>

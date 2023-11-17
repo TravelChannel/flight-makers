@@ -11,6 +11,8 @@ const UserTripInfo = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isClicked, setIsclicked] = useState(false);
   const {searchDataArr} = useItemsToShow();
+
+  const travellers = searchDataArr.adults + searchDataArr.children +searchDataArr.infants;
   const handleEditNote = () => {
     setIsclicked(!isClicked);
   }
@@ -39,12 +41,17 @@ const UserTripInfo = () => {
               <div className="mobile_top_search d-flex justify-content-between">
                 <div>
                   <div className="d-flex justify-content-start">
-                    <p className="SF_mob_city_code">LHE <span className="SF_mob_city_col">(Lahore)</span></p>
+                    <p className="SF_mob_city_code">{searchDataArr.departure}</p>
                     <span><ArrowRightAltIcon /></span>
-                    <p className="SF_mob_city_code">KHI <span className="SF_mob_city_col">(Karachi)</span></p>
+                    <p className="SF_mob_city_code">{searchDataArr.arrival}
+                     {/* <span className="SF_mob_city_col">(Karachi)</span> */}
+                     </p>
                   </div>
-                  <div className="mob_top_detail">
-                    <p> 08 Dec • 1 traveller • Economy</p>
+                  <div className="mob_top_detail d-flex justify-content-start">
+                    {/* <p> 08 Dec • 1 traveller • Economy</p> */}
+                    <p className="mob_data_typo">{searchDataArr.date}</p>
+                    <p className="mob_data_typo"> •{travellers} travellers</p>
+                    <p className="mob_data_typo"> •{searchDataArr.classtype}</p>
                   </div>
                 </div>
                 <div className="d-flex align-self-center">
