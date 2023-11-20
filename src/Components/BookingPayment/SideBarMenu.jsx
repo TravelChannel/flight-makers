@@ -13,7 +13,7 @@ import CashOnDelivary from '../BookingPayment/CashOnDelivary';
 
 
 const  SideBarMenu = ({selectedMethode,setSelectedMethode,setSubMenuSelected}) => {
-// const [openCard , setOpenCard] = useState(true);
+// const [openCard , setOpenCard] = useState(true);     
 const [isMobile , setIsMobile] = useState(window.innerWidth<768);
 const [isPayMore , setPayMore] = useState(false);
 const [isJazzCash , setJazzCash] = useState(false);
@@ -26,6 +26,7 @@ const [isEmpty , setIsEmpty] = useState(true);
   setSelectedMethode(methode);
   // setOpenCard(false);
   setSubMenuSelected(false);
+
   
  }
 

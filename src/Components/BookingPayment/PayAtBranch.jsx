@@ -52,14 +52,6 @@ const PayAtBranch = (props) => {
     handleChange({ target: { value: branchName } });
   }, [branchName]);
 
-  // if(branchName===''){
-  //   setIsEmpty(true);
-  // } else{
-  //   setIsEmpty(false);
-  // }
-
-
-
   return (
     <Fragment>
       <div className='pay_branch_main'>
