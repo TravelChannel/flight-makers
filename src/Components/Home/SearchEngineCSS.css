@@ -78,3 +78,13 @@ input::placeholder {
     width: 100% !important;
   }
 }
+
+
+/* --------------------------User Contact Detail----------------------- */
+
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+  padding-top: 8.5px !important; 
+  padding-bottom: 8.5px !important; 
+  padding-left: 14px !important; 
+  padding-right:38px !important;
+}

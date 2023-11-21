@@ -4,40 +4,40 @@ export const SabrePNRCreate = async () => {
     const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
-    // const flightdetails = JSON.parse(localStorage.getItem("bookingTicket"));
-    // const { schedualDetGet, flightSegments } = flightdetails;
-    // const flightName = schedualDetGet.flatMap(item => item.flatMap(valu => valu.carrier.marketing));
-    // const flightNumber = schedualDetGet.flatMap(item => item.flatMap(valu => valu.carrier.marketingFlightNumber));
-    // const flightArrival = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.arrival.airport));
-    // const flightDepature = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.departure.airport));
+    const flightdetails = JSON.parse(localStorage.getItem("bookingTicket"));
+    const { schedualDetGet, flightSegments } = flightdetails;
+    const flightName = schedualDetGet.flatMap(item => item.flatMap(valu => valu.carrier.marketing));
+    const flightNumber = schedualDetGet.flatMap(item => item.flatMap(valu => valu.carrier.marketingFlightNumber));
+    const flightArrival = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.arrival.airport));
+    const flightDepature = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.departure.airport));
 
-    // const oddIndexedSegments = flightSegments.filter((segment, index) => index % 2 !== 0);
+    const oddIndexedSegments = flightSegments.filter((segment, index) => index % 2 !== 0);
 
-    // const flights = oddIndexedSegments.flatMap((item, index) => [
-    //     {
-    //         ArrivalDateTime: `${item.date}T${item.arrival}`,
-    //         DepartureDateTime: `${item.date}T${item.departure}`,
-    //         FlightNumber: flightNumber[index],
-    //         NumberInParty: "1",
-    //         ResBookDesigCode: "O",
-    //         Status: "NN",
-    //         DestinationLocation: {
-    //             LocationCode: flightArrival[index],
-    //         },
-    //         MarketingAirline: {
-    //             Code: flightName[index],
-    //             FlightNumber: flightNumber[index],
-    //         },
-    //         OriginLocation: {
-    //             LocationCode: flightDepature[index],
-    //         },
-    //         OperatingAirline: {
-    //             Code: flightName[index],
-    //         },
-    //         MarriageGrp: "I",
-    //     },
-    // ]);
-    // console.log(flights);
+    const flights = oddIndexedSegments.flatMap((item, index) => [
+        {
+            ArrivalDateTime: `${item.date}T${item.arrival}`,
+            DepartureDateTime: `${item.date}T${item.departure}`,
+            FlightNumber: `${flightNumber[index]}`,
+            NumberInParty: "1",
+            ResBookDesigCode: "O",
+            Status: "NN",
+            DestinationLocation: {
+                LocationCode: flightArrival[index],
+            },
+            MarketingAirline: {
+                Code: flightName[index],
+                FlightNumber: `${flightNumber[index]}`,
+            },
+            OriginLocation: {
+                LocationCode: flightDepature[index],
+            },
+            OperatingAirline: {
+                Code: flightName[index],
+            },
+            MarriageGrp: "I",
+        },
+    ]);
+    console.log(flights);
 
     var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -116,31 +116,9 @@ myHeaders.append('Authorization',
                     }
                 ],
                 "OriginDestinationInformation": {
-                    "FlightSegment": [
-                        {
-                            "ArrivalDateTime": "2023-12-10T02:50:00",
-                            "DepartureDateTime": "2023-12-10T05:20:00",
-                            "FlightNumber": "705",
-                            "NumberInParty": "1",
-                            "ResBookDesigCode": "O",
-                            "Status": "NN",
-                            "DestinationLocation": {
-                                "LocationCode": "JED"
-                            },
-                            "MarketingAirline": {
-                                "Code": "SV",
-                                "FlightNumber": "705"
-                            },
-                            "OriginLocation": {
-                                "LocationCode": "KHI"
-                            },
-                            "OperatingAirline": {
-                                "Code": "SV"
-                            },
-                            "MarriageGrp": "I"
-                        }
-                    ]
-                },
+                    "FlightSegment": flights
+
+               },
                 "RedisplayReservation": {
                     "NumAttempts": 10,
                     "WaitInterval": 300
@@ -215,6 +193,7 @@ myHeaders.append('Authorization',
     try {
         const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
         const result = await responce.json();
+        console.log("Raw", raw)
         console.log("PNR SABRE", result)
         return result;
     }

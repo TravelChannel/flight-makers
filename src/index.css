@@ -4454,12 +4454,12 @@ margin-top:7px;
    color:#1a1a1a;
    padding-left:3px;
  }
- .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
+ /* .css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input{
    padding-top: 8.5px !important; 
    padding-bottom: 8.5px !important; 
    padding-left: 14px !important; 
    padding-right:38px !important;
- }
+ } */
  .no-clear-button .MuiAutocomplete-clearIndicator {
    display: none;
  }
