@@ -182,6 +182,9 @@ myHeaders.append('Authorization',
                             Surname: user[`lname${index}`], 
                             DateOfBirth: user[`DateOfBirth${index}`],
                             Gender: user[`gender${index}`]
+
+
+                            
                           }
                         }))
                       }
@@ -191,21 +194,21 @@ myHeaders.append('Authorization',
     });
 
     console.log("userallDetials",raw);
-    // var requestOptions = {
-    //     method: 'POST',
-    //     headers: myHeaders,
-    //     body: raw,
-    //     redirect: 'follow'
-    // };
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
 
-    // try {
-    //     const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
-    //     const result = await responce.json();
-    //     console.log("Raw", raw)
-    //     console.log("PNR SABRE", result)
-    //     return result;
-    // }
-    // catch (error) {
-    //     console.error("Sabre PNR Create", error)
-    // }
+    try {
+        const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
+        const result = await responce.json();
+        console.log("Raw", raw)
+        console.log("PNR SABRE", result)
+        return result;
+    }
+    catch (error) {
+        console.error("Sabre PNR Create", error)
+    }
 }
