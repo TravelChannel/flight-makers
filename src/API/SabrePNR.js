@@ -1,6 +1,7 @@
-export const SabrePNRCreate = async () => {
+export const SabrePNRCreate = async (formData) => {
 
-
+    const userDetails = formData;
+console.log("userData",userDetails);
     const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
@@ -166,38 +167,45 @@ myHeaders.append('Authorization',
                     }
                 },
                 "SpecialService": {
-                    "SpecialServiceInfo": {
-                        "SecureFlight": [
-                            {
-                                "PersonName": {
-                                    "NameNumber": "1.1",
-                                    "GivenName": "Muhammad",
-                                    "Surname": "Kashif",
-                                    "DateOfBirth": "1980-01-01",
-                                    "Gender": "M"
-                                }
-                            }
-                        ]
-                    }
+                    SpecialServiceInfo: {
+                        AdvancePassenger: userDetails.map((user, index) => ({
+                          Document: {
+                            IssueCountry: user[`countery${index}`].code,
+                            NationalityCountry: user[`countery${index}`].code,
+                            ExpirationDate: user[`PassportExpiryDate${index}`],
+                            Number: user[`passport${index}`],
+                            Type: "P"
+                          },
+                          PersonName: {
+                            NameNumber: `${index + 1}.1`,
+                            GivenName:user[`fname${index}`], 
+                            Surname: user[`lname${index}`], 
+                            DateOfBirth: user[`DateOfBirth${index}`],
+                            Gender: user[`gender${index}`]
+                          }
+                        }))
+                      }
                 }
             }
         }
     });
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
 
-    try {
-        const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
-        const result = await responce.json();
-        console.log("Raw", raw)
-        console.log("PNR SABRE", result)
-        return result;
-    }
-    catch (error) {
-        console.error("Sabre PNR Create", error)
-    }
+    console.log("userallDetials",raw);
+    // var requestOptions = {
+    //     method: 'POST',
+    //     headers: myHeaders,
+    //     body: raw,
+    //     redirect: 'follow'
+    // };
+
+    // try {
+    //     const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
+    //     const result = await responce.json();
+    //     console.log("Raw", raw)
+    //     console.log("PNR SABRE", result)
+    //     return result;
+    // }
+    // catch (error) {
+    //     console.error("Sabre PNR Create", error)
+    // }
 }

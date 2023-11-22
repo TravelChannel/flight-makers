@@ -105,13 +105,13 @@ export const requestPNRCreate = async (formData) => {
     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
     if(extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF")
     {
-      const PNRGenerate = await AirsialPNRCreate();
+      const PNRGenerate = await AirsialPNRCreate(formData);
       // const travelDetails = await airsialTravelerDetail(PNRGenerate,formData);
       return PNRGenerate;
     }
     else
     {
-      const PNRGeerate = await SabrePNRCreate();
+      const PNRGeerate = await SabrePNRCreate(formData);
       return PNRGeerate;
     }
   }
