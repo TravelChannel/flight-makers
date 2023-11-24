@@ -7,8 +7,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { handleShowErrorAlert } from "../helpers/sweatalert";
+
 
 const Customersupport = () =>{
+    const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+    console.log("cspnrNumber",activepnrNumber);
     const [isbgColor , setBgColor] = useState(1);
     const [inputPNR, setInputPNR] = useState('');
     const [policy, setpolicy] = useState('refund');
@@ -25,11 +29,17 @@ const Customersupport = () =>{
 
     const handlerBookingCheck = () => {
         const PNRNumber = inputPNR;
-        setInputPNR('');
-        const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
-        const target = '_blank';
-
-        window.open(url, target);
+        if(PNRNumber ===activepnrNumber){
+            setInputPNR('');
+            const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
+            const target = '_blank';
+    
+            window.open(url, target);
+        }
+        else{
+            handleShowErrorAlert('please Enter the Correct PNR');
+        }
+     
     }
     return(
        <div className="container">

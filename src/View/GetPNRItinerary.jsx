@@ -4,49 +4,57 @@ import FlightIcon from '@mui/icons-material/Flight';
 import QRCode from 'qrcode.react';
 import CryptoJS from 'crypto-js';
 import { useLocation } from "react-router-dom";
-import { requestGetBooking } from '../API/index'
+import { requestGetBooking } from "../API/index.js";
 import Loader from '../Loader/Loader.jsx';
 
 const Customersupport = () => {
-    // const [confirmPayment, setConfirmPayment] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [getPNRData, setGetPNRData] = useState([]);
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const inputPNR = searchParams.get('inputPNR');
+const [isLoading , setLoading] = useState(false);
+const [pnrData , setPnrData] = useState([]);
 
-    const pricingStatusName = getPNRData?.fares?.map(item => item.pricingStatusName) ?? [];
+const pricingStatusName = pnrData?.fares?.map(item => item.pricingStatusName) ?? [];
 
-    const qrCodeValue = 'NSFTJQ';
+const location = useLocation();
+const searchParams = new URLSearchParams(location.search);
+const inputPnr = searchParams.get('inputPNR');
+
+    const qrCodeValue = inputPnr;
     const qrCodeSize = 70;
-
     const encryptText = (text) => {
-        const myKey = 'UmerSaleemTheCreatorOfThisClass1985';
+        const myKey = 'KashifHussainTheCreatorofThisFareMakersSite';
         const encrypted = CryptoJS.TripleDES.encrypt(text, myKey).toString();
         return encrypted;
     };
-    console.log("getPNRData",getPNRData)
     const hashEncripted = encryptText(qrCodeValue);
-    const fetch = async () => {
-        try {
+
+
+
+   
+    const fetch  = async() =>{
+        try{
             setLoading(true);
-            const userDetails = await requestGetBooking();
-            setGetPNRData(userDetails);
+            const userDetails = await  requestGetBooking();
+            setPnrData(userDetails);
             setLoading(false);
-        }
-        catch (error) {
-            console.error("Error", error)
+        }catch(error){
+            console.error("Error", error);
         }
     }
-    useEffect(() => {
-        fetch();
-    }, [])
+
+    useEffect(()=>{
+        fetch()
+    },[]);
+
+    console.log("allUserData",pnrData);
+
+    const identityDocumentss = pnrData?.travelers?.identityDocuments;
+    console.log("identityDocumentsDetails",identityDocumentss);
 
     return (
-        <div className='container'>
-            {loading ? (
-                <Loader />
-            ) : (
+           <div className='container'>
+           {
+            isLoading ? (
+                <Loader/>
+            ):(
                 <div className="container bg-white p-5">
                     <div className="ticket_display">
                         <div className="d-flex justify-content-between">
@@ -77,23 +85,23 @@ const Customersupport = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {getPNRData.travelers[0].identityDocuments.map((item, index) => (
+                                {/* {pnrData.travelers[0].identityDocuments.map((item, index) => (
                                     <tr key={index}>
-                                    <td>{`${item.givenName} ${item.surname}`}</td>
-                                    <td>{pricingStatusName[index]}</td>
+                                    <td>{`${item.givenName[0]} ${item.surname[0]}`}</td>
+                                    <td>{pricingStatusName}</td>
                                     <td>2142938226597</td>
                                     </tr>
-                                ))}
-                               { /*
+                                ))} */}
+                                
                                 <tr>
                                     <td>AHMAD/SAFIA MRS</td>
-                                    <td>ACTIVE</td>
+                                    <td>{pricingStatusName}</td>
                                     <td>2142938226597</td>
-                                </tr>*/}
+                                </tr>
                             </tbody>
                         </table>
                         <div className="d-flex justify-content-between mt-3">
-                            <h6><span>Booking Reference:</span> {inputPNR}</h6>
+                            <h6><span>Booking Reference:</span> {inputPnr}</h6>
                             <h6><span>Airline Reference:</span> DCPK*8PY9Y6</h6>
                         </div>
                         <div className="itineryDetailssty mt-4">
@@ -161,8 +169,10 @@ const Customersupport = () => {
                     </div>
 
                 </div>
-            )}
 
+            )
+           }
+               
         </div>
     );
 }

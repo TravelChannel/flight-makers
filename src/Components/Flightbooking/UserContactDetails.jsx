@@ -169,7 +169,7 @@ const UserContactDetails = (props) => {
       const expiredate = formDataItem && formDataItem[`PassportExpiryDate${i}`];
 
       if (!fname || !lname || !gender || !countery || !passport || expiredate === "DD-MM-YYYY" || dob === "DD-MM-YYYY") {
-        return false;
+        return true;
       }
     }
 

@@ -1,5 +1,7 @@
 export const getBookingApi = async () => {
+    
 
+    const pnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
     const storedAuthtoken = JSON.parse(localStorage.getItem("AuthToken"))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
@@ -8,7 +10,7 @@ export const getBookingApi = async () => {
     myHeaders.append("Authorization", `Bearer ${authToken}`);
 
     var raw = JSON.stringify({
-        "confirmationId": "OFYJXC"
+        "confirmationId":pnrNumber
     });
 
     var requestOptions = {
@@ -17,6 +19,7 @@ export const getBookingApi = async () => {
         body: raw,
         redirect: 'follow'
     };
+    console.log("pnr___raw",raw);
     try {
         const responce = await fetch("https://api.havail.sabre.com/v1/trip/orders/getBooking", requestOptions);
         const result = await responce.json();

@@ -1,6 +1,31 @@
 export const SabrePNRCreate = async (formData) => {
 
     const userDetails = formData;
+
+// --------------------------------
+function convertDateFormat(dateString) {
+    const [day, month, year] = dateString.split('-');
+    return `${year}-${month}-${day}`;
+  }
+
+  const transformedUserData = userDetails.map(user => {
+    const transformedDateOfBirth = convertDateFormat(user["DateOfBirth0"]);
+    const transformedPassportExpiryDate = convertDateFormat(user["PassportExpiryDate0"]);
+
+    const transformedGender = user["gender0"].toUpperCase().charAt(0);
+  
+    return {
+      ...user,
+      "DateOfBirth0": transformedDateOfBirth,
+      "PassportExpiryDate0": transformedPassportExpiryDate,
+      "gender0": transformedGender
+    };
+  });
+
+  console.log("transformedData",transformedUserData);
+// --------------------------------
+
+
 console.log("userData",userDetails);
     const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
@@ -168,7 +193,7 @@ myHeaders.append('Authorization',
                 },
                 "SpecialService": {
                     SpecialServiceInfo: {
-                        AdvancePassenger: userDetails.map((user, index) => ({
+                        AdvancePassenger: transformedUserData.map((user, index) => ({
                           Document: {
                             IssueCountry: user[`countery${index}`].code,
                             NationalityCountry: user[`countery${index}`].code,
@@ -183,8 +208,6 @@ myHeaders.append('Authorization',
                             DateOfBirth: user[`DateOfBirth${index}`],
                             Gender: user[`gender${index}`]
 
-
-                            
                           }
                         }))
                       }
