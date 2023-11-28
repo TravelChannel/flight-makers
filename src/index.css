@@ -5858,11 +5858,16 @@ div:where(.swal2-icon).swal2-error {
 .ticket_book_det
 {
   color: #000;
-  font-size: 18px !important;
-  font-weight: bolder !important;
+  font-size: 18px;
+  font-weight: bolder ;
 }
 .ticket_book_heading{
   font-weight: bold;
+}
+.ticket_book_terminal{
+  color: #000;
+  font-size:14px;
+  font-weight: 800 ;
 }
 
 /* -----------------------after deployment ---------------------- */
@@ -5941,6 +5946,18 @@ text-align: center;
  text-align:justify;
 }
 /* ---------------------Terms of Services end ---------------------------- */
+/* ---------------------TIckting start ---------------------------- */
+
+.ticket_right_arrrow{
+ font-size:30px !important;
+}
+.journeys_spacing{
+  padding-left:10px;
+  padding-right:10px;
+  border:0.5px solid lightgray;
+  border-radius: 4px;
+}
+/* ---------------------Ticketing end ---------------------------- */
 
 .mob_menu_txtcolor{
  color:white;

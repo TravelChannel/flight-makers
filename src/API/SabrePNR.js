@@ -1,6 +1,33 @@
 export const SabrePNRCreate = async (formData) => {
 
     const userDetails = formData;
+    const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
+    const { adults, children, infants,classtype } = flightDetails;
+  
+    const passengerDetails = `${adults + children + infants}`;
+    let classType = '';
+
+   
+    switch (classtype) {
+        case 'Economy':
+          classType = 'Y';
+          break;
+        case 'Business class':
+          classType = 'C';
+          break;
+        case 'First class':
+          classType = 'P';
+          break;
+        case 'Premium economy':
+          classType = 'S';
+          break;
+        default:
+          console.log(`Unexpected classtype: ${classtype}`);
+          // Set a default value or throw an error if necessary
+      }
+
+    console.log("flightDetails",classType);
+    console.log("passangerDetails",passengerDetails);
 
 // --------------------------------
 function convertDateFormat(dateString) {
@@ -8,21 +35,22 @@ function convertDateFormat(dateString) {
     return `${year}-${month}-${day}`;
   }
 
-  const transformedUserData = userDetails.map(user => {
-    const transformedDateOfBirth = convertDateFormat(user["DateOfBirth0"]);
-    const transformedPassportExpiryDate = convertDateFormat(user["PassportExpiryDate0"]);
-
-    const transformedGender = user["gender0"].toUpperCase().charAt(0);
+  const transformedUserData = userDetails.map((user, index) => {
+    const transformedDateOfBirth = convertDateFormat(user[`DateOfBirth${index}`]);
+    const transformedPassportExpiryDate = convertDateFormat(user[`PassportExpiryDate${index}`]);
   
+    const transformedGender = user[`gender${index}`].toUpperCase().charAt(0);
+ 
     return {
       ...user,
-      "DateOfBirth0": transformedDateOfBirth,
-      "PassportExpiryDate0": transformedPassportExpiryDate,
-      "gender0": transformedGender
+      [`DateOfBirth${index}`]: transformedDateOfBirth,
+      [`PassportExpiryDate${index}`]: transformedPassportExpiryDate,
+      [`gender${index}`]: transformedGender,
     };
   });
-
-  console.log("transformedData",transformedUserData);
+ 
+  
+  console.log("transformedData", transformedUserData);
 // --------------------------------
 
 
@@ -44,8 +72,8 @@ console.log("userData",userDetails);
             ArrivalDateTime: `${item.date}T${item.arrival}`,
             DepartureDateTime: `${item.date}T${item.departure}`,
             FlightNumber: `${flightNumber[index]}`,
-            NumberInParty: "1",
-            ResBookDesigCode: "O",
+            NumberInParty: `${passengerDetails}`,
+            ResBookDesigCode:`${classType}`,
             Status: "NN",
             DestinationLocation: {
                 LocationCode: flightArrival[index],
@@ -63,7 +91,7 @@ console.log("userData",userDetails);
             MarriageGrp: "I",
         },
     ]);
-    console.log(flights);
+    console.log("flights",flights);
 
     var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -195,8 +223,8 @@ myHeaders.append('Authorization',
                     SpecialServiceInfo: {
                         AdvancePassenger: transformedUserData.map((user, index) => ({
                           Document: {
-                            IssueCountry: user[`countery${index}`].code,
-                            NationalityCountry: user[`countery${index}`].code,
+                            IssueCountry: user[`countery${index}`]?.code,
+                            NationalityCountry: user[`countery${index}`]?.code,
                             ExpirationDate: user[`PassportExpiryDate${index}`],
                             Number: user[`passport${index}`],
                             Type: "P"

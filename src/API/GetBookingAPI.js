@@ -23,6 +23,8 @@ export const getBookingApi = async () => {
     try {
         const responce = await fetch("https://api.havail.sabre.com/v1/trip/orders/getBooking", requestOptions);
         const result = await responce.json();
+        console.log('data',2,result)
+
         return result;
     }
     catch (error) {

@@ -39,15 +39,21 @@ const UserContactDetails = (props) => {
   // const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
   const [isSmallScreen, setSmallScreen] = useState(window.innerWidth < 462)
 
+
   // ----------------------?\
+
+  const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
+  const { adults, children, infants } = flightDetails;
+
+  const passengerDetails = adults + children + infants;
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     setFormData(prevFormData => {
-      const updatedData = [...prevFormData];  // Create a copy of the previous state array
+      const updatedData = [...prevFormData];  
       updatedData[index] = {
         ...updatedData[index],
-        [name]: value
+        [name]: value,
       };
       return updatedData;
     });
@@ -59,10 +65,7 @@ const UserContactDetails = (props) => {
   };
 
   const { stateA, stateB } = props;
-  const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
-  const { adults, children, infants } = flightDetails;
 
-  const passengerDetails = adults + children + infants;
   const navigate = useNavigate();
   const otpInputs = useRef([]);
 
@@ -208,7 +211,7 @@ const UserContactDetails = (props) => {
           getPNRNumber = PNRRespon.Response.Data
         }
         else {
-          getPNRNumber = PNRRespon.CreatePassengerNameRecordRS.ItineraryRef.ID;
+          getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;
         }
         const userInfodetails = [
           { phoneNumber: phoneNumber ,PNR: getPNRNumber,userEmail: storeEmail, ...modifiedFormData}
