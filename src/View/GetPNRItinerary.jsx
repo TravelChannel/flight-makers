@@ -15,11 +15,7 @@ const [isLoading , setLoading] = useState(false);
 const [pnrData , setPnrData] = useState({});
 
 const pricingStatusName = pnrData?.fares?.map(item => item.pricingStatusName) ?? [];
-// const cabinBaggageAllowance = pnrData?.fareOffers?.[0]?.cabinBaggageAllowance;
 
-// const maximumWeightInKilograms = cabinBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms;
-// const maxChecedBaggage =pnrData?.fareOffers?.[0]?.checkedBaggageAllowance;
-// const maximumbaggageinKG = maxChecedBaggage?.baggagePieces?.[0]?.maximumWeightInKilograms;
 const  formDepartDate =  (startDate)=>{
     const options = { weekday: 'long', day: 'numeric', month: 'short' };
     const formattedDate = new Date(startDate).toLocaleDateString('en-US', options);
@@ -33,7 +29,6 @@ const DisplayTime = (times)=>{
     const time = new Date(`2000-01-01T${times}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
     return time;
 }
-// const currentDepartDate = formDepartDate(flight.departureDate);
 
 const totalDuration = (durationInMinutes)=>{
     const hours = Math.floor(durationInMinutes / 60);
@@ -54,7 +49,6 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
         <FlightIcon className="airplane-rotated-icon" />
     </div>
     <div>
-        {/* <h5>Departure:Friday 13 Oct</h5> */}
         <h5>{`Departure: ${formDepartDate(flight.departureDate)}`}</h5>
         <h6 className="verify_prior">Please verify flight times prior to departure</h6>
     </div>
@@ -100,14 +94,10 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
             </div>
         </div>
         <div className="col-md-4 mb-3">
-            {/* <p><span className="span_verify_prior mt-2">Aircraft: </span>772 BOEING 777-200 JET 285-305 STD SEATS</p> */}
+            
             <p><span className="span_verify_prior mt-2">Aircraft: </span>{`${flight.aircraftTypeCode} ${flight.aircraftTypeName}`}</p>
-
-            {/* <p><span className="span_verify_prior mt-2">Stop(s): </span>00</p> */}
             <p><span className="span_verify_prior mt-2">Seat No: </span>0</p>
             <p><span className="span_verify_prior mt-2">Meals: </span>{flight.meals.map((disc,index)=>disc.description)}</p>
-            {/* <span className="span_verify_prior mt-2">Hand Baggage Allowence: </span> */}
-            {/* <p>{correspondingBaggage.cabinBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms} KG</p> */}
             <p>
             <span className="span_verify_prior mt-2">Hand Baggage Allowence: </span>
             {correspondingBaggage.cabinBaggageAllowance?.totalWeightInKilograms
@@ -115,8 +105,6 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
                 : (correspondingBaggage.cabinBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms &&
                     `${correspondingBaggage.checkedBaggageAllowance.baggagePieces[0].maximumWeightInKilograms} KG`)}
             </p>
-            
-            {/* <p><span className="span_verify_prior mt-2">Checked Baggage Allowence: </span>{correspondingBaggage.checkedBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms} KG</p> */}
             <p>
             <span className="span_verify_prior mt-2">Checked Baggage Allowance: </span>
             {correspondingBaggage.checkedBaggageAllowance?.totalWeightInKilograms
