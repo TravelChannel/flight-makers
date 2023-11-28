@@ -7,6 +7,8 @@ import CryptoJS from 'crypto-js';
 import { useLocation } from "react-router-dom";
 import { requestGetBooking } from "../API/index.js";
 import Loader from '../Loader/Loader.jsx';
+// import { cityNameFunct, formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct} from '../../helpers/formatdata';
+import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
 
 const Customersupport = () => {
 const [isLoading , setLoading] = useState(false);
@@ -69,12 +71,12 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
                 <div className="d-flex justify-content-between">
                     <div>
                         <h4 className="font-weight-bolder text-center" >{flight.fromAirportCode} </h4>
-                        <p className="airport_ticket_bok text-center">Alama Iqbal International Airport</p>
+                        <p className="airport_ticket_bok text-center">{airportNameFunct[flight.fromAirportCode]}</p>
                     </div>
                     <div><FlightIcon className="plane-mark-rotated-icon" /></div>
                     <div>
                         <h4 className="font-weight-bolder text-center">{flight.toAirportCode}  </h4>
-                        <p className="airport_ticket_bok text-center">King Fahd International Airport</p>
+                        <p className="airport_ticket_bok text-center">{airportNameFunct[flight.toAirportCode]}</p>
                     </div>
                 </div>
             </div>
@@ -203,7 +205,7 @@ const inputPnr = searchParams.get('inputPNR');
                                 pnrData.journeys &&
                                 pnrData.journeys.map((items, index) => (
                                     <h4 key={index} className="journeys_spacing">
-                                    {items.firstAirportCode} → {items.lastAirportCode}
+                                    {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
                                     </h4>
                                 ))
                                 }
