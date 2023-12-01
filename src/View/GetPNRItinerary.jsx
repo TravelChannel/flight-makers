@@ -7,7 +7,6 @@ import CryptoJS from 'crypto-js';
 import { useLocation } from "react-router-dom";
 import { requestGetBooking } from "../API/index.js";
 import Loader from '../Loader/Loader.jsx';
-// import { cityNameFunct, formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct} from '../../helpers/formatdata';
 import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
 
 const Customersupport = () => {
@@ -97,7 +96,10 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
             
             <p><span className="span_verify_prior mt-2">Aircraft: </span>{`${flight.aircraftTypeCode} ${flight.aircraftTypeName}`}</p>
             <p><span className="span_verify_prior mt-2">Seat No: </span>0</p>
-            <p><span className="span_verify_prior mt-2">Meals: </span>{flight.meals.map((disc,index)=>disc.description)}</p>
+            <p>
+            <span className="span_verify_prior mt-2">Meals: </span>
+            {flight.meals ? flight.meals.map((disc, index) => disc.description) : "Nill"}
+            </p>
             <p>
             <span className="span_verify_prior mt-2">Hand Baggage Allowence: </span>
             {correspondingBaggage.cabinBaggageAllowance?.totalWeightInKilograms

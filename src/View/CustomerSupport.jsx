@@ -26,6 +26,7 @@ const Customersupport = () =>{
     const handlebgColor = (e) =>{
         setBgColor(e);
     }
+    
 
     const handlerBookingCheck = () => {
         const PNRNumber = inputPNR;
@@ -41,6 +42,15 @@ const Customersupport = () =>{
         }
      
     }
+
+    // const handlerBookingCheck = () => {
+    //     const PNRNumber = inputPNR;
+    //         setInputPNR('');
+    //         const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
+    //         const target = '_blank';
+    
+    //         window.open(url, target);
+    // }
     return(
        <div className="container">
             <div className='contact_us_heading d-flex justify-content-center'>

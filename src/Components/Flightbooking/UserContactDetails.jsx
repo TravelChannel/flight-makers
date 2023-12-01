@@ -208,18 +208,18 @@ const UserContactDetails = (props) => {
       }
       else {
         if (PNRRespon?.Success === true) {
-          getPNRNumber = PNRRespon.Response.Data
+          getPNRNumber = PNRRespon.Response.Data   //airsial Pnr
         }
         else {
-          getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;
+          getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
         }
-        const userInfodetails = [
-          { phoneNumber: phoneNumber ,PNR: getPNRNumber,userEmail: storeEmail, ...modifiedFormData}
-        ];
-        const travellerInfo = await requestTravelerInfo(userInfodetails); // save user data in database
-        console.log(travellerInfo);
+        // const userInfodetails = [
+        //   { phoneNumber: phoneNumber ,PNR: getPNRNumber,userEmail: storeEmail, ...modifiedFormData}
+        // ];
+        // const travellerInfo = await requestTravelerInfo(userInfodetails); // save user data in database
+        // console.log(travellerInfo);
         localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
-        alert(getPNRNumber)
+        alert("PNR Number: " + getPNRNumber);
         navigate('/bookingpayment');
       }
 
