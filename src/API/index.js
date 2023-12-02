@@ -6,7 +6,7 @@ import { fetchAirSialToken } from './AirsialAuthToken';
 import { reviewItinerary } from './RevalidateItinerary';
 import { SabrePNRCreate } from './SabrePNR';
 import { AirsialPNRCreate } from './AirsialPNR';
-// import { airsialTravelerDetail } from './AirsialTravellerDetails';
+import { airsialTravelerDetail } from './AirsialTravellerDetails';
 import {TravelerInfo} from './TravellerInfo';
 import { getTokenApi} from './payment/getToken';
 import { createOrderApi} from './payment/createOrder';
@@ -106,8 +106,10 @@ export const requestPNRCreate = async (formData) => {
     if(extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF")
     {
       const PNRGenerate = await AirsialPNRCreate(formData);
-      // const travelDetails = await airsialTravelerDetail(PNRGenerate,formData);
-      return PNRGenerate;
+      console.log("PNRGenerate",PNRGenerate);
+      const travelDetails = await airsialTravelerDetail(PNRGenerate.Response.Data,formData);
+      console.log("travelDetails",travelDetails);
+      return travelDetails;
     }
     else
     {
@@ -121,6 +123,34 @@ export const requestPNRCreate = async (formData) => {
   }
 }
 
+// --------------------------------------------------------------
+// export const requestPNRCreate = async (formData) => {
+//   try {
+//     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
+//     let PNRGenerate;
+
+//     if (extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF") {
+//       PNRGenerate = await AirsialPNRCreate(formData);
+//     } else {
+//       PNRGenerate = await SabrePNRCreate(formData);
+//     }
+
+//     // Only call airsialTravelerDetail if the condition is true
+//     if (extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF") {
+//       const travelDetails = await airsialTravelerDetail(PNRGenerate, formData);
+//       console.log("PNRGenerate",PNRGenerate);
+//       console.log("formDataK",formData);
+//       return { PNRGenerate, travelDetails };
+//     } else {
+//       return { PNRGenerate };
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     throw error;
+//   }
+// };
+
+// ----------------------------------------------------------
 export const requestTravelerInfo = async (userInfodetails) =>
 {
   try{

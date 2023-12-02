@@ -9,7 +9,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { handleShowErrorAlert } from "../helpers/sweatalert";
 
-
 const Customersupport = () =>{
     const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
     console.log("cspnrNumber",activepnrNumber);
@@ -27,7 +26,6 @@ const Customersupport = () =>{
         setBgColor(e);
     }
     
-
     const handlerBookingCheck = () => {
         const PNRNumber = inputPNR;
         if(PNRNumber ===activepnrNumber){

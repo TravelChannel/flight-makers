@@ -1,6 +1,6 @@
-export const airsialTravelerDetail = async (PNRRespon,formData) => {
+export const airsialTravelerDetail = async (PNRGenerate,formData) => {
 
-    const PNRNumber = PNRRespon;
+    const PNRNumber = PNRGenerate;
     const Authtoken = JSON.parse(localStorage.getItem("airsialAuthToken"));
     const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
     const { adults, children } = flightDetails;
@@ -23,7 +23,8 @@ export const airsialTravelerDetail = async (PNRRespon,formData) => {
           PassportCountry: data[`countery${index}`]?.code,
           PassportExpiry: data[`PassportExpiryDate${index}`],
           Dob: data[`DateOfBirth${index}`],
-          Cnic: data[`cnic${index}`] || '',
+          "Cnic" : "12345-1234567-1",
+          // Cnic: data[`cnic${index}`] || '',
           Gender: data[`gender${index}`],
         };
       
