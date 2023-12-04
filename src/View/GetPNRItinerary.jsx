@@ -147,7 +147,6 @@ const inputPnr = searchParams.get('inputPNR');
             setLoading(true);
             const userDetails = await  requestGetBooking();
             setPnrData(userDetails);
-            console.log('data',1)
             setLoading(false);
         }catch(error){
             console.error("Error", error);

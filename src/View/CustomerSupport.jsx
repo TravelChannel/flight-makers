@@ -1,4 +1,4 @@
-import {React, useState,Fragment}from "react";
+import {React, useState,Fragment,useEffect}from "react";
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -7,7 +7,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { AirSialTravDetial } from "../API";
 import { handleShowErrorAlert } from "../helpers/sweatalert";
+import { useFormData } from "../Context/FormDataContext";
+
 
 const Customersupport = () =>{
     const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
@@ -15,6 +18,10 @@ const Customersupport = () =>{
     const [isbgColor , setBgColor] = useState(1);
     const [inputPNR, setInputPNR] = useState('');
     const [policy, setpolicy] = useState('refund');
+    const [AirsialData , setAirsialData] = useState({});
+    const [isLoading ,setLoading] = useState(false);
+    const { formData, setFormData } = useFormData();
+
 
     const handleChange = (event) => {
         setpolicy(event.target.value);
@@ -49,6 +56,28 @@ const Customersupport = () =>{
     
     //         window.open(url, target);
     // }
+
+    // ------------------------------------------------------
+ const fetchData = async()=>{
+    try{
+        setLoading(true);
+        const airsialtravllersDetail = await AirSialTravDetial(formData,activepnrNumber);
+        console.log("airsialtravllersDetail",airsialtravllersDetail);
+        setAirsialData(airsialtravllersDetail);
+        setLoading(false);
+
+    }catch(error){
+        console.error("Error", error);
+    }
+
+ }
+ useEffect(()=>{
+    fetchData();
+ },[])
+
+ console.log("AirsialData",AirsialData);
+    // ------------------------------------------------------
+
     return(
        <div className="container">
             <div className='contact_us_heading d-flex justify-content-center'>

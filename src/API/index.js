@@ -107,9 +107,11 @@ export const requestPNRCreate = async (formData) => {
     {
       const PNRGenerate = await AirsialPNRCreate(formData);
       console.log("PNRGenerate",PNRGenerate);
-      const travelDetails = await airsialTravelerDetail(PNRGenerate.Response.Data,formData);
-      console.log("travelDetails",travelDetails);
-      return travelDetails;
+      console.log("formDataValid",formData);
+
+      // const travelDetails = await airsialTravelerDetail(PNRGenerate.Response.Data,formData);
+      // console.log("travelDetails",travelDetails);
+      return PNRGenerate;
     }
     else
     {
@@ -124,32 +126,16 @@ export const requestPNRCreate = async (formData) => {
 }
 
 // --------------------------------------------------------------
-// export const requestPNRCreate = async (formData) => {
-//   try {
-//     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
-//     let PNRGenerate;
-
-//     if (extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF") {
-//       PNRGenerate = await AirsialPNRCreate(formData);
-//     } else {
-//       PNRGenerate = await SabrePNRCreate(formData);
-//     }
-
-//     // Only call airsialTravelerDetail if the condition is true
-//     if (extra_Bagg.schedualDetGet[0][0].carrier.operating === "PF") {
-//       const travelDetails = await airsialTravelerDetail(PNRGenerate, formData);
-//       console.log("PNRGenerate",PNRGenerate);
-//       console.log("formDataK",formData);
-//       return { PNRGenerate, travelDetails };
-//     } else {
-//       return { PNRGenerate };
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     throw error;
-//   }
-// };
-
+export const AirSialTravDetial = async(formData,activepnrNumber)=>{
+try{
+const AirsialtravInfo = await airsialTravelerDetail(formData,activepnrNumber);
+console.log("finalFormData",formData);
+return AirsialtravInfo;
+}catch(error){
+  console.log(error);
+  throw error;
+}
+}
 // ----------------------------------------------------------
 export const requestTravelerInfo = async (userInfodetails) =>
 {

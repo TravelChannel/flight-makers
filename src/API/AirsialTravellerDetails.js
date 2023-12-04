@@ -1,12 +1,13 @@
-export const airsialTravelerDetail = async (PNRGenerate,formData) => {
-
-    const PNRNumber = PNRGenerate;
+export const airsialTravelerDetail = async (formData,activepnrNumber) => {
+  console.log("Hello World 1",formData);
+  console.log("hello world 2",activepnrNumber);
+    const PNRNumber = activepnrNumber;
     const Authtoken = JSON.parse(localStorage.getItem("airsialAuthToken"));
     const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
     const { adults, children } = flightDetails;
     // const FORMDATES = JSON.parse(localStorage.getItem("formData"));
     // console.log("local",formData);
-
+// ----------------------------------------------
     const adultsData = [];
     const childrenData = [];
     const infantsData = [];

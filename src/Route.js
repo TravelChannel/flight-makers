@@ -22,6 +22,7 @@ const AppRouter = () => {
   return (
     <Fragment>
       <Routes>
+     
         <Route path="/" element={<Home />} />
         <Route path="/searchflightresult" element={<SearchFlightResult />} />
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
@@ -38,7 +39,7 @@ const AppRouter = () => {
         <Route path="/GetPNRItinerary" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
-
+    
         {/* Catch-all route for unknown routes */}
         
       </Routes>

@@ -9,7 +9,7 @@ import Footer from "./Components/Commom/Footer";
 import Routes from './Route';
 import { requestFetchAuthToken,requestAirsialToken } from './API/index';
 import { useLocation } from "react-router-dom";
-
+import { FormDataProvider } from "./Context/FormDataContext";
 const App = () =>
 {
     useEffect(() => {
@@ -40,8 +40,10 @@ const App = () =>
                 <div className="container-fluid">
                     {!inputPNR && <TopNavBar/>}
                     {!inputPNR && <Header />}
-                    <Routes/>
-                    {!inputPNR && <Footer/> }
+                    <FormDataProvider>
+                      <Routes/>
+                      {!inputPNR && <Footer/> }
+                    </FormDataProvider>
                 </div>
             </div>
         </Fragment>
