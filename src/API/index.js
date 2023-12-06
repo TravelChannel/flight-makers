@@ -7,6 +7,7 @@ import { reviewItinerary } from './RevalidateItinerary';
 import { SabrePNRCreate } from './SabrePNR';
 import { AirsialPNRCreate } from './AirsialPNR';
 import { airsialTravelerDetail } from './AirsialTravellerDetails';
+import { airSialViewDetail } from './AirsialGetBooking';
 import {TravelerInfo} from './TravellerInfo';
 import { getTokenApi} from './payment/getToken';
 import { createOrderApi} from './payment/createOrder';
@@ -135,6 +136,14 @@ return AirsialtravInfo;
   console.log(error);
   throw error;
 }
+}
+export const airsialBookingDetail = async()=>{
+  try{
+  const airsialBookingDet = await airSialViewDetail();
+  return airsialBookingDet;
+  }catch(error){
+    console.error(error);
+  }
 }
 // ----------------------------------------------------------
 export const requestTravelerInfo = async (userInfodetails) =>

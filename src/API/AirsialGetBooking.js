@@ -1,8 +1,9 @@
 export const airSialViewDetail = async()=>{
 
     const airSialAuthToken = JSON.parse(localStorage.getItem("airsialAuthToken"))
+    const airsialDetailPNR = JSON.parse(localStorage.getItem("PNRNumber"));
 
-
+    console.log("airsialDetailPNR",airsialDetailPNR);
 
     var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -11,7 +12,7 @@ myHeaders.append("Cookie", "ci_session_frontend=qjttk8ohve4bjvsq11478etofoqdkn1f
 var raw = JSON.stringify([
   {
     "Caller": "viewTicket",
-    "PNR": "396Z5B",
+    "PNR": airsialDetailPNR,
     "token": `${airSialAuthToken}`
   }
 ]);
@@ -27,7 +28,6 @@ try{
 
     const responce = await fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions);
     const results = await responce.json();
-    console.log()
     return results;
     
 }catch(error){

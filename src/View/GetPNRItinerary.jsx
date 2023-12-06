@@ -8,11 +8,13 @@ import { useLocation } from "react-router-dom";
 import { requestGetBooking } from "../API/index.js";
 import Loader from '../Loader/Loader.jsx';
 import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
+import { airsialBookingDetail } from "../API/index.js";
 
 const Customersupport = () => {
 const [isLoading , setLoading] = useState(false);
+const [isAirSial , setAirSial] = useState(false);
 const [pnrData , setPnrData] = useState({});
-
+const [airSialData ,setAirSialData] = useState({});
 const pricingStatusName = pnrData?.fares?.map(item => item.pricingStatusName) ?? [];
 
 const  formDepartDate =  (startDate)=>{
@@ -142,25 +144,101 @@ const inputPnr = searchParams.get('inputPNR');
 
 
    
-    const fetch  = async() =>{
-        try{
+    const fetchBookingDetails = async () => {
+        try {
             setLoading(true);
-            const userDetails = await  requestGetBooking();
-            setPnrData(userDetails);
-            setLoading(false);
-        }catch(error){
+            const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
+            console.log("extra_Bagg", extra_Bagg);
+    
+            if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
+                const airSialUserDetail = await airsialBookingDetail();
+                setAirSialData(airSialUserDetail);
+                setAirSial(true);
+            } else {
+                const userDetails = await requestGetBooking();
+                setPnrData(userDetails);
+            }
+        } catch (error) {
             console.error("Error", error);
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+    
+    useEffect(() => {
+        fetchBookingDetails();
+    }, []);
+    
 
-    useEffect(()=>{
-        fetch()
-    },[]);
-
-    console.log("allUserData",pnrData);
+    // console.log("airSialUserData",airSialData);
+   
 
     // const identityDocumentss = pnrData?.travelers?.identityDocuments;
     // console.log("identityDocumentsDetails",identityDocumentss);
+
+// ---------------------------------------------------------
+const outboundDepartureDate = airSialData?.Response?.Data?.outbound?.flightInfo?.dpdate || "N/A";
+const inboundDepartDate = airSialData?.Response?.Data?.inbound?.flightInfo?.dpdate || "N/A";
+const outboundOrigion = airSialData?.Response?.Data?.outbound?.flightInfo?.orig|| "N/A";
+const outboundDes = airSialData?.Response?.Data?.outbound?.flightInfo?.dest|| "N/A";
+const inboundOrigion = airSialData?.Response?.Data?.inbound?.flightInfo?.orig|| "N/A";
+const inboundDes = airSialData?.Response?.Data?.inbound?.flightInfo?.dest|| "N/A";
+
+const outboundFlightInfo = airSialData?.Response?.Data?.outbound?.flightInfo;
+const inboundFlightInfo = airSialData?.Response?.Data?.inbound?.flightInfo;
+
+const parseTime = (timeString) => {
+    if (!timeString) {
+        return { hours: 0, minutes: 0 };
+    }
+
+    const [time, period] = timeString.split(' ');
+
+    if (!time || !period) {
+        return { hours: 0, minutes: 0 };
+    }
+
+    const [hours, minutes] = time.split(':').map(Number);
+
+    // Adjust hours for PM, considering 12:00 PM as noon
+    const adjustedHours = period === 'AM' ? hours % 12 : (hours % 12) + 12;
+
+    return {
+        hours: adjustedHours,
+        minutes,
+    };
+};
+const calculateDurationInMinutes = (departTime, arrivalTime) => {
+    const parseDeparture = parseTime(departTime);
+    const parseArrival = parseTime(arrivalTime);
+    const departureMinutes = parseDeparture.hours * 60 + parseDeparture.minutes;
+    const arrivalMinutes = parseArrival.hours * 60 + parseArrival.minutes;
+    return arrivalMinutes - departureMinutes;
+};
+
+const departTime = outboundFlightInfo?.departureTime;
+const arrivalTime = outboundFlightInfo?.arrivalTime;
+const outboundTotalDurationInMinutes = calculateDurationInMinutes(departTime, arrivalTime);
+
+
+const inboundDepartTime = inboundFlightInfo?.departureTime;
+const inboundArriveTime = inboundFlightInfo?.arrivalTime;
+const inboundTotalDurationInMinutes = calculateDurationInMinutes(inboundDepartTime,inboundArriveTime);
+
+console.log("inboundTotalDurationInMinutes",inboundTotalDurationInMinutes);
+const outboundBaggage = airSialData?.Response?.Data?.outbound?.fareType?.WEIGHT;
+const inboundBaggage = airSialData?.Response?.Data?.inbound?.fareType?.WEIGHT;
+
+const totalAdults = airSialData?.Response?.Data?.passengerCount?.totalAdult;
+const totalChilds = airSialData?.Response?.Data?.passengerCount?.totalChild;
+const totalinfants = airSialData?.Response?.Data?.passengerCount?.totalInfant;
+
+// console.log("total",totalAdults, totalChilds,totalinfants);
+const totalPassangers = totalAdults + totalChilds + totalinfants;
+
+// console.log("toatlPassangers",totalPassangers);
+
+// ---------------------------------------------------------
 
     return (
            <div className='container'>
@@ -184,13 +262,33 @@ const inputPnr = searchParams.get('inputPNR');
                             <h1 className="colorBlue">E-Reservation</h1>
                             <QRCode value={`https://fmcrm.azurewebsites.net/ViewItinerary.aspx?PNR=${hashEncripted}=`} size={qrCodeSize} />
                         </div>
-                        <h6 className="text-danger mt-3">Payment is Pending</h6>
+                        {/* <h6 className="text-danger mt-3">Payment is Pending</h6> */}
                         <div className="d-flex justify-content-between mt-5">
                             <div className="d-flex justify-content-start">
-                            <h4>{ArrangeDateFormat(pnrData.startDate)}</h4> <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  <h4>{ArrangeDateFormat(pnrData.endDate)}</h4>
+                                {
+                                    isAirSial ? (
+                                        <div className="d-flex justify-content-start">
+                                        <h4>{ArrangeDateFormat(outboundDepartureDate)}</h4> <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
+                                        <h4>{ArrangeDateFormat(inboundDepartDate)}</h4>
+                                        </div>
+                                    ):(
+                                       <div className="d-flex justify-content-start">
+                                       <h4>{ArrangeDateFormat(pnrData.startDate)}</h4> <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  <h4>{ArrangeDateFormat(pnrData.endDate)}</h4>
+                                       </div>
+                                    )
+                                }
                             </div>
                             <div className="d-flex justify-content-end ">
-                            {
+                          {
+                            isAirSial ?(
+                                <div className="d-flex justify-content-start">
+                                <h4  className="journeys_spacing">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </h4>
+                                <h4  className="journeys_spacing">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </h4>
+
+                                </div>
+                            ):(
+                                <>
+                                {
                                 pnrData.journeys &&
                                 pnrData.journeys.map((items, index) => (
                                     <h4 key={index} className="journeys_spacing">
@@ -198,47 +296,188 @@ const inputPnr = searchParams.get('inputPNR');
                                     </h4>
                                 ))
                                 }
-                            </div>
-                            {/* <h4>Lahore → DAMMAM </h4> */}
-                           
-                                                            
+                                </>
+                            )
+                          }
+                            </div>    
                         </div>
                         <table className="table table-bordered mt-3">
                             <thead>
-                                <tr>
-                                    <th>Passenger</th>
-                                    <th>Seats</th>
+                            <tr>
+                                <th>Passenger</th>
+                                <th>Seats</th>
+                                {isAirSial ? (
+                                    <th>CNIC</th>
+                                ) : (
                                     <th>Passport-No</th>
-                                    <th>eTicket Receipt(s)</th>
-                                    
-                                    
-                                </tr>
+                                )}
+                                <th>eTicket Receipt(s)</th>
+                            </tr>
                             </thead>
-                            <tbody>
-                               
-                            {pnrData.travelers && pnrData.travelers.map((traveler, index) => (
-                                <React.Fragment key={index}>
-                                    {traveler.identityDocuments.map((document, documentIndex) => (
-                                        <tr key={`${index}-${documentIndex}`}>
-                                            <td>{`${document.givenName} ${document.surname}`}</td>
-                                            <td>{pricingStatusName}</td>
-                                            <td>{document.documentNumber}</td>
+                           {
+                            isAirSial ? (
+                                <>
+                                <tbody>
+                                    {Object.values(airSialData?.Response?.Data?.pnrNames?.adult || {}).map((adultDetails, index) => (
+                                        <tr key={index}>
+                                            <td>{adultDetails.name}</td>
+                                            <td>{adultDetails.booking_status}</td>
+                                            <td>{adultDetails.nic}</td>
                                             <td>___</td>
                                         </tr>
                                     ))}
-                                </React.Fragment>
-                            ))}
-                            </tbody>
+                                </tbody>
+                                </>
+
+                            ):(
+                               <>
+                               <tbody>
+                               
+                               {pnrData.travelers && pnrData.travelers.map((traveler, index) => (
+                                   <React.Fragment key={index}>
+                                       {traveler.identityDocuments.map((document, documentIndex) => (
+                                           <tr key={`${index}-${documentIndex}`}>
+                                               <td>{`${document.givenName} ${document.surname}`}</td>
+                                               <td>{pricingStatusName}</td>
+                                               <td>{document.documentNumber}</td>
+                                               <td>___</td>
+                                           </tr>
+                                       ))}
+                                   </React.Fragment>
+                               ))}
+                               </tbody>
+                               </>
+                            )
+                           }
                         </table>
                         <div className="d-flex justify-content-between mt-3">
-                            <h6><span>Booking Reference:</span> {inputPnr}</h6>
+                            <h6><span>Booking Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
                             <h6><span>Airline Reference:</span> DCPK*8PY9Y6</h6>
                         </div>
                         <div >
-                           
+                          {
+                            isAirSial ?(
+                          <div>
+                          <div className="itineryDetailssty mt-4">
+                                <div className="d-flex justify-content-start">
+                                <div>
+                                    <FlightIcon className="airplane-rotated-icon" />
+                                </div>
+                                <div>
+                                    <h5>{`departure: ${formDepartDate(outboundFlightInfo?.dpdate)}`}</h5>
+                                    <h6 className="verify_prior">Please verify flight times prior to departure</h6>
+                                </div>
+                                </div>
+                                <div className="row my-3 ">
+                                    <div className="col-md-4 mb-3 ">
+                                        <h4>AirSial</h4>
+                                        <h5 className="mb-3">{outboundFlightInfo?.flno}</h5>
+                                        <p><span className="span_verify_prior mt-2">Duration: </span>{totalDuration(outboundTotalDurationInMinutes)}</p>
+                                        <p><span className="span_verify_prior mt-2">Class: </span>Standard Economy</p>
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <div className="row">
+                                            <div className="d-flex justify-content-between text-center">
+                                                <div>
+                                                    <h4 className="font-weight-bolder">{outboundFlightInfo?.orig} </h4>
+                                                    <p className="airport_ticket_bok">{airportNameFunct[outboundFlightInfo?.orig]}</p>
+                                                </div>
+                                                <div><FlightIcon className="plane-mark-rotated-icon" /></div>
+                                                <div>
+                                                    <h4 className="font-weight-bolder">{outboundFlightInfo?.dest}  </h4>
+                                                    <p className="airport_ticket_bok">{airportNameFunct[outboundFlightInfo?.dest]}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row mt-3 text-center">
+                                            <div className="col">
+                                                <p>Departing At: </p>
+                                                <p className="ticket_book_det">{outboundFlightInfo?.departureTime}</p>
+                                                <p>Terminal: <span className="ticket_book_det">Nill</span></p>
+                                            </div>
+                                            <div className="col">
+                                                <p>Arrival  At: </p>
+                                                <p className="ticket_book_det">{outboundFlightInfo?.arrivalTime}</p>
+                                                <p>Terminal: <span className="ticket_book_det">Nill</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <p><span className="span_verify_prior mt-2">Flight No: </span>{outboundFlightInfo?.flno}</p>
+                                        <p><span className="span_verify_prior mt-2">Stop(s): </span>00</p>
+                                        {/* <p><span className="span_verify_prior mt-2">Seat No: </span>0</p> */}
+                                        <p><span className="span_verify_prior mt-2">TotalPassangers: </span>{totalPassangers}</p>
+                                        <p><span className="span_verify_prior mt-2">Baggage Allowence: </span>{`${outboundBaggage} KG`}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                {
+                                    inboundFlightInfo && (
+                                        <div className="itineryDetailssty mt-4">
+                                <div className="d-flex justify-content-start">
+                                <div>
+                                    <FlightIcon className="airplane-rotated-icon" />
+                                </div>
+                                <div>
+                                    <h5>{`departure: ${formDepartDate(inboundFlightInfo?.dpdate)}`}</h5>
+                                    <h6 className="verify_prior">Please verify flight times prior to departure</h6>
+                                </div>
+                                </div>
+                                <div className="row my-3 ">
+                                    <div className="col-md-4 mb-3 ">
+                                        <h4>AirSial</h4>
+                                        <h5 className="mb-3">{inboundFlightInfo?.flno}</h5>
+                                        <p><span className="span_verify_prior mt-2">Duration: </span>{totalDuration(inboundTotalDurationInMinutes)}</p>
+                                        <p><span className="span_verify_prior mt-2">Class: </span>Standard Economy</p>
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <div className="row">
+                                            <div className="d-flex justify-content-between text-center">
+                                                <div>
+                                                    <h4 className="font-weight-bolder">{inboundFlightInfo?.orig} </h4>
+                                                    <p className="airport_ticket_bok">{airportNameFunct[inboundFlightInfo?.orig]}</p>
+                                                </div>
+                                                <div><FlightIcon className="plane-mark-rotated-icon" /></div>
+                                                <div>
+                                                    <h4 className="font-weight-bolder">{inboundFlightInfo?.dest}  </h4>
+                                                    <p className="airport_ticket_bok">{airportNameFunct[inboundFlightInfo?.dest]}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="row mt-3 text-center">
+                                            <div className="col">
+                                                <p>Departing At: </p>
+                                                <p className="ticket_book_det">{inboundFlightInfo?.departureTime}</p>
+                                                <p>Terminal: <span className="ticket_book_det">Nill</span></p>
+                                            </div>
+                                            <div className="col">
+                                                <p>Arrival  At: </p>
+                                                <p className="ticket_book_det">{inboundFlightInfo?.arrivalTime}</p>
+                                                <p>Terminal: <span className="ticket_book_det">Nill</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <p><span className="span_verify_prior mt-2">Aircraft: </span>{inboundFlightInfo?.flno}</p>
+                                        <p><span className="span_verify_prior mt-2">Stop(s): </span>00</p>
+                                        {/* <p><span className="span_verify_prior mt-2">Seat No: </span>0</p> */}
+                                        <p><span className="span_verify_prior mt-2">TotalPassangers: </span>{totalPassangers}</p>
+                                        <p><span className="span_verify_prior mt-2">Baggage Allowence: </span>{`${inboundBaggage} KG`}</p>
+                                    </div>
+                                </div>
+                            </div>
+                                    )
+                                }
+                            </div>
+                          </div>
+                            ):(
+                                 
                             <div>
                                {flightDetails}
                             </div>
+                            )
+                          }
                         </div>
                         <div className="mt-3">
                             <p className="ticket_book_heading">TERMS AND CONDITIONS</p>

@@ -22,7 +22,7 @@ const Customersupport = () =>{
     const [isLoading ,setLoading] = useState(false);
     const { formData, setFormData } = useFormData();
 
-
+console.log("formData",formData);
     const handleChange = (event) => {
         setpolicy(event.target.value);
     };
@@ -33,29 +33,29 @@ const Customersupport = () =>{
         setBgColor(e);
     }
     
-    const handlerBookingCheck = () => {
-        const PNRNumber = inputPNR;
-        if(PNRNumber ===activepnrNumber){
-            setInputPNR('');
-            const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
-            const target = '_blank';
-    
-            window.open(url, target);
-        }
-        else{
-            handleShowErrorAlert('please Enter the Correct PNR');
-        }
-     
-    }
-
     // const handlerBookingCheck = () => {
     //     const PNRNumber = inputPNR;
+    //     if(PNRNumber ===activepnrNumber){
     //         setInputPNR('');
     //         const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
     //         const target = '_blank';
     
     //         window.open(url, target);
+    //     }
+    //     else{
+    //         handleShowErrorAlert('please Enter the Correct PNR');
+    //     }
+     
     // }
+
+    const handlerBookingCheck = () => {
+        const PNRNumber = inputPNR;
+            setInputPNR('');
+            const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
+            const target = '_blank';
+    
+            window.open(url, target);
+    }
 
     // ------------------------------------------------------
  const fetchData = async()=>{
@@ -75,7 +75,9 @@ const Customersupport = () =>{
     fetchData();
  },[])
 
- console.log("AirsialData",AirsialData);
+ const AirSialFinalPNR  = AirsialData?.Response?.Data?.PNR;
+
+ console.log("AirSialFinalPNR",AirSialFinalPNR);
     // ------------------------------------------------------
 
     return(

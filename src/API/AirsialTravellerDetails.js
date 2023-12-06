@@ -1,4 +1,5 @@
 export const airsialTravelerDetail = async (formData,activepnrNumber) => {
+// const cnic = formData.CNIC;
   console.log("Hello World 1",formData);
   console.log("hello world 2",activepnrNumber);
     const PNRNumber = activepnrNumber;
@@ -11,6 +12,16 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
     const adultsData = [];
     const childrenData = [];
     const infantsData = [];
+
+    const CnicFormat = (cnic)=>{
+      if(cnic && cnic.length ===13){
+        return `${cnic.slice(0, 5)}-${cnic.slice(5, 12)}-${cnic.slice(12)}`;
+      } else{
+        return cnic;
+      }
+
+    }
+    
     formData.forEach((data, index) => {
         const category = index < adults ? 'adult' : index < adults + children ? 'child' : 'infant';
 
@@ -24,7 +35,7 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
           PassportCountry: data[`countery${index}`]?.code,
           PassportExpiry: data[`PassportExpiryDate${index}`],
           Dob: data[`DateOfBirth${index}`],
-          "Cnic" : "12345-1234567-1",
+          Cnic : CnicFormat(data[`cnic${index}`]),
           // Cnic: data[`cnic${index}`] || '',
           Gender: data[`gender${index}`],
         };
@@ -37,7 +48,8 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
           infantsData.push(formattedData);
         }
       });
-      
+
+     
     // console.log("kasj",adultsData,childrenData,infantsData);
 
     var myHeaders = new Headers();
