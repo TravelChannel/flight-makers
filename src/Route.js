@@ -15,6 +15,7 @@ import BookingPayment from './View/BookingPayment';
 import SignUp from './Components/Commom/Signup';
 import FMBanks from './View/FMBanks';
 import FAQs from './Components/Commom/FAQs';
+import BookingDetails from './Components/BookingPayment/Comman/BookingDetails';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -26,6 +27,7 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/searchflightresult" element={<SearchFlightResult />} />
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
+        <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
         <Route path="/aboutus" element={<About />} />
         <Route path="/contactus" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />

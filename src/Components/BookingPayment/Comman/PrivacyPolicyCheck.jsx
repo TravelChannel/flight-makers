@@ -1,8 +1,11 @@
 import { React, Fragment, useState, useEffect } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { requestGetpaymentToken } from '../../../API/index';
+import { useNavigate } from 'react-router';
+import BookingDetails from './BookingDetails';
 
 const PrivacyPolicyCheck = (props) => {
+    const navigate = useNavigate();
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const { checked, setChecked, isEmpty,paymentType} = props;
@@ -51,6 +54,10 @@ const PrivacyPolicyCheck = (props) => {
           console.error(error);
         }
       };
+
+      const BookingDetail = ()=>{
+        navigate('/bookingDetail');
+      }
       
     return (
         <Fragment>
@@ -90,7 +97,7 @@ const PrivacyPolicyCheck = (props) => {
                                                 paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
                                                    <p> Pay Now</p>
                                                 ) : (
-                                                   <p> Submit</p>
+                                                   <p onClick = {BookingDetail}> Submit</p>
                                                 )
                                                 }
                                     </button>
@@ -134,13 +141,13 @@ const PrivacyPolicyCheck = (props) => {
                                                 paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
                                                    <p> Pay Now</p>
                                                 ) : (
-                                                   <p> Submit</p>
+                                                   <p onClick = {BookingDetail}> Submit</p>
                                                 )
                                                 }
                                     </button>
                                 </div>
+                                
                         </div>
-
                     </div>
                 )
             }

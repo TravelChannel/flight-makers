@@ -5958,6 +5958,61 @@ text-align: center;
   border-radius: 4px;
 }
 /* ---------------------Ticketing end ---------------------------- */
+
+
+/* -------------------------Booking Details start---------------------------- */
+.details_header{
+  padding:20px;
+  text-align:center;
+  /* background-color: #36c; */
+
+}
+.booking_done_icon{
+  font-size:40px !important;
+  color:#F26722;
+}
+.booking_done_heading{
+  font-size:24px;
+  font-weight:800;
+  color: #1a1a1a;
+}
+.pass_booking_detial_main{
+  padding:20px;
+}
+.numbering_backgorund{
+  background-color: hsl(0, 0%, 90%);
+  border-radius: 20px;
+  color: hsl(0, 0%, 40%);
+  padding: 7px 14px;
+  font-weight:600;
+  font-size:16px;
+  margin-right:5px;
+}
+.custom_itineray_heading{
+  font-weight:600;
+}
+.custom_detials_main{
+  margin:3px 10px;
+}
+.custom_itinerary_details{
+  padding:20px 10px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  color: #010101;
+}
+.custom_sub_details{
+  font-weight:600;
+}
+.custom_booking_message{
+  color:#F26223;
+}
+.total_payment_card{
+  padding:30px 15px;
+}
+
+
+
+/* -------------------------Booking Details end---------------------------- */
+
 /* ----------------------OverAll Extra Changes --------------------- */
 .mob_menu_txtcolor{
  color:white;
