@@ -201,18 +201,26 @@ const parseTime = (timeString) => {
     const [hours, minutes] = time.split(':').map(Number);
 
     // Adjust hours for PM, considering 12:00 PM as noon
-    const adjustedHours = period === 'AM' ? hours % 12 : (hours % 12) + 12;
+    const adjustedHours = period === 'AM' ? (hours % 12 === 0 ? 12 : hours % 12) : (hours % 12) + 12;
 
     return {
         hours: adjustedHours,
         minutes,
     };
 };
+
 const calculateDurationInMinutes = (departTime, arrivalTime) => {
     const parseDeparture = parseTime(departTime);
-    const parseArrival = parseTime(arrivalTime);
+    let parseArrival = parseTime(arrivalTime);
+
+    // If arrival is before departure, add 24 hours to arrival
+    if (parseArrival.hours < parseDeparture.hours) {
+        parseArrival.hours += 24;
+    }
+
     const departureMinutes = parseDeparture.hours * 60 + parseDeparture.minutes;
     const arrivalMinutes = parseArrival.hours * 60 + parseArrival.minutes;
+
     return arrivalMinutes - departureMinutes;
 };
 

@@ -11,8 +11,12 @@ import { AirSialTravDetial } from "../API";
 import { handleShowErrorAlert } from "../helpers/sweatalert";
 import { useFormData } from "../Context/FormDataContext";
 
+// ---------------------------
+import { useNavigate } from "react-router";
+
 
 const Customersupport = () =>{
+    const navigate = useNavigate();
     const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
     console.log("cspnrNumber",activepnrNumber);
     const [isbgColor , setBgColor] = useState(1);
@@ -59,18 +63,23 @@ console.log("formData",formData);
 
     // ------------------------------------------------------
  const fetchData = async()=>{
-    try{
-        setLoading(true);
-        const airsialtravllersDetail = await AirSialTravDetial(formData,activepnrNumber);
-        console.log("airsialtravllersDetail",airsialtravllersDetail);
-        setAirsialData(airsialtravllersDetail);
-        setLoading(false);
+    const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
 
-    }catch(error){
-        console.error("Error", error);
+    if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
+        try{
+            setLoading(true);
+            const airsialtravllersDetail = await AirSialTravDetial(formData,activepnrNumber);
+            console.log("airsialtravllersDetail",airsialtravllersDetail);
+            setAirsialData(airsialtravllersDetail);
+            setLoading(false);
+    
+        }catch(error){
+            console.error("Error", error);
+        }
+    
+     }
+
     }
-
- }
  useEffect(()=>{
     fetchData();
  },[])
@@ -79,6 +88,20 @@ console.log("formData",formData);
 
  console.log("AirSialFinalPNR",AirSialFinalPNR);
     // ------------------------------------------------------
+    useEffect(() => {
+        // Example condition: You can replace this with your own condition
+        const userShouldAccessPage =  true;/* Your condition here */
+    
+        if (!userShouldAccessPage) {
+          // Redirect the user to another page
+          navigate('/some-other-page');
+        }
+      }, [navigate]);
+    
+
+
+    // ------------------------------------------------------
+
 
     return(
        <div className="container">

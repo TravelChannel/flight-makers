@@ -5958,13 +5958,28 @@ text-align: center;
   border-radius: 4px;
 }
 /* ---------------------Ticketing end ---------------------------- */
-
+/* ----------------------OverAll Extra Changes --------------------- */
 .mob_menu_txtcolor{
  color:white;
 }
-
 .mob_data_typo{
   padding-right:5px;
+}
+.OTP_Back{
+  cursor: pointer;
+}
+.model_otp{
+margin-top:20px;
+}
+.model_backbtn{
+  color:#999;
+  padding-left: 5px;;
+}
+.otp_message_set{
+  font-size: 13px;
+  color: #807d7d;
+  font-weight: 600;
+  margin-bottom:10px;
 }
 
 
