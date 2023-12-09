@@ -29,7 +29,7 @@ const Footer = () =>
                 <ul className="col  col-lg-3 col-xl-2 footerLinks">
                     <li className="txtTransUpper">SITE MAP</li>
     
-                    <li><Link to="/customer-support">Flights</Link></li>
+                    <li><Link to="/flights">Flights</Link></li>
                     <li><Link to="/terms-of-service">Arrange a Call</Link></li>
                 </ul>
                 <ul className="col  col-md-2 col-lg-3 footerLinks">

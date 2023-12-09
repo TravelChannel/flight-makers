@@ -6013,6 +6013,28 @@ text-align: center;
 
 /* -------------------------Booking Details end---------------------------- */
 
+/* -------------------------Footer Flights----------------------------------- */
+
+/* -------------------------Footer Flights end----------------------------------- */
+.footer_flight_details{
+  margin:10px;
+}
+.popular_airlines_main{
+  padding:10px 20px;
+}
+.pop_airlines{
+   font-size:17px;
+ padding-right:4px;
+cursor:pointer;
+}
+.popular_seprator{
+  color:black;
+  font-weight:600;
+  font-size:18px;
+ padding-right:4px;
+  
+}
+
 /* ----------------------OverAll Extra Changes --------------------- */
 .mob_menu_txtcolor{
  color:white;
