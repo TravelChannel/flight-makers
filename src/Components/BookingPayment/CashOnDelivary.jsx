@@ -7,9 +7,11 @@ const CashOnDelivary = () => {
   // console.log('methode',selected )
   const [checked, setChecked] = useState(false);
   const [isEmpty, setIsEmpty] = useState(true);
+  const [userLocation , setUserLocation] = useState('');
   const handleEmpty =(event)=>{
-    const inputValue = event.target.value;
-    if (inputValue.length === 0){
+    const inputLoc = event.target.value;
+    setUserLocation(inputLoc);
+    if (inputLoc.length === 0){
       setIsEmpty(true)
     } else {
       setIsEmpty (false);
@@ -47,7 +49,7 @@ const CashOnDelivary = () => {
         <PayAtBranch subChild={false}/>
       </div>
       <div className= 'privacy_policy_hero'>
-         <PrivacyPolicyCheck checked={checked} setChecked={setChecked}  isEmpty={isEmpty}  />
+         <PrivacyPolicyCheck checked={checked} setChecked={setChecked}  isEmpty={isEmpty} userLocation = {userLocation}/>
     </div>
     </div>
   )

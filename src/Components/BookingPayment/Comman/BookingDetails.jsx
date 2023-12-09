@@ -1,14 +1,35 @@
 import React,{Fragment,useState} from 'react'
 import CheckCircleOutlineTwoToneIcon from '@mui/icons-material/CheckCircleOutlineTwoTone';
 import TotalPriceCalculation from '../../Flightbooking/TotalPriceCalculation';
-// import { TicketPriceProvider } from '../../Flightbooking/Comman/Context';
 import { TicketPriceProvider } from '../../Flightbooking/Comman/Context';
 import UserItineraryDetails from '../../Flightbooking/Comman/UserItineraryDetails';
 import { useFormData } from '../../../Context/FormDataContext';
+import { useLocation } from 'react-router';
+
 const BookingDetails = () => {
+
+  const location = useLocation();
+  const [currentDate , setCurrentDate] = useState(false);
 const {formData ,setFormData}= useFormData();
 const firstName = formData.map(items=>items.fname0);
 const lastName = formData.map(items =>items.lname0);
+const passedData =  location.state?.data;
+const finalBranch = passedData?.branchlabel;
+const userLocation = passedData?.userLocation;
+
+console.log("userrrrrrrrrrr",userLocation);
+
+// --------------------------------------------------------
+const currentDateTime = new Date();
+// Add 11 hours to the current date
+const futureDateTime = new Date(currentDateTime);
+futureDateTime.setHours(currentDateTime.getHours() + 11);
+// Format the dates
+const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+const formattedCurrentDateTime = currentDateTime.toLocaleString(undefined, options);
+const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options);
+// --------------------------------------------------------
+
   return (
     <Fragment>
       <div className='container bg-white'>
@@ -35,8 +56,12 @@ const lastName = formData.map(items =>items.lname0);
                     <h6 className='custom_sub_details'>#454545545</h6>
                   </div>
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
-                    <h6>Selected Branch </h6>
-                    <h6 className='custom_sub_details'>LHE-01 - LHE-01/Kalma Chowk Branch</h6>
+                    <h6>
+                    {finalBranch != null ? "Selected Branch ": "YourLocation"}
+                    </h6>
+                    <h6 className='custom_sub_details'>
+                      {finalBranch != null ? finalBranch : userLocation}
+                    </h6>
                   </div>
                   {/* <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>Branch Address </h6>
@@ -44,11 +69,11 @@ const lastName = formData.map(items =>items.lname0);
                   </div> */}
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>Transaction Date	 </h6>
-                    <h6 className='custom_sub_details'>07-Dec-2023</h6>
+                    <h6 className='custom_sub_details'>{formattedCurrentDateTime}</h6>
                   </div>
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>Booking Valid till </h6>
-                    <h6 className='custom_sub_details'>Dec 08 2023 10:32</h6>
+                    <h6 className='custom_sub_details'>{formattedFutureDateTime}</h6>
                   </div>
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6 className='custom_sub_details text-center  custom_booking_message'>Your order has been placed. Please visit your selected branch within 24 hours to complete the payment and finalize your booking</h6>

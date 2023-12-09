@@ -8,7 +8,7 @@ const PrivacyPolicyCheck = (props) => {
     const navigate = useNavigate();
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
-    const { checked, setChecked, isEmpty,paymentType} = props;
+    const { checked, setChecked, isEmpty,paymentType,branchLabel,userLocation} = props;
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
@@ -56,7 +56,11 @@ const PrivacyPolicyCheck = (props) => {
       };
 
       const BookingDetail = ()=>{
-        navigate('/bookingDetail');
+        const DatatoPass ={
+        branchlabel : branchLabel,
+        userLocation : userLocation,
+        };
+        navigate('/bookingDetail', { state: { data: DatatoPass } });
       }
       
     return (

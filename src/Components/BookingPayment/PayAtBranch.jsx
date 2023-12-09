@@ -22,6 +22,7 @@ const branchData = [
 const PayAtBranch = (props) => {
   const [branchName, setBranchName] = useState(branchData[0].value); // Set the default value to the value at index 0
   const [helperText, setHelperText] = useState('');
+  const [branchLabel ,setBranchLabel] = useState(branchData[0].label);
   const [googleMap, setGoogleMap] = useState('');
   const [checked, setChecked] = useState(false);
 
@@ -33,6 +34,7 @@ const PayAtBranch = (props) => {
     if (selectedBranch) {
       setBranchName(event.target.value);
       setHelperText(selectedBranch.address);
+      setBranchLabel(selectedBranch.label);
       setGoogleMap(
         <iframe
           title="Google Map"
@@ -98,7 +100,7 @@ const PayAtBranch = (props) => {
     </div>
     {(props.subChild) ?
       <div className='privacy_policy_hero'>
-         <PrivacyPolicyCheck checked={checked} setChecked={setChecked}/>
+         <PrivacyPolicyCheck checked={checked} setChecked={setChecked} branchLabel = {branchLabel}/>
       </div>
       :
       null
