@@ -11,7 +11,7 @@ const Flights = () => {
   return (
     <div className='container bg-white'>
         <div>
-        <FlightSearch/>
+          <FlightSearch/>
         </div>
         <div>
           <BookingOptions/>
