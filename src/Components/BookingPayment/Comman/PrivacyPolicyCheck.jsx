@@ -94,7 +94,7 @@ const PrivacyPolicyCheck = (props) => {
                                 <div className="move_payment_button ">
                                     <button
                                         onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
-                                        type="button"
+                                        type="button" 
                                         className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
                                         disabled={!checked || isEmpty}  >
                                         {

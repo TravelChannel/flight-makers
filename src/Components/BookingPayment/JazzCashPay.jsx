@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const JazzCashPay = () => {
   return (
-    <div>JazzCashPay</div>
+    <Fragment>
+      <h3>JazzCash</h3>
+    </Fragment>
+
   )
 }
 
