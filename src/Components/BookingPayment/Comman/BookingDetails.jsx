@@ -152,7 +152,7 @@ const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options
                    <h4 className='custom_itineray_heading'>Review Your Booking</h4>
               </div>
            </div>
-           <div className="itineryDetailssty mt-4">
+           <div className="itineryDetailssty mt-4"> 
                 <UserItineraryDetails/>
          </div>
         </div>
