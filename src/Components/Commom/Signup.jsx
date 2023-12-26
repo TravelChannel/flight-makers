@@ -1,8 +1,14 @@
 import React from 'react';
 import OTPSlider from './OTPSlider';
-
+import { useNavigate } from 'react-router';
 const SignUp = () => {
 
+
+    const navigate = useNavigate();
+
+    const OpenUserPanel = ()=>{
+        navigate('/userPanel');
+    }
     return (
         <div className='container'>
             <div className='row py-4 bg-white m-0'>
@@ -31,6 +37,12 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
+           {/* ---------------------- */}
+                <div className='bg-white p-4'>
+                    <button className='btn btn-success' onClick={OpenUserPanel}> Accecc to backend Panel</button>
+                </div>
+
+           {/* ---------------------- */}
 
         </div>
     );

@@ -13,6 +13,10 @@ const topNavBar = () => {
                     <Link to='/signup' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
                         <Person2 className="glyphicon" />
                         SignUp/Login</Link>
+                        {/* ------------------- */}
+
+                        {/* ------------------- */}
+
 
                     <Link className="col-xs-1 col-sm-2 col-md-1 boxelem pull-right" to='/AboutUs'>About Us</Link>
                     <Link className="col-xs-1 col-sm-2 col-md-1 boxelem pull-right" to="ContactUs">Contact Us</Link>

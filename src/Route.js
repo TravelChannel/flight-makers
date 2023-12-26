@@ -17,7 +17,7 @@ import FMBanks from './View/FMBanks';
 import FAQs from './Components/Commom/FAQs';
 import BookingDetails from './Components/BookingPayment/Comman/BookingDetails';
 import { Routes, Route } from 'react-router-dom';
-
+import UserPanel from './Components/BackendDesign/UserPanel/UserPanel';
 
 const AppRouter = () => {
   return (
@@ -41,6 +41,8 @@ const AppRouter = () => {
         <Route path="/GetPNRItinerary" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
+        <Route path="/userPanel" element={<UserPanel/>} />
+
         {/* Catch-all route for unknown routes */}
         
       </Routes>
