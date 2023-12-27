@@ -6060,5 +6060,15 @@ margin-top:20px;
 }
 
 
-
+/* -------------------Backend Design CSS-------------------------------- */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+}
+.dashboard-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F2F5;
+}
 

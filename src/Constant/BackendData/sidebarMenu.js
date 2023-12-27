@@ -10,7 +10,7 @@ const sidebar_menu = [
     {
         id: 1,
         icon: DashboardIcon,
-        path: '/',
+        path: '/dashboard',
         title: 'Dashboard',
     },
     {
@@ -22,19 +22,19 @@ const sidebar_menu = [
     {
         id: 3,
         icon: UserIcon,
-        path: '/bookingdetail',
+        path: '/bookings',
         title: 'User Bookings',
     },
     {
         id: 4,
         icon: ProductIcon,
-        path: '/profile',
+        path: '/refund',
         title: 'Refund and Cancellation Policies',
     },
     {
         id: 5,
         icon: UserIcon,
-        path: '/profile',
+        path: '/support',
         title: 'Support',
     },
 ]

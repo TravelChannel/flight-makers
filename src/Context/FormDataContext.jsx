@@ -4,9 +4,10 @@ const FormDataContext = createContext();
 
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState([]);
+  const [showHeader, setShowHeader] = useState(true);
 
   return (
-    <FormDataContext.Provider value={{ formData, setFormData }}>
+    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader }}>
       {children}
     </FormDataContext.Provider>
   );

@@ -7,7 +7,7 @@ const SideBarItem = ({ item, active }) => {
     const [hover, setHover] = useState(false);
     return (
         <Link 
-            to={'./'} 
+            to={item.path} 
             className={active ? 'sidebar-item-active' : 'sidebar-item'} >
                 <img 
                     src={item.icon}
