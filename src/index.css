@@ -1028,7 +1028,7 @@ li#logo:hover {
     border-bottom: none;
 }
 #logotext {
-  text-align: right ;
+  text-align: center;
 }
 
 #logobox:hover span#logotext {
@@ -2035,6 +2035,10 @@ width:45px;
   max-width: 700px; 
   margin: 200 auto; 
 }
+.custom_edit_modal{
+  max-width: 800px; 
+  margin: 200 auto; 
+}
 .otp_btn_container{
 
   display: flex;
@@ -2099,6 +2103,7 @@ width:45px;
 }
 .modal-header{
   background-color: #f7f5f3;
+  /* display: block !important; */
 }
 
 .center_footer{
@@ -6115,4 +6120,29 @@ line-height: 1.5715
 .closeModel_styling{
 text-align: right;
 
+}
+
+/* -----------------------User Editing Model ---------------------- */
+.edit_model_close{
+  color:#36c; 
+  cursor:pointer;
+}
+.edit_model_body{
+  color:#010101;
+  padding:10px 0px;
+  font-size:18px;
+  font-weight:600;
+}
+.editModel_labeling{
+  color: rgba(0, 0, 0, 0.85);
+  font-size:14px;
+  padding:2px 5px;
+
+}
+.user_input_row{
+  margin-bottom:8px;  
+}
+.model_submit_main{
+  padding:10px 37px 10px 0px;
+  text-align: right;
 }

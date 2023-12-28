@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 import SideBarItem from './sidebar-item';
 
 import './styles.css';
@@ -29,9 +29,15 @@ function SideBar ({ menu }) {
         <nav className='sidebar'>
             <div className='sidebar-container'>
                 <div className='sidebar-logo-container'>
-                    <img
+                   <Link 
+                   to={'/'}
+                   className="hdrLogo"
+                   >
+                   <img
                         src={images.default}
+                        className="imgView"
                         alt="logo" />
+                   </Link>
                 </div>
 
                 <div className='sidebar-container'>
