@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState,Fragment} from 'react';
 
 import './styles.css';
 import NotificationIcon from '../../../../assets/BackendAssests/icons/notification.svg';
 import SettingsIcon from '../../../../assets/BackendAssests/icons/settings.svg';
-
+import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 function DashboardHeader ({ btnText, onClick }) {
+    const [isModel , setModel] = useState(false);
+    const openUserModel = ()=>{
+        setModel(!isModel);
+    }
+    const closeModel = () =>{
+        setModel(false);
+    }
     return(
-        <div className='dashbord-header-container'>
+       <Fragment>
+         <div className='dashbord-header-container'>
                 <button className='dashbord-header-btn' onClick={onClick}>New Order</button>
             <div className='dashbord-header-right'>
                 <img 
@@ -19,10 +27,27 @@ function DashboardHeader ({ btnText, onClick }) {
                     className='dashbord-header-icon' />
                 <img
                     className='dashbord-header-avatar'
-                    src='https://reqres.in/img/faces/9-image.jpg' />
+                    src='https://reqres.in/img/faces/9-image.jpg' onClick = {openUserModel} />      
             </div>
-
+           
         </div>
+        <div className='d-flex justify-content-end '>
+            {
+                isModel && (
+                    <div className='model_styling user_profile_main'>
+                        <div className='closeModel_styling'>
+                        <CloseTwoToneIcon className='user_close_sign' onClick= {closeModel}/>
+                        </div>
+                        <ul className="user_model_list">
+                            <li>User Profile</li>
+                            <li>Ticket Details</li>
+                            <li>Logout</li>
+                        </ul>
+                    </div>
+                )
+            }
+        </div>
+       </Fragment>
     )
 }
 

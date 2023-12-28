@@ -50,7 +50,7 @@ function SideBar ({ menu }) {
                         <img 
                             src={LogoutIcon}
                             alt='icon-logout'
-                            className='sidebar-item-icon' />
+                            className='sidebar-item-icon'/>
                     </div>
                 </div>
             </div>

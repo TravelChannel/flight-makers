@@ -10,33 +10,34 @@ const sidebar_menu = [
     {
         id: 1,
         icon: DashboardIcon,
-        path: '/dashboard',
+        path: '/userPanel/dashboard',
         title: 'Dashboard',
     },
     {
         id: 2,
-        icon: ShippingIcon,
-        path: '/orders',
+        icon:UserIcon ,
+        path: '/userPanel/orders',
         title: 'User Profile',
     },
     {
         id: 3,
-        icon: UserIcon,
-        path: '/bookings',
+        icon: ShippingIcon,
+        path: '/userPanel/bookings',
         title: 'User Bookings',
     },
     {
         id: 4,
         icon: ProductIcon,
-        path: '/refund',
+        path: '/userPanel/refund',
         title: 'Refund and Cancellation Policies',
     },
     {
         id: 5,
         icon: UserIcon,
-        path: '/support',
+        path: '/userPanel/userSupport',
         title: 'Support',
     },
+    
 ]
 
 export default sidebar_menu;

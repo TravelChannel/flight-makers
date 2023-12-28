@@ -16,7 +16,6 @@ const UserPanel = () => {
       setShowHeader(true);
     }
   },[setShowHeader]);
-  // setShowHeader(false);
 
   console.log("afterContextShowHeader",showHeader)
   return (
@@ -25,18 +24,20 @@ const UserPanel = () => {
         <Sidebar menu={SideBarMenu} />
           
           <div className='dashboard-body'>
-          <div>
-          <DashboardHeader
-                    btnText="New Order" />
-          </div>
-          <Orders/>
-              {/* <Routes>
-                  <Route path="*" element={<div></div>} />
-                  <Route exact path="/" element={<div>hello world </div>} />
-                  <Route exact path="/orders" element={< Orders/>} />
+            <div>
+            <DashboardHeader
+                      btnText="New Order" />
+            </div>
+            <BookingDetails/>
+              <Routes>
+                  {/* <Route path="*" element={<div>404 Not Found</div>} /> */}
+                  {/* <Route exact path="/" element={<div>hello world </div>} /> */}
+                  <Route exact path="/userPanel/orders" element={<Orders/>} />
                   <Route exact path="/bookingdetail" element={<BookingDetails/>} />
                   <Route exact path="/profile" element={<div></div>} />
-              </Routes> */}
+                  <Route exact path="/userSupport" element={<div></div>} />
+
+              </Routes>
           </div>
       </div>
 
