@@ -8,7 +8,8 @@ import './styles.css';
 import * as images from '../../../../Constant/images';
 import LogoutIcon from '../../../../assets/BackendAssests/icons/logout.svg';
 
-function SideBar ({ menu }) {
+function SideBar (props) {
+    const {menu} =props;
     const location = useLocation();
 
     const [active, setActive] = useState(1);
@@ -24,6 +25,7 @@ function SideBar ({ menu }) {
     const __navigate = (id) => {
         setActive(id);
     }
+
 
     return(
         <nav className='sidebar'>

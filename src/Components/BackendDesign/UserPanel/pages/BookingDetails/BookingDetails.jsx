@@ -34,6 +34,8 @@ const BookingDetail = () => {
                         <th>Email</th>
                         <th>STATUS</th>
                         <th>Flight</th>
+
+                        
                         <th></th>
                     </thead>
 

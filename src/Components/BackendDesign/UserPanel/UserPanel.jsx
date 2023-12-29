@@ -1,4 +1,4 @@
-import React, { Fragment,useEffect } from 'react';
+import React, { Fragment,useEffect,useState } from 'react';
 import DashboardHeader from './DashboardHeader';
 import Sidebar from './Sidebar';
 import { BrowserRouter as Router, Routes, Route, Outlet  } from 'react-router-dom';
@@ -7,7 +7,10 @@ import Orders from './pages/Orders';
 import { useFormData } from '../../../Context/FormDataContext';
 import BookingDetails from './pages/BookingDetails/BookingDetails'; 
 const UserPanel = () => {
+
+  // const [active, setActive] = useState(1);
   const { showHeader, setShowHeader } = useFormData();
+
 
   useEffect(()=>{
     setShowHeader(false);
@@ -21,7 +24,7 @@ const UserPanel = () => {
   return (
     <Fragment>
  <div className='dashboard-container'>
-        <Sidebar menu={SideBarMenu} />
+        <Sidebar menu={SideBarMenu}/>
           
           <div className='dashboard-body'>
             <div>
@@ -30,12 +33,12 @@ const UserPanel = () => {
             </div>
             <BookingDetails/>
               <Routes>
-                  {/* <Route path="*" element={<div>404 Not Found</div>} /> */}
-                  {/* <Route exact path="/" element={<div>hello world </div>} /> */}
+                  {/* <Route path="*" element={<div>404 Not Found</div>} />
+                  <Route exact path="/" element={<div>hello world </div>} /> */}
                   <Route exact path="/userPanel/orders" element={<Orders/>} />
-                  <Route exact path="/bookingdetail" element={<BookingDetails/>} />
-                  <Route exact path="/profile" element={<div></div>} />
-                  <Route exact path="/userSupport" element={<div></div>} />
+                  <Route exact path="/userPanel/bookingdetail" element={<BookingDetails/>} />
+                  <Route exact path="/userPanel/profile" element={<div></div>} />
+                  <Route exact path="/userPanel/userSupport" element={<div></div>} />
 
               </Routes>
           </div>
