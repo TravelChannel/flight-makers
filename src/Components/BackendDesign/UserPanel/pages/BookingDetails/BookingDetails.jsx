@@ -1,12 +1,30 @@
 import React, {useState, useEffect} from 'react';
 import EditModel from '../common/EditModel';
-
+import userDetails from '../../../../../Constant/BackendData/userDetails';
 // import '../styles.css';
 const BookingDetail = () => {
   const [isOpen, setIsOpen] = useState(false); 
+  const [getSearch , setSearch] = useState('');
+  const [orders ,setOrders] = useState(userDetails);
 
   const openEditModel = ()=>{
     setIsOpen(true);
+  }
+  const __handleSearch= (event)=>{
+        const value = event.target.value;
+          setSearch(value);
+          if (event.target.value !== '') {
+            let search_results = orders.filter((item) =>
+                item.name?.toLowerCase().includes(getSearch.toLowerCase()) ||
+                item.phone?.toLowerCase().includes(getSearch.toLowerCase()) ||
+                item.airline?.toLowerCase().includes(getSearch.toLowerCase())
+            );
+            setOrders(search_results);
+        }
+        else {
+          setOrders(userDetails);
+        }
+ console.log("valuevalievalue",value);
   }
   return (
     <div className='dashboard-content'>
@@ -16,14 +34,14 @@ const BookingDetail = () => {
             <div className='dashboard-content-container'>
                 <div className='dashboard-content-header'>
                     <h2>Booking Detials</h2>
-                    {/* <div className='dashboard-content-search'>
+                    <div className='dashboard-content-search'>
                         <input
                             type='text'
-                            value={search}
+                            value={getSearch}
                             placeholder='Search..'
                             className='dashboard-content-input'
                             onChange={e => __handleSearch(e)} />
-                    </div> */}
+                    </div>
                 </div>
 
                 <table>
@@ -35,18 +53,20 @@ const BookingDetail = () => {
                         <th>STATUS</th>
                         <th>Flight</th>
 
-                        
+
                         <th></th>
                     </thead>
-
+                    { orders.length !== 0 ?
                         <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Kashif Hussian</td>
-                          <td>+923408922375</td>
-                          <td>abc@gmail.com</td>
-                          <td>Active</td>
-                          <td>PIA</td>
+                      {
+                        orders.map((items , index)=>(
+                          <tr key={index}>
+                          <td>{items.id}</td>
+                          <td>{items.name}</td>
+                          <td>{items.phone}</td>
+                          <td>{items.email}</td>
+                          <td>{items.status}</td>
+                          <td>{items.airline}</td>
                           <td className='d-flex justify-content-start'> 
                               <button className='btn btn-success buttons_typo' >
                                Print
@@ -60,8 +80,12 @@ const BookingDetail = () => {
                          </td>
 
                             <EditModel isOpen = {isOpen}  setIsOpen = {setIsOpen}/>
-                        </tr>     
+                        </tr> 
+                        ))
+                      } 
+                         
                         </tbody>
+                    : null}
                 </table>
 
             </div>

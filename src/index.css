@@ -6115,6 +6115,7 @@ line-height: 1.5715
   position:absolute;
   right:2.3%;
   top:6.8%;
+  z-index:1;
 }
 
 .closeModel_styling{
