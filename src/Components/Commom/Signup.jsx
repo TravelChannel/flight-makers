@@ -39,7 +39,7 @@ const SignUp = () => {
             </div>
            {/* ---------------------- */}
                 <div className='bg-white p-4'>
-                    <button className='btn btn-success' onClick={OpenUserPanel}> Accecc to backend Panel</button>
+                    <button className='btn btn-success' onClick={OpenUserPanel}> Access to backend Panel</button>
                 </div>
 
            {/* ---------------------- */}

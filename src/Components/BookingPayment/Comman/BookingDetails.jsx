@@ -29,6 +29,10 @@ const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digi
 const formattedCurrentDateTime = currentDateTime.toLocaleString(undefined, options);
 const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options);
 // --------------------------------------------------------
+const downloadPDF = () =>{
+
+}
+// -------------------------------------------------------
 
   return (
     <Fragment>
@@ -155,6 +159,12 @@ const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options
            <div className="itineryDetailssty mt-4"> 
                 <UserItineraryDetails/>
          </div>
+        </div>
+        
+        <div className="d-flex justify-content-center">
+              <button className='btn btn-primary m-2 download_typography' onClick={downloadPDF}>
+                      Download as PDF
+              </button>
         </div>
       </div>
     </Fragment>
