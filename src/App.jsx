@@ -13,7 +13,7 @@ import { FormDataProvider, useFormData } from "./Context/FormDataContext";
 
 const App = () => {
   const { showHeader, setShowHeader } = useFormData();
-  console.log("showHeader", showHeader);
+  
 
   useEffect(() => {
     const currentDate = new Date();
