@@ -19,8 +19,9 @@ import { requestPNRCreate, requestTravelerInfo } from '../../API/index';
 import Loader from '../../Loader/Loader';
 import AutoTabDate from './Comman/AutoTabDate';
 import { handleShowErrorAlert } from '../../helpers/sweatalert';
-
 import { useFormData } from '../../Context/FormDataContext';
+
+import { requestUserPnrBooking } from '../../API/index';
 
 const UserContactDetails = (props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -299,7 +300,13 @@ const UserContactDetails = (props) => {
 
 
       const finalObject=  generateBookingObject(getPNRNumber); 
-//       const respServerPnrBooking = await requestPnrBooking(finalObject);
+
+      console.log("hellowrold111111111");
+      const respServerPnrBooking = await requestUserPnrBooking(finalObject);
+      // console.log("respServerPnrBooking",respServerPnrBooking);
+      console.log("hellowrold22222222");
+
+      
 // if(respServerPnrBooking===true){
   
 // }
@@ -309,7 +316,7 @@ const UserContactDetails = (props) => {
         alert("PNR Number: " + getPNRNumber);
 
         
-
+          
         navigate('/bookingpayment');
       }
      

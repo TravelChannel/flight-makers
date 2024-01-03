@@ -12,7 +12,12 @@ import {TravelerInfo} from './TravellerInfo';
 import { getTokenApi} from './payment/getToken';
 import { createOrderApi} from './payment/createOrder';
 import { getPaymentTokenApi} from './payment/getPaymentToken';
-import {getBookingApi} from './GetBookingAPI'
+import {getBookingApi} from './GetBookingAPI';
+
+import { UserBookingDetails } from './BackendAPI/UserBookingDetails';
+
+
+
 
 export const requestFetchSearchResult = async (searchDataArr) => {
   try {
@@ -172,6 +177,19 @@ export const requestGetBooking = async () => {
   try {
     const result = await getBookingApi();
     return result;
+  }
+  catch (error) {
+    console.error("Responce error", error);
+  }
+}
+
+// ---------------------------------Backend API----------------------------------
+
+export const requestUserPnrBooking = async(finalObject)=>{
+  try {
+    const results = await UserBookingDetails(finalObject);
+    return results;
+    console.log("UserBookingDetails function is called");
   }
   catch (error) {
     console.error("Responce error", error);
