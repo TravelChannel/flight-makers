@@ -39,11 +39,18 @@ const UserContactDetails = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   // const [formData, setFormData] = useState([]);
   // const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
-  const [isSmallScreen, setSmallScreen] = useState(window.innerWidth < 462)
+  const [isSmallScreen, setSmallScreen] = useState(window.innerWidth < 462);
+
+  const [isPNR ,setPNR] =useState('');
 
   const { formData, setFormData } = useFormData();
+  const [dynamicObject, setDynamicObject] = useState({
+    phoneNumber: phoneNumber,
+    pnr: isPNR,
+    pnrBookings: [],
+  });
 
-  // console.log("formDataContext",formData);
+
   // ----------------------?\
 
   const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
@@ -63,10 +70,29 @@ const UserContactDetails = (props) => {
     });
   }
 
-  // console.log(formData);
+  // -----------------
+ // Update dynamicObject when phoneNumber changes
+  useEffect(() => {
+    setDynamicObject((prevDynamicObject) => ({
+      ...prevDynamicObject,
+      phoneNumber: phoneNumber,
+    }));
+  }, [phoneNumber]);
+
+
+
+  // useEffect(() => {
+  //   setDynamicObject((prevDynamicObject) => ({
+  //     ...prevDynamicObject,
+  //     pnr: isPNR,
+  //   }));
+  // }, [isPNR]);
+  // -----------------
+
   const handlePhoneNumberChange = (value) => {
     setPhoneNumber(value);
   };
+  
 
   const { stateA, stateB } = props;
 
@@ -102,8 +128,8 @@ const UserContactDetails = (props) => {
     setIsTimerRunning(true);
   };
   const handleEmail = (event) => {
-    setStoreEmail(event);
-  }
+    setStoreEmail(event.target.value);
+  };
   useEffect(() => {
     if (isTimerRunning) {
       const interval = setInterval(() => {
@@ -163,10 +189,11 @@ const UserContactDetails = (props) => {
     setDialogOpen(false);
     setlNameDialog(false);
   }
+
+  // ------------------------------------------------
   const travelFormValid = () => {
     for (let i = 0; i < passengerDetails; i++) {
       const formDataItem = formData[i];
-
       const fname = formDataItem && formDataItem[`fname${i}`];
       const lname = formDataItem && formDataItem[`lname${i}`];
       const gender = formDataItem && formDataItem[`gender${i}`];
@@ -179,9 +206,47 @@ const UserContactDetails = (props) => {
         return true;
       }
     }
-
     return true;
   };
+
+  // ----------------------------------------------------
+  const generateBookingObject = (pnr) => {
+    const pnrBookingsArray = [];
+
+    for (let i = 0; i < formData.length; i++) {
+      const formDataItem = formData[i];
+      
+      const bookingItem = {
+        phoneNumber: dynamicObject.phoneNumber,
+        userEmail: storeEmail,
+        dateOfBirth: formDataItem[`DateOfBirth${i}`],
+        passportExpiryDate: formDataItem[`PassportExpiryDate${i}`],
+        firstName: formDataItem[`fname${i}`],
+        lastName: formDataItem[`lname${i}`],
+        gender: formDataItem[`gender${i}`],
+        cnic: formDataItem[`cnic${i}`],
+        passportNo: formDataItem[`passport${i}`],
+        ispnr: pnr,
+      };
+
+      pnrBookingsArray.push(bookingItem);
+    }
+
+    const finalObject = {
+      phoneNumber: dynamicObject.phoneNumber,
+      pnr,
+      pnrBookings: pnrBookingsArray,
+    };
+
+    console.log("Final Object:", finalObject);
+
+    // If you want to set this object into state or use it further, you can do so here.
+    // setSomeState(finalObject);
+
+    return finalObject;
+  };
+  // ----------------------------------------------------
+
 
   const modifiedFormData = formData.map(item => {
     const modifiedItem = {};
@@ -193,11 +258,17 @@ const UserContactDetails = (props) => {
   });
 
   const handleNavigation = async () => {
-    
+    let getPNRNumber = '';
     try {
       setLoading(true);
-      let getPNRNumber = ''
+     
       const PNRRespon = await requestPNRCreate(formData);
+
+      // ------------------------
+
+    
+
+      // ----------------------------
       // console.log(userInfodetails);
       if (PNRRespon?.Success === false) {
         const message = PNRRespon.Response.message
@@ -217,19 +288,36 @@ const UserContactDetails = (props) => {
         else {
           getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
         }
+
+        // setPNR(getPNRNumber);
         // const userInfodetails = [
         //   { phoneNumber: phoneNumber ,PNR: getPNRNumber,userEmail: storeEmail, ...modifiedFormData}
         // ];
         // const travellerInfo = await requestTravelerInfo(userInfodetails); // save user data in database
         // console.log(travellerInfo);
+
+
+
+      const finalObject=  generateBookingObject(getPNRNumber); 
+//       const respServerPnrBooking = await requestPnrBooking(finalObject);
+// if(respServerPnrBooking===true){
+  
+// }
+      // http://localhost:5000/api/pnrBooking
+
         localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
         alert("PNR Number: " + getPNRNumber);
+
+        
+
         navigate('/bookingpayment');
       }
+     
 
     } finally {
       setLoading(false);
     }
+    
   }
 
   return (
@@ -315,7 +403,8 @@ const UserContactDetails = (props) => {
                   <div className="iti_email_field">
                     <input
                       type="email"
-                      onChange={(e) => handleEmail(e.target.value)}
+                      value={storeEmail}
+                      onChange={(e) => handleEmail(e)}
                       placeholder='Enter your Email Address' className='mail_input_field' />
                   </div>
                 </div>
