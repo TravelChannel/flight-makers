@@ -10,11 +10,22 @@ import Loader from '../Loader/Loader.jsx';
 import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
 import { airsialBookingDetail } from "../API/index.js";
 
+import { useFormData } from "../Context/FormDataContext.jsx";
+
+
 const Customersupport = () => {
 const [isLoading , setLoading] = useState(false);
 const [isAirSial , setAirSial] = useState(false);
 const [pnrData , setPnrData] = useState({});
 const [airSialData ,setAirSialData] = useState({});
+
+// const { formData, setFormData } = useFormData();
+// console.log("hello World",formData);
+// -------------------2----------------------------
+// const updateFormDataFromPage2 = () => {
+//     setFormData([...formData, { airSialData }]);
+//   };
+// console.log("formDatakkk",formData);
 const pricingStatusName = pnrData?.fares?.map(item => item.pricingStatusName) ?? [];
 
 const  formDepartDate =  (startDate)=>{
@@ -152,10 +163,13 @@ const inputPnr = searchParams.get('inputPNR');
     
             if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
                 const airSialUserDetail = await airsialBookingDetail();
+
+                console.log('airSialUserDetail',airSialUserDetail);
                 setAirSialData(airSialUserDetail);
                 setAirSial(true);
             } else {
                 const userDetails = await requestGetBooking();
+                console.log("userDetails",userDetails);
                 setPnrData(userDetails);
             }
         } catch (error) {
@@ -504,6 +518,9 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
 
             )
            }
+
+
+           {/* <button onClick={updateFormDataFromPage2}>Update FormData from Page 2</button> */}
                
         </div>
     );

@@ -1,14 +1,46 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import OTPSlider from './OTPSlider';
 import { useNavigate } from 'react-router';
+import userDetailsBackend from '../../API/BackendAPI/BackendAPI_Fun';
+
 const SignUp = () => {
-
-
+    const [backLoading , setBackLoading] =useState(false);
+    const [userData ,setUser] = useState(null);
     const navigate = useNavigate();
 
     const OpenUserPanel = ()=>{
         navigate('/userPanel');
     }
+
+    const fetchBackendData =async()=>{
+        try{
+            console.log("ello_g",userData);
+            const userData =   await userDetailsBackend(setBackLoading);
+            
+           
+        }
+        catch (error){
+            console.error(error);
+        }
+    } 
+
+    // const userDetailsBackend = () => {
+    //     setBackLoading(true);
+        
+    //     apiClient
+    //       .get(`/pnrBooking`)
+    //       .then((response) => {
+    //         console.log(JSON.stringify(response));
+    //         setBackLoading(false); 
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //         setBackLoading(false); 
+    //       });
+    //   };
+
+
+
     return (
         <div className='container'>
             <div className='row py-4 bg-white m-0'>
@@ -40,6 +72,12 @@ const SignUp = () => {
            {/* ---------------------- */}
                 <div className='bg-white p-4'>
                     <button className='btn btn-success' onClick={OpenUserPanel}> Access to backend Panel</button>
+                </div>
+
+                <div>
+                <div className='bg-white p-4'>
+                    <button className='btn btn-success' onClick={fetchBackendData}> userDetails</button>
+                </div>
                 </div>
 
            {/* ---------------------- */}
