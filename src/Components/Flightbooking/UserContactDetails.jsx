@@ -51,10 +51,12 @@ const UserContactDetails = (props) => {
     pnrBookings: [],
   });
 
-
-  // ----------------------?\
+// ---------------------------
+  // const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
+  //----------------------?\
 
   const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
+  // console.log("flightDetails12345",flightDetails);
   const { adults, children, infants } = flightDetails;
 
   const passengerDetails = adults + children + infants;
@@ -237,6 +239,7 @@ const UserContactDetails = (props) => {
       phoneNumber: dynamicObject.phoneNumber,
       pnr,
       pnrBookings: pnrBookingsArray,
+      flightDetails:flightDetails,
     };
 
     console.log("Final Object:", finalObject);

@@ -5,9 +5,11 @@ const FormDataContext = createContext();
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState([]);
   const [showHeader, setShowHeader] = useState(true);
+  // const [pnrData, setPnrData] = useState({});
+  // const [airSialData, setAirSialData] = useState({});
 
   return (
-    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader }}>
+    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader}}>
       {children}
     </FormDataContext.Provider>
   );

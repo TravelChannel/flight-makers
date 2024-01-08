@@ -76,5 +76,18 @@
 /* ----------------------------------my styling------------------------- */
 
 .buttons_typo{
-	margin-right:10px;
+	/* margin-right:10px; */
+    padding:7px 30px;
+}
+.User_card_detail{
+    background-color:#ffff;
+    color: #101010;;
+    box-shadow: 7px 10px 20px rgb(114, 113, 113);
+    padding:20px 10px;
+    margin:0px 10px;
+    /* width:300px; */
+    
+}
+.whole_card_typo{
+    margin:0px 10px;
 }

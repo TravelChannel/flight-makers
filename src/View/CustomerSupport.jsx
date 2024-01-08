@@ -57,10 +57,17 @@ console.log("formData",formData);
             setInputPNR('');
             const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
             const target = '_blank';
-    
             window.open(url, target);
     }
 
+    // const handlerBookingCheck = () => {
+    //     const PNRNumber = inputPNR;
+    //     setInputPNR('');
+    //     const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
+      
+        
+    //     window.location.href = url;
+    //   };
     // ------------------------------------------------------
  const fetchData = async()=>{
     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
