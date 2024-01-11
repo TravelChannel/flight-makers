@@ -22,9 +22,14 @@ import { handleShowErrorAlert } from '../../helpers/sweatalert';
 import { useFormData } from '../../Context/FormDataContext';
 
 import { requestUserPnrBooking } from '../../API/index';
+import { sendOTPCode } from '../../API/index';
+
 
 const UserContactDetails = (props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('');
+
+
   const [Otp, setOtp] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState(10);
@@ -51,8 +56,17 @@ const UserContactDetails = (props) => {
     pnrBookings: [],
   });
 
+
+ 
+
+  // console.log("getOTPData",getOTPData);
 // ---------------------------
   // const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
+  // console.log("countryCode",countryCode);
+  // console.log("phoneNumber",phoneNumber);
+
+  // console.log("userEnteredOTP",Otp);
+
   //----------------------?\
 
   const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
@@ -92,11 +106,30 @@ const UserContactDetails = (props) => {
   // }, [isPNR]);
   // -----------------
 
-  const handlePhoneNumberChange = (value) => {
-    setPhoneNumber(value);
-  };
-  
+  // const handlePhoneNumberChange = (value,country) => {
+  //   const numericPhoneNumber = '';
+  //   setPhoneNumber(numericPhoneNumber);
+  //   setCountryCode(country.dialCode);
+  // };
+// ------------------------------------------------
+  const handlePhoneNumberChange = (value, country) => {
+    const dialCode = country.dialCode;
 
+    if (value.includes(dialCode)) {
+      const numericPhoneNumber = value.replace(dialCode, '').replace(/\D/g, '');
+      setPhoneNumber(numericPhoneNumber);
+    } else {
+      setPhoneNumber(value.replace(/\D/g, ''));
+    }
+    setCountryCode(dialCode);
+  };
+
+  const getOTPData = {
+    'coutryCode':countryCode,
+    'phoneNumber':phoneNumber
+  }
+  
+// -----------------------------------------
   const { stateA, stateB } = props;
 
   const navigate = useNavigate();
@@ -112,7 +145,9 @@ const UserContactDetails = (props) => {
       otpInputs.current[index + 1].focus();
     } else if (index === otpInputs.current.length - 1 && sanitizedValue) {
       const enteredOtp = newOtpValues.join('');
-      if (enteredOtp === '1111') {
+
+      console.log("enteredOtpenteredOtp",enteredOtp);
+      if (enteredOtp === '111111') {
         setIsOtpTrue(true);
         setDisplayContact(true);
       } else {
@@ -174,8 +209,17 @@ const UserContactDetails = (props) => {
       window.removeEventListener("resize", handleSideBar);
     }
   }, []);
-  const sendOTPHandller = () => {
-    setOTPResend(true);
+  const sendOTPHandller = async() => {
+    try{
+      const OTPResponce = await sendOTPCode(getOTPData); 
+      console.log('OTPResponce',OTPResponce);
+      setOTPResend(true);
+    }catch(error){
+         
+      console.error('errorOTP',error);
+    }
+
+    
   }
   // const handleChange = (event) => {
   //   setGender(event.target.value);
@@ -356,13 +400,14 @@ const UserContactDetails = (props) => {
                 </div>
                 <div className="d-flex justify-content-start wrap  flex-wrap">
                   <div className="ph_input_filed">
-                    <PhoneInput
-                      country={'pk'}
-                      value={phoneNumber}
-                      onChange={handlePhoneNumberChange}
-                      placeholder="Enter your phone number"
-                    />
+                  <PhoneInput
+                        country={'pk'}
+                        value={`+${countryCode} ${phoneNumber}`} // Display the formatted phone number
+                        onChange={(value, country) => handlePhoneNumberChange(value, country)}
+                        placeholder="Enter your phone number"
+                      />
                   </div>
+                 
                   <div>
                     <button type="button" onClick={sendOTPHandller} className="btn btn-primary iti_otp_button">
                       Get OTP
@@ -373,7 +418,7 @@ const UserContactDetails = (props) => {
                   <p className="iti_mob_title">OTP (Authentication Code) 1111</p>
                 </div>
                 <div className="iti_otp_main d-flex justify-content-start">
-                  {Array.from({ length: 4 }).map((_, index) => (
+                  {Array.from({ length: 6 }).map((_, index) => (
                     <input
                       key={index}
                       type="text"

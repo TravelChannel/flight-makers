@@ -79,7 +79,7 @@ const OTPCode = () => {
   return (
    <Fragment>
      <div className="iti_otp_main d-flex justify-content-start">
-    {Array.from({ length: 4 }).map((_, index) => (
+    {Array.from({ length: 6 }).map((_, index) => (
       <input
         key={index}
         type="text"

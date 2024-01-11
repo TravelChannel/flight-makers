@@ -15,7 +15,7 @@ import { getPaymentTokenApi} from './payment/getPaymentToken';
 import {getBookingApi} from './GetBookingAPI';
 
 import { UserBookingDetails } from './BackendAPI/UserBookingDetails';
-
+import { sendOTP } from './BackendAPI/sendOTP';
 
 
 
@@ -193,5 +193,15 @@ export const requestUserPnrBooking = async(finalObject)=>{
   }
   catch (error) {
     console.error("Responce error", error);
+  }
+}
+
+export const  sendOTPCode = async(getOTPData)=>{
+  try{
+    const  res = await sendOTP(getOTPData);
+    return res;
+
+  }catch(error){
+    console.error("OTP Responce error", error);
   }
 }
