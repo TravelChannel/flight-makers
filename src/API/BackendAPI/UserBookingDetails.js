@@ -22,4 +22,22 @@ export const UserBookingDetails = async(finalObject)=>{
 
 }
 
+export const ReIssue = async()=>{
+	apiClient
+			.post(`/pnrBooking/reqForRefund/3`)
+			.then((res) => {
+				if (res.data.status === 'SUCCESS') {
+
+					console.log( res.data.message, 'success ReIssue');
+
+				} else {
+					console.log(res.data.message, 'danger');
+				}
+			})
+			.catch((err) => {
+				console.error( err.message, 'Danger');
+			});
+
+}
+
 

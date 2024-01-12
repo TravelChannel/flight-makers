@@ -23,12 +23,12 @@ import { useFormData } from '../../Context/FormDataContext';
 
 import { requestUserPnrBooking } from '../../API/index';
 import { sendOTPCode } from '../../API/index';
-
+import { verifyOTPRes } from '../../API/index';
 
 const UserContactDetails = (props) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('');
-
+  const [userOTP , setUserOtp] = useState('');
 
   const [Otp, setOtp] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -128,6 +128,17 @@ const UserContactDetails = (props) => {
     'coutryCode':countryCode,
     'phoneNumber':phoneNumber
   }
+
+  // --------------------
+  // const verifiedOTPData = {
+  //   'coutryCode':countryCode,
+  //   'phoneNumber':phoneNumber,
+  //   'OTP':userOTP
+  // }
+// console.log("verifiedOTPDataOBj",verifiedOTPData);
+// --------------------
+
+  
   
 // -----------------------------------------
   const { stateA, stateB } = props;
@@ -135,7 +146,7 @@ const UserContactDetails = (props) => {
   const navigate = useNavigate();
   const otpInputs = useRef([]);
 
-  const handleOtp = (index, value) => {
+  const handleOtp = async(index, value) => {
     const sanitizedValue = value.replace(/\D/g, '').slice(0, 1);
     const newOtpValues = [...Otp];
     newOtpValues[index] = sanitizedValue;
@@ -145,15 +156,37 @@ const UserContactDetails = (props) => {
       otpInputs.current[index + 1].focus();
     } else if (index === otpInputs.current.length - 1 && sanitizedValue) {
       const enteredOtp = newOtpValues.join('');
-
+      // setUserOtp(enteredOtp);
       console.log("enteredOtpenteredOtp",enteredOtp);
-      if (enteredOtp === '111111') {
-        setIsOtpTrue(true);
-        setDisplayContact(true);
-      } else {
-        setIsOtpTrue(false);
+      try {
+        const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
+        
+        if (verificationResult.status==='SUCCESS') {
+          setIsOtpTrue(true);
+          setDisplayContact(true);
+        } else {
+          setIsOtpTrue(false);
+        }
+        // if (enteredOtp==='111111') {
+        //   setIsOtpTrue(true);
+        //   setDisplayContact(true);
+        // } else {
+        //   setIsOtpTrue(false);
+        // }
+
+      } catch (error) {
+        console.error("Error verifying OTP", error);
+        // Handle error as needed
       }
+      
+      // if (enteredOtp === '111111') {
+      //   setIsOtpTrue(true);
+      //   setDisplayContact(true);
+      // } else {
+      //   setIsOtpTrue(false);
+      // }
     }
+ 
   };
   const handleInputClick = (index) => {
     setIsColorChange(index);
@@ -209,6 +242,8 @@ const UserContactDetails = (props) => {
       window.removeEventListener("resize", handleSideBar);
     }
   }, []);
+
+
   const sendOTPHandller = async() => {
     try{
       const OTPResponce = await sendOTPCode(getOTPData); 
@@ -280,6 +315,7 @@ const UserContactDetails = (props) => {
     }
 
     const finalObject = {
+      countryCode:countryCode,
       phoneNumber: dynamicObject.phoneNumber,
       pnr,
       pnrBookings: pnrBookingsArray,

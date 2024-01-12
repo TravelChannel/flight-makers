@@ -373,11 +373,20 @@ console.log("FlightData",FlightData)
                 )}
                                     
                                         
-                                        <div className='text-end align-self-end'>
-                                              <p className='iti_airport_name'>{`OrderId # ${id}`}</p>
-                                              <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(id)}>
-                                                View
-                                              </button>
+                                        <div className='d-flex justify-content-end'>
+                                              <div className='m-1'>
+                                                    <p className='iti_airport_name text-center'>{`OrderId # ${id}`}</p>
+                                                  <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(id)}>
+                                                    ReIssue
+                                                  </button>
+                                              </div>
+                                              <div  className='m-1'>
+                                                  <p className='iti_airport_name text-center'>{`OrderId # ${id}`}</p>
+                                                  <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(id)}>
+                                                    View
+                                                  </button>
+                                              </div>
+                                            
                                         </div>
 
                                        
