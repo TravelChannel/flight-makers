@@ -22,9 +22,9 @@ export const UserBookingDetails = async(finalObject)=>{
 
 }
 
-export const ReIssue = async()=>{
+export const ReIssue = async(id)=>{
 	apiClient
-			.post(`/pnrBooking/reqForRefund/3`)
+			.patch(`/pnrBooking/reqForRefund/3`,{ reissueValue: 1 }	)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 

@@ -6,9 +6,14 @@ import PhoneInput from 'react-phone-input-2';
 import OTPCode from '../Commom/OTPCode';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
+import { sendOTPCode } from '../../API';
+
+
 const OtpModel = () => {
   const [isOpen, setIsOpen] = useState(true); 
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCode, setCountryCode] = useState('');
+
   const [isOTP ,setOTP] = useState(false);
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -19,11 +24,40 @@ const OtpModel = () => {
     e.preventDefault();
   };
   // -----------------------
-  const handlePhoneNumberChange = (value) => {
-    setPhoneNumber(value);
+  const handlePhoneNumberChange = (value, country) => {
+    const dialCode = country.dialCode;
+
+    if (value.includes(dialCode)) {
+      const numericPhoneNumber = value.replace(dialCode, '').replace(/\D/g, '');
+      setPhoneNumber(numericPhoneNumber);
+    } else {
+      setPhoneNumber(value.replace(/\D/g, ''));
+    }
+    setCountryCode(dialCode);
   };
-  const GetOTP = ()=>{
-    setOTP(true);
+  const getOTPData = {
+    'coutryCode':countryCode,
+    'phoneNumber':phoneNumber
+  }
+
+  console.log("getOTPObj",getOTPData);
+
+
+  const GetOTP =async ()=>{
+    // try{
+    //   const OTPResponce = await sendOTPCode(getOTPData); 
+    //   console.log('OTPResponce',OTPResponce);
+    //   setOTP(true);
+    // }catch(error){  
+    //   console.error('errorOTP',error);
+    // }
+    try{
+      const OTPResponce = await sendOTPCode(getOTPData); 
+      console.log('OTPResponce',OTPResponce);
+      setOTP(true);
+    }catch(error){ 
+      console.error('errorOTP',error);
+    }
   }
   const backToNumber = ()=>{
     setOTP(false);
@@ -51,7 +85,7 @@ const OtpModel = () => {
                    </div>
                    <div className='model_otp'>
                    <p className='otp_message_set'>Enter OTP sent to the number: {phoneNumber}</p>
-                    <OTPCode/>
+                    <OTPCode getOTPData = {getOTPData}/>
                    </div>
                 
                 </div>
@@ -61,12 +95,12 @@ const OtpModel = () => {
                 <FormGroup>
                    <h4 className=" model_heading pb-4"> Lets Get Started</h4>
                 <div >
-                    <PhoneInput
-                      country={'pk'}
-                      value={phoneNumber}
-                      onChange={handlePhoneNumberChange}
-                      placeholder="Enter your phone number"
-                    />
+                <PhoneInput
+                        country={'pk'}
+                        value={`+${countryCode} ${phoneNumber}`} // Display the formatted phone number
+                        onChange={(value, country) => handlePhoneNumberChange(value, country)}
+                        placeholder="Enter your phone number"
+                      />
                   </div>
                   <div className="otp_btn_container">
                     <Button color="primary" type="submit" form="myForm" className="GetOTP_btn" onClick={GetOTP}>Get OTP</Button>

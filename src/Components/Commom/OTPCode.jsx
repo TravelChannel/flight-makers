@@ -1,6 +1,10 @@
 import React,{Fragment,useState,useRef, useEffect} from 'react'
+import { verifyOTPRes } from '../../API';
 
-const OTPCode = () => {
+const OTPCode = (props) => {
+
+  console.log("ellllllllo123",props.getOTPData);
+
     const [isColorChange, setIsColorChange] = useState("");
     const [isOtpTrue, setIsOtpTrue] = useState('');
     const [Otp, setOtp] = useState([]);
@@ -12,7 +16,7 @@ const OTPCode = () => {
 
 
     const otpInputs = useRef([]);
-  const handleOtp = (index, value) => {
+  const handleOtp = async(index, value) => {
     const sanitizedValue = value.replace(/\D/g, '').slice(0, 1);
     const newOtpValues = [...Otp];
     newOtpValues[index] = sanitizedValue;
@@ -22,12 +26,35 @@ const OTPCode = () => {
       otpInputs.current[index + 1].focus();
     } else if (index === otpInputs.current.length - 1 && sanitizedValue) {
       const enteredOtp = newOtpValues.join('');
-      if (enteredOtp === '1111') {
-        setIsOtpTrue(true);
-        setDisplayContact(true);
-      } else {
-        setIsOtpTrue(false);
+      console.log("enteredOtpenteredOtp",enteredOtp);
+
+      try {
+        const verificationResult = await verifyOTPRes(props.getOTPData,enteredOtp);
+        
+        if (verificationResult.status==='SUCCESS') {
+          setIsOtpTrue(true);
+        } else {
+          setIsOtpTrue(false);
+        }
+        // if (enteredOtp==='111111') {
+        //   setIsOtpTrue(true);
+        //   setDisplayContact(true);
+        // } else {
+        //   setIsOtpTrue(false);
+        // }
+
+      } catch (error) {
+        console.error("Error verifying OTP", error);
+        // Handle error as needed
       }
+
+
+      // if (enteredOtp === '1111') {
+      //   setIsOtpTrue(true);
+      //   setDisplayContact(true);
+      // } else {
+      //   setIsOtpTrue(false);
+      // }
     }
   };
   const handleInputClick = (index) => {
@@ -108,6 +135,7 @@ const OTPCode = () => {
                       <span onClick={HandleGetOTP} className="otp_resend_button">
                         Resend
                       </span>
+                      
                     )}
                   </div>
                

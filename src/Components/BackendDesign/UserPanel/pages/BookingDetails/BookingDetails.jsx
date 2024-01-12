@@ -10,8 +10,7 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { cityNameFunct,formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../../helpers/formatdata';
 import airlinesName from '../../../../../Constant/airlineName';
 
-// import { cityNameFunct,formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../helpers/formatdata';
-// import airlinesName from '../../../Constant/airlineName';
+import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
 
 
 // import '../styles.css';
@@ -43,6 +42,9 @@ const BookingDetail = () => {
   const handleButtonClick = (id) => {
     setOpenDetails(openDetails === id ? null : id);
   };
+  const ReIssueCalled = (id)=>{
+    ReIssue(id);
+  }
 
   // const openEditModel = ()=>{
   //   setIsOpen(true);
@@ -376,7 +378,7 @@ console.log("FlightData",FlightData)
                                         <div className='d-flex justify-content-end'>
                                               <div className='m-1'>
                                                     <p className='iti_airport_name text-center'>{`OrderId # ${id}`}</p>
-                                                  <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(id)}>
+                                                  <button className='btn btn-primary buttons_typo' onClick={() => ReIssueCalled(id)}>
                                                     ReIssue
                                                   </button>
                                               </div>
@@ -465,6 +467,7 @@ console.log("FlightData",FlightData)
                     </div>
 {/* ------------------------------------------------------------------------------------- */}
         </div>
+        
   )
 }
 

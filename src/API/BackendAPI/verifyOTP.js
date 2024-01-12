@@ -1,5 +1,7 @@
 export const verifyOTP = async (getOTPData, enteredOtp) => {
-  // console.log("yooo, i am here for verification",getOTPData);
+  console.log("yooo, i am here for verification",getOTPData.phoneNumber);
+  console.log("yooo, i am here for verification2",getOTPData.coutryCode);
+
   console.log("yooo, user OTP", enteredOtp);
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
