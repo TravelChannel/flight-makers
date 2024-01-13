@@ -1,8 +1,10 @@
 import React,{Fragment,useState,useRef, useEffect} from 'react'
 import { verifyOTPRes } from '../../API';
+import { Navigate ,useNavigate} from 'react-router-dom';
 
 const OTPCode = (props) => {
 
+  const navigate = useNavigate();
   console.log("ellllllllo123",props.getOTPData);
 
     const [isColorChange, setIsColorChange] = useState("");
@@ -33,6 +35,7 @@ const OTPCode = (props) => {
         
         if (verificationResult.status==='SUCCESS') {
           setIsOtpTrue(true);
+          window.location.reload();
         } else {
           setIsOtpTrue(false);
         }

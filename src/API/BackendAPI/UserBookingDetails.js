@@ -22,22 +22,22 @@ export const UserBookingDetails = async(finalObject)=>{
 
 }
 
-export const ReIssue = async(id)=>{
-	apiClient
-			.patch(`/pnrBooking/reqForRefund/3`,{ reissueValue: 1 }	)
-			.then((res) => {
-				if (res.data.status === 'SUCCESS') {
+// export const ReIssue = async(id)=>{
+// 	apiClient
+// 			.patch(`/pnrBooking/reqForRefund/3`,id)
+// 			.then((res) => {
+// 				if (res.data.status === 'SUCCESS') {
 
-					console.log( res.data.message, 'success ReIssue');
+// 					console.log( res.data.message, 'success ReIssue');
 
-				} else {
-					console.log(res.data.message, 'danger');
-				}
-			})
-			.catch((err) => {
-				console.error( err.message, 'Danger');
-			});
+// 				} else {
+// 					console.log(res.data.message, 'danger');
+// 				}
+// 			})
+// 			.catch((err) => {
+// 				console.error( err.message, 'Danger');
+// 			});
 
-}
+// }
 
 

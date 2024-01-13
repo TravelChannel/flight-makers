@@ -10,7 +10,7 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { cityNameFunct,formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../../helpers/formatdata';
 import airlinesName from '../../../../../Constant/airlineName';
 
-import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
+// import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
 
 
 // import '../styles.css';
@@ -43,7 +43,7 @@ const BookingDetail = () => {
     setOpenDetails(openDetails === id ? null : id);
   };
   const ReIssueCalled = (id)=>{
-    ReIssue(id);
+    // ReIssue(id);
   }
 
   // const openEditModel = ()=>{

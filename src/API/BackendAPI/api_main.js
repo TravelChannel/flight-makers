@@ -11,6 +11,7 @@ import axios from 'axios';
 
 const apiClient = axios.create({
 	baseURL: 'http://localhost:5000/api/',
+	withCredentials: true,
 	// baseURL: 'http://192.168.18.65/KBD_Backend/api', /// Danish
 	// baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain
 	// baseURL: 'http://192.168.18.128/KBD_Backend/api', // Hashim

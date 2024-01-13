@@ -18,7 +18,7 @@ export const  sendOTP = async(getOTPData)=>{
     };
 
     try{
-        const responce = await fetch("http://localhost:5000/api/pnrUsers/requestOtp", requestOptions);
+        const responce = await fetch("http://localhost:5000/api/auth/requestOtp", requestOptions);
         const result = await responce.json();
         console.log("OTPResults",result);
         return result;

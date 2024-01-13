@@ -8,12 +8,18 @@ import Notification from '../Components/Commom/Notification.jsx'
 import AppQR from '../Components/Home/AppQR.jsx';
 import ModelOTP from "../Components/Home/ModelOtp.jsx";
 
-const Home = () => {
+import { useFormData } from "../Context/FormDataContext.jsx";
 
+const Home = () => {
+  const {isLogin , setLogIn} = useFormData();
     return (
     <Fragment>
       <div className="container">
-        <ModelOTP/>  
+       {
+        !isLogin ? (
+          <ModelOTP/> 
+        ):('')
+       } 
         <FlightSearch resultpage={false} />
         <RecentTravel/>
         <BookingOptions/>

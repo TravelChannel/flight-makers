@@ -1,18 +1,38 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState,useEffect } from "react";
 import * as images from '../../Constant/images';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import Person2 from '@mui/icons-material/Person2';
 import { Link } from "react-router-dom";
+import Cookies from 'js-cookie';
 
-const topNavBar = () => {
+import { useFormData } from "../../Context/FormDataContext";
+
+const TopNavBar = () => {
+    const {isLogin , setLogIn} = useFormData();
+    const {userVerName , setVarName} = useFormData();
     return (
         <Fragment>
             <div className="topNav container">
                 <div className="row colorBlue m-0">
-
-                    <Link to='/signup' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
+                    
+                    {
+                        isLogin ?(
+                            <Link to='/UserPanel' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
                         <Person2 className="glyphicon" />
-                        SignUp/Login</Link>
+                        {userVerName}</Link>
+                        ):(
+                            <Link to='/signup' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
+                        <Person2 className="glyphicon" />
+                        SignUp/Login</Link> 
+                        )
+                    }
+
+
+                    {/* <Link to='/signup' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
+                        <Person2 className="glyphicon" />
+                        SignUp/Login</Link> */}
+                        
+                      
                         {/* ------------------- */}
 
                         {/* ------------------- */}
@@ -49,7 +69,7 @@ const topNavBar = () => {
         </Fragment>
     );
 }
-export default topNavBar;
+export default TopNavBar;
 
 
 

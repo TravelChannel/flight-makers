@@ -26,7 +26,7 @@ export const verifyOTP = async (getOTPData, enteredOtp) => {
 
   try {
     const responce = await fetch(
-      "http://localhost:5000/api/pnrUsers/userLogin",
+      "http://localhost:5000/api/auth/login",
       requestOptions
     );
     const Verifyresult = await responce.json();
