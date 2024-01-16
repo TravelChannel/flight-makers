@@ -4444,6 +4444,9 @@ margin-top:7px;
 .fname_textfield{
   width:100%;
  }
+ .fname_textfield1{
+  width:90%;
+ }
  .custom_calnder_edit{
    padding:0px !important;
  }
@@ -4874,6 +4877,8 @@ color: #0a53be;
 #fullWidth {
   width: 100%;
   max-width: 400px; 
+  height: 15px;
+
 }
 .hbl_logo_positioning,
 .visa_logo_positioning,
@@ -6158,4 +6163,45 @@ text-align: right;
   background-color: #36c;
   /* border:none; */
 
+}
+
+/* ----------user Profile------------------- */
+.userProfile_image{
+  border: 1px solid #8F8F8F;
+  border-radius: 70%;
+  background-color: #CDC4C4;
+  width: 150px;
+}
+.code_sub_heading{
+  font-size:14px;
+  color:gray;
+
+}
+.user_profile_data{
+  font-size:18px;
+  font-weight:600;
+  color:#010101;
+}
+.profile_update_btn{
+  background-color: #015C92;
+}
+.User_DOb_Cal{
+  margin-top: 5px;
+  width: 185%;
+  border-radius: 4px;
+  padding:5px;
+}
+.user_fname{
+  font-weight:600;
+  color:#010101;
+}
+.user_detials_heading{
+  font-size:18px;
+  font-weight:600;
+  color:#010101;
+ 
+}
+.user_detials_data{
+  font-size:16px;
+  color:#000;
 }

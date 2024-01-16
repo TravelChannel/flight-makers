@@ -1,18 +1,21 @@
 import React, {useState, useEffect,Fragment} from 'react';
-import EditModel from '../common/EditModel';
 import userDetails from '../../../../../Constant/BackendData/userDetails';
 import userDetailsBackend from '../../../../../API/BackendAPI/BackendAPI_Fun';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import ClearIcon from '@mui/icons-material/Clear';
 import { cityNameFunct,formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../../helpers/formatdata';
 import airlinesName from '../../../../../Constant/airlineName';
 
-// import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
-
-
+import { ReFund } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { Cancelation } from '../../../../../API/BackendAPI/UserBookingDetails';
 // import '../styles.css';
 const BookingDetail = () => {
   const [isOpen, setIsOpen] = useState(false); 
@@ -26,6 +29,7 @@ const BookingDetail = () => {
   const [isSmallMob ,setSmallMob] = useState(window.innerWidth < 500);
   const [seatAvailable, setSeatAvailable] = useState([]);
 
+  const [selectedOptions, setSelectedOptions] = useState(['']);
 
   useEffect(()=>{
     const handleResize = ()=>{
@@ -42,13 +46,19 @@ const BookingDetail = () => {
   const handleButtonClick = (id) => {
     setOpenDetails(openDetails === id ? null : id);
   };
-  const ReIssueCalled = (id)=>{
-    // ReIssue(id);
+  const ReFundCalled = (id)=>{
+    ReFund(id);
+    console.log(`Cancel API called for item at index ${id}`);
   }
 
-  // const openEditModel = ()=>{
-  //   setIsOpen(true);
-  // }
+  const CancelationCalled = (id)=>{
+    Cancelation(id);
+  }
+
+  const reIssueCalled = (id)=>{
+    ReIssue(id);
+  }
+
   const __handleSearch= (event)=>{
         const value = event.target.value;
           setSearch(value);
@@ -71,7 +81,7 @@ const BookingDetail = () => {
     try{
       const userData = await userDetailsBackend(setBackLoading);
     //  console.log("ApiCalledData",userData?.data.payload);
-    console.log("ApiCalledData",userData?.data.payload);
+    console.log("ApiCalledData",userData);
         setUser(userData);
     }
     catch (error){
@@ -81,83 +91,46 @@ const BookingDetail = () => {
 
 fetchBackendData();
  },[]);
+//  --------------------Start---------------------
+const userPayLoad = userData?.data.payload;
+console.log('userPayLoad',userPayLoad);
 
+const flightdetails = userPayLoad?.map((item)=>item.flightDetails);
+console.log("userFlightDetailsuserFlightDetails",flightdetails);
+const seatsType = flightdetails?.fare?.passengerInfoList?.flatMap(item => item.passengerInfo.passengerType);
+    const conSeatsType = seatsType?.join(', ');
 
-//  --------------------------------------
+const userInfo = userPayLoad?.map((items)=>items.pnrDetail);
+console.log('userInfo',userInfo);
+//  --------------------end---------------------
+const handleChange = (event, index) => {
+  const selectedOption = event.target.value;
+  const newSelectedOptions = [...selectedOptions];
+  newSelectedOptions[index] = selectedOption;
+  setSelectedOptions(newSelectedOptions);
 
-// ------------ALL PNR Detials Start------------
-const allPNRs= userData?.data.payload;
-// console.log("allPNR",allPNRs);
-
-
-
-const allPNRuserDetails = allPNRs?.map((user)=>user.pnrDetail);
-
-const allPassangersDetail = allPNRuserDetails?.map(item=>item.map(ref=>ref));
-// console.log("allPassangersDetailallPassangersDetail",allPassangersDetail);
-
-
-
-const allUsers = allPNRs?.map((items)=>items.pnrUserId);
-console.log("allUsers",allUsers);
-// console.log("allPNRuserDetails",allPNRuserDetails);
-
-
-// ------------fetching SingleUSer all PNR -------------
-const loggedInUserId = '1';  //pnrUserID specfiy the login user
-
-const data = userData?.data?.payload ?? [];
-
-const groupedData = data?.reduce((acc, item) => {
-  const key = item?.pnrUserId;
-  if (!acc[key]) {
-    acc[key] = [];
+  switch (selectedOption) {
+    case 'Refund':
+      ReFundCalled(index);
+      break;
+    case 'ReIssue':
+      reIssueCalled(index);
+      break;
+    case 'Cancel':
+      CancelationCalled(index);
+      break;
+    default:
+      // Handle other cases if needed
   }
-  acc[key].push(item);
-  return acc;
-}, {});
+};
+
+const handleClear = (index) => {
+  const newSelectedOptions = [...selectedOptions];
+  newSelectedOptions[index] = '';
+  setSelectedOptions(newSelectedOptions);
+};
 
 
-const extractedData = groupedData[loggedInUserId];   //Contain the active loginUser all Details
-
-console.log('extractedData',extractedData);
-// ------------fetching SingleUSer all PNR  end-------------
-
-const pnrID = extractedData?.map((user) => user.id);
-console.log('pnrID', pnrID);
-
-const pnrDetails = extractedData?.map((user) => user.pnrDetail);
-console.log('pnrDetails', pnrDetails);
-
-const flightdetails = extractedData?.map((user) => user.flightDetails);
-console.log('userFlightDetail', flightdetails);
-
-
-// ----------------------Slected User Flight Detial ------------------------
-const seatsType = flightdetails?.map(items=>items.fare?.passengerInfoList?.flatMap(item => item.passengerInfo?.passengerType));
-const conSeatsType = seatsType?.join(', ');
-console.log("seatsType",conSeatsType);
-
-const FlightData = flightdetails?.map(items=>items.schedualDetGet);
-console.log("FlightData",FlightData)
-
-// ------------------------------------------------------------------------------
-
-
-// const pnrBookingIds = pnrDetails?.flatMap(userArray => userArray.map(user => user.pnrBookingId));
-
-// console.log(pnrBookingIds);
-
-// const specificDetails = extractedData?.filter(item => item.id === "3");
-
-// console.log('specificDetails', specificDetails);
-
-
-// ------
-// const ViewPassangerDetails =()=>{
-// setUserDetails(!showUserDetails);
-// }
-// -----------------------------------------
   return (
     <div className='dashboard-content'>
             <div className='dashboard-content-container'>
@@ -172,235 +145,265 @@ console.log("FlightData",FlightData)
                             onChange={e => __handleSearch(e)} />
                     </div>
                 </div>
-                {/* <h3>
-                  {userData?.data?.message}
-                </h3> */}
                 <table>
                     <thead>
-                        {/* <th>ID</th> */}
                         <th>PNR </th>
-                        {/* <th>createdAt</th> */}
-                        {/* <th>Phone</th> */}
-                        {/* <th>STATUS</th> */}
-                        {/* <th>Flight</th> */}
                     </thead>
                     <tbody>
-                    {
-                      extractedData && extractedData.map((items ,value)=>(
-                        <tr key={value}>
-                          <td>
-                            {items.pnr}
-                          </td>
+                        <tr>
+                        {
+                          userPayLoad?.map((items ,index)=>(
+                            <td key={index}>
+                              {items.pnr}
+                            </td>
+                          ))
+                        }
                         </tr>
-                      ))
-                    }
                     </tbody>
                 </table>
-            </div>
+           
             <div className="User_card_detail">
-                    {pnrID?.map((id) => {
-                      const specificDetails = extractedData?.filter((item) => item.id === id);
-                      const currentFlightDetails = flightdetails?.find((details) => details.id === id);
-                      console.log('currentFlightDetails',currentFlightDetails)
-                      return (
-                        <div key={id} className='bg-white'>
-                            <div className='main_flightDetails'>
-                            {currentFlightDetails.schedualDetGet.map((item, index) => (
-                    <div key={index}>
-                        <div className="iti_flight_details" >
-                            {
-                                !isSmallMob && (
-                            <div className="d-flex justify-content-between w-100">
-                                <div className="d-flex justify-content-start align-self-center w-75">
-                                    <h5 className="iti_city_font">{cityNameFunct[currentFlightDetails.groupDescription[index].departureLocation]}</h5> <span className="airport_spacing"><RedoOutlinedIcon /></span> <h5 className="iti_city_font">{cityNameFunct[currentFlightDetails.groupDescription[index].arrivalLocation]}</h5>
-                                    <p className=" d-flex align-self-center iti_date_spacing"> {formatCompleteDate(currentFlightDetails.groupDescription[index].departureDate)}</p>
-                                </div>
-                                <div className="w-25">
-                                    <div className='iti_refund_detail'>
-                                        <p>{currentFlightDetails.fare.passengerInfoList[0].passengerInfo.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p>
-                                    </div>
-                                </div>
-                            </div>
-                                )
-                            }
-                            {
-                                isSmallMob &&(
-                            <div className='d-flex justify-content-between w-100'>
-                                <div className=" align-self-center w-75">
-                                    <div className='d-flex justify-content-start'>
-                                        <h5 className="iti_city_font">{cityNameFunct[currentFlightDetails.groupDescription[index].departureLocation]}</h5> 
-                                        <span className="airport_spacing"><RedoOutlinedIcon /></span> 
-                                        <h5 className="iti_city_font">{cityNameFunct[currentFlightDetails.groupDescription[index].arrivalLocation]}</h5>
-                                    </div>
-                                    <p className=" d-flex align-self-center iti_date_spacing iti_mob_spacing"> {formatCompleteDate(currentFlightDetails.groupDescription[index].departureDate)}</p>
-                                </div>
-                                <div className=" align-self-center w-25">
-                                    <div className='iti_refund_detail'>
-                                        <p>{currentFlightDetails.fare.passengerInfoList[0].passengerInfo.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p>
-                                    </div>
-                                </div>
-                            </div>
+            <div className="iti_review_main">
+                <div className="d-flex justify-content_start mt-2 mb-4">
+                </div>
+              {
+                flightdetails?.map((items ,index)=>(
+               <Fragment>
+               <div key={index}>
 
-                                )
-                            }
-                            {item.map((itm, idx) => {
-                                const airlineName = itm.carrier.marketing;
-                                const matchedAirline = airlinesName.find(airline => airline.id === airlineName);
-                                return (
-                                    <Fragment>
-                                        <div className="row">
-                                            <div className={` col-md-9 flight_complete_details ${isMobile ? 'col-md-12':'col-md-9'}`}>
-                                                <div className='d-flex jusitfy-content-start'>
-                                                    <div className='align-self-center text-center'>
-                                                        <img src={matchedAirline ? matchedAirline.logo : airlineName} alt="" width="32px" height="32px" />
-                                                        <p className="iti_flight_no">{matchedAirline ? matchedAirline.name : airlineName}</p>
-                                                        <p className="iti_flight_no">{`${airlineName}-${itm.carrier.marketingFlightNumber}`}</p>
-                                                        <p className="iti_flight_no">{currentFlightDetails.classtype}</p>
-                                                    </div>
-                                                    <div className="seprator">
-                                                        <DonutLargeIcon className="donut_size" />
-                                                        <div className={`${isSmallMob ? 'iti_mob_line':'vertical-line'}`}></div>
-                                                        <DonutLargeIcon className="donut_size" />
+                {items?.schedualDetGet?.map((item, index) => (
+                  <div key={index}>
+                      <div className="iti_flight_details" >
+                          {
+                              !isSmallMob && (
+                          <div className="d-flex justify-content-between w-100">
+                              <div className="d-flex justify-content-start align-self-center w-75">
+                                  <h5 className="iti_city_font">{cityNameFunct[items?.groupDescription[index]?.departureLocation]}</h5> <span className="airport_spacing"><RedoOutlinedIcon /></span> <h5 className="iti_city_font">{cityNameFunct[items?.groupDescription[index].arrivalLocation]}</h5>
+                                  <p className=" d-flex align-self-center iti_date_spacing"> {formatCompleteDate(items?.groupDescription[index].departureDate)}</p>
+                              </div>
+                              <div className="w-25">
+                                  <div className='iti_refund_detail'>
+                                      <p>{items?.fare?.passengerInfoList[0]?.passengerInfo?.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p>
+                                  </div>
+                              </div>
+                          </div>
+                              )
+                          }
+                          {
+                              isSmallMob &&(
+                          <div className='d-flex justify-content-between w-100'>
+                              <div className=" align-self-center w-75">
+                                  <div className='d-flex justify-content-start'>
+                                      <h5 className="iti_city_font">{cityNameFunct[items?.groupDescription[index].departureLocation]}</h5> 
+                                      <span className="airport_spacing"><RedoOutlinedIcon /></span> 
+                                      <h5 className="iti_city_font">{cityNameFunct[items?.groupDescription[index].arrivalLocation]}</h5>
+                                  </div>
+                                  <p className=" d-flex align-self-center iti_date_spacing iti_mob_spacing"> {formatCompleteDate(items?.groupDescription[index].departureDate)}</p>
+                              </div>
+                              <div className=" align-self-center w-25">
+                                  <div className='iti_refund_detail'>
+                                      <p>{items?.fare?.passengerInfoList[0]?.passengerInfo?.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                              )
+                          }
+                          {item.map((itm, idx) => {
+                              const airlineName = itm.carrier.marketing;
+                              const matchedAirline = airlinesName.find(airline => airline.id === airlineName);
+                              return (
+                                  <Fragment>
+                                      <div className="row">
+                                          <div className={` col-md-9 flight_complete_details ${isMobile ? 'col-md-12':'col-md-9'}`}>
+                                              <div className='d-flex jusitfy-content-start'>
+                                                  <div className='align-self-center text-center'>
+                                                      <img src={matchedAirline ? matchedAirline.logo : airlineName} alt="" width="32px" height="32px" />
+                                                      <p className="iti_flight_no">{matchedAirline ? matchedAirline.name : airlineName}</p>
+                                                      <p className="iti_flight_no">{`${airlineName}-${itm.carrier.marketingFlightNumber}`}</p>
+                                                      <p className="iti_flight_no">{items?.classtype}</p>
+                                                  </div>
+                                                  <div className="seprator">
+                                                      <DonutLargeIcon className="donut_size" />
+                                                      <div className={`${isSmallMob ? 'iti_mob_line':'vertical-line'}`}></div>
+                                                      <DonutLargeIcon className="donut_size" />
+                                                  </div>
+                                                  <div>
+                                                      <div>
+                                                          <span className="iti_flight_timing"> {itm.departure.time.slice(0, 5)}</span>
+                                                          <span className="iti_city_code">{itm.departure.airport}</span>
+                                                          {isSmallMob ? (<div className="iti_airport_name ">{airportNameFunct[itm.departure.airport]}</div>):(<span className="iti_airport_name">{airportNameFunct[itm.departure.airport]}</span>)}
+                                                      </div>
+                                                      <div className="iti_content_spacing">
+                                                          <QueryBuilderOutlinedIcon /> {elapsedTimeFunct(itm.elapsedTime)}
+                                                      </div>
+                                                      <div>
+                                                          <span className="iti_flight_timing">{itm.arrival.time.slice(0, 5)}</span>
+                                                          <span className="iti_city_code">{itm.arrival.airport}</span> 
+                                                          {
+                                                              isSmallMob ?( <div className="iti_airport_name ">{airportNameFunct[itm.arrival.airport]}</div>):( <span className="iti_airport_name">{airportNameFunct[itm.arrival.airport]}</span>)
+                                                          }
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        {
+                                        isMobile ? (
+                                            <div className="iti_content_spacing">
+                                              <div className='iti_mob_border'>
+                                                  <div className="d-flex justify-content-between">
+                                                      <div>
+                                                      <p className="fd_airport_name fd_space_baggages">No of Seats</p>
+                                                      <p className="fd_airport_name fd_space_baggages ">{`${items?.adults+items?.children+items?.infants}`}</p>
+                                                      </div>
+                                                    <div>
+                                                      <p className="fd_airport_name fd_space_baggages ">Seats Types</p>
+                                                      <p className="fd_airport_name fd_space_baggages ">
+                                                              {conSeatsType}
+                                                      </p>
                                                     </div>
                                                     <div>
-                                                        <div>
-                                                            <span className="iti_flight_timing"> {itm.departure.time.slice(0, 5)}</span>
-                                                             <span className="iti_city_code">{itm.departure.airport}</span>
-                                                            {isSmallMob ? (<div className="iti_airport_name ">{airportNameFunct[itm.departure.airport]}</div>):(<span className="iti_airport_name">{airportNameFunct[itm.departure.airport]}</span>)}
-                                                        </div>
-                                                        <div className="iti_content_spacing">
-                                                            <QueryBuilderOutlinedIcon /> {elapsedTimeFunct(itm.elapsedTime)}
-                                                        </div>
-                                                        <div>
-                                                            <span className="iti_flight_timing">{itm.arrival.time.slice(0, 5)}</span>
-                                                             <span className="iti_city_code">{itm.arrival.airport}</span> 
-                                                            {
-                                                                isSmallMob ?( <div className="iti_airport_name ">{airportNameFunct[itm.arrival.airport]}</div>):( <span className="iti_airport_name">{airportNameFunct[itm.arrival.airport]}</span>)
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           {
-                                           isMobile ? (
-                                              <div className="iti_content_spacing">
-                                                <div className='iti_mob_border'>
-                                                    <div className="d-flex justify-content-between">
-                                                        <div>
-                                                        <p className="fd_airport_name fd_space_baggages">No of Seats</p>
-                                                        <p className="fd_airport_name fd_space_baggages ">{`${currentFlightDetails.adults+currentFlightDetails.children+currentFlightDetails.infants}`}</p>
-                                                        </div>
                                                       <div>
-                                                        <p className="fd_airport_name fd_space_baggages ">Seats Types</p>
-                                                        <p className="fd_airport_name fd_space_baggages ">
-                                                                {conSeatsType}
-                                                        </p>
-                                                      </div>
-                                                      <div>
-                                                        <div>
-                                                            {
-                                                              currentFlightDetails.baggageAllowance[index].pieceCount ? (
-                                                                <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                                                                ) : (
-                                                                <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                                                                )
-                                                            }
-                                                            </div>
-                                                            <p className="fd_airport_name fd_space_baggages mob_iti_text">{currentFlightDetails.baggageAllowance[index].pieceCount} {currentFlightDetails.baggageAllowance[index].weight} {currentFlightDetails.baggageAllowance[index].unit}</p>
+                                                          {
+                                                              items?.baggageAllowance[index].pieceCount ? (
+                                                              <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
+                                                              ) : (
+                                                              <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                                                              )
+                                                          }
+                                                          </div>
+                                                          <p className="fd_airport_name fd_space_baggages mob_iti_text">{items?.baggageAllowance[index].pieceCount} {items?.baggageAllowance[index].weight} {items?.baggageAllowance[index].unit}</p>
 
-                                                      </div>
-                                                      <div>
-                                                        <p className="fd_airport_name fd_space_baggages">
-                                                            <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
-                                                                Remaining Seats
-                                                            </span>
-                                                        </p>
-                                                        <p className="fd_airport_name fd_space_baggages">{currentFlightDetails.baggageAllowance[index].pieceCount} {currentFlightDetails.baggageAllowance[index].weight} {currentFlightDetails.baggageAllowance[index].unit}</p>
-                                                      </div>
                                                     </div>
-                                                   
-                                                </div>
-                                            </div>
-                                            ):(  
-                                            <div className="col-md-3 iti_content_spacing">
-                                                <div className='d-flex justify-content-between'>
-                                                    <div className="">
-                                                        <p className="fd_airport_name fd_space_baggages">No of Seats</p>
-                                                        <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
-                                                        {
-                                                          currentFlightDetails.baggageAllowance[index].pieceCount ? (
-                                                            <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                                                            ) : (
-                                                            <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                                                            )
-                                                        }
-                                                        <p className="fd_airport_name fd_space_baggages">
-                                                        <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
-                                                            Remaining Seats
-                                                        </span>
-                                                    </p>
+                                                    <div>
+                                                      <p className="fd_airport_name fd_space_baggages">
+                                                          <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                              Remaining Seats
+                                                          </span>
+                                                      </p>
+                                                      <p className="fd_airport_name fd_space_baggages">{items?.baggageAllowance[index].pieceCount} {items?.baggageAllowance[index].weight} {items?.baggageAllowance[index].unit}</p>
                                                     </div>
-                                                    <div className="">
-                                                        <p className="fd_airport_name fd_space_baggages">{`${currentFlightDetails.adults+currentFlightDetails.children+currentFlightDetails.infants}`}</p>
-                                                        <p className="fd_airport_name fd_space_baggages iti_difference">
-                                                            {conSeatsType}
-                                                        </p>
-                                                        <p className="fd_airport_name fd_space_baggages">{currentFlightDetails.baggageAllowance[index].pieceCount} {currentFlightDetails.baggageAllowance[index].weight} {currentFlightDetails.baggageAllowance[index].unit}</p>
-                                                        {seatAvailable && seatAvailable.length > 0 ? (
-                                                        <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
-                                                    ) : (
-                                                        <p className='fd_airport_name fd_space_baggages'>...</p>
-                                                    )}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            )
-                                           }
-                                        </div>
-                                        {idx < item.length - 1 &&
-                                            <div className="fd_line_structure">
-                                                <div className="fd_line"></div>
-                                                <div className="fd_icon_wrapper">
-                                                    <p className="fd_middle_border"><DirectionsRunIcon /> {`Short layover ${calculateDuration(itm.arrival.time, item[idx + 1].departure.time)}`}</p>
-                                                </div>
-                                                <div className="fd_line"></div>
-                                            </div>
+                                                  </div>
+                                                
+                                              </div>
+                                          </div>
+                                          ):(  
+                                          <div className="col-md-3 iti_content_spacing">
+                                              <div className='d-flex justify-content-between'>
+                                                  <div className="">
+                                                      <p className="fd_airport_name fd_space_baggages">No of Seats</p>
+                                                      <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
+                                                      {
+                                                          items?.baggageAllowance[index].pieceCount ? (
+                                                          <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
+                                                          ) : (
+                                                          <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                                                          )
+                                                      }
+                                                      <p className="fd_airport_name fd_space_baggages">
+                                                      <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                          Remaining Seats
+                                                      </span>
+                                                  </p>
+                                                  </div>
+                                                  <div className="">
+                                                      <p className="fd_airport_name fd_space_baggages">{`${items?.adults+items?.children+items?.infants}`}</p>
+                                                      <p className="fd_airport_name fd_space_baggages iti_difference">
+                                                          {conSeatsType}
+                                                      </p>
+                                                      <p className="fd_airport_name fd_space_baggages">{items?.baggageAllowance[index].pieceCount} {items?.baggageAllowance[index].weight} {items?.baggageAllowance[index].unit}</p>
+                                                      {seatAvailable && seatAvailable.length > 0 ? (
+                                                      <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
+                                                  ) : (
+                                                      <p className='fd_airport_name fd_space_baggages'>...</p>
+                                                  )}
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          )
                                         }
-                                    </Fragment>
-                                )
-                            })}
-                        </div>
-                    </div>
+                                      </div>
+                                      {idx < item.length - 1 &&
+                                          <div className="fd_line_structure">
+                                              <div className="fd_line"></div>
+                                              <div className="fd_icon_wrapper">
+                                                  <p className="fd_middle_border"><DirectionsRunIcon /> {`Short layover ${calculateDuration(itm.arrival.time, item[idx + 1].departure.time)}`}</p>
+                                              </div>
+                                              <div className="fd_line"></div>
+                                          </div>
+                                      }
+                                  </Fragment>
+                              )
+                          })}
+                      </div>
+                  </div>
                 )
                 )}
-                                    
-                                        
-                                        <div className='d-flex justify-content-end'>
-                                              <div className='m-1'>
-                                                    <p className='iti_airport_name text-center'>{`OrderId # ${id}`}</p>
-                                                  <button className='btn btn-primary buttons_typo' onClick={() => ReIssueCalled(id)}>
-                                                    ReIssue
-                                                  </button>
-                                              </div>
-                                              <div  className='m-1'>
-                                                  <p className='iti_airport_name text-center'>{`OrderId # ${id}`}</p>
-                                                  <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(id)}>
-                                                    View
-                                                  </button>
-                                              </div>
-                                            
-                                        </div>
 
-                                       
-                            </div>
+                </div>
+                    <div className='d-flex justify-content-end'>
+                         {/* <div className='d-flex justify-content-center'>
+                            <div className='m-1'>
+                                    <button className='btn btn-danger buttons_typo' onClick={() => CancelationCalled(index)}>
+                                        Cancelation
+                                    </button>
+                                </div>
+                                <div className='m-1'>
+                                    <button className='btn btn-success buttons_typo' onClick={() => reIssueCalled(index)}>
+                                        ReIssue
+                                    </button>
+                                </div>
+                                <div className='m-1'>
+                                    <button className='btn btn-warning buttons_typo' onClick={() => ReFundCalled(index)}>
+                                        ReFund
+                                    </button>
+                                </div>
+                         </div> */}
 
-{/* -------------------------------------------------main----------------------------------------------- */}
-                          {openDetails === id && (
-                            <div>
-                              {specificDetails?.map((user, index) => (
-                                <div key={index} className='d-flex justify-content-start '>
-                                  {user.pnrDetail.map((detail, detailIndex) => (
-                                    <div key={detailIndex} className='m-2 passnagerDetailsTypo'>
+
+                         <div key={index}>
+                            <Select
+                              className='support_field'
+                              labelId={`select-label-${index}`}
+                              id={`select-${index}`}
+                              value={selectedOptions[index] !== undefined ? selectedOptions[index] : ''}
+                              onChange={(event) => handleChange(event, index)}
+                              displayEmpty
+                              inputProps={{ 'aria-label': 'Without label' }}
+                              endAdornment={
+                                selectedOptions[index] && (
+                                  <InputAdornment position="end">
+                                    <IconButton aria-label="Clear" onClick={() => handleClear(index)}>
+                                      <ClearIcon className='support_clear_icon' />
+                                    </IconButton>
+                                  </InputAdornment>
+                                )
+                              }
+                            >
+                              <MenuItem value="" disabled>Customer Support</MenuItem>
+                              <MenuItem value="Refund">Refund</MenuItem>
+                              <MenuItem value="ReIssue">ReIssue</MenuItem>
+                              <MenuItem value="Cancel">Cancel</MenuItem>
+                            </Select>
+                          </div>
+                          <div  className='m-1'>
+                                <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(index)}>
+                                  View
+                                </button>
+                          </div>
+                          
+                      </div>
+                      {
+                        openDetails ===index && (
+                          <div>
+                          {
+                            userInfo?.map((item , id)=>(
+                              id===index && (
+                                <div className='d-flex justify-content-start'>
+                              {
+                                
+                                item.map((detail ,detailIndex)=>(
+                                  <div key={detailIndex} className='m-2 passnagerDetailsTypo'>
                                       <p>{`ID: ${detail.id}`}</p>
                                       <p>{`FName: ${detail.firstName}`}</p>
                                       <p>{`LName: ${detail.lastName}`}</p>
@@ -412,19 +415,31 @@ console.log("FlightData",FlightData)
                                       <p>{`DOB: ${formatCompleteDate(detail.dateOfBirth)}`}</p>
                                       <p>{`PassportExp: ${formatCompleteDate(detail.passportExpiryDate)}`}</p>
                                     </div>
-                                  ))}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
+                                ))
+                              }
+                                 
+                              </div>
+                              )
+                            
+                            ))
+                          }
+                          </div>
+                        )
+                      }
+                     
+               </Fragment>
+                ))
+              }
+
+
+            </div>
+                                     
+            </div>
+                                    
 
                 {/* ------------------------------------------------------------ */}
 
-                <div className="User_card_detail">
+                {/* <div className="User_card_detail">
                 <table className="table table-bordered">
                       <thead>
                           <tr>
@@ -464,8 +479,10 @@ console.log("FlightData",FlightData)
 
               </table>
 
-                    </div>
+                    </div> */}
 {/* ------------------------------------------------------------------------------------- */}
+           </div>
+          
         </div>
         
   )

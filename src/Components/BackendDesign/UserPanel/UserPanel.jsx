@@ -6,6 +6,7 @@ import SideBarMenu from '../../../Constant/BackendData/sidebarMenu';
 import Orders from './pages/Orders';
 import { useFormData } from '../../../Context/FormDataContext';
 import BookingDetails from './pages/BookingDetails/BookingDetails'; 
+import UserProfile from './pages/userProfile/UserProfile';
 const UserPanel = () => {
 
   // const [active, setActive] = useState(1);
@@ -31,7 +32,8 @@ const UserPanel = () => {
             <DashboardHeader
                       btnText="New Order" />
             </div>
-            <BookingDetails/>
+            {/* <BookingDetails/> */}
+            <UserProfile/>
               <Routes>
                   {/* <Route path="*" element={<div>404 Not Found</div>} />
                   <Route exact path="/" element={<div>hello world </div>} /> */}

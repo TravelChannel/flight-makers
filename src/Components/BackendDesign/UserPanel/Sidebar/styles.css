@@ -81,11 +81,7 @@
 }
 .User_card_detail{
     background-color:#ffff;
-    color: #101010;;
-    box-shadow: 7px 10px 20px rgb(114, 113, 113);
-    padding:20px 10px;
-    margin:0px 10px;
-    /* width:300px; */
+    color: #101010;
     
 }
 .whole_card_typo{
@@ -96,3 +92,14 @@
     padding:10px 20px;
     border-radius: 4px;;
 }
+.support_clear_icon{
+    color:gray;
+    font-size:16px !important;
+}
+.support_field{
+margin-top:3px;
+ height:42px;
+ border-radius: 4px;
+ /* background-color: #36c; */
+}
+

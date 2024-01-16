@@ -10,9 +10,7 @@ export const  VerificationAPi = async()=>{
         return response;
      })
      .catch((err)=>{
-        console.log("111111111111111111111111");
         console.log(err);
-        console.log("2222222222222222222222");
 
         // setBackLoading(false);
         throw err;
