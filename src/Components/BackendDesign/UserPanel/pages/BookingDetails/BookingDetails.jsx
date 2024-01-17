@@ -48,15 +48,19 @@ const BookingDetail = () => {
   };
   const ReFundCalled = (id)=>{
     ReFund(id);
-    console.log(`Cancel API called for item at index ${id}`);
+    console.log(`Refund API called  for  booking ${id}`);
   }
 
   const CancelationCalled = (id)=>{
     Cancelation(id);
+    console.log(`Cancel API called for booking ${id}`);
+
   }
 
   const reIssueCalled = (id)=>{
     ReIssue(id);
+    console.log(`ReIssue API called for booking ${id}`);
+
   }
 
   const __handleSearch= (event)=>{
@@ -81,7 +85,7 @@ const BookingDetail = () => {
     try{
       const userData = await userDetailsBackend(setBackLoading);
     //  console.log("ApiCalledData",userData?.data.payload);
-    console.log("ApiCalledData",userData);
+    // console.log("ApiCalledData",userData);
         setUser(userData);
     }
     catch (error){
@@ -95,6 +99,9 @@ fetchBackendData();
 const userPayLoad = userData?.data.payload;
 console.log('userPayLoad',userPayLoad);
 
+const userFlightId = userPayLoad?.map(items=>items.id);
+console.log("userFlightId",userFlightId);
+
 const flightdetails = userPayLoad?.map((item)=>item.flightDetails);
 console.log("userFlightDetailsuserFlightDetails",flightdetails);
 const seatsType = flightdetails?.fare?.passengerInfoList?.flatMap(item => item.passengerInfo.passengerType);
@@ -103,7 +110,7 @@ const seatsType = flightdetails?.fare?.passengerInfoList?.flatMap(item => item.p
 const userInfo = userPayLoad?.map((items)=>items.pnrDetail);
 console.log('userInfo',userInfo);
 //  --------------------end---------------------
-const handleChange = (event, index) => {
+const handleChange = (event, index,id) => {
   const selectedOption = event.target.value;
   const newSelectedOptions = [...selectedOptions];
   newSelectedOptions[index] = selectedOption;
@@ -111,13 +118,13 @@ const handleChange = (event, index) => {
 
   switch (selectedOption) {
     case 'Refund':
-      ReFundCalled(index);
+      ReFundCalled(id);
       break;
     case 'ReIssue':
-      reIssueCalled(index);
+      reIssueCalled(id);
       break;
     case 'Cancel':
-      CancelationCalled(index);
+      CancelationCalled(id);
       break;
     default:
       // Handle other cases if needed
@@ -170,7 +177,7 @@ const handleClear = (index) => {
                 flightdetails?.map((items ,index)=>(
                <Fragment>
                <div key={index}>
-
+                      <h4>{`Booking ${items.id}`}</h4>
                 {items?.schedualDetGet?.map((item, index) => (
                   <div key={index}>
                       <div className="iti_flight_details" >
@@ -360,32 +367,32 @@ const handleClear = (index) => {
                                 </div>
                          </div> */}
 
-
                          <div key={index}>
-                            <Select
-                              className='support_field'
-                              labelId={`select-label-${index}`}
-                              id={`select-${index}`}
-                              value={selectedOptions[index] !== undefined ? selectedOptions[index] : ''}
-                              onChange={(event) => handleChange(event, index)}
-                              displayEmpty
-                              inputProps={{ 'aria-label': 'Without label' }}
-                              endAdornment={
-                                selectedOptions[index] && (
-                                  <InputAdornment position="end">
-                                    <IconButton aria-label="Clear" onClick={() => handleClear(index)}>
-                                      <ClearIcon className='support_clear_icon' />
-                                    </IconButton>
-                                  </InputAdornment>
-                                )
-                              }
-                            >
-                              <MenuItem value="" disabled>Customer Support</MenuItem>
-                              <MenuItem value="Refund">Refund</MenuItem>
-                              <MenuItem value="ReIssue">ReIssue</MenuItem>
-                              <MenuItem value="Cancel">Cancel</MenuItem>
-                            </Select>
-                          </div>
+                              <Select
+                                className='support_field'
+                                labelId={`select-label-${index}`}
+                                id={`select-${index}`}
+                                value={selectedOptions[index] !== undefined ? selectedOptions[index] : ''}
+                                onChange={(event) => handleChange(event, index,userFlightId[index])}
+                                displayEmpty
+                                inputProps={{ 'aria-label': 'Without label' }}
+                                endAdornment={
+                                  selectedOptions[index] && (
+                                    <InputAdornment position="end">
+                                      <IconButton aria-label="Clear" onClick={() => handleClear(index)}>
+                                        <ClearIcon className='support_clear_icon' />
+                                      </IconButton>
+                                    </InputAdornment>
+                                  )
+                                }
+                              >
+                                <MenuItem value="" disabled>Customer Support</MenuItem>
+                                <MenuItem value="Refund">Refund</MenuItem>
+                                <MenuItem value="ReIssue">ReIssue</MenuItem>
+                                <MenuItem value="Cancel">Cancel</MenuItem>
+                              </Select>
+                            </div>
+                           
                           <div  className='m-1'>
                                 <button className='btn btn-primary buttons_typo' onClick={() => handleButtonClick(index)}>
                                   View
@@ -401,9 +408,9 @@ const handleClear = (index) => {
                               id===index && (
                                 <div className='d-flex justify-content-start'>
                               {
-                                
                                 item.map((detail ,detailIndex)=>(
                                   <div key={detailIndex} className='m-2 passnagerDetailsTypo'>
+                                      <h5 className='passnger_pnr_info'>Passanger Info</h5>
                                       <p>{`ID: ${detail.id}`}</p>
                                       <p>{`FName: ${detail.firstName}`}</p>
                                       <p>{`LName: ${detail.lastName}`}</p>
@@ -414,7 +421,7 @@ const handleClear = (index) => {
                                       <p>{`Email : ${detail.userEmail}`}</p>
                                       <p>{`DOB: ${formatCompleteDate(detail.dateOfBirth)}`}</p>
                                       <p>{`PassportExp: ${formatCompleteDate(detail.passportExpiryDate)}`}</p>
-                                    </div>
+                                 </div>
                                 ))
                               }
                                  

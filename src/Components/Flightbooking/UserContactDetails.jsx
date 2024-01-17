@@ -25,7 +25,10 @@ import { requestUserPnrBooking } from '../../API/index';
 import { sendOTPCode } from '../../API/index';
 import { verifyOTPRes } from '../../API/index';
 
+
+
 const UserContactDetails = (props) => {
+  const {isLogin , setLogIn} = useFormData();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('');
   const [userOTP , setUserOtp] = useState('');
@@ -160,14 +163,7 @@ const UserContactDetails = (props) => {
       console.log("enteredOtpenteredOtp",enteredOtp);
       try {
         const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
-        
-        // if (verificationResult.status==='SUCCESS') {
-        //   setIsOtpTrue(true);
-        //   setDisplayContact(true);
-        // } else {
-        //   setIsOtpTrue(false);
-        // }
-        if (enteredOtp==='111111') {
+        if (verificationResult.status==='SUCCESS') {
           setIsOtpTrue(true);
           setDisplayContact(true);
         } else {
@@ -431,44 +427,56 @@ const UserContactDetails = (props) => {
                     </p>
                   </div>
                 </div>
-                <div className="user_contact_info">
-                  <p className="iti_mob_title">Phone Number<span className='text-danger'>*</span></p>
-                </div>
-                <div className="d-flex justify-content-start wrap  flex-wrap">
-                  <div className="ph_input_filed">
-                  <PhoneInput
-                        country={'pk'}
-                        value={`+${countryCode} ${phoneNumber}`} // Display the formatted phone number
-                        onChange={(value, country) => handlePhoneNumberChange(value, country)}
-                        placeholder="Enter your phone number"
-                      />
+                 <div>
+                  <div className="user_contact_info">
+                    <p className="iti_mob_title">Phone Number<span className='text-danger'>*</span></p>
                   </div>
-                 
-                  <div>
-                    <button type="button" onClick={sendOTPHandller} className="btn btn-primary iti_otp_button">
-                      Get OTP
-                    </button>
+                  <div className="d-flex justify-content-start wrap  flex-wrap">
+                    <div className="ph_input_filed">
+                    <PhoneInput
+                          country={'pk'}
+                          value={`+${countryCode} ${phoneNumber}`} 
+                          onChange={(value, country) => handlePhoneNumberChange(value, country)}
+                          placeholder="Enter your phone number"
+                        />
+                    </div>
+                  
+                    {
+                      isLogin ?(''):(
+                        <div>
+                      <button type="button" onClick={sendOTPHandller} className="btn btn-primary iti_otp_button">
+                        Get OTP
+                      </button>
+                    </div>
+                      )
+                    }
                   </div>
-                </div>
-                <div className="user_contact_info">
-                  <p className="iti_mob_title">OTP (Authentication Code) 1111</p>
-                </div>
-                <div className="iti_otp_main d-flex justify-content-start">
-                  {Array.from({ length: 6 }).map((_, index) => (
-                    <input
-                      key={index}
-                      type="text"
-                      className={`otp_block ${isColorChange === index ? 'blue_border_input' : ''
-                        }`}
-                      maxLength={1}
-                      value={Otp[index] || ''}
-                      onChange={(e) => handleOtp(index, e.target.value)}
-                      ref={(input) => (otpInputs.current[index] = input)}
-                      onClick={() => handleInputClick(index)}
-                      onFocus={() => handleInputFocus(index)}
-                    />
-                  ))}
-                </div>
+                  {
+                    isLogin ?(''):(
+                   <div>
+                    <div className="user_contact_info">
+                      <p className="iti_mob_title">OTP (Authentication Code) 1111</p>
+                    </div>
+                    <div className="iti_otp_main d-flex justify-content-start">
+                      {Array.from({ length: 6 }).map((_, index) => (
+                        <input
+                          key={index}
+                          type="text"
+                          className={`otp_block ${isColorChange === index ? 'blue_border_input' : ''
+                            }`}
+                          maxLength={1}
+                          value={Otp[index] || ''}
+                          onChange={(e) => handleOtp(index, e.target.value)}
+                          ref={(input) => (otpInputs.current[index] = input)}
+                          onClick={() => handleInputClick(index)}
+                          onFocus={() => handleInputFocus(index)}
+                        />
+                      ))}
+                    </div>
+                   </div>
+                    )
+                  }
+                 </div>
                 <div className='otp_message_placeholder'>
                   {showMessage && (
                     <p className="otp_message"> {isOtpTrue ? (<span className="success_message">OTP successfull</span>) : (<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
@@ -501,7 +509,7 @@ const UserContactDetails = (props) => {
                 </div>
               </div>
               <div>
-                {displayContact && (
+                {isLogin && (
                   <div className="traveler_detail_main">
                     <div className="trav_data_main">
                       <h5 className="trav_heading"> Traveller Details</h5>

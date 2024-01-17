@@ -13,6 +13,7 @@ const UserPanel = () => {
   const { showHeader, setShowHeader } = useFormData();
 
 
+  console.log('menu',SideBarMenu);
   useEffect(()=>{
     setShowHeader(false);
 
@@ -21,19 +22,20 @@ const UserPanel = () => {
     }
   },[setShowHeader]);
 
-  console.log("afterContextShowHeader",showHeader)
+  console.log("afterContextShowHeader",showHeader);
+
   return (
     <Fragment>
  <div className='dashboard-container'>
         <Sidebar menu={SideBarMenu}/>
-          
           <div className='dashboard-body'>
             <div>
             <DashboardHeader
                       btnText="New Order" />
             </div>
-            {/* <BookingDetails/> */}
-            <UserProfile/>
+            
+            <BookingDetails/>
+            {/* <UserProfile/> */}
               <Routes>
                   {/* <Route path="*" element={<div>404 Not Found</div>} />
                   <Route exact path="/" element={<div>hello world </div>} /> */}
@@ -41,7 +43,6 @@ const UserPanel = () => {
                   <Route exact path="/userPanel/bookingdetail" element={<BookingDetails/>} />
                   <Route exact path="/userPanel/profile" element={<div></div>} />
                   <Route exact path="/userPanel/userSupport" element={<div></div>} />
-
               </Routes>
           </div>
       </div>

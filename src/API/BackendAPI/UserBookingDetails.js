@@ -25,7 +25,7 @@ export const UserBookingDetails = async(finalObject)=>{
 
 export const ReFund = async(id)=>{
 	apiClient
-			.patch(`/pnrBooking/reqForRefund/3`,id)
+			.patch(`/pnrBooking/reqForRefund/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
@@ -44,8 +44,7 @@ export const ReFund = async(id)=>{
 
 export const ReIssue = async(id)=>{
 	apiClient
-	// .patch(`/pnrBooking/reqForReIssue/${id}`,id)
-			.patch(`/pnrBooking/reqForReIssue/3`,id)
+			.patch(`/pnrBooking/reqForRefund/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
@@ -66,7 +65,7 @@ export const ReIssue = async(id)=>{
 
 export const Cancelation = async(id)=>{
 	apiClient
-			.patch(`/pnrBooking/reqForCancellation/3`,id)
+			.patch(`/pnrBooking/reqForRefund/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
@@ -101,22 +100,22 @@ export const updateUserProfile =async(userUpdatedObject)=>{
 			});
 
 }
+// -------------------------------user Logout--------------------------------
 
-// export const updateUserProfile = async (userUpdatedObject) => {
-// 	try {
-// 	  const res = await apiClient.patch(`/users`, userUpdatedObject);
-  
-// 	  if (res.data.status === 'SUCCESS') {
-// 		// Access the updated user profile data from the response
-// 		const updatedUserProfile = res.data.updatedUserProfile;
-// 		console.log('Profile updated successfully:', updatedUserProfile);
-// 		return updatedUserProfile; // You can return the updated data if needed
-// 	  } else {
-// 		console.log('Update failed:', res.data.message, 'danger');
-// 		return null; // Handle failure, maybe return null or throw an error
-// 	  }
-// 	} catch (err) {
-// 	  console.error('Error updating profile:', err.message, 'danger');
-// 	  throw err; // Rethrow the error or handle it as needed
-// 	}
-//   };
+export const UserLogOut =async()=>{
+	apiClient
+			.post(`/auth/logout`)
+			.then((res) => {
+				if (res.data.status === 'SUCCESS') {
+
+					console.log( res.data.message, 'success');
+
+				} else {
+					console.log(res.data.message, 'danger');
+				}
+			})
+			.catch((err) => {
+				console.error( err.message, 'Danger');
+			});
+
+}

@@ -4,13 +4,28 @@ import './styles.css';
 import NotificationIcon from '../../../../assets/BackendAssests/icons/notification.svg';
 import SettingsIcon from '../../../../assets/BackendAssests/icons/settings.svg';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+import { UserLogOut } from '../../../../API/BackendAPI/UserBookingDetails';
+import { useNavigate } from 'react-router';
 function DashboardHeader ({ btnText, onClick }) {
     const [isModel , setModel] = useState(false);
+    const [isLogOut , setLogOut] = useState(false);
+
+    const navigate = useNavigate();
     const openUserModel = ()=>{
         setModel(!isModel);
     }
     const closeModel = () =>{
         setModel(false);
+    }
+
+    const UserLogout =async () =>{
+
+        const logout =await UserLogOut();
+        setLogOut(true);
+    }
+
+    if(isLogOut){
+      navigate('/');
     }
     return(
        <Fragment>
@@ -41,7 +56,7 @@ function DashboardHeader ({ btnText, onClick }) {
                         <ul className="user_model_list">
                             <li>User Profile</li>
                             <li>Ticket Details</li>
-                            <li>Logout</li>
+                            <li onClick={UserLogout}>Logout</li>
                         </ul>
                     </div>
                 )
