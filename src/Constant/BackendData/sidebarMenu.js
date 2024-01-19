@@ -10,33 +10,33 @@ const sidebar_menu = [
     {
         id: 1,
         icon: DashboardIcon,
-        path: '/userPanel/dashboard',
+        path: '/booking',
         title: 'Dashboard',
     },
     {
         id: 2,
         icon:UserIcon ,
-        path: '/userPanel/orders',
+        path: '/profile',
         title: 'User Profile',
     },
-    {
-        id: 3,
-        icon: ShippingIcon,
-        path: '/userPanel/bookings',
-        title: 'User Bookings',
-    },
-    {
-        id: 4,
-        icon: ProductIcon,
-        path: '/userPanel/refund',
-        title: 'Refund and Cancellation Policies',
-    },
-    {
-        id: 5,
-        icon: UserIcon,
-        path: '/userPanel/userSupport',
-        title: 'Support',
-    },
+    // {
+    //     id: 3,
+    //     icon: ShippingIcon,
+    //     path: '/userPanel/bookings',
+    //     title: 'User Bookings',
+    // },
+    // {
+    //     id: 4,
+    //     icon: ProductIcon,
+    //     path: '/userPanel/refund',
+    //     title: 'Refund and Cancellation Policies',
+    // },
+    // {
+    //     id: 5,
+    //     icon: UserIcon,
+    //     path: '/userPanel/userSupport',
+    //     title: 'Support',
+    // },
     
 ]
 

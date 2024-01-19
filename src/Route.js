@@ -19,9 +19,11 @@ import BookingDetails from './Components/BookingPayment/Comman/BookingDetails';
 import { Routes, Route } from 'react-router-dom';
 
 
-import UserPanel from './Components/BackendDesign/UserPanel/UserPanel';
+// import UserPanel from './Components/BackendDesign/UserPanel/UserPanel';
 
-import Orders from './Components/BackendDesign/UserPanel/pages/Orders';
+// import Orders from './Components/BackendDesign/UserPanel/pages/Orders';
+
+import MyUserPanel from './Components/BackendDesign/MyPanel/MyUserPanel';
 const AppRouter = () => {
   return (
     <Fragment>
@@ -44,7 +46,9 @@ const AppRouter = () => {
         <Route path="/GetPNRItinerary" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
-        <Route path="/userPanel" element={<UserPanel/>} />
+        {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
+        <Route path="/userPanel" element={<MyUserPanel/>} />
+
 
       
         {/* Catch-all route for unknown routes */}

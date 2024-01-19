@@ -75,7 +75,7 @@ const App = () => {
     <Fragment>
       <div className="backgradiant">
         <div className="container-fluid">
-            {!inputPNR && showHeader && <TopNavBar />}
+            {!inputPNR &&<TopNavBar />}
             {!inputPNR && showHeader && <Header />}
             <Routes />
             {!inputPNR && <Footer />}

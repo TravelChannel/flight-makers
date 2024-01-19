@@ -27,6 +27,7 @@ import { verifyOTPRes } from '../../API/index';
 
 
 
+
 const UserContactDetails = (props) => {
   const {isLogin , setLogIn} = useFormData();
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -166,6 +167,7 @@ const UserContactDetails = (props) => {
         if (verificationResult.status==='SUCCESS') {
           setIsOtpTrue(true);
           setDisplayContact(true);
+          setLogIn(true);
         } else {
           setIsOtpTrue(false);
         }
@@ -213,20 +215,46 @@ const UserContactDetails = (props) => {
       setIsTimerRunning(false);
     }
   }, [currentTime]);
-  useEffect(() => {
-    if (isOtpTrue === true || isOtpTrue === false) {
-      setShowMessage(true);
-      const timer = setTimeout(() => {
-        setShowMessage(false);
-        setIsOtpTrue(null);
-      }, 1000);
-      setOtp([]);
+
+  // useEffect(() => {
+  //   if (isOtpTrue === true || isOtpTrue === false) {
+  //     setShowMessage(true);
+  //     const timer = setTimeout(() => {
+  //       setShowMessage(false);
+  //       setIsOtpTrue(null);
+  //     }, 1000);
+  //     setOtp([]);
+  //     otpInputs.current[0].focus();
+  //     return () => {
+  //       clearTimeout(timer);
+  //     };
+  //   }
+  // }, [isOtpTrue]);
+
+
+
+// ...
+useEffect(() => {
+  // Assign ref to input elements after they have been rendered
+  const numberOfInputs = otpInputs.current.length;
+
+  if (isOtpTrue === true || isOtpTrue === false) {
+    setShowMessage(true);
+    const timer = setTimeout(() => {
+      setShowMessage(false);
+      setIsOtpTrue(null);
+    }, 1000);
+
+    // Make sure otpInputs.current[0] is not null before accessing focus
+    if (numberOfInputs > 0 && otpInputs.current[0]) {
       otpInputs.current[0].focus();
-      return () => {
-        clearTimeout(timer);
-      };
     }
-  }, [isOtpTrue]);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }
+}, [isOtpTrue]);
 
   useEffect(() => {
     const handleSideBar = () => {

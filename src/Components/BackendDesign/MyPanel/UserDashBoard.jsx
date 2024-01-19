@@ -1,14 +1,15 @@
-import React, {useState,Fragment} from 'react';
-
-import './styles.css';
-import NotificationIcon from '../../../../assets/BackendAssests/icons/notification.svg';
-import SettingsIcon from '../../../../assets/BackendAssests/icons/settings.svg';
+import React,{useState,Fragment} from 'react'
+import SettingsIcon from '../../../assets/BackendAssests/icons/settings.svg';
+import Notification from '../../../assets/BackendAssests/icons/notification.svg';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
-import { UserLogOut } from '../../../../API/BackendAPI/UserBookingDetails';
+import { UserLogOut } from '../../../API/BackendAPI/UserBookingDetails';
 import { useNavigate } from 'react-router';
-function DashboardHeader ({ btnText, onClick }) {
+import { useFormData } from '../../../Context/FormDataContext';
+const UserDashBoard = ({ btnText, onClick }) => {
     const [isModel , setModel] = useState(false);
     const [isLogOut , setLogOut] = useState(false);
+    const {isLogin , setLogIn} = useFormData();
+
 
     const navigate = useNavigate();
     const openUserModel = ()=>{
@@ -22,18 +23,19 @@ function DashboardHeader ({ btnText, onClick }) {
 
         const logout =await UserLogOut();
         setLogOut(true);
+        setLogIn(false);
     }
 
     if(isLogOut){
       navigate('/');
     }
-    return(
-       <Fragment>
+  return (
+           <Fragment>
          <div className='dashbord-header-container'>
                 <button className='dashbord-header-btn' onClick={onClick}>New Order</button>
             <div className='dashbord-header-right'>
                 <img 
-                    src={NotificationIcon}
+                    src={Notification}
                     alt='notification-icon'
                     className='dashbord-header-icon' />
                 <img 
@@ -63,7 +65,7 @@ function DashboardHeader ({ btnText, onClick }) {
             }
         </div>
        </Fragment>
-    )
+  )
 }
 
-export default DashboardHeader;
+export default UserDashBoard;
