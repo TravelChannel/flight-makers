@@ -5,4 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './Store/store'
 import { Provider } from 'react-redux';
 import { FormDataProvider } from './Context/FormDataContext';
-createRoot(document.getElementById('root')).render(<Fragment> <BrowserRouter><FormDataProvider><Provider store={store}><App/></Provider></FormDataProvider></BrowserRouter> </Fragment>);
+import { UserDataProvider } from './Context/UserDataContext';
+createRoot(document.getElementById('root')).render(
+<Fragment>
+<BrowserRouter>
+<FormDataProvider>
+<UserDataProvider>
+<Provider store={store}><App/></Provider>
+</UserDataProvider>
+</FormDataProvider>
+</BrowserRouter>
+ </Fragment>);

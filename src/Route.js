@@ -24,6 +24,7 @@ import { Routes, Route } from 'react-router-dom';
 // import Orders from './Components/BackendDesign/UserPanel/pages/Orders';
 
 import MyUserPanel from './Components/BackendDesign/MyPanel/MyUserPanel';
+import UserCompleteDetail from './Components/BackendDesign/MyPanel/Pages/common/UserCompleteDetail';
 const AppRouter = () => {
   return (
     <Fragment>
@@ -48,6 +49,8 @@ const AppRouter = () => {
         <Route path="/FAQs" element={<FAQs/>} />
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
+        <Route path="/userDetails" element={<UserCompleteDetail/>} />
+
 
 
       

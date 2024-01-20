@@ -6203,7 +6203,8 @@ text-align: right;
 }
 .user_detials_data{
   font-size:16px;
-  color:#000;
+  color:#010101;
+  padding-left:5px;
 }
 .passnger_pnr_info{
   font-weight:600;
@@ -6219,10 +6220,11 @@ text-align: right;
 	background-image: linear-gradient(#015C92, #2D83B5, #89CCF6);
 	color:white;
 	padding:20px;
+  height:100vh;
 }
 .right_menu_content{
   flex:5;
-  height:auto;
+  /* height:auto; */
 	border: 1px solid #d9cccc;
   border-radius:3px;
   background-color: white;
@@ -6265,15 +6267,22 @@ text-align: right;
 .menu_content_icon{
 	width:25px !important;
 }
+.left_menu_content{
+  margin-bottom:25px;
+
+}
 .menu_complete_content{
-	padding-left:20px;
-	margin-bottom:20px;
-	padding-top:15px;
 	cursor: pointer;
+  padding:10px 7px;
+
 }
 .menu_complete_content:hover{
 	 	background-color: #004B77;
 	 	border-radius:4px;
+    
+     /* padding-left:20px;
+     margin-bottom:20px;
+     padding-top:15px; */
 	    /* padding:10px; */
 }
 .dashbord-header-avatar {
@@ -6303,7 +6312,7 @@ text-align: right;
 }
 .user_active_content{
   background-color: #004B77;
-	padding:10px;
+	padding:10px 7px;
 
 }
 
@@ -6394,8 +6403,10 @@ text-align: right;
 /* ----------------------------------my styling------------------------- */
 
 .buttons_typo{
-	/* margin-right:10px; */
+	margin-right:5px;
     padding:7px 30px;
+    /* background-color: #F26223;
+    border:none; */
 }
 .User_card_detail{
     background-color:#ffff;
@@ -6466,4 +6477,163 @@ margin-top:3px;
   
 }
 
+/* --------------Card Table------------------- */
+.user_table_details{
+  margin-top: 40px;
+  margin-left: 10px;
+}
+.pnr_table_font{
+  font-size:18px;
+}
+tbody, td, tfoot, th, thead, tr{
+  /* border-width: 1px !important; */
+  text-align: center !important;
+}
+
+.table_flight_font{
+  font-size:18px;
+}
+
+.further_detail_heading{
+  background-color: #F26223;
+  color:white;
+  padding:10px 0px;
+  text-align: center;
+  margin-bottom:10px;
+  
+}
+.flight_airoplane{
+  font-size: 30px !important;
+  margin-right:10px;
+}
+.user_panel_flight{
+  /* padding:20px 5px; */
+}
+.price_detail_userpanel{
+  padding:20px 5px;
+}
+.w_25_userpanel{
+  width:12%;
+}
+.panel_numbering_typo{
+  padding-left:20px;
+}
+.passanger_info_main{
+  padding-left:20px;
+}
+.user_cancelation_button{
+  background-color: transparent;
+  color:#000;
+  /* font-size:14px; */
+  font-weight:600;
+  /* border:none;  */
+}
+/* .user_ReIssue_button{
+  background-color: #F26223;
+  border: none;
+} */
 /* ------------------------------------------Backend Design CSS  end------------------------------------------------------ */
+.user_name{
+  margin-left:20px;
+}
+.user_name p {
+  display: inline;
+  font-size: 17px;
+  font-weight:bold;
+
+}
+.user_detail_p{
+  margin-top: 20px;
+} 
+
+.user_profile img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  margin-top: 20px;
+  /* align-self: center; */
+
+}
+.user_profile{
+  padding-top: 50px;
+  padding-bottom:50px;
+
+
+}
+.userprofile_data p,h6{
+display: inline;
+}
+.line_details {
+  /* border-bottom: 1px solid gray; */
+  margin-top: 20px;
+  margin-bottom: 22px;
+  /* width: 100%; */
+  font-weight: 600;
+}
+
+.userpanel-vertical-line{
+  flex: 1;
+  width: 1px;
+  height: auto;
+  position: relative;
+  margin:0px 20px;
+  background-image: linear-gradient(to bottom, gray 50%, transparent 50%);
+  background-size: 1px 10px;
+}
+.userprofile_seprator{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  padding: 0px 10px;
+}
+.userProfile_bg{
+  padding: 10px;
+  background: linear-gradient(to bottom, #0070BB  , #de6320);
+  border-top-right-radius: 50px; 
+  border-bottom-right-radius:50px ;
+  color:white;
+  width:270px;
+
+}
+.background_line{
+  background-color: aliceblue;
+}
+.contact_info_data{
+  font-weight:600;
+  padding-left:3px;
+}
+
+/* ------------- */
+.passenger_main_content {
+  margin: 10px 20px;
+  border: 1px solid black;
+  /* margin-left: 20px; */
+  /* margin-bottom: 10px; */
+  /* width: 25%; */
+  /* width: 30% !important; */
+}
+.passenger_info_main h5{
+  padding: 10px 0px;
+  text-align: center;
+  background-color:  #0070BB;
+  color: white;
+  
+  
+}
+.passenger_info_inner{
+  padding:  15px;
+ 
+
+}
+.user_name_new p{
+  display: inline;
+  font-weight: bold;
+  
+}
+.user_name_new i {
+  color: gray;
+
+}

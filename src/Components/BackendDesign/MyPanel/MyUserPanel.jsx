@@ -18,6 +18,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import UserBookingsDetails from './Pages/UserBookingsDetails';
+import UserCustomerSupport from './Pages/UserCustomerSupport';
+import userDetailsBackend from '../../../API/BackendAPI/BackendAPI_Fun';
+
+
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -25,7 +30,12 @@ const MyUserPanel = ()=>{
 	 const [open, setOpen] = useState(false);
 	 const [isLogOut , setLogout] = useState(false);
 	 const {isLogin , setLogIn} = useFormData();
+// ------------------
 
+const [isLoading , setLoading]=useState(false);
+ const [backLoading , setBackLoading] =useState(false);
+ const [userData ,setUser] = useState(null);
+// ------------------
 	 const navigate = useNavigate();
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
@@ -53,6 +63,31 @@ if (isLogOut) {
   const handleClose = () => {
     setOpen(false);
   };
+
+//   ------------------------------------------
+
+ // ------------------
+ useEffect(()=>{
+	const fetchBackendData =async()=>{
+	  try{
+		setLoading(true);
+		const userData = await userDetailsBackend(setBackLoading);
+	  //  console.log("ApiCalledData",userData?.data.payload);
+	  console.log("ApiCalledData",userData);
+		  setUser(userData);
+		  setLoading(false);
+	  }
+	  catch (error){
+		  console.error(error);
+	  }
+  } ;
+  
+  fetchBackendData();
+   },[]);
+//    --------------------------
+// ------------------------------------------------
+
+
 	return(
 		<div className='container'>
 			<div className='d-flex justify-content-start'> 
@@ -78,14 +113,14 @@ if (isLogOut) {
                   <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 1 ? 'user_active_content' : ''}`}onClick={() => handleMenuItemClick(1)}>
                   		<DashboardIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>DashBoard</p>
+                  			<p className='d-flex align-self-center menu_content_typo'>Booking Details</p>
                   		</div>
 
                   </div>
                    <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 2 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(2)}>
                   		<AirplaneTicketIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>Booking Details</p>
+                  			<p className='d-flex align-self-center menu_content_typo'>User Profile</p>
                   		</div>
 
                   </div>
@@ -99,7 +134,7 @@ if (isLogOut) {
                    <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 4 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(4)}>
                   		<WalletIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>Wallet</p>
+                  			<p className='d-flex align-self-center menu_content_typo'>Customer Support</p>
                   		</div>
 
                   </div>
@@ -126,14 +161,16 @@ if (isLogOut) {
 				 		<UserDashBoard/> 
 				 		</div>
 				{selectedMenuItem === 1 && (
-						 <BookingDetail/>
+					<UserBookingsDetails userData={userData} isLoading ={isLoading}/>
 						)}
           		{selectedMenuItem === 2 && 
-				<UserProfile/>
+				<UserProfile userData={userData} isLoading ={isLoading}/>
 				}
           		
           		{selectedMenuItem === 3 && 
 				<h3>hello</h3>}
+				{selectedMenuItem === 4 && 
+				<UserCustomerSupport userData={userData} isLoading ={isLoading}/>}
 				 </div>
 
 				 <Dialog

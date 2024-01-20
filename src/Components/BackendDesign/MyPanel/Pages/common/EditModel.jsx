@@ -87,7 +87,7 @@ const [selectedDate, setSelectedDate] = useState(null);
     console.log("userUpdatedObject",userUpdatedObject);
  const updateDataAPI = await updateUserProfile(userUpdatedObject);
  window.location.reload();
-
+//  window.location.href = "/specific-page";
   };
   return (
     <Modal isOpen={isOpen} toggle={toggleModal} className="custom_edit_modal">
