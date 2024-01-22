@@ -6608,12 +6608,9 @@ display: inline;
 
 /* ------------- */
 .passenger_main_content {
-  margin: 10px 20px;
-  border: 1px solid black;
-  /* margin-left: 20px; */
-  /* margin-bottom: 10px; */
-  /* width: 25%; */
-  /* width: 30% !important; */
+  margin: 10px;
+  border: 1px solid #9d9d9d;
+  border-radius: 4px;
 }
 .passenger_info_main h5{
   padding: 10px 0px;

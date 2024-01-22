@@ -103,7 +103,7 @@ const UserBookingsDetails = (props) => {
                                 ))}
                             </td>
                             <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                            <td>Paid</td>
+                            <td>UnPaid</td>
                             <td>
                                 <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}>
                                 View

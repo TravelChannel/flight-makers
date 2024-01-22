@@ -57,8 +57,12 @@ const UserCustomerSupport = (props) => {
         console.log(`ReIssue API called for booking ${id}`);
     
       }
-      const handleClose = () => {
+      const handleClose = (id) => {
         setOpen(false);
+        setDisabledButtons((prevDisabledButtons) => ({
+          ...prevDisabledButtons,
+          [id]: false,
+        }));
       };
     
       const openDialogBox = (id)=>{
@@ -204,7 +208,7 @@ const UserCustomerSupport = (props) => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose}>Disagree</Button>
+                        <Button onClick={()=>handleClose(dialogContent.userID)}>Disagree</Button>
                         <Button onClick={()=>handleAgreeClick(dialogContent.userID)} autoFocus>
                         Agree
                         </Button>
