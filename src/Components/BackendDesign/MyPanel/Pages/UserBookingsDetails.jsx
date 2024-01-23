@@ -5,6 +5,7 @@ import Loader from '../../../../Loader/Loader';
 import { useUserData } from '../../../../Context/UserDataContext';
 import { cityNameFunct, formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../helpers/formatdata';
 import UndoIcon from '@mui/icons-material/Undo';
+import { dataNotfound } from '../../../../Constant/images';
 const UserBookingsDetails = (props) => {
 
     const {userData,isLoading} = props;
@@ -70,51 +71,57 @@ const UserBookingsDetails = (props) => {
                   </div>  
            </div>
            <div className='user_table_details'>
-                  <table className='table table-bordered table_custom'>
-                  <thead className='thead_typo'> 
-                      <tr>
-                          <th> PNR ID</th>
-                          <th>User ID</th>
-                          <th>Flight Segment</th>
-                          <th>CreatedAt</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                        {userPayLoad?.map((items, index) => (
-                            <tr key={index}>
-                            <td className="">{items.id}</td>
-                            <td className="">{items.userId}</td>
-                            <td>
-                                {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
-                                <Fragment key={itmsIndex}>
-                                    <div className='d-flex justify-content-center'>
-                                    <p className="table_flight_font">{cityNameFunct[itms.departureLocation]}</p>
-                                    <span className="airport_spacing">
-                                            {/* <RedoOutlinedIcon /> */}
-                                            {
-                                                itmsIndex===0 ? <RedoOutlinedIcon /> :<UndoIcon/>
-                                            }
-                                    </span>
-                                    <p className="table_flight_font">{cityNameFunct[itms.arrivalLocation]}</p>
-                                    </div>
-                                </Fragment>
-                                ))}
-                            </td>
-                            <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                            <td>UnPaid</td>
-                            <td>
-                                <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}>
-                                View
-                                </button>
-                            </td>
-                            </tr>
+            {userPayLoad?.length ? (
+                <table className='table table-bordered table_custom'>
+                <thead className='thead_typo'>
+                    <tr>
+                    <th>PNR ID</th>
+                    <th>User ID</th>
+                    <th>Flight Segment</th>
+                    <th>CreatedAt</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {userPayLoad.map((items, index) => (
+                    <tr key={index}>
+                        <td className="">{items.id}</td>
+                        <td className="">{items.userId}</td>
+                        <td>
+                        {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
+                            <Fragment key={itmsIndex}>
+                            <div className='d-flex justify-content-center'>
+                                <p className="table_flight_font">{cityNameFunct[itms.departureLocation]}</p>
+                                <span className="airport_spacing">
+                                {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
+                                </span>
+                                <p className="table_flight_font">{cityNameFunct[itms.arrivalLocation]}</p>
+                            </div>
+                            </Fragment>
                         ))}
-                        </tbody>
-                  </table>
-  
-           </div>
+                        </td>
+                        <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
+                        <td>UnPaid</td>
+                        <td>
+                        <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}>
+                            View
+                        </button>
+                        </td>
+                    </tr>
+                    ))}
+                </tbody>
+                </table>
+            ) : (
+                <div className='text-center py-5 bg-white'>
+                    <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
+                    <h2>No flight bookings found</h2>
+                    <p>Explore Destinations, Book Your Flight </p>
+               </div>
+            )
+            
+            }
+            </div>
       </div>
         )
   )

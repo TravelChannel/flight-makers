@@ -13,6 +13,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { dataNotfound } from '../../../../Constant/images';
 
 const UserCustomerSupport = (props) => {
     const {userData,isLoading} = props;
@@ -88,7 +89,7 @@ const UserCustomerSupport = (props) => {
           case "cancel":
             setDialogContent({
               title: "Cancel Confirmation",
-              description: "Are you sure you want to cancel this item?",
+              description: "Are you sure you want to cancel your flight?",
               type: "cancel",
               userID: parseInt(id, 10),
             });
@@ -96,7 +97,7 @@ const UserCustomerSupport = (props) => {
           case "reissue":
             setDialogContent({
               title: "Reissue Confirmation",
-              description: "Are you sure you want to reissue this item?",
+              description: "Are you sure you want to reissue your flight?",
               type: "reissue",
               userID: parseInt(id, 10),
             });
@@ -138,7 +139,9 @@ const UserCustomerSupport = (props) => {
                       />
                   </div>  
            </div>
-           <div className='user_table_details'>
+           {
+            userPayLoad?.length? (
+              <div className='user_table_details'>
                   <table className='table table-bordered table_custom'>
                   <thead className='thead_typo'> 
                       <tr>
@@ -216,6 +219,15 @@ const UserCustomerSupport = (props) => {
             </Dialog>
   
            </div>
+            ):(
+              <div className='text-center py-5 bg-white'>
+                    <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
+                    <h2>No flight bookings found</h2>
+                    <p>Explore Destinations, Book Your Flight </p>
+              </div>
+            )
+           }
+           
            
       </div>
     )

@@ -5,6 +5,7 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import { UserLogOut } from '../../../API/BackendAPI/UserBookingDetails';
 import { useNavigate } from 'react-router';
 import { useFormData } from '../../../Context/FormDataContext';
+import * as images from '../../../Constant/images';
 const UserDashBoard = ({ btnText, onClick }) => {
     const [isModel , setModel] = useState(false);
     const [isLogOut , setLogOut] = useState(false);
@@ -44,7 +45,7 @@ const UserDashBoard = ({ btnText, onClick }) => {
                     className='dashbord-header-icon' />
                 <img
                     className='dashbord-header-avatar'
-                    src='https://reqres.in/img/faces/9-image.jpg' onClick = {openUserModel} />      
+                    src={images.userProfile} onClick = {openUserModel} />      
             </div>
            
         </div>

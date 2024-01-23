@@ -264,55 +264,39 @@ const UserCompleteDetail = () => {
                         {userDetail?.map((detail, detailIndex) => (
                                    <Fragment>
                                    <div className="passenger_info_main w-50  ">
-                                        
-                                            {/* <div className=''> */}
                                             <div className="passenger_main_content ">
                                                 <h5 className="main_heading_passenger">Passenger Information</h5>
                                                 <div className="passenger_info_inner d-flex justify-content-between ">
 
                                                     <div className="user_profile_left ">
                                                         <div className="user_name_new">
-                                                            <i className="fa-regular fa-id-badge "></i>
                                                             <p>ID No :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-user "></i>
                                                             <p>First Name :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-user-tie"></i>
                                                             <p>Last Name :</p>
                                                         </div>
-
-
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-users"></i>
                                                             <p>Gender :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-passport"></i>
                                                             <p>Passport No :</p>
                                                         </div>
-
-
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-cake-candles"></i>
                                                             <p>Date of Birth :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-calendar-days"></i>
                                                             <p>PassportExp :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-phone"></i>
                                                             <p>Phone No :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-id-card"></i>
                                                             <p>CNIC No :</p>
                                                         </div>
                                                         <div className="user_name_new">
-                                                            <i className="fa-solid fa-envelope"></i>
                                                             <p>Email :</p>
                                                         </div>
                                                     </div>
@@ -330,9 +314,6 @@ const UserCompleteDetail = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* </div> */}
-
-
                                         </div>
                                    </Fragment>
                                     ))}
