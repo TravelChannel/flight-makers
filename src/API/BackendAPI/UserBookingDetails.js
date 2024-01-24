@@ -44,7 +44,7 @@ export const ReFund = async(id)=>{
 
 export const ReIssue = async(id)=>{
 	apiClient
-			.patch(`/pnrBooking/reqForRefund/${id}`)
+			.patch(`/pnrBooking/reqForReIssue/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
@@ -65,7 +65,7 @@ export const ReIssue = async(id)=>{
 
 export const Cancelation = async(id)=>{
 	apiClient
-			.patch(`/pnrBooking/reqForRefund/${id}`)
+			.patch(`/pnrBooking/reqForCancellation/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 

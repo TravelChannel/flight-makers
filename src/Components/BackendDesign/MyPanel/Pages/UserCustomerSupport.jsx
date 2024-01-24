@@ -146,7 +146,7 @@ const UserCustomerSupport = (props) => {
                   <thead className='thead_typo'> 
                       <tr>
                           <th> PNR ID</th>
-                          {/* <th>User ID</th> */}
+                          <th>User ID</th>
                           <th>Flight Segment</th>
                           <th>CreatedAt</th>
                           <th>Status</th>
@@ -157,7 +157,7 @@ const UserCustomerSupport = (props) => {
                         {userPayLoad?.map((items, index) => (
                             <tr key={index}>
                             <td className="">{items.id}</td>
-                            {/* <td className="">{items.userId}</td> */}
+                            <td className="">{items.userId}</td>
                             <td>
                                 {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
                                 <Fragment key={itmsIndex}>
@@ -178,18 +178,19 @@ const UserCustomerSupport = (props) => {
                             <td>Paid</td>
                             <td>
                                 <div>
-                                    <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("refund",items.id); }} 
+                                    {/* <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("refund",items.id); }} 
                                     disabled={disabledButtons[items.id]}>
                                     Refund
-                                    </button>
+                                    </button> */}
                                     <button className='btn btn-primary buttons_typo user_cancelation_button' onClick={() => { openDialogBox(items.id); updateDialogContent("cancel",items.id); }}
-                                     disabled={disabledButtons[items.id]}>
+                                     disabled={disabledButtons[items.id]}
+                                     >
                                     Cancel
                                     </button>
-                                    <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("reissue",items.id); }} 
+                                    {/* <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("reissue",items.id); }} 
                                     disabled={disabledButtons[items.id]}>
                                     ReIssue
-                                    </button>
+                                    </button> */}
                                 </div>
                             </td>
                             </tr>

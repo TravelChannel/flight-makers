@@ -4,12 +4,12 @@ import * as images from '../../../../../Constant/images';
 import EditModel from '../common/EditModel';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import Loader from '../../../../../Loader/Loader';
+import { useFormData } from '../../../../../Context/FormDataContext';
 const UserProfile = (props)=>{
   const {userData,isLoading} = props;
   const [backLoading , setBackLoading] =useState(false);
-  // const [userData ,setUser] = useState(null);
   const [isOpen , setIsOpen] = useState(false);
-  // const [isLoading , setLoading] = useState(false);
+
 
   const openEditModel = ()=>{
     setIsOpen(true);
@@ -35,6 +35,10 @@ const UserProfile = (props)=>{
 
    const userProfileData = userData?.data.payload.map((items)=>items.user);
    console.log("userProfileData",userProfileData);
+// -----------------
+// const userNameForDisplay = userProfileData?.[0]?.firstName;
+// setUserName(userNameForDisplay);
+// --------------------
 
    const  ArrangeDateFormat = (JourneyDate) =>{
     const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');

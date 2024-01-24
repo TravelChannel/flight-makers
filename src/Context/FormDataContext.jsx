@@ -9,9 +9,10 @@ export const FormDataProvider = ({ children }) => {
   // const [airSialData, setAirSialData] = useState({});
   const [isLogin , setLogIn] = useState(false);
   const [userVerName , setVarName] = useState('');
+  const [userName , setUserName] = useState('');
 
   return (
-    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader,isLogin,setLogIn,userVerName, setVarName}}>
+    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader,isLogin,setLogIn,userVerName, setVarName,userName,setUserName}}>
       {children}
     </FormDataContext.Provider>
   );

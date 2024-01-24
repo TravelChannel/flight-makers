@@ -18,6 +18,7 @@ import { updateUserProfile } from '../../../../../API/BackendAPI/UserBookingDeta
 const EditModel = (props) => {
  const {isOpen , setIsOpen} = props;
 
+//  const [updatedData , setUpdatedData] = useState('');
 //  const [selectedDate, setSelectedDate] = useState(null);
 
  const [firstName, setFirstName] = useState('');
@@ -87,7 +88,7 @@ const [selectedDate, setSelectedDate] = useState(null);
     console.log("userUpdatedObject",userUpdatedObject);
  const updateDataAPI = await updateUserProfile(userUpdatedObject);
  window.location.reload();
-//  window.location.href = "/specific-page";
+//  setIsOpen(false);
   };
   return (
     <Modal isOpen={isOpen} toggle={toggleModal} className="custom_edit_modal">
@@ -179,7 +180,7 @@ const [selectedDate, setSelectedDate] = useState(null);
             </div>
        </div>
        <div className='model_submit_main'>
-                <button className='btn btn-primary' onClick={handleSubmit}>SUBMIT</button>
+                <button className='btn btn-primary' onClick={handleSubmit}>Update</button>
        </div>
     </ModalBody>
 

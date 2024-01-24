@@ -35,6 +35,7 @@ const MyUserPanel = ()=>{
 const [isLoading , setLoading]=useState(false);
  const [backLoading , setBackLoading] =useState(false);
  const [userData ,setUser] = useState(null);
+ const {userName , setUserName} = useFormData();
 // ------------------
 	 const navigate = useNavigate();
 	 const handleMenuItemClick = (menuItem) => {
@@ -85,6 +86,8 @@ if (isLogOut) {
   fetchBackendData();
    },[]);
 //    --------------------------
+const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
+setUserName(userUpdatedName);
 // ------------------------------------------------
 
 
@@ -93,12 +96,6 @@ if (isLogOut) {
 			<div className='d-flex justify-content-start'> 
 				<div className='left_menu_panel'>
 				  <div className='sidebar-logo-container'>
-		                   {/* <img
-		                        src={images.default}
-		                        className="imgView"
-		                        alt="logo" 
-								width = '20px'
-								/> */}
 								<Link 
 								to={'/'}
 								className="hdrLogo"

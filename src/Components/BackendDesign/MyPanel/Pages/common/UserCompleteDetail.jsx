@@ -329,15 +329,3 @@ const UserCompleteDetail = () => {
 }
 
 export default UserCompleteDetail;
-
-{/* <h5 className='passnger_pnr_info'>Passenger Info</h5>
-                                        <p>{`ID: ${detail.id}`}</p>
-                                        <p>{`FName: ${detail.firstName}`}</p>
-                                        <p>{`LName: ${detail.lastName}`}</p>
-                                        <p>{`CNIC: ${detail.cnic}`}</p>
-                                        <p>{`Gender: ${detail.gender}`}</p>
-                                        <p>{`Passport: ${detail.passportNo}`}</p>
-                                        <p>{`Phone: ${detail.phoneNumber}`}</p>
-                                        <p>{`Email : ${detail.userEmail}`}</p>
-                                        <p>{`DOB: ${formatCompleteDate(detail.dateOfBirth)}`}</p>
-                                        <p>{`PassportExp: ${formatCompleteDate(detail.passportExpiryDate)}`}</p> */}

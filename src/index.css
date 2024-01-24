@@ -6084,18 +6084,6 @@ margin-top:20px;
 
 /* ------------------------------------------------- */
 
-.model_styling{
-  background-color: white;
-  /* border:0.5px solid gray; */
-  border-radius:4px;
-  height:auto;
-  width:100px;
-  padding:2px 5px;
-  cursor:pointer;
-  box-shadow: -1px 1px 4px 2px rgba(0,0,0,.4);
-
- 
-}
 .user_model_list{
   color: #262626;
  font-size:13px;
@@ -6117,10 +6105,20 @@ line-height: 1.5715
   font-weight:600;
 }
 .user_profile_main{
-  position: absolute;
-  right: 21.5%;
-  top: 10%;
-  z-index: 1;
+  position: relative;
+}
+.user_profile_card{
+  position:absolute;
+ top: -18px;
+    right: 40px;
+  z-index:10;
+  background-color: white;
+  border-radius:4px;
+  height:auto;
+  width:100px;
+  padding:2px 5px;
+  cursor:pointer;
+  box-shadow: -1px 1px 4px 2px rgba(0,0,0,.4);
 }
 
 .closeModel_styling{

@@ -53,14 +53,16 @@ const UserDashBoard = ({ btnText, onClick }) => {
             {
                 isModel && (
                     <div className='model_styling user_profile_main'>
-                        <div className='closeModel_styling'>
-                        <CloseTwoToneIcon className='user_close_sign' onClick= {closeModel}/>
+                        <div className='user_profile_card'>
+                            <div className='closeModel_styling'>
+                            <CloseTwoToneIcon className='user_close_sign' onClick= {closeModel}/>
+                            </div>
+                            <ul className="user_model_list">
+                                <li>User Profile</li>
+                                <li>Ticket Details</li>
+                                <li onClick={UserLogout}>Logout</li>
+                            </ul>
                         </div>
-                        <ul className="user_model_list">
-                            <li>User Profile</li>
-                            <li>Ticket Details</li>
-                            <li onClick={UserLogout}>Logout</li>
-                        </ul>
                     </div>
                 )
             }
