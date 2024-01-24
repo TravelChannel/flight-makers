@@ -19,6 +19,9 @@ const UserDashBoard = ({ btnText, onClick }) => {
     const closeModel = () =>{
         setModel(false);
     }
+    const NavigateHomePage = ()=>{
+        navigate('/');
+    }
 
     const UserLogout =async () =>{
 
@@ -33,7 +36,7 @@ const UserDashBoard = ({ btnText, onClick }) => {
   return (
            <Fragment>
          <div className='dashbord-header-container'>
-                <button className='dashbord-header-btn' onClick={onClick}>New Order</button>
+                <button className='dashbord-header-btn' onClick={NavigateHomePage}>New Booking</button>
             <div className='dashbord-header-right'>
                 <img 
                     src={Notification}

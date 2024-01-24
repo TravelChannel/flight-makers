@@ -14,9 +14,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { dataNotfound } from '../../../../Constant/images';
+import { AdminSideCustomerSupp } from '../../../../API/BackendAPI/UserBookingDetails';
 
 const UserCustomerSupport = (props) => {
-    const {userData,isLoading} = props;
+    const {userData,isLoading,checkAdmin} = props;
     const [openDetails, setOpenDetails] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -123,114 +124,117 @@ const UserCustomerSupport = (props) => {
           default:
             console.error("Invalid dialogContent.type");
         }}
-      
+  //  -----------------Admin Side Api------------------
+
+  // const fetchAdminData = async()=>{
+  //   try{
+  //     const apiResponce = await AdminSideCustomerSupp();
+  //     console.log('Admin data:', apiResponce);
+  //   }catch(error){
+  //     console.error('Error fetching admin data:', error);
+  //   }
+  // }
+
+  // if(checkAdmin===true){
+  //   fetchAdminData();
+  // }else{
+  //   console.log('where are you')
+  // }
+
   return (
     isLoading ?(<Loader/>):(
-        <div className='m-3'>
-            <div className='dashboard-content-header'>
-                  <h2>Booking Details</h2>
-                  <div className='dashboard-content-search'>
-                      <input
-                      type='text'
-                      value={''}
-                      placeholder='Search..'
-                      className='dashboard-content-input'
-                      onChange={e => __handleSearch(e)}
-                      />
-                  </div>  
-           </div>
-           {
-            userPayLoad?.length? (
-              <div className='user_table_details'>
-                  <table className='table table-bordered table_custom'>
-                  <thead className='thead_typo'> 
-                      <tr>
-                          <th> PNR ID</th>
-                          <th>User ID</th>
-                          <th>Flight Segment</th>
-                          <th>CreatedAt</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                        {userPayLoad?.map((items, index) => (
-                            <tr key={index}>
-                            <td className="">{items.id}</td>
-                            <td className="">{items.userId}</td>
-                            <td>
-                                {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
-                                <Fragment key={itmsIndex}>
-                                    <div className='d-flex justify-content-center'>
-                                    <p className="table_flight_font">{cityNameFunct[itms.departureLocation]}</p>
-                                    <span className="airport_spacing">
-                                            {/* <RedoOutlinedIcon /> */}
-                                            {
-                                                itmsIndex===0 ? <RedoOutlinedIcon /> :<UndoIcon/>
-                                            }
-                                    </span>
-                                    <p className="table_flight_font">{cityNameFunct[itms.arrivalLocation]}</p>
-                                    </div>
-                                </Fragment>
-                                ))}
-                            </td>
-                            <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                            <td>Paid</td>
-                            <td>
-                                <div>
-                                    {/* <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("refund",items.id); }} 
-                                    disabled={disabledButtons[items.id]}>
-                                    Refund
-                                    </button> */}
-                                    <button className='btn btn-primary buttons_typo user_cancelation_button' onClick={() => { openDialogBox(items.id); updateDialogContent("cancel",items.id); }}
-                                     disabled={disabledButtons[items.id]}
-                                     >
-                                    Cancel
-                                    </button>
-                                    {/* <button className='btn btn-primary buttons_typo' onClick={() => { openDialogBox(items.id); updateDialogContent("reissue",items.id); }} 
-                                    disabled={disabledButtons[items.id]}>
-                                    ReIssue
-                                    </button> */}
-                                </div>
-                            </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                  </table>
-                  <Dialog
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="alert-dialog-title"
-                    aria-describedby="alert-dialog-description"
-                    >
-                    <DialogTitle id="alert-dialog-title">
-                        {dialogContent.title}
-                    </DialogTitle>
-                    <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
-                        {dialogContent.description}
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={()=>handleClose(dialogContent.userID)}>Disagree</Button>
-                        <Button onClick={()=>handleAgreeClick(dialogContent.userID)} autoFocus>
-                        Agree
-                        </Button>
-                    </DialogActions>
-            </Dialog>
-  
-           </div>
-            ):(
-              <div className='text-center py-5 bg-white'>
-                    <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
-                    <h2>No flight bookings found</h2>
-                    <p>Explore Destinations, Book Your Flight </p>
-              </div>
-            )
-           }
-           
-           
+      <div className='m-3'>
+      <div className='dashboard-content-header'>
+        <h2>Customer Support</h2>
+        <div className='dashboard-content-search'>
+          <input
+            type='text'
+            value={''}
+            placeholder='Search..'
+            className='dashboard-content-input'
+            onChange={e => __handleSearch(e)}
+          />
+        </div>
       </div>
+      {
+        userPayLoad?.length ? (
+          <div className='user_table_details'>
+              <table className='table table-bordered table_custom'>
+                <thead className='thead_typo'>
+                  <tr>
+                    <th>PNR ID</th>
+                    <th>User ID</th>
+                    <th>Flight Segment</th>
+                    <th>CreatedAt</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {userPayLoad?.map((items, index) => (
+                    <tr key={index}>
+                      <td className=''>{items.id}</td>
+                      <td className=''>{items.userId}</td>
+                      <td>
+                        {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
+                          <Fragment key={itmsIndex}>
+                            <div className='d-flex justify-content-center'>
+                              <p className='table_flight_font'>{cityNameFunct[itms.departureLocation]}</p>
+                              <span className='airport_spacing'>
+                                {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
+                              </span>
+                              <p className='table_flight_font'>{cityNameFunct[itms.arrivalLocation]}</p>
+                            </div>
+                          </Fragment>
+                        ))}
+                      </td>
+                      <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
+                      <td>Paid</td>
+                      <td>
+                        <div>
+                          <button
+                            className='btn btn-primary buttons_typo user_cancelation_button'
+                            onClick={() => {
+                              openDialogBox(items.id);
+                              updateDialogContent('cancel', items.id);
+                            }}
+                            disabled={disabledButtons[items.id]}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby='alert-dialog-title'
+                aria-describedby='alert-dialog-description'
+              >
+                <DialogTitle id='alert-dialog-title'>{dialogContent.title}</DialogTitle>
+                <DialogContent>
+                  <DialogContentText id='alert-dialog-description'>{dialogContent.description}</DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={() => handleClose(dialogContent.userID)}>Disagree</Button>
+                  <Button onClick={() => handleAgreeClick(dialogContent.userID)} autoFocus>
+                    Agree
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </div>
+          ):(
+          <div className='text-center py-5 bg-white'>
+            <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
+            <h2>No flight bookings found</h2>
+            <p>Explore Destinations, Book Your Flight </p>
+          </div>
+        )
+      }
+    </div>
     )
   )
 }

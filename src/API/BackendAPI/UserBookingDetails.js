@@ -119,3 +119,23 @@ export const UserLogOut =async()=>{
 			});
 
 }
+
+// -----------------------------Customer Support Admin Side --------------------------------
+
+export const  AdminSideCustomerSupp = async()=>{
+	apiClient
+	.get(`/pnrBooking?isReqForReIssue=3`)
+	.then((res) => {
+		if (res.data.status === 'SUCCESS') {
+
+			console.log( res.data.message, 'success');
+
+		} else {
+			console.log(res.data.message, 'danger');
+		}
+	})
+	.catch((err) => {
+		console.error( err.message, 'Danger');
+	});
+
+}

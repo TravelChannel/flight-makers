@@ -88,6 +88,9 @@ if (isLogOut) {
 //    --------------------------
 const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
 setUserName(userUpdatedName);
+
+const checkAdmin = userData?.data?.payload?.[0]?.user?.isAdmin;
+console.log("checkAdmin",checkAdmin);
 // ------------------------------------------------
 
 
@@ -103,7 +106,8 @@ setUserName(userUpdatedName);
 								<img
 										src={images.default}
 										className="imgView"
-										alt="logo" />
+										alt="logo"
+										width = '200px' />
 								</Link>
                   </div>
 
@@ -167,7 +171,7 @@ setUserName(userUpdatedName);
           		{selectedMenuItem === 3 && 
 				<h3>hello</h3>}
 				{selectedMenuItem === 4 && 
-				<UserCustomerSupport userData={userData} isLoading ={isLoading}/>}
+				<UserCustomerSupport userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} />}
 				 </div>
 
 				 <Dialog

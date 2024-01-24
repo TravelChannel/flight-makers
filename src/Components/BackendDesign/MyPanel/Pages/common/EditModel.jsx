@@ -72,7 +72,7 @@ const [selectedDate, setSelectedDate] = useState(null);
   };
 
   const userUpdatedObject = {
-    "username": "hghh",
+    "username": firstName,
     "email": "ssss@gmail.com",
     "passportExpiryDate": "2026-12-23",
     'firstName':firstName,

@@ -6231,10 +6231,11 @@ text-align: right;
 .sidebar-logo-container {
     display: 'flex';
     align-items: center;
+    margin-bottom: 30px;
 }
 .sidebar-logo-container img {
     width: 80%;
-    padding: 2em;
+    padding: 7px 0px
 }
 .sidebar-footer {
 	position: fixed;
