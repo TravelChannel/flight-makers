@@ -24,14 +24,14 @@ const UserCustomerSupport = (props) => {
     const [dialogContent, setDialogContent] = useState({ title: "", description: "",userID:null});
     const [disabledButtons, setDisabledButtons] = useState({});
 
-    console.log("dialogContentdialogContent",dialogContent);
+    // console.log("dialogContentdialogContent",dialogContent);
 
-    console.log("userDatauserData",userData);
+    // console.log("userDatauserData",userData);
     const userPayLoad = userData?.data.payload;
-    console.log('userPayLoad',userPayLoad);
+    // console.log('userPayLoad',userPayLoad);
 
     const FlightShortInfo = userPayLoad?.map((items)=>items.flightDetails);
-    console.log("FlightShortInfo",FlightShortInfo);
+    // console.log("FlightShortInfo",FlightShortInfo);
     const navigate = useNavigate();
 
     const __handleSearch = ()=>{

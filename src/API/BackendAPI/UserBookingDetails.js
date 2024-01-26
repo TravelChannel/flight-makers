@@ -108,10 +108,10 @@ export const UserLogOut =async()=>{
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
-					console.log( res.data.message, 'success');
+					console.log( res.data.message, 'logout success');
 
 				} else {
-					console.log(res.data.message, 'danger');
+					console.log(res.data.message, 'logout danger');
 				}
 			})
 			.catch((err) => {
@@ -128,14 +128,70 @@ export const  AdminSideCustomerSupp = async()=>{
 	.then((res) => {
 		if (res.data.status === 'SUCCESS') {
 
-			console.log( res.data.message, 'success');
+			console.log( res.data.message, 'ReIssue success');
 
 		} else {
-			console.log(res.data.message, 'danger');
+			console.log(res.data.message, 'ReIssue danger');
 		}
 	})
 	.catch((err) => {
 		console.error( err.message, 'Danger');
 	});
+
+}
+
+// ---------------------------Promotions API start----------------------------
+export const AddPromotions = async(PromotionsValue)=>{
+   console.log("PromotionsValueAPI",PromotionsValue);
+	   apiClient
+		   .post(`/promotions`,PromotionsValue)
+		   .then((res) => {
+			   if (res.data.status === 'SUCCESS') {
+
+				   console.log( res.data.message, ' Promotion success');
+                 
+			   } else {
+				   console.log(res.data.message, 'Promotion danger');
+			   }
+		   })
+		   .catch((err) => {
+			   console.error( err.message, 'Danger');
+		   });
+}
+
+// ----------------Get All Promotions---------------------------
+
+export const GetAllPromotions = async () => {
+	try {
+	  const response = await apiClient.get(`/promotions`);
+	  if (response.data.status === 'SUCCESS') {
+		console.log(response.data.message, 'GetPromotion success');
+		return response;
+	  } else {
+		console.log(response.data.message, 'GetPromotion danger');
+		throw new Error(response.data.message); 
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger');
+	  throw err; 
+	}
+  };
+
+//   ------------Delete Promotion-----------------------------------
+export const DeletePromotion =async(id)=>{
+	apiClient
+			.delete(`/promotions/${id}`)
+			.then((res) => {
+				if (res.data.status === 'SUCCESS') {
+
+					console.log( res.data.message, 'Prom_Delte success');
+
+				} else {
+					console.log(res.data.message, 'Prom_Delte danger');
+				}
+			})
+			.catch((err) => {
+				console.error( err.message, 'Danger');
+			});
 
 }

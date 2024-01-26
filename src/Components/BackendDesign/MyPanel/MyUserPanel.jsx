@@ -21,8 +21,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import UserBookingsDetails from './Pages/UserBookingsDetails';
 import UserCustomerSupport from './Pages/UserCustomerSupport';
 import userDetailsBackend from '../../../API/BackendAPI/BackendAPI_Fun';
-
-
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import PromotionsDetail from './Pages/PromotionsDetail';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -139,8 +139,20 @@ console.log("checkAdmin",checkAdmin);
                   		</div>
 
                   </div>
+				  {/* {
+					checkAdmin === true ?
+					( */}
+						<div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+                  		<RecordVoiceOverIcon className='menu_content_icon' />
+                  			<p className='d-flex align-self-center menu_content_typo'>Promotions </p>
+                  		</div>
+
+                  </div>
+					{/* ):('')
+				  } */}
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 5 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 6 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -172,6 +184,8 @@ console.log("checkAdmin",checkAdmin);
 				<h3>hello</h3>}
 				{selectedMenuItem === 4 && 
 				<UserCustomerSupport userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} />}
+				{selectedMenuItem === 5 && 
+				<PromotionsDetail checkAdmin = {checkAdmin} />}
 				 </div>
 
 				 <Dialog

@@ -6633,3 +6633,52 @@ display: inline;
   color: gray;
 
 }
+
+/* -----------------Promotion Start----------------- */
+.promotion_design{
+  background-color: #015C92 !important;
+  color: white !important;
+}
+
+.button-custom-promotion{
+  font-size: 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 8px 22px;
+  color: #fff;
+  background-color: #de6320;
+  display: inline-block;
+}
+.buttons_typo_delt{
+	margin-right:5px;
+    padding:7px 32px;
+    /* background-color: #F26223;
+    border:none; */
+}
+.promotion_table{
+  margin-top:20px;
+}
+/* .custom_edit_modal{
+  max-width: 900px; 
+  margin: 200 auto; 
+} */
+.user_input_row{
+ margin:20px ;
+}
+.center_promotion_heading{
+  text-align:center;
+}
+.custom_modal_promotion{
+  max-width: 600px; 
+  margin: 200 auto; 
+}
+.promotion_title_main{
+  margin-bottom:15px;
+}
+.promotion_discription_main{
+  margin-bottom:15px;
+}
+.btn_promotion_model{
+  padding:7px 40px;
+}
