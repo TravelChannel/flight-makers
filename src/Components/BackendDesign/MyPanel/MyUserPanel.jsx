@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,Fragment} from 'react';
 import * as images from '../../../Constant/images';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
@@ -22,7 +22,14 @@ import UserBookingsDetails from './Pages/UserBookingsDetails';
 import UserCustomerSupport from './Pages/UserCustomerSupport';
 import userDetailsBackend from '../../../API/BackendAPI/BackendAPI_Fun';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-import PromotionsDetail from './Pages/PromotionsDetail';
+import PromotionsDetail from '../AdminPanel/PromotionsDetail';
+import UserLists from '../AdminPanel/UserLists';
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import ReIssueReqs from '../AdminPanel/ReIssueReqs';
+import CancellationReqs from '../AdminPanel/CancellationReqs';
+import RefundReqs from '../AdminPanel/RefundReqs';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -30,6 +37,8 @@ const MyUserPanel = ()=>{
 	 const [open, setOpen] = useState(false);
 	 const [isLogOut , setLogout] = useState(false);
 	 const {isLogin , setLogIn} = useFormData();
+	 const [isSubMenu , setSubMenu] = useState(false);
+	 const [selectedSubMenu , setSelectedSubMenu] = useState(1)
 // ------------------
 
 const [isLoading , setLoading]=useState(false);
@@ -40,6 +49,7 @@ const [isLoading , setLoading]=useState(false);
 	 const navigate = useNavigate();
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
+	setSubMenu(menuItem===5);
   };
  useEffect(()=>{
     setShowHeader(false);
@@ -65,6 +75,12 @@ if (isLogOut) {
     setOpen(false);
   };
 
+  const displaySubMenu = ()=>{
+	setSubMenu(!isSubMenu);
+  }
+const handleSubMenuClick = (id)=>{
+	setSelectedSubMenu(id);
+}
 //   ------------------------------------------
 
  // ------------------
@@ -121,38 +137,87 @@ console.log("checkAdmin",checkAdmin);
                    <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 2 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(2)}>
                   		<AirplaneTicketIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>User Profile</p>
+                  			{checkAdmin ?(<p className='d-flex align-self-center menu_content_typo'>Admin Profile</p>):(<p className='d-flex align-self-center menu_content_typo'>User Profile</p>)}
                   		</div>
 
                   </div>
-                   <div className='left_menu_content'>
+				  {
+					checkAdmin === true ?
+					(
+				  <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 3 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(3)}>
+                  		<PeopleOutlineIcon className='menu_content_icon' />
+                  			<p className='d-flex align-self-center menu_content_typo'>Users List</p>
+                  		</div>
+
+                  </div>
+				  ):('')
+				  }
+                   <div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 4 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(4)}>
                   		<ReceiptIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Payment Details </p>
                   		</div>
 
                   </div>
                    <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 4 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(4)}>
-                  		<WalletIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>Customer Support</p>
-                  		</div>
+						<div className='left_menu_content'>
+								{checkAdmin ? (
+									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+									<WalletIcon className='menu_content_icon' />
+									<p className='d-flex align-self-center menu_content_typo' onClick={displaySubMenu} >Customer Support</p>
+									</div>
+								) : (
+									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+									<WalletIcon className='menu_content_icon' />
+									<p className='d-flex align-self-center menu_content_typo'>Customer Support</p>
+									</div>
+								)}
+
+								{isSubMenu  && checkAdmin && (
+									<Fragment>
+										<div className='admin_submenu'>
+											<p
+											className={`admin_reIssue mb-1 ${selectedSubMenu === 1 ? 'user_active_content' : ''}`}
+											onClick={() => handleSubMenuClick(1)}
+											>
+											ReIssue
+											{selectedSubMenu === 1 && <KeyboardDoubleArrowRightIcon />}
+											</p>
+											<p
+											className={`admin_refund mb-1 ${selectedSubMenu === 2 ? 'user_active_content' : ''}`}
+											onClick={() => handleSubMenuClick(2)}
+											>
+											Refund
+											{selectedSubMenu === 2 && <KeyboardDoubleArrowRightIcon />}
+											</p>
+											<p
+											className={`admin_cancle mb-1 ${selectedSubMenu === 3 ? 'user_active_content' : ''}`}
+											onClick={() => handleSubMenuClick(3)}
+											>
+											Cancellation
+											{selectedSubMenu === 3 && <KeyboardDoubleArrowRightIcon />}
+											</p>
+										</div>
+									</Fragment>
+								)}
+						</div>
 
                   </div>
-				  {/* {
+				  {
 					checkAdmin === true ?
-					( */}
+					(
 						<div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 6 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(6)}>
                   		<RecordVoiceOverIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Promotions </p>
                   		</div>
 
-                  </div>
-					{/* ):('')
-				  } */}
+                      </div>
+					):('')
+				  }
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 6 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 7 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -177,14 +242,30 @@ console.log("checkAdmin",checkAdmin);
 					<UserBookingsDetails userData={userData} isLoading ={isLoading}/>
 						)}
           		{selectedMenuItem === 2 && 
-				<UserProfile userData={userData} isLoading ={isLoading}/>
+				<UserProfile userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin}/>
+				}
+				{selectedMenuItem === 3 && 
+				<h3>
+					<UserLists/>
+				</h3>
 				}
           		
-          		{selectedMenuItem === 3 && 
+          		{selectedMenuItem === 4 && 
 				<h3>hello</h3>}
-				{selectedMenuItem === 4 && 
-				<UserCustomerSupport userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} />}
-				{selectedMenuItem === 5 && 
+				{selectedMenuItem === 5 && (
+						<Fragment>
+							{checkAdmin ? (
+							<Fragment>
+								{selectedSubMenu === 1 && <ReIssueReqs />}
+								{selectedSubMenu === 2 && <RefundReqs />}
+								{selectedSubMenu === 3 && <CancellationReqs />}
+							</Fragment>
+							) : (
+							<UserCustomerSupport userData={userData} isLoading={isLoading} checkAdmin={checkAdmin} />
+							)}
+						</Fragment>
+						)}
+				{selectedMenuItem === 6 && 
 				<PromotionsDetail checkAdmin = {checkAdmin} />}
 				 </div>
 

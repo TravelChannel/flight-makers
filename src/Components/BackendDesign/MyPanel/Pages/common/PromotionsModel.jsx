@@ -4,27 +4,51 @@ import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { AddPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
-import { GetAllPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
+// import { GetAllPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { UpdatePromotion } from '../../../../../API/BackendAPI/UserBookingDetails';
 const PromotionsModel = (props) => {
     const [isTitle ,setTitle]  =useState('');
     const [isDesc ,setDesc]  =useState('');
 
     // console.log("isTitle",isTitle);
-    const {isOpen , setIsOpen} = props;
+    const {isOpen , setIsOpen,promotionData,setPromotionData,isUpdate ,setUpdate ,updateID} = props;
+
+    console.log("userUpdateId",updateID );
+
+    console.log('KAshifG',isUpdate);
     const toggleModal = () => {
         setIsOpen(!isOpen);
       };
 
-      const SubmitDetail =async ()=>{
-        try{
-            const responce = await AddPromotions(PromotionsValue);
-            console.log("AddAPI Responce",responce);
-            setIsOpen(false);
-        }catch(error){
-            console.error("ADD Promotions API Error",error);
-        }
+      // const SubmitDetail =async ()=>{
+      //   try{
+      //       const responce = await AddPromotions(PromotionsValue);
+      //       console.log("AddAPI Responce",responce);
+      //       setPromotionData([...promotionData, responce?.data?.payload])
+      //       setIsOpen(false);
+      //   }catch(error){
+      //       console.error("ADD Promotions API Error",error);
+      //   }
         
-      }
+      // }
+      const SubmitDetail = async () => {
+        try {
+          if (isUpdate) {
+            const response = await UpdatePromotion(updateID);
+            console.log("Update API Response", response);
+          } else {
+            const response = await AddPromotions(PromotionsValue);
+            console.log("Add API Response", response);
+            setPromotionData([...promotionData, response?.data?.payload]);
+          }
+      
+          setIsOpen(false);
+          setUpdate(false);
+        } catch (error) {
+          console.error("API Error", error);
+        }
+      };
+      // ----------------
       const handleModelTitle =(event)=>{
         setTitle(event.target.value);
       }

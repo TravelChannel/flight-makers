@@ -121,44 +121,87 @@ export const UserLogOut =async()=>{
 }
 
 // -----------------------------Customer Support Admin Side --------------------------------
+// ---Cancelation Req----
+export const AdminCancellationReq = async () => {
+	try {
+	  const res = await apiClient.get(`/pnrBooking?isReqForCancellation=1`);
+  
+	  if (res.data.status === 'SUCCESS') {
+		console.log(res.data.message, 'Cancellation success');
+		return res;
+	  } else {
+		console.log(res.data.message, 'Cancellation danger');
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger');
+	}
+  };
 
-export const  AdminSideCustomerSupp = async()=>{
-	apiClient
-	.get(`/pnrBooking?isReqForReIssue=3`)
-	.then((res) => {
-		if (res.data.status === 'SUCCESS') {
-
-			console.log( res.data.message, 'ReIssue success');
-
-		} else {
-			console.log(res.data.message, 'ReIssue danger');
-		}
-	})
-	.catch((err) => {
-		console.error( err.message, 'Danger');
-	});
-
-}
-
+//   ------ReIssue Req------------
+export const AdminReIssueReq = async () => {
+	try {
+	  const res = await apiClient.get(`/pnrBooking?isReqForReIssue=1`);
+  
+	  if (res.data.status === 'SUCCESS') {
+		console.log(res.data.message, 'ReIssue success');
+		return res;
+	  } else {
+		console.log(res.data.message, 'ReIssue danger');
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger');
+	}
+  };
+//   --------ReFund Req--------------------
+export const AdminRefundReq = async () => {
+	try {
+	  const res = await apiClient.get(`/pnrBooking?isReqForRefund=1`);
+  
+	  if (res.data.status === 'SUCCESS') {
+		console.log(res.data.message, 'Refund success');
+		return res;
+	  } else {
+		console.log(res.data.message, 'Refund danger');
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger');
+	}
+  };
 // ---------------------------Promotions API start----------------------------
-export const AddPromotions = async(PromotionsValue)=>{
-   console.log("PromotionsValueAPI",PromotionsValue);
-	   apiClient
-		   .post(`/promotions`,PromotionsValue)
-		   .then((res) => {
-			   if (res.data.status === 'SUCCESS') {
+// export const AddPromotions = async(PromotionsValue)=>{
+//    console.log("PromotionsValueAPI",PromotionsValue);
+// 	   apiClient
+// 		   .post(`/promotions`,PromotionsValue)
+// 		   .then((res) => {
+// 			   if (res.data.status === 'SUCCESS') {
 
-				   console.log( res.data.message, ' Promotion success');
-                 
-			   } else {
-				   console.log(res.data.message, 'Promotion danger');
-			   }
-		   })
-		   .catch((err) => {
-			   console.error( err.message, 'Danger');
-		   });
-}
-
+// 				   console.log( res.data.message, ' Promotion success');
+//                  return res;
+// 			   } else {
+// 				   console.log(res.data.message, 'Promotion danger');
+// 			   }
+// 		   })
+// 		   .catch((err) => {
+// 			   console.error( err.message, 'Danger');
+// 		   });
+// }
+export const AddPromotions = async (PromotionsValue) => {
+	console.log("PromotionsValueAPI", PromotionsValue);
+  
+	try {
+	  const response = await apiClient.post(`/promotions`, PromotionsValue);
+  
+	  if (response.data.status === 'SUCCESS') {
+		console.log(response.data.message, ' Promotion success');
+		return response;
+	  } else {
+		console.log(response.data.message, 'Promotion danger');
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger');
+	  throw err; // Re-throw the error to propagate it up the call stack if needed
+	}
+  };
 // ----------------Get All Promotions---------------------------
 
 export const GetAllPromotions = async () => {
@@ -178,14 +221,19 @@ export const GetAllPromotions = async () => {
   };
 
 //   ------------Delete Promotion-----------------------------------
-export const DeletePromotion =async(id)=>{
+export const DeletePromotion =async(id,setPromotions)=>{
 	apiClient
 			.delete(`/promotions/${id}`)
 			.then((res) => {
 				if (res.data.status === 'SUCCESS') {
 
 					console.log( res.data.message, 'Prom_Delte success');
-
+					setPromotions((prevPromotions) => {
+						console.log('Previous Promotions State:', prevPromotions);
+						const newPromotions = prevPromotions.filter((promotion) => promotion.id !== id);
+						console.log('New Promotions State:', newPromotions);
+						return newPromotions;
+					  });
 				} else {
 					console.log(res.data.message, 'Prom_Delte danger');
 				}
@@ -194,4 +242,35 @@ export const DeletePromotion =async(id)=>{
 				console.error( err.message, 'Danger');
 			});
 
+}
+// -----------------Update Promotion----------------------------------
+export const UpdatePromotion = async(updateID)=>{
+	try{
+		const responce = await apiClient.patch(`/promotions/${updateID}`);
+		if(responce.data.status === 'SUCCESS'){
+		console.log(responce.data.message, `UpdatePromotion success for id ${updateID}`);
+		return responce;
+		} else {
+		console.log(responce.data.message, 'UpdatePromotion danger');
+		throw new Error(responce.data.message); }
+	}catch(error){
+		console.error(error.message, 'Danger');
+		throw error; 
+	}
+}
+
+// -------------------all User Lists ----------------------------------
+export const AllUsersDetail = async()=>{
+	try{
+		const responce = await apiClient.get(`/users`);
+		if(responce.data.status === 'SUCCESS'){
+		console.log(responce.data.message, `AllUsersDetail success `);
+		return responce;
+		} else {
+		console.log(responce.data.message, 'AllUsersDetail danger');
+		throw new Error(responce.data.message); }
+	}catch(error){
+		console.error(error.message, 'Danger');
+		throw error; 
+	}
 }

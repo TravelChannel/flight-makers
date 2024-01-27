@@ -4,6 +4,9 @@ import { Navigate ,useNavigate} from 'react-router-dom';
 
 const OTPCode = (props) => {
 
+  const {fromSingUp} = props;
+
+  console.log("coming from SignUp",fromSingUp);
   const navigate = useNavigate();
   console.log("ellllllllo123",props.getOTPData);
 
@@ -35,7 +38,8 @@ const OTPCode = (props) => {
         
         if (verificationResult.status==='SUCCESS') {
           setIsOtpTrue(true);
-          window.location.reload();
+          fromSingUp ? (window.location.href = '/'):(window.location.reload());
+          // window.location.reload();
         } else {
           setIsOtpTrue(false);
         }
@@ -51,13 +55,6 @@ const OTPCode = (props) => {
         // Handle error as needed
       }
 
-
-      // if (enteredOtp === '1111') {
-      //   setIsOtpTrue(true);
-      //   setDisplayContact(true);
-      // } else {
-      //   setIsOtpTrue(false);
-      // }
     }
   };
   const handleInputClick = (index) => {
@@ -108,7 +105,7 @@ const OTPCode = (props) => {
   }
   return (
    <Fragment>
-     <div className="iti_otp_main d-flex justify-content-start">
+     <div className={`iti_otp_main ${fromSingUp ?('d-flex justify-content-center'):('d-flex justify-content-start')} `}>
     {Array.from({ length: 6 }).map((_, index) => (
       <input
         key={index}
@@ -126,16 +123,17 @@ const OTPCode = (props) => {
   </div>
            <div className='otp_message_placeholder'>
                   {showMessage && (
-                    <p className="otp_message"> {isOtpTrue ? (<span className="success_message">OTP successfull</span>) : (<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
+                    <p className={`${fromSingUp ?('otp_message text-center'):('otp_message')}`}> {isOtpTrue ? (<span className="success_message">OTP successfull</span>) : (<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
                   )
                   }
                 </div>
-                  <div className="otp_resend_time">
+                  <div className={`otp_resend_time ${fromSingUp ? ('text-center sign_up_message_color'):('')}`}>
                     Have Not Received OTP ?{' '}
                     {isTimerRunning ? (
-                      <span> Resend in {currentTime} sec</span>
+                      <span className={`${fromSingUp && 'change_message_color'}`}> Resend in {currentTime} sec</span>
+                     
                     ) : (
-                      <span onClick={HandleGetOTP} className="otp_resend_button">
+                      <span onClick={HandleGetOTP} className={`otp_resend_button ${fromSingUp && 'change_message_color'}`}>
                         Resend
                       </span>
                       

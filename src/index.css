@@ -2049,7 +2049,9 @@ width:45px;
  /* margin:auto 20px; */
  /* padding: 5px 100px; */
   width: 100%;
-  margin-right: 18px;
+  /* margin-right: 18px; */
+  margin-right: 38px;
+
   margin-top: 15px;
   height: 40px;
   /* margin-left:3px;
@@ -4348,7 +4350,7 @@ margin-top:7px;
   border-radius: 5px;
   line-height: 25px;
   height: 35px;
-  width: 300px;
+  width: 282px;
   outline: none;
 }
 .mail_input_field::placeholder{
@@ -5557,6 +5559,7 @@ input::placeholder
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
+  padding:90px 30px;
 }
 .login label{
 	color: #fff;
@@ -6335,6 +6338,7 @@ text-align: right;
   overflow: auto;
 }
 .dashboard-content-header {
+  margin-top:20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -6681,4 +6685,55 @@ display: inline;
 }
 .btn_promotion_model{
   padding:7px 40px;
+}
+
+/* -------------- */
+.head_details th{
+  font-size: 16px;
+}
+.data_details {
+  font-size: 16px;
+}
+
+.admin_submenu{
+/* margin: 0.4rem 2.5rem; */
+margin:10px 12px;
+ 
+}
+.admin_reIssue , .admin_refund , .admin_cancle{
+  cursor: pointer;
+  padding:5px 10px;
+  border-radius: 4px;
+
+}
+.admin_reIssue:hover , .admin_refund:hover, .admin_cancle:hover{
+  background-color: #004B77;
+}
+.signup_ph_input{
+  margin-left:6rem;
+}
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 0;
+  background: #FFFFFF;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 40px !important;
+  width: 282px !important;
+  outline: none;
+}
+.sign_up_message_color{
+  color:white;
+}
+.change_message_color{
+  color:#F26223;
+}
+.back_btn_signup{
+  color:red !important;
 }

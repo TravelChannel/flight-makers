@@ -1,14 +1,21 @@
 import React,{useState,useEffect} from 'react';
-import PromotionsModel from './common/PromotionsModel';
-import { GetAllPromotions } from '../../../../API/BackendAPI/UserBookingDetails';
-import { DeletePromotion } from '../../../../API/BackendAPI/UserBookingDetails';
+import PromotionsModel from '../MyPanel/Pages/common/PromotionsModel';
+import { GetAllPromotions } from '../../../API/BackendAPI/UserBookingDetails';
+import { DeletePromotion } from '../../../API/BackendAPI/UserBookingDetails';
 const PromotionsDetail = () => {
 const [isOpen , setIsOpen] = useState(false);
-// const [isUpdate , setUpdate] = useState(false);
+const [isUpdate , setUpdate] = useState(false);
+const [updateID ,setUpdateId] = useState('');
 const [promotionData , setPromotionData] = useState([]);
-// const [promotions, setPromotions] = useState([]);
+const [promotions, setPromotions] = useState([]);
+
 const ShowAddModel = ()=>{
     setIsOpen(!isOpen);
+}
+const ShowUpdateModel = (itemID)=>{
+    setIsOpen(!isOpen);
+    setUpdate(true);
+    setUpdateId(itemID);
 }
 
 useEffect(() => {
@@ -23,11 +30,11 @@ useEffect(() => {
     };
 
     GetPromotionsDetail();
-}, []);
+}, [promotions]);
 
 const handleDeletePromotion =async (id)=>{
 
-    DeletePromotion(id);
+    DeletePromotion(id,setPromotions);
 }
 
   return (
@@ -70,7 +77,7 @@ const handleDeletePromotion =async (id)=>{
                                         <td>{items.description}</td>
                                         <td>{items.isActive}</td>
                                         <td className='promotions_table_btn'>
-                                        <div onClick={ShowAddModel}>
+                                        <div onClick={()=>{ShowUpdateModel(items.id)}}>
                                             <button
                                                 className='btn btn-primary buttons_typo user_cancelation_button'>
                                                 Update
@@ -93,7 +100,12 @@ const handleDeletePromotion =async (id)=>{
                     </div>
                 {
                     isOpen && (
-                        <PromotionsModel isOpen={isOpen} setIsOpen ={setIsOpen}/>
+                        <PromotionsModel 
+                        isOpen={isOpen} setIsOpen ={setIsOpen} 
+                        promotionData={promotionData} setPromotionData={setPromotionData}
+                        isUpdate ={isUpdate} setUpdate={setUpdate} 
+                        updateID = {updateID}  
+                        />
                     )
                 }
 

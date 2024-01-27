@@ -124,22 +124,6 @@ const UserCustomerSupport = (props) => {
           default:
             console.error("Invalid dialogContent.type");
         }}
-  //  -----------------Admin Side Api------------------
-
-  // const fetchAdminData = async()=>{
-  //   try{
-  //     const apiResponce = await AdminSideCustomerSupp();
-  //     console.log('Admin data:', apiResponce);
-  //   }catch(error){
-  //     console.error('Error fetching admin data:', error);
-  //   }
-  // }
-
-  // if(checkAdmin===true){
-  //   fetchAdminData();
-  // }else{
-  //   console.log('where are you')
-  // }
 
   return (
     isLoading ?(<Loader/>):(
@@ -203,6 +187,30 @@ const UserCustomerSupport = (props) => {
                             Cancel
                           </button>
                         </div>
+                        {/* <div>
+                          <button
+                            className='btn btn-primary buttons_typo user_cancelation_button'
+                            onClick={() => {
+                              openDialogBox(items.id);
+                              updateDialogContent('refund', items.id);
+                            }}
+                            disabled={disabledButtons[items.id]}
+                          >
+                            Refund
+                          </button>
+                        </div>
+                        <div>
+                          <button
+                            className='btn btn-primary buttons_typo user_cancelation_button'
+                            onClick={() => {
+                              openDialogBox(items.id);
+                              updateDialogContent('reissue', items.id);
+                            }}
+                            disabled={disabledButtons[items.id]}
+                          >
+                            ReIssue
+                          </button>
+                        </div> */}
                       </td>
                     </tr>
                   ))}

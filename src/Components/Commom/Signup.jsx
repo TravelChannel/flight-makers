@@ -2,79 +2,106 @@ import React ,{useState} from 'react';
 import OTPSlider from './OTPSlider';
 import { useNavigate } from 'react-router';
 import userDetailsBackend from '../../API/BackendAPI/BackendAPI_Fun';
-
+import PhoneInput from 'react-phone-input-2';
+import { sendOTPCode } from '../../API';
+import OTPCode from './OTPCode';
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 const SignUp = () => {
     const [backLoading , setBackLoading] =useState(false);
     const [userData ,setUser] = useState(null);
-    const navigate = useNavigate();
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [countryCode, setCountryCode] = useState('');
+     const [isOTP ,setOTP] = useState(false);
+     const [fromSingUp , setFromSignUp] = useState(false);
 
-    const OpenUserPanel = ()=>{
-        navigate('/userPanel');
-    }
+    // const navigate = useNavigate();
+    const handlePhoneNumberChange = (value, country) => {
+        const dialCode = country.dialCode;
+    
+        if (value.includes(dialCode)) {
+          const numericPhoneNumber = value.replace(dialCode, '').replace(/\D/g, '');
+          setPhoneNumber(numericPhoneNumber);
+        } else {
+          setPhoneNumber(value.replace(/\D/g, ''));
+        }
+        setCountryCode(dialCode);
+      };
+   
+    // const OpenUserPanel = ()=>{
+    //     navigate('/userPanel');
+    // }
 
-    const fetchBackendData =async()=>{
+    const GetOTP =async ()=>{
         try{
-            console.log("ello_g",userData);
-            const userData =   await userDetailsBackend(setBackLoading);
-            
-           
+          const OTPResponce = await sendOTPCode(getOTPData); 
+          console.log('OTPResponce',OTPResponce);
+          setOTP(true);
+          setFromSignUp(true);
+        }catch(error){ 
+          console.error('errorOTP',error);
         }
-        catch (error){
-            console.error(error);
-        }
-    } 
-
-    // const userDetailsBackend = () => {
-    //     setBackLoading(true);
-        
-    //     apiClient
-    //       .get(`/pnrBooking`)
-    //       .then((response) => {
-    //         console.log(JSON.stringify(response));
-    //         setBackLoading(false); 
-    //       })
-    //       .catch((err) => {
-    //         console.log(err);
-    //         setBackLoading(false); 
-    //       });
-    //   };
-
-
+      }
+      const backToNumber = ()=>{
+        setOTP(false);
+      }
+    const getOTPData = {
+        'coutryCode':countryCode,
+        'phoneNumber':phoneNumber
+      }
+    
+      console.log("getOTPObj",getOTPData);
 
     return (
         <div className='container'>
             <div className='row py-4 bg-white m-0'>
                 <div className='col-md-7'> <OTPSlider /></div>
                 <div className='col-md-5 align-self-center'>
-                    <div class="main_login_card">
+                   <div className="main_login_card">
                         <input className='signupinput' type="checkbox" id="chk" aria-hidden="true" />
-
-                        <div class="signup">
+                        {
+                            isOTP ?('hello'):(
+                                <div className="signup">
                             <form>
                                 <label className='label_signup' for="chk" aria-hidden="true">Sign up</label>
                                 <input className='signupinput' type="text" name="txt" placeholder="User name" />
-                                <input className='signupinput' type="email" name="email" placeholder="Email" />
-                                <input className='signupinput' type="password" name="pswd" placeholder="Password" />
-                                <button className='submit_sign_button'>Sign up</button>
+                                <div className='signup_ph_input' >
+                                <PhoneInput
+                                        country={'pk'}
+                                        value={`+${countryCode} ${phoneNumber}`} 
+                                        onChange={(value, country) => handlePhoneNumberChange(value, country)}
+                                        placeholder="Enter your phone number"
+                                    />
+                                </div>
+                                {/* <input className='signupinput' type="email" name="email" placeholder="Email" /> */}
+                                {/* <input className='signupinput' type="password" name="pswd" placeholder="Password" /> */}
+                                
                             </form>
+                            <button className='submit_sign_button ' onClick={GetOTP}>GET OTP </button>
                         </div>
-                        <div class="login">
+                            )
+                        }
+                        <div className="login">
+                        
                             <form>
                                 <label className='label_signup' for="chk" aria-hidden="true">Login</label>
-                                <input className='signupinput' type="email" name="email" placeholder="Email" />
-                                <input className='signupinput' type="password" name="pswd" placeholder="Password" />
+                               <div >
+                               <p className='otp_message_set text-center sign_up_message_color'>Enter OTP sent to the number: {phoneNumber}</p>
+                               <div className='login_otp'>
+                               {
+                                    <OTPCode  getOTPData = {getOTPData} fromSingUp ={fromSingUp}/>
+                                }
+                               </div>
+                               </div>
+                                {/* <input className='signupinput' type="email" name="email" placeholder="Email" />
+                                <input className='signupinput' type="password" name="pswd" placeholder="Password" /> */}
                                 <button className='submit_log_button'>Login</button>
                             </form>
                         </div>
                     </div>
+                        {/* )
+                    } */}
                 </div>
             </div>
-           {/* ---------------------- */}
-                <div className='bg-white p-4'>
-                    <button className='btn btn-success' onClick={OpenUserPanel}> Access to backend Panel</button>
-                </div>
-           {/* ---------------------- */}
-
         </div>
     );
 }
