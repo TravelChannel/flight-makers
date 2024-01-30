@@ -7,13 +7,13 @@ import { sendOTPCode } from '../../API';
 import OTPCode from './OTPCode';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 const SignUp = () => {
+
     const [backLoading , setBackLoading] =useState(false);
     const [userData ,setUser] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [countryCode, setCountryCode] = useState('');
      const [isOTP ,setOTP] = useState(false);
      const [fromSingUp , setFromSignUp] = useState(false);
-
     // const navigate = useNavigate();
     const handlePhoneNumberChange = (value, country) => {
         const dialCode = country.dialCode;

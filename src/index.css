@@ -6737,3 +6737,70 @@ margin:10px 12px;
 .back_btn_signup{
   color:red !important;
 }
+/* --------------Indexing CSS---------------- */
+.airlines_top_heading{
+  color:#36c;
+  font-weight:600;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px 0px;
+ 
+}
+.seo_flightIcon{
+  rotate: 90deg;
+  margin-right:3px;
+}
+.indexing_heading{
+  color: rgb(140,89,31);
+  font-size:30px;
+font-family: 'reem kufi';
+margin:10px  0px!important;
+font-weight:550;
+
+}
+.indexing_sub_heading{
+margin-top:10px;
+/*color:#F26223;*/
+}
+.indexing_detail_box{
+  border: 1px solid hsl(0, 0%, 0%);
+  border-radius: 5px;
+  box-shadow: 0 0 3px hsl(233, 43%, 38%);
+  font-family: Verdana;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 9px;
+  padding: 10px;
+  /*text-align: left;*/
+  width:400px;
+}
+.indexing_detail_box p{
+font-size:16px;
+font-family: 'reem kufi';
+padding-left:10px;
+padding-top:10px;
+
+}
+.indexing_flights_data :hover{
+
+background-color: rgb(192,176,132);
+color:white;
+}
+.indexing_row_main{
+margin-top:20px !important;
+}
+.indexing_row_main h5{
+   color: #08437d;
+font-family: 'reem kufi';
+}
+
+/*-------------------------*/
+.indexed_hyperlink{
+cursor:pointer;
+}
+.indexed_hyperlink p:hover{
+color: #36c;	;
+}
+.faremakers_indexing_main{
+  margin-top:70px;
+}

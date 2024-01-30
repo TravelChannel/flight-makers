@@ -11,6 +11,7 @@ const [promotions, setPromotions] = useState([]);
 
 const ShowAddModel = ()=>{
     setIsOpen(!isOpen);
+    setUpdate(false);
 }
 const ShowUpdateModel = (itemID)=>{
     setIsOpen(!isOpen);

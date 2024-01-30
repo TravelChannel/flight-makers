@@ -17,8 +17,9 @@ import FMBanks from './View/FMBanks';
 import FAQs from './Components/Commom/FAQs';
 import BookingDetails from './Components/BookingPayment/Comman/BookingDetails';
 import { Routes, Route } from 'react-router-dom';
-
-
+import PopularAirLines from './Components/SEOPages/PopularAirLines';
+import FlightsSearchEngine from './Components/SEOPages/FlightsSearchEngine';
+import DomesticFlightsEngine from './Components/SEOPages/DomesticFlightsEngine';
 // import UserPanel from './Components/BackendDesign/UserPanel/UserPanel';
 
 // import Orders from './Components/BackendDesign/UserPanel/pages/Orders';
@@ -50,6 +51,13 @@ const AppRouter = () => {
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
+        <Route path="/airlines/:airlineName" element={<PopularAirLines/>} />
+        {/* <Route path="/popularairlines/:airlineName" element={<Outlet />} /> */}
+        <Route path="/internationalAirlines/:flightName" element={<FlightsSearchEngine/>} />
+        <Route path="/domesticAirlines" element={<DomesticFlightsEngine/>} />
+
+
+
 
 
 

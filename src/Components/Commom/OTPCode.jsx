@@ -1,11 +1,13 @@
 import React,{Fragment,useState,useRef, useEffect} from 'react'
 import { verifyOTPRes } from '../../API';
 import { Navigate ,useNavigate} from 'react-router-dom';
+import { useFormData } from '../../Context/FormDataContext';
+
 
 const OTPCode = (props) => {
 
   const {fromSingUp} = props;
-
+  // const {setLogIn} =useFormData();
   console.log("coming from SignUp",fromSingUp);
   const navigate = useNavigate();
   console.log("ellllllllo123",props.getOTPData);
@@ -38,6 +40,7 @@ const OTPCode = (props) => {
         
         if (verificationResult.status==='SUCCESS') {
           setIsOtpTrue(true);
+          // setLogIn(true);
           fromSingUp ? (window.location.href = '/'):(window.location.reload());
           // window.location.reload();
         } else {

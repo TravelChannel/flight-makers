@@ -1,4 +1,4 @@
-import React ,{useState}from 'react'
+import React ,{useState,Fragment}from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, } from 'reactstrap';
 import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
@@ -13,9 +13,9 @@ const PromotionsModel = (props) => {
     // console.log("isTitle",isTitle);
     const {isOpen , setIsOpen,promotionData,setPromotionData,isUpdate ,setUpdate ,updateID} = props;
 
-    console.log("userUpdateId",updateID );
+    // console.log("userUpdateId",updateID );
 
-    console.log('KAshifG',isUpdate);
+    // console.log('KAshifG',isUpdate);
     const toggleModal = () => {
         setIsOpen(!isOpen);
       };
@@ -70,7 +70,7 @@ const PromotionsModel = (props) => {
             <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
             </ModalHeader>
             <ModalBody>
-            <h3 className='edit_model_body center_promotion_heading'>Add New Promotion</h3>
+            { isUpdate ?(<h3 className='edit_model_body center_promotion_heading'>Update Promotion</h3>):(<h3 className='edit_model_body center_promotion_heading'>Add New Promotion</h3>)}
             <div className=' user_input_row'>
                     <div className=''>
                     <div className='d-flex justify-content-center'>
@@ -104,7 +104,15 @@ const PromotionsModel = (props) => {
                 </div>
                     </div>
                 <div className='d-flex justify-content-center' onClick={SubmitDetail}>
-                    <button className='btn btn-primary btn_promotion_model'>Submit</button>
+                   {
+                    isUpdate ?(
+                     <Fragment>
+                     <button className='btn btn-primary btn_promotion_model'>Update</button>
+                      <button className='btn btn-primary btn_promotion_model mx-2'>DeActivate</button>
+                     </Fragment>
+                    ):(
+                       <button className='btn btn-primary btn_promotion_model'>Submit</button>)
+                   }
                 </div>
           </div>
             </ModalBody>
