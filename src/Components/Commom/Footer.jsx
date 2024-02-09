@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useNavigate } from "react-router-dom";
 const Footer = () =>{
-    const [flightID ,setFlightID] = useState('');
+    // const [flightID ,setFlightID] = useState('');
 const navigate = useNavigate();
 // const handleAirLinesData = (id, airlinename) => {
 //     console.log("currrentairlinename",airlinename);
@@ -105,156 +105,161 @@ const handleAirLinesData = (id, airlineName) => {
                     <li><Link to="/internationalAirlines/Lahore-Dubai">Lahore - Dubai</Link></li>
                     <li><Link to="/internationalAirlines/Lahore-Toronto">Lahore - Toronto</Link></li>
                     <li><Link to="/internationalAirlines/Lahore-NewYork">Lahore - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Lahore - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - London</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Istanbul</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Boston">Lahore - Boston</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Perth">Lahore - Perth</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Manchester">Lahore - Manchester</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Melbourne">Lahore - Melbourne</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Atlanta">Lahore - Atlanta</Link></li>
+                    <li><Link to="/internationalAirlines/Lahore-Doha">Lahore - Doha</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-London">Peshawar - London</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Dubai">Peshawar - Dubai</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Toronto">Peshawar - Toronto</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-New York">Peshawar - New York</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Boston">Peshawar - Boston</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Perth">Peshawar - Perth</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Manchester">Peshawar - Manchester</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Melbourne">Peshawar - Melbourne</Link></li>
+                    <li><Link to="/internationalAirlines/Peshawar-Atlanta">Peshawar - Atlanta</Link></li>
+                    <li><Link to="/internationalAirlines/Faisalabad-Los Angeles">Faisalabad - Los Angeles</Link></li>
+                    <li><Link to="/internationalAirlines/Faisalabad-Jeddah">Faisalabad - Jeddah</Link></li>
+                    <li><Link to="/internationalAirlines/Faisalabad-Istanbul">Faisalabad - Istanbul</Link></li>
 
                     
                 </ul>
                 <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/internationalAirlines">Karachi - London</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Karachi - Istanbul</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Peshawar - Istanbul</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - London</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Boston</Link></li>
-                   
-
-                </ul>
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/internationalAirlines">Islamabad - London</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Islamabad - Istanbul</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Quetta - Istanbul</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - London</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-London">Karachi - London</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Dubai">Karachi - Dubai</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Toronto">Karachi - Toronto</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-NewYork">Karachi - New York</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Boston">Karachi - Boston</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Perth">Karachi - Perth</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Manchester">Karachi - Manchester</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Melbourne">Karachi - Melbourne</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Atlanta">Karachi - Atlanta</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Doha">Karachi - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-LosAngeles">Karachi - Los Angeles</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Jeddah">Karachi - Jeddah</Link></li>
+                <li><Link to="/internationalAirlines/Karachi-Istanbul">Karachi - Istanbul</Link></li>
+                <li><Link to="/internationalAirlines/Peshawar-Doha">Peshawar - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Peshawar-LosAngeles">Peshawar - Los Angeles</Link></li>
+                <li><Link to="/internationalAirlines/Peshawar-Jeddah">Peshawar - Jeddah</Link></li>
+                <li><Link to="/internationalAirlines/Peshawar-Istanbul">Peshawar - Istanbul</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-London">Quetta - London</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Dubai">Quetta - Dubai</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Toronto">Quetta - Toronto</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-NewYork">Quetta - New York</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Boston">Quetta - Boston</Link></li>
 
 
                 </ul>
                 <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/internationalAirlines">Multan - London</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Doha</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Los Angeles</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Jeddah</Link></li>
-                    <li><Link to="/internationalAirlines">Multan - Istanbul</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Dubai</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Toronto</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - New York</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Boston</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Perth</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Manchester</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Melbourne</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Atlanta</Link></li>
-                    <li><Link to="/internationalAirlines">Faisalabad - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-London">Islamabad - London</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Dubai">Islamabad - Dubai</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Toronto">Islamabad - Toronto</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-NewYork">Islamabad - New York</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Boston">Islamabad - Boston</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Perth">Islamabad - Perth</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Manchester">Islamabad - Manchester</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Melbourne">Islamabad - Melbourne</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Atlanta">Islamabad - Atlanta</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Doha">Islamabad - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-LosAngeles">Islamabad - Los Angeles</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Jeddah">Islamabad - Jeddah</Link></li>
+                <li><Link to="/internationalAirlines/Islamabad-Istanbul">Islamabad - Istanbul</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Perth">Quetta - Perth</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Manchester">Quetta - Manchester</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Melbourne">Quetta - Melbourne</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Atlanta">Quetta - Atlanta</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Doha">Quetta - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-LosAngeles">Quetta - Los Angeles</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Jeddah">Quetta - Jeddah</Link></li>
+                <li><Link to="/internationalAirlines/Quetta-Istanbul">Quetta - Istanbul</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-London">Faisalabad - London</Link></li>
+
+
+
+                </ul>
+                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <li><Link to="/internationalAirlines/Multan-London">Multan - London</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Dubai">Multan - Dubai</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Toronto">Multan - Toronto</Link></li>
+                <li><Link to="/internationalAirlines/Multan-NewYork">Multan - New York</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Boston">Multan - Boston</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Perth">Multan - Perth</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Manchester">Multan - Manchester</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Melbourne">Multan - Melbourne</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Atlanta">Multan - Atlanta</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Doha">Multan - Doha</Link></li>
+                <li><Link to="/internationalAirlines/Multan-LosAngeles">Multan - Los Angeles</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Jeddah">Multan - Jeddah</Link></li>
+                <li><Link to="/internationalAirlines/Multan-Istanbul">Multan - Istanbul</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Dubai">Faisalabad - Dubai</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Toronto">Faisalabad - Toronto</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-NewYork">Faisalabad - New York</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Boston">Faisalabad - Boston</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Perth">Faisalabad - Perth</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Manchester">Faisalabad - Manchester</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Melbourne">Faisalabad - Melbourne</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Atlanta">Faisalabad - Atlanta</Link></li>
+                <li><Link to="/internationalAirlines/Faisalabad-Doha">Faisalabad - Doha</Link></li>
+
                 </ul>
 
                 </div>
               <span className="footer_destination">Domestic Destinations</span>
               <div className="row mb-3"> 
               <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/domesticAirlines">Lahore - Karachi</Link></li>
-                    <li><Link to="/domesticAirlines">Lahore - Islamabad</Link></li>
-                    <li><Link to="/domesticAirlines">Lahore - Peshawar</Link></li>
-                    <li><Link to="/domesticAirlines">Lahore - Faisalabad</Link></li>
-                    <li><Link to="/domesticAirlines">Lahore - Quetta</Link></li>
-                    <li><Link to="/domesticAirlines">Lahore - Multan</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Karachi</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Islamabad</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Peshawar</Link></li>
-                </ul>
+                <li><Link to="/domesticAirlines/Lahore-Karachi">Lahore - Karachi</Link></li>
+                <li><Link to="/domesticAirlines/Lahore-Islamabad">Lahore - Islamabad</Link></li>
+                <li><Link to="/domesticAirlines/Lahore-Peshawar">Lahore - Peshawar</Link></li>
+                <li><Link to="/domesticAirlines/Lahore-Faisalabad">Lahore - Faisalabad</Link></li>
+                <li><Link to="/domesticAirlines/Lahore-Quetta">Lahore - Quetta</Link></li>
+                <li><Link to="/domesticAirlines/Lahore-Multan">Lahore - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Karachi">Faisalabad - Karachi</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Islamabad">Faisalabad - Islamabad</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Peshawar">Faisalabad - Peshawar</Link></li>
+              </ul>
 
                 {/* Karachi Destinations */}
                 <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/domesticAirlines">Karachi - Lahore</Link></li>
-                    <li><Link to="/domesticAirlines">Karachi - Islamabad</Link></li>
-                    <li><Link to="/domesticAirlines">Karachi - Peshawar</Link></li>
-                    <li><Link to="/domesticAirlines">Karachi - Faisalabad</Link></li>
-                    <li><Link to="/domesticAirlines">Karachi - Quetta</Link></li>
-                    <li><Link to="/domesticAirlines">Karachi - Multan</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Lahore</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Quetta</Link></li>
-                    <li><Link to="/domesticAirlines">Faisalabad - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Lahore">Karachi - Lahore</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Islamabad">Karachi - Islamabad</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Peshawar">Karachi - Peshawar</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Faisalabad">Karachi - Faisalabad</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Quetta">Karachi - Quetta</Link></li>
+                <li><Link to="/domesticAirlines/Karachi-Multan">Karachi - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Lahore">Faisalabad - Lahore</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Quetta">Faisalabad - Quetta</Link></li>
+                <li><Link to="/domesticAirlines/Faisalabad-Multan">Faisalabad - Multan</Link></li>
+
                 </ul>
 
                 {/* Islamabad Destinations */}
                 <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/domesticAirlines">Islamabad - Karachi</Link></li>
-                    <li><Link to="/domesticAirlines">Islamabad - Lahore</Link></li>
-                    <li><Link to="/domesticAirlines">Islamabad - Peshawar</Link></li>
-                    <li><Link to="/domesticAirlines">Islamabad - Faisalabad</Link></li>
-                    <li><Link to="/domesticAirlines">Islamabad - Quetta</Link></li>
-                    <li><Link to="/domesticAirlines">Islamabad - Multan</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Karachi</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Islamabad</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Peshawar</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Karachi">Islamabad - Karachi</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Lahore">Islamabad - Lahore</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Peshawar">Islamabad - Peshawar</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Faisalabad">Islamabad - Faisalabad</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Quetta">Islamabad - Quetta</Link></li>
+                <li><Link to="/domesticAirlines/Islamabad-Multan">Islamabad - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Karachi">Quetta - Karachi</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Islamabad">Quetta - Islamabad</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Peshawar">Quetta - Peshawar</Link></li>
+
                 </ul>
 
                 {/* Peshawar Destinations */}
                 <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
-                    <li><Link to="/domesticAirlines">Peshawar - Karachi</Link></li>
-                    <li><Link to="/domesticAirlines">Peshawar - Islamabad</Link></li>
-                    <li><Link to="/domesticAirlines">Peshawar - Lahore</Link></li>
-                    <li><Link to="/domesticAirlines">Peshawar - Faisalabad</Link></li>
-                    <li><Link to="/domesticAirlines">Peshawar - Quetta</Link></li>
-                    <li><Link to="/domesticAirlines">Peshawar - Multan</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Faisalabad</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Lahore</Link></li>
-                    <li><Link to="/domesticAirlines">Quetta - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Karachi">Peshawar - Karachi</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Islamabad">Peshawar - Islamabad</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Lahore">Peshawar - Lahore</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Faisalabad">Peshawar - Faisalabad</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Quetta">Peshawar - Quetta</Link></li>
+                <li><Link to="/domesticAirlines/Peshawar-Multan">Peshawar - Multan</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Faisalabad">Quetta - Faisalabad</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Lahore">Quetta - Lahore</Link></li>
+                <li><Link to="/domesticAirlines/Quetta-Multan">Quetta - Multan</Link></li>
+
                 </ul>
             </div>
 

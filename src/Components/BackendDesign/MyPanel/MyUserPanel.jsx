@@ -45,6 +45,8 @@ const [isLoading , setLoading]=useState(false);
  const [backLoading , setBackLoading] =useState(false);
  const [userData ,setUser] = useState(null);
  const {userName , setUserName} = useFormData();
+ const [checkAdmin ,setCheckAdmin] = useState(false);
+ const [partialAdmin ,setPartialAdmin] = useState(false);
 // ------------------
 	 const navigate = useNavigate();
 	 const handleMenuItemClick = (menuItem) => {
@@ -105,8 +107,16 @@ const handleSubMenuClick = (id)=>{
 const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
 setUserName(userUpdatedName);
 
-const checkAdmin = userData?.data?.payload?.[0]?.user?.isAdmin;
-console.log("checkAdmin",checkAdmin);
+useEffect(() => {
+    const roleID = userData?.data?.payload?.[0]?.user?.roleId;
+    if (roleID === 1) {
+        setCheckAdmin(true); // Grant full admin access
+    } else if (roleID === 3) {
+        setPartialAdmin(true); // Grant partial admin access
+    } else {
+        setCheckAdmin(false); // No admin access
+    }
+}, [userData]);
 // ------------------------------------------------
 
 
@@ -137,7 +147,7 @@ console.log("checkAdmin",checkAdmin);
                    <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 2 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(2)}>
                   		<AirplaneTicketIcon className='menu_content_icon' />
-                  			{checkAdmin ?(<p className='d-flex align-self-center menu_content_typo'>Admin Profile</p>):(<p className='d-flex align-self-center menu_content_typo'>User Profile</p>)}
+                  			{checkAdmin || partialAdmin?(<p className='d-flex align-self-center menu_content_typo'>Admin Profile</p>):(<p className='d-flex align-self-center menu_content_typo'>User Profile</p>)}
                   		</div>
 
                   </div>
@@ -162,7 +172,7 @@ console.log("checkAdmin",checkAdmin);
                   </div>
                    <div className='left_menu_content'>
 						<div className='left_menu_content'>
-								{checkAdmin ? (
+								{checkAdmin || partialAdmin ? (
 									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
 									<WalletIcon className='menu_content_icon' />
 									<p className='d-flex align-self-center menu_content_typo' onClick={displaySubMenu} >Customer Support</p>
@@ -174,7 +184,7 @@ console.log("checkAdmin",checkAdmin);
 									</div>
 								)}
 
-								{isSubMenu  && checkAdmin && (
+								{isSubMenu  && (checkAdmin || partialAdmin) && (
 									<Fragment>
 										<div className='admin_submenu'>
 											<p
@@ -205,7 +215,7 @@ console.log("checkAdmin",checkAdmin);
 
                   </div>
 				  {
-					checkAdmin === true ?
+					checkAdmin === true || partialAdmin === true ?
 					(
 						<div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 6 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(6)}>
@@ -242,7 +252,7 @@ console.log("checkAdmin",checkAdmin);
 					<UserBookingsDetails userData={userData} isLoading ={isLoading}/>
 						)}
           		{selectedMenuItem === 2 && 
-				<UserProfile userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin}/>
+				<UserProfile userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} partialAdmin = {partialAdmin}/>
 				}
 				{selectedMenuItem === 3 && 
 				<h3>
@@ -254,19 +264,19 @@ console.log("checkAdmin",checkAdmin);
 				<h3>hello</h3>}
 				{selectedMenuItem === 5 && (
 						<Fragment>
-							{checkAdmin ? (
+							{checkAdmin || partialAdmin ? (
 							<Fragment>
 								{selectedSubMenu === 1 && <ReIssueReqs />}
 								{selectedSubMenu === 2 && <RefundReqs />}
 								{selectedSubMenu === 3 && <CancellationReqs />}
 							</Fragment>
 							) : (
-							<UserCustomerSupport userData={userData} isLoading={isLoading} checkAdmin={checkAdmin} />
+							<UserCustomerSupport userData={userData} isLoading={isLoading} />
 							)}
 						</Fragment>
 						)}
 				{selectedMenuItem === 6 && 
-				<PromotionsDetail checkAdmin = {checkAdmin} />}
+				<PromotionsDetail />}
 				 </div>
 
 				 <Dialog

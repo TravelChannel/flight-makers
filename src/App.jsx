@@ -75,10 +75,10 @@ const App = () => {
     <Fragment>
       <div className="backgradiant">
         <div className="container-fluid">
-            {!inputPNR &&<TopNavBar />}
+            {!inputPNR &&<TopNavBar/>}
             {!inputPNR && showHeader && <Header />}
             <Routes />
-            {!inputPNR && <Footer />}
+            {!inputPNR && <Footer/>}
         </div>
       </div>
     </Fragment>

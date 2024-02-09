@@ -6,7 +6,7 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import Loader from '../../../../../Loader/Loader';
 import { useFormData } from '../../../../../Context/FormDataContext';
 const UserProfile = (props)=>{
-  const {userData,isLoading,checkAdmin} = props;
+  const {userData,isLoading,checkAdmin,partialAdmin} = props;
   const [backLoading , setBackLoading] =useState(false);
   const [isOpen , setIsOpen] = useState(false);
 
@@ -90,7 +90,7 @@ const UserProfile = (props)=>{
 
                                     <div className="  user_name background_line">
                                         {
-                                          checkAdmin ?(<h3 className=" line_details m-b-20  f-w-600">Admin Details</h3>):(<h3 className=" line_details m-b-20  f-w-600">Personal Details</h3>)
+                                          checkAdmin || partialAdmin ?(<h3 className=" line_details m-b-20  f-w-600">Admin Details</h3>):(<h3 className=" line_details m-b-20  f-w-600">Personal Details</h3>)
                                         }
                                         <div className='   mb-4 '>
                                             <p className='user_detials_heading user_detail_p'>First Name :</p>

@@ -6,12 +6,12 @@ import Loader from '../../../Loader/Loader';
 import { AdminRefundReq } from '../../../API/BackendAPI/UserBookingDetails';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
-import { useUserData } from '../../../Context/UserDataContext';
+// import { useUserData } from '../../../Context/UserDataContext';
 
 const RefundReqs = () => {
   const [userData, setUserData] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const { setFlightDetails, setuserDetail } = useUserData();
+  // const { setFlightDetails, setuserDetail } = useUserData();
   const navigate = useNavigate();
 
   const ArrangeDateFormat = (JourneyDate) => {
@@ -52,12 +52,14 @@ const RefundReqs = () => {
     ArrangeDateFormat(items.createdAt).toLowerCase().includes(search.toLowerCase())
   );
 
-  const UserFurtherDetail = (pnrDetail, flightDetails) => {
-    setFlightDetails(flightDetails);
-    setuserDetail(pnrDetail);
-    navigate('/userDetails');
-  };
-
+  // const UserFurtherDetail = (pnrDetail, flightDetails) => {
+  //   setFlightDetails(flightDetails);
+  //   setuserDetail(pnrDetail);
+  //   navigate('/userDetails');
+  // };
+  const handleUserId = (userID)=>{
+    localStorage.setItem('userIDforDetails',userID);
+  }
   return (
     isLoading ? (
       <Loader />
@@ -111,8 +113,17 @@ const RefundReqs = () => {
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
                     <td>UnPaid</td>
                     <td>
-                      <button className='btn btn-primary buttons_typo'
+                      {/* <button className='btn btn-primary buttons_typo'
                         onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}
+                      >
+                        View
+                      </button> */}
+                      <button
+                        className='btn btn-primary buttons_typo'
+                        onClick={() => {
+                          handleUserId(items.id);
+                          window.open('/userDetails', '_blank');
+                        }}
                       >
                         View
                       </button>

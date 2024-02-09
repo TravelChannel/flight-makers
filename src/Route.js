@@ -54,7 +54,7 @@ const AppRouter = () => {
         <Route path="/airlines/:airlineName" element={<PopularAirLines/>} />
         {/* <Route path="/popularairlines/:airlineName" element={<Outlet />} /> */}
         <Route path="/internationalAirlines/:flightName" element={<FlightsSearchEngine/>} />
-        <Route path="/domesticAirlines" element={<DomesticFlightsEngine/>} />
+        <Route path="/domesticAirlines/:domesticflightName" element={<DomesticFlightsEngine/>} />
 
 
 

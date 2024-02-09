@@ -274,3 +274,21 @@ export const AllUsersDetail = async()=>{
 		throw error; 
 	}
 }
+
+
+//----------------fetching alluserDetail by ID----------------------------
+
+export const UserDetailbyID = async(userIdforDetail)=>{
+	try{
+		const responce = await apiClient.get(`/pnrBooking/${userIdforDetail}`);
+		if(responce.data.status === 'SUCCESS'){
+		console.log(responce.data.message, `SingleUserDetails success `);
+		return responce;
+		} else {
+		console.log(responce.data.message, 'SingleUserDetails danger');
+		throw new Error(responce.data.message); }
+	}catch(error){
+		console.error(error.message, 'Danger');
+		throw error;
+	}
+}

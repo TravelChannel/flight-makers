@@ -3,7 +3,7 @@ import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
 import { useNavigate } from 'react-router';
 import Loader from '../../../../Loader/Loader';
-import { useUserData } from '../../../../Context/UserDataContext';
+// import { useUserData } from '../../../../Context/UserDataContext';
 import { cityNameFunct, formatCompleteDate } from '../../../../helpers/formatdata';
 import { dataNotfound } from '../../../../Constant/images';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const UserBookingsDetails = (props) => {
   const { userData, isLoading } = props;
   const [search, setSearch] = useState('');
-  const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
+  // const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
   const navigate = useNavigate();
 
   const __handleSearch = (event) => {
@@ -24,12 +24,16 @@ const UserBookingsDetails = (props) => {
     return formattedDate;
   };
 
-  const UserFurtherDetail = (pnrDetail, flightDetails) => {
-    setFlightDetails(flightDetails);
-    setuserDetail(pnrDetail);
-    navigate('/userDetails');
-    // window.open('/userDetails', '_blank');
-  };
+  // const UserFurtherDetail = (pnrDetail, flightDetails) => {
+  //   setFlightDetails(flightDetails);
+  //   setuserDetail(pnrDetail);
+  //   navigate('/userDetails');
+  // };
+
+  const handleUserId = (userID) =>{
+    console.log("sentID",userID);
+   localStorage.setItem('userIDforDetails',userID);
+  }
 
   const userPayLoad = userData?.data.payload;
 
@@ -41,6 +45,7 @@ const UserBookingsDetails = (props) => {
     .toLowerCase()
     .includes(search.toLowerCase())
   );
+  
 
   return (
     isLoading ? (
@@ -93,11 +98,18 @@ const UserBookingsDetails = (props) => {
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
                     <td>UnPaid</td>
                     <td>
-                    <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}>
-                      <Link to={{ pathname: '/userDetails', state: { id: items.id } }} target="_blank">
+                    {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
+
+                    <button
+                        className='btn btn-primary buttons_typo'
+                        onClick={() => {
+                          handleUserId(items.id);
+                          window.open('/userDetails', '_blank');
+                        }}
+                      >
                         View
-                      </Link>
-                    </button>
+                      </button>
+                    {/* </button> */}
                   </td>
                   </tr>
                 ))}

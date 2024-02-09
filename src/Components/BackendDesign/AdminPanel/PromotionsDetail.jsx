@@ -76,7 +76,7 @@ const handleDeletePromotion =async (id)=>{
                                     <td>{items.id}</td>
                                         <td>{items.title} </td>
                                         <td>{items.description}</td>
-                                        <td>{items.isActive}</td>
+                                        <td>{items.isActive ? 'True' : 'False'}</td>
                                         <td className='promotions_table_btn'>
                                         <div onClick={()=>{ShowUpdateModel(items.id)}}>
                                             <button

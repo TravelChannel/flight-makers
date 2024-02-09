@@ -17,10 +17,10 @@ import { dataNotfound } from '../../../../Constant/images';
 import { AdminSideCustomerSupp } from '../../../../API/BackendAPI/UserBookingDetails';
 
 const UserCustomerSupport = (props) => {
-    const {userData,isLoading,checkAdmin} = props;
+    const {userData,isLoading} = props;
     const [openDetails, setOpenDetails] = useState(false);
     const [open, setOpen] = useState(false);
-
+    const [replacedButtons, setReplacedButtons] = useState({});
     const [dialogContent, setDialogContent] = useState({ title: "", description: "",userID:null});
     const [disabledButtons, setDisabledButtons] = useState({});
 
@@ -116,6 +116,7 @@ const UserCustomerSupport = (props) => {
           case "cancel":
             CancelationCalled(userID);
             setOpen(false);
+            setReplacedButtons(prevState => ({ ...prevState, [userID]: true })); 
             break;
           case "reissue":
             reIssueCalled(userID);
@@ -124,6 +125,10 @@ const UserCustomerSupport = (props) => {
           default:
             console.error("Invalid dialogContent.type");
         }}
+
+        const handleUserId = (userID)=>{
+          localStorage.setItem('userIDforDetails',userID);
+        }
 
   return (
     isLoading ?(<Loader/>):(
@@ -147,10 +152,11 @@ const UserCustomerSupport = (props) => {
                 <thead className='thead_typo'>
                   <tr>
                     <th>PNR ID</th>
-                    <th>User ID</th>
+                    {/* <th>User ID</th> */}
                     <th>Flight Segment</th>
                     <th>CreatedAt</th>
                     <th>Status</th>
+                    <th>Details</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -158,7 +164,7 @@ const UserCustomerSupport = (props) => {
                   {userPayLoad?.map((items, index) => (
                     <tr key={index}>
                       <td className=''>{items.id}</td>
-                      <td className=''>{items.userId}</td>
+                      {/* <td className=''>{items.userId}</td> */}
                       <td>
                         {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
                           <Fragment key={itmsIndex}>
@@ -173,10 +179,35 @@ const UserCustomerSupport = (props) => {
                         ))}
                       </td>
                       <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
-                      <td>Paid</td>
+                      <td>UnPaid</td>
+                      <td>
+                      <button
+                        className='btn btn-primary buttons_typo'
+                        onClick={() => {
+                          handleUserId(items.id);
+                          window.open('/userDetails', '_blank');
+                        }}
+                      >
+                        View
+                      </button>
+                      </td>
                       <td>
                         <div>
-                          <button
+                        {!replacedButtons[items.id] ? (
+                            <button
+                              className='btn btn-primary buttons_typo user_cancelation_button'
+                              onClick={() => {
+                                openDialogBox(items.id);
+                                updateDialogContent('cancel', items.id);
+                              }}
+                              disabled={disabledButtons[items.id]}
+                            >
+                              Cancel
+                            </button>
+                          ) : (
+                            <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>
+                          )}
+                          {/* <button
                             className='btn btn-primary buttons_typo user_cancelation_button'
                             onClick={() => {
                               openDialogBox(items.id);
@@ -185,7 +216,7 @@ const UserCustomerSupport = (props) => {
                             disabled={disabledButtons[items.id]}
                           >
                             Cancel
-                          </button>
+                          </button> */}
                         </div>
                         {/* <div>
                           <button
