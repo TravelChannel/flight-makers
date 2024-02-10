@@ -13,7 +13,7 @@ import Select from '@mui/material/Select';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { updateUserProfile } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 
 const EditModel = (props) => {
  const {isOpen , setIsOpen} = props;
@@ -87,6 +87,7 @@ const [selectedDate, setSelectedDate] = useState(null);
   const handleSubmit =async () => {
     console.log("userUpdatedObject",userUpdatedObject);
  const updateDataAPI = await updateUserProfile(userUpdatedObject);
+//  console.log("updateDataUserAPI",updateDataAPI);
  window.location.reload();
 //  setIsOpen(false);
   };

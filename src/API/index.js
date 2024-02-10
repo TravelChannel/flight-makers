@@ -14,7 +14,7 @@ import { createOrderApi} from './payment/createOrder';
 import { getPaymentTokenApi} from './payment/getPaymentToken';
 import {getBookingApi} from './GetBookingAPI';
 
-import { UserBookingDetails } from './BackendAPI/UserBookingDetails';
+import { UserBookingDetails } from './BackendAPI/allAPICalls';
 import { sendOTP } from './BackendAPI/sendOTP';
 import { verifyOTP } from './BackendAPI/verifyOTP';
 

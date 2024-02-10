@@ -6684,7 +6684,18 @@ display: inline;
   margin-bottom:15px;
 }
 .btn_promotion_model{
-  padding:7px 40px;
+  margin-top: 20px;
+  padding:7px 30px;
+  background-color: #004B77;
+  border:none
+}
+.btn_promotion_model:hover{
+  background-color: #2867AB; 
+}
+.btn_promotion_model_active{
+  margin-top: 20px;
+  padding:7px 35px;
+  /* background-color: #F26223; */
 }
 
 /* -------------- */
@@ -6806,5 +6817,15 @@ color: #36c;	;
 }
 .redspot_message{
   color:red;
-  
+}
+.disable_button{
+margin-top:50px;
+}
+.addPromo_btn{
+  background-color: #F26223;
+  border:none;
+  padding:8px 20px !important;
+}
+.addPromo_btn:hover{
+  background-color: #004B77;
 }

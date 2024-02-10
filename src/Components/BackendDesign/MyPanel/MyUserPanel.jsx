@@ -10,7 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import BookingDetail from '../MyPanel/Pages/BookingDetails/BookingDetails';
 import { useFormData } from '../../../Context/FormDataContext';
 import { useNavigate } from 'react-router';
-import { UserLogOut } from '../../../API/BackendAPI/UserBookingDetails';
+import { UserLogOut } from '../../../API/BackendAPI/allAPICalls';
 import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -180,7 +180,7 @@ useEffect(() => {
 								) : (
 									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
 									<WalletIcon className='menu_content_icon' />
-									<p className='d-flex align-self-center menu_content_typo'>Customer Support</p>
+									<p className='d-flex align-self-center menu_content_typo'>ReIssue/Refund/ <br/>Cancellation</p>
 									</div>
 								)}
 

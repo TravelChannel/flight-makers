@@ -7,9 +7,10 @@ import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import { cityNameFunct, formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../../helpers/formatdata';
 import airlinesName from '../../../../../Constant/airlineName';
 import {requestReviewItinerary} from '../../../../../API';
-import { UserDetailbyID } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { UserDetailbyID } from '../../../../../API/BackendAPI/allAPICalls';
 import Loader from '../../../../../Loader/Loader';
-
+import TotalPriceCalculation from '../../../../Flightbooking/TotalPriceCalculation';
+import { TicketPriceProvider } from '../../../../Flightbooking/Comman/Context';
 const UserCompleteDetail = () => {
     // const {userDetail ,setuserDetail}= useUserData();
     // const {flightDetails , setFlightDetails} =useUserData();
@@ -338,6 +339,11 @@ const UserCompleteDetail = () => {
                 </div>   
                 <div className='w_25_userpanel'></div>
         </div>
+        {/* <div>
+                <TicketPriceProvider>
+                              <TotalPriceCalculation />
+                 </TicketPriceProvider>
+        </div> */}
         
 </div>
     

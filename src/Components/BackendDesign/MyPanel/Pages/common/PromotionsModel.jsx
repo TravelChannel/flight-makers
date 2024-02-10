@@ -3,9 +3,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, } from '
 import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { AddPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { AddPromotions } from '../../../../../API/BackendAPI/allAPICalls';
 // import { GetAllPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
-import { UpdatePromotion } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { UpdatePromotion } from '../../../../../API/BackendAPI/allAPICalls';
 const PromotionsModel = (props) => {
     const [isTitle ,setTitle]  =useState('');
     const [isDesc ,setDesc]  =useState('');
@@ -108,7 +108,7 @@ const PromotionsModel = (props) => {
                     isUpdate ?(
                      <Fragment>
                      <button className='btn btn-primary btn_promotion_model'>Update</button>
-                      <button className='btn btn-primary btn_promotion_model mx-2'>DeActivate</button>
+                      {/* <button className='btn btn-primary btn_promotion_model mx-2'>DeActivate</button> */}
                      </Fragment>
                     ):(
                        <button className='btn btn-primary btn_promotion_model'>Submit</button>)

@@ -90,6 +90,7 @@ export const updateUserProfile =async(userUpdatedObject)=>{
 				if (res.data.status === 'SUCCESS') {
 
 					console.log( res.data.message, 'success');
+					return res;
 
 				} else {
 					console.log(res.data.message, 'danger');
@@ -291,4 +292,37 @@ export const UserDetailbyID = async(userIdforDetail)=>{
 		console.error(error.message, 'Danger');
 		throw error;
 	}
+}
+
+
+// ---------------------Activate / Deactivate Promotions ---------------------
+
+// export const togglePromotion = async (id)=>{
+// 	try{
+// 		const responce = await apiClient.patch(`/promotions/toggleStatus/${id}`);
+// 		if(responce.data.status === 'SUCCESS'){
+// 		console.log(responce.data.message, `Promotion-Status Toggle success `);
+// 		return responce;
+// 		} else {
+// 		console.log(responce.data.message, 'Promotion-Status Toggle danger');
+// 		throw new Error(responce.data.message); }
+// 		}catch(error){
+// 		console.error(error.message,'Danger Danger');
+// 		throw error;
+// 	}
+// }
+export const togglePromotion = async (id) => {
+    try {
+        const response = await apiClient.patch(`/promotions/toggleStatus/${id}`);
+        if (response.data.status === 'SUCCESS') {
+            console.log(response.data.message, `Promotion-Status Toggle success`);
+            return response;
+        } else {
+            console.log(response.data.message, 'Promotion-Status Toggle danger');
+            throw new Error(response.data.message);
+        }
+    } catch (error) {
+        console.error(error.message, 'Danger Danger');
+        throw error;
+    }
 }

@@ -2,7 +2,7 @@ import React,{useState,Fragment} from 'react'
 import SettingsIcon from '../../../assets/BackendAssests/icons/settings.svg';
 import Notification from '../../../assets/BackendAssests/icons/notification.svg';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
-import { UserLogOut } from '../../../API/BackendAPI/UserBookingDetails';
+import { UserLogOut } from '../../../API/BackendAPI/allAPICalls';
 import { useNavigate } from 'react-router';
 import { useFormData } from '../../../Context/FormDataContext';
 import * as images from '../../../Constant/images';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AllUsersDetail } from '../../../API/BackendAPI/UserBookingDetails';
+import { AllUsersDetail } from '../../../API/BackendAPI/allAPICalls';
 
 const UserLists = () => {
   const [allUserData, setUserData] = useState([]);

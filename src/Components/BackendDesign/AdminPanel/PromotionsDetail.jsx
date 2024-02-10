@@ -1,13 +1,15 @@
 import React,{useState,useEffect} from 'react';
 import PromotionsModel from '../MyPanel/Pages/common/PromotionsModel';
-import { GetAllPromotions } from '../../../API/BackendAPI/UserBookingDetails';
-import { DeletePromotion } from '../../../API/BackendAPI/UserBookingDetails';
+import { GetAllPromotions } from '../../../API/BackendAPI/allAPICalls';
+import { DeletePromotion } from '../../../API/BackendAPI/allAPICalls';
+import * as images from '../../../Constant/images';
+import { togglePromotion } from '../../../API/BackendAPI/allAPICalls';
 const PromotionsDetail = () => {
 const [isOpen , setIsOpen] = useState(false);
 const [isUpdate , setUpdate] = useState(false);
 const [updateID ,setUpdateId] = useState('');
 const [promotionData , setPromotionData] = useState([]);
-const [promotions, setPromotions] = useState([]);
+
 
 const ShowAddModel = ()=>{
     setIsOpen(!isOpen);
@@ -20,24 +22,44 @@ const ShowUpdateModel = (itemID)=>{
 }
 
 useEffect(() => {
-    const GetPromotionsDetail = async () => {
+    const getPromotionsDetail = async () => {
         try {
             const response = await GetAllPromotions();
+            console.log("promotionResponce",response);
             setPromotionData(response.data.payload);
-            console.log('getAllPromotions', response.data.payload);
         } catch (error) {
             console.log('Error in getAllPromotions', error);
         }
     };
 
-    GetPromotionsDetail();
-}, [promotions]);
+    getPromotionsDetail();
+}, []);
 
-const handleDeletePromotion =async (id)=>{
-
-    DeletePromotion(id,setPromotions);
+const handleDeletePromotion = async (id) => {
+    try {
+        await DeletePromotion(id);
+        // After deletion, update the promotionData state to reflect the changes
+        setPromotionData(promotionData.filter(item => item.id !== id));
+    } catch (error) {
+        console.error("Error deleting promotion:", error);
+    }
 }
 
+const handleTogglePromotions = async (id) => {
+    try {
+        const toggleResponse = await togglePromotion(id);
+        console.log("TogglePromotion-Response:", toggleResponse);
+        // Update isActive field locally
+        setPromotionData(promotionData.map(item => {
+            if (item.id === id) {
+                return { ...item, isActive: !item.isActive };
+            }
+            return item;
+        }));
+    } catch (error) {
+        console.error("PromotionError", error);
+    }
+}
   return (
     <div>
           <div className='dashboard-content-header'>
@@ -54,8 +76,8 @@ const handleDeletePromotion =async (id)=>{
         </div>
         <div>
                 <div className='d-flex justify-content-end mt-5' onClick={ShowAddModel}>
-                   <button className='btn btn-primary p-2'>
-                            Add  Promotion
+                   <button className='btn btn-primary addPromo_btn p-2'>
+                           <img src={images.announcement} alt="" width='32px' /> Add  Promotion
                    </button>
                 </div>
                     <div className="promotion_table text-center">
@@ -66,7 +88,9 @@ const handleDeletePromotion =async (id)=>{
                                 <th className="promotion_design" >Title</th>
                                 <th className="promotion_design">Description</th>
                                 <th  className="promotion_design">IsActive</th>
+                                <th className="promotion_design">Disable</th>
                                 <th className="promotion_design"> Operation</th>
+
                                </tr>
                             </thead>
                             <tbody>
@@ -77,6 +101,14 @@ const handleDeletePromotion =async (id)=>{
                                         <td>{items.title} </td>
                                         <td>{items.description}</td>
                                         <td>{items.isActive ? 'True' : 'False'}</td>
+                                        {/* <td className='disable_button'>
+                                             <button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>{items.isActive ? 'Deactivate' : 'Activate'}</button>
+                                        </td> */}
+                                        <td className='disable_button'>
+                                        {
+                                            items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Activate</button>)
+                                        }
+                                        </td>
                                         <td className='promotions_table_btn'>
                                         <div onClick={()=>{ShowUpdateModel(items.id)}}>
                                             <button
@@ -91,6 +123,7 @@ const handleDeletePromotion =async (id)=>{
                                             </button>
                                         </div>
                                         </td>
+                                        
                                         
 
                                     </tr>

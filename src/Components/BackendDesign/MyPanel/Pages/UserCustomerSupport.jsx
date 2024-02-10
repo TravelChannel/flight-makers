@@ -4,9 +4,9 @@ import { cityNameFunct } from '../../../../helpers/formatdata';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
 import { useNavigate } from 'react-router';
-import { ReIssue } from '../../../../API/BackendAPI/UserBookingDetails';
-import { Cancelation } from '../../../../API/BackendAPI/UserBookingDetails';
-import { ReFund } from '../../../../API/BackendAPI/UserBookingDetails';
+import { ReIssue } from '../../../../API/BackendAPI/allAPICalls';
+import { Cancelation } from '../../../../API/BackendAPI/allAPICalls';
+import { ReFund } from '../../../../API/BackendAPI/allAPICalls';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -14,7 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { dataNotfound } from '../../../../Constant/images';
-import { AdminSideCustomerSupp } from '../../../../API/BackendAPI/UserBookingDetails';
+import { AdminSideCustomerSupp } from '../../../../API/BackendAPI/allAPICalls';
 
 const UserCustomerSupport = (props) => {
     const {userData,isLoading} = props;
@@ -156,8 +156,8 @@ const UserCustomerSupport = (props) => {
                     <th>Flight Segment</th>
                     <th>CreatedAt</th>
                     <th>Status</th>
-                    <th>Details</th>
                     <th>Action</th>
+                    <th>Details</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -180,17 +180,6 @@ const UserCustomerSupport = (props) => {
                       </td>
                       <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
                       <td>UnPaid</td>
-                      <td>
-                      <button
-                        className='btn btn-primary buttons_typo'
-                        onClick={() => {
-                          handleUserId(items.id);
-                          window.open('/userDetails', '_blank');
-                        }}
-                      >
-                        View
-                      </button>
-                      </td>
                       <td>
                         <div>
                         {!replacedButtons[items.id] ? (
@@ -242,6 +231,17 @@ const UserCustomerSupport = (props) => {
                             ReIssue
                           </button>
                         </div> */}
+                      </td>
+                      <td>
+                      <button
+                        className='btn btn-primary buttons_typo'
+                        onClick={() => {
+                          handleUserId(items.id);
+                          window.open('/userDetails', '_blank');
+                        }}
+                      >
+                        View
+                      </button>
                       </td>
                     </tr>
                   ))}

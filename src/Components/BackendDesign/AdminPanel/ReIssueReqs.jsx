@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
 import Loader from '../../../Loader/Loader';
-import { AdminReIssueReq } from '../../../API/BackendAPI/UserBookingDetails';
+import { AdminReIssueReq } from '../../../API/BackendAPI/allAPICalls';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
 import { useNavigate } from 'react-router';

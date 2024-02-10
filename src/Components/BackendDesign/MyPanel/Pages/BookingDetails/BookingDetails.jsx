@@ -13,9 +13,9 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { cityNameFunct,formatCompleteDate,calculateDuration,elapsedTimeFunct,airportNameFunct } from '../../../../../helpers/formatdata';
 import airlinesName from '../../../../../Constant/airlineName';
 
-import { ReFund } from '../../../../../API/BackendAPI/UserBookingDetails';
-import { ReIssue } from '../../../../../API/BackendAPI/UserBookingDetails';
-import { Cancelation } from '../../../../../API/BackendAPI/UserBookingDetails';
+import { ReFund } from '../../../../../API/BackendAPI/allAPICalls';
+import { ReIssue } from '../../../../../API/BackendAPI/allAPICalls';
+import { Cancelation } from '../../../../../API/BackendAPI/allAPICalls';
 import Loader from '../../../../../Loader/Loader';
 // import '../styles.css';
 const BookingDetail = () => {

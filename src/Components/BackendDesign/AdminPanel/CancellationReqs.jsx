@@ -3,7 +3,7 @@ import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
 import { useNavigate } from 'react-router';
 import Loader from '../../../Loader/Loader';
-import { AdminCancellationReq } from '../../../API/BackendAPI/UserBookingDetails';
+import { AdminCancellationReq } from '../../../API/BackendAPI/allAPICalls';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
 // import { useUserData } from '../../../Context/UserDataContext';
