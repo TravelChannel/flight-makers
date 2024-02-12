@@ -1692,6 +1692,7 @@ hr{
   min-height: 5px;
   padding-right: 15px;
   padding-left: 15px;
+  margin-top:14px;
 }
 
 
@@ -6828,4 +6829,72 @@ margin-top:50px;
 }
 .addPromo_btn:hover{
   background-color: #004B77;
+}
+
+/* --------------------------------- Tasbeel Indexing pages CSS------------------- */
+.text1{
+  font-family: Verdana;
+  font-size: 23px;
+}
+.mainflights{
+  margin: 5px 15px;
+}
+.mainflights p{
+font-family: Verdana;
+font-size: 14px;
+padding-top: 9px;
+margin-bottom: 10px;
+text-align: justify;
+}
+.text_bold{
+  font-weight: bold;
+}
+.mainflights p a{
+  text-decoration: none;
+}
+.mainflights p a:hover{
+  text-decoration: underline;
+  color: #337AB7;
+}
+.main_list li{
+  list-style-type: disc;
+  margin-left: 35px;
+  margin-top: 5px;
+}
+.main_list_none li{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+.table_design{
+  margin: 10px 0px;
+  width: 100%;
+  border: 1px solid black ;
+  border-collapse: collapse;
+}
+.table_design th, .table_design td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align:left;
+}
+.airblue_map{
+  width: 100%;
+  max-width: 656px;
+  margin: auto;
+}
+.airblue_image{
+  width: 100%;
+}
+.horizontal-line {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+}
+.table_head{
+  font-size:14px;
+   height:50px;
+    text-align:center;
+}
+.table_data{
+  font-size:14px; font-weight:bold;
 }

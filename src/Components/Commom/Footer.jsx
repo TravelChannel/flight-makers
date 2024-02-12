@@ -25,7 +25,7 @@ const handleAirLinesData = (id, airlineName) => {
         <Fragment>
         <div className="container footerBox ">
         <div className="postion_reltive">
-            <div className="row my-3">
+            {/* <div className="row my-3">
                 <ul className="col col-md-3 col-lg-3 footerLinks">
                     <li className="txtTransUpper">Company</li>
                     <li><Link to="/aboutUs">About Us</Link></li>
@@ -60,14 +60,14 @@ const handleAirLinesData = (id, airlineName) => {
                    </li>
                 </ul>
 
-            </div>
+            </div> */}
 
 
             {/* ******************************************************** */}
-            <div className="row d-none d-sm-block "> 
+            <div className="row d-sm-block "> 
               <span className="footer_destination">Popular Airlines </span>
                 <div className="row"> 
-                    <ul className="col-xs-3  col-sm-3 col-md-3 footerLinks">
+                    <ul className="col-md-3 col-sm-3 col-3 footerLinks">
                             <li  onClick={()=>handleAirLinesData(1,'Emirates-Airline')} ><Link to="#">Emirates Airline</Link></li>
                             <li  onClick={()=>handleAirLinesData(2,'qatar-airways-flights ')}><Link to="#">Qatar Airways </Link></li>
                             <li  onClick={()=>handleAirLinesData(3,'turkish-airlines-flights')}><Link to="#">Turkish Airlines</Link></li>
@@ -75,7 +75,7 @@ const handleAirLinesData = (id, airlineName) => {
                             <li  onClick={()=>handleAirLinesData(5,'oman-air-flights')}><Link to="#">Oman Air </Link></li>
 
                     </ul>
-                    <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                    <ul className="col-md-3 col-sm-3 col-3 footerLinks">
                             <li  onClick={()=>handleAirLinesData(6,'Fly-with-FlyDubai')}><Link to="#">Fly Dubai </Link></li>
                             <li  onClick={()=>handleAirLinesData(7,'etihad-airways-flights')}><Link to="#">Etihad Airways </Link></li>
                             <li  onClick={()=>handleAirLinesData(8,'shaheen-air-flights')}><Link to="#">Shaheen Air</Link></li>
@@ -83,14 +83,14 @@ const handleAirLinesData = (id, airlineName) => {
                             <li  onClick={()=>handleAirLinesData(10,'air-sial-flights')}><Link to="#">Air Sial</Link></li>
 
                     </ul>
-                    <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                    <ul className="col-md-3 col-sm-3 col-3 footerLinks">
                             <li  onClick={()=>handleAirLinesData(11,'virgin-atlantic-flights')}><Link to="#">Virgin Atlantic </Link></li>
                             <li  onClick={()=>handleAirLinesData(12,'thai-airways-flights')}><Link to="#"> Thai Airways</Link></li>
                             <li  onClick={()=>handleAirLinesData(13,'serene-air-flights')}><Link to="#">Serene Air</Link></li>
                             <li  onClick={()=>handleAirLinesData(14,'kuwait-airways-flights')}><Link to="#">Kuwait Airways</Link></li>
                             <li  onClick={()=>handleAirLinesData(15,'china-southern-airlines-flights')}><Link to="#">China Southern</Link></li>
                     </ul>
-                    <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                    <ul className="col-md-3 col-sm-3 col-3 footerLinks">
                             <li  onClick={()=>handleAirLinesData(16,'saudi-arabian-airline-flights')}><Link to="#">Saudi Arabian</Link></li>
                             <li  onClick={()=>handleAirLinesData(17,'air-arabia-flights')}><Link to="#">Air Arabia</Link></li>
                             <li  onClick={()=>handleAirLinesData(18,'air-china-flights')}><Link to="#">Air China</Link></li>
@@ -100,7 +100,7 @@ const handleAirLinesData = (id, airlineName) => {
                 </div>
               <span className="footer_destination">International Destinations</span>
                 <div className="row mb-3"> 
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-md-3 col-3 col-sm-3  footerLinks">
                     <li><Link to="/internationalAirlines/Lahore-London">Lahore - London</Link></li>
                     <li><Link to="/internationalAirlines/Lahore-Dubai">Lahore - Dubai</Link></li>
                     <li><Link to="/internationalAirlines/Lahore-Toronto">Lahore - Toronto</Link></li>
@@ -126,7 +126,7 @@ const handleAirLinesData = (id, airlineName) => {
 
                     
                 </ul>
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/internationalAirlines/Karachi-London">Karachi - London</Link></li>
                 <li><Link to="/internationalAirlines/Karachi-Dubai">Karachi - Dubai</Link></li>
                 <li><Link to="/internationalAirlines/Karachi-Toronto">Karachi - Toronto</Link></li>
@@ -152,7 +152,7 @@ const handleAirLinesData = (id, airlineName) => {
 
 
                 </ul>
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/internationalAirlines/Islamabad-London">Islamabad - London</Link></li>
                 <li><Link to="/internationalAirlines/Islamabad-Dubai">Islamabad - Dubai</Link></li>
                 <li><Link to="/internationalAirlines/Islamabad-Toronto">Islamabad - Toronto</Link></li>
@@ -179,7 +179,7 @@ const handleAirLinesData = (id, airlineName) => {
 
 
                 </ul>
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/internationalAirlines/Multan-London">Multan - London</Link></li>
                 <li><Link to="/internationalAirlines/Multan-Dubai">Multan - Dubai</Link></li>
                 <li><Link to="/internationalAirlines/Multan-Toronto">Multan - Toronto</Link></li>
@@ -208,7 +208,7 @@ const handleAirLinesData = (id, airlineName) => {
                 </div>
               <span className="footer_destination">Domestic Destinations</span>
               <div className="row mb-3"> 
-              <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+              <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/domesticAirlines/Lahore-Karachi">Lahore - Karachi</Link></li>
                 <li><Link to="/domesticAirlines/Lahore-Islamabad">Lahore - Islamabad</Link></li>
                 <li><Link to="/domesticAirlines/Lahore-Peshawar">Lahore - Peshawar</Link></li>
@@ -221,7 +221,7 @@ const handleAirLinesData = (id, airlineName) => {
               </ul>
 
                 {/* Karachi Destinations */}
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/domesticAirlines/Karachi-Lahore">Karachi - Lahore</Link></li>
                 <li><Link to="/domesticAirlines/Karachi-Islamabad">Karachi - Islamabad</Link></li>
                 <li><Link to="/domesticAirlines/Karachi-Peshawar">Karachi - Peshawar</Link></li>
@@ -235,7 +235,7 @@ const handleAirLinesData = (id, airlineName) => {
                 </ul>
 
                 {/* Islamabad Destinations */}
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/domesticAirlines/Islamabad-Karachi">Islamabad - Karachi</Link></li>
                 <li><Link to="/domesticAirlines/Islamabad-Lahore">Islamabad - Lahore</Link></li>
                 <li><Link to="/domesticAirlines/Islamabad-Peshawar">Islamabad - Peshawar</Link></li>
@@ -249,7 +249,7 @@ const handleAirLinesData = (id, airlineName) => {
                 </ul>
 
                 {/* Peshawar Destinations */}
-                <ul className="col-xs-3 col-sm-3 col-md-3 footerLinks">
+                <ul className="col-3 col-sm-3 col-md-3 footerLinks">
                 <li><Link to="/domesticAirlines/Peshawar-Karachi">Peshawar - Karachi</Link></li>
                 <li><Link to="/domesticAirlines/Peshawar-Islamabad">Peshawar - Islamabad</Link></li>
                 <li><Link to="/domesticAirlines/Peshawar-Lahore">Peshawar - Lahore</Link></li>
@@ -312,11 +312,21 @@ const handleAirLinesData = (id, airlineName) => {
                 </div>
             </div>
         </div>
-        <div className="whatsapp_chat" >
+        {/* <div className="whatsapp_chat" >
             <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
+        </div> */}
+        {/* <div className="whatsapp_chat">
+            <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
+        </div> */}
+        <div className="whatsapp_chat">
+            <a href="https://wa.me/923111147111">
+                <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
+            </a>
         </div>
         <div className="whatsapp_chat">
-            <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
+            <a href="https://wa.me/923111147111">
+                <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
+            </a>
         </div>
         <Link className="whatsapp_chat" to="tel:+923111147111 bg-white">
                 {/* <img className="whatsapp inlineDiv" src="~/Content/images/Logos/call_now_2.png" height="60" width="60" alt="Whatsapp logo" /> */}

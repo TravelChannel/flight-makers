@@ -14,12 +14,6 @@ const BusinessLogo = () => {
                                   </Link>
                                 </li>
                                 <li className="trip_tab">
-                                  <Link to="/">
-                                    <img src={images.hotelImage} alt="Hotel" className="hotel_img" />
-                                    <h6 className='text-white'>Hotels</h6>
-                                  </Link>
-                                </li>
-                                <li className="trip_tab">
                                     <Link to="https://www.faremakersmall.com/" target='blank'>
                                       <img src={images.MallLogo} alt="Hotel" className="hotel_img" />
                                       <h6 className='text-white'>Mall</h6>
@@ -30,6 +24,12 @@ const BusinessLogo = () => {
                                       <img src={images.liveIcon} alt="Hotel" className="hotel_img" />
                                       <h6 className='text-white'>Live</h6>
                                     </Link>
+                                </li>                                
+                                <li className="trip_tab">
+                                  <Link to="/">
+                                    <img src={images.hotelImage} alt="Hotel" className="hotel_img" />
+                                    <h6 className='text-white'>Hotels</h6>
+                                  </Link>
                                 </li>
                             </ul>
                         </div>

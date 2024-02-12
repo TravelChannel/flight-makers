@@ -672,7 +672,7 @@ useEffect(() => {
                                       onChange={(e) => handleInputChange(e, index)} />
                                   </div>
                                 </div>
-                                {index < adults ?
+                                {index < adults && flightDetails?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF" ?
                                   <div className='col-md-4 mb-3'>
                                     <div className="passanger_gender_input">
                                       <p className="dob_heading">CNIC No:</p>
