@@ -179,7 +179,7 @@ const UserCustomerSupport = (props) => {
                         ))}
                       </td>
                       <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
-                      <td>UnPaid</td>
+                      <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
                       <td>
                         <div>
                         {!replacedButtons[items.id] ? (
@@ -207,30 +207,36 @@ const UserCustomerSupport = (props) => {
                             Cancel
                           </button> */}
                         </div>
-                        {/* <div>
-                          <button
-                            className='btn btn-primary buttons_typo user_cancelation_button'
-                            onClick={() => {
-                              openDialogBox(items.id);
-                              updateDialogContent('refund', items.id);
-                            }}
-                            disabled={disabledButtons[items.id]}
-                          >
-                            Refund
-                          </button>
-                        </div>
-                        <div>
-                          <button
-                            className='btn btn-primary buttons_typo user_cancelation_button'
-                            onClick={() => {
-                              openDialogBox(items.id);
-                              updateDialogContent('reissue', items.id);
-                            }}
-                            disabled={disabledButtons[items.id]}
-                          >
-                            ReIssue
-                          </button>
-                        </div> */}
+                        {
+                          items.isPaid ? (
+                            <div>
+                            <div className='mt-1'>
+                                <button
+                                  className='btn btn-primary buttons_typo user_cancelation_button'
+                                  onClick={() => {
+                                    openDialogBox(items.id);
+                                    updateDialogContent('refund', items.id);
+                                  }}
+                                  disabled={disabledButtons[items.id]}
+                                >
+                                  Refund
+                                </button>
+                              </div>
+                              <div className='mt-1'>
+                                <button
+                                  className='btn btn-primary buttons_typo user_cancelation_button'
+                                  onClick={() => {
+                                    openDialogBox(items.id);
+                                    updateDialogContent('reissue', items.id);
+                                  }}
+                                  disabled={disabledButtons[items.id]}
+                                >
+                                  ReIssue
+                                </button>
+                              </div>
+                            </div>
+                          ):('')
+                        }
                       </td>
                       <td>
                       <button

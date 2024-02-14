@@ -1,41 +1,46 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React,{useState ,useEffect,Fragment} from 'react';
+import { allPaidBookings } from '../../../API/BackendAPI/allAPICalls';
+import Loader from '../../../Loader/Loader';
+import { cityNameFunct } from '../../../helpers/formatdata';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
-import { useNavigate } from 'react-router';
-import Loader from '../../../../Loader/Loader';
-// import { useUserData } from '../../../../Context/UserDataContext';
-import { cityNameFunct, formatCompleteDate } from '../../../../helpers/formatdata';
-import { dataNotfound } from '../../../../Constant/images';
-import { Link } from 'react-router-dom';
+import { dataNotfound } from '../../../Constant/images';
+const VerifiedBookings = (props) => {
+    const {checkAdmin} = props;
+ const [isLoading ,setLoading] = useState(true);
+ const [search, setSearch] = useState('');
+ const [userData ,setuserData] = useState([]);
 
-const UserBookingsDetails = (props) => {
-  const { userData, isLoading,checkAdmin } = props;
-  const [search, setSearch] = useState('');
-  // const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
-  const navigate = useNavigate();
-
-  const __handleSearch = (event) => {
+ const __handleSearch = (event) => {
     const value = event.target.value;
     setSearch(value);
   };
-
   const ArrangeDateFormat = (JourneyDate) => {
     const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
     return formattedDate;
   };
-
-  // const UserFurtherDetail = (pnrDetail, flightDetails) => {
-  //   setFlightDetails(flightDetails);
-  //   setuserDetail(pnrDetail);
-  //   navigate('/userDetails');
-  // };
-
   const handleUserId = (userID) =>{
     console.log("sentID",userID);
    localStorage.setItem('userIDforDetails',userID);
   }
 
-  const userPayLoad = userData?.data.payload;
+    useEffect(()=>{
+        const fetchAllPaidBookings =async () =>{
+            try{
+                const fetchResponce = await allPaidBookings();
+                setuserData(fetchResponce);
+                setLoading(false);
+                console.log('fetchResponce-fetchResponce',fetchResponce);
+
+            }catch(error){
+                console.error("error while fetching Boookings",error);
+            }
+
+        }
+        fetchAllPaidBookings(); 
+    },[])
+
+    const userPayLoad = userData?.data?.payload;
 
   const filteredUserPayload = userPayLoad?.filter((item) =>
     item.id?.toLowerCase().includes(search.toLowerCase()) ||
@@ -46,14 +51,11 @@ const UserBookingsDetails = (props) => {
     .includes(search.toLowerCase())
   );
   
-
   return (
-    isLoading ? (
-      <Loader />
-    ) : (
-      <div className='m-3'>
+    isLoading ? (<Loader/>):(
+    <div className='m-3'>
         <div className='dashboard-content-header'>
-          <h2>Booking Details</h2>
+          <h2>Purchase Bookings </h2>
           <div className='dashboard-content-search'>
             <input
               type='text'
@@ -64,15 +66,19 @@ const UserBookingsDetails = (props) => {
             />
           </div>
         </div>
-        <div className='user_table_details'>
-          {filteredUserPayload?.length ? (
-            <table className='table table-bordered table_custom'>
+        <div className='user_table_details'> 
+        {filteredUserPayload?.length ? (
+        <table className='table table-bordered table_custom'>
               <thead className='thead_typo'>
                 <tr>
-                  <th>Serail No</th>
+                  <th>Serial No</th>
                   <th>PNR ID</th>
-                  {checkAdmin ? <th>PNR No</th>:''}
-                  {checkAdmin ?  <th>User ID</th>:''}
+                  {
+                    checkAdmin ? <th>PNR No</th>:''
+                  }
+                  {
+                    checkAdmin ? <th>User ID</th>:''
+                  }
                   {/* <th>User ID</th> */}
                   <th>Flight Segment</th>
                   <th>CreatedAt</th>
@@ -83,10 +89,14 @@ const UserBookingsDetails = (props) => {
               <tbody>
                 {filteredUserPayload.map((items, index) => (
                   <tr key={index}>
-                  <td>{`${index+1}`}</td>
+                    <td>{`${index+1}`}</td>
                     <td className="">{items.id}</td>
-                    {checkAdmin ? <td className="">{items.pnr}</td>:''}
-                    {checkAdmin ? <td className="">{items.userId}</td>:''}
+                    {
+                    checkAdmin ? <td className="">{items.pnr}</td>:''
+                    }
+                    {
+                    checkAdmin ? <td className="">{items.userId}</td>:''
+                    }
                     {/* <td className="">{items.userId}</td> */}
                     <td>
                       {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
@@ -102,7 +112,7 @@ const UserBookingsDetails = (props) => {
                       ))}
                     </td>
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                    <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
+                    <td>{items.isPaid ? 'Paid':'Unpaid'}</td>
                     <td>
                     {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
 
@@ -121,17 +131,18 @@ const UserBookingsDetails = (props) => {
                 ))}
               </tbody>
             </table>
-          ) : (
+        ):(
             <div className='text-center py-5 bg-white'>
               <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
-              <h2>No flight bookings found</h2>
+              <h2>No Purchased bookings found</h2>
               <p>Explore Destinations, Book Your Flight </p>
             </div>
-          )}
+        )}
         </div>
-      </div>
+    </div>
     )
-  );
+    
+  )
 }
 
-export default UserBookingsDetails;
+export default VerifiedBookings;

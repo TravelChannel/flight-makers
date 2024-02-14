@@ -45,7 +45,7 @@ const AppRouter = () => {
         <Route path="/terms-of-service" element={<Termsofservice />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/bookingpayment" element={<BookingPayment />} />
-        <Route path="/GetPNRItinerary" element={<GetPNRItinerary />} />
+        <Route path="/previewEticket" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}

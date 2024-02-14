@@ -29,6 +29,7 @@ import ReIssueReqs from '../AdminPanel/ReIssueReqs';
 import CancellationReqs from '../AdminPanel/CancellationReqs';
 import RefundReqs from '../AdminPanel/RefundReqs';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import VerifiedBookings from '../panelsCommon/VerifiedBookings';
 
 
 const MyUserPanel = ()=>{
@@ -166,7 +167,10 @@ useEffect(() => {
                    <div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 4 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(4)}>
                   		<ReceiptIcon className='menu_content_icon' />
-                  			<p className='d-flex align-self-center menu_content_typo'>Payment Details </p>
+                  			<p className='d-flex align-self-center menu_content_typo'>
+							{/* Payment Details  */}
+							Purchase Bookings
+							</p>
                   		</div>
 
                   </div>
@@ -249,7 +253,7 @@ useEffect(() => {
 				 		<UserDashBoard/> 
 				 		</div>
 				{selectedMenuItem === 1 && (
-					<UserBookingsDetails userData={userData} isLoading ={isLoading}/>
+					<UserBookingsDetails userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin}/>
 						)}
           		{selectedMenuItem === 2 && 
 				<UserProfile userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} partialAdmin = {partialAdmin}/>
@@ -261,7 +265,7 @@ useEffect(() => {
 				}
           		
           		{selectedMenuItem === 4 && 
-				<h3>hello</h3>}
+				<VerifiedBookings checkAdmin = {checkAdmin}/>}
 				{selectedMenuItem === 5 && (
 						<Fragment>
 							{checkAdmin || partialAdmin ? (

@@ -82,7 +82,7 @@ const UserCompleteDetail = () => {
         <FlightTakeoffIcon className='align-self-center flight_airoplane'/> <h3>Flight Details</h3>
     </div>
     <div className="d-flex justify-content_start mt-2 panel_numbering_typo">
-            <div className="iti_numbering d-flex align-self-center">
+            <div className="iti_numbering d-flex align-self-center backend_numbering">
                 <p>1</p>
             </div>
             <div className="d-flex align-self-center">
@@ -268,10 +268,31 @@ const UserCompleteDetail = () => {
             <div className='w_25_userpanel'></div>
         </div>
 
+        <div>
+            <div className="d-flex justify-content_start mt-4 panel_numbering_typo">
+                    <div className="iti_numbering d-flex align-self-center backend_numbering">
+                        <p>2</p>
+                    </div>
+                    <div className="d-flex align-self-center">
+                        <h5 className="iti_heading_size">Payment You Will Pay</h5>
+                    </div>
+            </div>
+            <div className='my-2  d-flex justify-content-start w-100'>
+            <div className='w_25_userpanel'></div>
+                <div className='w-75'>
+                <TicketPriceProvider>
+                              <TotalPriceCalculation />
+                 </TicketPriceProvider>
+                </div>
+                <div className='w_25_userpanel'></div>
+
+            </div>
+        </div>
+
     <div  className='userPassangerDetail'>
         <div className="d-flex justify-content_start mt-4 panel_numbering_typo">
-                <div className="iti_numbering d-flex align-self-center">
-                    <p>2</p>
+                <div className="iti_numbering d-flex align-self-center backend_numbering">
+                    <p>3</p>
                 </div>
                 <div className="d-flex align-self-center">
                     <h5 className="iti_heading_size">Passangers Detail</h5>
@@ -339,11 +360,7 @@ const UserCompleteDetail = () => {
                 </div>   
                 <div className='w_25_userpanel'></div>
         </div>
-        {/* <div>
-                <TicketPriceProvider>
-                              <TotalPriceCalculation />
-                 </TicketPriceProvider>
-        </div> */}
+        
         
 </div>
     

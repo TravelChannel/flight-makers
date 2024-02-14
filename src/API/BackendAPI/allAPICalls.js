@@ -326,3 +326,40 @@ export const togglePromotion = async (id) => {
         throw error;
     }
 }
+
+
+// --------------------AdminSide All Varified Bookings-----------------------
+
+// export const allPaidBookings = async () =>{
+// 	try{
+// 		const responce = await apiClient.get(`/pnrPayment`);
+// 		if (responce.data.status === 'SUCCESS') {
+//             console.log(responce.data.message, `PaidBookings Fetch SuccessFully`);
+//             return responce;
+//         } else {
+//             console.log(responce.data.message, 'PaidBookings  danger');
+//             throw new Error(responce.data.message);
+//         }
+
+// 	}catch(error){
+// 		console.error(error.message, 'Danger Danger');
+//         throw error;
+// 	}
+// }
+
+export const allPaidBookings = async () =>{
+	try{
+		const responce = await apiClient.get(`/pnrBooking/paid?isPaid=1`);
+		if (responce.data.status === 'SUCCESS') {
+            console.log(responce.data.message, `PaidBookings Fetch SuccessFully`);
+            return responce;
+        } else {
+            console.log(responce.data.message, 'PaidBookings  danger');
+            throw new Error(responce.data.message);
+        }
+
+	}catch(error){
+		console.error(error.message, 'Danger Danger');
+        throw error;
+	}
+}
