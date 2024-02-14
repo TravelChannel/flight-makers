@@ -47,6 +47,10 @@ const UserContactDetails = (props) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [lNameDialog, setlNameDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const [MajorData, setMajorData] = useState([]);
+ 
+
   // const [formData, setFormData] = useState([]);
   // const [isMobile, setIsMobile] = useState(window.innerWidth < 769);
   const [isSmallScreen, setSmallScreen] = useState(window.innerWidth < 462);
@@ -58,6 +62,7 @@ const UserContactDetails = (props) => {
     phoneNumber: phoneNumber,
     pnr: isPNR,
     pnrBookings: [],
+
   });
 
 
@@ -344,6 +349,7 @@ useEffect(() => {
       pnr,
       pnrBookings: pnrBookingsArray,
       flightDetails:flightDetails,
+      MajorInfo:MajorData
     };
 
     console.log("Final Object:", finalObject);
@@ -433,6 +439,34 @@ useEffect(() => {
     }
     
   }
+  // -----------------------------
+  useEffect(() => {
+    // Arrival Location
+    const newArrivalLocations = flightDetails.groupDescription.map(item => item.arrivalLocation);
+    // setArrivalLocations(newArrivalLocations);
+
+    // Operating Airline
+    const OperatingAirlines = flightDetails.schedualDetGet.flatMap(item => item.map(itm => itm.carrier.operating));
+    // setOperatingAirLine(OperatingAirlines);
+    
+    // Class Type
+    // setClassType(flightDetails.classtype);
+
+    // Create CommissionData after setting state
+    const CommissionData = {
+        'Destinations': newArrivalLocations,
+        'OperatingAirline': OperatingAirlines,
+        'ClassType': flightDetails.classtype
+    };
+
+    console.log("CommissionData", CommissionData);
+    setMajorData(CommissionData);
+}, []);
+
+
+
+
+  // ---------------------------------
 
   return (
  

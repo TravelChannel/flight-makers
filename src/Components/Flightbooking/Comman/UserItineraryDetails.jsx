@@ -45,6 +45,12 @@ const UserItineraryDetails = () => {
         return () => clearInterval(intervalId);
     }, []);
 
+    // useEffect(() => {
+    //     const newArrivalLocations = flightdetails.groupDescription.map(item => item.arrivalLocation);
+    //     console.log("newArrivalLocations",newArrivalLocations);
+    //     setArrivalLocations(newArrivalLocations);
+    // }, []);
+
   return (
     <div className="iti_review_main">
                 <div className="d-flex justify-content_start mt-2 mb-4">

@@ -43,6 +43,7 @@ const PrivacyPolicyCheck = (props) => {
       
         try {
           const paymentToken = await requestGetpaymentToken(paymentCode);
+          console.log('paymentTokenpaymentToken',paymentToken);
           console.log(paymentToken.token);
       
           if (paymentType === "paypro") {

@@ -2,13 +2,15 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
     try {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-  
+       const pnrNum = JSON.parse(localStorage.getItem('PNRNumber'));
+       console.log("User_PNR_Number",pnrNum);
       var raw = JSON.stringify({
         "auth_token": `${getToken.token}`,
         "amount_cents": "100",
         "expiration": 3600,
         "order_id": `${createOrder.id}`,
         "billing_data": {
+          "pnrNum" :`${pnrNum}`,
           "apartment": "803",
           "email": "claudette09@exa.com",
           "floor": "42",
