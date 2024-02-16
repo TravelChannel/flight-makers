@@ -10,7 +10,7 @@ const Notification = () => {
   };
 
   const handleAllow = () => {
-    setMessage('Notification allowed!');
+    // setMessage('Notification allowed!');
     setShowNotification(false);
   };
 

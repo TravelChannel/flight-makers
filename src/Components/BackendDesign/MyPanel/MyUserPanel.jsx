@@ -32,6 +32,7 @@ import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArro
 import VerifiedBookings from '../panelsCommon/VerifiedBookings';
 
 
+
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 	 const { showHeader, setShowHeader } = useFormData();
@@ -39,7 +40,8 @@ const MyUserPanel = ()=>{
 	 const [isLogOut , setLogout] = useState(false);
 	 const {isLogin , setLogIn} = useFormData();
 	 const [isSubMenu , setSubMenu] = useState(false);
-	 const [selectedSubMenu , setSelectedSubMenu] = useState(1)
+	 const [selectedSubMenu , setSelectedSubMenu] = useState(1);
+
 // ------------------
 
 const [isLoading , setLoading]=useState(false);
@@ -50,6 +52,11 @@ const [isLoading , setLoading]=useState(false);
  const [partialAdmin ,setPartialAdmin] = useState(false);
 // ------------------
 	 const navigate = useNavigate();
+	 useEffect(() => {
+		if (!isLogin) {
+			navigate('/'); 
+		}
+	}, [isLogin]);
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
 	setSubMenu(menuItem===5);

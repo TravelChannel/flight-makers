@@ -4,6 +4,7 @@ import FlightIcon from '@mui/icons-material/Flight';
 import airlinesName from '../../Constant/airlineName';
 import { useLocation, useNavigate } from 'react-router';
 import SEOAirlinesData from '../../Constant/SEOAirlinesData';
+// import { SeoAirLinesData } from '../../API/BackendAPI/SEOAirlinesData';
 import { useParams } from 'react-router';
 // ----------------------------------------------------
 import AirArabiaFlights from './popAirlinesComponents/AirArabiaFlights';
@@ -53,6 +54,7 @@ const airlineComponents = {
 const PopularAirLines = () => {
   const [flightData, setFlightData] = useState({});
   const [airlineLogoData, setAirLineLogoData] = useState({});
+  // const [SEOAirlinesData ,setSEOAirLinesData] = useState([]);
 
   const { airlineName } = useParams();
   console.log("airlineNameFinal",airlineName);
@@ -63,6 +65,20 @@ const PopularAirLines = () => {
 
   console.log("fllightIDCurr",flightID);
   console.log("SEOAirlinesDataCurr",SEOAirlinesData);
+
+  // useEffect (()=>{
+  //   const BackendDataFetch = async() =>{
+  //     try{
+  //       const responce = await SeoAirLinesData();
+  //       setSEOAirLinesData(responce.data.payload);
+  //       console.log('SEOAirlinesDataBackend',responce.data.payload);
+
+  //     }catch(error){
+  //         console.error("Error From Backend",error);
+  //     }
+  //   }
+  //   BackendDataFetch();
+  // },[])
 
 
   useEffect(() => {
