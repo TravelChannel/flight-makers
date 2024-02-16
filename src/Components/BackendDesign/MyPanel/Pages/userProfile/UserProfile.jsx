@@ -4,37 +4,44 @@ import * as images from '../../../../../Constant/images';
 import EditModel from '../common/EditModel';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import Loader from '../../../../../Loader/Loader';
+import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verification';
 import { useFormData } from '../../../../../Context/FormDataContext';
 const UserProfile = (props)=>{
-  const {userData,isLoading,checkAdmin,partialAdmin} = props;
-  const [backLoading , setBackLoading] =useState(false);
+  const {isLoading,checkAdmin,partialAdmin} = props;
+  const {ProfileData ,setProfileData} =useFormData();
+  const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
+  const [userProfiles ,SetUserProfiles] = useState([]);
+  
 
 
   const openEditModel = ()=>{
     setIsOpen(true);
   }
 // ---------------------APi----------------
-  // useEffect(()=>{
-  //   const fetchBackendData =async()=>{
-  //     try{
-  //       setLoading(true);
-  //       const userData = await userDetailsBackend(setBackLoading);
-  //      console.log("ApiCalledData",userData?.data.payload?.user);
-  //     // console.log("ApiCalledData",userData);
-  //         setUser(userData);
-  //         setLoading(false);
-  //     }
-  //     catch (error){
-  //         console.error(error);
-  //     }
-  // } ;
+useEffect(()=>{
+  const userProfileData = ProfileData.payload.userData;
+  SetUserProfiles(userProfileData);
+  console.log("userProfileData",userProfileData);
+},[ProfileData]);
+// useEffect(()=>{
+//     const fetchBackendData =async()=>{
+//       try{
+//         const userData = await VerificationAPi();
+//        console.log("ApiCalledData",userData);
+//           SetUserProfiles(userData.data.payload.userData);
+//           setBackLoading(true);
+//       }
+//       catch (error){
+//           console.error(error);
+//       }
+//   } ;
   
-  // fetchBackendData();
-  //  },[]);
+//   fetchBackendData();
+//    },[]);
 
-   const userProfileData = userData?.data.payload.map((items)=>items.user);
-   console.log("userProfileData",userProfileData);
+  console.log('ProfileDataProfileData112',ProfileData);
+
 // -----------------
 // const userNameForDisplay = userProfileData?.[0]?.firstName;
 // setUserName(userNameForDisplay);
@@ -49,11 +56,7 @@ const UserProfile = (props)=>{
       isLoading? (<Loader/>):(
         <div className='dashboard-content'>
         <div className='dashboard-content-container'>
-              {
-                userProfileData?.map((items , index)=>(
-                  <div key={index} >
-                      {
-                        index ===0 &&(
+                  <div  >
                          <Fragment>
                             <div className="m-3 background_line ">
                                 <div className="d-flex justify-content-start">
@@ -62,15 +65,15 @@ const UserProfile = (props)=>{
                                             <div className="m-1  ">
                                               <img src={images.userProfile} alt="" />
                                             </div>
-                                            <h3>{items.firstName}</h3>
+                                            <h3>{userProfiles.firstName}</h3>
                                             <div className='userprofile_data  mt-2'>
                                                 <div className='usercountry'>
                                                     <p className=''>Country Code:</p>
-                                                    <h6 className='contact_info_data'>{items.countryCode}</h6>
+                                                    <h6 className='contact_info_data'>{userProfiles.countryCode}</h6>
                                                 </div>
                                                 <div className=' '>
                                                     <p className=''> Mobile No:</p>
-                                                    <h6 className='contact_info_data '>{items.phoneNumber}</h6>
+                                                    <h6 className='contact_info_data '>{userProfiles.phoneNumber}</h6>
                                                 </div>
                                             </div>
                                             <div className='text-center mt-4'>
@@ -94,30 +97,30 @@ const UserProfile = (props)=>{
                                         }
                                         <div className='   mb-4 '>
                                             <p className='user_detials_heading user_detail_p'>First Name :</p>
-                                            <h6 className='user_detials_data '>{items.firstName || '_'}  </h6>
+                                            <h6 className='user_detials_data '>{userProfiles.firstName || '_'}  </h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Last Name :</p>
-                                            <h6 className='user_detials_data '>{items.lastName || '_'}</h6>
+                                            <h6 className='user_detials_data '>{userProfiles.lastName || '_'}</h6>
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Gender :</p>
-                                            <h6 className='user_detials_data '>{items.gender || '_'} </h6>
+                                            <h6 className='user_detials_data '>{userProfiles.gender || '_'} </h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>CNIC :</p>
-                                            <h6 className='user_detials_data '>{items.cnic || '_'}</h6>
+                                            <h6 className='user_detials_data '>{userProfiles.cnic || '_'}</h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Date of Birth :</p>
-                                            <h6 className='user_detials_data '> {ArrangeDateFormat(items.dateOfBirth) || '_'}</h6>
+                                            <h6 className='user_detials_data '> {ArrangeDateFormat(userProfiles.dateOfBirth) || '_'}</h6>
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Passport No :</p>
-                                            <h6 className='user_detials_data '>{items.passportNo || '_'}</h6>
+                                            <h6 className='user_detials_data '>{userProfiles.passportNo || '_'}</h6>
                                         </div>
 
                                     </div>
@@ -126,14 +129,10 @@ const UserProfile = (props)=>{
                                 </div>
                             </div>
                             </Fragment>
-                        )
-                      }
                   </div>
-                ))
-              }
               {
                 isOpen ?(
-                  <EditModel isOpen ={isOpen} setIsOpen={setIsOpen} />
+                  <EditModel isOpen ={isOpen} setIsOpen={setIsOpen}  SetUserProfiles={SetUserProfiles} />
                 ):('')
               }
           

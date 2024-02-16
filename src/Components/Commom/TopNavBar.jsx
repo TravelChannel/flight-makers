@@ -19,7 +19,8 @@ const TopNavBar = () => {
                         isLogin ?(
                             <Link to='/UserPanel' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
                         <Person2 className="glyphicon" />
-                        {userVerName && userName ? userName :userVerName}</Link>
+                        {userVerName && userName ? userName :userVerName}
+                       </Link>
                         ):(
                             <Link to='/signup' className="col-xs-2 col-sm-2 col-md-2 boxelem pull-right">
                         <Person2 className="glyphicon" />

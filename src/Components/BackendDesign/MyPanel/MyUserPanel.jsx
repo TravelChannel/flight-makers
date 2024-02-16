@@ -52,11 +52,6 @@ const [isLoading , setLoading]=useState(false);
  const [partialAdmin ,setPartialAdmin] = useState(false);
 // ------------------
 	 const navigate = useNavigate();
-	 useEffect(() => {
-		if (!isLogin) {
-			navigate('/'); 
-		}
-	}, [isLogin]);
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
 	setSubMenu(menuItem===5);
@@ -112,8 +107,8 @@ const handleSubMenuClick = (id)=>{
   fetchBackendData();
    },[]);
 //    --------------------------
-const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
-setUserName(userUpdatedName);
+// const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
+// setUserName(userUpdatedName);
 
 useEffect(() => {
     const roleID = userData?.data?.payload?.[0]?.user?.roleId;
@@ -263,7 +258,7 @@ useEffect(() => {
 					<UserBookingsDetails userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin}/>
 						)}
           		{selectedMenuItem === 2 && 
-				<UserProfile userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin} partialAdmin = {partialAdmin}/>
+				<UserProfile  isLoading ={isLoading} checkAdmin = {checkAdmin} partialAdmin = {partialAdmin}/>
 				}
 				{selectedMenuItem === 3 && 
 				<h3>

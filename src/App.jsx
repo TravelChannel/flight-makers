@@ -12,14 +12,12 @@ import { useLocation } from "react-router-dom";
 import { FormDataProvider, useFormData } from "./Context/FormDataContext";
 import { VerificationAPi } from "./API/BackendAPI/Find_me_verification";
 
-// import { useFormData } from "./Context/FormDataContext";
-// import { useHistory } from 'react-router-dom'; 
-
 const App = () => {
-  // const history = useHistory();
   const { showHeader, setShowHeader } = useFormData();
   const {isLogin , setLogIn} = useFormData();
   const {userVerName , setVarName} = useFormData();
+  const {userName ,setUserName} = useFormData();
+  const {ProfileData ,setProfileData} = useFormData();
   // ---------------------------------------
   useEffect(() => {
     const fetchData = async () => {
@@ -29,22 +27,21 @@ const App = () => {
         if (response.data.status === 'SUCCESS') {
           console.log('User is logged in');
           setLogIn(true);
+          setProfileData(response.data);
           const userPhone = response.data.payload.userData.phoneNumber;
+          const PersonName =  response.data.payload.userData.firstName;
           setVarName(userPhone);
+          setUserName(PersonName);
           console.log("userPhone-verification",userPhone);
         } else {
           console.log('User is not logged in');
-          // history.push('/index'); 
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error as needed
       }
     };
 
-    fetchData();  // Call fetchData when component mounts
-
-    // Add dependencies if needed, e.g., fetchData() should run whenever some state changes
+    fetchData();  
   }, []); 
 
   // -----------------------------------------

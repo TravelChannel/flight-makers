@@ -8,11 +8,20 @@ export const FormDataProvider = ({ children }) => {
   // const [pnrData, setPnrData] = useState({});
   // const [airSialData, setAirSialData] = useState({});
   const [isLogin , setLogIn] = useState(false);
+  const [ProfileData ,setProfileData] = useState([]);
   const [userVerName , setVarName] = useState('');
   const [userName , setUserName] = useState('');
 
+
+
   return (
-    <FormDataContext.Provider value={{ formData, setFormData,showHeader, setShowHeader,isLogin,setLogIn,userVerName, setVarName,userName,setUserName}}>
+    <FormDataContext.Provider value={{ 
+      formData, setFormData,showHeader,
+       setShowHeader,isLogin,setLogIn,
+       userVerName, setVarName,
+       userName,setUserName,
+       ProfileData ,setProfileData
+       }}>
       {children}
     </FormDataContext.Provider>
   );

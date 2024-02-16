@@ -7,6 +7,7 @@ export const  VerificationAPi = async()=>{
     .then((response)=>{
         console.log(JSON.stringify(response));
         // setBackLoading(false);
+        console.log('usersME',response);
         return response;
      })
      .catch((err)=>{

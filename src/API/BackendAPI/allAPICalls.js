@@ -83,24 +83,19 @@ export const Cancelation = async(id)=>{
 
 // ------------------------user Profile Update ----------------------------
 
-export const updateUserProfile =async(userUpdatedObject)=>{
-	apiClient
-			.patch(`/users`, userUpdatedObject)
-			.then((res) => {
-				if (res.data.status === 'SUCCESS') {
-
-					console.log( res.data.message, 'success');
-					return res;
-
-				} else {
-					console.log(res.data.message, 'danger');
-				}
-			})
-			.catch((err) => {
-				console.error( err.message, 'Danger');
-			});
-
-}
+export const updateUserProfile = async (userUpdatedObject) => {
+    try {
+        const res = await apiClient.patch(`/users`, userUpdatedObject);
+        if (res.data.status === 'SUCCESS') {
+            console.log(res.data.message, 'success');
+            return res;
+        } else {
+            console.log(res.data.message, 'danger');
+        }
+    } catch (err) {
+        console.error(err.message, 'Danger');
+    }
+};
 // -------------------------------user Logout--------------------------------
 
 export const UserLogOut =async()=>{

@@ -2,21 +2,19 @@ import React ,{useState} from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, } from 'reactstrap';
 import * as images from '../../../../../Constant/images';
 import CancelPresentationRoundedIcon from '@mui/icons-material/CancelPresentationRounded';
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
+import { useFormData } from '../../../../../Context/FormDataContext';
 
 const EditModel = (props) => {
- const {isOpen , setIsOpen} = props;
+ const {isOpen , setIsOpen,SetUserProfiles} = props;
 
 //  const [updatedData , setUpdatedData] = useState('');
 //  const [selectedDate, setSelectedDate] = useState(null);
@@ -29,6 +27,9 @@ const EditModel = (props) => {
 const [selectedDate, setSelectedDate] = useState(null);
  const [gender, setGender] = useState('');
 
+ const {userName ,setUserName} = useFormData();
+
+//  console.log("YOYOYOYOOO",userName);
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
@@ -73,8 +74,8 @@ const [selectedDate, setSelectedDate] = useState(null);
 
   const userUpdatedObject = {
     "username": firstName,
-    "email": "ssss@gmail.com",
-    "passportExpiryDate": "2026-12-23",
+    "email": "kashif123@gmail.com",
+    "passportExpiryDate": "",
     'firstName':firstName,
     'lastName':lastName,
     'cnic': cnic,
@@ -85,11 +86,11 @@ const [selectedDate, setSelectedDate] = useState(null);
   }
 
   const handleSubmit =async () => {
-    console.log("userUpdatedObject",userUpdatedObject);
- const updateDataAPI = await updateUserProfile(userUpdatedObject);
-//  console.log("updateDataUserAPI",updateDataAPI);
- window.location.reload();
-//  setIsOpen(false);
+  const updateDataAPI = await updateUserProfile(userUpdatedObject);
+  const updatedFromatData = updateDataAPI.data.payload.updateUserDto;
+  SetUserProfiles(updatedFromatData);
+  setUserName(updateDataAPI.data.payload.updateUserDto.firstName);
+  setIsOpen(false);
   };
   return (
     <Modal isOpen={isOpen} toggle={toggleModal} className="custom_edit_modal">
