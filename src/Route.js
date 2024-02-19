@@ -26,6 +26,8 @@ import DomesticFlightsEngine from './Components/SEOPages/DomesticFlightsEngine';
 
 import MyUserPanel from './Components/BackendDesign/MyPanel/MyUserPanel';
 import UserCompleteDetail from './Components/BackendDesign/MyPanel/Pages/common/UserCompleteDetail';
+import BlogCollection from './View/BlogCollection';
+
 const AppRouter = () => {
   return (
     <Fragment>
@@ -48,6 +50,7 @@ const AppRouter = () => {
         <Route path="/previewEticket" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
+        <Route path="/blogCollections" element={<BlogCollection/>} />
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />

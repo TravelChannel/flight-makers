@@ -86,6 +86,14 @@ import announcement from '../../src/assets/announcement.png';
 import destinationMap from '../../src/assets/destinationmap.png';
 import saiRouteMap from '../../src/assets/sairouteMap.jpg';
 
+// --------------------Blogs------------------------------------
+
+import blogimg1 from '../../src/assets/Blogs/banner2.png';
+import blogimg2 from '../../src/assets/Blogs/girlb.jpg';
+import blogimg3 from '../../src/assets/Blogs/forest.jpg';
+import blogimg4 from '../../src/assets/Blogs/kashmir.jpg';
+
+
 export const extra_baggages = [
     nill_Bagg,   
     standerd_Bagg,
@@ -95,5 +103,5 @@ export default faremakerlogo ;
 
 export {bankicon,whatsappicon,cautionicon, hbllogo,payprologo,iatalogo,mastercardlogo,digicertlogo,visacardlogo,jazzcash_Logo,hotellogo,planelogo,UAN,Mail,FMAbout,SCBank,MBBank,
     planeImage,hotelImage,sunUmbrellaImage,qaterLogo,dubaiPics,lahorePics,karachiPics,islamabadPics,londonPics,pakistanMap,mobileScaner,officeLocation
-    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap
+    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogimg1,blogimg2,blogimg3,blogimg4
 };

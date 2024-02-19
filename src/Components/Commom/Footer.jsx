@@ -3,7 +3,9 @@ import * as image from "../../Constant/images";
 import { Link } from 'react-router-dom';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import { useNavigate } from "react-router-dom";
+import { useFormData } from "../../Context/FormDataContext";
 const Footer = () =>{
+    const {isTopNavBar} = useFormData();
     // const [flightID ,setFlightID] = useState('');
 const navigate = useNavigate();
 // const handleAirLinesData = (id, airlinename) => {
@@ -23,7 +25,7 @@ const handleAirLinesData = (id, airlineName) => {
   };
     return(
         <Fragment>
-        <div className="container footerBox ">
+        <div className={`footerBox ${!isTopNavBar ? '':'container '}`}>
         <div className="postion_reltive">
             {/* <div className="row my-3">
                 <ul className="col col-md-3 col-lg-3 footerLinks">

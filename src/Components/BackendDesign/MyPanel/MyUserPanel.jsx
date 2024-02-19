@@ -30,16 +30,19 @@ import CancellationReqs from '../AdminPanel/CancellationReqs';
 import RefundReqs from '../AdminPanel/RefundReqs';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import VerifiedBookings from '../panelsCommon/VerifiedBookings';
-
+import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import AddBlog from '../AdminPanel/Blogs/AddBlog';
+import BlogLists from '../AdminPanel/Blogs/BlogLists';
 
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
-	 const { showHeader, setShowHeader } = useFormData();
+	 const { showHeader, setShowHeader ,roleID} = useFormData();
 	 const [open, setOpen] = useState(false);
 	 const [isLogOut , setLogout] = useState(false);
 	 const {isLogin , setLogIn} = useFormData();
 	 const [isSubMenu , setSubMenu] = useState(false);
+	 const [isBlogMenu ,setBlogMenu] = useState(false);
 	 const [selectedSubMenu , setSelectedSubMenu] = useState(1);
 
 // ------------------
@@ -55,6 +58,7 @@ const [isLoading , setLoading]=useState(false);
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
 	setSubMenu(menuItem===5);
+	setBlogMenu(menuItem===7);
   };
  useEffect(()=>{
     setShowHeader(false);
@@ -82,6 +86,9 @@ if (isLogOut) {
 
   const displaySubMenu = ()=>{
 	setSubMenu(!isSubMenu);
+  }
+  const displayBlogMenu = ()=>{
+	setBlogMenu(!isBlogMenu);
   }
 const handleSubMenuClick = (id)=>{
 	setSelectedSubMenu(id);
@@ -111,7 +118,8 @@ const handleSubMenuClick = (id)=>{
 // setUserName(userUpdatedName);
 
 useEffect(() => {
-    const roleID = userData?.data?.payload?.[0]?.user?.roleId;
+    // const roleID = userData?.data?.payload?.userData?.roleId;
+	console.log("roleIDatPanel",roleID);
     if (roleID === 1) {
         setCheckAdmin(true); // Grant full admin access
     } else if (roleID === 3) {
@@ -232,8 +240,44 @@ useEffect(() => {
                       </div>
 					):('')
 				  }
+
+				  {/* ---------------- */}
+
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 7 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+						<div className='left_menu_content'>
+								{checkAdmin || partialAdmin ? (
+									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 7 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(7)}>
+									<BookOutlinedIcon className='menu_content_icon' />
+									<p className='d-flex align-self-center menu_content_typo' onClick={displayBlogMenu} >Blogs</p>
+									</div>
+								) : ('')}
+
+								{isBlogMenu  && (checkAdmin || partialAdmin) && (
+									<Fragment>
+										<div className='admin_submenu'>
+											<p
+											className={`admin_reIssue mb-1 ${selectedSubMenu === 1 ? 'user_active_content' : ''}`}
+											onClick={() => handleSubMenuClick(1)}
+											>
+											Add Blog
+											{selectedSubMenu === 1 && <KeyboardDoubleArrowRightIcon />}
+											</p>
+											<p
+											className={`admin_refund mb-1 ${selectedSubMenu === 2 ? 'user_active_content' : ''}`}
+											onClick={() => handleSubMenuClick(2)}
+											>
+											Blog Lists
+											{selectedSubMenu === 2 && <KeyboardDoubleArrowRightIcon />}
+											</p>
+										</div>
+									</Fragment>
+								)}
+						</div>
+
+                  </div>
+				  {/* ------------------------ */}
+				  <div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 8 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -283,6 +327,17 @@ useEffect(() => {
 						)}
 				{selectedMenuItem === 6 && 
 				<PromotionsDetail />}
+
+				{selectedMenuItem === 7 && (
+						<Fragment>
+							{checkAdmin || partialAdmin ? (
+							<Fragment>
+								{selectedSubMenu === 1 && <AddBlog />}
+								{selectedSubMenu === 2 && <BlogLists />}
+							</Fragment>
+							) : ('')}
+						</Fragment>
+						)}
 				 </div>
 
 				 <Dialog

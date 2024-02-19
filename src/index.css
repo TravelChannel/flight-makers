@@ -548,10 +548,15 @@ h1,h2,h3,h4,h5,h6,p,div
     width: 100%;
     padding: 0;
   }
-  .colorBlue {
+  .colorBlue{
     color: #2468ac;
-    flex-direction: row-reverse;
     font-weight: 600;
+  }
+  .colorBlue2{
+    /* flex-direction: row-reverse; */
+    font-weight: 600;
+    border-bottom: 1px solid #dedede;
+
   }
   .colorWhite {
     color: #fff;
@@ -1411,7 +1416,13 @@ div.chatout {
 }
 
 .pull-right {
+  color:#2468ac;
     float: right!important;
+    padding: 5px 10px;
+    border-right: 1px solid #dedede;
+    cursor: pointer;
+    font-size: 14px;
+    
 }
 .login_user_st
 {
@@ -2476,7 +2487,7 @@ box-shadow: -1px 3px 4px 2px rgba(0, 0, 0, 0.2);
   padding: 10px;
   text-align: center;
   font-size:18px;
-  margin-bottom:10px;
+  /* margin-bottom:10px; */
 }
 .colorOrange {
   color: #f26722;
@@ -6834,6 +6845,54 @@ margin-top:50px;
 .addPromo_btn:hover{
   background-color: #004B77;
 }
+.removePromo_btn{
+  background-color: #36c;
+  border:none;
+  padding:8px 20px !important;
+}
+/* ---------------AdminSide Blog CSS------------------------------------ */
+.Blog_title_main{
+  margin:25px 0px 20px 0px;
+  padding:20px 10px;
+  box-shadow: 0 0 3px hsl(233, 43%, 38%);
+  border-radius: 4px;
+  background-color: #9ea0a414;
+}
+.Blog_title_body{
+  margin:40px 0px 20px 0px;
+  padding:10px 10px;
+  box-shadow: 0 0 3px hsl(233, 43%, 38%);
+  border-radius: 4px;
+  background-color: #e0e0e036;
+
+}
+.title_typograpy{
+  font-size:20px;
+  font-weight: 600;
+  color:#101010;
+}
+.subtitle_typograpy{
+  font-size:17px;
+  font-weight: 600;
+  color:#101010;
+}
+.full_width_input {
+  margin-top:3px;
+  width: 100%;
+  padding:6px 4px;
+  border:1px solid #d9d9d9;
+  border-radius: 4px;
+}
+.blog_TextArea {
+  height:200px;
+}
+.full_width_input::placeholder{
+  padding-left:3px;
+ font-size:14px !important;
+ color:gray !important;
+}
+
+/* --------------------------------- Tasbeel Work Start------------------- */
 
 /* --------------------------------- Tasbeel Indexing pages CSS------------------- */
 .text1{
@@ -6902,3 +6961,80 @@ text-align: justify;
 .table_data{
   font-size:14px; font-weight:bold;
 }
+
+
+/*********************************BLOG**************************/
+.blog_main_section{
+  position: relative;
+  background-image: url('D:/Official_FareMakers/faremaker-react/src/assets/Blogs/banner2.png');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+  height: 500px;
+  background-repeat: no-repeat;
+}
+.overlay_blog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ background-color: rgba(0, 0, 0, 0.5);
+}
+.sec_content_blog{
+  position: absolute;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.blog_heading{
+  animation: fadeIn 2s ease-in-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.blog_main{
+  font-size: 20px;
+  padding: 0px;
+  letter-spacing: 6px;
+  animation: fadeIn 8s ease-out forwards;
+}
+.blog1{
+  cursor: pointer;
+  padding-bottom: 10px;
+  margin: 15px;
+  background-color: white;
+  transition: transform 0.2s ease-in-out ;
+
+}
+.blog1:hover{
+box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+transform: translateY(-15px);
+}
+.blog1 h5{
+  padding: 0px 8px;
+}
+.blogimg img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+.img_detail{
+  padding: 8px;
+}
+.blogimg{
+  background-color: white;
+}
+.container-fluid{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* --------------------------------- Tasbeel work end------------------- */

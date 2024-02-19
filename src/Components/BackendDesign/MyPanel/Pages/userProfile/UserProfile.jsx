@@ -8,7 +8,7 @@ import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verificat
 import { useFormData } from '../../../../../Context/FormDataContext';
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
-  const {ProfileData ,setProfileData} =useFormData();
+  const {ProfileData ,userVerName,userCountryCode} =useFormData();
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
   const [userProfiles ,SetUserProfiles] = useState([]);
@@ -24,21 +24,6 @@ useEffect(()=>{
   SetUserProfiles(userProfileData);
   console.log("userProfileData",userProfileData);
 },[ProfileData]);
-// useEffect(()=>{
-//     const fetchBackendData =async()=>{
-//       try{
-//         const userData = await VerificationAPi();
-//        console.log("ApiCalledData",userData);
-//           SetUserProfiles(userData.data.payload.userData);
-//           setBackLoading(true);
-//       }
-//       catch (error){
-//           console.error(error);
-//       }
-//   } ;
-  
-//   fetchBackendData();
-//    },[]);
 
   console.log('ProfileDataProfileData112',ProfileData);
 
@@ -69,11 +54,11 @@ useEffect(()=>{
                                             <div className='userprofile_data  mt-2'>
                                                 <div className='usercountry'>
                                                     <p className=''>Country Code:</p>
-                                                    <h6 className='contact_info_data'>{userProfiles.countryCode}</h6>
+                                                    <h6 className='contact_info_data'>{userCountryCode}</h6>
                                                 </div>
                                                 <div className=' '>
                                                     <p className=''> Mobile No:</p>
-                                                    <h6 className='contact_info_data '>{userProfiles.phoneNumber}</h6>
+                                                    <h6 className='contact_info_data '>{userVerName}</h6>
                                                 </div>
                                             </div>
                                             <div className='text-center mt-4'>

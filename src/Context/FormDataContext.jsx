@@ -5,22 +5,29 @@ const FormDataContext = createContext();
 export const FormDataProvider = ({ children }) => {
   const [formData, setFormData] = useState([]);
   const [showHeader, setShowHeader] = useState(true);
+  const [isTopNavBar ,setTopNavBar]  = useState(true);
   // const [pnrData, setPnrData] = useState({});
   // const [airSialData, setAirSialData] = useState({});
   const [isLogin , setLogIn] = useState(false);
   const [ProfileData ,setProfileData] = useState([]);
+  const [userCountryCode , setUserCountryCOde] = useState('');
   const [userVerName , setVarName] = useState('');
   const [userName , setUserName] = useState('');
+  const [roleID , setRoleID] = useState();
 
 
 
   return (
     <FormDataContext.Provider value={{ 
-      formData, setFormData,showHeader,
-       setShowHeader,isLogin,setLogIn,
+      formData, setFormData,
+      showHeader,setShowHeader,
+        isLogin,setLogIn,
        userVerName, setVarName,
        userName,setUserName,
-       ProfileData ,setProfileData
+       ProfileData ,setProfileData,
+       userCountryCode , setUserCountryCOde,
+       isTopNavBar ,setTopNavBar,
+       roleID , setRoleID
        }}>
       {children}
     </FormDataContext.Provider>

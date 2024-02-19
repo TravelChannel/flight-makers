@@ -13,11 +13,7 @@ import { FormDataProvider, useFormData } from "./Context/FormDataContext";
 import { VerificationAPi } from "./API/BackendAPI/Find_me_verification";
 
 const App = () => {
-  const { showHeader, setShowHeader } = useFormData();
-  const {isLogin , setLogIn} = useFormData();
-  const {userVerName , setVarName} = useFormData();
-  const {userName ,setUserName} = useFormData();
-  const {ProfileData ,setProfileData} = useFormData();
+  const { showHeader,setLogIn , setVarName ,setUserName,setProfileData,setUserCountryCOde,isTopNavBar,setRoleID} = useFormData();
   // ---------------------------------------
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +26,8 @@ const App = () => {
           setProfileData(response.data);
           const userPhone = response.data.payload.userData.phoneNumber;
           const PersonName =  response.data.payload.userData.firstName;
+          setUserCountryCOde(response.data.payload.userData.countryCode);
+          setRoleID(response.data.payload.userData.roleId);
           setVarName(userPhone);
           setUserName(PersonName);
           console.log("userPhone-verification",userPhone);
@@ -72,7 +70,7 @@ const App = () => {
     <Fragment>
       <div className="backgradiant">
         <div className="container-fluid">
-            {!inputPNR &&<TopNavBar/>}
+            {!inputPNR && isTopNavBar && <TopNavBar/>}
             {!inputPNR && showHeader && <Header />}
             <Routes />
             {!inputPNR && <Footer/>}
