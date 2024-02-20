@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-
-const YourComponent = () => {
+import { Box, Button, Typography } from '@mui/material';
+const AddBlog = () => {
     const [maintitle ,setMainTitle] = useState('');
     const [sections, setSections] = useState([{ heading: '', summary: '' }]);
     const [isFocused ,setFocused] = useState(false);
     const [isTitleFocused, setTitleFocused] = useState(false);
     const [isContentFocus ,setContentFocus] = useState(false);
 
+    const [imgSrc, setImgSrc] = useState('');
+  const [inputValue, setInputValue] = useState('');
 const handleMainTitle = (event)=>{
     const value = event.target.value;
     setMainTitle(value);
@@ -57,7 +59,27 @@ const handleMainTitle = (event)=>{
        }
 
  console.log('passingObject',BlogData);
+//  -------------------------------------------
 
+
+const handleInputImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file && (file.type === 'image/png' || file.type === 'image/jpeg')) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImgSrc(reader.result);
+        setInputValue(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.error('Invalid file type. Please select an image (PNG or JPEG).');
+    }
+  };
+
+  const handleInputImageReset = () => {
+    setImgSrc('');
+    setInputValue('');
+  };
     return (
             <div>
             <div className='dashboard-content-header'>
@@ -121,10 +143,32 @@ const handleMainTitle = (event)=>{
                     </div>
                 ))}
             </div>
+
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
+                <div>
+                    {/* <button>
+                    Upload New Photo */}
+                    <input
+                        // hidden
+                        type='file'
+                        value={inputValue}
+                        accept='image/png, image/jpeg'
+                        onChange={handleInputImageChange}
+                        id='account-settings-upload-image'
+                    />
+                    <button onClick={handleInputImageReset}>
+                    Reset
+                    </button>
+                    <p>
+                    Allowed PNG or JPEG. Max size of 800K.
+                    </p>
+                </div>
+                </Box>
           
            
         </div>
     );
 };
 
-export default YourComponent;
+export default AddBlog;

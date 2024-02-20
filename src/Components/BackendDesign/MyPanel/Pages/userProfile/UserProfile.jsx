@@ -8,10 +8,10 @@ import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verificat
 import { useFormData } from '../../../../../Context/FormDataContext';
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
-  const {ProfileData ,userVerName,userCountryCode} =useFormData();
+  const {ProfileData ,userVerName,userCountryCode,userProfiles ,SetUserProfiles} =useFormData();
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
-  const [userProfiles ,SetUserProfiles] = useState([]);
+  // const [userProfiles ,SetUserProfiles] = useState([]);
   
 
 
@@ -23,7 +23,7 @@ useEffect(()=>{
   const userProfileData = ProfileData.payload.userData;
   SetUserProfiles(userProfileData);
   console.log("userProfileData",userProfileData);
-},[ProfileData]);
+},[]);
 
   console.log('ProfileDataProfileData112',ProfileData);
 

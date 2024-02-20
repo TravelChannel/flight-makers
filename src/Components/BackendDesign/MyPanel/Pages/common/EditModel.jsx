@@ -13,7 +13,7 @@ import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 import { useFormData } from '../../../../../Context/FormDataContext';
 
 const EditModel = (props) => {
- const {isOpen , setIsOpen,SetUserProfiles} = props;
+ const {isOpen , setIsOpen} = props;
 
 //  const [updatedData , setUpdatedData] = useState('');
 //  const [selectedDate, setSelectedDate] = useState(null);
@@ -26,7 +26,7 @@ const EditModel = (props) => {
 const [selectedDate, setSelectedDate] = useState(null);
  const [gender, setGender] = useState('');
 
- const {userName ,setUserName} = useFormData();
+ const {userName ,setUserName,SetUserProfiles} = useFormData();
 
 //  console.log("YOYOYOYOOO",userName);
   const toggleModal = () => {

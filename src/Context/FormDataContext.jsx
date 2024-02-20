@@ -10,6 +10,7 @@ export const FormDataProvider = ({ children }) => {
   // const [airSialData, setAirSialData] = useState({});
   const [isLogin , setLogIn] = useState(false);
   const [ProfileData ,setProfileData] = useState([]);
+  const [userProfiles ,SetUserProfiles] = useState([]);
   const [userCountryCode , setUserCountryCOde] = useState('');
   const [userVerName , setVarName] = useState('');
   const [userName , setUserName] = useState('');
@@ -27,7 +28,8 @@ export const FormDataProvider = ({ children }) => {
        ProfileData ,setProfileData,
        userCountryCode , setUserCountryCOde,
        isTopNavBar ,setTopNavBar,
-       roleID , setRoleID
+       roleID , setRoleID,
+       userProfiles ,SetUserProfiles
        }}>
       {children}
     </FormDataContext.Provider>
