@@ -1,14 +1,18 @@
 import React, { useState, useRef } from "react";
 import { Box, Button, Typography } from "@mui/material";
+import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
 const AddBlog = () => {
   const [maintitle, setMainTitle] = useState("");
   const [sections, setSections] = useState([{ heading: "", summary: "" }]);
   const [isFocused, setFocused] = useState(false);
   const [isTitleFocused, setTitleFocused] = useState(false);
   const [isContentFocus, setContentFocus] = useState(false);
+  const [isSubmitLoading , setSubmitLoading] = useState(false);
 
   const [imgSrc, setImgSrc] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [isClick ,setisClick] = useState(false);
+
   const handleMainTitle = (event) => {
     const value = event.target.value;
     setMainTitle(value);
@@ -55,6 +59,7 @@ const AddBlog = () => {
   const handleButtonClick = () => {
     // Trigger the file input click event
     fileInputRef.current.click();
+    setisClick(true);
   };
 
   const BlogData = {
@@ -83,7 +88,31 @@ const AddBlog = () => {
   const handleInputImageReset = () => {
     setImgSrc("");
     setInputValue("");
+    setisClick(false);
   };
+
+//   -----
+const onSubmit = async () => {
+    try {
+        const formData = new FormData();
+        const dataStringify = JSON.stringify(BlogData);
+      
+        formData.append('data', dataStringify);
+      
+        const fileInput = document.getElementById('account-settings-upload-image');
+        if (fileInput && fileInput.files && fileInput.files[0]) {
+          const imgFile = fileInput.files[0]; // Define imgFile here
+          formData.append('imgFile', imgFile);
+        }
+      
+        const apiResponse = await AddBlogAPI(formData);
+        console.log("Response from API", apiResponse);
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+}
+
+
   return (
     <div>
       <div className="dashboard-content-header">
@@ -108,6 +137,29 @@ const AddBlog = () => {
           onBlur={() => setFocused(false)}
           onChange={handleMainTitle}
         />
+      </div>
+      <div className="Blog_title_main">
+        <p className="title_typograpy">Upload Image</p>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+                {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
+                <div>
+               {isClick &&  <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>}
+                <div>
+                    <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    onChange={handleInputImageChange}
+                    id="account-settings-upload-image"
+                    style={{ display: "none" }} 
+                    ref={fileInputRef}
+                    />
+                   
+                </div>
+                <button  className="btn btn-primary addPromo_btn p-3 m-2" onClick={handleButtonClick}>Select Image</button>
+                <button className="btn btn-primary" onClick={handleInputImageReset}>Reset</button>
+                <p className="upload_ins">Allowed PNG or JPEG. Max size of 800K.</p>
+                </div>
+            </Box> 
       </div>
       <div className="Blog_title_body">
         <p className="title_typograpy">Content</p>
@@ -153,7 +205,7 @@ const AddBlog = () => {
                   className="btn btn-primary addPromo_btn p-3"
                   onClick={addSection}
                 >
-                  <img src={""} alt="" width="32px" /> + Add More Content
+                  + Add More Content
                 </button>
               </div>
             </div>
@@ -161,19 +213,16 @@ const AddBlog = () => {
         ))}
       </div>
 
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
+      {/* <Box sx={{ display: "flex", alignItems: "center" }}>
         <div>
-          <img src={imgSrc} alt="Profile Pic" />
-          {/* <button>
-                    Upload New Photo */}
+          <img src={imgSrc} alt="Profile Pic" width='32%' />
           <div>
             <input
               type="file"
               accept="image/png, image/jpeg"
               onChange={handleInputImageChange}
               id="account-settings-upload-image"
-              style={{ display: "none" }} // Hide the file input
+              style={{ display: "none" }} 
               ref={fileInputRef}
             />
             <button onClick={handleButtonClick}>Select Image</button>
@@ -181,7 +230,16 @@ const AddBlog = () => {
           <button onClick={handleInputImageReset}>Reset</button>
           <p>Allowed PNG or JPEG. Max size of 800K.</p>
         </div>
-      </Box>
+      </Box> */}
+      <div className="d-flex justify-content-center m-3">
+                <button
+                  className="btn btn-primary addBlog_btn "
+                  onClick={onSubmit}
+                >
+                  Add Blog
+                </button>
+              </div>
+
     </div>
   );
 };

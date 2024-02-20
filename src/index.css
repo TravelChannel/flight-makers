@@ -6891,6 +6891,15 @@ margin-top:50px;
  font-size:14px !important;
  color:gray !important;
 }
+.upload_ins{
+  color:gray;
+  font-size:14px;
+}
+.addBlog_btn{
+  padding:9px 60px;
+  font-size:16px;
+  font-weight: 600;
+}
 
 /* --------------------------------- Tasbeel Work Start------------------- */
 
