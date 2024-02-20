@@ -6966,7 +6966,7 @@ text-align: justify;
 /*********************************BLOG**************************/
 .blog_main_section{
   position: relative;
-  background-image: url('D:/Official_FareMakers/faremaker-react/src/assets/Blogs/banner2.png');
+  background-image: url('assets/Blogs/banner2.png');
   background-size: cover;
   background-position: center;
   margin-bottom: 30px;

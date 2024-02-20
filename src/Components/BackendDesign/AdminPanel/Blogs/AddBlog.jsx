@@ -138,7 +138,7 @@ const handleInputImageChange = (event) => {
                                     <button className='btn btn-primary addPromo_btn p-3' onClick={addSection}>
                                         <img src={''} alt="" width='32px' /> + Add More Content
                                     </button>
-                            </div>
+                                </div>
                     </div>
                     </div>
                 ))}
