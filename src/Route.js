@@ -28,6 +28,7 @@ import MyUserPanel from './Components/BackendDesign/MyPanel/MyUserPanel';
 import UserCompleteDetail from './Components/BackendDesign/MyPanel/Pages/common/UserCompleteDetail';
 import BlogCollection from './View/BlogCollection';
 import BlogContent from './Components/BlogsContent/BlogContent';
+import AddBlog from './Components/BackendDesign/AdminPanel/Blogs/AddBlog';
 
 const AppRouter = () => {
   return (
@@ -51,6 +52,7 @@ const AppRouter = () => {
         <Route path="/previewEticket" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
+        <Route path="/addBlog/:id" element={<AddBlog/>} />
         <Route path="/blogCollections" element={<BlogCollection/>} />
         <Route path="/blogContent/:mainTitle" element={<BlogContent />} />
 

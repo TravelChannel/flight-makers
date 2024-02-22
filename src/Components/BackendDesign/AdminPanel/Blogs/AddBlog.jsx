@@ -3,7 +3,10 @@ import { Box, Button, Typography } from "@mui/material";
 import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useParams } from "react-router";
 const AddBlog = () => {
+
+  const {id} = useParams();
   const [maintitle, setMainTitle] = useState("");
   const [sections, setSections] = useState([{ heading: "", summary: "" }]);
   const [isFocused, setFocused] = useState(false);
@@ -116,6 +119,8 @@ const onSubmit = async () => {
           }else{
             console.error(apiResponse.data.status,'Danger');
           }
+
+          setMainTitle('');
     } catch (error) {
         console.error("Error:", error.message);
     }
@@ -123,19 +128,12 @@ const onSubmit = async () => {
 
 
   return (
-    <div>
-      <div className="dashboard-content-header">
-        <h2>Create a Blog</h2>
-        <div className="dashboard-content-search">
-          <input
-            type="text"
-            value={""}
-            placeholder="Search.."
-            className="dashboard-content-input"
-            // onChange={e => __handleSearch(e)}
-          />
-        </div>
-      </div>
+    <div className="container bg-white ">
+    { id &&  
+        <h3 className="update_blog_typo">
+          Update Blog Details
+        </h3>
+    }
       <div className="Blog_title_main">
         <p className="title_typograpy">Title</p>
         <input
@@ -221,14 +219,27 @@ const onSubmit = async () => {
           </div>
         ))}
       </div>
-      <div className="d-flex justify-content-center m-3">
+      {
+        id ? (
+          <div className="d-flex justify-content-center m-3">
+                <button
+                  className="btn btn-primary addBlog_btn "
+                  onClick={onSubmit}
+                >
+                  Update Blog
+                </button>
+      </div>
+        ):(  
+        <div className="d-flex justify-content-center m-3">
                 <button
                   className="btn btn-primary addBlog_btn "
                   onClick={onSubmit}
                 >
                   Add Blog
                 </button>
-      </div>
+        </div>
+        )
+      }
 
     </div>
   );

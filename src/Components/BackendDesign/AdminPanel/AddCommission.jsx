@@ -91,24 +91,6 @@ const ArrangeDateFormat = (JourneyDate) => {
                       </tr>
                       ))
                     }
-                        {/* <tr>
-                            <td>1</td>
-                            <td>2</td>
-
-                            <td>12</td>
-                            <td>
-                            Qatar
-                            </td>
-                            <td>
-                                Emirate
-                            </td>
-                            <td>
-                                Emirate
-                            </td>
-                            <td>
-                              12/12/2023
-                            </td>
-                        </tr> */}
                     </tbody>
                 </table>
 
