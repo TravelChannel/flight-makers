@@ -33,7 +33,7 @@ import VerifiedBookings from '../panelsCommon/VerifiedBookings';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import AddBlog from '../AdminPanel/Blogs/AddBlog';
 import BlogLists from '../AdminPanel/Blogs/BlogLists';
-
+import AddCommission from '../AdminPanel/AddCommission';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -276,8 +276,22 @@ useEffect(() => {
 
                   </div>
 				  {/* ------------------------ */}
+				  {checkAdmin || partialAdmin ?
+				  (
+					<div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 8 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(8)}>
+                  		<ReceiptIcon className='menu_content_icon' />
+                  			<p className='d-flex align-self-center menu_content_typo'>
+							{/* Payment Details  */}
+							Service Charges
+							</p>
+                  		</div>
+
+                  </div>
+				  ):('')
+				  		}
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 8 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -338,6 +352,9 @@ useEffect(() => {
 							) : ('')}
 						</Fragment>
 						)}
+
+						{selectedMenuItem === 8 && 
+				<AddCommission />}
 				 </div>
 
 				 <Dialog

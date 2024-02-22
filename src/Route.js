@@ -27,6 +27,7 @@ import DomesticFlightsEngine from './Components/SEOPages/DomesticFlightsEngine';
 import MyUserPanel from './Components/BackendDesign/MyPanel/MyUserPanel';
 import UserCompleteDetail from './Components/BackendDesign/MyPanel/Pages/common/UserCompleteDetail';
 import BlogCollection from './View/BlogCollection';
+import BlogContent from './Components/BlogsContent/BlogContent';
 
 const AppRouter = () => {
   return (
@@ -51,6 +52,8 @@ const AppRouter = () => {
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
         <Route path="/blogCollections" element={<BlogCollection/>} />
+        <Route path="/blogContent/:mainTitle" element={<BlogContent />} />
+
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
@@ -58,6 +61,7 @@ const AppRouter = () => {
         {/* <Route path="/popularairlines/:airlineName" element={<Outlet />} /> */}
         <Route path="/internationalAirlines/:flightName" element={<FlightsSearchEngine/>} />
         <Route path="/domesticAirlines/:domesticflightName" element={<DomesticFlightsEngine/>} />
+        
 
 
 

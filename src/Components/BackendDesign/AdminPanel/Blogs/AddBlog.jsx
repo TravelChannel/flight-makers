@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddBlog = () => {
   const [maintitle, setMainTitle] = useState("");
   const [sections, setSections] = useState([{ heading: "", summary: "" }]);
@@ -12,6 +14,7 @@ const AddBlog = () => {
   const [imgSrc, setImgSrc] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [isClick ,setisClick] = useState(false);
+  const [isSuccess ,setIsSuccess] = useState(false);
 
   const handleMainTitle = (event) => {
     const value = event.target.value;
@@ -101,12 +104,18 @@ const onSubmit = async () => {
       
         const fileInput = document.getElementById('account-settings-upload-image');
         if (fileInput && fileInput.files && fileInput.files[0]) {
-          const imgFile = fileInput.files[0]; // Define imgFile here
+          const imgFile = fileInput.files[0]; 
           formData.append('imgFile', imgFile);
         }
-      
+           
         const apiResponse = await AddBlogAPI(formData);
         console.log("Response from API", apiResponse);
+          if (apiResponse.data.status === 'SUCCESS' ){
+            setIsSuccess(true);
+            toast.success('Blog Added Successfully');
+          }else{
+            console.error(apiResponse.data.status,'Danger');
+          }
     } catch (error) {
         console.error("Error:", error.message);
     }
@@ -212,25 +221,6 @@ const onSubmit = async () => {
           </div>
         ))}
       </div>
-
-      {/* <Box sx={{ display: "flex", alignItems: "center" }}>
-        <div>
-          <img src={imgSrc} alt="Profile Pic" width='32%' />
-          <div>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={handleInputImageChange}
-              id="account-settings-upload-image"
-              style={{ display: "none" }} 
-              ref={fileInputRef}
-            />
-            <button onClick={handleButtonClick}>Select Image</button>
-          </div>
-          <button onClick={handleInputImageReset}>Reset</button>
-          <p>Allowed PNG or JPEG. Max size of 800K.</p>
-        </div>
-      </Box> */}
       <div className="d-flex justify-content-center m-3">
                 <button
                   className="btn btn-primary addBlog_btn "
@@ -238,7 +228,7 @@ const onSubmit = async () => {
                 >
                   Add Blog
                 </button>
-              </div>
+      </div>
 
     </div>
   );

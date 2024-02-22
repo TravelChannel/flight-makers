@@ -5342,6 +5342,10 @@ input::placeholder
   width: 49.5%;
   height: 48px;
 }
+.CommissionInputFields{
+  width: 49.5%;
+  height: 48px;
+}
 .inputArrivalFlight
 {
   width: 49.5%;
@@ -6693,6 +6697,10 @@ display: inline;
   max-width: 600px; 
   margin: 200 auto; 
 }
+.custom_modal_commission{
+  max-width: 800px; 
+  margin: 200 auto; 
+}
 .promotion_title_main{
   margin-bottom:15px;
 }
@@ -6858,6 +6866,8 @@ margin-top:50px;
   border-radius: 4px;
   background-color: #9ea0a414;
 }
+
+
 .Blog_title_body{
   margin:40px 0px 20px 0px;
   padding:10px 10px;
@@ -6900,6 +6910,36 @@ margin-top:50px;
   font-size:16px;
   font-weight: 600;
 }
+.NoBlogFound{
+  padding:20px 10px;
+  color:red;
+  /* font-size:24px; */
+  font-weight:600;
+  text-align: center;
+}
+.Blogtitle{
+  font-size:20px;
+  font-weight: 600;
+  color:#010101;
+}
+/* ------------------------------- */
+.commission_title, .comm_input_title{
+  padding-left:3px;
+  padding-bottom:3px;
+  font-size:14px;
+  font-weight:600;
+  color:gray;
+}
+.css-13cymwt-control{
+background-color: white !important;
+border-color: black !important;
+
+}
+.css-1dimb5e-singleValue{
+  color:#000 !important;
+}
+
+
 
 /* --------------------------------- Tasbeel Work Start------------------- */
 
@@ -7017,11 +7057,14 @@ text-align: justify;
   animation: fadeIn 8s ease-out forwards;
 }
 .blog1{
+  width:30%;
   cursor: pointer;
   padding-bottom: 10px;
   margin: 15px;
   background-color: white;
   transition: transform 0.2s ease-in-out ;
+  box-shadow: -1px 2px 6px 2px rgba(0,0,0,.4);
+
 
 }
 .blog1:hover{
@@ -7031,19 +7074,83 @@ transform: translateY(-15px);
 .blog1 h5{
   padding: 0px 8px;
 }
-.blogimg img {
-  width: 100%;
+/* .blogimg img {
+  width: 50%;
   height: 80%;
   object-fit: cover;
-}
+} */
 .img_detail{
   padding: 8px;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 .blogimg{
   background-color: white;
+  object-fit: cover;
+  
 }
 .container-fluid{
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+
+/* ---------------blog-Content------------- */
+.blog_text{
+  padding-bottom: 10px;
+  color:#323639 !important;
+  font-size: 18px;
+  text-align: justify;
+}
+.mainhead_blog{
+  padding: 16px 0px;
+  color:#010101;
+  font-size:22px;
+  font-weight:600;
+}
+.subhead_blog{
+  padding: 16px 0px;
+  color:#010101;
+  font-size:20px;
+  font-weight:600;
+
+}
+/****************socialicone*****************/
+.social_share{
+  position: fixed;
+  top: 40%;
+  left: 0%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.social_list{
+  padding-left: 0px;
+  padding: 15px;
+}
+.social_list li{
+  list-style: none;
+  padding-bottom: 16px;
+}
+.share{
+  font-size: 30px;
+}
+.whtsapp{
+  color: #128C7E;
+  font-size:30px;
+}
+.fb{
+  color: #3B5998;
+  font-size:30px;
+}
+.twtr{
+  color: #337AB7;
+  font-size:30px;
+}
+.linkedin{
+  color: #0084B4;
+  font-size:30px;
+}
+.email{
+  font-size: 30px;
 }
 /* --------------------------------- Tasbeel work end------------------- */

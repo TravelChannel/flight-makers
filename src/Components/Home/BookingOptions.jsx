@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import * as images from '../../Constant/images.js';
 
 const BookingOptions =()=>{
+
     return(
       <Fragment>
         <div className="component_container hero_booking">

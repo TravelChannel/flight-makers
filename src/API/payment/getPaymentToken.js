@@ -11,6 +11,7 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
         "order_id": `${createOrder.id}`,
         "billing_data": {
           "pnrNum" :`${pnrNum}`,
+          "userName" : 'Kashif Hussain',
           "apartment": "803",
           "email": "claudette09@exa.com",
           "floor": "42",
