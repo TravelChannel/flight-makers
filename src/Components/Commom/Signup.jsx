@@ -70,6 +70,7 @@ const SignUp = () => {
                                         value={`+${countryCode} ${phoneNumber}`} 
                                         onChange={(value, country) => handlePhoneNumberChange(value, country)}
                                         placeholder="Enter your phone number"
+                                        onlyCountries={['pk']}
                                     />
                                 </div>
                                 {/* <input className='signupinput' type="email" name="email" placeholder="Email" /> */}

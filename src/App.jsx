@@ -11,9 +11,10 @@ import { requestFetchAuthToken, requestAirsialToken } from './API/index';
 import { useLocation } from "react-router-dom";
 import { FormDataProvider, useFormData } from "./Context/FormDataContext";
 import { VerificationAPi } from "./API/BackendAPI/Find_me_verification";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
-  const { showHeader,setLogIn , setVarName ,setUserName,setProfileData,setUserCountryCOde,isTopNavBar,setRoleID} = useFormData();
+  const { showHeader,setLogIn , setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID} = useFormData();
   // ---------------------------------------
   useEffect(() => {
     const fetchData = async () => {
@@ -23,9 +24,10 @@ const App = () => {
         if (response.data.status === 'SUCCESS') {
           console.log('User is logged in');
           setLogIn(true);
-          setProfileData(response.data);
           const userPhone = response.data.payload.userData.phoneNumber;
           const PersonName =  response.data.payload.userData.firstName;
+
+          console.log("personName",PersonName);
           setUserCountryCOde(response.data.payload.userData.countryCode);
           setRoleID(response.data.payload.userData.roleId);
           setVarName(userPhone);
@@ -73,6 +75,7 @@ const App = () => {
             {!inputPNR && isTopNavBar && <TopNavBar/>}
             {!inputPNR && showHeader && <Header />}
             <Routes />
+            <ToastContainer />
             {!inputPNR && <Footer/>}
         </div>
       </div>

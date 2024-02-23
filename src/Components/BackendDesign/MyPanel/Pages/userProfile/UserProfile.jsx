@@ -6,9 +6,11 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import Loader from '../../../../../Loader/Loader';
 import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verification';
 import { useFormData } from '../../../../../Context/FormDataContext';
+
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
-  const {ProfileData ,userVerName,userCountryCode,userProfiles ,SetUserProfiles} =useFormData();
+  const {userVerName,userCountryCode} =useFormData();
+  const [ProfileData ,setProfileData] =useState([]);
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
   // const [userProfiles ,SetUserProfiles] = useState([]);
@@ -19,11 +21,33 @@ const UserProfile = (props)=>{
     setIsOpen(true);
   }
 // ---------------------APi----------------
-useEffect(()=>{
-  const userProfileData = ProfileData.payload.userData;
-  SetUserProfiles(userProfileData);
-  console.log("userProfileData",userProfileData);
-},[]);
+// useEffect(()=>{
+//   const userProfileData = ProfileData.payload.userData;
+//   SetUserProfiles(userProfileData);
+//   console.log("userProfileData",userProfileData);
+// },[]);
+
+
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await VerificationAPi();  
+              console.log("Verification-API",response);
+              if (response.data.status === 'SUCCESS') {
+                console.log('test1',response.data.payload );
+                setProfileData(response.data.payload.userData);
+                //  setUserName(ProfileData.firstName);
+
+              } else {
+                console.log('User is not logged in');
+              }
+            } catch (error) {
+              console.error('Error fetching data:', error);
+            }
+          };
+
+          fetchData();  
+        }, []); 
 
   console.log('ProfileDataProfileData112',ProfileData);
 
@@ -50,7 +74,7 @@ useEffect(()=>{
                                             <div className="m-1  ">
                                               <img src={images.userProfile} alt="" />
                                             </div>
-                                            <h3>{userProfiles.firstName}</h3>
+                                            <h3>{ProfileData.firstName}</h3>
                                             <div className='userprofile_data  mt-2'>
                                                 <div className='usercountry'>
                                                     <p className=''>Country Code:</p>
@@ -82,30 +106,30 @@ useEffect(()=>{
                                         }
                                         <div className='   mb-4 '>
                                             <p className='user_detials_heading user_detail_p'>First Name :</p>
-                                            <h6 className='user_detials_data '>{userProfiles.firstName || '_'}  </h6>
+                                            <h6 className='user_detials_data '>{ProfileData.firstName || '_'}  </h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Last Name :</p>
-                                            <h6 className='user_detials_data '>{userProfiles.lastName || '_'}</h6>
+                                            <h6 className='user_detials_data '>{ProfileData.lastName || '_'}</h6>
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Gender :</p>
-                                            <h6 className='user_detials_data '>{userProfiles.gender || '_'} </h6>
+                                            <h6 className='user_detials_data '>{ProfileData.gender || '_'} </h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>CNIC :</p>
-                                            <h6 className='user_detials_data '>{userProfiles.cnic || '_'}</h6>
+                                            <h6 className='user_detials_data '>{ProfileData.cnic || '_'}</h6>
 
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Date of Birth :</p>
-                                            <h6 className='user_detials_data '> {ArrangeDateFormat(userProfiles.dateOfBirth) || '_'}</h6>
+                                            <h6 className='user_detials_data '> {ArrangeDateFormat(ProfileData.dateOfBirth) || '_'}</h6>
                                         </div>
                                         <div className=' mb-4'>
                                             <p className='user_detials_heading '>Passport No :</p>
-                                            <h6 className='user_detials_data '>{userProfiles.passportNo || '_'}</h6>
+                                            <h6 className='user_detials_data '>{ProfileData.passportNo || '_'}</h6>
                                         </div>
 
                                     </div>
@@ -117,7 +141,9 @@ useEffect(()=>{
                   </div>
               {
                 isOpen ?(
-                  <EditModel isOpen ={isOpen} setIsOpen={setIsOpen}  SetUserProfiles={SetUserProfiles} />
+                  <EditModel isOpen ={isOpen} setIsOpen={setIsOpen}
+                   setProfileData ={setProfileData}
+                   />
                 ):('')
               }
           

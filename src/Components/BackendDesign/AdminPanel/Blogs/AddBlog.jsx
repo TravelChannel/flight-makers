@@ -115,12 +115,21 @@ const onSubmit = async () => {
         console.log("Response from API", apiResponse);
           if (apiResponse.data.status === 'SUCCESS' ){
             setIsSuccess(true);
-            toast.success('Blog Added Successfully');
+            toast.success('Blog Added Successfully!',
+            {autoClose: 2000 });
+            // toast.success('Blog Added Successfully');
           }else{
             console.error(apiResponse.data.status,'Danger');
           }
 
-          setMainTitle('');
+          setMainTitle("");
+          setSections([{ heading: "", summary: "" }]);
+          setFocused(false);
+          setTitleFocused(false);
+          setContentFocus(false);
+          setImgSrc("");
+          setInputValue("");
+          setisClick(false);
     } catch (error) {
         console.error("Error:", error.message);
     }

@@ -268,7 +268,7 @@ const UserCompleteDetail = () => {
             <div className='w_25_userpanel'></div>
         </div>
 
-        <div>
+        {/* <div>
             <div className="d-flex justify-content_start mt-4 panel_numbering_typo">
                     <div className="iti_numbering d-flex align-self-center backend_numbering">
                         <p>2</p>
@@ -287,12 +287,12 @@ const UserCompleteDetail = () => {
                 <div className='w_25_userpanel'></div>
 
             </div>
-        </div>
+        </div> */}
 
     <div  className='userPassangerDetail'>
         <div className="d-flex justify-content_start mt-4 panel_numbering_typo">
                 <div className="iti_numbering d-flex align-self-center backend_numbering">
-                    <p>3</p>
+                    <p>2</p>
                 </div>
                 <div className="d-flex align-self-center">
                     <h5 className="iti_heading_size">Passangers Detail</h5>

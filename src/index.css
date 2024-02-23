@@ -7160,3 +7160,12 @@ transform: translateY(-15px);
   font-size: 30px;
 }
 /* --------------------------------- Tasbeel work end------------------- */
+
+
+.Toastify__toast-container {
+  width: 100% !important;
+  display: flex !important; 
+  justify-content: center !important;
+  position: fixed !important;
+  z-index: 9999 !important;
+}

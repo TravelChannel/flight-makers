@@ -55,7 +55,7 @@ console.log("formData",formData);
     const handlerBookingCheck = () => {
         const PNRNumber = inputPNR;
             setInputPNR('');
-            const url = `/GetPNRItinerary?inputPNR=${PNRNumber}`;
+            const url = `/previewEticket?inputPNR=${PNRNumber}`;
             const target = '_blank';
             window.open(url, target);
     }

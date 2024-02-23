@@ -100,6 +100,7 @@ const OtpModel = () => {
                         value={`+${countryCode} ${phoneNumber}`} // Display the formatted phone number
                         onChange={(value, country) => handlePhoneNumberChange(value, country)}
                         placeholder="Enter your phone number"
+                        onlyCountries={['pk']}
                       />
                   </div>
                   <div className="otp_btn_container">

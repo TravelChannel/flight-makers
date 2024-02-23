@@ -11,9 +11,10 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 import { useFormData } from '../../../../../Context/FormDataContext';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const EditModel = (props) => {
- const {isOpen , setIsOpen} = props;
+ const {isOpen , setIsOpen ,setProfileData} = props;
 
 //  const [updatedData , setUpdatedData] = useState('');
 //  const [selectedDate, setSelectedDate] = useState(null);
@@ -26,7 +27,7 @@ const EditModel = (props) => {
 const [selectedDate, setSelectedDate] = useState(null);
  const [gender, setGender] = useState('');
 
- const {userName ,setUserName,SetUserProfiles} = useFormData();
+ const {userName ,setUserName} = useFormData();
 
 //  console.log("YOYOYOYOOO",userName);
   const toggleModal = () => {
@@ -87,15 +88,16 @@ const [selectedDate, setSelectedDate] = useState(null);
   const handleSubmit =async () => {
   const updateDataAPI = await updateUserProfile(userUpdatedObject);
   const updatedFromatData = updateDataAPI.data.payload.updateUserDto;
-  SetUserProfiles(updatedFromatData);
+  setProfileData(updatedFromatData);
   setUserName(updateDataAPI.data.payload.updateUserDto.firstName);
   setIsOpen(false);
+  toast.success('Profile Updated Successfully!', {autoClose: 2000});
   };
   return (
-    <Modal isOpen={isOpen} toggle={toggleModal} className="custom_edit_modal">
+    <Modal isOpen={isOpen}  className="custom_edit_modal">
     <ModalHeader toggle={toggleModal}>
         <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
-        </ModalHeader>
+      </ModalHeader>
     <ModalBody>
         <h3 className='edit_model_body'>Edit Your Profile</h3>
        <div className='d-flex justify-content-between user_input_row'>

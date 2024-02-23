@@ -20,9 +20,9 @@ const RecentTravel = () =>
                                             <h6 className="">{`${item.departure} ⇄ ${item.arrival}`}</h6>
                                             <p className="">{`${item.depDate} - ${item.ariDate}`}</p>
                                         </div>
-                                        <div className="d-flex align-items-center">
+                                        {/* <div className="d-flex align-items-center">
                                             <svg width="6" height="10" viewBox="0 0 6 10" fill="none" className=""><path d="M1 9L5 5L1 1" stroke="#808080" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></svg>
-                                        </div>
+                                        </div> */}
                                     </Link>
                                 </div>
                             );
