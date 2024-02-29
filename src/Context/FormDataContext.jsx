@@ -13,19 +13,25 @@ export const FormDataProvider = ({ children }) => {
   const [userVerName , setVarName] = useState('');
   const [userName , setUserName] = useState('');
   const [roleID , setRoleID] = useState();
-
+  const [backendFinalOBJ ,setBackendFinalOBJ] = useState([]);
+  const [isPNRLoading ,setPNRLoading] = useState(false);
+  const [completeUserData ,setCompleteUserData] = useState([]);
 
 
   return (
     <FormDataContext.Provider value={{ 
-      formData, setFormData,
-      showHeader,setShowHeader,
-        isLogin,setLogIn,
+       formData, setFormData,
+       showHeader,setShowHeader,
+       isLogin,setLogIn,
        userVerName, setVarName,
        userName,setUserName,
        userCountryCode , setUserCountryCOde,
        isTopNavBar ,setTopNavBar,
        roleID , setRoleID,
+       backendFinalOBJ ,setBackendFinalOBJ,
+       isPNRLoading ,setPNRLoading,
+       completeUserData ,setCompleteUserData
+       
        }}>
       {children}
     </FormDataContext.Provider>

@@ -6,9 +6,14 @@ import TextField from '@mui/material/TextField';
 import { AddPromotions } from '../../../../../API/BackendAPI/allAPICalls';
 // import { GetAllPromotions } from '../../../../../API/BackendAPI/UserBookingDetails';
 import { UpdatePromotion } from '../../../../../API/BackendAPI/allAPICalls';
+import { DatePicker } from 'antd';
 const PromotionsModel = (props) => {
     const [isTitle ,setTitle]  =useState('');
     const [isDesc ,setDesc]  =useState('');
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    
+
 
     // console.log("isTitle",isTitle);
     const {isOpen , setIsOpen,promotionData,setPromotionData,isUpdate ,setUpdate ,updateID} = props;
@@ -56,12 +61,31 @@ const PromotionsModel = (props) => {
         setDesc(event.target.value);
       }
 
+      const formatDateToString = (date) => {
+        return date ? date.toISOString().split('T')[0] : null;
+    };
+
       const PromotionsValue = {
         title:isTitle,
-        description:isDesc
+        description:isDesc,
+        startDate: formatDateToString(startDate),
+        endDate: formatDateToString(endDate)
       }
 
-    //   console.log('PromotionsValue',PromotionsValue);
+      console.log("PromotionsValuePromotionsValue",PromotionsValue);
+      
+
+      const handleStartDateChange = (date) => {
+        setStartDate(date);
+      };
+    
+      const handleEndDateChange = (date) => {
+
+        setEndDate(date);
+      };
+      const disabledStartDate = (current) => {
+        return current && current < new Date();
+      };
      
   return (
     <div>
@@ -102,7 +126,24 @@ const PromotionsModel = (props) => {
                         
                     </div>
                 </div>
-                    </div>
+                <div className='d-flex justify-content-start prom_date_picker ' style={{ width: '695px' }}>
+                <DatePicker
+                  placeholder="Start Date"
+                  className='promStartCalander'
+                  value={startDate}
+                  onChange={handleStartDateChange}
+                  disabledDate={disabledStartDate}
+                />
+                <DatePicker
+                  placeholder="End Date"
+                  className='promStartCalander'
+                  value={endDate}
+                  onChange={handleEndDateChange}
+                  disabledDate={(current) => current && current < startDate}
+                />
+              </div>
+
+          </div>
                 <div className='d-flex justify-content-center' onClick={SubmitDetail}>
                    {
                     isUpdate ?(
@@ -115,6 +156,7 @@ const PromotionsModel = (props) => {
                    }
                 </div>
           </div>
+         
             </ModalBody>
         </Modal>
     </div>

@@ -14,7 +14,7 @@ import { VerificationAPi } from "./API/BackendAPI/Find_me_verification";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
-  const { showHeader,setLogIn , setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID} = useFormData();
+  const { showHeader,setLogIn , setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData} = useFormData();
   // ---------------------------------------
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +32,7 @@ const App = () => {
           setRoleID(response.data.payload.userData.roleId);
           setVarName(userPhone);
           setUserName(PersonName);
+          setCompleteUserData(response.data.payload.userData);
           console.log("userPhone-verification",userPhone);
         } else {
           console.log('User is not logged in');

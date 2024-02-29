@@ -146,8 +146,10 @@ const TopNavBar = () => {
             </div>
             <div className="pull-right" id="cautionTextNumber">
               <div className="text-center cautionDesk">
-                <img src={images.cautionicon} alt="caution icon" />
-                <span>We only call from one number : 03111147111</span>
+                <a href="tel:03111147111">
+                  <img src={images.cautionicon} alt="caution icon" />
+                  <span>We only call from one number : 03111147111</span>
+                </a>
               </div>
             </div>
           </div>

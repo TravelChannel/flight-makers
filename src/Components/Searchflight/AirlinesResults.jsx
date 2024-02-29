@@ -96,7 +96,7 @@ useEffect(()=>{
               <h6 className="ad_header_font">Arrival</h6>
             </div>
                )}
-            <div className="w-50 rotate-icon" >
+            <div className="w-50 rotate-icon text-end" >
               <h6 onClick={toggleArrowDirection} className="text-right ad_price_detail ad_header_font">
                 <b>Price</b>
                 {isUpward ? (

@@ -27,7 +27,7 @@ const ExtraBaggages = () => {
                 <span> <BusinessCenterIcon className="policy_main_icon" /></span>
                 <span className="policy_main_heading">Extra Baggages</span>
             </div>
-            <div className='row mt-3'>
+            {/* <div className='row mt-3'>
                 {extraBaggages.map((item, index) => (
                     <div key={index} className='col-sm-4 d-flex align-items-stretch' onClick={() => handelCardClick(index)}>
                         <div class={`card ${selectedCard === index ? 'selectd_border' : ''}`}>
@@ -51,7 +51,23 @@ const ExtraBaggages = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
+                <div className='row mt-3'>
+                        {extraBaggages.map((item, index) => (
+                            <div key={index} className='col-sm-4 d-flex align-items-stretch'>
+                            <div className={`card ${selectedCard === index ? 'selectd_border' : ''}`} onClick={index !== 0 ? () => handelCardClick(index) : null}>
+                                <img src={extra_baggages[index]} className="card-img-top" alt="..." />
+                                <div className="card-body text-center">
+                                <h5 className="card-title">{item.SUB_CLASS_DESC}</h5>
+                                <p className="card-text">{item.WEIGHT} Kg</p>
+                                <p className='descriptions_baggage'>{`${item.PIECE} Piece(s) (not more than ${item.WEIGHT} KG) each for Adult & Child`}</p>
+                                <p>{`${parseInt(item.AMOUNT).toLocaleString()} PKR`}</p>
+                                <p className="btn btn-primary mt-3">Select</p>
+                                </div>
+                            </div>
+                            </div>
+                        ))}
+                        </div>
         </div>
     );
 }

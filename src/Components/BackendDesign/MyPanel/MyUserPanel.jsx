@@ -34,6 +34,9 @@ import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
 import AddBlog from '../AdminPanel/Blogs/AddBlog';
 import BlogLists from '../AdminPanel/Blogs/BlogLists';
 import AddCommission from '../AdminPanel/AddCommission';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import RateUs from './Pages/RateUs';
+import RatingList from '../AdminPanel/RatingList';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -290,8 +293,32 @@ useEffect(() => {
                   </div>
 				  ):('')
 				  		}
+						  {!checkAdmin && !partialAdmin ?
+				  (
+					<div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(9)}>
+                  		<StarHalfIcon className='menu_content_icon' />
+                  			<p className='d-flex align-self-center menu_content_typo'>
+							{/* Payment Details  */}
+							Rate Us
+							</p>
+                  		</div>
+
+                  </div>
+				  ):(
+					<div className='left_menu_content'>
+					<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(9)}>
+                  		<StarHalfIcon className='menu_content_icon' />
+                  			<p className='d-flex align-self-center menu_content_typo'>
+							{/* Payment Details  */}
+							Customers Rating
+							</p>
+                  		</div>
+                  		</div>
+						 )
+				  		}
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -355,6 +382,9 @@ useEffect(() => {
 
 						{selectedMenuItem === 8 && 
 				<AddCommission />}
+
+				{selectedMenuItem === 9 && ( !checkAdmin && !partialAdmin ? <RateUs /> :<RatingList/>)
+				}
 				 </div>
 
 				 <Dialog

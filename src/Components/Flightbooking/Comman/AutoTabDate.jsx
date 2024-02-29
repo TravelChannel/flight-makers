@@ -53,9 +53,20 @@ const AutoTabDate = ({ label, value, handleInputChange, traveller }) => {
 
   }, [tagLabel, value, handleInputChange, traveller]);
 
+  // const handleKeyUp = (e, targetRef, nextRef, maxVal) => {
+  //   const numericValue = parseInt(e.target.value, 10);
+
+  //   if (!isNaN(numericValue) && numericValue <= maxVal) {
+  //     if (e.target.value.length === e.target.maxLength && nextRef) {
+  //       nextRef.current.focus();
+  //     }
+  //   } else {
+  //     e.target.value = '';
+  //   }
+  // };
   const handleKeyUp = (e, targetRef, nextRef, maxVal) => {
     const numericValue = parseInt(e.target.value, 10);
-
+  
     if (!isNaN(numericValue) && numericValue <= maxVal) {
       if (e.target.value.length === e.target.maxLength && nextRef) {
         nextRef.current.focus();
@@ -63,12 +74,43 @@ const AutoTabDate = ({ label, value, handleInputChange, traveller }) => {
     } else {
       e.target.value = '';
     }
+  
+    if (e.target === dayRef.current) {
+      const monthValue = parseInt(monthRef.current.value, 10);
+      const yearValue = parseInt(yearRef.current.value, 10);
+  
+      // Check if the entered day is valid for February in leap years
+      if (monthValue === 2) {
+        const isLeapYear = (yearValue % 4 === 0 && yearValue % 100 !== 0) || yearValue % 400 === 0;
+        const daysInFebruary = isLeapYear ? 29 : 28;
+        if (numericValue > daysInFebruary) {
+          e.target.value = '';
+        }
+      } else {
+        // Check if the entered day is valid for other months
+        const daysInMonth = new Date(yearValue, monthValue, 0).getDate();
+        if (numericValue > daysInMonth) {
+          e.target.value = '';
+        }
+      }
+    }
   };
+  
 
   return (
     <div>
       <p className="dob_heading">{label}</p>
       <div className="d-flex justify-content-between input_date_mob">
+      <input
+          placeholder="MM"
+          type="text"
+          pattern="^(0?[1-9]|1[0-2])$"
+          maxLength="2"
+          size="2"
+          className="date-field"
+          ref={monthRef}
+          onKeyUp={(e) => handleKeyUp(e, monthRef, dayRef, 12)}
+        />
         <input
           placeholder="DD"
           type="text"
@@ -77,20 +119,9 @@ const AutoTabDate = ({ label, value, handleInputChange, traveller }) => {
           size="2"
           className="date-field"
           ref={dayRef}
-          onKeyUp={(e) => handleKeyUp(e, dayRef, monthRef, 31)}
+          onKeyUp={(e) => handleKeyUp(e, dayRef, yearRef, 31)}
+          disabled={!monthRef.current || !monthRef.current.value}
         />
-
-        <input
-          placeholder="MM"
-          type="text"
-          pattern="^(0?[1-9]|1[0-2])$"
-          maxLength="2"
-          size="2"
-          className="date-field"
-          ref={monthRef}
-          onKeyUp={(e) => handleKeyUp(e, monthRef, yearRef, 12)}
-        />
-
         <input
           placeholder="YYYY"
           type="text"
@@ -100,6 +131,7 @@ const AutoTabDate = ({ label, value, handleInputChange, traveller }) => {
           className="date-field date-field--year"
           ref={yearRef}
           onKeyUp={(e) => handleKeyUp(e, yearRef, null, 2099)}
+          disabled={!monthRef.current || !monthRef.current.value} 
         />
       </div>
     </div>

@@ -5,7 +5,8 @@ import { TicketPriceProvider } from '../../Flightbooking/Comman/Context';
 import UserItineraryDetails from '../../Flightbooking/Comman/UserItineraryDetails';
 import { useFormData } from '../../../Context/FormDataContext';
 import { useLocation } from 'react-router';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 const BookingDetails = () => {
 
   const location = useLocation();
@@ -29,14 +30,35 @@ const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digi
 const formattedCurrentDateTime = currentDateTime.toLocaleString(undefined, options);
 const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options);
 // --------------------------------------------------------
-const downloadPDF = () =>{
+const downloadPDF = () => {
+  const input = document.getElementById('pdf-content');
 
-}
+  html2canvas(input, { scale: 3 }).then((canvas) => {
+    const imgData = canvas.toDataURL('image/jpeg'); // Change image type to 'JPEG'
+
+    const pdf = new jsPDF('p', 'mm', 'a4', true);
+
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+
+    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+
+    const imgX = (pdfWidth - imgWidth * ratio) / 2;
+    const imgY = 30;
+
+    pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+    pdf.save('invoice.pdf');
+  });
+};
+
 // -------------------------------------------------------
 
   return (
     <Fragment>
-      <div className='container bg-white'>
+      <div className='container bg-white' id="pdf-content">
         <div className='details_header d-flex justify-content-center'>
           <CheckCircleOutlineTwoToneIcon className="booking_done_icon align-self-center"/>
           <div className='px-2' >
@@ -162,7 +184,7 @@ const downloadPDF = () =>{
         </div>
         
         <div className="d-flex justify-content-center">
-              <button className='btn btn-primary m-2 download_typography' onClick={downloadPDF}>
+              <button className='btn btn-primary m-2 download_typography' onClick={() => downloadPDF()}>
                       Download as PDF
               </button>
         </div>

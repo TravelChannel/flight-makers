@@ -10,8 +10,12 @@ import CashOnDelivary from '../Components/BookingPayment/CashOnDelivary';
 import JazzCashPay from '../Components/BookingPayment/JazzCashPay';
 import MobBooking from '../Components/BookingPayment/Comman/MobBooking';
 import { TicketPriceProvider } from '../Components/Flightbooking/Comman/Context';
+import { useFormData } from '../Context/FormDataContext';
+import Loader from '../Loader/Loader';
 
 const BookingPayment = () => {
+
+   const {isPNRLoading} =useFormData();
    const [selectedMethode, setSelectedMethode] = useState('Online_payment');
    const [subMenuSelected, setSubMenuSelected] = useState('hbl_banking');
    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -30,7 +34,8 @@ const BookingPayment = () => {
    }, [])
 
    return (
-      <div className='container'>
+      isPNRLoading ?(<Loader/>):(
+         <div className='container'>
          <div className="book_payment_hero">
             <div className="paymethodes_main">
                <div>
@@ -87,6 +92,7 @@ const BookingPayment = () => {
             </div>
          </div>
       </div>
+      )
    )
 }
 

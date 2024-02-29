@@ -9,7 +9,9 @@ import { AirlineDropDown } from '../../../../../API/BackendAPI/CommissionAPI/Air
 import { FareClassDropDown } from '../../../../../API/BackendAPI/CommissionAPI/FareClassDropDown';
 import { SectorDropDown } from '../../../../../API/BackendAPI/CommissionAPI/SectorDropDown';
 import { AddCommissionPercentage } from '../../../../../API/BackendAPI/CommissionAPI/AddCommissionPercentage';
-
+import { DatePicker } from 'antd';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CommissionModel = (props) => {
     const { isOpen, setIsOpen ,setCommPassingObj,CommissionPassingObj } = props;
     const [isTitle, setTitle] = useState();
@@ -20,6 +22,9 @@ const CommissionModel = (props) => {
     const [airlineOptions, setAirlineOptions] = useState([]);
     const [fareClassOptions, setFareClassOptions] = useState([]);
     const [sectorWiseOptions ,setSectorEiseOptions] = useState([]);
+
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
     const toggleModal = () => {
         setIsOpen(!isOpen);
@@ -113,12 +118,27 @@ const CommissionModel = (props) => {
     }
 
     console.log("comm-obj-to-pass",CommissionDataObj);
-
+    const formatDateToString = (date) => {
+        return date ? date.toISOString().split('T')[0] : null;
+    };
+    // const PassCommData = {
+    //     percentage:  parseInt(isTitle),
+    //     airlineId: CommissionDataObj.AirlineWise?.value || null,
+    //     fareClassId: CommissionDataObj.farewise?.value || null,
+    //     sectorId: CommissionDataObj.sectorwise?.value || null,
+    //     startDate: formatDateToString(startDate),
+    //     endDate: formatDateToString(endDate)
+    // };
     const PassCommData = {
         percentage:  parseInt(isTitle),
         airlineId: CommissionDataObj.AirlineWise?.value || null,
+        // airlinelabel: CommissionDataObj.AirlineWise?.label || null,
         fareClassId: CommissionDataObj.farewise?.value || null,
-        sectorId: CommissionDataObj.sectorwise?.value || null
+        // fareClasslabel: CommissionDataObj.farewise?.label || null,
+        sectorId: CommissionDataObj.sectorwise?.value || null,
+        // sectorlabel: CommissionDataObj.sectorwise?.label || null,
+        startDate: formatDateToString(startDate),
+        endDate: formatDateToString(endDate)
     };
 
     console.log("passingObjtoCommAPi", PassCommData);
@@ -130,12 +150,25 @@ const CommissionModel = (props) => {
                         const updatedCommissionObj = [...CommissionPassingObj, response.data.payload];
                         setCommPassingObj(updatedCommissionObj);
                         console.log("Response from Commission API:", response);
+                        toast.success('Commission Added Successfully!', {autoClose: 2000});
                     } catch (error) {
                         console.log("Error on CommissionPage:", error);
                     }
         setIsOpen(false);
 
     }
+
+    const handleStartDateChange = (date) => {
+        setStartDate(date);
+      };
+    
+      const handleEndDateChange = (date) => {
+
+        setEndDate(date);
+      };
+      const disabledStartDate = (current) => {
+        return current && current < new Date();
+      };
 
     return (
         <div>
@@ -211,6 +244,24 @@ const CommissionModel = (props) => {
                                     />
                                     </div>
                             </div>
+
+
+                            <div className='d-flex justify-content-center comm_date_picker ' style={{ width: '560px' }}>
+                                    <DatePicker
+                                    placeholder="Start Date"
+                                    className='promStartCalander'
+                                    value={startDate}
+                                    onChange={handleStartDateChange}
+                                    disabledDate={disabledStartDate}
+                                    />
+                                    <DatePicker
+                                    placeholder="End Date"
+                                    className='promStartCalander'
+                                    value={endDate}
+                                    onChange={handleEndDateChange}
+                                    disabledDate={(current) => current && current < startDate}
+                                    />
+                                </div>
                         </div>
                         <div className='d-flex justify-content-end'>
                             <button className='btn btn-primary btn_promotion_model' onClick={handleCloseModel}>ADD</button>

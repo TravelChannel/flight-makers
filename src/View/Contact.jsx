@@ -38,18 +38,24 @@ const Contact = () => {
          </div>
          <h5 className='contact_details branches_heading '>Engage With Us on Social Media</h5>
          <div className='d-flex justify-content-between social_contacts_main flex-wrap'>
-            <div className="fb_connection d-flex justify-content-start">
-              <FacebookOutlinedIcon className='fb_connect_icon'/> 
-              <p className='fb_contact_content align-self-center'>Connect with Us on Facebook</p>
-            </div>
+         <div className="fb_connection ">
+         <a href="https://www.facebook.com/TravelChannelInternationalPvt.Limited" target="_blank" rel="noopener noreferrer" className='d-flex justify-content-start'>
+            <FacebookOutlinedIcon className='fb_connect_icon'/> 
+            <p className='fb_contact_content align-self-center'>Connect with Us on Facebook</p>
+          </a>
+          </div>
+          <a href="https://twitter.com/travel-channel-international-pvt-limited" target="_blank" rel="noopener noreferrer">
             <div className="twitter_connection d-flex justify-content-start">
               <TwitterIcon className='twitter_connect_icon'/> 
               <p className='twiter_contact_content align-self-center'>Stay Connected on Twitter</p>
             </div>
-            <div className="linkden_connection d-flex justify-content-start">
-              <LinkedInIcon className='linkden_connect_icon'/> 
-              <p className='linkden_contact_content align-self-center'>Follow us on LinkedIn  </p>
-            </div>
+          </a>
+            <a href="https://www.linkedin.com/company/travel-channel-international-pvt-limited" target="_blank" rel="noopener noreferrer">
+              <div className="linkden_connection d-flex justify-content-start">
+                <LinkedInIcon className='linkden_connect_icon'/> 
+                <p className='linkden_contact_content align-self-center'>Follow us on LinkedIn</p>
+              </div>
+            </a>
 
          </div>
          

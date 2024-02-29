@@ -1,13 +1,30 @@
-import { React, Fragment, useState, useEffect } from 'react';
+import { React, Fragment, useState, useEffect, useContext } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import { requestGetpaymentToken } from '../../../API/index';
 import { useNavigate } from 'react-router';
 import BookingDetails from './BookingDetails';
-
+import { useFormData } from '../../../Context/FormDataContext';
+import { requestPNRCreate } from '../../../API/index';
+import { handleShowErrorAlert } from '../../../helpers/sweatalert';
+import Loader from '../../../Loader/Loader';
+import { requestUserPnrBooking } from '../../../API/index';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const PrivacyPolicyCheck = (props) => {
     const navigate = useNavigate();
+    const {formData ,backendFinalOBJ ,setPNRLoading} = useFormData();
+
+    console.log("formData get",formData);
+    console.log("getFinalOBJ",backendFinalOBJ);
+
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
+    const [isLoading ,setLoading] = useState(false);
+   
+
+  
+
+
     const { checked, setChecked, isEmpty,paymentType,branchLabel,userLocation} = props;
     const handleChange = (event) => {
         setChecked(event.target.checked);
@@ -25,6 +42,7 @@ const PrivacyPolicyCheck = (props) => {
         }
     }, []);
     const payOnlineHandler = async () => {
+        const pnrNum = await generatePnrNum();
         let paymentCode;
         let iframe_id;
       
@@ -42,6 +60,7 @@ const PrivacyPolicyCheck = (props) => {
         }
       
         try {
+          setPNRLoading(true);
           const paymentToken = await requestGetpaymentToken(paymentCode);
           console.log('paymentTokenpaymentToken',paymentToken);
           console.log(paymentToken.token);
@@ -51,22 +70,103 @@ const PrivacyPolicyCheck = (props) => {
           } else {
             window.location.href = `https://pakistan.paymob.com/iframe/${paymentToken.token}`;
           }
+          setPNRLoading(false);
         } catch (error) {
           console.error(error);
         }
       };
 
-      const BookingDetail = ()=>{
-        const DatatoPass ={
-        branchlabel : branchLabel,
-        userLocation : userLocation,
-        };
-        navigate('/bookingDetail', { state: { data: DatatoPass } });
+      const BookingDetail =async ()=>{
+        setLoading(true);
+        try{
+            const pnrNum = await generatePnrNum();
+            const DatatoPass ={
+            branchlabel : branchLabel,
+            userLocation : userLocation,
+            };
+            navigate('/bookingDetail', { state: { data: DatatoPass } });
+        }catch(error){
+                console.error(error)
+        }finally {
+            setLoading(false);
+          }
+        
       }
+
+    //   ---------------------------------------
+
+      const generatePnrNum = async() => {
+        let getPNRNumber = '';
+        let updatedBackendFinalOBJ = {};
+        try {
+            setPNRLoading(true);
+            const PNRRespon = await requestPNRCreate(formData);
+
+            if (PNRRespon?.Success === false) {
+              const message = PNRRespon.Response.message
+              handleShowErrorAlert(message);
+            }
+            else if(PNRRespon?.status === "NotProcessed") {
+              handleShowErrorAlert("Incomplete");
+            }
+            else if (PNRRespon?.CreatePassengerNameRecordRS?.ApplicationResults?.status === "Incomplete") {
+              const message = PNRRespon.CreatePassengerNameRecordRS.ApplicationResults.Warning[0].SystemSpecificResults[0].Message[0].content
+              handleShowErrorAlert(message);
+            }
+            else {
+              if (PNRRespon?.Success === true) {
+                getPNRNumber = PNRRespon.Response.Data   //airsial Pnr
+              }
+              else {
+                getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
+              }
+    
       
+            // Creating Final Object for the Backend 
+            updatedBackendFinalOBJ = {
+                ...backendFinalOBJ,
+                pnr: getPNRNumber,
+              };
+
+              console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
+      
+            // console.log("hellowrold111111111");
+            const respServerPnrBooking = await requestUserPnrBooking(updatedBackendFinalOBJ);
+            console.log("respServerPnrBooking",respServerPnrBooking);
+            // console.log("hellowrold22222222");
+      
+            
+      // if(respServerPnrBooking===true){
+        
+      // }
+            // http://localhost:5000/api/pnrBooking
+      
+              localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
+              toast.success("PNR Created SuccessFully " ,
+              {autoClose: 2000 });
+            }
+      
+          } finally {
+            setPNRLoading(false);
+          }
+          return getPNRNumber;
+      };
+
+      const handleTermsandConditions = () =>{
+        navigate('/terms-and-conditions');
+      }
+      const handleBookingPolicy = () =>{
+        navigate('/terms-of-service');
+      }
+
+      const handlePrivacyPolicy = () =>{
+        navigate('/refund-policy');
+      }
+
     return (
         <Fragment>
-            {
+           <div>
+           {
                 !isMobile && (
                     <div>
                             <div className='policy_check_main d-flex justify-content-start'>
@@ -78,7 +178,7 @@ const PrivacyPolicyCheck = (props) => {
                                     />
                                 </div>
                                 <div className='privacy_policy_content '>
-                                    <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked'>booking policy,</span> <span className='privacy_policy_linked'>privacy policy</span>, and <span className='privacy_policy_linked'>terms and conditions</span> of faremakers.
+                                    <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked' onClick = {handleBookingPolicy}>booking policy,</span> <span className='privacy_policy_linked' onClick={handlePrivacyPolicy}>privacy policy</span>, and <span className='privacy_policy_linked' onClick={handleTermsandConditions}>terms and conditions</span> of faremakers.
                                     </p>
                                 </div>
                             </div>
@@ -93,19 +193,27 @@ const PrivacyPolicyCheck = (props) => {
                                     <p className='payment_subtitle'>total inclusive, of all taxes</p>
                                 </div>
                                 <div className="move_payment_button ">
-                                    <button
-                                        onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
-                                        type="button" 
-                                        className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
-                                        disabled={!checked || isEmpty}  >
-                                        {
-                                                paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
-                                                   <p> Pay Now</p>
-                                                ) : (
-                                                   <p onClick = {BookingDetail}> Submit</p>
-                                                )
+                                        <button
+                                                onClick={() => {
+                                                    if (paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash') {
+                                                    payOnlineHandler();
+                                                    } else {
+                                                    BookingDetail();
+                                                    }
+                                                }}
+                                                type="button"
+                                                className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
+                                                disabled={!checked || isEmpty}
+                                                >
+                                                {
+                                                    // Display button text based on paymentType
+                                                    paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
+                                                    <p>Pay Now</p>
+                                                    ) : (
+                                                    <p>Submit</p>
+                                                    )
                                                 }
-                                    </button>
+                                                </button>
                                 </div>
                             </div>
                     </div>
@@ -123,7 +231,7 @@ const PrivacyPolicyCheck = (props) => {
                                 />
                             </div>
                             <div className='privacy_policy_content align-self-center'>
-                                <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked'>booking policy,</span> <span className='privacy_policy_linked'>privacy policy</span>, and <span className='privacy_policy_linked'>terms and conditions</span> of faremakers.
+                                <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked' onClick = {handleBookingPolicy}>booking policy,</span> <span className='privacy_policy_linked' onClick={handlePrivacyPolicy}>privacy policy</span>, and <span className='privacy_policy_linked' onClick={handleTermsandConditions}>terms and conditions</span> of faremakers.
                                 </p>
                             </div>
                         </div>
@@ -138,24 +246,33 @@ const PrivacyPolicyCheck = (props) => {
                             </div>
                             <div className="move_payment_button p-3">
                                     <button
-                                        onClick={paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? payOnlineHandler : null}
-                                        type="button"
-                                        className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
-                                        disabled={!checked || isEmpty}  >
-                                        {
-                                                paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
-                                                   <p> Pay Now</p>
-                                                ) : (
-                                                   <p onClick = {BookingDetail}> Submit</p>
-                                                )
+                                                onClick={() => {
+                                                    if (paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash') {
+                                                    payOnlineHandler();
+                                                    } else {
+                                                    BookingDetail();
+                                                    }
+                                                }}
+                                                type="button"
+                                                className={`btn btn-primary pay_now_btn ${!checked ? 'disable_cursr' : 'activ_cursor'}`}
+                                                disabled={!checked || isEmpty}
+                                                >
+                                                {
+                                                    // Display button text based on paymentType
+                                                    paymentType === 'paypro' || paymentType === 'easypaisa' || paymentType === 'jazzcash' ? (
+                                                    <p>Pay Now</p>
+                                                    ) : (
+                                                    <p>Submit</p>
+                                                    )
                                                 }
-                                    </button>
+                                                </button>
                                 </div>
                                 
                         </div>
                     </div>
                 )
             }
+           </div>
         </Fragment>
     );
 };

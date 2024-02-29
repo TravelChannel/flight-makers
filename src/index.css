@@ -4464,7 +4464,7 @@ margin-top:7px;
   width:100%;
  }
  .fname_textfield1{
-  width:90%;
+  width:91%;
  }
  .custom_calnder_edit{
    padding:0px !important;
@@ -6899,6 +6899,13 @@ margin-top:50px;
   border:1px solid #d9d9d9;
   border-radius: 4px;
 }
+.review_input_field {
+  margin-top:3px;
+  width: 55%;
+  padding:6px 4px;
+  border:1px solid #d9d9d9;
+  border-radius: 4px;
+}
 .blog_TextArea {
   height:200px;
 }
@@ -7168,4 +7175,37 @@ transform: translateY(-15px);
   justify-content: center !important;
   position: fixed !important;
   z-index: 9999 !important;
+}
+.rateus_title{
+  color: #F26223;
+  font-size:14px;
+  font-weight: 600;
+  padding:10px 10px;
+}
+.rating_stars{
+  font-size:45px !important;
+}
+
+.custom-rating .MuiRating-iconFilled,
+.custom-rating .MuiRating-iconEmpty {
+  font-size: 36px; 
+}
+.custom-rating{
+  background-color: white !important;
+}
+.promStartCalander{
+  margin-right:10px;
+  width: 300px !important;
+}
+.prom_date_picker{
+  margin-left:10px;
+}
+.comm_date_picker{
+  margin-left: 86px;
+margin-top:10px;
+}
+.parent-element .ant-picker {
+  width:91% !important;
+  border: 1px solid #c1c1c1 !important;
+  border-radius: 4px
 }

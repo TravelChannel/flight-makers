@@ -7,7 +7,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import DatePicker from 'react-datepicker';
+// import DatePicker from 'react-datepicker';
+import { DatePicker } from 'antd';
 import 'react-datepicker/dist/react-datepicker.css';
 import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 import { useFormData } from '../../../../../Context/FormDataContext';
@@ -26,8 +27,13 @@ const EditModel = (props) => {
  const [dob, setDob] = useState('');
 const [selectedDate, setSelectedDate] = useState(null);
  const [gender, setGender] = useState('');
+ const [startDate, setStartDate] = useState(null);
 
  const {userName ,setUserName} = useFormData();
+
+ const handleStartDateChange = (date) => {
+  setStartDate(date);
+};
 
 //  console.log("YOYOYOYOOO",userName);
   const toggleModal = () => {
@@ -71,7 +77,9 @@ const [selectedDate, setSelectedDate] = useState(null);
   const handleGenderChange = (event) => {
     setGender(event.target.value);
   };
-
+  const formatDateToString = (date) => {
+    return date ? date.toISOString().split('T')[0] : null;
+};
   const userUpdatedObject = {
     "username": firstName,
     "email": "kashif123@gmail.com",
@@ -80,7 +88,7 @@ const [selectedDate, setSelectedDate] = useState(null);
     'lastName':lastName,
     'cnic': cnic,
     'passportNo':passportNo,
-    'dateOfBirth':dob,
+    'dateOfBirth':formatDateToString(startDate),
     'gender':gender
 
   }
@@ -102,7 +110,7 @@ const [selectedDate, setSelectedDate] = useState(null);
         <h3 className='edit_model_body'>Edit Your Profile</h3>
        <div className='d-flex justify-content-between user_input_row'>
             <div className='w-50'>
-            <h3 className='editModel_labeling'>First Name</h3>
+            <h3 className='editModel_labeling'>First Name:</h3>
             <Box
             sx={{
                 width: 500,
@@ -113,7 +121,7 @@ const [selectedDate, setSelectedDate] = useState(null);
           </Box>
             </div>
             <div className='w-50'>
-            <h3 className='editModel_labeling'> Last Name</h3>
+            <h3 className='editModel_labeling'> Last Name:</h3>
             <Box
             sx={{
                 width: 500,
@@ -126,7 +134,7 @@ const [selectedDate, setSelectedDate] = useState(null);
        </div>
        <div className='d-flex justify-content-between user_input_row'>
             <div className='w-50'>
-            <h3 className='editModel_labeling'>CNIC</h3>
+            <h3 className='editModel_labeling'>CNIC:</h3>
             <Box
             sx={{
                 width: 500,
@@ -137,7 +145,7 @@ const [selectedDate, setSelectedDate] = useState(null);
           </Box>
             </div>
             <div className='w-50'>
-            <h3 className='editModel_labeling'>Passport No</h3>
+            <h3 className='editModel_labeling'>Passport No:</h3>
             <Box
             sx={{
                 width: 500,
@@ -148,8 +156,9 @@ const [selectedDate, setSelectedDate] = useState(null);
           </Box>
             </div>
        </div>
-       <div className='d-flex justify-content-between user_input_row'>
-            <div className='w-50'>
+       <div className='d-flex justify-content-start user_input_row'>
+            <div className="parent-element w-50 ">
+             {/* <div className='w-50'>
             <h3 className='editModel_labeling'>DOB</h3>
             <DatePicker
                className='User_DOb_Cal'
@@ -163,9 +172,18 @@ const [selectedDate, setSelectedDate] = useState(null);
                 placeholderText="Select Date of Birth"
                 maxDate={maxDate}
               />
+            </div> */}
+            <DatePicker
+                  placeholder="Date of Birth"
+                  className='userProfileCal'
+                  value={startDate}
+                  onChange={handleStartDateChange}
+                  // disabledDate={disabledStartDate}
+                />
             </div>
+            
             <div className='w-50 m-1'>
-            <h3 className='editModel_labeling'>Gender</h3>
+            {/* <h3 className='editModel_labeling'>Gender</h3> */}
           <FormControl className="fname_textfield1" size="small">
                <InputLabel id="demo-simple-select-helper-label">Gender</InputLabel>
                       <Select
@@ -181,7 +199,9 @@ const [selectedDate, setSelectedDate] = useState(null);
                       </Select>
         </FormControl>
             </div>
+           
        </div>
+      
        <div className='model_submit_main'>
                 <button className='btn btn-primary' onClick={handleSubmit}>Update</button>
        </div>

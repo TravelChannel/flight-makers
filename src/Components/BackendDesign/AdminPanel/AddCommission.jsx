@@ -68,10 +68,11 @@ const ArrangeDateFormat = (JourneyDate) => {
                             {/* <th className="promotion_design">Serial No</th> */}
                             <th className="promotion_design" >ID</th>
                             <th className="promotion_design">Percentage Applied</th>
-                            <th className="promotion_design">AirlineWise ID</th>
-                            <th className="promotion_design">FareClassWise ID</th>
-                            <th className="promotion_design">SectorWise ID</th>
-                            <th className="promotion_design">CreatedAt</th>
+                            <th className="promotion_design">Airline</th>
+                            <th className="promotion_design">FareClass</th>
+                            <th className="promotion_design">Sector</th>
+                            <th className="promotion_design">StartDate</th>
+                            <th className="promotion_design">EndDate</th>
                             <th className="promotion_design">isActive</th>
 
                         </tr>
@@ -86,7 +87,8 @@ const ArrangeDateFormat = (JourneyDate) => {
                           <td>{items.airlineId != null ? items.airlineId : 'Null'}</td>
                           <td>{items.fareClassId != null ? items.fareClassId : 'Null'}</td>
                           <td>{items.sectorId != null ? items.sectorId : 'Null'}</td>
-                          <td>{ArrangeDateFormat(items.createdAt)}</td>
+                          <td>{ArrangeDateFormat(items.startDate)}</td>
+                          <td>{ArrangeDateFormat(items.endDate)}</td>
                           <td>{items.isActive != null ? (items.isActive ? 'True' : 'False') : 'null'}</td>
                       </tr>
                       ))

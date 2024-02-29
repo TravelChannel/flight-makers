@@ -15,13 +15,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import Popover from '@mui/material/Popover';
 import * as images from '../../Constant/images';
 import { useNavigate } from 'react-router-dom';
-import { requestPNRCreate, requestTravelerInfo } from '../../API/index';
 import Loader from '../../Loader/Loader';
 import AutoTabDate from './Comman/AutoTabDate';
-import { handleShowErrorAlert } from '../../helpers/sweatalert';
 import { useFormData } from '../../Context/FormDataContext';
-
-import { requestUserPnrBooking } from '../../API/index';
 import { sendOTPCode } from '../../API/index';
 import { verifyOTPRes } from '../../API/index';
 
@@ -29,8 +25,10 @@ import { verifyOTPRes } from '../../API/index';
 
 
 const UserContactDetails = (props) => {
-  const {isLogin , setLogIn} = useFormData();
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,setUserName,setRoleID} = useFormData();
+  // console.log('completeUserData',completeUserData);
+
+  const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
   const [countryCode, setCountryCode] = useState('');
   const [userOTP , setUserOtp] = useState('');
 
@@ -57,7 +55,7 @@ const UserContactDetails = (props) => {
 
   const [isPNR ,setPNR] =useState('');
 
-  const { formData, setFormData } = useFormData();
+  const { formData, setFormData, setBackendFinalOBJ } = useFormData();
   const [dynamicObject, setDynamicObject] = useState({
     phoneNumber: phoneNumber,
     pnr: isPNR,
@@ -65,10 +63,7 @@ const UserContactDetails = (props) => {
 
   });
 
-
- 
-
-  // console.log("getOTPData",getOTPData);
+  // console.log("dynamicObject",dynamicObject);
 // ---------------------------
   // const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
   // console.log("countryCode",countryCode);
@@ -106,7 +101,6 @@ const UserContactDetails = (props) => {
   }, [phoneNumber]);
 
 
-
   // useEffect(() => {
   //   setDynamicObject((prevDynamicObject) => ({
   //     ...prevDynamicObject,
@@ -121,23 +115,33 @@ const UserContactDetails = (props) => {
   //   setCountryCode(country.dialCode);
   // };
 // ------------------------------------------------
-  const handlePhoneNumberChange = (value, country) => {
-    const dialCode = country.dialCode;
+const handlePhoneNumberChange = (value, country) => {
+  const dialCode = '92';
 
-    if (value.includes(dialCode)) {
-      const numericPhoneNumber = value.replace(dialCode, '').replace(/\D/g, '');
-      setPhoneNumber(numericPhoneNumber);
-    } else {
-      setPhoneNumber(value.replace(/\D/g, ''));
+  // Check if userVerName is present
+  if (userVerName && isLogin) {
+    setCountryCode(dialCode); // Set country code to 92
+    setPhoneNumber(userVerName); // Set phone number to userVerName
+  } else {
+    // If userVerName is not present, handle the value as before
+    if (value !== `+${dialCode} ${phoneNumber}`) {
+      if (value.includes(dialCode)) {
+        const numericPhoneNumber = value.replace(dialCode, '').replace(/\D/g, '');
+        setPhoneNumber(numericPhoneNumber);
+      } else {
+        setPhoneNumber(value.replace(/\D/g, ''));
+      }
+      setCountryCode(dialCode); // Set country code to 92
     }
-    setCountryCode(dialCode);
-  };
+  }
+};
 
   const getOTPData = {
     'coutryCode':countryCode,
     'phoneNumber':phoneNumber
   }
 
+  // console.log("getOTPData",getOTPData);
   // --------------------
   // const verifiedOTPData = {
   //   'coutryCode':countryCode,
@@ -173,6 +177,9 @@ const UserContactDetails = (props) => {
           setIsOtpTrue(true);
           setDisplayContact(true);
           setLogIn(true);
+          setRoleID(verificationResult.data.payload.userData.roleId);
+          setVarName(verificationResult.data.payload.userData.phoneNumber);
+          // setUserName(verificationResult.data.payload.userData.firstName);
         } else {
           setIsOtpTrue(false);
         }
@@ -237,10 +244,8 @@ const UserContactDetails = (props) => {
   // }, [isOtpTrue]);
 
 
-
 // ...
 useEffect(() => {
-  // Assign ref to input elements after they have been rendered
   const numberOfInputs = otpInputs.current.length;
 
   if (isOtpTrue === true || isOtpTrue === false) {
@@ -282,7 +287,6 @@ useEffect(() => {
          
       console.error('errorOTP',error);
     }
-
     
   }
   // const handleChange = (event) => {
@@ -314,14 +318,14 @@ useEffect(() => {
       const expiredate = formDataItem && formDataItem[`PassportExpiryDate${i}`];
 
       if (!fname || !lname || !gender || !countery || !passport || expiredate === "DD-MM-YYYY" || dob === "DD-MM-YYYY") {
-        return true;
+        return false;
       }
     }
     return true;
   };
 
   // ----------------------------------------------------
-  const generateBookingObject = (pnr) => {
+  const generateBookingObject = () => {
     const pnrBookingsArray = [];
 
     for (let i = 0; i < formData.length; i++) {
@@ -337,25 +341,22 @@ useEffect(() => {
         gender: formDataItem[`gender${i}`],
         cnic: formDataItem[`cnic${i}`],
         passportNo: formDataItem[`passport${i}`],
-        ispnr: pnr,
+        // ispnr: pnr,
       };
 
       pnrBookingsArray.push(bookingItem);
     }
 
     const finalObject = {
-      countryCode:countryCode,
+      countryCode:92,
       phoneNumber: dynamicObject.phoneNumber,
-      pnr,
+      // pnr,
       pnrBookings: pnrBookingsArray,
       flightDetails:flightDetails,
       MajorInfo:MajorData
     };
 
     console.log("Final Object:", finalObject);
-
-    // If you want to set this object into state or use it further, you can do so here.
-    // setSomeState(finalObject);
 
     return finalObject;
   };
@@ -371,71 +372,14 @@ useEffect(() => {
     return modifiedItem;
   });
 
-  const handleNavigation = async () => {
-    let getPNRNumber = '';
-    try {
-      setLoading(true);
-     
-      const PNRRespon = await requestPNRCreate(formData);
+  const handleNavigation =  () => {
 
-      // ------------------------
-
-    
-
-      // ----------------------------
-      // console.log(userInfodetails);
-      if (PNRRespon?.Success === false) {
-        const message = PNRRespon.Response.message
-        handleShowErrorAlert(message);
-      }
-      else if(PNRRespon?.status === "NotProcessed") {
-        handleShowErrorAlert("Incomplete");
-      }
-      else if (PNRRespon?.CreatePassengerNameRecordRS?.ApplicationResults?.status === "Incomplete") {
-        const message = PNRRespon.CreatePassengerNameRecordRS.ApplicationResults.Warning[0].SystemSpecificResults[0].Message[0].content
-        handleShowErrorAlert(message);
-      }
-      else {
-        if (PNRRespon?.Success === true) {
-          getPNRNumber = PNRRespon.Response.Data   //airsial Pnr
-        }
-        else {
-          getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
-        }
-
-        // setPNR(getPNRNumber);
-        // const userInfodetails = [
-        //   { phoneNumber: phoneNumber ,PNR: getPNRNumber,userEmail: storeEmail, ...modifiedFormData}
-        // ];
-        // const travellerInfo = await requestTravelerInfo(userInfodetails); // save user data in database
-        // console.log(travellerInfo);
-
-
-
-      const finalObject=  generateBookingObject(getPNRNumber); 
-
-      console.log("hellowrold111111111");
-      const respServerPnrBooking = await requestUserPnrBooking(finalObject);
-      // console.log("respServerPnrBooking",respServerPnrBooking);
-      console.log("hellowrold22222222");
-
-      
-// if(respServerPnrBooking===true){
-  
-// }
-      // http://localhost:5000/api/pnrBooking
-
-        localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
-        alert("PNR Number: " + getPNRNumber);
-
-        
-          
-        navigate('/bookingpayment');
-      }
-     
-
-    } finally {
-      setLoading(false);
+    try{
+      const finalObject= generateBookingObject(); 
+      setBackendFinalOBJ(finalObject);
+      navigate('/bookingpayment');
+    }catch(error){
+      console.error("error While Creating FinalOBJ",error)
     }
     
   }
@@ -443,15 +387,8 @@ useEffect(() => {
   useEffect(() => {
     // Arrival Location
     const newArrivalLocations = flightDetails.groupDescription.map(item => item.arrivalLocation);
-    // setArrivalLocations(newArrivalLocations);
-
     // Operating Airline
     const OperatingAirlines = flightDetails.schedualDetGet.flatMap(item => item.map(itm => itm.carrier.operating));
-    // setOperatingAirLine(OperatingAirlines);
-    
-    // Class Type
-    // setClassType(flightDetails.classtype);
-
     // Create CommissionData after setting state
     const CommissionData = {
         'Destinations': newArrivalLocations,
@@ -494,14 +431,16 @@ useEffect(() => {
                     <p className="iti_mob_title">Phone Number<span className='text-danger'>*</span></p>
                   </div>
                   <div className="d-flex justify-content-start wrap  flex-wrap">
-                    <div className="ph_input_filed">
+                  <div className="ph_input_filed">
                     <PhoneInput
-                          country={'pk'}
-                          value={`+${countryCode} ${phoneNumber}`} 
-                          onChange={(value, country) => handlePhoneNumberChange(value, country)}
-                          placeholder="Enter your phone number"
-                        />
-                    </div>
+                      country={'pk'}
+                      value={userVerName ? `+92 ${userVerName}` : `+${countryCode} ${phoneNumber}`}
+                      onChange={(value) => handlePhoneNumberChange(value)}
+                      placeholder="Enter your phone number"
+                      onlyCountries={['pk']}
+                      disabled={userVerName && isLogin ? true : false}
+                    />
+                  </div>
                   
                     {
                       isLogin ?(''):(

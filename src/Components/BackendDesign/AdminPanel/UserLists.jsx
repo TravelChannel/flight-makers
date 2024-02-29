@@ -74,12 +74,12 @@ const UserLists = () => {
             {filteredUserData.map((items, index) => (
               <tr className='data_details' key={index}>
                 <td>{items.id}</td>
-                <td>{items.firstName}</td>
-                <td>{items.lastName}</td>
+                <td>{items.firstName|| '-' } </td>
+                <td>{items.lastName || '-'}</td>
                 <td>{items.phoneNumber}</td>
-                <td>{ArrangeDateFormat(items.dateOfBirth)}</td>
-                <td>{ArrangeDateFormat(items.createdAt)}</td>
-                <td>{items.passportNo}</td>
+                <td>{ArrangeDateFormat(items.dateOfBirth) || '-'} </td>
+                <td>{ArrangeDateFormat(items.createdAt) || '-'}</td>
+                <td>{items.passportNo || '-'}</td>
               </tr>
             ))}
           </tbody>

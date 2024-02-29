@@ -60,6 +60,10 @@ const handleTogglePromotions = async (id) => {
         console.error("PromotionError", error);
     }
 }
+const ArrangeDateFormat = (JourneyDate) => {
+    const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
+    return formattedDate;
+  };
   return (
     <div>
           <div className='dashboard-content-header'>
@@ -87,6 +91,8 @@ const handleTogglePromotions = async (id) => {
                                <th className="promotion_design">ID</th>
                                 <th className="promotion_design" >Title</th>
                                 <th className="promotion_design">Description</th>
+                                <th className="promotion_design">Start Date</th>
+                                <th className="promotion_design">End Date</th>
                                 <th  className="promotion_design">IsActive</th>
                                 <th className="promotion_design">Disable</th>
                                 <th className="promotion_design"> Operation</th>
@@ -94,41 +100,43 @@ const handleTogglePromotions = async (id) => {
                                </tr>
                             </thead>
                             <tbody>
-                            {
-                                promotionData?.map((items , index)=>(
-                                    <tr key={index} >
-                                    <td>{items.id}</td>
-                                        <td>{items.title} </td>
-                                        <td>{items.description}</td>
-                                        <td>{items.isActive ? 'True' : 'False'}</td>
-                                        {/* <td className='disable_button'>
-                                             <button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>{items.isActive ? 'Deactivate' : 'Activate'}</button>
-                                        </td> */}
-                                        <td className='disable_button'>
-                                        {
-                                            items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Activate</button>)
-                                        }
-                                        </td>
-                                        <td className='promotions_table_btn'>
-                                        <div onClick={()=>{ShowUpdateModel(items.id)}}>
-                                            <button
-                                                className='btn btn-primary buttons_typo user_cancelation_button'>
-                                                Update
-                                            </button>
-                                        </div>
-                                        <div className='mt-2' onClick={()=>handleDeletePromotion(items.id)}>
-                                            <button
-                                                className='btn btn-primary buttons_typo_delt user_cancelation_button'>
-                                            Delete
-                                            </button>
-                                        </div>
-                                        </td>
-                                        
-                                        
+                                {
+                                    promotionData?.map((items , index)=>(
+                                        <tr key={index} >
+                                        <td>{items.id}</td>
+                                            <td>{items.title} </td>
+                                            <td>{items.description}</td>
+                                            <td>{ArrangeDateFormat(items.startDate)}</td>
+                                            <td>{ArrangeDateFormat(items.endDate)}</td>
+                                            <td>{items.isActive ? 'True' : 'False'}</td>
+                                            {/* <td className='disable_button'>
+                                                <button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>{items.isActive ? 'Deactivate' : 'Activate'}</button>
+                                            </td> */}
+                                            <td className='disable_button'>
+                                            {
+                                                items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleTogglePromotions(items.id)}>Activate</button>)
+                                            }
+                                            </td>
+                                            <td className='promotions_table_btn'>
+                                            <div onClick={()=>{ShowUpdateModel(items.id)}}>
+                                                <button
+                                                    className='btn btn-primary buttons_typo user_cancelation_button'>
+                                                    Update
+                                                </button>
+                                            </div>
+                                            <div className='mt-2' onClick={()=>handleDeletePromotion(items.id)}>
+                                                <button
+                                                    className='btn btn-primary buttons_typo_delt user_cancelation_button'>
+                                                Delete
+                                                </button>
+                                            </div>
+                                            </td>
+                                            
+                                            
 
-                                    </tr>
-                                ))
-                            }
+                                        </tr>
+                                    ))
+                                }
                             </tbody>
                         </table>
                     </div>

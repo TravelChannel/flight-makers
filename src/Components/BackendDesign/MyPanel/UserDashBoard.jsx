@@ -33,6 +33,10 @@ const UserDashBoard = ({ btnText, onClick }) => {
     if(isLogOut){
       navigate('/');
     }
+
+    const handleUserProfile = () =>{
+        navigate('/UserProfile')
+    }
   return (
            <Fragment>
          <div className='dashbord-header-container'>
@@ -61,8 +65,8 @@ const UserDashBoard = ({ btnText, onClick }) => {
                             <CloseTwoToneIcon className='user_close_sign' onClick= {closeModel}/>
                             </div>
                             <ul className="user_model_list">
-                                <li>User Profile</li>
-                                <li>Ticket Details</li>
+                                {/* <li onClick={handleUserProfile}>User Profile</li>
+                                <li>Ticket Details</li> */}
                                 <li onClick={UserLogout}>Logout</li>
                             </ul>
                         </div>

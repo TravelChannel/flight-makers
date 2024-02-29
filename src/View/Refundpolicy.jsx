@@ -10,7 +10,7 @@ const Refundpolicy = () => {
     <div className='container bg-white'>
         <div className="terms_Hero">   
             <div className='about_us_heading d-flex justify-content-center'>
-            <PolicyOutlinedIcon className='about_us_icon align-self-center'/><h3>Refund Policy</h3>
+            <PolicyOutlinedIcon className='about_us_icon align-self-center'/><h3>Privacy Policy</h3>
             </div>
              <ReuseableTermsAndCondition TermsConditionsData = {RefundPolicyData} />
         </div>
