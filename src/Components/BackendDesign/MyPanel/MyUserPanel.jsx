@@ -40,7 +40,7 @@ import RatingList from '../AdminPanel/RatingList';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
-	 const { showHeader, setShowHeader ,roleID} = useFormData();
+	 const { showHeader, setShowHeader ,roleID,setVarName} = useFormData();
 	 const [open, setOpen] = useState(false);
 	 const [isLogOut , setLogout] = useState(false);
 	 const {isLogin , setLogIn} = useFormData();
@@ -75,6 +75,7 @@ const userLogout = async()=>{
     const logout  = await UserLogOut();
     setLogout(true);
     setLogIn(false);
+	setVarName('');
 }
 if (isLogOut) {
     navigate('/');

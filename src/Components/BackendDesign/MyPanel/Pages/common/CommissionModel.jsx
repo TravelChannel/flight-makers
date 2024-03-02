@@ -13,7 +13,7 @@ import { DatePicker } from 'antd';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const CommissionModel = (props) => {
-    const { isOpen, setIsOpen ,setCommPassingObj,CommissionPassingObj } = props;
+    const { isOpen, setIsOpen ,setCommPassingObj,CommissionPassingObj} = props;
     const [isTitle, setTitle] = useState();
     const [selectedAirlineOption, setSelectedAirlineOption] = useState(null);
     const [selectedFareClassOption, setSelectedFareClassOption] = useState(null);
@@ -166,9 +166,10 @@ const CommissionModel = (props) => {
 
         setEndDate(date);
       };
-      const disabledStartDate = (current) => {
-        return current && current < new Date();
-      };
+    //   const disabledStartDate = (current) => {
+    //     return current && current < new Date();
+    //   };
+
 
     return (
         <div>
@@ -252,7 +253,7 @@ const CommissionModel = (props) => {
                                     className='promStartCalander'
                                     value={startDate}
                                     onChange={handleStartDateChange}
-                                    disabledDate={disabledStartDate}
+                                    // disabledDate={disabledStartDate}
                                     />
                                     <DatePicker
                                     placeholder="End Date"

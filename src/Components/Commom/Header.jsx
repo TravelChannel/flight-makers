@@ -9,8 +9,12 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import LoginIcon from "@mui/icons-material/Login";
 import { CSSTransition } from "react-transition-group";
+import { useFormData } from "../../Context/FormDataContext";
+import Person2 from '@mui/icons-material/Person2';
 
 const Header = () => {
+  const {isLogin , setLogIn,userName} = useFormData();
+    const {userVerName , setVarName} = useFormData();
   const [menu, setMenu] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -166,7 +170,36 @@ const Header = () => {
                       <li><a href="/contactus" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
                       <li><a href="/customer-support" className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/> Support</a></li>
                       <li><a href="/banks" className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</a></li>
-                      <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li>
+                      {
+                        isLogin ? (
+                          <li>
+                          {/* <Link to='/UserPanel' className="pull-right">
+                            <Person2 className="glyphicon" />
+                            {userVerName && userName ? userName : userVerName}
+                          </Link> */}
+                          <a href="/UserPanel" className="mob_menu_txtcolor"><Person2  className="mob_menu_icon" />
+                            {userVerName && userName ? userName : userVerName}</a>
+                          </li>
+                        ):(
+                          <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li>
+                        )
+                      }
+
+                      {/* <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li> */}
+{/* 
+                      <div>
+            {isLogin ? (
+              <Link to='/UserPanel' className="pull-right">
+                <Person2 className="glyphicon" />
+                {userVerName && userName ? userName : userVerName}
+              </Link>
+            ) : (
+              <Link to='/signup' className="pull-right">
+                <Person2 className="glyphicon" />
+                SignUp/Login
+              </Link>
+            )}
+          </div> */}
                     </ul>
                 </div>
              </CSSTransition>

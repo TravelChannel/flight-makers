@@ -7,9 +7,10 @@ import OTPCode from '../Commom/OTPCode';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
 import { sendOTPCode } from '../../API';
-
+import { useNavigate } from 'react-router';
 
 const OtpModel = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true); 
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('');
@@ -61,6 +62,13 @@ const OtpModel = () => {
   }
   const backToNumber = ()=>{
     setOTP(false);
+  }
+
+  const handlePrivacy = () =>{
+    navigate('/refund-policy');
+  }
+  const handleServices =() =>{
+    navigate('/terms-and-conditions')
   }
   // -------------------------
   return (
@@ -116,7 +124,7 @@ const OtpModel = () => {
         </ModalBody>
         <ModalFooter className="center_footer">
           <div className="otp_footer">
-            By continuing, you agree to faremaker's <span className="otp_footer_color">privacy policy</span> &amp; <span className="otp_footer_color">Terms of Services</span>
+            By continuing, you agree to faremaker's <span className="otp_footer_color" onClick ={handlePrivacy}>privacy policy</span> &amp; <span className="otp_footer_color" onClick ={handleServices}>Terms of Services</span>
           </div>
         </ModalFooter>
       </Modal>

@@ -9,17 +9,21 @@ import { requestGetBooking } from "../API/index.js";
 import Loader from '../Loader/Loader.jsx';
 import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
 import { airsialBookingDetail } from "../API/index.js";
-
+import { GetDetailByPNR } from "../API/BackendAPI/GetDetailbyPNR.js";
 import { useFormData } from "../Context/FormDataContext.jsx";
-
+import { AirSialTravDetial } from "../API/index.js";
+import { useNavigate } from "react-router-dom";
 
 const Customersupport = () => {
+    const navigate = useNavigate();
 const [isLoading , setLoading] = useState(false);
 const [isAirSial , setAirSial] = useState(false);
 const [pnrData , setPnrData] = useState({});
 const [airSialData ,setAirSialData] = useState({});
 
-// const { formData, setFormData } = useFormData();
+const [usersDetail ,setUsersDetails] = useState([]);
+
+const { setShowHeader } = useFormData();
 // console.log("hello World",formData);
 // -------------------2----------------------------
 // const updateFormDataFromPage2 = () => {
@@ -155,21 +159,85 @@ const inputPnr = searchParams.get('inputPNR');
 
 
    
+    // const fetchBookingDetails = async () => {
+    //     try {
+    //         setLoading(true);
+    //         const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
+    //         console.log("extra_Bagg", extra_Bagg);
+    
+    //         if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
+    //             USerDetailResp();
+    //             fetchData();
+    //             const airSialUserDetail = await airsialBookingDetail();
+
+    //             console.log('airSialUserDetail',airSialUserDetail);
+    //             setAirSialData(airSialUserDetail);
+    //             setAirSial(true);
+    //         } else {
+    //             const userDetails = await requestGetBooking();
+    //             console.log("userDetails",userDetails);
+    //             setPnrData(userDetails);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error", error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
+    // const USerDetailResp = async () => {
+    //     try{
+    //         const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+    //         const responce = await GetDetailByPNR (activepnrNumber);
+    //         console.log("responceofCurrentBooking",responce.data.payload.pnrDetail[0]);
+    //         setUsersDetails(responce.data.payload.pnrDetail[0]);
+    //     }catch(error){
+    //         console.error("error at responceofCurrentBooking ",error);
+    //     }
+    // }
+
+    // const fetchData = async()=>{
+    //     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
+    //     const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+    //     if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
+    //         try{
+    //             const airsialtravllersDetail = await AirSialTravDetial(usersDetail,activepnrNumber);
+    //             console.log("airsialtravllersDetail",airsialtravllersDetail);
+        
+    //         }catch(error){
+    //             console.error("Error", error);
+    //         }
+        
+    //      }
+    
+    //     }
+    // useEffect(() => {
+    //     fetchBookingDetails();
+    // }, []);
+
+
+    // -------------------------------------
     const fetchBookingDetails = async () => {
         try {
             setLoading(true);
+            setShowHeader(false);
             const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
             console.log("extra_Bagg", extra_Bagg);
     
             if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
-                const airSialUserDetail = await airsialBookingDetail();
+                const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+                const userDetailsResponse = await USerDetailResp(activepnrNumber); // Wait for user detail response
+                const userDetails111 = userDetailsResponse?.data?.payload?.pnrDetail;
+                console.log('userDetails111',userDetails111);
 
+                await fetchData(userDetails111, activepnrNumber); // Pass user details to fetchData
+                const airSialUserDetail = await airsialBookingDetail();
                 console.log('airSialUserDetail',airSialUserDetail);
                 setAirSialData(airSialUserDetail);
                 setAirSial(true);
             } else {
                 const userDetails = await requestGetBooking();
-                console.log("userDetails",userDetails);
+                console.log("userDetails", userDetails);
                 setPnrData(userDetails);
             }
         } catch (error) {
@@ -179,10 +247,35 @@ const inputPnr = searchParams.get('inputPNR');
         }
     };
     
+    const USerDetailResp = async (activepnrNumber) => {
+        try{
+            const responce = await GetDetailByPNR(activepnrNumber);
+            console.log("responceofCurrentBooking", responce.data.payload.pnrDetail);
+            return responce;
+            setUsersDetails(responce.data.payload.pnrDetail);
+        } catch(error) {
+            console.error("Error at responceofCurrentBooking ", error);
+        }
+    };
+    
+    const fetchData = async (usersDetail, activepnrNumber) => { // Modify to accept usersDetail parameter
+        if (activepnrNumber && activepnrNumber !== "") {
+            try {
+                const airsialtravllersDetail = await AirSialTravDetial(usersDetail, activepnrNumber);
+                console.log("airsialtravllersDetail", airsialtravllersDetail);
+                // setAirsialData(airsialtravllersDetail);
+                // setLoading(false);
+            } catch (error) {
+                console.error("Error", error);
+            }
+        }
+    };
+    
     useEffect(() => {
         fetchBookingDetails();
     }, []);
-    
+
+    // -------------------------------------
 
     // console.log("airSialUserData",airSialData);
    
@@ -262,6 +355,10 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
 
 // ---------------------------------------------------------
 
+const handleNavigate = () =>{
+    navigate('/');
+}
+
     return (
            <div className='container'>
            {
@@ -271,13 +368,13 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
                 <div className="container bg-white p-5">
                     <div className="ticket_display">
                         <div className="d-flex justify-content-between">
-                            <div id="logobox" className="hdrLogo" >
+                            <div id="logobox" className="hdrLogo" onClick ={handleNavigate} >
                                 <img
                                     src={image.default}
                                     className="imgView"
                                     alt="FM-LOGO"
                                 />
-                                <span id="logotext" className="colorBlue d-block">
+                                <span id="logotext" className="colorBlue d-block" >
                                     Travel Channel Int'l (Pvt).Ltd
                                 </span>
                             </div>
@@ -290,8 +387,13 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
                                 {
                                     isAirSial ? (
                                         <div className="d-flex justify-content-start">
-                                        <h4>{ArrangeDateFormat(outboundDepartureDate)}</h4> <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
-                                        <h4>{ArrangeDateFormat(inboundDepartDate)}</h4>
+                                            <h4>{ArrangeDateFormat(outboundDepartureDate)}</h4>
+                                            {inboundDepartDate !=='N/A' && (
+                                                <>
+                                                    <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
+                                                    <h4>{ArrangeDateFormat(inboundDepartDate)}</h4>
+                                                </>
+                                            )}
                                         </div>
                                     ):(
                                        <div className="d-flex justify-content-start">
@@ -305,8 +407,11 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
                             isAirSial ?(
                                 <div className="d-flex justify-content-start">
                                 <h4  className="journeys_spacing">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </h4>
-                                <h4  className="journeys_spacing">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </h4>
-
+                                {
+                                    inboundOrigion !=='N/A'&& (
+                                        <h4  className="journeys_spacing">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </h4>
+                                    )
+                                }
                                 </div>
                             ):(
                                 <>

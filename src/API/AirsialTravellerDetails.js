@@ -21,33 +21,76 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
       }
 
     }
-    
-    formData.forEach((data, index) => {
-        const category = index < adults ? 'adult' : index < adults + children ? 'child' : 'infant';
 
-        const formattedData = {
-          Title: "MR",
-          WheelChair: data[`wheelChair${index}`] || 'N',
-          FullName: `${data[`fname${index}`]} ${data[`lname${index}`]}`,
-          Firstname: data[`fname${index}`],
-          Lastname: data[`lname${index}`],
-          Passport: data[`passport${index}`],
-          PassportCountry: data[`countery${index}`]?.code,
-          PassportExpiry: data[`PassportExpiryDate${index}`],
-          Dob: data[`DateOfBirth${index}`],
-          Cnic : CnicFormat(data[`cnic${index}`]),
-          // Cnic: data[`cnic${index}`] || '',
-          Gender: data[`gender${index}`],
-        };
+    const formatDate = (dateString) =>{
+      const date = new Date(dateString);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
+  }
+    
+    // formData.forEach((data, index) => {
+    //     const category = index < adults ? 'adult' : index < adults + children ? 'child' : 'infant';
+
+    //     const formattedData = {
+    //       Title: "MR",
+    //       WheelChair: data[`wheelChair${index}`] || 'N',
+    //       FullName: `${data[`fname${index}`]} ${data[`lname${index}`]}`,
+    //       Firstname: data[`fname${index}`],
+    //       Lastname: data[`lname${index}`],
+    //       Passport: data[`passport${index}`],
+    //       PassportCountry: 'PK',
+    //       PassportExpiry: data[`PassportExpiryDate${index}`],
+    //       Dob: data[`DateOfBirth${index}`],
+    //       Cnic : CnicFormat(data[`cnic${index}`]),
+    //       // Cnic: data[`cnic${index}`] || '',
+    //       Gender: data[`gender${index}`],
+    //     };
       
-        if (category === 'adult') {
-          adultsData.push(formattedData);
-        } else if (category === 'child') {
-          childrenData.push(formattedData);
-        } else {
-          infantsData.push(formattedData);
-        }
-      });
+    //     if (category === 'adult') {
+    //       adultsData.push(formattedData);
+    //     } else if (category === 'child') {
+    //       childrenData.push(formattedData);
+    //     } else {
+    //       infantsData.push(formattedData);
+    //     }
+    //   });
+
+    //   console.log("Adults Data:", adultsData);
+
+   Object.keys(formData).forEach((key, index) => {
+    const data = formData[key];
+    const category = index < adults ? 'adult' : index < adults + children ? 'child' : 'infant';
+
+    const formattedData = {
+        Title: "MR",
+        WheelChair: null,
+        FullName: `${data.firstName} ${data.lastName}`,
+        Firstname: `${data.firstName}`,
+        Lastname: `${data.lastName}`,
+        Passport: `${data.passportNo}`,
+        PassportCountry: 'PK', // You need to specify the country
+        PassportExpiry: formatDate(data.passportExpiryDate),
+        Dob: formatDate(data.dateOfBirth),
+        // PassportExpiry:"02-07-2026",
+        // Dob:"02-07-2008",
+        Cnic:`${CnicFormat(data.cnic)}`,
+        Gender: `${data.gender}`,
+    };
+
+    if (category === 'adult') {
+        adultsData.push(formattedData);
+    } else if (category === 'child') {
+        childrenData.push(formattedData);
+    } else {
+        infantsData.push(formattedData);
+    }
+});
+
+console.log("Adults Data:", adultsData);
+// console.log("Children Data:", childrenData);
+// console.log("Infants Data:", infantsData);
 
      
     // console.log("kasj",adultsData,childrenData,infantsData);

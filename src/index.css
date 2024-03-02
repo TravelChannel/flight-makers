@@ -5197,6 +5197,19 @@ a:hover {
   padding: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.PromotionSlide{
+  background-image: url('/src/assets/Blogs/kashmir.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 20px;
+  padding: 20px;
+}
+.promotionDisplay{
+  font-weight:600;
+}
 .mr-2
 {
   margin-right: 20px;
@@ -5221,7 +5234,7 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 50%;
+  width: 80%;
 }
 .light_colour
 {
@@ -7208,4 +7221,86 @@ margin-top:10px;
   width:91% !important;
   border: 1px solid #c1c1c1 !important;
   border-radius: 4px
+}
+
+/* ---------------------------------------------------------- */
+
+.profile-card {
+  position: relative;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5)
+}
+
+.profile-card header {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to bottom,
+     #4671F6 60%, white 40%);
+  text-align: center;
+  border-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.profile-card header .icon {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 4px 2px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.profile-card header .icon path {
+  fill: white;
+}
+
+.profile-card header .icon:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,0.25)
+}
+
+.profile-card header h3 {
+  padding: 24px 0 12px;
+  font-size: 24px;
+  font-weight: normal;
+  text-transform: capitalize;
+  line-height: 28px;
+  color: white;
+}
+
+.profile-card header .image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card header .image img {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+
+.profile-card header .image img {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.profile-card .content {
+  padding: 0px 12px 12px 12px;
+  text-align: center;
+}
+
+.profile-card .content p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #8890a8;
+}
+.contact_card_main{
+  margin:15px;
 }

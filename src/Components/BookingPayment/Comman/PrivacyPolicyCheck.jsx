@@ -60,7 +60,7 @@ const PrivacyPolicyCheck = (props) => {
         }
       
         try {
-          setPNRLoading(true);
+          // setPNRLoading(true);
           const paymentToken = await requestGetpaymentToken(paymentCode);
           console.log('paymentTokenpaymentToken',paymentToken);
           console.log(paymentToken.token);
@@ -70,7 +70,7 @@ const PrivacyPolicyCheck = (props) => {
           } else {
             window.location.href = `https://pakistan.paymob.com/iframe/${paymentToken.token}`;
           }
-          setPNRLoading(false);
+          // setPNRLoading(false);
         } catch (error) {
           console.error(error);
         }

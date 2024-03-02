@@ -83,9 +83,9 @@ const PromotionsModel = (props) => {
 
         setEndDate(date);
       };
-      const disabledStartDate = (current) => {
-        return current && current < new Date();
-      };
+      // const disabledStartDate = (current) => {
+      //   return current && current < new Date();
+      // };
      
   return (
     <div>
@@ -132,7 +132,7 @@ const PromotionsModel = (props) => {
                   className='promStartCalander'
                   value={startDate}
                   onChange={handleStartDateChange}
-                  disabledDate={disabledStartDate}
+                  // disabledDate={disabledStartDate}
                 />
                 <DatePicker
                   placeholder="End Date"

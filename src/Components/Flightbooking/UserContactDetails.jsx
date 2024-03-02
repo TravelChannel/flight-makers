@@ -25,7 +25,7 @@ import { verifyOTPRes } from '../../API/index';
 
 
 const UserContactDetails = (props) => {
-  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,setUserName,setRoleID} = useFormData();
+  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,userName,setUserName,setRoleID} = useFormData();
   // console.log('completeUserData',completeUserData);
 
   const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
@@ -121,7 +121,8 @@ const handlePhoneNumberChange = (value, country) => {
   // Check if userVerName is present
   if (userVerName && isLogin) {
     setCountryCode(dialCode); // Set country code to 92
-    setPhoneNumber(userVerName); // Set phone number to userVerName
+    setPhoneNumber(userVerName);// Set phone number to userVerName
+    setUserName(userName) //set userName 
   } else {
     // If userVerName is not present, handle the value as before
     if (value !== `+${dialCode} ${phoneNumber}`) {

@@ -11,6 +11,8 @@ import { UserDetailbyID } from '../../../../../API/BackendAPI/allAPICalls';
 import Loader from '../../../../../Loader/Loader';
 import TotalPriceCalculation from '../../../../Flightbooking/TotalPriceCalculation';
 import { TicketPriceProvider } from '../../../../Flightbooking/Comman/Context';
+
+import * as images from '../../../../../Constant/images';
 const UserCompleteDetail = () => {
     // const {userDetail ,setuserDetail}= useUserData();
     // const {flightDetails , setFlightDetails} =useUserData();
@@ -298,7 +300,76 @@ const UserCompleteDetail = () => {
                     <h5 className="iti_heading_size">Passangers Detail</h5>
                 </div>
         </div>
-        <div className='d-flex justify-content-start w-100'>
+        
+        <div className='d-flex justify-content-start flex-wrap w-100 '>
+        <div className='w_25_userpanel'></div>
+        {userDetail?.map((detail, detailIndex) => (
+            <div className='w-25 contact_card_main' key={detailIndex}>
+                    <div className="profile-card">
+                        <header>
+                            <h3>{`${detail.firstName} ${detail.lastName} `}</h3>
+                            <div className="image">
+                                <img src={images.userProfile} alt='abc' />
+                            </div>
+                        </header>
+                    <div className='d-flex justify-content-around'>
+                                <div className="content">
+                                    <p>Gender:</p>
+                                    <p>Passport:</p>
+                                    <p>Phone:</p>
+                                    <p>Cnic:</p>
+                                    <p>DOB:</p>
+                                    <p>Posp Expairy</p>
+                                    <p>Email</p>
+                                </div>
+                                <div className="content">
+                                    <p>{detail.gender || '---'}</p>
+                                    <p>{detail.passportNo || '---'} </p>
+                                    <p>{detail.phoneNumber || '---'}</p>
+                                    <p>{detail.cnic || '---'}</p>
+                                    <p>{formatCompleteDate(detail.dateOfBirth) || '---'}</p>
+                                    <p>{formatCompleteDate(detail.passportExpiryDate) || '---'}</p>
+                                    <p>{detail.userEmail ||'---'}</p>
+                                    
+                                </div>
+                    </div>
+                    </div>
+            </div>
+            ))}
+            {/* <div className='w-25 contact_card_main'>
+                    <div className="profile-card">
+                        <header>
+                            <h3>Kashif Hussain</h3>
+                            <div className="image">
+                                <img src={images.userProfile} alt='abc' />
+                            </div>
+                        </header>
+                    <div className='d-flex justify-content-around'>
+                                <div className="content">
+                                    <p>Gender:</p>
+                                    <p>Passport:</p>
+                                    <p>Phone:</p>
+                                    <p>Cnic:</p>
+                                    <p>DOB:</p>
+                                    <p>Posp Expairy</p>
+                                    <p>Email</p>
+                                </div>
+                                <div className="content">
+                                    <p>Male</p>
+                                    <p>yh6908781</p>
+                                    <p>03408922375</p>
+                                    <p>1111111111111</p>
+                                    <p>Sun, Dec 12, 1999</p>
+                                    <p>Thu, Dec 12, 2030</p>
+                                    <p>pdepacas@gmail.com</p>
+                                    
+                                </div>
+                    </div>
+                    </div>
+            </div> */}
+
+            </div>
+        {/* <div className='d-flex justify-content-start w-100'>
                 <div className='w_25_userpanel'></div>
                 <div className='d-flex justify-content-start  w-75'>
                 {userDetail?.map((detail, detailIndex) => (
@@ -353,16 +424,19 @@ const UserCompleteDetail = () => {
                                                 <p>{detail.userEmail ||'----'}</p>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                            </Fragment>
                             ))}
                 </div>   
                 <div className='w_25_userpanel'></div>
-        </div>
+        </div> */}
         
         
 </div>
+
+
     
     
 </div>

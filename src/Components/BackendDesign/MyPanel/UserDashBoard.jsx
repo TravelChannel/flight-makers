@@ -9,7 +9,7 @@ import * as images from '../../../Constant/images';
 const UserDashBoard = ({ btnText, onClick }) => {
     const [isModel , setModel] = useState(false);
     const [isLogOut , setLogOut] = useState(false);
-    const {isLogin , setLogIn} = useFormData();
+    const {isLogin , setLogIn,setVarName} = useFormData();
 
 
     const navigate = useNavigate();
@@ -28,6 +28,7 @@ const UserDashBoard = ({ btnText, onClick }) => {
         const logout =await UserLogOut();
         setLogOut(true);
         setLogIn(false);
+        setVarName('');
     }
 
     if(isLogOut){

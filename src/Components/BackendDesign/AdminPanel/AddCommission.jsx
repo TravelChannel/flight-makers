@@ -2,6 +2,9 @@ import React ,{useState,useEffect} from 'react'
 import * as images from '../../../Constant/images';
 import CommissionModel from '../MyPanel/Pages/common/CommissionModel';
 import { GetCommission } from '../../../API/BackendAPI/CommissionAPI/GetCommissions';
+import { Deletecommission } from '../../../API/BackendAPI/CommissionAPI/DeleteCommission';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddCommission = () => {
 
     const [isOpen , setIsOpen] = useState(false);
@@ -23,24 +26,39 @@ const AddCommission = () => {
         setIsOpen(!isOpen);
         setUpdate(false);
     }
-useEffect(() => {
     const handleCommissionPercentage = async () => {
-        try {
-            const response = await GetCommission();
-            setCommPassingObj(response.data.payload); 
-            console.log("Response from GetCommission API:", response);
-        } catch (error) {
-            console.log("Error on GetCommissionPage:", error);
-        }
-    }
-    handleCommissionPercentage();
-}, []);
+      try {
+          const response = await GetCommission();
+          setCommPassingObj(response.data.payload);
+          console.log("Response from GetCommission API:", response);
+      } catch (error) {
+          console.log("Error on GetCommissionPage:", error);
+      }
+  }
 
-// console.log('CommissionPassingObj123',CommissionPassingObj);
+  // Call handleCommissionPercentage when the component mounts
+  useEffect(() => {
+      handleCommissionPercentage();
+  }, []);
+  useEffect(() => {
+    handleCommissionPercentage();
+}, [CommissionPassingObj]);
+
 const ArrangeDateFormat = (JourneyDate) => {
   const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
   return formattedDate;
 };
+
+const handleDeletCommission = async(id) =>{
+  try {
+    const DeletedCommRes= await Deletecommission(id);
+    console.log("DeleteComm-Response:", DeletedCommRes);
+    setCommPassingObj(CommissionPassingObj.filter(item => item.id !== id));
+    toast.success('Commission Deleted Successfully!', {autoClose: 2000});
+} catch (error) {
+    console.error("PromotionError", error);
+}
+}
 
 
   return (
@@ -74,6 +92,7 @@ const ArrangeDateFormat = (JourneyDate) => {
                             <th className="promotion_design">StartDate</th>
                             <th className="promotion_design">EndDate</th>
                             <th className="promotion_design">isActive</th>
+                            <th  className="promotion_design" >Action</th>
 
                         </tr>
                     </thead>
@@ -81,15 +100,21 @@ const ArrangeDateFormat = (JourneyDate) => {
                     {
                       CommissionPassingObj.map((items,index)=>(
                         <tr key={index}>
-                          {/* <td>{`${index+1}`}</td> */}
                           <td>{items.id}</td>
                           <td>{items.percentage != null ? `${items.percentage}%` : 'Null'}</td>
-                          <td>{items.airlineId != null ? items.airlineId : 'Null'}</td>
-                          <td>{items.fareClassId != null ? items.fareClassId : 'Null'}</td>
-                          <td>{items.sectorId != null ? items.sectorId : 'Null'}</td>
+                          <td>{items.airlineId && items.airline?.name || 'null'}</td>
+                          <td>{items.fareClassId && items.fareClass?.name || 'null'} </td>
+                          <td>{items.sectorId && items.sector?.name || 'null'} </td>
                           <td>{ArrangeDateFormat(items.startDate)}</td>
                           <td>{ArrangeDateFormat(items.endDate)}</td>
                           <td>{items.isActive != null ? (items.isActive ? 'True' : 'False') : 'null'}</td>
+                          <td>
+                               <div className='mt-2'>
+                                  <button className='btn btn-primary buttons_typo_delt ' onClick={()=>handleDeletCommission(items.id)} >
+                                                  Delete
+                                  </button>
+                               </div>
+                          </td>
                       </tr>
                       ))
                     }

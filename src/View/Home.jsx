@@ -7,7 +7,7 @@ import BookingOptions from '../Components/Home/BookingOptions.jsx';
 import Notification from '../Components/Commom/Notification.jsx'
 import AppQR from '../Components/Home/AppQR.jsx';
 import ModelOTP from "../Components/Home/ModelOtp.jsx";
-
+import PromotionsView from "../Components/Home/PromotionsView.jsx";
 import { useFormData } from "../Context/FormDataContext.jsx";
 
 const Home = () => {
@@ -22,6 +22,7 @@ const Home = () => {
        } 
         <FlightSearch resultpage={false} />
         <RecentTravel/>
+        <PromotionsView/>
         <BookingOptions/>
         <Notification/>
         <AppQR/>
