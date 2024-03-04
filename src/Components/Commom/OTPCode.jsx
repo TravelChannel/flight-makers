@@ -1,7 +1,6 @@
 import React,{Fragment,useState,useRef, useEffect} from 'react'
 // import { verifyOTPRes } from '../../API';
 import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
-
 import { Navigate ,useNavigate} from 'react-router-dom';
 import { useFormData } from '../../Context/FormDataContext';
 
@@ -37,10 +36,19 @@ const OTPCode = (props) => {
       const enteredOtp = newOtpValues.join('');
       console.log("enteredOtpenteredOtp",enteredOtp);
 
+      //    const OtpResponceOBJ = {
+      //   "phoneNumber": props.getOTPData.phoneNumber,
+      //   "countryCode":props.getOTPData.countryCode,
+      //   "otp": enteredOtp
+      // }
+      // console.log('OtpResponceOBJ',OtpResponceOBJ);
+      
+
       try {
         const verificationResult = await verifyOTPRes(props.getOTPData,enteredOtp);
+        console.log('verificationResult',verificationResult);
         
-        if (verificationResult.status==='SUCCESS') {
+        if (verificationResult.data.status==='SUCCESS') {
           setIsOtpTrue(true);
           // setLogIn(true);
           fromSingUp ? (window.location.href = '/'):(window.location.reload());

@@ -46,7 +46,7 @@ const SignUp = () => {
         setOTP(false);
       }
     const getOTPData = {
-        'coutryCode':countryCode,
+        'countryCode':countryCode,
         'phoneNumber':phoneNumber
       }
     

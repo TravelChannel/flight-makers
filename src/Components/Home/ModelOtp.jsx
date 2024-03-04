@@ -37,7 +37,7 @@ const OtpModel = () => {
     setCountryCode(dialCode);
   };
   const getOTPData = {
-    'coutryCode':countryCode,
+    'countryCode':countryCode,
     'phoneNumber':phoneNumber
   }
 

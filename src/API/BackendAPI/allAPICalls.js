@@ -373,6 +373,7 @@ export const sendOTPCode = async (getOTPData) => {
 	  }
 	} catch (error) {
 	  console.error(error.message, 'Danger');
+	//   alert("sendOTP",error.message);
 	}
   }
 

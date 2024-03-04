@@ -140,7 +140,7 @@ const handlePhoneNumberChange = (value, country) => {
 };
 
   const getOTPData = {
-    'coutryCode':countryCode,
+    'countryCode':countryCode,
     'phoneNumber':phoneNumber
   }
 
@@ -174,9 +174,14 @@ const handlePhoneNumberChange = (value, country) => {
       const enteredOtp = newOtpValues.join('');
       // setUserOtp(enteredOtp);
       console.log("enteredOtpenteredOtp",enteredOtp);
+      // const OtpResponceOBJ = {
+      //   "phoneNumber": getOTPData.phoneNumber,
+      //   "countryCode":getOTPData.countryCode,
+      //   "otp": enteredOtp
+      // }
       try {
         const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
-        if (verificationResult.status==='SUCCESS') {
+        if (verificationResult.data.status==='SUCCESS') {
           setIsOtpTrue(true);
           setDisplayContact(true);
           setLogIn(true);
