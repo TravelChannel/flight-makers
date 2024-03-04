@@ -6,7 +6,7 @@ import PhoneInput from 'react-phone-input-2';
 import OTPCode from '../Commom/OTPCode';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
-import { sendOTPCode } from '../../API';
+import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
 import { useNavigate } from 'react-router';
 
 const OtpModel = () => {

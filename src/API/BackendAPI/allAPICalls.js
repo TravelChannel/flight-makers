@@ -358,3 +358,41 @@ export const allPaidBookings = async () =>{
         throw error;
 	}
 }
+
+// -------------------------------------Send OTP -------------------------------------------
+
+export const sendOTPCode = async (getOTPData) => {
+	try {
+	  const response = await apiClient.post(`/auth/requestOtp`, getOTPData);
+	  
+	  if (response.data.status === 'SUCCESS') {
+		console.log(response.data.message, 'SendOTP success');
+		return response;
+	  } else {
+		console.log(response.data.message, 'SendOTP danger');
+	  }
+	} catch (error) {
+	  console.error(error.message, 'Danger');
+	}
+  }
+
+
+//   --------------------Verify OTP -----------------------------------------------------------
+
+export const verifyOTPRes = async (getOTPData, enteredOtp) => {
+	try {
+	  const response = await apiClient.post(`/auth/login`, {
+		...getOTPData,
+		otp: enteredOtp
+	  });
+	  
+	  if (response.data.status === 'SUCCESS') {
+		console.log(response.data.message, 'VerifyOTP success');
+		return response;
+	  } else {
+		console.log(response.data.message, 'VerifyOTP danger');
+	  }
+	} catch (error) {
+	  console.error(error.message, 'Danger');
+	}
+  }

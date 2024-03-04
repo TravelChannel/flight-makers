@@ -3,7 +3,8 @@ import OTPSlider from './OTPSlider';
 import { useNavigate } from 'react-router';
 import userDetailsBackend from '../../API/BackendAPI/BackendAPI_Fun';
 import PhoneInput from 'react-phone-input-2';
-import { sendOTPCode } from '../../API';
+// import { sendOTPCode } from '../../API';
+import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
 import OTPCode from './OTPCode';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 const SignUp = () => {

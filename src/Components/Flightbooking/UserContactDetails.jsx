@@ -18,8 +18,10 @@ import { useNavigate } from 'react-router-dom';
 import Loader from '../../Loader/Loader';
 import AutoTabDate from './Comman/AutoTabDate';
 import { useFormData } from '../../Context/FormDataContext';
-import { sendOTPCode } from '../../API/index';
-import { verifyOTPRes } from '../../API/index';
+// import { sendOTPCode } from '../../API/index';
+import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
+// import { verifyOTPRes } from '../../API/index';
+import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
 
 
 

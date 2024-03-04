@@ -10,7 +10,9 @@ import axios from 'axios';
 // import { demoPages } from '../menu';
 
 const apiClient = axios.create({
-	baseURL: 'http://localhost:5000/api/',
+	// baseURL: 'http://localhost:5000/api/',
+	baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
+
 	withCredentials: true,
 	// baseURL: 'http://192.168.18.65/KBD_Backend/api', /// Danish
 	// baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain

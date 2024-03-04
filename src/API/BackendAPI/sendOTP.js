@@ -3,7 +3,7 @@ export const  sendOTP = async(getOTPData)=>{
     console.log("i am here", getOTPData);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Cookie", "refresh_token=undefined; user_token=undefined");
+   // myHeaders.append("Cookie", "refresh_token=undefined; user_token=undefined");
     
     var raw = JSON.stringify({
       "phoneNumber": getOTPData.phoneNumber ,
@@ -14,11 +14,13 @@ export const  sendOTP = async(getOTPData)=>{
       method: 'POST',
       headers: myHeaders,
       body: raw,
-      redirect: 'follow'
+      redirect: 'follow',
+      mode: 'no-cors'
     };
 
     try{
-        const responce = await fetch("http://localhost:5000/api/auth/requestOtp", requestOptions);
+        // const responce = await fetch("http://localhost:5000/api/auth/requestOtp", requestOptions);
+        const responce = await fetch("https://faremakersnode-fmnode-back.azurewebsites.net/api/auth/requestOtp", requestOptions);
         const result = await responce.json();
         console.log("OTPResults",result);
         return result;
@@ -27,3 +29,4 @@ export const  sendOTP = async(getOTPData)=>{
     }
     
 }
+

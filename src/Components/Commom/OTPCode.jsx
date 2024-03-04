@@ -1,5 +1,7 @@
 import React,{Fragment,useState,useRef, useEffect} from 'react'
-import { verifyOTPRes } from '../../API';
+// import { verifyOTPRes } from '../../API';
+import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
+
 import { Navigate ,useNavigate} from 'react-router-dom';
 import { useFormData } from '../../Context/FormDataContext';
 

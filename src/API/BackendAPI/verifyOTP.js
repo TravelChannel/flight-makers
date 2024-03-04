@@ -26,8 +26,9 @@ export const verifyOTP = async (getOTPData, enteredOtp) => {
 
   try {
     const responce = await fetch(
-      "http://localhost:5000/api/auth/login",
-      requestOptions
+      // "http://localhost:5000/api/auth/login",requestOptions
+      "https://faremakersnode-fmnode-back.azurewebsites.net/api/auth/login",requestOptions
+
     );
     const Verifyresult = await responce.json();
     console.log("OTPVerifyResults", Verifyresult);

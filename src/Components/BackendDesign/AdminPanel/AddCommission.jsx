@@ -5,6 +5,7 @@ import { GetCommission } from '../../../API/BackendAPI/CommissionAPI/GetCommissi
 import { Deletecommission } from '../../../API/BackendAPI/CommissionAPI/DeleteCommission';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { toggleCommission } from '../../../API/BackendAPI/CommissionAPI/ToggleStatus';
 const AddCommission = () => {
 
     const [isOpen , setIsOpen] = useState(false);
@@ -60,6 +61,22 @@ const handleDeletCommission = async(id) =>{
 }
 }
 
+// const handleToggleCommission= async (id) => {
+//   try {
+//       const toggleResponse = await toggleCommission(id);
+//       console.log("TogglePromotion-Response:", toggleResponse);
+//       // Update isActive field locally
+//       setCommPassingObj(CommissionPassingObj.map(item => {
+//           if (item.id === id) {
+//               return { ...item, isActive: !item.isActive };
+//           }
+//           return item;
+//       }));
+//   } catch (error) {
+//       console.error("PromotionError", error);
+//   }
+// }
+
 
   return (
     <div className='m-3'>
@@ -113,6 +130,11 @@ const handleDeletCommission = async(id) =>{
                                   <button className='btn btn-primary buttons_typo_delt ' onClick={()=>handleDeletCommission(items.id)} >
                                                   Delete
                                   </button>
+                                  {/* <td className='disable_button'>
+                                            {
+                                                items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleToggleCommission(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleToggleCommission(items.id)}>Activate</button>)
+                                            }
+                                  </td> */}
                                </div>
                           </td>
                       </tr>
