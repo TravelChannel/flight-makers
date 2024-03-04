@@ -8,7 +8,7 @@ import { useFormData } from '../../Context/FormDataContext';
 const OTPCode = (props) => {
 
   const {fromSingUp} = props;
-  // const {setLogIn} =useFormData();
+  const {setLogIn} =useFormData();
   console.log("coming from SignUp",fromSingUp);
   const navigate = useNavigate();
   console.log("ellllllllo123",props.getOTPData);
@@ -48,9 +48,11 @@ const OTPCode = (props) => {
         const verificationResult = await verifyOTPRes(props.getOTPData,enteredOtp);
         console.log('verificationResult',verificationResult);
         
-        if (verificationResult.data.status==='SUCCESS') {
+        if (verificationResult.data.status ==='SUCCESS') {
           setIsOtpTrue(true);
-          // setLogIn(true);
+          setLogIn(true);
+          alert('Login SuccessFully');
+          
           fromSingUp ? (window.location.href = '/'):(window.location.reload());
           // window.location.reload();
         } else {
