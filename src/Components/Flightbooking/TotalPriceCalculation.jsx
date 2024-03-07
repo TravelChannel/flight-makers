@@ -20,7 +20,7 @@ const TotalPriceCalculation = () => {
     const destination = [flightData.groupDescription[0].arrivalLocation, flightData.groupDescription[0].departureLocation];
     const airline = flightData.fare.governingCarriers.split(" ")[0];
     // console.log(classType,destination,airline);
-    const ticketPrice = flightData.fare.totalFare.totalPrice;
+    const ticketPrice = flightData.fare.totalFare.equivalentAmount;
     const taxAmount = flightData.fare.totalFare.totalTaxAmount;
     let totalAmount = ticketPrice + taxAmount + extraBagg;
     const servicefees = (taxfees) => {

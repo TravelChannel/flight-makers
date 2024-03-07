@@ -65,7 +65,7 @@ const UserContactDetails = (props) => {
 
   });
 
-  // console.log("dynamicObject",dynamicObject);
+  // console.log("formData123",formData);
 // ---------------------------
   // const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
   // console.log("countryCode",countryCode);

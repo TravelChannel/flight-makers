@@ -122,7 +122,7 @@ const fetchSearchResult = async (searchDataArr) => {
   };
 
   try {
-    const response = await fetch("https://api.havail.sabre.com/v4/offers/shop", requestOptions);
+    const response = await fetch("https://api.havail.sabre.com/v5/offers/shop", requestOptions);
     const result = await response.json();
     // console.log("kashi", result.groupedItineraryResponse.statistics.itineraryCount);
     if (result.groupedItineraryResponse.statistics.itineraryCount === 0) {
@@ -131,7 +131,7 @@ const fetchSearchResult = async (searchDataArr) => {
     }
     else {
       
-
+      console.log("kashi123333", result);
       //Geting Dates Travelling
       const groupDescription = result.groupedItineraryResponse.itineraryGroups[0].groupDescription.legDescriptions;
       //Geting schedules

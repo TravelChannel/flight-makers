@@ -2,6 +2,8 @@ export const getBookingApi = async () => {
     
 
     const pnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+
+    console.log("sabre pnrNumber",pnrNumber);
     const storedAuthtoken = JSON.parse(localStorage.getItem("AuthToken"))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 

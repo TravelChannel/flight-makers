@@ -12,7 +12,7 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
         "billing_data": {
           "pnrNum" :`${pnrNum}`,
           "userName" : 'Kashif Hussain',
-          "apartment": "803",
+          "apartment": `${pnrNum}`,
           "email": "claudette09@exa.com",
           "floor": "42",
           "first_name": "Clifford",

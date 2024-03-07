@@ -1,4 +1,4 @@
-import React,{Fragment,useState} from 'react'
+import React,{Fragment,useEffect,useState} from 'react'
 import CheckCircleOutlineTwoToneIcon from '@mui/icons-material/CheckCircleOutlineTwoTone';
 import TotalPriceCalculation from '../../Flightbooking/TotalPriceCalculation';
 import { TicketPriceProvider } from '../../Flightbooking/Comman/Context';
@@ -7,18 +7,25 @@ import { useFormData } from '../../../Context/FormDataContext';
 import { useLocation } from 'react-router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { GetDetailByPNR } from '../../../API/BackendAPI/GetDetailbyPNR';
 const BookingDetails = () => {
 
   const location = useLocation();
   const [currentDate , setCurrentDate] = useState(false);
-const {formData ,setFormData}= useFormData();
+const {formData ,setFormData,backendFinalOBJ}= useFormData();
 const firstName = formData.map(items=>items.fname0);
 const lastName = formData.map(items =>items.lname0);
 const passedData =  location.state?.data;
 const finalBranch = passedData?.branchlabel;
 const userLocation = passedData?.userLocation;
 
+const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+
+console.log("userPNR",activepnrNumber);
+
 console.log("userrrrrrrrrrr",userLocation);
+
+console.log("backendFinalOBJ",backendFinalOBJ);
 
 // --------------------------------------------------------
 const currentDateTime = new Date();
@@ -53,6 +60,21 @@ const downloadPDF = () => {
     pdf.save('invoice.pdf');
   });
 };
+
+useEffect(() => {
+  const GetUsersDetail = async () => {
+    try {
+      const response = await GetDetailByPNR(activepnrNumber);
+      console.log("userDetailbyPNR", response);
+    } catch (error) {
+      console.error("error in ffetching Data",error);
+      // alert("Error While Fetching API Results");
+    }
+  };
+  
+  GetUsersDetail();
+}, []);
+
 
 // -------------------------------------------------------
 
@@ -138,19 +160,22 @@ const downloadPDF = () => {
                   <th>Passenger Name</th>
                   <th>DOB</th>
                   <th>Passport No</th>
+                  <th>Gender</th>
                   <th>Cnic</th>
+
                   <th>Phone No</th>
                 </tr>
               </thead>
-              {formData?.map((item, index) => (
+              {backendFinalOBJ.pnrBookings?.map((item, index) => (
                     <tbody key={index}>
                       <tr>
-                        <td>1</td>
-                        <td>{item.fname0} {item.lname0}</td>
-                        <td>{item.DateOfBirth0}</td>
-                        <td>{item.passport0}</td>
-                        <td>{item.cnic0}</td>
-                        <td>03408922375</td>
+                        <td>{index+1}</td>
+                        <td>{item.firstName} {item.lastName}</td>
+                        <td>{item.dateOfBirth}</td>
+                        <td>{item.passportNo}</td>
+                        <td>{item.gender}</td>
+                        <td>{item.cnic || '---'}</td>
+                        <td>{`92${item.phoneNumber}`}</td>
                       </tr>
                     </tbody>
                   ))}

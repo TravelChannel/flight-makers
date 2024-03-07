@@ -7,8 +7,8 @@ const PayOnline = () => {
   const [checked, setChecked] = useState(false);
   const [changeLogoColor , setLogoColor] = useState('paypro');
   
-  const pnrNum = JSON.parse(localStorage.getItem('PNRNumber'));
-  console.log("User_PNR_Number",pnrNum);
+  // const pnrNum = JSON.parse(localStorage.getItem('PNRNumber'));
+  // console.log("User_PNR_Number",pnrNum);
 
 
   const methode_change = (event)=>{

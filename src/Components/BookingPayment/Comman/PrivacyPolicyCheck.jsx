@@ -15,7 +15,7 @@ const PrivacyPolicyCheck = (props) => {
     const {formData ,backendFinalOBJ ,setPNRLoading} = useFormData();
 
     console.log("formData get",formData);
-    console.log("getFinalOBJ",backendFinalOBJ);
+    console.log("getFinalOBJ",backendFinalOBJ.pnrBookings);
 
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
@@ -80,13 +80,16 @@ const PrivacyPolicyCheck = (props) => {
         setLoading(true);
         try{
             const pnrNum = await generatePnrNum();
+            console.log('pnrNum',pnrNum);
+            // alert("sabre PNr Created");
             const DatatoPass ={
             branchlabel : branchLabel,
             userLocation : userLocation,
             };
             navigate('/bookingDetail', { state: { data: DatatoPass } });
         }catch(error){
-                console.error(error)
+                console.error(error);
+                setLoading(false);
         }finally {
             setLoading(false);
           }
@@ -133,13 +136,6 @@ const PrivacyPolicyCheck = (props) => {
             // console.log("hellowrold111111111");
             const respServerPnrBooking = await requestUserPnrBooking(updatedBackendFinalOBJ);
             console.log("respServerPnrBooking",respServerPnrBooking);
-            // console.log("hellowrold22222222");
-      
-            
-      // if(respServerPnrBooking===true){
-        
-      // }
-            // http://localhost:5000/api/pnrBooking
       
               localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
               toast.success("PNR Created SuccessFully " ,
