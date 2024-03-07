@@ -3,7 +3,8 @@ import React,{Fragment,useState,useRef, useEffect} from 'react'
 import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
 import { Navigate ,useNavigate} from 'react-router-dom';
 import { useFormData } from '../../Context/FormDataContext';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const OTPCode = (props) => {
 
@@ -51,9 +52,10 @@ const OTPCode = (props) => {
         if (verificationResult.data.status ==='SUCCESS') {
           setIsOtpTrue(true);
           setLogIn(true);
-          // setIsOpen(false);
-          // alert('Login SuccessFully');
-          fromSingUp ? (window.location.href = '/'):(window.location.reload());
+          setIsOpen(false);
+          // toast.success("PNR Created SuccessFully " ,
+          // {autoClose: 2000 });
+          // fromSingUp ? (window.location.href = '/'):(window.location.reload());
           // window.location.reload();
         } else {
           setIsOtpTrue(false);

@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const PrivacyPolicyCheck = (props) => {
     const navigate = useNavigate();
-    const {formData ,backendFinalOBJ ,setPNRLoading} = useFormData();
+    const {formData ,backendFinalOBJ ,setBackendFinalOBJ,setPNRLoading} = useFormData();
 
     console.log("formData get",formData);
     console.log("getFinalOBJ",backendFinalOBJ.pnrBookings);
@@ -20,6 +20,10 @@ const PrivacyPolicyCheck = (props) => {
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const [isLoading ,setLoading] = useState(false);
+
+    const [OrderId ,setOrderId] = useState();
+
+    console.log("orderID123",OrderId);
    
 
   
@@ -42,7 +46,7 @@ const PrivacyPolicyCheck = (props) => {
         }
     }, []);
     const payOnlineHandler = async () => {
-        const pnrNum = await generatePnrNum();
+        // const pnrNum = await generatePnrNum();
         let paymentCode;
         let iframe_id;
       
@@ -64,13 +68,19 @@ const PrivacyPolicyCheck = (props) => {
           const paymentToken = await requestGetpaymentToken(paymentCode);
           console.log('paymentTokenpaymentToken',paymentToken);
           console.log(paymentToken.token);
-      
+          const createOrder = paymentToken.createOrder;
+          const OrderId = createOrder.id;
+          const getPaymentToken = paymentToken.getPaymentToken;
+          console.log("you are searching for me",createOrder);
+          const pnrNum = await generatePnrNum(OrderId);
+
+
           if (paymentType === "paypro") {
-            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${paymentToken.token}`;
+            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken.token}`;
           } else {
-            window.location.href = `https://pakistan.paymob.com/iframe/${paymentToken.token}`;
+            window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken.token}`;
           }
-          // setPNRLoading(false);
+       
         } catch (error) {
           console.error(error);
         }
@@ -81,7 +91,6 @@ const PrivacyPolicyCheck = (props) => {
         try{
             const pnrNum = await generatePnrNum();
             console.log('pnrNum',pnrNum);
-            // alert("sabre PNr Created");
             const DatatoPass ={
             branchlabel : branchLabel,
             userLocation : userLocation,
@@ -98,7 +107,7 @@ const PrivacyPolicyCheck = (props) => {
 
     //   ---------------------------------------
 
-      const generatePnrNum = async() => {
+      const generatePnrNum = async(OrderId) => {
         let getPNRNumber = '';
         let updatedBackendFinalOBJ = {};
         try {
@@ -129,6 +138,7 @@ const PrivacyPolicyCheck = (props) => {
             updatedBackendFinalOBJ = {
                 ...backendFinalOBJ,
                 pnr: getPNRNumber,
+                OrderId:OrderId
               };
 
               console.log("ADDED PNR OBj",updatedBackendFinalOBJ);

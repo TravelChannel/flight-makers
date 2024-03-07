@@ -168,7 +168,10 @@ export const requestGetpaymentToken = async (paymentCode) => {
     const getToken = await getTokenApi();
     const createOrder = await createOrderApi(getToken);
     const getPaymentToken = await getPaymentTokenApi(getToken,createOrder,paymentCode);
-    return getPaymentToken;
+     return {
+      createOrder: createOrder,
+      getPaymentToken: getPaymentToken
+    };
   }
   catch (error) {
     console.error("Responce error", error);

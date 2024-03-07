@@ -1,5 +1,8 @@
 export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
     try {
+
+      console.log('CreatedOrderIDatAPI',createOrder.id );
+      // localStorage.setItem("OrderID", JSON.stringify(createOrder));
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
        const pnrNum = JSON.parse(localStorage.getItem('PNRNumber'));
