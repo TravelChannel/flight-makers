@@ -1854,20 +1854,19 @@ width:45px;
 }
 
 .banner_hero{
-
-  margin:10px 0px;
+  margin:10px 3px;
   background-color: #2468ac;
   border-radius: 8px;
   border: 1px solid #ddd;
   padding:1px 10px;
-  /* margin-left:25px;
-  margin-right:25px; */
+  width:25%;
 }
 .banner_heading{
   color:#fff;
   font-size: 15px;
   font-weight: 500;
   padding-left:8px;
+  text-align: justify;
 }
 
 .banner_left{
@@ -1875,8 +1874,9 @@ width:45px;
   margin-top:5px;
 }
 .banner_right{
-
   margin-top:5px;
+  display:flex;
+  justify-content: end;
 }
 .subs_btn{
    background-color:#F26223;
@@ -5024,7 +5024,8 @@ color: #0a53be;
   padding-left:10px;
   font-weight: 600;
   font-size: 18px;
-  color:#1a1a1a;
+  /* color:#1a1a1a; */
+  color:#F26223;
   padding-top:5px;
   padding-bottom:5px;
 }
@@ -5037,8 +5038,8 @@ color: #0a53be;
   padding:10px 20px;
 }
 .mob_methode_name{
-  font-size:16px;
-  font-weight:500;
+  font-size:18px;
+  font-weight:700;
   color:#1a1a1a;
   padding-left:8px;
 }
@@ -5613,7 +5614,7 @@ input::placeholder
 .loader{
   position: absolute;
   top:45%;
-  left: 45%;
+  left: 35%;
   width: 100px;
   height: 100px;
 }
@@ -7303,4 +7304,21 @@ margin-top:10px;
 }
 .contact_card_main{
   margin:15px;
+}
+.navigation_icon{
+  cursor: pointer;
+  padding:10px 20px;
+  width:7%;
+  border-radius:4px;
+  /* background-color: #36c; */
+}
+.navigation_arrow{
+  font-size:32px;
+  /* color:white;    */
+}
+.navigation_icon:hover{
+  background-color: gray;
+  color:white !important;
+  border-radius: 4%;
+  /* padding:10px; */
 }

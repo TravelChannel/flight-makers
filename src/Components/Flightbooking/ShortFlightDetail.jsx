@@ -133,7 +133,9 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
                             ))}
                     </div>  )
                         }
-                    {isMobile || isSmallScreen ?(''):(
+                    {isMobile || isSmallScreen ?(<div className=' d-flex align-self-center ' onClick={HandleDetail}>
+                             <ExpandCircleDownOutlinedIcon className='expandmore_round'  fontSize='large' />
+                        </div>):(
                         <div className=' d-flex align-self-center ' onClick={HandleDetail}>
                              <ExpandCircleDownOutlinedIcon className='expandmore_round'  fontSize='large' />
                         </div>)}

@@ -7,7 +7,8 @@ import { useFormData } from '../../../Context/FormDataContext';
 import { requestPNRCreate } from '../../../API/index';
 import { handleShowErrorAlert } from '../../../helpers/sweatalert';
 import Loader from '../../../Loader/Loader';
-import { requestUserPnrBooking } from '../../../API/index';
+// import { UserBookingDetails } from '../../../API/index';
+import { UserBookingDetails } from '../../../API/BackendAPI/allAPICalls';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const PrivacyPolicyCheck = (props) => {
@@ -21,10 +22,6 @@ const PrivacyPolicyCheck = (props) => {
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const [isLoading ,setLoading] = useState(false);
 
-    const [OrderId ,setOrderId] = useState();
-
-    console.log("orderID123",OrderId);
-   
 
   
 
@@ -74,6 +71,8 @@ const PrivacyPolicyCheck = (props) => {
           console.log("you are searching for me",createOrder);
           const pnrNum = await generatePnrNum(OrderId);
 
+          
+
 
           if (paymentType === "paypro") {
             window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken.token}`;
@@ -96,11 +95,13 @@ const PrivacyPolicyCheck = (props) => {
             userLocation : userLocation,
             };
             navigate('/bookingDetail', { state: { data: DatatoPass } });
+            window.scrollTo(0,0);
         }catch(error){
                 console.error(error);
                 setLoading(false);
         }finally {
             setLoading(false);
+            window.scrollTo(0,0);
           }
         
       }
@@ -144,12 +145,20 @@ const PrivacyPolicyCheck = (props) => {
               console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
       
             // console.log("hellowrold111111111");
-            const respServerPnrBooking = await requestUserPnrBooking(updatedBackendFinalOBJ);
+            const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
+           if(respServerPnrBooking.data.status === 'SUCCESS'){
             console.log("respServerPnrBooking",respServerPnrBooking);
       
-              localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
-              toast.success("PNR Created SuccessFully " ,
-              {autoClose: 2000 });
+            localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
+            // alert('Record Saved SuccessFully');
+            toast.success("PNR Created SuccessFully " ,
+            {autoClose: 2000 });
+           }else{
+            console.error("error while Sending Data to back");
+            alert('Fill all the fields Correctly');
+            navigate("/");
+            window.scrollTo(0,0);
+           }
             }
       
           } finally {
@@ -160,6 +169,7 @@ const PrivacyPolicyCheck = (props) => {
 
       const handleTermsandConditions = () =>{
         navigate('/terms-and-conditions');
+        window.scrollTo(0,0);
       }
       const handleBookingPolicy = () =>{
         navigate('/terms-of-service');
@@ -167,6 +177,7 @@ const PrivacyPolicyCheck = (props) => {
 
       const handlePrivacyPolicy = () =>{
         navigate('/refund-policy');
+        window.scrollTo(0,0);
       }
 
     return (

@@ -189,16 +189,15 @@ export const requestGetBooking = async () => {
 
 // ---------------------------------Backend API----------------------------------
 
-export const requestUserPnrBooking = async(finalObject)=>{
-  try {
-    const results = await UserBookingDetails(finalObject);
-    return results;
-    console.log("UserBookingDetails function is called");
-  }
-  catch (error) {
-    console.error("Responce error", error);
-  }
-}
+// export const requestUserPnrBooking = async(finalObject)=>{
+//   try {
+//     const results = await UserBookingDetails(finalObject);
+//     return results;
+//   }
+//   catch (error) {
+//     console.error("Responce error", error);
+//   }
+// }
 
 // export const  sendOTPCode = async(getOTPData)=>{
 //   try{

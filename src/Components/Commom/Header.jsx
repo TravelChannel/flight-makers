@@ -84,7 +84,7 @@ const Header = () => {
                     <span className="iconText menuItem">Flights</span>
                   </Link>
                 </li>
-                <li
+                {/* <li
                   id="hotels"
                   className={`${isScrolled ? "showText" : "hideIndex"}`}
                 >
@@ -97,7 +97,7 @@ const Header = () => {
                     <br />
                     <span className="iconText menuItem">Hotels</span>
                   </Link>
-                </li>
+                </li> */}
                 <li
                   id="hotels"
                   className={`${isScrolled ? "showText" : "hideIndex"}`}
@@ -112,7 +112,7 @@ const Header = () => {
                     <span className="iconText menuItem">Mall</span>
                   </Link>
                 </li>
-                <li
+                {/* <li
                   id="hotels"
                   className={`${isScrolled ? "showText" : "hideIndex"}`}
                 >
@@ -125,7 +125,7 @@ const Header = () => {
                     <br />
                     <span className="iconText menuItem">Live</span>
                   </Link>
-                </li>
+                </li> */}
                 <li id="promoSld d-none">
                   <div className="marquee">
                     <div className="promotionSlider marquee__item"></div>
@@ -173,10 +173,6 @@ const Header = () => {
                       {
                         isLogin ? (
                           <li>
-                          {/* <Link to='/UserPanel' className="pull-right">
-                            <Person2 className="glyphicon" />
-                            {userVerName && userName ? userName : userVerName}
-                          </Link> */}
                           <a href="/UserPanel" className="mob_menu_txtcolor"><Person2  className="mob_menu_icon" />
                             {userVerName && userName ? userName : userVerName}</a>
                           </li>
@@ -184,22 +180,6 @@ const Header = () => {
                           <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li>
                         )
                       }
-
-                      {/* <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li> */}
-{/* 
-                      <div>
-            {isLogin ? (
-              <Link to='/UserPanel' className="pull-right">
-                <Person2 className="glyphicon" />
-                {userVerName && userName ? userName : userVerName}
-              </Link>
-            ) : (
-              <Link to='/signup' className="pull-right">
-                <Person2 className="glyphicon" />
-                SignUp/Login
-              </Link>
-            )}
-          </div> */}
                     </ul>
                 </div>
              </CSSTransition>
@@ -209,7 +189,7 @@ const Header = () => {
                   shouldApplyBoxShadow ? "apply-box-shadow" : ""
                 }`}
               >
-                <div className="headerBox  ng-scope mini">
+                {/* <div className="headerBox  ng-scope mini">
                   <ul className="mainLinks" id="myNavBar">
                     <li idc="flightsm">
                       <Link to="">
@@ -256,7 +236,7 @@ const Header = () => {
                       </Link>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

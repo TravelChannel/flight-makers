@@ -8,9 +8,13 @@ import { useLocation } from 'react-router';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { GetDetailByPNR } from '../../../API/BackendAPI/GetDetailbyPNR';
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
+import { useNavigate } from 'react-router';
+import Tooltip from '@material-ui/core/Tooltip';
 const BookingDetails = () => {
 
   const location = useLocation();
+  const navigate = useNavigate();
   const [currentDate , setCurrentDate] = useState(false);
 const {formData ,setFormData,backendFinalOBJ}= useFormData();
 const firstName = formData.map(items=>items.fname0);
@@ -18,6 +22,8 @@ const lastName = formData.map(items =>items.lname0);
 const passedData =  location.state?.data;
 const finalBranch = passedData?.branchlabel;
 const userLocation = passedData?.userLocation;
+
+const [isSmallScreen ,  setIsSmallScreen] = useState(false);
 
 const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
 
@@ -68,12 +74,25 @@ useEffect(() => {
       console.log("userDetailbyPNR", response);
     } catch (error) {
       console.error("error in ffetching Data",error);
-      // alert("Error While Fetching API Results");
     }
   };
   
   GetUsersDetail();
 }, []);
+useEffect(() => {
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 768);
+  };
+  handleResize();
+  window.addEventListener('resize', handleResize);
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
+const backNavigation = () =>{
+  navigate('/');
+}
 
 
 // -------------------------------------------------------
@@ -81,6 +100,11 @@ useEffect(() => {
   return (
     <Fragment>
       <div className='container bg-white' id="pdf-content">
+          <Tooltip title="Go to Home Page" >
+            <div className='navigation_icon mx-4 '>
+            <ReplyAllIcon onClick={backNavigation} className='navigation_arrow' />
+            </div>
+          </Tooltip>
         <div className='details_header d-flex justify-content-center'>
           <CheckCircleOutlineTwoToneIcon className="booking_done_icon align-self-center"/>
           <div className='px-2' >
@@ -153,47 +177,34 @@ useEffect(() => {
               </div>
            </div>
            <div>
-           <table className="table table-bordered  mt-3">
+           <div className="table-responsive mt-3">
+              <table className="table table-bordered">
               <thead>
                 <tr>
-                  <th>Serial No</th>
-                  <th>Passenger Name</th>
-                  <th>DOB</th>
-                  <th>Passport No</th>
+                  <th>{isSmallScreen ? 'No' : 'Serial No'}</th>
+                  <th>{isSmallScreen ? 'Name' : 'Passenger Name'}</th>
+                  <th>{isSmallScreen ? 'DOB' : 'Date of Birth'}</th>
+                  <th>{isSmallScreen ? 'Pass.No' : 'Passport No'}</th>
                   <th>Gender</th>
                   <th>Cnic</th>
-
-                  <th>Phone No</th>
+                  <th>{isSmallScreen ? 'Phone' : 'Phone No'}</th>
                 </tr>
               </thead>
-              {backendFinalOBJ.pnrBookings?.map((item, index) => (
-                    <tbody key={index}>
-                      <tr>
-                        <td>{index+1}</td>
-                        <td>{item.firstName} {item.lastName}</td>
-                        <td>{item.dateOfBirth}</td>
-                        <td>{item.passportNo}</td>
-                        <td>{item.gender}</td>
-                        <td>{item.cnic || '---'}</td>
-                        <td>{`92${item.phoneNumber}`}</td>
-                      </tr>
-                    </tbody>
+                <tbody>
+                  {backendFinalOBJ.pnrBookings?.map((item, index) => (
+                    <tr key={index}>
+                      <td>{index+1}</td>
+                      <td>{item.firstName} {item.lastName}</td>
+                      <td>{item.dateOfBirth}</td>
+                      <td>{item.passportNo}</td>
+                      <td>{item.gender}</td>
+                      <td>{item.cnic || '---'}</td>
+                      <td>{`92${item.phoneNumber}`}</td>
+                    </tr>
                   ))}
-                    {/* {
-                      formData?.map((item , index)=>(
-                        <tbody key={index}>
-                        <tr>
-                          <td>{index+1}</td>
-                          <td>{item[`fname${index}`]} {item[`lname${index}`]}</td>
-                          <td>{item[`DateOfBirth${index}`]}</td>
-                          <td>{item[`passport${index}`] || null} </td>
-                          <td> {item[`cnic${index}`] || null} </td>
-                          <td>03408922375</td>
-                        </tr>
-                        </tbody>
-                      ))
-                    } */}
-          </table>
+                </tbody>
+              </table>
+            </div>
        </div>
         </div>
         <div className='pass_booking_detial_main'>

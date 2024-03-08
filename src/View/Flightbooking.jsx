@@ -17,6 +17,7 @@ const ItineraryDetails = () => {
   const HandleButtonClicked = () => {
     setIsButtonClicked(!isButtonClicked);
     setIsHideDetail(!isHideDetail);
+    window.scrollTo(0, 0);
   }
   const HandleShowDetail = () => {
     setIsButtonClicked(true);

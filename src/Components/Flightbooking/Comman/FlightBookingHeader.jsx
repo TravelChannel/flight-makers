@@ -2,7 +2,7 @@ import {React,Fragment,useState,useEffect} from 'react';
 import PreviewOutlinedIcon from '@mui/icons-material/PreviewOutlined';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import { useNavigate } from 'react-router-dom';
-
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
 const FlightBookingHeader = (props) => {
     const {pageTitle , icons, setTimer} = props;
@@ -43,9 +43,15 @@ const FlightBookingHeader = (props) => {
     const minutes = Math.floor(timerRunning/60);
     const seconds = timerRunning % 60;
     const formattedTime = `${minutes.toString().padStart(2, '0')}: ${seconds.toString().padStart(2, '0')}`;
+
+    const backNavigation =() =>{
+        navigate(-1);
+        window.scrollTo(0,0);
+    }
   return (
     <Fragment>
         <div className="iti_heading d-flex justify-content-between">
+        {isMobile ? <div onClick={backNavigation} className='align-self-center'><ReplyAllIcon/></div>:''}
             <div className='d-flex justify-content-start'>
                         <span className=" d-flex align-self-center">
                         {/* <PreviewOutlinedIcon className="review_icon_size"/> */}

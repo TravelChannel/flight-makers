@@ -452,7 +452,6 @@ myHeaders.append('Authorization',
     try {
         const responce = await fetch("https://api.havail.sabre.com/v2.5.0/passenger/records?mode=create", requestOptions);
         const result = await responce.json();
-        alert("sabre PNr");
         console.log("Raw123", raw)
         console.log("PNR SABRE", result)
         return result;

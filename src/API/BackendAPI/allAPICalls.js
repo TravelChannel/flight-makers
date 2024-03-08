@@ -1,25 +1,22 @@
 import apiClient from './api_main';
 
-export const UserBookingDetails = async(finalObject)=>{
-     const results  = '123';
-    console.log("hellloWorld",finalObject);
-		apiClient
-			.post(`/pnrBooking`, finalObject)
-			.then((res) => {
-				if (res.data.status === 'SUCCESS') {
-
-					console.log( res.data.message, 'success');
-
-				} else {
-					console.log(res.data.message, 'danger');
-				}
-			})
-			.catch((err) => {
-				console.error( err.message, 'Danger');
-			});
-
-   return results;
-
+export const UserBookingDetails = async (finalObject) => {
+    console.log("hellloWorld", finalObject);
+    
+    try {
+        const response = await apiClient.post(`/pnrBooking`, finalObject);
+        
+        if (response.data.status === 'SUCCESS') {
+            console.log(response.data.message, 'success');
+            return response; // Returning the response if successful
+        } else {
+            console.log(response.data.message, 'danger');
+            return null; // Returning null or handle the error as needed
+        }
+    } catch (error) {
+        console.error(error.message, 'Danger');
+        throw error; // Re-throwing the error to be handled by the caller
+    }
 }
 // ---------------------ReFund API Called-----------------------
 

@@ -113,6 +113,7 @@ const ActiveFlight = (props) => {
     };
     localStorage.setItem("bookingTicket", JSON.stringify(mergedFlightDet));
     navigate('/flightbooking');
+    window.scrollTo(0, 0);
   }
   const renderRoundTrip = () => {
     return (

@@ -386,6 +386,7 @@ useEffect(() => {
       const finalObject= generateBookingObject(); 
       setBackendFinalOBJ(finalObject);
       navigate('/bookingpayment');
+      window.scrollTo(0, 0);
     }catch(error){
       console.error("error While Creating FinalOBJ",error)
     }
@@ -442,9 +443,10 @@ useEffect(() => {
                   <div className="ph_input_filed">
                     <PhoneInput
                       country={'pk'}
-                      value={userVerName ? `+92 ${userVerName}` : `+${countryCode} ${phoneNumber}`}
+                      // value={userVerName ? `+92 ${userVerName}` : `+${countryCode} ${phoneNumber}`}
+                      value={userVerName ? `+92 ${userVerName}` : ''}
                       onChange={(value) => handlePhoneNumberChange(value)}
-                      placeholder="Enter your phone number"
+                      placeholder="92 3XXXXXXXXX"
                       onlyCountries={['pk']}
                       disabled={userVerName && isLogin ? true : false}
                     />
@@ -541,17 +543,17 @@ useEffect(() => {
                                 <div className='col-md-4 mb-3'>
                                 <TextField
                                         id="outlined-fname-input"
-                                        label="First Name"
+                                        label="First / Given Name"
                                         type="text"
                                         className="fname_textfield"
                                         size="small"
                                         name={`fname${index}`}
                                         onKeyPress={(e) => {
-                                          const charCode = e.charCode;
-                                          if (!/^[A-Za-z]+$/.test(String.fromCharCode(charCode))) {
-                                            e.preventDefault();
-                                          }
-                                        }}
+                                            const charCode = e.charCode;
+                                            if (!/^[A-Za-z\s]+$/.test(String.fromCharCode(charCode))) {
+                                              e.preventDefault();
+                                            }
+                                          }}
                                         onChange={(e) => handleInputChange(e, index)}
                                         InputProps={{
                                           endAdornment: (
@@ -585,17 +587,17 @@ useEffect(() => {
                                 <div className='col-md-4 mb-3'>
                                   <TextField
                                     id="outlined-fname-input"
-                                    label="Last Name"
+                                    label="Last / Sur Name"
                                     name={`lname${index}`}
                                     type="text"
                                     className='fname_textfield'
                                     size="small"
-                                    onKeyPress={(e)=>{
-                                      const charCode = e.charCode;
-                                      if (!/^[A-Za-z]+$/.test(String.fromCharCode(charCode))) {
-                                            e.preventDefault();
-                                          }
-                                    }}
+                                    onKeyPress={(e) => {
+                                        const charCode = e.charCode;
+                                        if (!/^[A-Za-z\s]+$/.test(String.fromCharCode(charCode))) {
+                                          e.preventDefault();
+                                        }
+                                      }}
                                     onChange={(e) => handleInputChange(e, index)}
                                     InputProps={{
                                       endAdornment: (
@@ -712,6 +714,32 @@ useEffect(() => {
                                     </div>
 
                                 </div>
+                                {/* {index < adults + children ?
+                                  <div className='col-md-4 mb-3'>
+                                    <p className="dob_heading">Wheel Chair:</p>
+                                    <FormControl className="fname_textfield" size="small">
+                                      <Select
+                                        // labelId="demo-simple-select-helper-label"
+                                        id="demo-simple-select-helper"
+                                        value={
+                                          formData[index] && formData[index][`wheelChair${index}`]
+                                            ? formData[index][`wheelChair${index}`]
+                                            : 'N'
+                                        }
+                                        label="WheelChair"
+                                        name={`wheelChair${index}`}
+                                        onChange={(e) => handleInputChange(e, index)}
+                                      >
+                                        <MenuItem value={'Y'}>Yes</MenuItem>
+                                        <MenuItem selected value={'N'}>No</MenuItem>
+                                      </Select>
+                                    </FormControl>
+                                  </div>
+                                  :
+                                  null
+                                } */}
+                                <div className="col-md-6 col-lg-4 mb-3"><AutoTabDate traveller={index < adults ? `Adult` : index < adults + children ? `Child` : `Infant`} label="Date Of Birth" value={index} handleInputChange={handleInputChange} /></div>
+                                <div className="col-md-6 col-lg-4 mb-3"><AutoTabDate traveller={index < adults ? `Adult` : index < adults + children ? `Child` : `Infant`} label="Passport Expiry Date" value={index} handleInputChange={handleInputChange} /></div>
                                 {index < adults + children ?
                                   <div className='col-md-4 mb-3'>
                                     <p className="dob_heading">Wheel Chair:</p>
@@ -736,8 +764,6 @@ useEffect(() => {
                                   :
                                   null
                                 }
-                                <div className="col-md-6 col-lg-4 mb-3"><AutoTabDate traveller={index < adults ? `Adult` : index < adults + children ? `Child` : `Infant`} label="Date Of Birth" value={index} handleInputChange={handleInputChange} /></div>
-                                <div className="col-md-6 col-lg-4 mb-3"><AutoTabDate traveller={index < adults ? `Adult` : index < adults + children ? `Child` : `Infant`} label="Passport Expiry Date" value={index} handleInputChange={handleInputChange} /></div>
                               </div>
                             </div>
                           </div>

@@ -20,7 +20,7 @@ const Notification = () => {
         <div className="container notf_position_fixed flex-wrap mt-4">
           <div className="row">
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-              <div className="banner_hero d-flex justify-content-between">
+              <div className="banner_hero">
                 <div className="banner_left d-flex align-items-center">
                   <NotificationsIcon className="notf_icon" />
                   <span className="banner_heading">

@@ -56,7 +56,7 @@ const FlightSearch = (props) => {
     dateval = date;
   }
 
-  // Sates  
+  // Sates
   const [isDivVisible, setDivVisible] = useState(false);
   const [tripActiveTab, settripActiveTab] = useState(tripTypeVal);
   const [activeClassTab, setClassActiveTab] = useState(classtypeVal);
@@ -86,6 +86,7 @@ const FlightSearch = (props) => {
   const airport_name = cities.map((city) => city.Name);
   const countery_name = cities.map((city) => city.iso_country);
   const concatenatedAirportsValues = [];
+
 
   useEffect(() => {
     const fetchData = async (startFutureDate) => {
@@ -576,7 +577,7 @@ const FlightSearch = (props) => {
 
 
               {tripActiveTab === 1 && (
-                <RangePicker placeholder={placeholders} defaultValue={
+                <RangePicker placeholder={placeholders}   defaultValue={
                   dateval.length > 1
                     ? [dayjs(dateval[0], dateFormat), dayjs(dateval[1], dateFormat)]
                     : dateval.length > 0
@@ -841,7 +842,6 @@ const FlightSearch = (props) => {
                     : [null, null]
               } onChange={handleDateChange} dateRender={renderDateCell} disabledDate={disabledDate} format={antDateFormat} />
             )}
-
             {tripActiveTab === 2 && (
               <DatePicker placeholder={placeholders[0]} defaultValue={dateval.length > 0 ? dayjs(dateval[0], dateFormat) : null} onChange={handleDateChange} dateRender={renderDateCell} disabledDate={disabledDate} format={antDateFormat} />
             )}
