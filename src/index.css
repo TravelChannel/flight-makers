@@ -7322,3 +7322,23 @@ margin-top:10px;
   border-radius: 4%;
   /* padding:10px; */
 }
+
+.linkItem {
+  margin-right: 10px;
+  color: #337ab7 !important;
+  cursor:pointer
+}
+.internationl_editing{
+  margin-right: 15px;
+  cursor:pointer;
+}
+.footerLink_internationl{
+  text-align: justify;
+}
+.footerLink_internationl span {
+  color:#337ab7 !important;
+  margin-right: 15px;
+}
+.footerLink_internationl span a {
+  color:#337ab7 !important;
+}

@@ -16,6 +16,7 @@ export const FormDataProvider = ({ children }) => {
   const [backendFinalOBJ ,setBackendFinalOBJ] = useState([]);
   const [isPNRLoading ,setPNRLoading] = useState(false);
   const [completeUserData ,setCompleteUserData] = useState([]);
+  const [serviceCharges ,setServiceCharges] = useState();
 
 
   return (
@@ -30,8 +31,8 @@ export const FormDataProvider = ({ children }) => {
        roleID , setRoleID,
        backendFinalOBJ ,setBackendFinalOBJ,
        isPNRLoading ,setPNRLoading,
-       completeUserData ,setCompleteUserData
-       
+       completeUserData ,setCompleteUserData,
+       serviceCharges ,setServiceCharges
        }}>
       {children}
     </FormDataContext.Provider>

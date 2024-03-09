@@ -13,9 +13,26 @@ import { GetDetailByPNR } from "../API/BackendAPI/GetDetailbyPNR.js";
 import { useFormData } from "../Context/FormDataContext.jsx";
 import { AirSialTravDetial } from "../API/index.js";
 import { useNavigate } from "react-router-dom";
+import { getDetailByOrderId } from "../API/BackendAPI/CommissionAPI/GetDetailbyOrderId.js";
+
 
 const Customersupport = () => {
     const navigate = useNavigate();
+
+    const [userPnr ,setUserPnr]  = useState();
+
+    // console.log("pnrpnr",userPnr);
+
+    // ---------------extract id from the url --------------------
+    const { search } = useLocation();
+    const urlParams = new URLSearchParams(search);
+    const id= urlParams.get("order");
+    console.log("id from URl",id);
+    // const id =14433435;
+
+   
+    // ----------------------------------
+
 const [isLoading , setLoading] = useState(false);
 const [isAirSial , setAirSial] = useState(false);
 const [pnrData , setPnrData] = useState({});
@@ -24,6 +41,17 @@ const [airSialData ,setAirSialData] = useState({});
 const [usersDetail ,setUsersDetails] = useState([]);
 
 const { setShowHeader } = useFormData();
+
+// useEffect(() => {
+//     const url = window.location.href;
+
+//     console.log("url",url);
+//     const urlParams = new URLSearchParams(url);
+
+//     console.log("urlParams",urlParams);
+//     const id = urlParams.get("id");
+//     console.log('id', id);
+// }, []);
 // console.log("hello World",formData);
 // -------------------2----------------------------
 // const updateFormDataFromPage2 = () => {
@@ -225,12 +253,12 @@ const inputPnr = searchParams.get('inputPNR');
             console.log("extra_Bagg", extra_Bagg);
     
             if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
-                const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
-                const userDetailsResponse = await USerDetailResp(activepnrNumber); // Wait for user detail response
+                // const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+                const userDetailsResponse = await USerDetailResp(userPnr); // Wait for user detail response
                 const userDetails111 = userDetailsResponse?.data?.payload?.pnrDetail;
                 console.log('userDetails111',userDetails111);
 
-                await fetchData(userDetails111, activepnrNumber); // Pass user details to fetchData
+                await fetchData(userDetails111, userPnr); // Pass user details to fetchData
                 const airSialUserDetail = await airsialBookingDetail();
                 console.log('airSialUserDetail',airSialUserDetail);
                 setAirSialData(airSialUserDetail);
@@ -247,9 +275,9 @@ const inputPnr = searchParams.get('inputPNR');
         }
     };
     
-    const USerDetailResp = async (activepnrNumber) => {
+    const USerDetailResp = async (userPnr) => {
         try{
-            const responce = await GetDetailByPNR(activepnrNumber);
+            const responce = await GetDetailByPNR(userPnr);
             console.log("responceofCurrentBooking", responce.data.payload.pnrDetail);
             return responce;
             setUsersDetails(responce.data.payload.pnrDetail);
@@ -258,7 +286,7 @@ const inputPnr = searchParams.get('inputPNR');
         }
     };
     
-    const fetchData = async (usersDetail, activepnrNumber) => { // Modify to accept usersDetail parameter
+    const fetchData = async (usersDetail, activepnrNumber) => { 
         if (activepnrNumber && activepnrNumber !== "") {
             try {
                 const airsialtravllersDetail = await AirSialTravDetial(usersDetail, activepnrNumber);
@@ -270,8 +298,19 @@ const inputPnr = searchParams.get('inputPNR');
             }
         }
     };
+    const getuserDatabyID = async() =>{
+        try{
+            const responce = await getDetailByOrderId(id);
+            setUserPnr(responce.data.payload.pnr)
+            console.log('userPNR',responce.data.payload.pnr);
+
+        }catch(error){
+            console.error("error while getting data",error);
+        }
+    }
     
     useEffect(() => {
+        getuserDatabyID();
         fetchBookingDetails();
     }, []);
 
@@ -623,7 +662,6 @@ const handleNavigate = () =>{
 
             )
            }
-
 
            {/* <button onClick={updateFormDataFromPage2}>Update FormData from Page 2</button> */}
                

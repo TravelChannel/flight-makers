@@ -1,10 +1,13 @@
 import { React, Fragment, useContext} from 'react'
 import { calculateTax } from '../../helpers/taxCalculation'
 import { TicketPriceContext } from './Comman/Context';
-
+import { useFormData } from '../../Context/FormDataContext';
 const TotalPriceCalculation = () => {
     const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
     const {extraBagg } = useContext(TicketPriceContext);
+    const {serviceCharges} =useFormData();
+
+    // console.log("PriceCalPage",serviceCharges);
     const classtype = flightData.classtype;
     const classType =
         classtype === 'Economy'
@@ -31,6 +34,7 @@ const TotalPriceCalculation = () => {
     };
 
     const taxfees = calculateTax(destination, airline, classType);
+    // const taxfees = serviceCharges
     const calculatedServiceFees = servicefees(taxfees);
     const totalTicketPrice = totalAmount.toFixed(0);
 

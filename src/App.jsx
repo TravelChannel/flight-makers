@@ -16,34 +16,67 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData} = useFormData();
   // ---------------------------------------
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await VerificationAPi();  
-        console.log("Verification-API",response);
-        if (response.data.status === 'SUCCESS') {
-          console.log('User is logged in');
-          setLogIn(true);
-          const userPhone = response.data.payload.userData.phoneNumber;
-          const PersonName =  response.data.payload.userData.firstName;
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await VerificationAPi();  
+  //       console.log("Verification-API",response);
+  //       if (response.data.status === 'SUCCESS') {
+  //         console.log('User is logged in');
+  //         setLogIn(true);
+  //         const userPhone = response.data.payload.userData.phoneNumber;
+  //         const PersonName =  response.data.payload.userData.firstName;
 
-          console.log("personName",PersonName);
-          setUserCountryCOde(response.data.payload.userData.countryCode);
-          setRoleID(response.data.payload.userData.roleId);
-          setVarName(userPhone);
-          setUserName(PersonName);
-          setCompleteUserData(response.data.payload.userData);
-          console.log("userPhone-verification",userPhone);
-        } else {
-          console.log('User is not logged in');
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  //         console.log("personName",PersonName);
+  //         setUserCountryCOde(response.data.payload.userData.countryCode);
+  //         setRoleID(response.data.payload.userData.roleId);
+  //         setVarName(userPhone);
+  //         setUserName(PersonName);
+  //         setCompleteUserData(response.data.payload.userData);
+  //         console.log("userPhone-verification",userPhone);
+  //       } else {
+  //         console.log('User is not logged in');
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
+  //   fetchData();  
+  // }, []); 
+
+  const fetchData = async () => {
+    try {
+      const response = await VerificationAPi();  
+      console.log("Verification-API", response);
+      if (response.data.status === 'SUCCESS') {
+        console.log('User is logged in');
+        setLogIn(true);
+        const userPhone = response.data.payload.userData.phoneNumber;
+        const PersonName = response.data.payload.userData.firstName;
+  
+        console.log("personName", PersonName);
+        setUserCountryCOde(response.data.payload.userData.countryCode);
+        setRoleID(response.data.payload.userData.roleId);
+        setVarName(userPhone);
+        setUserName(PersonName);
+        setCompleteUserData(response.data.payload.userData);
+        console.log("userPhone-verification", userPhone);
+      } else {
+        console.log('User is not logged in');
       }
-    };
-
-    fetchData();  
-  }, []); 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
+  
+  useEffect(() => {
+    fetchData();
+  }, [userVerName]);
 
   // -----------------------------------------
 

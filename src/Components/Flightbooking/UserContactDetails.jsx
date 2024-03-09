@@ -22,12 +22,12 @@ import { useFormData } from '../../Context/FormDataContext';
 import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
 // import { verifyOTPRes } from '../../API/index';
 import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
-
+import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetServiceCharges';
 
 
 
 const UserContactDetails = (props) => {
-  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,userName,setUserName,setRoleID} = useFormData();
+  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,userName,setUserName,setRoleID,setServiceCharges} = useFormData();
   // console.log('completeUserData',completeUserData);
 
   const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
@@ -393,20 +393,42 @@ useEffect(() => {
     
   }
   // -----------------------------
-  useEffect(() => {
-    // Arrival Location
-    const newArrivalLocations = flightDetails.groupDescription.map(item => item.arrivalLocation);
-    // Operating Airline
-    const OperatingAirlines = flightDetails.schedualDetGet.flatMap(item => item.map(itm => itm.carrier.operating));
-    // Create CommissionData after setting state
-    const CommissionData = {
-        'Destinations': newArrivalLocations,
-        'OperatingAirline': OperatingAirlines,
-        'ClassType': flightDetails.classtype
-    };
+//   useEffect(() => {
+//     const newArrivalLocations = flightDetails.groupDescription.map(item => item.arrivalLocation);
+//     const OperatingAirlines = flightDetails.schedualDetGet.flatMap(item => item.map(itm => itm.carrier.operating));
+//     const CommissionData = {
+//         'Destinations': newArrivalLocations,
+//         'OperatingAirline': OperatingAirlines,
+//         'ClassType': flightDetails.classtype
+//     };
 
-    console.log("CommissionData", CommissionData);
-    setMajorData(CommissionData);
+//     console.log("CommissionData", CommissionData);
+//     setMajorData(CommissionData);
+// }, []);
+
+useEffect(() => {
+  const newArrivalLocations = flightDetails.groupDescription.map(item => item.arrivalLocation);
+  const OperatingAirlines = flightDetails.schedualDetGet.flatMap(item => item.map(itm => itm.carrier.operating));
+  const CommissionData = {
+      'Destinations': newArrivalLocations,
+      'OperatingAirline': OperatingAirlines,
+      'ClassType': flightDetails.classtype
+  };
+
+  console.log("CommissionData", CommissionData);
+  setMajorData(CommissionData);
+
+  const getServiceCharges = async() =>{
+    try{
+      const responce = await GetServiceCharges(CommissionData);
+      console.log("ServiceChargesData from Backend", responce);
+      setServiceCharges(responce.data.payload);
+
+    }catch(error){
+      console.error("Error at fetching Commission",error);
+    }
+  }
+  getServiceCharges();
 }, []);
 
 

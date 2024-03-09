@@ -64,20 +64,21 @@ const PrivacyPolicyCheck = (props) => {
           // setPNRLoading(true);
           const paymentToken = await requestGetpaymentToken(paymentCode);
           console.log('paymentTokenpaymentToken',paymentToken);
-          console.log(paymentToken.token);
+          // console.log(paymentToken.token);
           const createOrder = paymentToken.createOrder;
           const OrderId = createOrder.id;
-          const getPaymentToken = paymentToken.getPaymentToken;
+          const getPaymentToken1 = paymentToken.getPaymentToken;
+
+          console.log("paymentTokenResult",getPaymentToken1.token);
           console.log("you are searching for me",createOrder);
           const pnrNum = await generatePnrNum(OrderId);
 
-          
-
+         
 
           if (paymentType === "paypro") {
-            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken.token}`;
+            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
           } else {
-            window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken.token}`;
+            window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
           }
        
         } catch (error) {
@@ -147,6 +148,7 @@ const PrivacyPolicyCheck = (props) => {
             // console.log("hellowrold111111111");
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
            if(respServerPnrBooking.data.status === 'SUCCESS'){
+            // alert("record saved Successfully");
             console.log("respServerPnrBooking",respServerPnrBooking);
       
             localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
