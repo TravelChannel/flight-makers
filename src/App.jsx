@@ -74,9 +74,9 @@ const App = () => {
     fetchData();
   }, []);
   
-  useEffect(() => {
-    fetchData();
-  }, [userVerName]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [userVerName]);
 
   // -----------------------------------------
 

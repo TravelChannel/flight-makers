@@ -79,12 +79,17 @@ input::placeholder {
   }
 }
 @media (max-width: 600px) {
-  :where(.css-dev-only-do-not-override-1wazalj).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
+  /* :where(.css-dev-only-do-not-override-1wazalj).ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
     display:block !important;  
     flex-direction: column !important;
     text-align: center !important;
 
-  }
+  } */
+   .ant-picker-dropdown .ant-picker-panel-container .ant-picker-panels {
+    display: block !important;
+    flex-direction: column !important;
+    text-align: center !important;
+}
   /* :where(.css-dev-only-do-not-override-1wazalj).ant-picker-dropdown .ant-picker-date-panel .ant-picker-body {
     padding: 8px 58px !important;
 } */

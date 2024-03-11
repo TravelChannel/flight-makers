@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const OTPCode = (props) => {
 
   const {fromSingUp,setIsOpen} = props;
-  const {setLogIn} =useFormData();
+  const {setLogIn,setVarName} =useFormData();
   console.log("coming from SignUp",fromSingUp);
   const navigate = useNavigate();
   console.log("ellllllllo123",props.getOTPData);
@@ -52,6 +52,7 @@ const OTPCode = (props) => {
         if (verificationResult.data.status ==='SUCCESS') {
           setIsOtpTrue(true);
           setLogIn(true);
+          setVarName(verificationResult.data.payload.userData.phoneNumber);
           setIsOpen(false);
           // toast.success("PNR Created SuccessFully " ,
           // {autoClose: 2000 });

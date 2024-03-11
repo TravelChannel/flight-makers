@@ -715,6 +715,7 @@ useEffect(() => {
                                         name={`passport${index}`}
                                         id="outlined-basic"
                                         placeholder="Passport No"
+                                        className='fname_textfield'
                                         variant="outlined"
                                         size="small"
                                         onKeyPress={(e) => {

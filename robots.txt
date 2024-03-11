@@ -1,3 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
+User-Agent: *
 Disallow:
+
+sitemap: http://www.faremakers.com/sitemap.xml
