@@ -7,12 +7,15 @@ import Loader from '../../../../../Loader/Loader';
 import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verification';
 import { useFormData } from '../../../../../Context/FormDataContext';
 
+
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
   const {userVerName,userCountryCode} =useFormData();
   const [ProfileData ,setProfileData] =useState([]);
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
+  const [isMobile , setIsMobile] = useState(window.innerWidth < 467);
+
   // const [userProfiles ,SetUserProfiles] = useState([]);
   
 
@@ -52,8 +55,15 @@ const UserProfile = (props)=>{
   console.log('ProfileDataProfileData112',ProfileData);
 
 // -----------------
-// const userNameForDisplay = userProfileData?.[0]?.firstName;
-// setUserName(userNameForDisplay);
+useEffect(()=>{
+  const handleResize = ()=>{
+    setIsMobile(window.innerWidth < 467);
+  };
+  window.addEventListener('resize', handleResize);
+  return()=>{
+    window.removeEventListener('resize', handleResize);
+  }
+},[]);
 // --------------------
 
    const  ArrangeDateFormat = (JourneyDate) =>{
@@ -67,6 +77,43 @@ const UserProfile = (props)=>{
         <div className='dashboard-content-container'>
                   <div  >
                          <Fragment>
+                         {
+                          isMobile ?(
+                            <div className=' contact_card_main' 
+                  // key={detailIndex}
+                  >
+                      <div className="profile-card">
+                          <header>
+                              <h3>{`${userCountryCode} ${userVerName} `}</h3>
+                              <div className="image">
+                                  <img src={images.userProfile} alt='abc' />
+                              </div>
+                              <h3 className='profile_itenty' >{`${ProfileData.firstName} ${ProfileData.lastName} `}</h3>
+                          </header>
+                      <div className='d-flex justify-content-around'>
+                                  <div className="content">
+                                      <p>Gender:</p>
+                                      <p>Passport:</p>
+                                      <p>Cnic:</p>
+                                      <p>DOB:</p>
+                                  </div>
+                                  <div className="content">
+                                      <p>{ProfileData.gender || '_'}</p>
+                                      <p>{ProfileData.passportNo || '_'} </p>
+                                      <p>{ProfileData.cnic || '_'}</p>
+                                      <p>{ArrangeDateFormat(ProfileData.dateOfBirth) || '_'}</p>
+                                  </div>
+                                  
+                      </div> 
+                        <div className='text-center py-3'>
+                            <button className='btn btn-primary profile_update_btn' onClick={openEditModel}>
+                                Update Your profile
+                            </button>
+                      </div>
+                      </div>
+                      
+                </div>
+                          ):(
                             <div className="m-3 background_line ">
                                 <div className="d-flex justify-content-start">
                                     <div className="userProfile_bg">
@@ -137,12 +184,15 @@ const UserProfile = (props)=>{
 
                                 </div>
                             </div>
+                          )
+                         }
+                            
                             </Fragment>
                   </div>
               {
                 isOpen ?(
                   <EditModel isOpen ={isOpen} setIsOpen={setIsOpen}
-                   setProfileData ={setProfileData}
+                   setProfileData ={setProfileData} ProfileData ={ProfileData}
                    />
                 ):('')
               }

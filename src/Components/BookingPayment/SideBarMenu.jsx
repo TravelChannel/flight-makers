@@ -56,6 +56,7 @@ const [isEmpty , setIsEmpty] = useState(true);
     setJazzCash(false);
     setPayAtBranch(false);
     setCashDelivery(false);
+    window.scrollTo(0,0);
    }
   //  const handleJazzCash = () =>{
   //   setJazzCash(!isJazzCash);

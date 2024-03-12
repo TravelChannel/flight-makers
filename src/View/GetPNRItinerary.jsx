@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { getDetailByOrderId } from "../API/BackendAPI/CommissionAPI/GetDetailbyOrderId.js";
 
 
-const Customersupport = () => {
+const GetPNRItinerary = () => {
     const navigate = useNavigate();
 
     const [userPnr ,setUserPnr]  = useState();
@@ -39,8 +39,18 @@ const [pnrData , setPnrData] = useState({});
 const [airSialData ,setAirSialData] = useState({});
 
 const [usersDetail ,setUsersDetails] = useState([]);
-
+const [isMobile , setIsMobile] = useState();
 const { setShowHeader } = useFormData();
+
+useEffect(()=>{
+    const handleResize = ()=>{
+        setIsMobile(window.innerWidth < 667);
+    };
+    window.addEventListener('resize', handleResize);
+    return()=>{
+        window.removeEventListener('resize', handleResize);
+    }
+},[])
 
 // useEffect(() => {
 //     const url = window.location.href;
@@ -406,7 +416,26 @@ const handleNavigate = () =>{
             ):(
                 <div className="container bg-white p-5">
                     <div className="ticket_display">
-                        <div className="d-flex justify-content-between">
+                    {
+                        isMobile ? (
+                            <Fragment>
+                            <div className="d-flex justify-content-between ">
+                                <div  className="hdrLogo ETicket_main" onClick ={handleNavigate} >
+                                    <img
+                                        src={image.default}
+                                        className="imgView"
+                                        alt="FM-LOGO"
+                                    />
+                                    <span id="logotext" className="colorBlue d-block" >
+                                        Travel Channel Int'l (Pvt).Ltd
+                                    </span>
+                                </div>
+                                <QRCode value={`https://fmcrm.azurewebsites.net/ViewItinerary.aspx?PNR=${hashEncripted}=`} size={qrCodeSize} className="QR_Code_tytpo" />
+                         </div>
+                         <h3 className="colorBlue text-center mt-2">E-Reservation</h3>
+                            </Fragment>
+                            ):(
+                            <div className="d-flex justify-content-between">
                             <div id="logobox" className="hdrLogo" onClick ={handleNavigate} >
                                 <img
                                     src={image.default}
@@ -420,6 +449,9 @@ const handleNavigate = () =>{
                             <h1 className="colorBlue">E-Reservation</h1>
                             <QRCode value={`https://fmcrm.azurewebsites.net/ViewItinerary.aspx?PNR=${hashEncripted}=`} size={qrCodeSize} />
                         </div>
+                        )
+                    }
+                        
                         {/* <h6 className="text-danger mt-3">Payment is Pending</h6> */}
                         <div className="d-flex justify-content-between mt-5">
                             <div className="d-flex justify-content-start">
@@ -650,11 +682,20 @@ const handleNavigate = () =>{
                             <p>No terms and conditions found refer to GDS for more details</p>
                             <p className="ticket_book_heading border-top mt-3 pt-3">Travel Channel Int. Pvt. Ltd.</p>
                             <p>3-UGF, Century Tower, Kalma Chowk Main Boulevard, Gulberg-III Lahore, Pakistan</p>
-                            <div className="d-flex justify-content-between mt-2">
-                                <p><span className="span_verify_prior">E-mail: </span>support@faremakers.com</p>
-                                <p><span className="span_verify_prior">UAN: </span> (+92-42) 03111-147-111</p>
-                            </div>
-                            <p className="border-top mt-3 pt-3"><span className="span_verify_prior">www.Faremakers.com </span>Powered By Travel Channel International (Pvt.) Ltd. Pakistan. Which is Nationwide IATA accredited company, Founded in 2003 & successfully operating the business in Lahore, Karachi & Islamabad. Our Goal is Making Travel Simple & Easy through Giving Best Travel Services all over the Pakistan.</p>
+                            {
+                                isMobile ? (
+                                    <div className="mt-2">
+                                        <p><span className="span_verify_prior">E-mail: </span>support@faremakers.com</p>
+                                        <p><span className="span_verify_prior">UAN: </span> (+92-42) 03111-147-111</p>
+                                    </div>
+                                    ) :(
+                                    <div className="d-flex justify-content-between mt-2">
+                                        <p><span className="span_verify_prior">E-mail: </span>support@faremakers.com</p>
+                                        <p><span className="span_verify_prior">UAN: </span> (+92-42) 03111-147-111</p>
+                                    </div>
+                                )
+                            }
+                            <p className="border-top mt-3 pt-3 E_Ticket_disc"><span className="span_verify_prior">www.Faremakers.com </span>Powered By Travel Channel International (Pvt.) Ltd. Pakistan. Which is Nationwide IATA accredited company, Founded in 2003 & successfully operating the business in Lahore, Karachi & Islamabad. Our Goal is Making Travel Simple & Easy through Giving Best Travel Services all over the Pakistan.</p>
                         </div>
                     </div>
 
@@ -668,4 +709,4 @@ const handleNavigate = () =>{
         </div>
     );
 }
-export default Customersupport;
+export default GetPNRItinerary;

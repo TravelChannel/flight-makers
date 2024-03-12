@@ -37,6 +37,10 @@ import AddCommission from '../AdminPanel/AddCommission';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import RateUs from './Pages/RateUs';
 import RatingList from '../AdminPanel/RatingList';
+import MenuIcon from "@mui/icons-material/Menu";
+import { CSSTransition } from "react-transition-group";
+import CloseIcon from "@mui/icons-material/Close";
+
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -47,7 +51,7 @@ const MyUserPanel = ()=>{
 	 const [isSubMenu , setSubMenu] = useState(false);
 	 const [isBlogMenu ,setBlogMenu] = useState(false);
 	 const [selectedSubMenu , setSelectedSubMenu] = useState(1);
-
+	 const [isMobile , setIsMobile] = useState(window.innerWidth < 800);
 // ------------------
 
 const [isLoading , setLoading]=useState(false);
@@ -56,12 +60,16 @@ const [isLoading , setLoading]=useState(false);
  const {userName , setUserName} = useFormData();
  const [checkAdmin ,setCheckAdmin] = useState(false);
  const [partialAdmin ,setPartialAdmin] = useState(false);
+ const [menu, setMenu] = useState(false);
 // ------------------
 	 const navigate = useNavigate();
 	 const handleMenuItemClick = (menuItem) => {
     setSelectedMenuItem(menuItem);
 	setSubMenu(menuItem===5);
 	setBlogMenu(menuItem===7);
+	if (isMobile) {
+        setMenu(false);
+    }
   };
  useEffect(()=>{
     setShowHeader(false);
@@ -133,12 +141,248 @@ useEffect(() => {
     }
 }, [userData]);
 // ------------------------------------------------
+	// Mobile Responsive
+	useEffect(()=>{
+		const handleResize = ()=>{
+			setIsMobile(window.innerWidth < 800);
+		};
+		window.addEventListener('resize', handleResize);
+		return()=>{
+			window.removeEventListener('resize', handleResize);
+		}
+	},[]);
+
+	const displayMenu = () => {
+		setMenu(!menu);
+	  };
+	  const closeMenu = () => {
+		setMenu(false);
+	  };
+// ------------------------------------------------
+
+
 
 
 	return(
 		<div className='container'>
-			<div className='d-flex justify-content-start'> 
-				<div className='left_menu_panel'>
+			<div className={isMobile ? '' : 'd-flex justify-content-start'}>
+			 {
+				isMobile ?( 
+					<Fragment>
+					<div className='bg-white'>
+						<div className='d-flex justify-content-between'>
+							<div className='sidebar-logo-container'>
+											<Link 
+											to={'/'}
+											className="hdrLogo"
+											>
+											<img
+													src={images.default}
+													className="imgView"
+													alt="logo"
+													width = '200px' />
+											</Link>
+							</div>
+							<div className="CustMenuIcon inlineDiv pr-3">
+							<MenuIcon
+							className="mob_menu_color"
+							onClick={displayMenu}
+							/>
+							</div>
+						</div>
+					</div>
+
+					<CSSTransition in={menu} timeout={1000} classNames="fade" unmountOnExit>
+						<div className="disply_mob_menu">
+							<div className="d-flex justify-content-between p-3">
+								<Link to={'/'} className="hdrLogomob ">
+									<img src={images.default} className="imgView" alt="FM-LOGO" width="120px"/>
+									<span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span>
+								</Link>
+								<div className="menu_cross_icon">
+										<CloseIcon onClick={closeMenu} />
+								</div>
+							</div>
+							<ul >
+								<div className='left_menu_content'>
+										<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 1 ? 'user_active_content' : ''}`}onClick={() => handleMenuItemClick(1)}>
+										<DashboardIcon className='menu_content_icon' />
+											<p className='d-flex align-self-center menu_content_typo'>Booking Details</p>
+										</div>
+
+								</div>
+								<div className='left_menu_content'>
+									<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 2 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(2)}>
+									<AirplaneTicketIcon className='menu_content_icon' />
+										{checkAdmin || partialAdmin?(<p className='d-flex align-self-center menu_content_typo'>Admin Profile</p>):(<p className='d-flex align-self-center menu_content_typo'>User Profile</p>)}
+									</div>
+
+                 				</div>
+								 {
+										checkAdmin === true ?
+										(
+									<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 3 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(3)}>
+											<PeopleOutlineIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Users List</p>
+											</div>
+
+									</div>
+									):('')
+									}
+									<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 4 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(4)}>
+											<ReceiptIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>
+												{/* Payment Details  */}
+												Purchase Bookings
+												</p>
+											</div>
+
+									</div>
+									<div className='left_menu_content'>
+											<div className='left_menu_content'>
+													{checkAdmin || partialAdmin ? (
+														<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+														<WalletIcon className='menu_content_icon' />
+														<p className='d-flex align-self-center menu_content_typo' onClick={displaySubMenu} >Customer Support</p>
+														</div>
+													) : (
+														<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
+														<WalletIcon className='menu_content_icon' />
+														<p className='d-flex align-self-center menu_content_typo'>ReIssue/Refund/ <br/>Cancellation</p>
+														</div>
+													)}
+
+													{isSubMenu  && (checkAdmin || partialAdmin) && (
+														<Fragment>
+															<div className='admin_submenu'>
+																<p
+																className={`admin_reIssue mb-1 ${selectedSubMenu === 1 ? 'user_active_content' : ''}`}
+																onClick={() => handleSubMenuClick(1)}
+																>
+																ReIssue
+																{selectedSubMenu === 1 && <KeyboardDoubleArrowRightIcon />}
+																</p>
+																<p
+																className={`admin_refund mb-1 ${selectedSubMenu === 2 ? 'user_active_content' : ''}`}
+																onClick={() => handleSubMenuClick(2)}
+																>
+																Refund
+																{selectedSubMenu === 2 && <KeyboardDoubleArrowRightIcon />}
+																</p>
+																<p
+																className={`admin_cancle mb-1 ${selectedSubMenu === 3 ? 'user_active_content' : ''}`}
+																onClick={() => handleSubMenuClick(3)}
+																>
+																Cancellation
+																{selectedSubMenu === 3 && <KeyboardDoubleArrowRightIcon />}
+																</p>
+															</div>
+														</Fragment>
+													)}
+											</div>
+
+									</div>
+									{
+										checkAdmin === true || partialAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 6 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(6)}>
+											<RecordVoiceOverIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Promotions </p>
+											</div>
+
+										</div>
+										):('')
+									}
+
+									{/* ---------------- */}
+
+									<div className='left_menu_content'>
+											<div className='left_menu_content'>
+													{checkAdmin || partialAdmin ? (
+														<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 7 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(7)}>
+														<BookOutlinedIcon className='menu_content_icon' />
+														<p className='d-flex align-self-center menu_content_typo' onClick={displayBlogMenu} >Blogs</p>
+														</div>
+													) : ('')}
+
+													{isBlogMenu  && (checkAdmin || partialAdmin) && (
+														<Fragment>
+															<div className='admin_submenu'>
+																<p
+																className={`admin_reIssue mb-1 ${selectedSubMenu === 1 ? 'user_active_content' : ''}`}
+																onClick={() => handleSubMenuClick(1)}
+																>
+																Add Blog
+																{selectedSubMenu === 1 && <KeyboardDoubleArrowRightIcon />}
+																</p>
+																<p
+																className={`admin_refund mb-1 ${selectedSubMenu === 2 ? 'user_active_content' : ''}`}
+																onClick={() => handleSubMenuClick(2)}
+																>
+																Blog Lists
+																{selectedSubMenu === 2 && <KeyboardDoubleArrowRightIcon />}
+																</p>
+															</div>
+														</Fragment>
+													)}
+											</div>
+
+									</div>
+									{/* ------------------------ */}
+									{checkAdmin || partialAdmin ?
+									(
+										<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 8 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(8)}>
+											<ReceiptIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>
+												{/* Payment Details  */}
+												Service Charges
+												</p>
+											</div>
+
+									</div>
+									):('')
+											}
+											{!checkAdmin && !partialAdmin ?
+									(
+										<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(9)}>
+											<StarHalfIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>
+												{/* Payment Details  */}
+												Rate Us
+												</p>
+											</div>
+
+									</div>
+									):(
+										<div className='left_menu_content'>
+										<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 9 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(9)}>
+											<StarHalfIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>
+												{/* Payment Details  */}
+												Customers Rating
+												</p>
+											</div>
+											</div>
+											)
+											}
+									<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+											<LogoutIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Logout</p>
+											</div>
+
+									</div>
+							</ul>
+						</div>
+					</CSSTransition>
+					</Fragment>
+				  ):(
+					<div className='left_menu_panel'>
 				  <div className='sidebar-logo-container'>
 								<Link 
 								to={'/'}
@@ -325,16 +569,9 @@ useEffect(() => {
                   		</div>
 
                   </div>
-
-                  
-                   {/* <div className='sidebar-footer '>
-                      <span className='sidebar-item-label'>Logout</span>
-                        <img 
-                            src={images.default}
-                            alt='icon-logout'
-                            className='sidebar-item-icon'/>
-                    </div> */}
 				 </div>
+				)
+			 }
 
 				 <div className='right_menu_content'>  
 				 		<div>

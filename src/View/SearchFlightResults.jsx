@@ -15,6 +15,7 @@ import TimerModal from '../Components/Searchflight/Comman/TimerRecall';
 const SearchFlightResult = () => {
   const location = useLocation();
   const { searchDataArr } = location.state;
+  // const searchDataArr = location.state?.searchDataArr;
   const {filterDataArr} = useSelector((state) => state.updateFilterReducer);
   const [showTimerModal, setShowTimerModal] = useState(false);
   const [loading, setLoading] = useState(true);

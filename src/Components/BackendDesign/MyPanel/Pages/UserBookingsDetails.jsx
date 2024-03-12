@@ -8,9 +8,13 @@ import { cityNameFunct, formatCompleteDate } from '../../../../helpers/formatdat
 import { dataNotfound } from '../../../../Constant/images';
 import { Link } from 'react-router-dom';
 
+
 const UserBookingsDetails = (props) => {
   const { userData, isLoading,checkAdmin } = props;
   const [search, setSearch] = useState('');
+const [isMobile , setIsMobile] = useState(window.innerWidth < 645);
+const [isSmallMobile , setSmallMobile] = useState(window.innerWidth < 485);
+
   // const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
   const navigate = useNavigate();
 
@@ -45,6 +49,17 @@ const UserBookingsDetails = (props) => {
     .toLowerCase()
     .includes(search.toLowerCase())
   );
+
+  useEffect(()=>{
+		const handleResize = ()=>{
+			setIsMobile(window.innerWidth < 645);
+      setSmallMobile(window.innerWidth < 485);
+		};
+		window.addEventListener('resize', handleResize);
+		return()=>{
+			window.removeEventListener('resize', handleResize);
+		}
+	},[]);
   
 
   return (
@@ -54,36 +69,42 @@ const UserBookingsDetails = (props) => {
       <div className='m-3'>
         <div className='dashboard-content-header'>
           <h2>Booking Details</h2>
-          <div className='dashboard-content-search'>
-            <input
-              type='text'
-              value={search}
-              placeholder='Search..'
-              className='dashboard-content-input'
-              onChange={(e) => __handleSearch(e)}
-            />
-          </div>
+          {
+            isSmallMobile ? ('') :(  
+            <div className='dashboard-content-search'>
+              <input
+                type='text'
+                value={search}
+                placeholder='Search..'
+                className='dashboard-content-input'
+                onChange={(e) => __handleSearch(e)}
+              />
+            </div>
+            )
+          }
         </div>
         <div className='user_table_details'>
           {filteredUserPayload?.length ? (
-            <table className='table table-bordered table_custom'>
+            <table className='table table-bordered  table_custom'>
               <thead className='thead_typo'>
                 <tr>
-                  <th>Serail No</th>
+                { isMobile ? '':<th>Serail No</th>}
                   <th>PNR ID</th>
                   {checkAdmin ? <th>PNR No</th>:''}
                   {checkAdmin ?  <th>User ID</th>:''}
                   {/* <th>User ID</th> */}
                   <th>Flight Segment</th>
-                  <th>CreatedAt</th>
-                  <th>Status</th>
+                  {isMobile ? '':<th>CreatedAt</th>}
+                  {
+                    isSmallMobile ? '' :<th>Status</th>
+                  }
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className='thead_typo'>
                 {filteredUserPayload.map((items, index) => (
                   <tr key={index}>
-                  <td>{`${index+1}`}</td>
+                   {isMobile ? '':<td>{`${index+1}`}</td>}
                     <td className="">{items.id}</td>
                     {checkAdmin ? <td className="">{items.pnr}</td>:''}
                     {checkAdmin ? <td className="">{items.userId}</td>:''}
@@ -101,8 +122,8 @@ const UserBookingsDetails = (props) => {
                         </Fragment>
                       ))}
                     </td>
-                    <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                    <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
+                    {isMobile ? '' :  <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>}
+                    {isSmallMobile ? '' :<td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>}
                     <td>
                     {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
 

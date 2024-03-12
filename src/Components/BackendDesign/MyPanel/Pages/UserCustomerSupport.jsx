@@ -148,42 +148,56 @@ const UserCustomerSupport = (props) => {
       {
         userPayLoad?.length ? (
           <div className='user_table_details'>
-              <table className='table table-bordered table_custom'>
-                <thead className='thead_typo'>
-                  <tr>
-                    <th>PNR ID</th>
-                    {/* <th>User ID</th> */}
-                    <th>Flight Segment</th>
-                    <th>CreatedAt</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                    <th>Details</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userPayLoad?.map((items, index) => (
-                    <tr key={index}>
-                      <td className=''>{items.id}</td>
-                      {/* <td className=''>{items.userId}</td> */}
-                      <td>
-                        {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
-                          <Fragment key={itmsIndex}>
-                            <div className='d-flex justify-content-center'>
-                              <p className='table_flight_font'>{cityNameFunct[itms.departureLocation]}</p>
-                              <span className='airport_spacing'>
-                                {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
-                              </span>
-                              <p className='table_flight_font'>{cityNameFunct[itms.arrivalLocation]}</p>
-                            </div>
-                          </Fragment>
-                        ))}
-                      </td>
-                      <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
-                      <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
-                      <td>
-                        <div>
-                        {!replacedButtons[items.id] ? (
-                            <button
+           <div className="table-responsive">
+           <table className='table table-bordered table_custom'>
+                  <thead className='thead_typo'>
+                    <tr>
+                      <th>PNR ID</th>
+                      {/* <th>User ID</th> */}
+                      <th>Flight Segment</th>
+                      <th>CreatedAt</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {userPayLoad?.map((items, index) => (
+                      <tr key={index}>
+                        <td className=''>{items.id}</td>
+                        {/* <td className=''>{items.userId}</td> */}
+                        <td>
+                          {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
+                            <Fragment key={itmsIndex}>
+                              <div className='d-flex justify-content-center'>
+                                <p className='table_flight_font'>{cityNameFunct[itms.departureLocation]}</p>
+                                <span className='airport_spacing'>
+                                  {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
+                                </span>
+                                <p className='table_flight_font'>{cityNameFunct[itms.arrivalLocation]}</p>
+                              </div>
+                            </Fragment>
+                          ))}
+                        </td>
+                        <td className='align-self-center'>{ArrangeDateFormat(items.createdAt)}</td>
+                        <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
+                        <td>
+                          <div>
+                          {!replacedButtons[items.id] ? (
+                              <button
+                                className='btn btn-primary buttons_typo user_cancelation_button'
+                                onClick={() => {
+                                  openDialogBox(items.id);
+                                  updateDialogContent('cancel', items.id);
+                                }}
+                                disabled={disabledButtons[items.id]}
+                              >
+                                Cancel
+                              </button>
+                            ) : (
+                              <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>
+                            )}
+                            {/* <button
                               className='btn btn-primary buttons_typo user_cancelation_button'
                               onClick={() => {
                                 openDialogBox(items.id);
@@ -192,67 +206,56 @@ const UserCustomerSupport = (props) => {
                               disabled={disabledButtons[items.id]}
                             >
                               Cancel
-                            </button>
-                          ) : (
-                            <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>
-                          )}
-                          {/* <button
-                            className='btn btn-primary buttons_typo user_cancelation_button'
-                            onClick={() => {
-                              openDialogBox(items.id);
-                              updateDialogContent('cancel', items.id);
-                            }}
-                            disabled={disabledButtons[items.id]}
-                          >
-                            Cancel
-                          </button> */}
-                        </div>
-                        {
-                          items.isPaid ? (
-                            <div>
-                            <div className='mt-1'>
-                                <button
-                                  className='btn btn-primary buttons_typo user_cancelation_button'
-                                  onClick={() => {
-                                    openDialogBox(items.id);
-                                    updateDialogContent('refund', items.id);
-                                  }}
-                                  disabled={disabledButtons[items.id]}
-                                >
-                                  Refund
-                                </button>
-                              </div>
+                            </button> */}
+                          </div>
+                          {
+                            items.isPaid ? (
+                              <div>
                               <div className='mt-1'>
-                                <button
-                                  className='btn btn-primary buttons_typo user_cancelation_button'
-                                  onClick={() => {
-                                    openDialogBox(items.id);
-                                    updateDialogContent('reissue', items.id);
-                                  }}
-                                  disabled={disabledButtons[items.id]}
-                                >
-                                  ReIssue
-                                </button>
+                                  <button
+                                    className='btn btn-primary buttons_typo user_cancelation_button'
+                                    onClick={() => {
+                                      openDialogBox(items.id);
+                                      updateDialogContent('refund', items.id);
+                                    }}
+                                    disabled={disabledButtons[items.id]}
+                                  >
+                                    Refund
+                                  </button>
+                                </div>
+                                <div className='mt-1'>
+                                  <button
+                                    className='btn btn-primary buttons_typo user_cancelation_button'
+                                    onClick={() => {
+                                      openDialogBox(items.id);
+                                      updateDialogContent('reissue', items.id);
+                                    }}
+                                    disabled={disabledButtons[items.id]}
+                                  >
+                                    ReIssue
+                                  </button>
+                                </div>
                               </div>
-                            </div>
-                          ):('')
-                        }
-                      </td>
-                      <td>
-                      <button
-                        className='btn btn-primary buttons_typo'
-                        onClick={() => {
-                          handleUserId(items.id);
-                          window.open('/userDetails', '_blank');
-                        }}
-                      >
-                        View
-                      </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                            ):('')
+                          }
+                        </td>
+                        <td>
+                        <button
+                          className='btn btn-primary buttons_typo'
+                          onClick={() => {
+                            handleUserId(items.id);
+                            window.open('/userDetails', '_blank');
+                          }}
+                        >
+                          View
+                        </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+           </div>
+               
               <Dialog
                 open={open}
                 onClose={handleClose}

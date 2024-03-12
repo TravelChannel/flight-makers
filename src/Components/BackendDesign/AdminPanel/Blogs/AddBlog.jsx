@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
+import { UpdateBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/UpdateBlog";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from "react-router";
@@ -135,6 +136,23 @@ const onSubmit = async () => {
     }
 }
 
+// ----------------------------
+
+const handleUpdatedBlog = async(id) =>{
+try{
+  const responce = await UpdateBlogAPI(id);
+  console.log("responce from updatedBlog-APi",responce);
+  toast.success('Blog Updated Successfully!',
+  {autoClose: 2000 });
+  
+}catch(error){
+  console.error("error while updating blog",error);
+  toast.success(`Error! ${error}`,
+  {autoClose: 2000 });
+
+}
+}
+
 
   return (
     <div className="container bg-white ">
@@ -233,7 +251,7 @@ const onSubmit = async () => {
           <div className="d-flex justify-content-center m-3">
                 <button
                   className="btn btn-primary addBlog_btn "
-                  onClick={onSubmit}
+                  onClick={handleUpdatedBlog}
                 >
                   Update Blog
                 </button>

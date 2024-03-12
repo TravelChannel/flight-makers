@@ -304,7 +304,7 @@ const UserCompleteDetail = () => {
         <div className='d-flex justify-content-start flex-wrap w-100 '>
         <div className='w_25_userpanel'></div>
         {userDetail?.map((detail, detailIndex) => (
-            <div className='w-25 contact_card_main' key={detailIndex}>
+            <div className=' contact_card_main' key={detailIndex}>
                     <div className="profile-card">
                         <header>
                             <h3>{`${detail.firstName} ${detail.lastName} `}</h3>

@@ -68,69 +68,71 @@ const VerifiedBookings = (props) => {
         </div>
         <div className='user_table_details'> 
         {filteredUserPayload?.length ? (
-        <table className='table table-bordered table_custom'>
-              <thead className='thead_typo'>
-                <tr>
-                  <th>Serial No</th>
-                  <th>PNR ID</th>
-                  {
-                    checkAdmin ? <th>PNR No</th>:''
-                  }
-                  {
-                    checkAdmin ? <th>User ID</th>:''
-                  }
-                  {/* <th>User ID</th> */}
-                  <th>Flight Segment</th>
-                  <th>CreatedAt</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredUserPayload.map((items, index) => (
-                  <tr key={index}>
-                    <td>{`${index+1}`}</td>
-                    <td className="">{items.id}</td>
-                    {
-                    checkAdmin ? <td className="">{items.pnr}</td>:''
-                    }
-                    {
-                    checkAdmin ? <td className="">{items.userId}</td>:''
-                    }
-                    {/* <td className="">{items.userId}</td> */}
-                    <td>
-                      {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
-                        <Fragment key={itmsIndex}>
-                          <div className='d-flex justify-content-center'>
-                            <p className="table_flight_font">{cityNameFunct[itms.departureLocation]}</p>
-                            <span className="airport_spacing">
-                              {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
-                            </span>
-                            <p className="table_flight_font">{cityNameFunct[itms.arrivalLocation]}</p>
-                          </div>
-                        </Fragment>
-                      ))}
-                    </td>
-                    <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
-                    <td>{items.isPaid ? 'Paid':'Unpaid'}</td>
-                    <td>
-                    {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
+          <div className="table-responsive">
+            <table className='table table-bordered table_custom'>
+                  <thead className='thead_typo'>
+                    <tr>
+                      <th>Serial No</th>
+                      <th>PNR ID</th>
+                      {
+                        checkAdmin ? <th>PNR No</th>:''
+                      }
+                      {
+                        checkAdmin ? <th>User ID</th>:''
+                      }
+                      {/* <th>User ID</th> */}
+                      <th>Flight Segment</th>
+                      <th>CreatedAt</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredUserPayload.map((items, index) => (
+                      <tr key={index}>
+                        <td>{`${index+1}`}</td>
+                        <td className="">{items.id}</td>
+                        {
+                        checkAdmin ? <td className="">{items.pnr}</td>:''
+                        }
+                        {
+                        checkAdmin ? <td className="">{items.userId}</td>:''
+                        }
+                        {/* <td className="">{items.userId}</td> */}
+                        <td>
+                          {items?.flightDetails?.groupDescription?.map((itms, itmsIndex) => (
+                            <Fragment key={itmsIndex}>
+                              <div className='d-flex justify-content-center'>
+                                <p className="table_flight_font">{cityNameFunct[itms.departureLocation]}</p>
+                                <span className="airport_spacing">
+                                  {itmsIndex === 0 ? <RedoOutlinedIcon /> : <UndoIcon />}
+                                </span>
+                                <p className="table_flight_font">{cityNameFunct[itms.arrivalLocation]}</p>
+                              </div>
+                            </Fragment>
+                          ))}
+                        </td>
+                        <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
+                        <td>{items.isPaid ? 'Paid':'Unpaid'}</td>
+                        <td>
+                        {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
 
-                    <button
-                        className='btn btn-primary buttons_typo'
-                        onClick={() => {
-                          handleUserId(items.id);
-                          window.open('/userDetails', '_blank');
-                        }}
-                      >
-                        View
-                      </button>
-                    {/* </button> */}
-                  </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                        <button
+                            className='btn btn-primary buttons_typo'
+                            onClick={() => {
+                              handleUserId(items.id);
+                              window.open('/userDetails', '_blank');
+                            }}
+                          >
+                            View
+                          </button>
+                        {/* </button> */}
+                      </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+          </div>
         ):(
             <div className='text-center py-5 bg-white'>
               <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />

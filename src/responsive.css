@@ -894,3 +894,45 @@
     right: -197.3%;
     top: 6.8%;
 }}
+
+@media only screen and (max-width:400px){
+  .ETicket_main img  {  
+      width: 100%;
+      max-width: 145px
+  }
+  .QR_Code_tytpo{
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
+
+@media only screen and (max-width:800px){
+  .sidebar-logo-container {
+    /* display: 'flex';
+    align-items: center; */
+    margin-bottom: 0px;
+}
+.sidebar-logo-container img {
+    /* width: 80%;
+    padding: 6px 22px; */
+    margin-left: 15px;
+}
+}
+@media only screen and (max-width:645px){
+  .dashboard-content-header h2 {
+    font-size: x-large !important;
+}
+.thead_typo{
+  font-size:small;
+}
+.table_flight_font{
+  font-size:13px;
+}
+.buttons_typo {
+  margin-right: 5px;
+  padding: 5px 22px;
+}
+.dashbord-header-btn {
+  padding: 0.6em;}
+}
+

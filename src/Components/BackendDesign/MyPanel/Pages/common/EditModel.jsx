@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, } from 'reactstrap';
 import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
@@ -15,25 +15,35 @@ import { useFormData } from '../../../../../Context/FormDataContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const EditModel = (props) => {
- const {isOpen , setIsOpen ,setProfileData} = props;
+ const {isOpen , setIsOpen ,setProfileData ,ProfileData} = props;
+
+ console.log("profileDataUsers",ProfileData);
 
 //  const [updatedData , setUpdatedData] = useState('');
 //  const [selectedDate, setSelectedDate] = useState(null);
 
- const [firstName, setFirstName] = useState('');
- const [lastName, setLastName] = useState('');
- const [cnic, setCnic] = useState('');
- const [passportNo, setPassportNo] = useState('');
- const [dob, setDob] = useState('');
+ const [firstName, setFirstName] = useState(ProfileData.firstName);
+ const [lastName, setLastName] = useState(ProfileData.lastName);
+ const [cnic, setCnic] = useState(ProfileData.cnic);
+ const [passportNo, setPassportNo] = useState(ProfileData.passportNo);
+ const [dob, setDob] = useState(ProfileData.dateOfBirth);
 const [selectedDate, setSelectedDate] = useState(null);
- const [gender, setGender] = useState('');
+ const [gender, setGender] = useState(ProfileData.gender);
  const [startDate, setStartDate] = useState(null);
+
 
  const {userName ,setUserName} = useFormData();
 
  const handleStartDateChange = (date) => {
   setStartDate(date);
 };
+
+// useEffect(() => {
+//   if (ProfileData.dob) {
+//     setStartDate(new Date(ProfileData.dateOfBirth));
+//   }
+// }, [ProfileData.dob]);
+
 
 //  console.log("YOYOYOYOOO",userName);
   const toggleModal = () => {
@@ -177,6 +187,7 @@ const [selectedDate, setSelectedDate] = useState(null);
                   placeholder="Date of Birth"
                   className='userProfileCal'
                   value={startDate}
+                  // selected={selectedDate}
                   onChange={handleStartDateChange}
                   // disabledDate={disabledStartDate}
                 />
