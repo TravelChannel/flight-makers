@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const About = () => {
   const navigate = useNavigate();
   const handleNavigation = ()=>{
-    navigate('/contactus');
+    navigate('/contact-us');
   }
   // Test Comrmit
      // Test Commit2

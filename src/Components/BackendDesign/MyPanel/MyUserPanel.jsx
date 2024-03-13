@@ -56,7 +56,7 @@ const MyUserPanel = ()=>{
 
 const [isLoading , setLoading]=useState(false);
  const [backLoading , setBackLoading] =useState(false);
- const [userData ,setUser] = useState(null);
+ const [userData ,setUser] = useState();
  const {userName , setUserName} = useFormData();
  const [checkAdmin ,setCheckAdmin] = useState(false);
  const [partialAdmin ,setPartialAdmin] = useState(false);

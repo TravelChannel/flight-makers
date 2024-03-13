@@ -1,7 +1,7 @@
 const SEOAirlinesData = [
     {
       id: 1,
-      flightname: "Emirates-Airline",
+      flightname: "emirates-airline-flights",
       flightCode:'EK',
       mainHeading:'Top Destinations of Emirates',
       heading1:'Emirates Top Picks',
@@ -175,7 +175,7 @@ const SEOAirlinesData = [
       },
       {
         id: 6,
-        flightname: "Fly-with-FlyDubai",
+        flightname: "fly-dubai-flights",
         flightCode:'FZ',
         mainHeading:'Top Destinations of FlyDubai',
         heading1:'FlyDubai Top Picks',

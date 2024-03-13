@@ -6758,14 +6758,14 @@ margin:10px 12px;
 .admin_reIssue:hover , .admin_refund:hover, .admin_cancle:hover{
   background-color: #004B77;
 }
-.signup_ph_input{
+/* .signup_ph_input{
   margin-left:6rem;
-}
+} */
 .react-tel-input .form-control {
   position: relative;
   font-size: 14px;
   letter-spacing: .01rem;
-  margin-top: 0 !important;
+  margin-top: 0 auto !important;
   margin-bottom: 0 !important;
   padding-left: 48px;
   margin-left: 0;
@@ -7336,6 +7336,7 @@ margin-top:10px;
   text-align: justify;
 }
 .footerLink_internationl span {
+  cursor:pointer;
   color:#337ab7 !important;
   margin-right: 15px;
 }
@@ -7352,4 +7353,19 @@ margin-top:10px;
 }
 .table-responsive {
   overflow-x: auto;
+}
+/* .react-tel-input {
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  position: relative;
+  width:100%;
+} */
+
+.react-tel-input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  position: relative;
+  width: auto !important;
+  margin: 0 auto !important;
 }

@@ -63,7 +63,7 @@ const PrivacyPolicyCheck = (props) => {
         try {
           // setPNRLoading(true);
           const paymentToken = await requestGetpaymentToken(paymentCode);
-          console.log('paymentTokenpaymentToken',paymentToken);
+          console.log('paymentTokenpaymentToken', paymentToken.createOrder);
           // console.log(paymentToken.token);
           const createOrder = paymentToken.createOrder;
           const OrderId = createOrder.id;
@@ -71,6 +71,7 @@ const PrivacyPolicyCheck = (props) => {
 
           console.log("paymentTokenResult",getPaymentToken1.token);
           console.log("you are searching for me",createOrder);
+
           const pnrNum = await generatePnrNum(OrderId);
 
          
@@ -146,25 +147,39 @@ const PrivacyPolicyCheck = (props) => {
               console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
       
             // console.log("hellowrold111111111");
-            const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
-           if(respServerPnrBooking.data.status === 'SUCCESS'){
-            // alert("record saved Successfully");
-            console.log("respServerPnrBooking",respServerPnrBooking);
+          //   const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
+          //  if(respServerPnrBooking.data.status === 'SUCCESS'){
+          //   console.log("respServerPnrBooking",respServerPnrBooking);
       
-            localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
-            // alert('Record Saved SuccessFully');
-            toast.success("PNR Created SuccessFully " ,
-            {autoClose: 2000 });
-           }else{
-            console.error("error while Sending Data to back");
-            alert('Fill all the fields Correctly');
-            navigate("/");
-            window.scrollTo(0,0);
-           }
+          //   localStorage.setItem("PNRNumber",JSON.stringify(getPNRNumber));
+          //   toast.success("PNR Created SuccessFully " ,
+          //   {autoClose: 2000 });
+          //  }else{
+          //   console.error("error while Sending Data to back");
+          //   alert('Fill all the fields Correctly');
+          //   navigate("/");
+          //   window.scrollTo(0,0);
+          //  }
+                  try {
+                    const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
+                    if (respServerPnrBooking.data.status === 'SUCCESS') {
+                      console.log("respServerPnrBooking", respServerPnrBooking);
+                      localStorage.setItem("PNRNumber", JSON.stringify(getPNRNumber));
+                      toast.success("PNR Created Successfully", { autoClose: 2000 });
+                    } else {
+                      throw new Error("Error while sending data to backend");
+                    }
+                  } catch (error) {
+                    console.error("Error:", error.message);
+                    alert('error',error);
+                    // navigate("/");
+                    window.scrollTo(0, 0);
+                  }
             }
       
           } finally {
             setPNRLoading(false);
+            
           }
           return getPNRNumber;
       };

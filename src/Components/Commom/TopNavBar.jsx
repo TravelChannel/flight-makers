@@ -170,10 +170,10 @@ const TopNavBar = () => {
             </Link>
           </div>
           <div>
-            <Link className="pull-right" to='/AboutUs'>About Us</Link>
+            <Link className="pull-right" to='/about-us'>About Us</Link>
           </div>
           <div>
-            <Link className="pull-right" to="ContactUs">Contact Us</Link>
+            <Link className="pull-right" to="/contact-us">Contact Us</Link>
           </div>
           <div>
             <Link className="pull-right" to='/blogCollections' target='_blank'>Blogs</Link>

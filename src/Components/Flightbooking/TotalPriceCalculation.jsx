@@ -33,8 +33,8 @@ const TotalPriceCalculation = () => {
         return serviecFees.toFixed(0);
     };
 
-    // const taxfees = calculateTax(destination, airline, classType);
-    const taxfees = serviceCharges
+    const taxfees = calculateTax(destination, airline, classType);
+    // const taxfees = serviceCharges
     const calculatedServiceFees = servicefees(taxfees);
     const totalTicketPrice = totalAmount.toFixed(0);
 

@@ -166,8 +166,8 @@ const Header = () => {
                         </div>
                     </div>
                     <ul >
-                      <li><a href="/aboutus" className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</a></li>
-                      <li><a href="/contactus" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
+                      <li><a href="/about-us" className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</a></li>
+                      <li><a href="/contact-us" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
                       <li><a href="/customer-support" className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/> Support</a></li>
                       <li><a href="/banks" className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</a></li>
                       {

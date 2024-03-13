@@ -17,6 +17,7 @@ const SignUp = () => {
     const [countryCode, setCountryCode] = useState('');
      const [isOTP ,setOTP] = useState(false);
      const [fromSingUp , setFromSignUp] = useState(false);
+
     // const navigate = useNavigate();
     const handlePhoneNumberChange = (value, country) => {
         const dialCode = country.dialCode;
@@ -75,12 +76,12 @@ const SignUp = () => {
                  <div className="main_login_card">
                       <input className='signupinput' type="checkbox" id="chk" aria-hidden="true" />
                       {
-                          isOTP ?('hello'):(
+                          isOTP ?(''):(
                               <div className="signup">
                           <form>
                               <label className='label_signup' for="chk" aria-hidden="true">Sign up</label>
-                              <input className='signupinput' type="text" name="txt" placeholder="User name" />
-                              <div className='signup_ph_input' >
+                              {/* <input className='signupinput' type="text" name="txt" placeholder="User name" /> */}
+                              <div className='signup_ph_input d-flex justify-content-center' >
                               <PhoneInput
                                       country={'pk'}
                                       value={`+${countryCode} ${phoneNumber}`} 

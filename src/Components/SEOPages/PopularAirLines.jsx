@@ -31,12 +31,12 @@ import VirginFlights from './popAirlinesComponents/VirginFlights';
 const airlineComponents = {
   'air-arabia-flights':AirArabiaFlights,
   'air-china-flights': AirChinaFlights,
-  'Emirates-Airline' : EmiratesFlights,
+  'emirates-airline-flights' : EmiratesFlights,
   'qatar-airways-flights' :QatarFlights,
   'turkish-airlines-flights' :TurkishFlights,
   'pakistan-international-airlines-flights' :PiaFlights,
   'oman-air-flights' :OmanFlights,
-  'Fly-with-FlyDubai' :FlyDubaiFlights,
+  'fly-dubai-flights' :FlyDubaiFlights,
   'etihad-airways-flights' :EtihadFlights,
   'shaheen-air-flights' :ShaheenFlights,
   'airblue-flights' :AirBlueLines,
@@ -57,7 +57,8 @@ const PopularAirLines = () => {
   // const [SEOAirlinesData ,setSEOAirLinesData] = useState([]);
 
   const { airlineName } = useParams();
-  console.log("airlineNameFinal",airlineName);
+  const formattedAirlineName = airlineName.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+  // console.log("airlineNameFinal",airline);
   const navigate = useNavigate();
   const location = useLocation();
   const flightID = location.state && location.state.id;
@@ -99,7 +100,8 @@ const PopularAirLines = () => {
       <div className='p-2'>
         <h3 className='indexing_heading text-center'>
           <FlightIcon className='seo_flightIcon' />
-          {`${flightData?.flightname}`}
+          {/* {`${flightData?.flightname}`} */}
+          {formattedAirlineName}
         </h3>
 
         <div className='Seo_SearchEngine'>

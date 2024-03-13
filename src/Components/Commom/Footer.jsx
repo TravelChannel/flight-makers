@@ -20,7 +20,7 @@ const navigate = useNavigate();
 //   };
 const handleAirLinesData = (id, airlineName) => {
   
-    navigate(`/airlines/${airlineName}`, { state: { id, airlineName } });
+    navigate(`/${airlineName}`, { state: { id, airlineName } });
     window.scrollTo(0,0);
 
   };
@@ -71,12 +71,12 @@ const handleAirLinesData = (id, airlineName) => {
               <span className="footer_destination">Popular Airlines </span>
                 <div className="row"> 
                         <div className="col-md-12 footerLink_internationl">
-                            <span  onClick={() => handleAirLinesData(1, 'Emirates-Airline')}>Emirates Airline</span>
+                            <span  onClick={() => handleAirLinesData(1, 'emirates-airline-flights')}>Emirates Airline</span>
                             <span  onClick={() => handleAirLinesData(2, 'qatar-airways-flights ')}>Qatar Airways</span>
                             <span  onClick={() => handleAirLinesData(3, 'turkish-airlines-flights')}>Turkish Airlines</span>
                             <span  onClick={() => handleAirLinesData(4, 'pakistan-international-airlines-flights')}>PIA</span>
                             <span  onClick={() => handleAirLinesData(5, 'oman-air-flights')}>Oman Air</span>
-                            <span  onClick={() => handleAirLinesData(6, 'Fly-with-FlyDubai')}>Fly Dubai</span>
+                            <span  onClick={() => handleAirLinesData(6, 'fly-dubai-flights')}>Fly Dubai</span>
                             <span  onClick={() => handleAirLinesData(7, 'etihad-airways-flights')}>Etihad Airways</span>
                             <span  onClick={() => handleAirLinesData(8, 'shaheen-air-flights')}>Shaheen Air</span>
                             <span  onClick={() => handleAirLinesData(9, 'airblue-flights')}>Air Blue</span>
@@ -95,139 +95,138 @@ const handleAirLinesData = (id, airlineName) => {
                     </div>
               <span className="footer_destination">International Destinations</span>
                 <div className="row mb-3"> 
-                <ul className="col-md-12   footerLink_internationl">
-                    <span onClick={() => { window.scrollTo(0, 0); }} ><Link  to="/internationalAirlines/Lahore-London">Lahore - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Dubai">Lahore - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Toronto">Lahore - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-NewYork">Lahore - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Boston">Lahore - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Perth">Lahore - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Manchester">Lahore - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Melbourne">Lahore - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Atlanta">Lahore - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Lahore-Doha">Lahore - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-London">Peshawar - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Dubai">Peshawar - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Toronto">Peshawar - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-New York">Peshawar - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Boston">Peshawar - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Perth">Peshawar - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Manchester">Peshawar - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Melbourne">Peshawar - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Atlanta">Peshawar - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Los Angeles">Faisalabad - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Jeddah">Faisalabad - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Istanbul">Faisalabad - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-London">Karachi - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Dubai">Karachi - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Toronto">Karachi - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-NewYork">Karachi - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Boston">Karachi - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Perth">Karachi - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Manchester">Karachi - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Melbourne">Karachi - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Atlanta">Karachi - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Doha">Karachi - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-LosAngeles">Karachi - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Jeddah">Karachi - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Karachi-Istanbul">Karachi - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Doha">Peshawar - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-LosAngeles">Peshawar - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Jeddah">Peshawar - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Peshawar-Istanbul">Peshawar - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-London">Quetta - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Dubai">Quetta - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Toronto">Quetta - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-NewYork">Quetta - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Boston">Quetta - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-London">Islamabad - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Dubai">Islamabad - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Toronto">Islamabad - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-NewYork">Islamabad - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Boston">Islamabad - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Perth">Islamabad - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Manchester">Islamabad - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Melbourne">Islamabad - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Atlanta">Islamabad - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Doha">Islamabad - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-LosAngeles">Islamabad - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Jeddah">Islamabad - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Islamabad-Istanbul">Islamabad - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Perth">Quetta - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Manchester">Quetta - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Melbourne">Quetta - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Atlanta">Quetta - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Doha">Quetta - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-LosAngeles">Quetta - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Jeddah">Quetta - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Quetta-Istanbul">Quetta - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-London">Faisalabad - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-London">Multan - London</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Dubai">Multan - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Toronto">Multan - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-NewYork">Multan - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Boston">Multan - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Perth">Multan - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Manchester">Multan - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Melbourne">Multan - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Atlanta">Multan - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Doha">Multan - Doha</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-LosAngeles">Multan - Los Angeles</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Jeddah">Multan - Jeddah</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Multan-Istanbul">Multan - Istanbul</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Dubai">Faisalabad - Dubai</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Toronto">Faisalabad - Toronto</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-NewYork">Faisalabad - New York</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Boston">Faisalabad - Boston</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Perth">Faisalabad - Perth</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Manchester">Faisalabad - Manchester</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Melbourne">Faisalabad - Melbourne</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Atlanta">Faisalabad - Atlanta</Link></span>
-                    <span onClick={() => { window.scrollTo(0, 0); }}><Link  to="/internationalAirlines/Faisalabad-Doha">Faisalabad - Doha</Link></span>
-                    
+                <ul className="col-md-12 footerLink_internationl">
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-london">Lahore - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-dubai">Lahore - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-toronto">Lahore - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-new-york">Lahore - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-boston">Lahore - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-perth">Lahore - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-manchester">Lahore - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-melbourne">Lahore - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-atlanta">Lahore - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-doha">Lahore - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-london">Peshawar - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-dubai">Peshawar - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-toronto">Peshawar - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-new-york">Peshawar - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-boston">Peshawar - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-perth">Peshawar - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-manchester">Peshawar - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-melbourne">Peshawar - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-atlanta">Peshawar - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-los-angeles">Faisalabad - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-jeddah">Faisalabad - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-istanbul">Faisalabad - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-london">Karachi - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-dubai">Karachi - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-toronto">Karachi - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-new-york">Karachi - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-boston">Karachi - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-perth">Karachi - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-manchester">Karachi - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-melbourne">Karachi - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-atlanta">Karachi - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-doha">Karachi - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-los-angeles">Karachi - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-jeddah">Karachi - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-karachi-to-istanbul">Karachi - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-doha">Peshawar - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-los-angeles">Peshawar - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-jeddah">Peshawar - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-peshawar-to-istanbul">Peshawar - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-london">Quetta - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-dubai">Quetta - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-toronto">Quetta - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-new-york">Quetta - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-boston">Quetta - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-london">Islamabad - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-dubai">Islamabad - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-toronto">Islamabad - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-new-york">Islamabad - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-boston">Islamabad - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-perth">Islamabad - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-manchester">Islamabad - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-melbourne">Islamabad - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-atlanta">Islamabad - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-doha">Islamabad - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-los-angeles">Islamabad - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-jeddah">Islamabad - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-islamabad-to-istanbul">Islamabad - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-perth">Quetta - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-manchester">Quetta - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-melbourne">Quetta - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-atlanta">Quetta - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-doha">Quetta - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-los-angeles">Quetta - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-jeddah">Quetta - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-quetta-to-istanbul">Quetta - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-london">Faisalabad - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-london">Multan - London</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-dubai">Multan - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-toronto">Multan - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-new-york">Multan - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-boston">Multan - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-perth">Multan - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-manchester">Multan - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-melbourne">Multan - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-atlanta">Multan - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-doha">Multan - Doha</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-los-angeles">Multan - Los Angeles</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-jeddah">Multan - Jeddah</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-multan-to-istanbul">Multan - Istanbul</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-dubai">Faisalabad - Dubai</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-toronto">Faisalabad - Toronto</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-new-york">Faisalabad - New York</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-boston">Faisalabad - Boston</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-perth">Faisalabad - Perth</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-manchester">Faisalabad - Manchester</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-melbourne">Faisalabad - Melbourne</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-atlanta">Faisalabad - Atlanta</Link></span>
+                    <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-faisalabad-to-doha">Faisalabad - Doha</Link></span>
                 </ul>
 
                 </div>
               <span className="footer_destination">Domestic Destinations</span>
               <div className="row mb-3"> 
-              <ul className=" col-md-12 footerLink_internationl">
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Karachi">Lahore - Karachi</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Islamabad">Lahore - Islamabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Peshawar">Lahore - Peshawar</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Faisalabad">Lahore - Faisalabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Quetta">Lahore - Quetta</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Lahore-Multan">Lahore - Multan</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Karachi">Faisalabad - Karachi</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Islamabad">Faisalabad - Islamabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Peshawar">Faisalabad - Peshawar</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Lahore">Karachi - Lahore</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Islamabad">Karachi - Islamabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Peshawar">Karachi - Peshawar</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Faisalabad">Karachi - Faisalabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Quetta">Karachi - Quetta</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Karachi-Multan">Karachi - Multan</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Lahore">Faisalabad - Lahore</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Quetta">Faisalabad - Quetta</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Faisalabad-Multan">Faisalabad - Multan</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Karachi">Islamabad - Karachi</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Lahore">Islamabad - Lahore</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Peshawar">Islamabad - Peshawar</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Faisalabad">Islamabad - Faisalabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Quetta">Islamabad - Quetta</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Islamabad-Multan">Islamabad - Multan</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Karachi">Quetta - Karachi</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Islamabad">Quetta - Islamabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Peshawar">Quetta - Peshawar</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Karachi">Peshawar - Karachi</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Islamabad">Peshawar - Islamabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Lahore">Peshawar - Lahore</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Faisalabad">Peshawar - Faisalabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Quetta">Peshawar - Quetta</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Peshawar-Multan">Peshawar - Multan</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Faisalabad">Quetta - Faisalabad</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Lahore">Quetta - Lahore</Link></span>
-                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/domesticAirlines/Quetta-Multan">Quetta - Multan</Link></span>
-              </ul>
+              <ul className="col-md-12 footerLink_internationl">
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Karachi">Lahore - Karachi</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Islamabad">Lahore - Islamabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Peshawar">Lahore - Peshawar</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Faisalabad">Lahore - Faisalabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Quetta">Lahore - Quetta</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Multan">Lahore - Multan</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Karachi">Faisalabad - Karachi</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Islamabad">Faisalabad - Islamabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Peshawar">Faisalabad - Peshawar</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Lahore">Karachi - Lahore</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Islamabad">Karachi - Islamabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Peshawar">Karachi - Peshawar</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Faisalabad">Karachi - Faisalabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Quetta">Karachi - Quetta</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Karachi-to-Multan">Karachi - Multan</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Lahore">Faisalabad - Lahore</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Quetta">Faisalabad - Quetta</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Faisalabad-to-Multan">Faisalabad - Multan</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Karachi">Islamabad - Karachi</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Lahore">Islamabad - Lahore</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Peshawar">Islamabad - Peshawar</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Faisalabad">Islamabad - Faisalabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Quetta">Islamabad - Quetta</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Islamabad-to-Multan">Islamabad - Multan</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Karachi">Quetta - Karachi</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Islamabad">Quetta - Islamabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Peshawar">Quetta - Peshawar</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Karachi">Peshawar - Karachi</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Islamabad">Peshawar - Islamabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Lahore">Peshawar - Lahore</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Faisalabad">Peshawar - Faisalabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Quetta">Peshawar - Quetta</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Peshawar-to-Multan">Peshawar - Multan</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Faisalabad">Quetta - Faisalabad</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Lahore">Quetta - Lahore</Link></span>
+                <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Quetta-to-Multan">Quetta - Multan</Link></span>
+                </ul>
             </div>
 
             </div>
@@ -306,3 +305,12 @@ const handleAirLinesData = (id, airlineName) => {
 }
 
 export default Footer;
+
+
+
+
+
+
+
+
+

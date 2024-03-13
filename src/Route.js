@@ -39,15 +39,17 @@ const AppRouter = () => {
         <Route path="/searchflightresult" element={<SearchFlightResult />} />
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
-        <Route path="/aboutus" element={<About />} />
-        <Route path="/contactus" element={<Contact />} />
-        <Route path="/careers" element={<Careers />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/RequestCall" element={<Contact />} />
+        <Route path="/job-careers" element={<Careers />} />
         <Route path="/customer-support" element={<Customersupport />} />
         <Route path="/flights" element={<Flights />} />
         <Route path="/refund-policy" element={<Refundpolicy />} />
-        <Route path="/terms-and-conditions" element={<Termsconditions />} />
+        <Route path="/term-and-condition" element={<Termsconditions />} />
         <Route path="/terms-of-service" element={<Termsofservice />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<SignUp />} />
         <Route path="/bookingpayment" element={<BookingPayment />} />
         <Route path="/previewEticket" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
@@ -59,10 +61,9 @@ const AppRouter = () => {
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
-        <Route path="/airlines/:airlineName" element={<PopularAirLines/>} />
-        {/* <Route path="/popularairlines/:airlineName" element={<Outlet />} /> */}
-        <Route path="/internationalAirlines/:flightName" element={<FlightsSearchEngine/>} />
-        <Route path="/domesticAirlines/:domesticflightName" element={<DomesticFlightsEngine/>} />
+        <Route path="/:airlineName" element={<PopularAirLines/>} />
+        <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} />
+        <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} />
         
 
 
