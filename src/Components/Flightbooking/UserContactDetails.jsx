@@ -380,7 +380,7 @@ useEffect(() => {
     return modifiedItem;
   });
 
-  const handleNavigation =  () => {
+  const handleNavigation =() => {
 
     try{
       const finalObject= generateBookingObject(); 

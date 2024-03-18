@@ -69,8 +69,8 @@ const handleAirLinesData = (id, airlineName) => {
             {/* ******************************************************** */}
             <div className="row d-sm-block "> 
               <span className="footer_destination">Popular Airlines </span>
-                <div className="row"> 
-                        <div className="col-md-12 footerLink_internationl">
+                <div > 
+                        <div className=" footerLink_internationl">
                             <span  onClick={() => handleAirLinesData(1, 'emirates-airline-flights')}>Emirates Airline</span>
                             <span  onClick={() => handleAirLinesData(2, 'qatar-airways-flights ')}>Qatar Airways</span>
                             <span  onClick={() => handleAirLinesData(3, 'turkish-airlines-flights')}>Turkish Airlines</span>
@@ -78,7 +78,7 @@ const handleAirLinesData = (id, airlineName) => {
                             <span  onClick={() => handleAirLinesData(5, 'oman-air-flights')}>Oman Air</span>
                             <span  onClick={() => handleAirLinesData(6, 'fly-dubai-flights')}>Fly Dubai</span>
                             <span  onClick={() => handleAirLinesData(7, 'etihad-airways-flights')}>Etihad Airways</span>
-                            <span  onClick={() => handleAirLinesData(8, 'shaheen-air-flights')}>Shaheen Air</span>
+                            {/* <span  onClick={() => handleAirLinesData(8, 'shaheen-air-flights')}>Shaheen Air</span> */}
                             <span  onClick={() => handleAirLinesData(9, 'airblue-flights')}>Air Blue</span>
                             <span  onClick={() => handleAirLinesData(10, 'air-sial-flights')}>Air Sial</span>
                             <span  onClick={() => handleAirLinesData(11, 'virgin-atlantic-flights')}>Virgin Atlantic</span>
@@ -94,8 +94,8 @@ const handleAirLinesData = (id, airlineName) => {
                         </div>
                     </div>
               <span className="footer_destination">International Destinations</span>
-                <div className="row mb-3"> 
-                <ul className="col-md-12 footerLink_internationl">
+                <div className=" mb-3"> 
+                <ul className="footerLink_internationl">
                     <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-london">Lahore - London</Link></span>
                     <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-dubai">Lahore - Dubai</Link></span>
                     <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-lahore-to-toronto">Lahore - Toronto</Link></span>
@@ -188,8 +188,8 @@ const handleAirLinesData = (id, airlineName) => {
 
                 </div>
               <span className="footer_destination">Domestic Destinations</span>
-              <div className="row mb-3"> 
-              <ul className="col-md-12 footerLink_internationl">
+              <div className=" mb-3"> 
+              <ul className=" footerLink_internationl">
                 <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Karachi">Lahore - Karachi</Link></span>
                 <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Islamabad">Lahore - Islamabad</Link></span>
                 <span onClick={() => { window.scrollTo(0, 0); }}><Link to="/flights/cheap-flights-from-Lahore-to-Peshawar">Lahore - Peshawar</Link></span>

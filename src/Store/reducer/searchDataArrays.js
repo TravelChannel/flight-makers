@@ -2,17 +2,17 @@ const initialState = {
     searchDataArr: null,
   };
   
-  const searchDataReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'SET_SEARCH_DATA':
-        return {
-          ...state,
-          searchDataArr: action.payload,
-        };
-      default:
-        return state;
-    }
-  };
+    const searchDataReducer = (state = initialState, action) => {
+      switch (action.type) {
+        case 'SET_SEARCH_DATA':
+          return {
+            ...state,
+            searchDataArr: action.payload,
+          };
+        default:
+          return state;
+      }
+    };
   
   export default searchDataReducer;
 

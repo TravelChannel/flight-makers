@@ -53,11 +53,9 @@ const OTPCode = (props) => {
           setIsOtpTrue(true);
           setLogIn(true);
           setVarName(verificationResult.data.payload.userData.phoneNumber);
-          setUserName(verificationResult.data.payload.userData.firstName)
+          setUserName(verificationResult.data.payload.userData.firstName);
+          fromSingUp ? (window.location.href = '/'):(window.location.reload());
           setIsOpen(false);
-          // toast.success("PNR Created SuccessFully " ,
-          // {autoClose: 2000 });
-          // fromSingUp ? (window.location.href = '/'):(window.location.reload());
           // window.location.reload();
         } else {
           setIsOtpTrue(false);

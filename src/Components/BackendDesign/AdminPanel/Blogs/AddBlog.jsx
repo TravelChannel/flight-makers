@@ -1,15 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
 import { UpdateBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/UpdateBlog";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from "react-router";
+import { GetSingleBlogbyID } from "../../../../API/BackendAPI/BlogsAPI/GetSingleBlog";
+import { Input } from "antd";
+
 const AddBlog = () => {
 
   const {id} = useParams();
+  const [singleBlogDetail ,setSingleBlogDetal] = useState([]);
   const [maintitle, setMainTitle] = useState("");
+  const [updatedTitle, setUpdateTitle] = useState("");
+
   const [sections, setSections] = useState([{ heading: "", summary: "" }]);
+  const [updateSections, setUpdateSections] = useState([{ heading: "", summary: "" }]);
+  
   const [isFocused, setFocused] = useState(false);
   const [isTitleFocused, setTitleFocused] = useState(false);
   const [isContentFocus, setContentFocus] = useState(false);
@@ -19,10 +27,14 @@ const AddBlog = () => {
   const [inputValue, setInputValue] = useState("");
   const [isClick ,setisClick] = useState(false);
   const [isSuccess ,setIsSuccess] = useState(false);
+  const [blogDetail ,setBlogDetail] = useState([]);
+
+
 
   const handleMainTitle = (event) => {
     const value = event.target.value;
     setMainTitle(value);
+    setUpdateTitle(value);
   };
   const handleContentFocus = () => {
     setTitleFocused(true);
@@ -136,7 +148,7 @@ const onSubmit = async () => {
     }
 }
 
-// ----------------------------
+// -------------Update Blog---------------
 
 const handleUpdatedBlog = async(id) =>{
 try{
@@ -153,6 +165,24 @@ try{
 }
 }
 
+// ---------------GetBlogDetailsbyId-----------------------
+
+const handleBlogDetail = async() =>{
+  try{
+    const responce = await GetSingleBlogbyID(id);
+    console.log("getBlogDetailbyID-Success",responce );
+    setBlogDetail(responce.data.payload);
+    setSingleBlogDetal(responce.data.payload.blogsDetails);
+    setUpdateTitle(responce.data.payload.mainTitle);
+  }catch(error){
+    console.error("error at getting Single Data",error);
+  }
+}
+
+useEffect(()=>{
+  handleBlogDetail();
+},[]);
+
 
   return (
     <div className="container bg-white ">
@@ -163,13 +193,14 @@ try{
     }
       <div className="Blog_title_main">
         <p className="title_typograpy">Title</p>
-        <input
+        <Input
           type="text"
           class="full_width_input"
           placeholder={isFocused ? "" : "e.g Publish a blog as adventure Trips"}
           onFocus={handleFocus}
           onBlur={() => setFocused(false)}
           onChange={handleMainTitle}
+          value={id ? updatedTitle :maintitle}
         />
       </div>
       <div className="Blog_title_main">
@@ -198,53 +229,142 @@ try{
       <div className="Blog_title_body">
         <p className="title_typograpy">Content</p>
         <div className="horizontal-line"></div>
-        {sections.map((section, index) => (
-          <div key={index} className="  mb-1">
-            <p className="subtitle_typograpy">Heading</p>
-            <input
-              type="text"
-              className="full_width_input"
-              placeholder={
-                isTitleFocused
-                  ? ""
-                  : "e.g. Brief Introduction about the article"
-              }
-              onFocus={handleContentFocus}
-              onBlur={() => setTitleFocused(false)}
-              value={section.heading}
-              onChange={(event) => handleHeadingChange(index, event)}
-            />
-            <p className="subtitle_typograpy">Summary</p>
-            <textarea
-              className="full_width_input blog_TextArea"
-              placeholder={isContentFocus ? "" : "Details..."}
-              onFocus={handleSummaryFocus}
-              onBlur={() => setContentFocus(false)}
-              value={section.summary}
-              onChange={(event) => handleSummaryChange(index, event)}
-            />
-            <div className="d-flex justify-content-end">
-              {index > 0 && (
-                <div className="d-flex justify-content-end mt-1 mx-1 ">
-                  <button
-                    className="btn btn-primary removePromo_btn p-3"
-                    onClick={() => removeSection(index)}
-                  >
-                    <img src={""} alt="" width="32px" /> Remove Content
-                  </button>
-                </div>
-              )}
-              <div className="d-flex justify-content-end mt-1">
-                <button
-                  className="btn btn-primary addPromo_btn p-3"
-                  onClick={addSection}
-                >
-                  + Add More Content
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+        { id ? (
+          singleBlogDetail.length > 0 ? (
+            singleBlogDetail.map((section, index) => (
+                        <div className="mb-1" key={index}>
+                            <p className="subtitle_typograpy">Heading</p>
+                            <input
+                                type="text"
+                                className="full_width_input"
+                                placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
+                                onFocus={handleContentFocus}
+                                onBlur={() => setTitleFocused(false)}
+                                value={section.heading}
+                                onChange={(event) => handleHeadingChange(index, event)}
+                            />
+                            <p className="subtitle_typograpy">Summary</p>
+                            <textarea
+                            className="full_width_input blog_TextArea"
+                            placeholder={isContentFocus ? "" : "Details..."}
+                            onFocus={handleSummaryFocus}
+                            onBlur={() => setContentFocus(false)}
+                            value={section.summary}
+                            onChange={(event) => handleSummaryChange(index, event)}
+                            />
+                        <div className="d-flex justify-content-end">
+                            {index > 0 && (
+                                <div className="d-flex justify-content-end mt-1 mx-1">
+                                    <button
+                                        className="btn btn-primary removePromo_btn p-3"
+                                        onClick={() => removeSection(index)}
+                                    >
+                                        <img src={""} alt="" width="32px" /> Remove Content
+                                    </button>
+                                </div>
+                            )}
+                            <div className="d-flex justify-content-end mt-1">
+                                <button
+                                    className="btn btn-primary addPromo_btn p-3"
+                                    onClick={addSection}
+                                >
+                                    + Add More Content
+                                </button>
+                            </div>
+                        </div>
+                        </div>
+                        
+                    ))
+                ) : (
+                  sections.map((section, index) => (
+                    <div key={index} className="mb-1">
+                        <p className="subtitle_typograpy">Heading</p>
+                        <input
+                            type="text"
+                            className="full_width_input"
+                            placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
+                            onFocus={handleContentFocus}
+                            onBlur={() => setTitleFocused(false)}
+                            value={section.heading}
+                            onChange={(event) => handleHeadingChange(index, event)}
+                        />
+                        <p className="subtitle_typograpy">Summary</p>
+                        <textarea
+                            className="full_width_input blog_TextArea"
+                            placeholder={isContentFocus ? "" : "Details..."}
+                            onFocus={handleSummaryFocus}
+                            onBlur={() => setContentFocus(false)}
+                            value={section.summary}
+                            onChange={(event) => handleSummaryChange(index, event)}
+                        />
+                        <div className="d-flex justify-content-end">
+                            {index > 0 && (
+                                <div className="d-flex justify-content-end mt-1 mx-1">
+                                    <button
+                                        className="btn btn-primary removePromo_btn p-3"
+                                        onClick={() => removeSection(index)}
+                                    >
+                                        <img src={""} alt="" width="32px" /> Remove Content
+                                    </button>
+                                </div>
+                            )}
+                            <div className="d-flex justify-content-end mt-1">
+                                <button
+                                    className="btn btn-primary addPromo_btn p-3"
+                                    onClick={addSection}
+                                >
+                                    + Add More Content
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+                )
+            ) : (
+                sections.map((section, index) => (
+                    <div key={index} className="mb-1">
+                        <p className="subtitle_typograpy">Heading</p>
+                        <input
+                            type="text"
+                            className="full_width_input"
+                            placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
+                            onFocus={handleContentFocus}
+                            onBlur={() => setTitleFocused(false)}
+                            value={section.heading}
+                            onChange={(event) => handleHeadingChange(index, event)}
+                        />
+                        <p className="subtitle_typograpy">Summary</p>
+                        <textarea
+                            className="full_width_input blog_TextArea"
+                            placeholder={isContentFocus ? "" : "Details..."}
+                            onFocus={handleSummaryFocus}
+                            onBlur={() => setContentFocus(false)}
+                            value={section.summary}
+                            onChange={(event) => handleSummaryChange(index, event)}
+                        />
+                        <div className="d-flex justify-content-end">
+                            {index > 0 && (
+                                <div className="d-flex justify-content-end mt-1 mx-1">
+                                    <button
+                                        className="btn btn-primary removePromo_btn p-3"
+                                        onClick={() => removeSection(index)}
+                                    >
+                                        <img src={""} alt="" width="32px" /> Remove Content
+                                    </button>
+                                </div>
+                            )}
+                            <div className="d-flex justify-content-end mt-1">
+                                <button
+                                    className="btn btn-primary addPromo_btn p-3"
+                                    onClick={addSection}
+                                >
+                                    + Add More Content
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            )}
       </div>
       {
         id ? (

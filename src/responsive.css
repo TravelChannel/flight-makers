@@ -303,6 +303,16 @@
 .price_content_center {
   margin-top: 10px;
 }
+
+.footerLink_internationl{
+  text-align: start;
+}
+.footerLink_internationl span {
+  cursor: pointer;
+  color: #337ab7 !important;
+  margin-right: 10px;
+  font-size: 12px !important;
+}
   }
 
   @media only screen and (max-width: 667px) {
@@ -934,5 +944,17 @@
 }
 .dashbord-header-btn {
   padding: 0.6em;}
+  .w_25_userpanel {
+    width: 0;
+}
+}
+
+@media only screen and (max-width:467px){
+  .footerLink_internationl span {
+    cursor: pointer;
+    color: #337ab7 !important;
+    margin:0px 3px !important;
+    font-size: 11px !important;
+  }
 }
 

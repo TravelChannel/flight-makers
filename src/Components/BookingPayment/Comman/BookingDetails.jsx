@@ -25,9 +25,9 @@ const userLocation = passedData?.userLocation;
 
 const [isSmallScreen ,  setIsSmallScreen] = useState(false);
 
-const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+// const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
 
-console.log("userPNR",activepnrNumber);
+// console.log("userPNR",activepnrNumber);
 
 console.log("userrrrrrrrrrr",userLocation);
 
@@ -67,18 +67,18 @@ const downloadPDF = () => {
   });
 };
 
-useEffect(() => {
-  const GetUsersDetail = async () => {
-    try {
-      const response = await GetDetailByPNR(activepnrNumber);
-      console.log("userDetailbyPNR", response);
-    } catch (error) {
-      console.error("error in ffetching Data",error);
-    }
-  };
+// useEffect(() => {
+//   const GetUsersDetail = async () => {
+//     try {
+//       const response = await GetDetailByPNR(activepnrNumber);
+//       console.log("userDetailbyPNR", response);
+//     } catch (error) {
+//       console.error("error in ffetching Data",error);
+//     }
+//   };
   
-  GetUsersDetail();
-}, []);
+//   GetUsersDetail();
+// }, []);
 useEffect(() => {
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 768);

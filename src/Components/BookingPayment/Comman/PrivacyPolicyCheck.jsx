@@ -172,7 +172,7 @@ const PrivacyPolicyCheck = (props) => {
                   } catch (error) {
                     console.error("Error:", error.message);
                     alert('error',error);
-                    // navigate("/");
+                    navigate("/flightbooking");
                     window.scrollTo(0, 0);
                   }
             }
@@ -299,7 +299,7 @@ const PrivacyPolicyCheck = (props) => {
                                                     <p>Submit</p>
                                                     )
                                                 }
-                                                </button>
+                                     </button>
                                 </div>
                                 
                         </div>

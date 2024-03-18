@@ -63,6 +63,7 @@ const AppRouter = () => {
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
         <Route path="/:airlineName" element={<PopularAirLines/>} />
         <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} />
+        {/* <Route path="/flights/:flightName" element={<SearchFlightResult />} /> */}
         <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} />
         
 

@@ -1,11 +1,15 @@
 const fetchSearchResult = async (searchDataArr) => {
+
+  console.log("Array at Sabre API",searchDataArr);
   const { departure, arrival, classtype, adults, children, infants, date } = searchDataArr;
   let classType = '';
   const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
   const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
-  const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
+    const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
   const arrivalCode = arrival.map((arr) => arr.substring(arr.indexOf('(') + 1, arr.indexOf(')')));
+
+  
   console.log(searchDataArr);
   classType =
     classtype === 'Economy'
@@ -18,7 +22,7 @@ const fetchSearchResult = async (searchDataArr) => {
             ? 'S'
             : null;
 
-  // console.log(departureCode,arrivalCode,date,classType,adults,children,infants);
+  console.log('ello',departureCode,arrivalCode);
   //  Conditionally add "CNN" (children) and "INF" (infants) objects if necessary
 
   const passengerTypeQuantity = [
@@ -41,7 +45,7 @@ const fetchSearchResult = async (searchDataArr) => {
   }
 
 
-  const originDestinationInformation = departureCode.map((dep, index) => ({
+  const originDestinationInformation = departureCode?.map((dep, index) => ({
     DepartureDateTime: `${date[index]}T00:00:00`,
     DestinationLocation: {
       LocationCode: arrivalCode[index % arrivalCode.length]
