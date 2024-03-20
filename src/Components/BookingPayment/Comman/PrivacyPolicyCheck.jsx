@@ -74,8 +74,6 @@ const PrivacyPolicyCheck = (props) => {
 
           const pnrNum = await generatePnrNum(OrderId);
 
-         
-
           if (paymentType === "paypro") {
             window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
           } else {

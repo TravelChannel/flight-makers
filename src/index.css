@@ -7313,6 +7313,7 @@ margin-top:10px;
   /* background-color: #36c; */
 }
 .navigation_arrow{
+  cursor: pointer;
   font-size:32px;
   /* color:white;    */
 }
@@ -7368,4 +7369,14 @@ margin-top:10px;
   position: relative;
   width: auto !important;
   margin: 0 auto !important;
+}
+
+.blog_discp{
+  background: linear-gradient(to right, #F26223, #2666A7);
+}
+.blog_sub_icon{
+  width:2%;
+}
+.blog_sub_heading{
+  width:98%;
 }

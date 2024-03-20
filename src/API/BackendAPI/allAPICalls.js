@@ -361,7 +361,6 @@ export const allPaidBookings = async () =>{
 export const sendOTPCode = async (getOTPData) => {
 	try {
 	  const response = await apiClient.post(`/auth/requestOtp`, getOTPData);
-	  
 	  if (response.data.status === 'SUCCESS') {
 		console.log(response.data.message, 'SendOTP success');
 		return response;

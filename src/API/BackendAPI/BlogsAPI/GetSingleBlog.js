@@ -1,9 +1,9 @@
 import apiClient from "../api_main";
 
-export const GetSingleBlog = async(formattedMainTitle)=>{
+export const GetSingleBlog = async(headerUrl)=>{
     try{
-        console.log("mainTitleatAPISide",formattedMainTitle);
-        const responce = await apiClient.get(`/blogs/by?mainTitle=${formattedMainTitle}` );
+        console.log("mainTitleatAPISide",headerUrl);
+        const responce = await apiClient.get(`/blogs/by?headerUrl=${headerUrl}` );
         if(responce.data.status === 'SUCCESS'){
             console.log(responce.data.message, 'SUCCESS');
             return responce;

@@ -1,7 +1,7 @@
 export const airsialTravelerDetail = async (formData,activepnrNumber) => {
 // const cnic = formData.CNIC;
-  console.log("Hello World 1",formData);
-  console.log("hello world 2",activepnrNumber);
+  console.log("formData",formData);
+  console.log("current pnr",activepnrNumber);
     const PNRNumber = activepnrNumber;
     const Authtoken = JSON.parse(localStorage.getItem("airsialAuthToken"));
     const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
@@ -29,35 +29,6 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
       const year = date.getFullYear();
       return `${day < 10 ? '0' + day : day}-${month < 10 ? '0' + month : month}-${year}`;
   }
-    
-    // formData.forEach((data, index) => {
-    //     const category = index < adults ? 'adult' : index < adults + children ? 'child' : 'infant';
-
-    //     const formattedData = {
-    //       Title: "MR",
-    //       WheelChair: data[`wheelChair${index}`] || 'N',
-    //       FullName: `${data[`fname${index}`]} ${data[`lname${index}`]}`,
-    //       Firstname: data[`fname${index}`],
-    //       Lastname: data[`lname${index}`],
-    //       Passport: data[`passport${index}`],
-    //       PassportCountry: 'PK',
-    //       PassportExpiry: data[`PassportExpiryDate${index}`],
-    //       Dob: data[`DateOfBirth${index}`],
-    //       Cnic : CnicFormat(data[`cnic${index}`]),
-    //       // Cnic: data[`cnic${index}`] || '',
-    //       Gender: data[`gender${index}`],
-    //     };
-      
-    //     if (category === 'adult') {
-    //       adultsData.push(formattedData);
-    //     } else if (category === 'child') {
-    //       childrenData.push(formattedData);
-    //     } else {
-    //       infantsData.push(formattedData);
-    //     }
-    //   });
-
-    //   console.log("Adults Data:", adultsData);
 
    Object.keys(formData).forEach((key, index) => {
     const data = formData[key];
@@ -89,11 +60,6 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
 });
 
 console.log("Adults Data:", adultsData);
-// console.log("Children Data:", childrenData);
-// console.log("Infants Data:", infantsData);
-
-     
-    // console.log("kasj",adultsData,childrenData,infantsData);
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

@@ -56,16 +56,33 @@ const AddBlog = () => {
     setSections(newSections);
   };
 
-  const handleHeadingChange = (index, event) => {
-    const newSections = [...sections];
-    newSections[index].heading = event.target.value;
-    setSections(newSections);
-  };
+  // const handleHeadingChange = (index, event) => {
+  //   const newSections = [...sections];
+  //   newSections[index].heading = event.target.value;
+  //   setSections(newSections);
+  //   setSingleBlogDetal(newSections);
+  // };
 
+  // const handleSummaryChange = (index, event) => {
+  //   const newSections = [...sections];
+  //   newSections[index].summary = event.target.value;
+  //   setSections(newSections);
+  //   setSingleBlogDetal(newSections);
+  // };
+  const handleHeadingChange = (index, event) => {
+    if (sections[index]) {
+      const newSections = [...sections];
+      newSections[index].heading = event.target.value;
+      setSections(newSections);
+    }
+  };
+  
   const handleSummaryChange = (index, event) => {
-    const newSections = [...sections];
-    newSections[index].summary = event.target.value;
-    setSections(newSections);
+    if (sections[index]) {
+      const newSections = [...sections];
+      newSections[index].summary = event.target.value;
+      setSections(newSections);
+    }
   };
   const handleFocus = () => {
     setFocused(true);
@@ -80,9 +97,8 @@ const AddBlog = () => {
     fileInputRef.current.click();
     setisClick(true);
   };
-
   const BlogData = {
-    mainTitle: maintitle,
+    mainTitle: id ? updatedTitle : maintitle,
     img: "",
     content: sections,
   };
@@ -172,7 +188,8 @@ const handleBlogDetail = async() =>{
     const responce = await GetSingleBlogbyID(id);
     console.log("getBlogDetailbyID-Success",responce );
     setBlogDetail(responce.data.payload);
-    setSingleBlogDetal(responce.data.payload.blogsDetails);
+    // setSingleBlogDetal(responce.data.payload.blogsDetails);
+    setSections(responce.data.payload.blogsDetails)
     setUpdateTitle(responce.data.payload.mainTitle);
   }catch(error){
     console.error("error at getting Single Data",error);
@@ -240,7 +257,7 @@ useEffect(()=>{
                                 placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
                                 onFocus={handleContentFocus}
                                 onBlur={() => setTitleFocused(false)}
-                                value={section.heading}
+                                value={sections.heading}
                                 onChange={(event) => handleHeadingChange(index, event)}
                             />
                             <p className="subtitle_typograpy">Summary</p>
@@ -249,7 +266,7 @@ useEffect(()=>{
                             placeholder={isContentFocus ? "" : "Details..."}
                             onFocus={handleSummaryFocus}
                             onBlur={() => setContentFocus(false)}
-                            value={section.summary}
+                            value={sections.summary}
                             onChange={(event) => handleSummaryChange(index, event)}
                             />
                         <div className="d-flex justify-content-end">

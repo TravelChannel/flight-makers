@@ -3,37 +3,57 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import { GetSingleBlog } from '../../API/BackendAPI/BlogsAPI/GetSingleBlog';
 import { useParams } from 'react-router';
 import LandscapeRoundedIcon from '@mui/icons-material/LandscapeRounded';
-const BlogContent = () => {
-    const[BlogData ,setBlogData] = useState([]);
-    const {mainTitle} = useParams();
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
+import { useNavigate } from 'react-router';
 
-    const formattedMainTitle = mainTitle.replace(/-/g, ' ');
+
+const BlogContent = () => {
+   const navigate = useNavigate();
+    const[BlogData ,setBlogData] = useState([]);
+    const {headerUrl} = useParams();
+
+    const formattedMainTitle = headerUrl.replace(/-/g,' ');
     useEffect(()=>{
         const GetBlogData = async()=>{
           try{
-            const resp = await GetSingleBlog(formattedMainTitle);
-            setBlogData(resp.data.payload.blogsDetails);
-            console.log("GetSingleBlogFromAPI",resp);
+            const resp = await GetSingleBlog(headerUrl);
+            setBlogData(resp.data.payload);
+            // setBlogData(resp.data.payload);
+            console.log("GetSingleBlogFromAPI",resp.data.payload);
           }catch(error){
             console.error("userSide Error",error);
           }
         }
         GetBlogData();
       },[]);
+      const backNavigation = () =>{
+        navigate(-1);
+        window.scrollTo(0,0);
+      }
   return (
     <div className='container bg-white'>
             <div>
-                      <div className='contact_us_heading d-flex justify-content-center'>
-                          <LandscapeRoundedIcon className='contact_detail_icon align-self-center'/><h3>{formattedMainTitle}</h3>
+                      <div className='contact_us_heading d-flex justify-content-start blog_discp w-100'>
+                        <div className='blog_sub_icon'>
+                              <ReplyAllIcon onClick={backNavigation} className='navigation_arrow' />
+                        </div> 
+                        <div className='d-flex justify-content-center blog_sub_heading'>
+                              <LandscapeRoundedIcon className='contact_detail_icon align-self-center'/><h3>{formattedMainTitle}</h3>
+                        </div>
                       </div> 
-                      {
+                      {/* {
                         BlogData.map((items,index)=>(
                           <div className="px-3" key = {index}>
                             <h3 class="mainhead_blog">{` ${index+1}: ${items.heading}`}</h3>
                             <p class="blog_text">{items.summary} </p>
                         </div>
                         ))
-                      }     
+                      }      */}
+
+                      <div className='px-4 py-3'>
+                      <div dangerouslySetInnerHTML={{ __html: BlogData.description }} />
+                      </div>
+                     
                 </div>
     </div>
   )
