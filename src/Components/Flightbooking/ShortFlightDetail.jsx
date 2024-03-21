@@ -5,7 +5,7 @@ import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import * as flightimg from '../../Constant/flightImages';
 import { elapsedTimeFunct } from '../../helpers/formatdata'
 import airlinesData from '../../Constant/airlineName';
-
+import { useFormData } from '../../Context/FormDataContext';
 const ShortFlightDetail = (props) => {
 const [isMobile , setIsMobile] = useState(window.innerWidth < 769 && window.innerWidth >= 500);
 const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
@@ -14,6 +14,7 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
     const flightarrDates = flightData.schedualDetGet.map(values => values[values.length - 1].arrival.time.slice(0, 5));
     const elapsedTime = flightData.schedualDetGet.map(values => values.reduce((sum, val) => sum + val.elapsedTime, 0));
     const stops = flightData.schedualDetGet.map(item => item.length - 1);
+
 
     let matchedAirline = '';
     flightData.schedualDetGet.forEach((val) => {
@@ -39,6 +40,7 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
             window.removeEventListener('resize', handleResize);
         }
     });
+    
     return (
         <Fragment>
             <div className='d-flex justify-content-between'>

@@ -55,8 +55,8 @@ const AppRouter = () => {
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
         <Route path="/addBlog/:id" element={<AddBlog/>} />
-        <Route path="/blogCollections" element={<BlogCollection/>} />
-        <Route path="/blogContent/:headerUrl" element={<BlogContent />} />
+        <Route path="/blogs" element={<BlogCollection/>} />
+        <Route path="/blogs/:headerUrl" element={<BlogContent />} />
 
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />

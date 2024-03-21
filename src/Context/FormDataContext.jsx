@@ -19,7 +19,6 @@ export const FormDataProvider = ({ children }) => {
   const [serviceCharges ,setServiceCharges] = useState();
   const [searcRes ,setSearchRes] = useState({});
 
-
   return (
     <FormDataContext.Provider value={{ 
        formData, setFormData,
@@ -34,7 +33,7 @@ export const FormDataProvider = ({ children }) => {
        isPNRLoading ,setPNRLoading,
        completeUserData ,setCompleteUserData,
        serviceCharges ,setServiceCharges,
-       searcRes ,setSearchRes
+       searcRes ,setSearchRes,
        }}>
       {children}
     </FormDataContext.Provider>

@@ -176,7 +176,7 @@ const TopNavBar = () => {
             <Link className="pull-right" to="/contact-us">Contact Us</Link>
           </div>
           <div>
-            <Link className="pull-right" to='/blogCollections' target='_blank'>Blogs</Link>
+            <Link className="pull-right" to='/blogs' target='_blank'>Blogs</Link>
           </div>
           <div>
             {isLogin ? (

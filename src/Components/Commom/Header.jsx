@@ -170,7 +170,7 @@ const Header = () => {
                       <li><a href="/contact-us" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
                       <li><a href="/customer-support" className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/> Support</a></li>
                       <li><a href="/banks" className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</a></li>
-                      <li><a href="/blogCollections" className="mob_menu_txtcolor"><BookOutlinedIcon className="mob_menu_icon"/>Blogs</a></li>
+                      <li><a href="/blogs" className="mob_menu_txtcolor"><BookOutlinedIcon className="mob_menu_icon"/>Blogs</a></li>
 
                       {
                         isLogin ? (

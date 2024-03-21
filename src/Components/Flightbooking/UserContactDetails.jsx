@@ -29,7 +29,7 @@ import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetService
 const UserContactDetails = (props) => {
   const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,userName,setUserName,setRoleID,setServiceCharges} = useFormData();
   // console.log('completeUserData',completeUserData);
-
+//  console.log("shortFlightDetailfor-lead",shortFlightDetail)
   const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
   const [countryCode, setCountryCode] = useState('');
   const [userOTP , setUserOtp] = useState('');
@@ -355,13 +355,36 @@ useEffect(() => {
       pnrBookingsArray.push(bookingItem);
     }
 
+    const depart = flightDetails.groupDescription[0]?.departureLocation;
+    const arrival = flightDetails.groupDescription[0]?.arrivalLocation;
+    const departDate = flightDetails.groupDescription[0]?.departureDate;
+    const returnDate = flightDetails.groupDescription[1]?.departureDate;
+    // const airline = matchedAirline.id;
+
+    const leadCreationData = {
+        depart: depart,
+        arrival: arrival,
+        departDate: departDate,
+        returnDate: returnDate,
+        airline:MajorData.OperatingAirline[0],
+        classType:MajorData.ClassType,
+        adult:adults,
+        child:children,
+        infants:infants,
+        phoneNumber: dynamicObject.phoneNumber,
+        useDetail:pnrBookingsArray[0]
+    };
+    console.log("leadFlightDetail123",leadCreationData);
+
+
     const finalObject = {
       countryCode:92,
       phoneNumber: dynamicObject.phoneNumber,
       // pnr,
       pnrBookings: pnrBookingsArray,
       flightDetails:flightDetails,
-      MajorInfo:MajorData
+      MajorInfo:MajorData,
+      leadCreationData:leadCreationData
     };
 
     console.log("Final Object:", finalObject);
@@ -369,6 +392,32 @@ useEffect(() => {
     return finalObject;
   };
   // ----------------------------------------------------
+  
+//   useEffect(() => {
+//     const depart = flightDetails.groupDescription[0]?.departureLocation;
+//     const arrival = flightDetails.groupDescription[0]?.arrivalLocation;
+//     const departDate = flightDetails.groupDescription[0]?.departureDate;
+//     const returnDate = flightDetails.groupDescription[1]?.departureDate;
+//     // const airline = matchedAirline.id;
+
+//     const leadFlightDetail = {
+//         depart: depart,
+//         arrival: arrival,
+//         departDate: departDate,
+//         returnDate: returnDate,
+//         airline:MajorData.OperatingAirline[0],
+//         classType:MajorData.ClassType,
+//         adult:adults,
+//         child:children,
+//         infants:infants 
+//     };
+// }, [flightDetails]);
+  // const leadCreationData = {
+  //   leadFlightDetail:leadFlightDetail
+  // }
+
+  // ----------------------------------------------------
+
 
 
   const modifiedFormData = formData.map(item => {
@@ -414,6 +463,7 @@ useEffect(() => {
       'OperatingAirline': OperatingAirlines,
       'ClassType': flightDetails.classtype
   };
+
 
   console.log("CommissionData", CommissionData);
   setMajorData(CommissionData);
