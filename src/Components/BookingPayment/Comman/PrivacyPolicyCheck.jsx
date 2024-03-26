@@ -11,6 +11,10 @@ import Loader from '../../../Loader/Loader';
 import { UserBookingDetails } from '../../../API/BackendAPI/allAPICalls';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AirSialTravDetial } from '../../../API/index';
+import { airsialBookingDetail } from '../../../API/index';
+import { AirSialTicketIssued } from '../../../API/index';
+
 const PrivacyPolicyCheck = (props) => {
     const navigate = useNavigate();
     const {formData ,backendFinalOBJ ,setBackendFinalOBJ,setPNRLoading} = useFormData();
@@ -21,10 +25,6 @@ const PrivacyPolicyCheck = (props) => {
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const [isLoading ,setLoading] = useState(false);
-
-
-  
-
 
     const { checked, setChecked, isEmpty,paymentType,branchLabel,userLocation} = props;
     const handleChange = (event) => {
@@ -89,7 +89,17 @@ const PrivacyPolicyCheck = (props) => {
         setLoading(true);
         try{
             const pnrNum = await generatePnrNum();
-            console.log('pnrNum',pnrNum);
+            console.log('pnrNum123',pnrNum);
+            const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
+            if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
+              const finalPNR = await fetchData(pnrNum);
+
+              const airSialUserDetail = await airsialBookingDetail();
+              console.log('airSialUserDetail',airSialUserDetail);
+
+              const AirSialTicketIsssue = await AirSialTicketIssued();
+            }
+            
             const DatatoPass ={
             branchlabel : branchLabel,
             userLocation : userLocation,
@@ -105,7 +115,20 @@ const PrivacyPolicyCheck = (props) => {
           }
         
       }
-
+      // ---------------------------------------
+      const fetchData = async(pnrNum)=>{
+            try{
+                // setLoading(true);
+                const airsialtravllersDetail = await AirSialTravDetial(backendFinalOBJ.pnrBookings,pnrNum);
+                console.log("airsialtravllersDetail",airsialtravllersDetail);
+                // setAirsialData(airsialtravllersDetail);
+                // setLoading(false);
+        
+            }catch(error){
+                console.error("Error", error);
+            }
+    
+        }
     //   ---------------------------------------
 
       const generatePnrNum = async(OrderId) => {

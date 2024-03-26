@@ -81,6 +81,12 @@ const UserContactDetails = (props) => {
 
   const passengerDetails = adults + children + infants;
 
+  const depart = flightDetails.groupDescription[0]?.departureLocation;
+  const arrival = flightDetails.groupDescription[0]?.arrivalLocation;
+  const departDate = flightDetails.groupDescription[0]?.departureDate;
+  const returnDate = flightDetails.groupDescription[1]?.departureDate || '01-01-1900';
+  const tripType = flightDetails.groupDescription[1] ? 2 : 1;
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     setFormData(prevFormData => {
@@ -355,10 +361,7 @@ useEffect(() => {
       pnrBookingsArray.push(bookingItem);
     }
 
-    const depart = flightDetails.groupDescription[0]?.departureLocation;
-    const arrival = flightDetails.groupDescription[0]?.arrivalLocation;
-    const departDate = flightDetails.groupDescription[0]?.departureDate;
-    const returnDate = flightDetails.groupDescription[1]?.departureDate;
+
     // const airline = matchedAirline.id;
 
     const leadCreationData = {
@@ -372,7 +375,8 @@ useEffect(() => {
         child:children,
         infants:infants,
         phoneNumber: dynamicObject.phoneNumber,
-        useDetail:pnrBookingsArray[0]
+        useDetail:pnrBookingsArray[0],
+        tripType:tripType
     };
     console.log("leadFlightDetail123",leadCreationData);
 
@@ -391,34 +395,6 @@ useEffect(() => {
 
     return finalObject;
   };
-  // ----------------------------------------------------
-  
-//   useEffect(() => {
-//     const depart = flightDetails.groupDescription[0]?.departureLocation;
-//     const arrival = flightDetails.groupDescription[0]?.arrivalLocation;
-//     const departDate = flightDetails.groupDescription[0]?.departureDate;
-//     const returnDate = flightDetails.groupDescription[1]?.departureDate;
-//     // const airline = matchedAirline.id;
-
-//     const leadFlightDetail = {
-//         depart: depart,
-//         arrival: arrival,
-//         departDate: departDate,
-//         returnDate: returnDate,
-//         airline:MajorData.OperatingAirline[0],
-//         classType:MajorData.ClassType,
-//         adult:adults,
-//         child:children,
-//         infants:infants 
-//     };
-// }, [flightDetails]);
-  // const leadCreationData = {
-  //   leadFlightDetail:leadFlightDetail
-  // }
-
-  // ----------------------------------------------------
-
-
 
   const modifiedFormData = formData.map(item => {
     const modifiedItem = {};

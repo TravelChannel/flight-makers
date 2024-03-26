@@ -67,7 +67,7 @@ export const Cancelation = async(id)=>{
 				if (res.data.status === 'SUCCESS') {
 
 					console.log( res.data.message, 'success Cancelation');
-
+					console.log("res Canclation",res);
 				} else {
 					console.log(res.data.message, 'danger');
 				}

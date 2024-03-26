@@ -34,8 +34,8 @@ try{
     console.log("AirSialViewDetailsErros:",error)
 }
 
-fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+// fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions)
+//   .then(response => response.text())
+//   .then(result => console.log(result))
+//   .catch(error => console.log('error', error));
 }

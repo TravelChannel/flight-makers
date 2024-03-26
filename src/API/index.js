@@ -13,11 +13,7 @@ import { getTokenApi} from './payment/getToken';
 import { createOrderApi} from './payment/createOrder';
 import { getPaymentTokenApi} from './payment/getPaymentToken';
 import {getBookingApi} from './GetBookingAPI';
-
-import { UserBookingDetails } from './BackendAPI/allAPICalls';
-import { sendOTP } from './BackendAPI/sendOTP';
-import { verifyOTP } from './BackendAPI/verifyOTP';
-
+import { AirSialIssueTicket } from './AirsialTicketIssue';
 
 
 export const requestFetchSearchResult = async (searchDataArr) => {
@@ -187,34 +183,13 @@ export const requestGetBooking = async () => {
   }
 }
 
-// ---------------------------------Backend API----------------------------------
-
-// export const requestUserPnrBooking = async(finalObject)=>{
-//   try {
-//     const results = await UserBookingDetails(finalObject);
-//     return results;
-//   }
-//   catch (error) {
-//     console.error("Responce error", error);
-//   }
-// }
-
-// export const  sendOTPCode = async(getOTPData)=>{
-//   try{
-//     const  res = await sendOTP(getOTPData);
-//     return res;
-
-//   }catch(error){
-//     console.error("OTP Responce error", error);
-//   }
-// }
-
-// export const verifyOTPRes = async(getOTPData,enteredOtp)=>{
-//   try{
-//     const  result = await verifyOTP(getOTPData,enteredOtp);
-//     return result;
-
-//   }catch(error){
-//     console.error("OTP Responce error", error);
-//   }
-// }
+// ---------------------------------AirSial Ticket Issue----------------------------------
+export const AirSialTicketIssued = async() =>{
+  try {
+    const result = await AirSialIssueTicket();
+    return result;
+  }
+  catch (error) {
+    console.error("Airsial-Ticket-issue Responce error", error);
+  }
+}

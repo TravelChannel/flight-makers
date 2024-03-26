@@ -47,7 +47,7 @@ export const AirsialPNRCreate = async () => {
     try{
         const responce = await fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions);
         const result = await responce.json();
-        console.log("PNR", result)
+        console.log("Air Sial PNR ", result)
         return result;
     }
     catch (error) {

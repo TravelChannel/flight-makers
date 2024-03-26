@@ -1,6 +1,6 @@
 export const airsialTravelerDetail = async (formData,activepnrNumber) => {
 // const cnic = formData.CNIC;
-  console.log("formData",formData);
+  console.log("formData123",formData);
   console.log("current pnr",activepnrNumber);
     const PNRNumber = activepnrNumber;
     const Authtoken = JSON.parse(localStorage.getItem("airsialAuthToken"));
@@ -60,6 +60,9 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
 });
 
 console.log("Adults Data:", adultsData);
+console.log("child Data:", childrenData);
+console.log("infants Data:", infantsData);
+
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -92,6 +95,7 @@ console.log("Adults Data:", adultsData);
 
         const responce = await fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions);
         const result = await responce.json();
+        console.log("airsial API Result",result);
         return result;
     }
     catch (error){

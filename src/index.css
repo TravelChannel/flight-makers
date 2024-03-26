@@ -7049,6 +7049,10 @@ text-align: justify;
   margin-bottom: 30px;
   height: 500px;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* height: 100%; */
 }
 .overlay_blog {
   position: absolute;
@@ -7391,4 +7395,37 @@ margin-top:10px;
   height: 40px;
   font-weight: 600;
   display: block;
+}
+.bottom_text{
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: auto;
+  text-align: center;
+  list-style-type: none;
+
+}
+.bottom_text li{
+  display: inline-block;
+  cursor:pointer;
+  padding-left:20px;
+  padding-right:20px;
+}
+.bottom_text li:hover{
+  background: rgba(0, 0, 0, .7);
+}
+.category_menu{
+  color: #fff;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.my_custom_section{
+  position: relative;
+}
+.blog_bc_image{
+  position:absolute;
+  top:13%;
+  /* z-index:20 */
+}
+.ck_editor{
+  height: 500px;
 }

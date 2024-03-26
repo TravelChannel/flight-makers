@@ -53,14 +53,21 @@ const BlogCollection = () => {
     isLoading ? (<Loader/>) :(
       <div className='my_custom_section bg-white'>
       <div className=" blog_main_section">
-          <div className="sec_content_blog overlay_blog">
-            <h1 className="blog_heading">Your Journey Begins Here</h1>
-            <p className="blog_main">Travel More</p>
-          </div>
-          <div className='blog_bc_image'>
-              <img src={images.blogBackGround} alt="" width = '100%' />
-          </div>
+            <div className="sec_content_blog overlay_blog">
+              <h1 className="blog_heading">Your Journey Begins Here</h1>
+              <p className="blog_main">Travel More</p>
+            </div>
+              <ul className="bottom_text">
+                  <li className="blog_heading category_menu">Adventure</li>
+                  <li className="blog_heading category_menu">Beach</li>
+                  <li className="blog_heading category_menu">Flights</li>
+                  <li className="blog_heading category_menu">Family</li>
+                  <li className="blog_heading category_menu">Specials</li>
+              </ul>
       </div>
+        <div className='blog_bc_image'>
+              <img src={images.blogBackGround} alt="" width = '100%' />
+       </div>
       <div className="container">
       {blogData.length ? 
           (

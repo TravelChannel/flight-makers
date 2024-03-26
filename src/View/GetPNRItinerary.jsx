@@ -289,8 +289,8 @@ const inputPnr = searchParams.get('inputPNR');
         try{
             const responce = await GetDetailByPNR(userPnr);
             console.log("responceofCurrentBooking", responce.data.payload.pnrDetail);
-            return responce;
             setUsersDetails(responce.data.payload.pnrDetail);
+            return responce;
         } catch(error) {
             console.error("Error at responceofCurrentBooking ", error);
         }

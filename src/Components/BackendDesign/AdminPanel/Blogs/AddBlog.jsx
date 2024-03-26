@@ -1,22 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { AddBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/AddBlogAPI";
-import { UpdateBlogAPI } from "../../../../API/BackendAPI/BlogsAPI/UpdateBlog";
+import Select from 'react-select';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useParams } from "react-router";
-import { GetSingleBlogbyID } from "../../../../API/BackendAPI/BlogsAPI/GetSingleBlog";
 import { Input } from "antd";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { GetCategory } from "../../../../API/BackendAPI/BlogsAPI/getCategory";
 
 const AddBlog = () => {
 
-  const {id} = useParams();
-  const [singleBlogDetail ,setSingleBlogDetal] = useState([]);
   const [maintitle, setMainTitle] = useState("");
-  const [updatedTitle, setUpdateTitle] = useState("");
-
-  const [sections, setSections] = useState([{ heading: "", summary: "" }]);
-  const [updateSections, setUpdateSections] = useState([{ heading: "", summary: "" }]);
+  const [isSlug , setSlug] = useState('');
+  const [shortDesc , setShortDesc] = useState('');
+  const [editorData, setEditorData] = useState('');
+  const [isCatogory ,setCategory] = useState([]);
+  const [customValue, setCustomValue] = useState('');
+  const [airlineOptions, setAirlineOptions] = useState([]);
   
   const [isFocused, setFocused] = useState(false);
   const [isTitleFocused, setTitleFocused] = useState(false);
@@ -27,62 +28,62 @@ const AddBlog = () => {
   const [inputValue, setInputValue] = useState("");
   const [isClick ,setisClick] = useState(false);
   const [isSuccess ,setIsSuccess] = useState(false);
-  const [blogDetail ,setBlogDetail] = useState([]);
+ 
 
-
-
+  const handleChange = (event, editor) => {
+    const data = editor.getData();
+    setEditorData(data);
+  };
   const handleMainTitle = (event) => {
     const value = event.target.value;
     setMainTitle(value);
-    setUpdateTitle(value);
   };
-  const handleContentFocus = () => {
-    setTitleFocused(true);
-    setContentFocus(false);
+  const handleSlug = (event) =>{
+  const value  = event.target.value;
+  setSlug(value);
+  } 
+  const handleShortDesc = (event) =>{
+  const value = event.target.value;
+  setShortDesc(value);
+  }
+
+  const handleCategoryChange = (selected) => {
+    setCategory(selected);
+  }
+  const handleAddCustomValue = () => {
+        if (customValue.trim() !== '') {
+            const newOption = { value: customValue, label: customValue };
+            setCategory(newOption);
+        }
+    };
+  const handleInputChange = (inputValue) => {
+    setCustomValue(inputValue);
   };
+
+    useEffect(() => {
+      const handleGetCategory = async () => {
+          try {
+              const response = await GetCategory();
+              const options = response.data.payload.map(item => ({
+                  value: item.id,
+                  label: item.name
+              }));
+              setAirlineOptions(options);
+          } catch (error) {
+              console.error("Error fetching airline dropdown:", error);
+          }
+      };
+      handleGetCategory();
+  }, []);
+
+  // const handleContentFocus = () => {
+  //   setTitleFocused(true);
+  //   setContentFocus(false);
+  // };
 
   const handleSummaryFocus = () => {
     setTitleFocused(false);
     setContentFocus(true);
-  };
-
-  const addSection = () => {
-    setSections([...sections, { heading: "", summary: "" }]);
-  };
-
-  const removeSection = (index) => {
-    const newSections = [...sections];
-    newSections.splice(index, 1);
-    setSections(newSections);
-  };
-
-  // const handleHeadingChange = (index, event) => {
-  //   const newSections = [...sections];
-  //   newSections[index].heading = event.target.value;
-  //   setSections(newSections);
-  //   setSingleBlogDetal(newSections);
-  // };
-
-  // const handleSummaryChange = (index, event) => {
-  //   const newSections = [...sections];
-  //   newSections[index].summary = event.target.value;
-  //   setSections(newSections);
-  //   setSingleBlogDetal(newSections);
-  // };
-  const handleHeadingChange = (index, event) => {
-    if (sections[index]) {
-      const newSections = [...sections];
-      newSections[index].heading = event.target.value;
-      setSections(newSections);
-    }
-  };
-  
-  const handleSummaryChange = (index, event) => {
-    if (sections[index]) {
-      const newSections = [...sections];
-      newSections[index].summary = event.target.value;
-      setSections(newSections);
-    }
   };
   const handleFocus = () => {
     setFocused(true);
@@ -98,9 +99,12 @@ const AddBlog = () => {
     setisClick(true);
   };
   const BlogData = {
-    mainTitle: id ? updatedTitle : maintitle,
+    mainTitle: maintitle,
+    slug: isSlug,
+    shortDesc:shortDesc,
     img: "",
-    content: sections,
+    content:editorData,
+    blogTypeId:isCatogory?.value
   };
 
   console.log("passingObject", BlogData);
@@ -138,8 +142,7 @@ const onSubmit = async () => {
         if (fileInput && fileInput.files && fileInput.files[0]) {
           const imgFile = fileInput.files[0]; 
           formData.append('imgFile', imgFile);
-        }
-           
+        }          
         const apiResponse = await AddBlogAPI(formData);
         console.log("Response from API", apiResponse);
           if (apiResponse.data.status === 'SUCCESS' ){
@@ -152,7 +155,6 @@ const onSubmit = async () => {
           }
 
           setMainTitle("");
-          setSections([{ heading: "", summary: "" }]);
           setFocused(false);
           setTitleFocused(false);
           setContentFocus(false);
@@ -166,50 +168,57 @@ const onSubmit = async () => {
 
 // -------------Update Blog---------------
 
-const handleUpdatedBlog = async(id) =>{
-try{
-  const responce = await UpdateBlogAPI(id);
-  console.log("responce from updatedBlog-APi",responce);
-  toast.success('Blog Updated Successfully!',
-  {autoClose: 2000 });
+// const handleUpdatedBlog = async(id) =>{
+// try{
+//   const responce = await UpdateBlogAPI(id);
+//   console.log("responce from updatedBlog-APi",responce);
+//   toast.success('Blog Updated Successfully!',
+//   {autoClose: 2000 });
   
-}catch(error){
-  console.error("error while updating blog",error);
-  toast.success(`Error! ${error}`,
-  {autoClose: 2000 });
+// }catch(error){
+//   console.error("error while updating blog",error);
+//   toast.success(`Error! ${error}`,
+//   {autoClose: 2000 });
 
-}
-}
+// }
+// }
 
 // ---------------GetBlogDetailsbyId-----------------------
 
-const handleBlogDetail = async() =>{
-  try{
-    const responce = await GetSingleBlogbyID(id);
-    console.log("getBlogDetailbyID-Success",responce );
-    setBlogDetail(responce.data.payload);
-    // setSingleBlogDetal(responce.data.payload.blogsDetails);
-    setSections(responce.data.payload.blogsDetails)
-    setUpdateTitle(responce.data.payload.mainTitle);
-  }catch(error){
-    console.error("error at getting Single Data",error);
-  }
-}
+// const handleBlogDetail = async() =>{
+//   try{
+//     const responce = await GetSingleBlogbyID(id);
+//     console.log("getBlogDetailbyID-Success",responce );
+//     setBlogDetail(responce.data.payload);
+//     setSections(responce.data.payload.blogsDetails)
+//     setUpdateTitle(responce.data.payload.mainTitle);
+//   }catch(error){
+//     console.error("error at getting Single Data",error);
+//   }
+// }
 
-useEffect(()=>{
-  handleBlogDetail();
-},[]);
+// useEffect(()=>{
+//   handleBlogDetail();
+// },[]);
 
 
   return (
     <div className="container bg-white ">
-    { id &&  
-        <h3 className="update_blog_typo">
-          Update Blog Details
-        </h3>
-    }
+            <div className='d-flex justify-content-center'>
+               <Select
+                  value={isCatogory}
+                   onChange={handleCategoryChange}
+                    options={airlineOptions}
+                     isClearable
+                     isSearchable
+                    placeholder="Select Category..."
+                    className="CommissionInputFields"
+                    onCreateOption={handleAddCustomValue}
+                    onInputChange={handleInputChange}
+                />
+            </div>
       <div className="Blog_title_main">
-        <p className="title_typograpy">Title</p>
+        <p className="title_typograpy my-1">Title</p>
         <Input
           type="text"
           class="full_width_input"
@@ -217,8 +226,27 @@ useEffect(()=>{
           onFocus={handleFocus}
           onBlur={() => setFocused(false)}
           onChange={handleMainTitle}
-          value={id ? updatedTitle :maintitle}
+          value={maintitle}
         />
+        <p className="title_typograpy my-1">Slug</p>
+        <Input
+          type="text"
+          class="full_width_input"
+          placeholder={isFocused ? "" : "Write Blog Slug here"}
+          onFocus={handleFocus}
+          onBlur={() => setFocused(false)}
+          onChange={handleSlug}
+          value={isSlug}
+        />
+       <p className="title_typograpy my-1">Short Discription</p>
+       <textarea
+          className="full_width_input blog_TextArea"
+          placeholder={isContentFocus ? "" : "Details..."}
+          onFocus={handleSummaryFocus}
+          onBlur={() => setContentFocus(false)}
+          value={shortDesc}
+          onChange={handleShortDesc}
+      />
       </div>
       <div className="Blog_title_main">
         <p className="title_typograpy">Upload Image</p>
@@ -246,154 +274,13 @@ useEffect(()=>{
       <div className="Blog_title_body">
         <p className="title_typograpy">Content</p>
         <div className="horizontal-line"></div>
-        { id ? (
-          singleBlogDetail.length > 0 ? (
-            singleBlogDetail.map((section, index) => (
-                        <div className="mb-1" key={index}>
-                            <p className="subtitle_typograpy">Heading</p>
-                            <input
-                                type="text"
-                                className="full_width_input"
-                                placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
-                                onFocus={handleContentFocus}
-                                onBlur={() => setTitleFocused(false)}
-                                value={sections.heading}
-                                onChange={(event) => handleHeadingChange(index, event)}
-                            />
-                            <p className="subtitle_typograpy">Summary</p>
-                            <textarea
-                            className="full_width_input blog_TextArea"
-                            placeholder={isContentFocus ? "" : "Details..."}
-                            onFocus={handleSummaryFocus}
-                            onBlur={() => setContentFocus(false)}
-                            value={sections.summary}
-                            onChange={(event) => handleSummaryChange(index, event)}
-                            />
-                        <div className="d-flex justify-content-end">
-                            {index > 0 && (
-                                <div className="d-flex justify-content-end mt-1 mx-1">
-                                    <button
-                                        className="btn btn-primary removePromo_btn p-3"
-                                        onClick={() => removeSection(index)}
-                                    >
-                                        <img src={""} alt="" width="32px" /> Remove Content
-                                    </button>
-                                </div>
-                            )}
-                            <div className="d-flex justify-content-end mt-1">
-                                <button
-                                    className="btn btn-primary addPromo_btn p-3"
-                                    onClick={addSection}
-                                >
-                                    + Add More Content
-                                </button>
-                            </div>
-                        </div>
-                        </div>
-                        
-                    ))
-                ) : (
-                  sections.map((section, index) => (
-                    <div key={index} className="mb-1">
-                        <p className="subtitle_typograpy">Heading</p>
-                        <input
-                            type="text"
-                            className="full_width_input"
-                            placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
-                            onFocus={handleContentFocus}
-                            onBlur={() => setTitleFocused(false)}
-                            value={section.heading}
-                            onChange={(event) => handleHeadingChange(index, event)}
-                        />
-                        <p className="subtitle_typograpy">Summary</p>
-                        <textarea
-                            className="full_width_input blog_TextArea"
-                            placeholder={isContentFocus ? "" : "Details..."}
-                            onFocus={handleSummaryFocus}
-                            onBlur={() => setContentFocus(false)}
-                            value={section.summary}
-                            onChange={(event) => handleSummaryChange(index, event)}
-                        />
-                        <div className="d-flex justify-content-end">
-                            {index > 0 && (
-                                <div className="d-flex justify-content-end mt-1 mx-1">
-                                    <button
-                                        className="btn btn-primary removePromo_btn p-3"
-                                        onClick={() => removeSection(index)}
-                                    >
-                                        <img src={""} alt="" width="32px" /> Remove Content
-                                    </button>
-                                </div>
-                            )}
-                            <div className="d-flex justify-content-end mt-1">
-                                <button
-                                    className="btn btn-primary addPromo_btn p-3"
-                                    onClick={addSection}
-                                >
-                                    + Add More Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                ))
-                )
-            ) : (
-                sections.map((section, index) => (
-                    <div key={index} className="mb-1">
-                        <p className="subtitle_typograpy">Heading</p>
-                        <input
-                            type="text"
-                            className="full_width_input"
-                            placeholder={isTitleFocused ? "" : "e.g. Brief Introduction about the article"}
-                            onFocus={handleContentFocus}
-                            onBlur={() => setTitleFocused(false)}
-                            value={section.heading}
-                            onChange={(event) => handleHeadingChange(index, event)}
-                        />
-                        <p className="subtitle_typograpy">Summary</p>
-                        <textarea
-                            className="full_width_input blog_TextArea"
-                            placeholder={isContentFocus ? "" : "Details..."}
-                            onFocus={handleSummaryFocus}
-                            onBlur={() => setContentFocus(false)}
-                            value={section.summary}
-                            onChange={(event) => handleSummaryChange(index, event)}
-                        />
-                        <div className="d-flex justify-content-end">
-                            {index > 0 && (
-                                <div className="d-flex justify-content-end mt-1 mx-1">
-                                    <button
-                                        className="btn btn-primary removePromo_btn p-3"
-                                        onClick={() => removeSection(index)}
-                                    >
-                                        <img src={""} alt="" width="32px" /> Remove Content
-                                    </button>
-                                </div>
-                            )}
-                            <div className="d-flex justify-content-end mt-1">
-                                <button
-                                    className="btn btn-primary addPromo_btn p-3"
-                                    onClick={addSection}
-                                >
-                                    + Add More Content
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                ))
-            )}
+              <CKEditor
+                editor={ClassicEditor}
+                data={editorData}
+                onChange={handleChange}
+              />
       </div>
-      {
-        id ? (
-          <div className="d-flex justify-content-center m-3">
-                <button
-                  className="btn btn-primary addBlog_btn "
-                  onClick={handleUpdatedBlog}
-                >
-                  Update Blog
-                </button>
-      </div>
-        ):(  
+      
         <div className="d-flex justify-content-center m-3">
                 <button
                   className="btn btn-primary addBlog_btn "
@@ -402,8 +289,6 @@ useEffect(()=>{
                   Add Blog
                 </button>
         </div>
-        )
-      }
 
     </div>
   );
