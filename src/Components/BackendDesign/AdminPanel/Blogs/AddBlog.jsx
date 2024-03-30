@@ -241,9 +241,9 @@ const onSubmit = async () => {
             <Box sx={{ display: "flex", alignItems: "center" }}>
                 {/* <img src={imgSrc} alt='Profile Pic' /> */}
                 <div>
-               {/* {isClick &&  */}
+               {isClick && 
                 <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
-                {/* } */}
+                }
                 <div>
                     <input
                     type="file"

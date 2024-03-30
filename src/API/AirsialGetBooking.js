@@ -1,9 +1,9 @@
-export const airSialViewDetail = async()=>{
+export const airSialViewDetail = async(getPNRNumber)=>{
 
     const airSialAuthToken = JSON.parse(localStorage.getItem("airsialAuthToken"))
-    const airsialDetailPNR = JSON.parse(localStorage.getItem("PNRNumber"));
+    // const airsialDetailPNR = JSON.parse(localStorage.getItem("PNRNumber"));
 
-    console.log("airsialDetailPNR",airsialDetailPNR);
+    console.log("airsialDetailPNR",getPNRNumber);
 
     var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -12,7 +12,7 @@ myHeaders.append("Cookie", "ci_session_frontend=qjttk8ohve4bjvsq11478etofoqdkn1f
 var raw = JSON.stringify([
   {
     "Caller": "viewTicket",
-    "PNR": airsialDetailPNR,
+    "PNR": getPNRNumber,
     "token": `${airSialAuthToken}`
   }
 ]);

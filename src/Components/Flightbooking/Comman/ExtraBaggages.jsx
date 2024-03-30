@@ -6,6 +6,7 @@ import { TicketPriceContext } from './Context';
 const ExtraBaggages = () => {
     const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
     const { extraBaggages } = extra_Bagg;
+    console.log("extra_baggage",extraBaggages);
     const [selectedCard, setSelectedCard] = useState(1);
     const { setExtraBagg } = useContext(TicketPriceContext);
 

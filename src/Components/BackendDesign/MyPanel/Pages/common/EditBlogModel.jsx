@@ -14,7 +14,8 @@ import { toast } from 'react-toastify';
 const EditBlogModel = (props) => {
     const {isOpen,setIsOpen ,blogID,handleBlogLists } = props;
     const fileInputRef = useRef(null);
-    const [isCatogory ,setCategory] = useState('');
+    const [isCatogory, setCategory] = useState(null);
+
     const [customValue, setCustomValue] = useState('');
     const [airlineOptions, setAirlineOptions] = useState([]);
     const [isFocused, setFocused] = useState(false);
@@ -28,6 +29,7 @@ const EditBlogModel = (props) => {
     const [imgSrc, setImgSrc] = useState("");
     const [inputValue, setInputValue] = useState("");
     const [isClick ,setisClick] = useState(false);
+    const [getCurrentCat ,setCurrentCat] = useState();
 
 
     const toggleModal = () => {
@@ -45,13 +47,34 @@ const EditBlogModel = (props) => {
           setupdateShortDesc(responce.data.payload.shortDescription);
           setUpdateContent(responce.data.payload.description);
           setImgSrc(responce.data.payload.img);
+          setCurrentCat(responce.data.payload.blogTypeId);
         }catch(error){
           console.error("error at getting Single Data",error);
         }
       }
+      const handleGetCategory = async () => {
+        try {
+            const response = await GetCategory();
+            const options = response.data.payload.map(item => ({
+                value: item.id,
+                label: item.name
+            }));
+            setAirlineOptions(options);
+            // setCategory(options[0])
+        } catch (error) {
+            console.error("Error fetching airline dropdown:", error);
+        }
+    };
+    useEffect(() => {
+      if (getCurrentCat) {
+          const category = airlineOptions.find(option => option.value === getCurrentCat);
+          setCategory(category);
+      }
+  }, [getCurrentCat, airlineOptions]);
       
       useEffect(()=>{
         handleBlogDetail();
+        handleGetCategory();
       },[]);
       const handleCategoryChange = (selected) => {
         setCategory(selected);
@@ -66,21 +89,21 @@ const EditBlogModel = (props) => {
         setCustomValue(inputValue);
       };
 
-      useEffect(() => {
-        const handleGetCategory = async () => {
-            try {
-                const response = await GetCategory();
-                const options = response.data.payload.map(item => ({
-                    value: item.id,
-                    label: item.name
-                }));
-                setAirlineOptions(options);
-            } catch (error) {
-                console.error("Error fetching airline dropdown:", error);
-            }
-        };
-        handleGetCategory();
-    }, []);
+    //   useEffect(() => {
+    //     const handleGetCategory = async () => {
+    //         try {
+    //             const response = await GetCategory();
+    //             const options = response.data.payload.map(item => ({
+    //                 value: item.id,
+    //                 label: item.name
+    //             }));
+    //             setAirlineOptions(options);
+    //         } catch (error) {
+    //             console.error("Error fetching airline dropdown:", error);
+    //         }
+    //     };
+    //     handleGetCategory();
+    // }, []);
 
       const handleAuthor = (event) => {
         const value = event.target.value;
@@ -137,6 +160,7 @@ const EditBlogModel = (props) => {
         blogTypeId:isCatogory?.value,
         author:updateAuthor
       };
+    
     const handleUpdatedBlog = async() =>{
         try{
             const formData = new FormData();
@@ -187,8 +211,8 @@ const EditBlogModel = (props) => {
             <div className='parent_edit'>
                 <div className='d-flex justify-content-center'>
                 <Select
-                    value={isCatogory}
-                    onChange={handleCategoryChange}
+                      value={isCatogory}
+                        onChange={handleCategoryChange}
                         options={airlineOptions}
                         isClearable
                         isSearchable

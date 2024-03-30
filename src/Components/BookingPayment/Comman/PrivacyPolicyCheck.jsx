@@ -91,14 +91,14 @@ const PrivacyPolicyCheck = (props) => {
             const pnrNum = await generatePnrNum();
             console.log('pnrNum123',pnrNum);
             const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
-            if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
-              const finalPNR = await fetchData(pnrNum);
+            // if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
+            //   const finalPNR = await fetchData(pnrNum);
 
-              const airSialUserDetail = await airsialBookingDetail();
-              console.log('airSialUserDetail',airSialUserDetail);
+            //   const airSialUserDetail = await airsialBookingDetail();
+            //   console.log('airSialUserDetail',airSialUserDetail);
 
-              const AirSialTicketIsssue = await AirSialTicketIssued();
-            }
+            //   const AirSialTicketIsssue = await AirSialTicketIssued();
+            // }
             
             const DatatoPass ={
             branchlabel : branchLabel,
@@ -152,6 +152,13 @@ const PrivacyPolicyCheck = (props) => {
             else {
               if (PNRRespon?.Success === true) {
                 getPNRNumber = PNRRespon.Response.Data   //airsial Pnr
+
+                const finalPNR = await fetchData(getPNRNumber);
+
+                const airSialUserDetail = await airsialBookingDetail(getPNRNumber);
+                console.log('airSialUserDetail',airSialUserDetail);
+  
+                const AirSialTicketIsssue = await AirSialTicketIssued(getPNRNumber);
               }
               else {
                 getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
@@ -181,21 +188,17 @@ const PrivacyPolicyCheck = (props) => {
           //   navigate("/");
           //   window.scrollTo(0,0);
           //  }
-                  try {
-                    const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
+            const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
                     if (respServerPnrBooking.data.status === 'SUCCESS') {
-                      console.log("respServerPnrBooking", respServerPnrBooking);
-                      localStorage.setItem("PNRNumber", JSON.stringify(getPNRNumber));
-                      toast.success("PNR Created Successfully", { autoClose: 2000 });
-                    } else {
-                      throw new Error("Error while sending data to backend");
-                    }
-                  } catch (error) {
-                    console.error("Error:", error.message);
-                    // alert('error',error);
+                        console.log("respServerPnrBooking", respServerPnrBooking);
+                        localStorage.setItem("PNRNumber", JSON.stringify(getPNRNumber));
+                        toast.success("PNR Created Successfully", { autoClose: 2000 });
+                    } else{
+                      console.log('anccccc')
+                      alert("Error:while sending data to backend");
                     // navigate("/flightbooking");
-                    window.scrollTo(0, 0);
-                  }
+                    // window.scrollTo(0, 0);
+                    }
             }
       
           } finally {

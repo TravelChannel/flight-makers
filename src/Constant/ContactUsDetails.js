@@ -6,7 +6,7 @@ const ContactUsDetails = [
         address:'53/A-1 , Block E/1 Gulberg-III ',
         city:'Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '2',
@@ -14,7 +14,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'3-UGF, Century Tower, Kalma Chowk, Main Boulevard, Gulberg-III, Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '3',
@@ -22,7 +22,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 6, Shahid Plaza Jinnah Avenue, Blue Area Islamabad, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '4',
@@ -30,7 +30,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 8, Ground Floor, Plaza No. 139, Phase IV,Civic Center,Bahria Town',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '5',
@@ -38,7 +38,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 2, Plot No.16-C, Main Shahbaz Commercial,Near Pizza Hut, Phase-VI, DHA,',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '6',
@@ -46,7 +46,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Shop no 14 , Kohinoor Plaza ,Jaranwala Rd, Faisalabad Faisalabad, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '7',
@@ -54,7 +54,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Plot-211, Block CCA FF Market Defence Housing Society (D.H.A.) Phase 4 Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '8',
@@ -63,7 +63,7 @@ const ContactUsDetails = [
         address:'4-UGF, National Tower Egerton Road',
         city:'Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '9',
@@ -71,7 +71,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 11, Y Block Commercial Plaza Round Market Phase 3 DHA Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '10',
@@ -79,7 +79,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 01, Plaza No.01, Block-G Phase-1C, DHA Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '11',
@@ -87,7 +87,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'03 GF, Akbari Shoping Mall, Hunza Block, Allama Iqbal Town,Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '12',
@@ -96,7 +96,7 @@ const ContactUsDetails = [
         address:'Office No. 95 G1 Market, Johar Town',
         city:'Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
     {
         id: '13',
@@ -104,7 +104,7 @@ const ContactUsDetails = [
         timing :"09AM - 06PM (Mon - Sat)",
         address:'Office No. 3, Cantt Commercial Complex, Abid Majeed Road, Lahore Cantt Lahore, Pakistan',
         uan:'03 111 147 111',
-        email:'E info@faremakers.com'
+        email:'info@faremakers.com'
     },
 ];
 

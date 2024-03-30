@@ -16,6 +16,7 @@ const BookingDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [currentDate , setCurrentDate] = useState(false);
+  const [orderId ,setOrderId] = useState(null);
 const {formData ,setFormData,backendFinalOBJ}= useFormData();
 const firstName = formData.map(items=>items.fname0);
 const lastName = formData.map(items =>items.lname0);
@@ -25,9 +26,9 @@ const userLocation = passedData?.userLocation;
 
 const [isSmallScreen ,  setIsSmallScreen] = useState(false);
 
-// const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
 
-// console.log("userPNR",activepnrNumber);
+
 
 console.log("userrrrrrrrrrr",userLocation);
 
@@ -67,18 +68,19 @@ const downloadPDF = () => {
   });
 };
 
-// useEffect(() => {
-//   const GetUsersDetail = async () => {
-//     try {
-//       const response = await GetDetailByPNR(activepnrNumber);
-//       console.log("userDetailbyPNR", response);
-//     } catch (error) {
-//       console.error("error in ffetching Data",error);
-//     }
-//   };
+useEffect(() => {
+  const GetUsersDetail = async () => {
+    try {
+      const response = await GetDetailByPNR(activepnrNumber);
+      console.log("userDetailbyPNR", response);
+      setOrderId(response.data.payload.id);
+    } catch (error) {
+      console.error("error in ffetching Data",error);
+    }
+  };
   
-//   GetUsersDetail();
-// }, []);
+  GetUsersDetail();
+}, []);
 useEffect(() => {
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 768);
@@ -125,7 +127,7 @@ const backNavigation = () =>{
                 <div className="custom_detials_main">
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>Order ID </h6>
-                    <h6 className='custom_sub_details'>#454545545</h6>
+                    <h6 className='custom_sub_details'>{`#000${orderId}`}</h6>
                   </div>
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>

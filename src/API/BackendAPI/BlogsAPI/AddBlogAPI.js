@@ -2,6 +2,7 @@ import apiClient from "../api_main";
 
 export const AddBlogAPI = async (formData) => {
     try {
+        console.log("formData",formData);
         const response = await apiClient.post(`/blogs`, formData);
         if (response.data.status === 'SUCCESS') {
             console.log(response.data.message, 'SUCCESS');

@@ -46,7 +46,8 @@ export const airsialTravelerDetail = async (formData,activepnrNumber) => {
         Dob: formatDate(data.dateOfBirth),
         // PassportExpiry:"02-07-2026",
         // Dob:"02-07-2008",
-        Cnic:`${CnicFormat(data.cnic)}`,
+        // Cnic:`${CnicFormat(data.cnic)}`,
+        Cnic: data.cnic ? CnicFormat(data.cnic) : null,
         Gender: `${data.gender}`,
     };
 

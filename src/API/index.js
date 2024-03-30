@@ -132,16 +132,16 @@ export const requestPNRCreate = async (formData) => {
 export const AirSialTravDetial = async(formData,activepnrNumber)=>{
 try{
 const AirsialtravInfo = await airsialTravelerDetail(formData,activepnrNumber);
-console.log("finalFormData",formData);
+// console.log("finalFormData",formData);
 return AirsialtravInfo;
 }catch(error){
   console.log(error);
   throw error;
 }
 }
-export const airsialBookingDetail = async()=>{
+export const airsialBookingDetail = async(getPNRNumber)=>{
   try{
-  const airsialBookingDet = await airSialViewDetail();
+  const airsialBookingDet = await airSialViewDetail(getPNRNumber);
   return airsialBookingDet;
   }catch(error){
     console.error(error);
@@ -184,9 +184,9 @@ export const requestGetBooking = async () => {
 }
 
 // ---------------------------------AirSial Ticket Issue----------------------------------
-export const AirSialTicketIssued = async() =>{
+export const AirSialTicketIssued = async(getPNRNumber) =>{
   try {
-    const result = await AirSialIssueTicket();
+    const result = await AirSialIssueTicket(getPNRNumber);
     return result;
   }
   catch (error) {
