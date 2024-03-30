@@ -410,6 +410,8 @@ const FlightSearch = (props) => {
       additionalFields,
       activeClassTab
     );
+    console.log('hashim',searchDataArr);
+
     setcheckUpdate(false);
     console.log(searchDataArr);
     

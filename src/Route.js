@@ -29,6 +29,7 @@ import UserCompleteDetail from './Components/BackendDesign/MyPanel/Pages/common/
 import BlogCollection from './View/BlogCollection';
 import BlogContent from './Components/BlogsContent/BlogContent';
 import AddBlog from './Components/BackendDesign/AdminPanel/Blogs/AddBlog';
+import BlogbyCategory from './Components/BlogsContent/BlogbyCategory';
 
 const AppRouter = () => {
   return (
@@ -36,6 +37,7 @@ const AppRouter = () => {
       <Routes>
      
         <Route path="/" element={<Home />} />
+        <Route path="/hello" element={<p>Hello</p>} />
         <Route path="/searchflightresult" element={<SearchFlightResult />} />
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
@@ -54,16 +56,19 @@ const AppRouter = () => {
         <Route path="/previewEticket" element={<GetPNRItinerary />} />
         <Route path="/banks" element={<FMBanks />} />
         <Route path="/FAQs" element={<FAQs/>} />
-        <Route path="/addBlog/:id" element={<AddBlog/>} />
+        <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
         <Route path="/blogs/:headerUrl" element={<BlogContent />} />
+        <Route path="/blogs/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+        <Route path="/blogs/category/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
+
 
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
         <Route path="/:airlineName" element={<PopularAirLines/>} />
-        <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} />
-        {/* <Route path="/flights/:flightName" element={<SearchFlightResult />} /> */}
+        {/* <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} /> */}
+        <Route path="/flights/:flightName" element={<SearchFlightResult />} />
         <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} />
         
 

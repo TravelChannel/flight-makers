@@ -8,19 +8,22 @@ import { Input } from "antd";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { GetCategory } from "../../../../API/BackendAPI/BlogsAPI/getCategory";
-
+import { useParams } from "react-router";
 const AddBlog = () => {
-
+  const [AuthorName ,setAuthorName] = useState('');
   const [maintitle, setMainTitle] = useState("");
   const [isSlug , setSlug] = useState('');
   const [shortDesc , setShortDesc] = useState('');
   const [editorData, setEditorData] = useState('');
-  const [isCatogory ,setCategory] = useState([]);
+  const [isCatogory ,setCategory] = useState('');
   const [customValue, setCustomValue] = useState('');
   const [airlineOptions, setAirlineOptions] = useState([]);
   
   const [isFocused, setFocused] = useState(false);
   const [isTitleFocused, setTitleFocused] = useState(false);
+  const [isSlugFocus ,setSlugFocus] = useState(false);
+
+
   const [isContentFocus, setContentFocus] = useState(false);
   const [isSubmitLoading , setSubmitLoading] = useState(false);
 
@@ -28,11 +31,15 @@ const AddBlog = () => {
   const [inputValue, setInputValue] = useState("");
   const [isClick ,setisClick] = useState(false);
   const [isSuccess ,setIsSuccess] = useState(false);
- 
-
+//  ----------------------------------
   const handleChange = (event, editor) => {
     const data = editor.getData();
     setEditorData(data);
+
+  };
+  const handleAuthor = (event) => {
+    const value = event.target.value;
+    setAuthorName(value);
   };
   const handleMainTitle = (event) => {
     const value = event.target.value;
@@ -76,11 +83,10 @@ const AddBlog = () => {
       handleGetCategory();
   }, []);
 
-  // const handleContentFocus = () => {
-  //   setTitleFocused(true);
-  //   setContentFocus(false);
-  // };
-
+  const handleContentFocus = () => {
+    setTitleFocused(true);
+    setContentFocus(false);
+  };
   const handleSummaryFocus = () => {
     setTitleFocused(false);
     setContentFocus(true);
@@ -89,6 +95,9 @@ const AddBlog = () => {
     setFocused(true);
     setTitleFocused(false);
     setContentFocus(false);
+  };
+  const handleslugFocus = () => {
+    setSlugFocus(true);
   };
   // -------------passing object ------------------
   const fileInputRef = useRef(null);
@@ -100,11 +109,12 @@ const AddBlog = () => {
   };
   const BlogData = {
     mainTitle: maintitle,
-    slug: isSlug,
-    shortDesc:shortDesc,
+    headerUrl: isSlug,
+    shortDescription:shortDesc,
     img: "",
-    content:editorData,
-    blogTypeId:isCatogory?.value
+    description :editorData,
+    blogTypeId:isCatogory?.value,
+    author:AuthorName
   };
 
   console.log("passingObject", BlogData);
@@ -149,12 +159,15 @@ const onSubmit = async () => {
             setIsSuccess(true);
             toast.success('Blog Added Successfully!',
             {autoClose: 2000 });
-            // toast.success('Blog Added Successfully');
           }else{
             console.error(apiResponse.data.status,'Danger');
           }
-
+          
+          setAuthorName('');
           setMainTitle("");
+          setSlug('');
+          setShortDesc('');
+          setEditorData('');
           setFocused(false);
           setTitleFocused(false);
           setContentFocus(false);
@@ -166,58 +179,33 @@ const onSubmit = async () => {
     }
 }
 
-// -------------Update Blog---------------
-
-// const handleUpdatedBlog = async(id) =>{
-// try{
-//   const responce = await UpdateBlogAPI(id);
-//   console.log("responce from updatedBlog-APi",responce);
-//   toast.success('Blog Updated Successfully!',
-//   {autoClose: 2000 });
-  
-// }catch(error){
-//   console.error("error while updating blog",error);
-//   toast.success(`Error! ${error}`,
-//   {autoClose: 2000 });
-
-// }
-// }
-
-// ---------------GetBlogDetailsbyId-----------------------
-
-// const handleBlogDetail = async() =>{
-//   try{
-//     const responce = await GetSingleBlogbyID(id);
-//     console.log("getBlogDetailbyID-Success",responce );
-//     setBlogDetail(responce.data.payload);
-//     setSections(responce.data.payload.blogsDetails)
-//     setUpdateTitle(responce.data.payload.mainTitle);
-//   }catch(error){
-//     console.error("error at getting Single Data",error);
-//   }
-// }
-
-// useEffect(()=>{
-//   handleBlogDetail();
-// },[]);
-
-
   return (
     <div className="container bg-white ">
-            <div className='d-flex justify-content-center'>
-               <Select
-                  value={isCatogory}
-                   onChange={handleCategoryChange}
-                    options={airlineOptions}
-                     isClearable
-                     isSearchable
-                    placeholder="Select Category..."
-                    className="CommissionInputFields"
-                    onCreateOption={handleAddCustomValue}
-                    onInputChange={handleInputChange}
-                />
-            </div>
+       <div className='d-flex justify-content-end mx-1'>
+                <Select
+                    value={isCatogory}
+                    onChange={handleCategoryChange}
+                      options={airlineOptions}
+                      isClearable
+                      isSearchable
+                      placeholder="Select Category..."
+                      className="CommissionInputFields"
+                      onCreateOption={handleAddCustomValue}
+                      onInputChange={handleInputChange}
+                  />
+                
+      </div>
       <div className="Blog_title_main">
+      <p className="title_typograpy my-1">Author</p>
+        <Input
+          type="text"
+          class="full_width_input"
+          placeholder={isTitleFocused ? "" : "Author Name"}
+          onFocus={handleContentFocus}
+          onBlur={() => setTitleFocused(false)}
+          onChange={handleAuthor}
+          value={AuthorName}
+        />
         <p className="title_typograpy my-1">Title</p>
         <Input
           type="text"
@@ -232,11 +220,11 @@ const onSubmit = async () => {
         <Input
           type="text"
           class="full_width_input"
-          placeholder={isFocused ? "" : "Write Blog Slug here"}
-          onFocus={handleFocus}
-          onBlur={() => setFocused(false)}
+          placeholder={isSlugFocus ? "" : "Write Blog Slug here"}
+          onFocus={handleslugFocus}
+          onBlur={() => setSlugFocus(false)}
           onChange={handleSlug}
-          value={isSlug}
+          value={isSlug }
         />
        <p className="title_typograpy my-1">Short Discription</p>
        <textarea
@@ -244,16 +232,18 @@ const onSubmit = async () => {
           placeholder={isContentFocus ? "" : "Details..."}
           onFocus={handleSummaryFocus}
           onBlur={() => setContentFocus(false)}
-          value={shortDesc}
+          value={shortDesc }
           onChange={handleShortDesc}
       />
       </div>
       <div className="Blog_title_main">
         <p className="title_typograpy">Upload Image</p>
             <Box sx={{ display: "flex", alignItems: "center" }}>
-                {/* <ImgStyled src={imgSrc} alt='Profile Pic' /> */}
+                {/* <img src={imgSrc} alt='Profile Pic' /> */}
                 <div>
-               {isClick &&  <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>}
+               {/* {isClick &&  */}
+                <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
+                {/* } */}
                 <div>
                     <input
                     type="file"
@@ -280,7 +270,6 @@ const onSubmit = async () => {
                 onChange={handleChange}
               />
       </div>
-      
         <div className="d-flex justify-content-center m-3">
                 <button
                   className="btn btn-primary addBlog_btn "
@@ -289,7 +278,6 @@ const onSubmit = async () => {
                   Add Blog
                 </button>
         </div>
-
     </div>
   );
 };

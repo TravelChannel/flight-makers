@@ -3,7 +3,7 @@ import { useFormData } from '../Context/FormDataContext';
 import { useNavigate } from 'react-router';
 import Loader from '../Loader/Loader';
 import { BlogByPagination } from '../API/BackendAPI/BlogsAPI/BlogByPagination';
-import * as images from '../Constant/images';
+import { GetCategory } from '../API/BackendAPI/BlogsAPI/getCategory';
 const BlogCollection = () => {
   const navigate = useNavigate();
   const { setShowHeader, setTopNavBar } = useFormData();
@@ -11,6 +11,8 @@ const BlogCollection = () => {
   const [isLoading ,setLoading] = useState(false);
   const [pageSize ,setPageSize] = useState(15);
   const [page, setPage] = useState(1);
+  const [isNextPage ,setNextPage] = useState();
+  const [airlineOptions, setAirlineOptions] = useState([]);
 
   const getBlogbypage = async () =>{
     try{
@@ -22,6 +24,7 @@ const BlogCollection = () => {
       console.log('blogbyPage-Responce',responce);
       const newBlogData = responce.data.payload.blogs;
       setBlogData(prevBlogData => [...prevBlogData, ...newBlogData]);
+      setNextPage(responce.data.payload.hasNextPage);
     }catch(error){
       console.error("Error1",error);
     }
@@ -49,6 +52,28 @@ const BlogCollection = () => {
     setPage(prevPage => prevPage +1);
   };
 
+  const handleBlogByCategory =async(id,categoryName) =>{
+    const modifiedCategoryName = categoryName.replace(/ /g, '-');
+    navigate(`/blogs/category/${modifiedCategoryName}`, { state: {id, categoryName } });
+  }
+
+  useEffect(() => {
+    const handleGetCategory = async () => {
+        try {
+            const response = await GetCategory();
+            const options = response.data.payload.map(item => ({
+                value: item.id,
+                label: item.name
+            }));
+            setAirlineOptions(options);
+            console.log("options",options);
+        } catch (error) {
+            console.error("Error fetching airline dropdown:", error);
+        }
+    };
+    handleGetCategory();
+}, []);
+
   return (
     isLoading ? (<Loader/>) :(
       <div className='my_custom_section bg-white'>
@@ -58,16 +83,20 @@ const BlogCollection = () => {
               <p className="blog_main">Travel More</p>
             </div>
               <ul className="bottom_text">
-                  <li className="blog_heading category_menu">Adventure</li>
-                  <li className="blog_heading category_menu">Beach</li>
-                  <li className="blog_heading category_menu">Flights</li>
-                  <li className="blog_heading category_menu">Family</li>
-                  <li className="blog_heading category_menu">Specials</li>
+              {airlineOptions.map(option => (
+                <li
+                  key={option.value}
+                  className="blog_heading category_menu"
+                  onClick={() => handleBlogByCategory(option.value, option.label)}
+                >
+                  {option.label}
+                </li>
+              ))}
               </ul>
       </div>
-        <div className='blog_bc_image'>
+        {/* <div className='blog_bc_image'>
               <img src={images.blogBackGround} alt="" width = '100%' />
-       </div>
+       </div> */}
       <div className="container">
       {blogData.length ? 
           (
@@ -84,7 +113,10 @@ const BlogCollection = () => {
                 }
           </div>
           <div className='d-flex justify-content-center py-3'>
-          <button id="load-more-posts" className="btn btn-primary btn-loadmore" onClick={handleChange}>
+          <button id="load-more-posts" className="btn btn-primary btn-loadmore" 
+          onClick={handleChange}
+          disabled={!isNextPage}
+          >
             Load More
             </button>
           </div>

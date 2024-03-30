@@ -18,7 +18,6 @@ const BlogContent = () => {
           try{
             const resp = await GetSingleBlog(headerUrl);
             setBlogData(resp.data.payload);
-            // setBlogData(resp.data.payload);
             console.log("GetSingleBlogFromAPI",resp.data.payload);
           }catch(error){
             console.error("userSide Error",error);
@@ -41,14 +40,6 @@ const BlogContent = () => {
                               <LandscapeRoundedIcon className='contact_detail_icon align-self-center'/><h3>{formattedMainTitle}</h3>
                         </div>
                       </div> 
-                      {/* {
-                        BlogData.map((items,index)=>(
-                          <div className="px-3" key = {index}>
-                            <h3 class="mainhead_blog">{` ${index+1}: ${items.heading}`}</h3>
-                            <p class="blog_text">{items.summary} </p>
-                        </div>
-                        ))
-                      }      */}
 
                       <div className='px-4 py-3'>
                       <div dangerouslySetInnerHTML={{ __html: BlogData.description }} />

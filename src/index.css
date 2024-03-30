@@ -2051,6 +2051,10 @@ width:45px;
   max-width: 800px; 
   margin: 200 auto; 
 }
+.blog_edit_modal{
+  max-width:50%; 
+  margin: 200 auto; 
+}
 .otp_btn_container{
 
   display: flex;
@@ -6561,9 +6565,8 @@ tbody, td, tfoot, th, thead, tr{
 .user_cancelation_button{
   background-color: transparent;
   color:#000;
-  /* font-size:14px; */
+  padding:5px 35px !important;
   font-weight:600;
-  /* border:none;  */
 }
 /* .user_ReIssue_button{
   background-color: #F26223;
@@ -6689,8 +6692,8 @@ display: inline;
   display: inline-block;
 }
 .buttons_typo_delt{
-	margin-right:5px;
-    padding:7px 32px;
+	  margin-right:5px;
+    padding:5px 28px;
     /* background-color: #F26223;
     border:none; */
 }
@@ -7051,8 +7054,17 @@ text-align: justify;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* height: 100%; */
+}
+.blog_sub_section{
+  position: relative;
+  background-image: url('assets/Blogs/sub_blog.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+  height: 500px;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 .overlay_blog {
   position: absolute;
@@ -7428,4 +7440,17 @@ margin-top:10px;
 }
 .ck_editor{
   height: 500px;
+}
+.css-13cymwt-control{
+  border-color:#d9d9d9 !important;
+}
+.promo_bg_btn{
+  background-color: transparent;
+  color:#000;
+  font-weight:600;
+}
+.lists_empty_message{
+  color:red;
+  font-weight:600;
+  padding:30px 0px;
 }

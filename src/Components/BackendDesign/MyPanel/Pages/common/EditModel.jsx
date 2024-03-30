@@ -1,5 +1,5 @@
-import React ,{useState,useEffect} from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, } from 'reactstrap';
+import React ,{useState} from 'react'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -14,6 +14,7 @@ import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 import { useFormData } from '../../../../../Context/FormDataContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 const EditModel = (props) => {
  const {isOpen , setIsOpen ,setProfileData ,ProfileData} = props;
 

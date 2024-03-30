@@ -192,8 +192,8 @@ const PrivacyPolicyCheck = (props) => {
                     }
                   } catch (error) {
                     console.error("Error:", error.message);
-                    alert('error',error);
-                    navigate("/flightbooking");
+                    // alert('error',error);
+                    // navigate("/flightbooking");
                     window.scrollTo(0, 0);
                   }
             }

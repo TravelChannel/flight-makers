@@ -1,7 +1,8 @@
 import apiClient from "../api_main";
-export const UpdateBlogAPI = async (id) => {
+export const UpdateBlogAPI = async (passingobj) => { 
+    console.log("values",passingobj)
     try {
-        const response = await apiClient.patch(`/blogs/${id}`);
+        const response = await apiClient.patch(`/blogs/${passingobj.idz}`,passingobj.formData);
         if (response.data.status === 'SUCCESS') {
             console.log(response.data.message, `Update Blog successfully`);
             return response;

@@ -121,12 +121,12 @@ const ArrangeDateFormat = (JourneyDate) => {
                                             <div onClick={()=>{ShowUpdateModel(items.id)}}>
                                                 <button
                                                     className='btn btn-primary buttons_typo user_cancelation_button'>
-                                                    Update
+                                                    Edit
                                                 </button>
                                             </div>
                                             <div className='mt-2' onClick={()=>handleDeletePromotion(items.id)}>
                                                 <button
-                                                    className='btn btn-primary buttons_typo_delt user_cancelation_button'>
+                                                    className='btn btn-primary buttons_typo_delt promo_bg_btn '>
                                                 Delete
                                                 </button>
                                             </div>

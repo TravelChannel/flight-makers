@@ -1,4 +1,4 @@
-import { React, Fragment, useContext} from 'react'
+import { React, Fragment, useContext , useEffect} from 'react'
 import { calculateTax } from '../../helpers/taxCalculation'
 import { TicketPriceContext } from './Comman/Context';
 import { useFormData } from '../../Context/FormDataContext';
@@ -26,15 +26,15 @@ const TotalPriceCalculation = () => {
     const ticketPrice = flightData.fare.totalFare.equivalentAmount;
     const taxAmount = flightData.fare.totalFare.totalTaxAmount;
     let totalAmount = ticketPrice + taxAmount + extraBagg;
-    const servicefees = (taxfees) => {
+    const servicefees = (taxfees=0) => {
 
         const serviecFees = (totalAmount * taxfees) / 100;
         totalAmount = totalAmount + serviecFees;
         return serviecFees.toFixed(0);
     };
 
-    const taxfees = calculateTax(destination, airline, classType);
-    // const taxfees = serviceCharges
+    // const taxfees = calculateTax(destination, airline, classType);
+    const taxfees = serviceCharges
     const calculatedServiceFees = servicefees(taxfees);
     const totalTicketPrice = totalAmount.toFixed(0);
 

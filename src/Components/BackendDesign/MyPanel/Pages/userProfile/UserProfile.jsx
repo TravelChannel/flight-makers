@@ -134,7 +134,7 @@ useEffect(()=>{
                                             </div>
                                             <div className='text-center mt-4'>
                                               <button className='btn btn-primary profile_update_btn' onClick={openEditModel}>
-                                                    Update Your profile
+                                                    Edit Your profile
                                               </button>
                                             </div>
                                         </div>

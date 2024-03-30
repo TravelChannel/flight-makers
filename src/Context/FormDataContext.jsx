@@ -18,6 +18,7 @@ export const FormDataProvider = ({ children }) => {
   const [completeUserData ,setCompleteUserData] = useState([]);
   const [serviceCharges ,setServiceCharges] = useState();
   const [searcRes ,setSearchRes] = useState({});
+ 
 
   return (
     <FormDataContext.Provider value={{ 
