@@ -1,20 +1,26 @@
 import {React, useState,Fragment,useEffect}from "react";
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
-import Box from '@mui/material/Box';
-import FAQs from "../Components/Commom/FAQs";
 import menuItems from "../Constant/CustomerSupportData";
-import { useNavigate } from "react-router";
-import { Route, Routes, Navigate } from "react-router-dom";
-
-
+import { useNavigate ,useLocation } from "react-router";
 
 // ---------------------------
 const Customersupport = () =>{
     const navigate = useNavigate();
+    const location = useLocation();
     const [selectedMenuItem, setSelectedMenuItem] = useState(0);
-
-    const handleMenuItemClick = (index) =>{
+    // useEffect(() => {
+    //     navigate(`/customer-support/${encodeURIComponent(menuItems[selectedMenuItem].path)}`);
+    // }, []);
+    useEffect(() => {
+        const path = location.pathname.split("/").pop();
+        const index = menuItems.findIndex(item => item.path === path);  
+        if (index !== -1) {
+            setSelectedMenuItem(index);
+        }
+    }, [location.pathname]);
+    const handleMenuItemClick = (index,title) =>{
         setSelectedMenuItem(index);
+        navigate(`/customer-support/${encodeURIComponent(title)}`);
     }
     return(
         <div className="container bg-white">
@@ -28,7 +34,7 @@ const Customersupport = () =>{
                         <p
                         key = {index}
                         className={`cs_menu_content ${selectedMenuItem === index ? 'print_title rounded' : ''}`}
-                        onClick={()=>handleMenuItemClick(index)}
+                        onClick={()=>handleMenuItemClick(index ,item.path)}
                         >
                             {item.title}
                         </p>

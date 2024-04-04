@@ -4682,6 +4682,7 @@ color: #0a53be;
 .airoplane_move_arrow{
   position:absolute;
   left: 190px;
+     /* left:300px !important; */
 }
 .airoplane_main{
   height:216px;
@@ -5618,7 +5619,7 @@ input::placeholder
 .loader{
   position: absolute;
   top:45%;
-  left: 35%;
+  left: 44%;
   width: 100px;
   height: 100px;
 }
@@ -7453,4 +7454,27 @@ margin-top:10px;
   color:red;
   font-weight:600;
   padding:30px 0px;
+}
+.selecttype_button{
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  border:none;
+}
+.selecttype_button:hover{
+  background-color: #F26223;
+  border: none;
+}
+.summary_detail{
+  font-size:14px;
+  font-weight: 600;
+  /* color:#010101; */
+  border:0.5px solid lightgray;;
+  border-radius: 20px;
+}
+.summary_content{
+  color:gray;
+}
+.summry_detail_icon{
+  color:gray !important;
 }

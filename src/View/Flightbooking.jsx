@@ -46,6 +46,7 @@ const ItineraryDetails = () => {
                 {isButtonClicked &&
                   <Fragment>
                     <ReviewItinerary />
+                    
                     {/* {flightDetails.fare.passengerInfoList[0].passengerInfo.nonRefundable ? null : <ChangeRefundPolicy />} */}
                     {flightDetails.extraBaggages ? <ExtraBaggages /> : null}
                     {/* <SeatSelection/> */}

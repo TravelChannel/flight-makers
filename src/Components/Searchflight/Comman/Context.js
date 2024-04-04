@@ -26,24 +26,54 @@ export function ItemsToShowProvider({ children, totalResults, apiData, searchDat
   ) {
     filteredApiData = apiData;
   } else {
+    // --------------------------------------
+    // filteredApiData = apiData.filter(data =>
+    //   data.schedualDetGet.some(itemArray =>
+    //     (selectedStops.length === 0 || selectedStops.includes(itemArray.length.toString())) &&
+    //     (
+    //       selectedDepTimings.length === 0 || 
+    //       (selectedDepTimings.length > 0 && checkFilterTiming(data.schedualDetGet[0][0].departure.time, selectedDepTimings))
+    //     ) &&
+    //     (
+    //       selectedAriTimings.length === 0 || 
+    //       (selectedAriTimings.length > 0 && checkFilterTiming(data.schedualDetGet[0][0].arrival.time, selectedAriTimings))
+    //     ) &&
+    //     (selectedAirlines.length === 0 || selectedAirlines.includes(itemArray[0]?.carrier.marketing))
+    //   )
+    // );
+    
+    // --------------------------------------  
     filteredApiData = apiData.filter(data =>
-      data.schedualDetGet.some(itemArray =>
-        (selectedStops.length === 0 || selectedStops.includes(itemArray.length.toString())) &&
-        (selectedDepTimings.length === 0 || checkFilterTiming(itemArray[0].departure.time, selectedDepTimings)) &&
-        (selectedAriTimings.length === 0 || checkFilterTiming(itemArray[itemArray.length - 1].arrival.time, selectedAriTimings)) &&
-        (selectedAirlines.length === 0 || selectedAirlines.includes(itemArray[0].carrier.marketing))
-      )
+      data.schedualDetGet.some(itemArray => {
+        // const arrivalTime = itemArray[itemArray.length - 1].arrival.time;
+        return (
+          (selectedStops.length === 0 || selectedStops.includes(itemArray.length.toString())) &&
+          (
+            selectedDepTimings.length === 0 || 
+            (selectedDepTimings.length > 0 && checkFilterTiming(data?.schedualDetGet[0][0]?.departure?.time, selectedDepTimings))) &&
+          (
+            selectedAriTimings.length === 0 || 
+            (selectedAriTimings.length > 0 && checkFilterTiming(data?.schedualDetGet[0][data?.schedualDetGet[0]?.length - 1]?.arrival?.time, selectedAriTimings))
+          ) &&
+          (selectedAirlines.length === 0 || selectedAirlines.includes(itemArray[0]?.carrier.marketing))
+        );
+      })
     );
+    
+//  -------------------start------------------------------------------   
   }
   if (filteredApiData.length === 0) {
     filteredApiData = apiData;
   }
 
-  // console.log(filterDataArr);
+  console.log('filteredApiData',filteredApiData);
   // console.log(apiData);
 
   function checkFilterTiming(arrivalTime, selectedTimings) {
+    console.log("arrivalTime",arrivalTime);
+    console.log(",selectedTimings",selectedTimings);
     const timeMatch = arrivalTime.match(/(\d{2}):(\d{2})/);
+    console.log("timeMatch",timeMatch);
     if (!timeMatch) {
       return false; // Invalid arrivalTime format
     }
@@ -62,6 +92,7 @@ export function ItemsToShowProvider({ children, totalResults, apiData, searchDat
       }
     });
   }
+
 
   function getTimingRange(selectedTiming) {
     switch (selectedTiming) {

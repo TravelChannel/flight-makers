@@ -13,6 +13,8 @@ import { FormDataProvider, useFormData } from "./Context/FormDataContext";
 import { VerificationAPi } from "./API/BackendAPI/Find_me_verification";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MetaPage from "./View/MetaPage";
+import { MetaPageData } from "./Constant/MetaPageData";
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData} = useFormData();
   // ---------------------------------------
@@ -106,11 +108,13 @@ const App = () => {
     <Fragment>
       <div className="backgradiant">
         <div className="container-fluid">
+        <MetaPage metaPageData={MetaPageData}>
             {!inputPNR && isTopNavBar && <TopNavBar/>}
             {!inputPNR && showHeader && <Header />}
             <Routes />
             <ToastContainer />
             {!inputPNR && <Footer/>}
+        </MetaPage>
         </div>
       </div>
     </Fragment>

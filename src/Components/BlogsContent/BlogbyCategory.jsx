@@ -36,7 +36,7 @@ const BlogbyCategory = () => {
 
     const handleBlogContent = (headerUrl) =>{
         // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
-        navigate(`/blogs/category/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
+        navigate(`/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
       }
       const handleChange = () => {
         setPage(prevPage => prevPage +1);

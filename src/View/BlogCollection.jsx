@@ -46,7 +46,7 @@ const BlogCollection = () => {
 
   const handleBlogContent = (headerUrl) =>{
     // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
-    navigate(`/blogs/${encodeURIComponent(headerUrl)}`);
+    navigate(`/${encodeURIComponent(headerUrl)}`);
   }
   const handleChange = () => {
     setPage(prevPage => prevPage +1);
@@ -54,7 +54,7 @@ const BlogCollection = () => {
 
   const handleBlogByCategory =async(id,categoryName) =>{
     const modifiedCategoryName = categoryName.replace(/ /g, '-');
-    navigate(`/blogs/category/${modifiedCategoryName}`, { state: {id, categoryName } });
+    navigate(`/blogs/${modifiedCategoryName}`, { state: {id, categoryName } });
   }
 
   useEffect(() => {

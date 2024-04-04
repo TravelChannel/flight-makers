@@ -99,7 +99,6 @@ const PrivacyPolicyCheck = (props) => {
 
             //   const AirSialTicketIsssue = await AirSialTicketIssued();
             // }
-            
             const DatatoPass ={
             branchlabel : branchLabel,
             userLocation : userLocation,
@@ -158,7 +157,7 @@ const PrivacyPolicyCheck = (props) => {
                 const airSialUserDetail = await airsialBookingDetail(getPNRNumber);
                 console.log('airSialUserDetail',airSialUserDetail);
   
-                const AirSialTicketIsssue = await AirSialTicketIssued(getPNRNumber);
+                // const AirSialTicketIsssue = await AirSialTicketIssued(getPNRNumber);
               }
               else {
                 getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
@@ -195,7 +194,7 @@ const PrivacyPolicyCheck = (props) => {
                         toast.success("PNR Created Successfully", { autoClose: 2000 });
                     } else{
                       console.log('anccccc')
-                      alert("Error:while sending data to backend");
+                      alert("Error:something went wrong, Please Try Again ");
                     // navigate("/flightbooking");
                     // window.scrollTo(0, 0);
                     }

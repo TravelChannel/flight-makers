@@ -423,6 +423,10 @@ const FlightSearch = (props) => {
 
     navigate('/searchflightresult', { state: { searchDataArr } });
   };
+
+  const handleSelecor =() =>{
+    setDivVisible(false);
+  }
   return (
     <Fragment>
       <div className={`container ${main_flight_rsult}`}>
@@ -523,6 +527,9 @@ const FlightSearch = (props) => {
                         <span onClick={() => travelClasshandleTabClick(2)} className={`travellingClassType ${activeClassTab === 'Business class' ? "travel_class_active" : ""}`}>Business class</span>
                         <span onClick={() => travelClasshandleTabClick(3)} className={`travellingClassType ${activeClassTab === 'First class' ? "travel_class_active" : ""}`}>First class</span>
                         <span onClick={() => travelClasshandleTabClick(4)} className={`travellingClassType ${activeClassTab === 'Premium economy' ? "travel_class_active" : ""}`}>Premium economy</span>
+                      </div>
+                      <div className='d-flex justify-content-end mt-1'>
+                        <button className='btn btn-primary selecttype_button' onClick={handleSelecor}>Submit</button>
                       </div>
                     </div>
                   }
@@ -787,6 +794,9 @@ const FlightSearch = (props) => {
                       <span onClick={() => travelClasshandleTabClick(3)} className={`${activeClassTab === 3 ? "travel_class_active" : ""} travellingClassType`}>First class</span>
                       <span onClick={() => travelClasshandleTabClick(4)} className={`${activeClassTab === 4 ? "travel_class_active" : ""} travellingClassType`}>Premium economy</span>
                     </div>
+                      <div className='d-flex justify-content-end mt-1'>
+                        <button className='btn btn-primary selecttype_button' onClick={handleSelecor}>Submit</button>
+                      </div>
                   </div>
                 }
               </span>

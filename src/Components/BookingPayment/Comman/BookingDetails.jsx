@@ -16,7 +16,7 @@ const BookingDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [currentDate , setCurrentDate] = useState(false);
-  const [orderId ,setOrderId] = useState(null);
+  const [orderId ,setOrderId] = useState();
 const {formData ,setFormData,backendFinalOBJ}= useFormData();
 const firstName = formData.map(items=>items.fname0);
 const lastName = formData.map(items =>items.lname0);

@@ -20,6 +20,7 @@ import { Routes, Route } from 'react-router-dom';
 import PopularAirLines from './Components/SEOPages/PopularAirLines';
 import FlightsSearchEngine from './Components/SEOPages/FlightsSearchEngine';
 import DomesticFlightsEngine from './Components/SEOPages/DomesticFlightsEngine';
+import WriteToUs from './Components/Commom/WriteToUs';
 // import UserPanel from './Components/BackendDesign/UserPanel/UserPanel';
 
 // import Orders from './Components/BackendDesign/UserPanel/pages/Orders';
@@ -37,7 +38,6 @@ const AppRouter = () => {
       <Routes>
      
         <Route path="/" element={<Home />} />
-        <Route path="/hello" element={<p>Hello</p>} />
         <Route path="/searchflightresult" element={<SearchFlightResult />} />
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
@@ -46,6 +46,7 @@ const AppRouter = () => {
         <Route path="/RequestCall" element={<Contact />} />
         <Route path="/job-careers" element={<Careers />} />
         <Route path="/customer-support" element={<Customersupport />} />
+        <Route path="/customer-support/:title" element={<Customersupport />} />
         <Route path="/flights" element={<Flights />} />
         <Route path="/refund-policy" element={<Refundpolicy />} />
         <Route path="/term-and-condition" element={<Termsconditions />} />
@@ -58,10 +59,9 @@ const AppRouter = () => {
         <Route path="/FAQs" element={<FAQs/>} />
         <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
-        <Route path="/blogs/:headerUrl" element={<BlogContent />} />
-        <Route path="/blogs/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
-        <Route path="/blogs/category/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
-
+        <Route path="blogs/:headerUrl" element={<BlogContent />} />
+        <Route path="/blogs/:modifiedCategoryName" element={<BlogbyCategory/>} />
+        <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
 
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
@@ -72,12 +72,6 @@ const AppRouter = () => {
         <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} />
         
 
-
-
-
-
-
-      
         {/* Catch-all route for unknown routes */}
         
       </Routes>
