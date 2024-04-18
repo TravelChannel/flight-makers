@@ -5204,7 +5204,7 @@ a:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .PromotionSlide{
-  background-image: url('/src/assets/Blogs/kashmir.jpg');
+  /* background-image: url('/src/assets/Blogs/kashmir.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -6588,18 +6588,16 @@ tbody, td, tfoot, th, thead, tr{
 } 
 
 .user_profile img{
-  height: 100px;
+  height:100px;
   width: 100px;
-  border-radius: 50px;
+  border-radius: 50px; 
   margin-top: 20px;
-  /* align-self: center; */
+
 
 }
 .user_profile{
   padding-top: 50px;
   padding-bottom:50px;
-
-
 }
 .userprofile_data p,h6{
 display: inline;
@@ -7477,4 +7475,30 @@ margin-top:10px;
 }
 .summry_detail_icon{
   color:gray !important;
+}
+.promotion_img_hndler{
+  padding-left:1rem;
+  padding-bottom:1rem;
+  padding-top:1rem;
+
+}
+.upload-icon-wrapper {
+  width: 100px; 
+  height:100px;
+  border-radius: 50%;
+  background-color: #aeadad; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor:pointer;
+}
+.upload_icon {
+  font-size: 25px !important; 
+}
+.profile_del_icon{
+  font-size: 18px !important; 
+  color:gray;
+  cursor:pointer;
+
 }

@@ -1,4 +1,4 @@
-import React ,{useState} from 'react'
+import React ,{useState,useRef} from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
 import * as images from '../../../../../Constant/images';
 import Box from '@mui/material/Box';
@@ -14,7 +14,9 @@ import { updateUserProfile } from '../../../../../API/BackendAPI/allAPICalls';
 import { useFormData } from '../../../../../Context/FormDataContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Person2Icon from '@mui/icons-material/Person2';
 const EditModel = (props) => {
  const {isOpen , setIsOpen ,setProfileData ,ProfileData} = props;
 
@@ -31,6 +33,11 @@ const EditModel = (props) => {
 const [selectedDate, setSelectedDate] = useState(null);
  const [gender, setGender] = useState(ProfileData.gender);
  const [startDate, setStartDate] = useState(null);
+
+ const [imgSrc, setImgSrc] = useState("");
+ const [inputValue, setInputValue] = useState("");
+ const [isClick ,setisClick] = useState(false);
+ const [isSuccess ,setIsSuccess] = useState(false);
 
 
  const {userName ,setUserName} = useFormData();
@@ -105,20 +112,88 @@ const [selectedDate, setSelectedDate] = useState(null);
   }
 
   const handleSubmit =async () => {
-  const updateDataAPI = await updateUserProfile(userUpdatedObject);
+    const formData = new FormData();
+    const dataStringify = JSON.stringify(userUpdatedObject);
+  
+    formData.append('data', dataStringify);
+  
+    const fileInput = document.getElementById('account-settings-upload-image');
+    if (fileInput && fileInput.files && fileInput.files[0]) {
+      const imgFile = fileInput.files[0]; 
+      formData.append('imgFile', imgFile);
+    } 
+  const updateDataAPI = await updateUserProfile(formData);
+  console.log("updateDataAPI",updateDataAPI);
   const updatedFromatData = updateDataAPI.data.payload.updateUserDto;
   setProfileData(updatedFromatData);
   setUserName(updateDataAPI.data.payload.updateUserDto.firstName);
   setIsOpen(false);
   toast.success('Profile Updated Successfully!', {autoClose: 2000});
   };
+
+  // -----------------------------------------------------
+
+
+const fileInputRef = useRef(null);
+
+const handleButtonClick = () => {
+  // Trigger the file input click event
+  fileInputRef.current.click();
+  setisClick(true);
+};
+const handleInputImageChange = (event) => {
+  const file = event.target.files[0];
+  if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      setImgSrc(reader.result);
+      setInputValue(reader.result);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    console.error("Invalid file type. Please select an image (PNG or JPEG).");
+  }
+};
+
+const handleInputImageReset = () => {
+  setImgSrc("");
+  setInputValue("");
+  setisClick(false);
+};
+//  ---------------------------------------------------------------  
   return (
     <Modal isOpen={isOpen}  className="custom_edit_modal">
     <ModalHeader toggle={toggleModal}>
         <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
       </ModalHeader>
     <ModalBody>
+        <div className='d-flex justify-content-center'>
+          <p className='align-self-center'><Person2Icon/></p> 
         <h3 className='edit_model_body'>Edit Your Profile</h3>
+        </div>
+        <div className='profile_image_uploader d-flex justify-content-center '> 
+                                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                                  <div className='text-center'>
+                                                      <div className='d-flex justify-content-center upload-icon-wrapper' onClick={handleButtonClick}>
+                                                          {isClick ? <img src={imgSrc} alt="" width="100%" className="m-2"/> :<CloudUploadIcon className="upload_icon"/>}  
+                                                      </div>
+                                                      <div className='d-flex justify-content-end'>
+                                                        <div> <DeleteIcon className="profile_del_icon" onClick={handleInputImageReset}/></div>
+                                                      </div>
+                                                  <div>
+                                                      <input
+                                                      type="file"
+                                                      accept="image/png, image/jpeg"
+                                                      onChange={handleInputImageChange}
+                                                      id="account-settings-upload-image"
+                                                      style={{ display: "none" }} 
+                                                      ref={fileInputRef}
+                                                      />
+                                                      
+                                                  </div>
+                                                  </div>
+                                              </Box> 
+                                        </div>
        <div className='d-flex justify-content-between user_input_row'>
             <div className='w-50'>
             <h3 className='editModel_labeling'>First Name:</h3>

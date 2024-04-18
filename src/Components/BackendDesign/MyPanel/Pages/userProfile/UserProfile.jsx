@@ -1,4 +1,4 @@
-import React,{useState , useEffect, Fragment} from 'react';
+import React,{useState , useEffect, Fragment,useRef} from 'react';
 import userDetailsBackend from '../../../../../API/BackendAPI/BackendAPI_Fun';
 import * as images from '../../../../../Constant/images';
 import EditModel from '../common/EditModel';
@@ -6,8 +6,7 @@ import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import Loader from '../../../../../Loader/Loader';
 import { VerificationAPi } from '../../../../../API/BackendAPI/Find_me_verification';
 import { useFormData } from '../../../../../Context/FormDataContext';
-
-
+import Box from '@mui/material/Box';
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
   const {userVerName,userCountryCode} =useFormData();
@@ -15,6 +14,9 @@ const UserProfile = (props)=>{
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
   const [isMobile , setIsMobile] = useState(window.innerWidth < 467);
+
+
+
 
   // const [userProfiles ,SetUserProfiles] = useState([]);
   
@@ -118,7 +120,7 @@ useEffect(()=>{
                                 <div className="d-flex justify-content-start">
                                     <div className="userProfile_bg">
                                         <div className="user_profile text-center">
-                                            <div className="m-1  ">
+                                              <div className="m-1  ">
                                               <img src={images.userProfile} alt="" />
                                             </div>
                                             <h3>{ProfileData.firstName}</h3>

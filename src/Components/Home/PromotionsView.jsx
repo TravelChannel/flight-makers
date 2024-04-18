@@ -56,12 +56,11 @@ const PromotionsView = () =>{
                     {
                         return(
                           <div className="bg-white mb-2">
-                          <SwiperSlide className="PromotionSlide">
+                          <SwiperSlide className="PromotionSlide " style={{ backgroundImage: `url(${item.img})` }}>
                                 <div className="d-flex justify-content-between">
                                     <h5 className="mr-2 nameSpaceFix promotionDisplay text-start">{item.title}</h5>
                                 </div>
                                 <div className="wrapper"><p className="mt-4 text-start truncate">{item.description}</p></div>
-                                
                                 {/* <p className="text-end mt-3 light_colour">{item.date}</p> */}
                             </SwiperSlide>
                           </div>

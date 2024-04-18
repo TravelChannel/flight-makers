@@ -10,6 +10,7 @@ import { Box} from "@mui/material";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from 'react-toastify';
+import Loader from '../../../../../Loader/Loader';
 
 const EditBlogModel = (props) => {
     const {isOpen,setIsOpen ,blogID,handleBlogLists } = props;
@@ -30,6 +31,7 @@ const EditBlogModel = (props) => {
     const [inputValue, setInputValue] = useState("");
     const [isClick ,setisClick] = useState(false);
     const [getCurrentCat ,setCurrentCat] = useState();
+    const [isLoading ,setLoading] = useState(false);
 
 
     const toggleModal = () => {
@@ -163,6 +165,7 @@ const EditBlogModel = (props) => {
     
     const handleUpdatedBlog = async() =>{
         try{
+            // setLoading(true);
             const formData = new FormData();
             const dataStringify = JSON.stringify(updatedData);
         
@@ -184,24 +187,27 @@ const EditBlogModel = (props) => {
           if(responce.data.status === 'SUCCESS'){
             console.log("responce from updatedBlog-APi",responce);
             handleBlogLists();
+        
             toast.success('Blog Updated Successfully!',
             {autoClose: 2000 });
             setIsOpen(false);
-
+            // setLoading(false);
           }else{
             console.error("error");
+            // setLoading(false);
           }
           
         }catch(error){
           console.error("error while updating blog",error);
           toast.success(`Error! ${error}`,
           {autoClose: 2000 });
+          setLoading(false);
         }
         }
 
 
   return (
-    <div>
+      <div>
         <Modal isOpen={isOpen}  className="blog_edit_modal">
             <ModalHeader toggle={toggleModal}>
             <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>

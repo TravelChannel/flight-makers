@@ -9,6 +9,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { GetCategory } from "../../../../API/BackendAPI/BlogsAPI/getCategory";
 import { useParams } from "react-router";
+import Loader from "../../../../Loader/Loader";
 const AddBlog = () => {
   const [AuthorName ,setAuthorName] = useState('');
   const [maintitle, setMainTitle] = useState("");
@@ -31,6 +32,7 @@ const AddBlog = () => {
   const [inputValue, setInputValue] = useState("");
   const [isClick ,setisClick] = useState(false);
   const [isSuccess ,setIsSuccess] = useState(false);
+  const [isLoading ,setLoading] = useState(false);
 //  ----------------------------------
   const handleChange = (event, editor) => {
     const data = editor.getData();
@@ -143,6 +145,7 @@ const AddBlog = () => {
 //   -----
 const onSubmit = async () => {
     try {
+      setLoading(true);
         const formData = new FormData();
         const dataStringify = JSON.stringify(BlogData);
       
@@ -152,15 +155,18 @@ const onSubmit = async () => {
         if (fileInput && fileInput.files && fileInput.files[0]) {
           const imgFile = fileInput.files[0]; 
           formData.append('imgFile', imgFile);
-        }          
+        } 
+        
         const apiResponse = await AddBlogAPI(formData);
         console.log("Response from API", apiResponse);
           if (apiResponse.data.status === 'SUCCESS' ){
             setIsSuccess(true);
+            setLoading(false);
             toast.success('Blog Added Successfully!',
             {autoClose: 2000 });
           }else{
             console.error(apiResponse.data.status,'Danger');
+            setLoading(false);
           }
           
           setAuthorName('');
@@ -180,105 +186,107 @@ const onSubmit = async () => {
 }
 
   return (
+   isLoading ? (<Loader/>):(
     <div className="container bg-white ">
-       <div className='d-flex justify-content-end mx-1'>
-                <Select
-                    value={isCatogory}
-                    onChange={handleCategoryChange}
-                      options={airlineOptions}
-                      isClearable
-                      isSearchable
-                      placeholder="Select Category..."
-                      className="CommissionInputFields"
-                      onCreateOption={handleAddCustomValue}
-                      onInputChange={handleInputChange}
-                  />
+    <div className='d-flex justify-content-end mx-1'>
+             <Select
+                 value={isCatogory}
+                 onChange={handleCategoryChange}
+                   options={airlineOptions}
+                   isClearable
+                   isSearchable
+                   placeholder="Select Category..."
+                   className="CommissionInputFields"
+                   onCreateOption={handleAddCustomValue}
+                   onInputChange={handleInputChange}
+               />
+             
+   </div>
+   <div className="Blog_title_main">
+   <p className="title_typograpy my-1">Author</p>
+     <Input
+       type="text"
+       class="full_width_input"
+       placeholder={isTitleFocused ? "" : "Author Name"}
+       onFocus={handleContentFocus}
+       onBlur={() => setTitleFocused(false)}
+       onChange={handleAuthor}
+       value={AuthorName}
+     />
+     <p className="title_typograpy my-1">Title</p>
+     <Input
+       type="text"
+       class="full_width_input"
+       placeholder={isFocused ? "" : "e.g Publish a blog as adventure Trips"}
+       onFocus={handleFocus}
+       onBlur={() => setFocused(false)}
+       onChange={handleMainTitle}
+       value={maintitle}
+     />
+     <p className="title_typograpy my-1">Slug</p>
+     <Input
+       type="text"
+       class="full_width_input"
+       placeholder={isSlugFocus ? "" : "Write Blog Slug here"}
+       onFocus={handleslugFocus}
+       onBlur={() => setSlugFocus(false)}
+       onChange={handleSlug}
+       value={isSlug }
+     />
+    <p className="title_typograpy my-1">Short Discription</p>
+    <textarea
+       className="full_width_input blog_TextArea"
+       placeholder={isContentFocus ? "" : "Details..."}
+       onFocus={handleSummaryFocus}
+       onBlur={() => setContentFocus(false)}
+       value={shortDesc }
+       onChange={handleShortDesc}
+   />
+   </div>
+   <div className="Blog_title_main">
+     <p className="title_typograpy">Upload Image</p>
+         <Box sx={{ display: "flex", alignItems: "center" }}>
+             {/* <img src={imgSrc} alt='Profile Pic' /> */}
+             <div>
+            {isClick && 
+             <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
+             }
+             <div>
+                 <input
+                 type="file"
+                 accept="image/png, image/jpeg"
+                 onChange={handleInputImageChange}
+                 id="account-settings-upload-image"
+                 style={{ display: "none" }} 
+                 ref={fileInputRef}
+                 />
                 
-      </div>
-      <div className="Blog_title_main">
-      <p className="title_typograpy my-1">Author</p>
-        <Input
-          type="text"
-          class="full_width_input"
-          placeholder={isTitleFocused ? "" : "Author Name"}
-          onFocus={handleContentFocus}
-          onBlur={() => setTitleFocused(false)}
-          onChange={handleAuthor}
-          value={AuthorName}
-        />
-        <p className="title_typograpy my-1">Title</p>
-        <Input
-          type="text"
-          class="full_width_input"
-          placeholder={isFocused ? "" : "e.g Publish a blog as adventure Trips"}
-          onFocus={handleFocus}
-          onBlur={() => setFocused(false)}
-          onChange={handleMainTitle}
-          value={maintitle}
-        />
-        <p className="title_typograpy my-1">Slug</p>
-        <Input
-          type="text"
-          class="full_width_input"
-          placeholder={isSlugFocus ? "" : "Write Blog Slug here"}
-          onFocus={handleslugFocus}
-          onBlur={() => setSlugFocus(false)}
-          onChange={handleSlug}
-          value={isSlug }
-        />
-       <p className="title_typograpy my-1">Short Discription</p>
-       <textarea
-          className="full_width_input blog_TextArea"
-          placeholder={isContentFocus ? "" : "Details..."}
-          onFocus={handleSummaryFocus}
-          onBlur={() => setContentFocus(false)}
-          value={shortDesc }
-          onChange={handleShortDesc}
-      />
-      </div>
-      <div className="Blog_title_main">
-        <p className="title_typograpy">Upload Image</p>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-                {/* <img src={imgSrc} alt='Profile Pic' /> */}
-                <div>
-               {isClick && 
-                <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
-                }
-                <div>
-                    <input
-                    type="file"
-                    accept="image/png, image/jpeg"
-                    onChange={handleInputImageChange}
-                    id="account-settings-upload-image"
-                    style={{ display: "none" }} 
-                    ref={fileInputRef}
-                    />
-                   
-                </div>
-                <button  className="btn btn-primary addPromo_btn p-3 m-2" onClick={handleButtonClick}>Select Image</button>
-                <button className="btn btn-primary" onClick={handleInputImageReset}>Reset</button>
-                <p className="upload_ins">Allowed PNG or JPEG. Max size of 800K.</p>
-                </div>
-            </Box> 
-      </div>
-      <div className="Blog_title_body">
-        <p className="title_typograpy">Content</p>
-        <div className="horizontal-line"></div>
-              <CKEditor
-                editor={ClassicEditor}
-                data={editorData}
-                onChange={handleChange}
-              />
-      </div>
-        <div className="d-flex justify-content-center m-3">
-                <button
-                  className="btn btn-primary addBlog_btn "
-                  onClick={onSubmit}
-                >
-                  Add Blog
-                </button>
-        </div>
-    </div>
+             </div>
+             <button  className="btn btn-primary addPromo_btn p-3 m-2" onClick={handleButtonClick}>Select Image</button>
+             <button className="btn btn-primary" onClick={handleInputImageReset}>Reset</button>
+             <p className="upload_ins">Allowed PNG or JPEG. Max size of 800K.</p>
+             </div>
+         </Box> 
+   </div>
+   <div className="Blog_title_body">
+     <p className="title_typograpy">Content</p>
+     <div className="horizontal-line"></div>
+           <CKEditor
+             editor={ClassicEditor}
+             data={editorData}
+             onChange={handleChange}
+           />
+   </div>
+     <div className="d-flex justify-content-center m-3">
+             <button
+               className="btn btn-primary addBlog_btn "
+               onClick={onSubmit}
+             >
+               Add Blog
+             </button>
+     </div>
+ </div>
+   )
   );
 };
 
