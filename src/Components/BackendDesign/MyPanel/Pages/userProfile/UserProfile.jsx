@@ -88,7 +88,7 @@ useEffect(()=>{
                           <header>
                               <h3>{`${userCountryCode} ${userVerName} `}</h3>
                               <div className="image">
-                                  <img src={images.userProfile} alt='abc' />
+                                  <img src={ProfileData.imgSrc} alt='abc' />
                               </div>
                               <h3 className='profile_itenty' >{`${ProfileData.firstName} ${ProfileData.lastName} `}</h3>
                           </header>
@@ -121,7 +121,7 @@ useEffect(()=>{
                                     <div className="userProfile_bg">
                                         <div className="user_profile text-center">
                                               <div className="m-1  ">
-                                              <img src={images.userProfile} alt="" />
+                                              <img src={ProfileData.imgSrc} alt="" />
                                             </div>
                                             <h3>{ProfileData.firstName}</h3>
                                             <div className='userprofile_data  mt-2'>

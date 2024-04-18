@@ -10,6 +10,8 @@ import { DatePicker } from 'antd';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Loader from '../../../../../Loader/Loader';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const PromotionsModel = (props) => {
     const [isTitle ,setTitle]  =useState('');
     const [isDesc ,setDesc]  =useState('');
@@ -50,7 +52,7 @@ const PromotionsModel = (props) => {
             const response = await UpdatePromotion(updateID);
             console.log("Update API Response", response);
           } else {
-            // setLoading(true);
+            setLoading(true);
             const formData = new FormData();
             const dataStringify = JSON.stringify(PromotionsValue);
           
@@ -66,6 +68,8 @@ const PromotionsModel = (props) => {
             const response = await AddPromotions(formData);
             console.log("Add API Response", response);
             setPromotionData([...promotionData, response?.data?.payload]);
+            setLoading(false);
+            toast.success('Promotion Added Successfully!', {autoClose: 2000});
           }
       
           setIsOpen(false);
@@ -143,111 +147,116 @@ const PromotionsModel = (props) => {
             <ModalHeader toggle={toggleModal}>
             <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
             </ModalHeader>
-            <ModalBody>
-            { isUpdate ?(
-              <div className='d-flex justify-content-center center_promotion_heading'>
-                  <p className='align-self-center px-1'><CampaignIcon/></p>
-                  <h3 className='edit_model_body '> Update Promotion</h3>
-              </div>
-              ):(
-                <div className='d-flex justify-content-center center_promotion_heading'>
-                  <p className='align-self-center'><CampaignIcon/></p>
-                  <h3 className='edit_model_body '>  Add New Promotion</h3>
-              </div>
-              )}
-            <div className=' user_input_row'>
-                    <div className=''>
-                    <div className='d-flex justify-content-center'>
-                    {/* <h3 className='editModel_labeling align-self-center'>Title</h3> */}
-                    <div className='promotion_title_main '>
-                        <Box
-                        sx={{
-                            width: 500,
-                            maxWidth: '90%',
-                        }}
-                        > 
-                        <TextField fullWidth label="Title" id="fullWidth" value = {isTitle} onChange={handleModelTitle} />
-                        </Box>
-                    </div>
-                 </div>
-               
-               
-                <div className='d-flex justify-content-center'>
-                    {/* <h3 className='editModel_labeling align-self-center '>Discription</h3> */}
-                    <div className='promotion_discription_main '>
-                    <Box
-                        sx={{
-                            width: 500,
-                            maxWidth: '90%',
-                        }}
-                        >
-                        <TextField fullWidth label="Discription" id="fullWidth" value={isDesc} onChange={handleModelDesc} />
-                    </Box>
-                        
-                    </div>
-                </div>
-                <div className='d-flex justify-content-start prom_date_picker ' style={{ width: '695px' }}>
-                <DatePicker
-                  placeholder="Start Date"
-                  className='promStartCalander'
-                  value={startDate}
-                  onChange={handleStartDateChange}
-                  // disabledDate={disabledStartDate}
-                />
-                <DatePicker
-                  placeholder="End Date"
-                  className='promStartCalander'
-                  value={endDate}
-                  onChange={handleEndDateChange}
-                  disabledDate={(current) => current && current < startDate}
-                />
-              </div>
-              <div className='mt-3 center_promotion_heading d-flex justify-content-center'>
-                 <p className='align-self-center px-1'><CloudUploadIcon/></p>
-                 <h3 className='edit_model_body '>  Upload Promotion Image</h3>
-              </div>
-              <div className="d-flex justify-content-center promotion_img_hndler">
-                        {/* <p className="title_typograpy">Upload Image</p> */}
-                            <Box sx={{ display: "flex", alignItems: "center" }}>
-                                <div className='text-center'>
-                                {isClick && 
-                                <div className='d-flex justify-content-center'>
-                                  <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
-                                </div>
-                                } 
-                                <div>
-                                    <input
-                                    type="file"
-                                    accept="image/png, image/jpeg"
-                                    onChange={handleInputImageChange}
-                                    id="account-settings-upload-image"
-                                    style={{ display: "none" }} 
-                                    ref={fileInputRef}
-                                    />
-                                    
-                                </div>
-                                <button  className="btn btn-primary addPromo_btn p-3 m-2" onClick={handleButtonClick}>Select Image</button>
-                                <button className="btn btn-primary" onClick={handleInputImageReset}>Reset</button>
-                                <p className="upload_ins">Allowed PNG or JPEG. Max size of 800K.</p>
-                                </div>
-                            </Box> 
-               </div>
+            {
+              isLoading ?(<Loader/>):(
+                <ModalBody>
+                    
+                    { isUpdate ?(
+                      <div className='d-flex justify-content-center center_promotion_heading'>
+                          <p className='align-self-center px-1'><CampaignIcon/></p>
+                          <h3 className='edit_model_body '> Update Promotion</h3>
+                      </div>
+                      ):(
+                        <div className='d-flex justify-content-center center_promotion_heading'>
+                          <p className='align-self-center'><CampaignIcon/></p>
+                          <h3 className='edit_model_body '>  Add New Promotion</h3>
+                      </div>
+                      )}
+                    <div className=' user_input_row'>
+                            <div className=''>
+                            <div className='d-flex justify-content-center'>
+                            {/* <h3 className='editModel_labeling align-self-center'>Title</h3> */}
+                            <div className='promotion_title_main '>
+                                <Box
+                                sx={{
+                                    width: 500,
+                                    maxWidth: '90%',
+                                }}
+                                > 
+                                <TextField fullWidth label="Title" id="fullWidth" value = {isTitle} onChange={handleModelTitle} />
+                                </Box>
+                            </div>
+                        </div>
+                      
+                      
+                        <div className='d-flex justify-content-center'>
+                            {/* <h3 className='editModel_labeling align-self-center '>Discription</h3> */}
+                            <div className='promotion_discription_main '>
+                            <Box
+                                sx={{
+                                    width: 500,
+                                    maxWidth: '90%',
+                                }}
+                                >
+                                <TextField fullWidth label="Discription" id="fullWidth" value={isDesc} onChange={handleModelDesc} />
+                            </Box>
+                                
+                            </div>
+                        </div>
+                        <div className='d-flex justify-content-start prom_date_picker ' style={{ width: '695px' }}>
+                        <DatePicker
+                          placeholder="Start Date"
+                          className='promStartCalander'
+                          value={startDate}
+                          onChange={handleStartDateChange}
+                          // disabledDate={disabledStartDate}
+                        />
+                        <DatePicker
+                          placeholder="End Date"
+                          className='promStartCalander'
+                          value={endDate}
+                          onChange={handleEndDateChange}
+                          disabledDate={(current) => current && current < startDate}
+                        />
+                      </div>
+                      <div className='mt-3 center_promotion_heading d-flex justify-content-center'>
+                        <p className='align-self-center px-1'><CloudUploadIcon/></p>
+                        <h3 className='edit_model_body '>  Upload Promotion Image</h3>
+                      </div>
+                      <div className="d-flex justify-content-center promotion_img_hndler">
+                                {/* <p className="title_typograpy">Upload Image</p> */}
+                                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                                        <div className='text-center'>
+                                        {isClick && 
+                                        <div className='d-flex justify-content-center'>
+                                          <img src={imgSrc} alt="Profile Pic" width="30%" className="m-2"/>
+                                        </div>
+                                        } 
+                                        <div>
+                                            <input
+                                            type="file"
+                                            accept="image/png, image/jpeg"
+                                            onChange={handleInputImageChange}
+                                            id="account-settings-upload-image"
+                                            style={{ display: "none" }} 
+                                            ref={fileInputRef}
+                                            />
+                                            
+                                        </div>
+                                        <button  className="btn btn-primary addPromo_btn p-3 m-2" onClick={handleButtonClick}>Select Image</button>
+                                        <button className="btn btn-primary" onClick={handleInputImageReset}>Reset</button>
+                                        <p className="upload_ins">Allowed PNG or JPEG. Max size of 800K.</p>
+                                        </div>
+                                    </Box> 
+                      </div>
 
-          </div>
-                <div className='d-flex justify-content-center' onClick={SubmitDetail}>
-                   {
-                    isUpdate ?(
-                     <Fragment>
-                     <button className='btn btn-primary btn_promotion_model'>Update</button>
-                      {/* <button className='btn btn-primary btn_promotion_model mx-2'>DeActivate</button> */}
-                     </Fragment>
-                    ):(
-                       <button className='btn btn-primary btn_promotion_model'>Submit</button>)
-                   }
-                </div>
-          </div>
-         
-            </ModalBody>
+                  </div>
+                        <div className='d-flex justify-content-center' onClick={SubmitDetail}>
+                          {
+                            isUpdate ?(
+                            <Fragment>
+                            <button className='btn btn-primary btn_promotion_model'>Update</button>
+                              {/* <button className='btn btn-primary btn_promotion_model mx-2'>DeActivate</button> */}
+                            </Fragment>
+                            ):(
+                              <button className='btn btn-primary btn_promotion_model'>Submit</button>)
+                          }
+                        </div>
+                  </div>
+                
+                    </ModalBody>
+              )
+            }
         </Modal>
     </div>
   )
