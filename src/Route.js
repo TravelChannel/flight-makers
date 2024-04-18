@@ -32,13 +32,20 @@ import BlogContent from './Components/BlogsContent/BlogContent';
 import AddBlog from './Components/BackendDesign/AdminPanel/Blogs/AddBlog';
 import BlogbyCategory from './Components/BlogsContent/BlogbyCategory';
 
+import IntFlights from './Components/SEOPages/IntAndDomFlights';
+import SubPopularAirline from './Components/SEOPages/SubPopularAirline';
 const AppRouter = () => {
   return (
     <Fragment>
       <Routes>
      
         <Route path="/" element={<Home />} />
-        <Route path="/searchflightresult" element={<SearchFlightResult />} />
+        <Route path="/searchflightresult/" element={<SearchFlightResult />} />
+        <Route path="/flights/:from" element={<IntFlights/>} />
+        <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
+
+       
+
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
         <Route path="/about-us" element={<About />} />
@@ -60,16 +67,16 @@ const AppRouter = () => {
         <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
         <Route path="blogs/:headerUrl" element={<BlogContent />} />
-        <Route path="/blogs/:modifiedCategoryName" element={<BlogbyCategory/>} />
-        <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
-
+        <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+     
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
-        <Route path="/:airlineName" element={<PopularAirLines/>} />
         {/* <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} /> */}
-        <Route path="/flights/:flightName" element={<SearchFlightResult />} />
-        <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} />
+        {/* <Route path="/flights/:flightName" element={<SearchFlightResult />} /> */}
+        {/* <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} /> */}
+        <Route path="/:airlineName" element={<PopularAirLines/>} />
+        <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
         
 
         {/* Catch-all route for unknown routes */}

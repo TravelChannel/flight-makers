@@ -1,6 +1,9 @@
-const fetchSearchResult = async (searchDataArr) => {
+const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
 
   console.log("Array at Sabre API",searchDataArr);
+
+
+
   const { departure, arrival, classtype, adults, children, infants, date } = searchDataArr;
   let classType = '';
   const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
@@ -44,6 +47,58 @@ const fetchSearchResult = async (searchDataArr) => {
     });
   }
 
+  // --------------------------
+   const includeVendorPref  = [
+    { "Code": "AZ" },
+    { "Code": "CA" },
+    { "Code": "CX" },
+    { "Code": "CZ" },
+    { "Code": "EK" },
+    { "Code": "OD" },
+    { "Code": "EY" },
+    { "Code": "GF" },
+    { "Code": "KL" },
+    { "Code": "KU" },
+    { "Code": "LX" },
+    { "Code": "PK" },
+    { "Code": "QR" },
+    { "Code": "SV" },
+    { "Code": "TG" },
+    { "Code": "TK" },
+    { "Code": "UL" },
+    { "Code": "6S" },
+    { "Code": "YO" },
+    { "Code": "FZ" },
+    { "Code": "HY" },
+    { "Code": "LH" },
+    { "Code": "WY" },
+    { "Code": "PC" },
+    { "Code": "BA" },
+    { "Code": "VS" },
+    { "Code": "KQ" },
+    { "Code": "FZ" },
+    { "Code": "AC" },
+    { "Code": "AF" },
+    { "Code": "SQ" },
+    { "Code": "DV" },
+    { "Code": "GP" },
+    { "Code": "ET" },
+    { "Code": "DL" },
+    { "Code": "AT" },
+    { "Code": "J2" },
+    { "Code": "PF" }
+   ]
+
+     // --------------Filtered Vendor Preference-------------
+     let airlinesToPass;
+  if (CurrentFlightCode) {
+    airlinesToPass = includeVendorPref.filter(airline => airline.Code === CurrentFlightCode);
+  } else {
+    airlinesToPass = includeVendorPref;
+  }
+  console.log("airlinesToPass",airlinesToPass);
+  // -----------------------------
+
 
   const originDestinationInformation = departureCode?.map((dep, index) => ({
     DepartureDateTime: `${date[index]}T00:00:00`,
@@ -58,7 +113,8 @@ const fetchSearchResult = async (searchDataArr) => {
       CabinPref: {
         Cabin: classType,
         PreferLevel: "Only"
-      }
+      },
+      "IncludeVendorPref": airlinesToPass
     }
   }));
 

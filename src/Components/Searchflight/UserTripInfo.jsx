@@ -12,6 +12,7 @@ const UserTripInfo = () => {
   const [isClicked, setIsclicked] = useState(false);
   const {searchDataArr} = useItemsToShow();
 
+
   const travellers = searchDataArr.adults + searchDataArr.children +searchDataArr.infants;
   const handleEditNote = () => {
     setIsclicked(!isClicked);

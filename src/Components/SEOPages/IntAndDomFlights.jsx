@@ -1,42 +1,99 @@
 import { useEffect, useState,Fragment } from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import SideBarFilters from "../Components/Searchflight/SideBarFilters";
-import DateComparision from "../Components/Searchflight/DateComparision.jsx";
-import AirlinesResults from "../Components/Searchflight/AirlinesResults";
-import ActiveFlight from "../Components/Searchflight/ActiveFlight.jsx";
-import Loader from '../Loader/Loader.jsx';
-import UserTripInfo from '../Components/Searchflight/UserTripInfo.jsx';
-import { requestFetchSearchResult , requestFetchAlternateRates } from '../API/index.js';
-import { ItemsToShowProvider } from '../Components/Searchflight/Comman/Context.js';
+import SideBarFilters from '../Searchflight/SideBarFilters.jsx';
+import DateComparision from '../Searchflight/DateComparision.jsx';
+import AirlinesResults from '../Searchflight/AirlinesResults.jsx';
+import ActiveFlight from '../Searchflight/ActiveFlight.jsx';
+import Loader from '../../Loader/Loader.jsx';
+import UserTripInfo from '../Searchflight/UserTripInfo.jsx';
+import { requestFetchSearchResult ,requestFetchAlternateRates } from '../../API/index.js';
+import { ItemsToShowProvider } from '../Searchflight/Comman/Context.js';
 import { useSelector } from 'react-redux';
-import {dataNotfound} from '../Constant/images';
-import TimerModal from '../Components/Searchflight/Comman/TimerRecall';
-import StaticFlightSearchData from '../Components/SEOPages/StaticFlightSearchData.jsx';
+import { dataNotfound } from '../../Constant/images.js';
+import TimerModal from '../Searchflight/Comman/TimerRecall.jsx';
+import StaticFlightSearchData from './StaticFlightSearchData.jsx';
+import { useParams } from 'react-router-dom';
+import { InternationRoutes } from '../../Constant/FooterPagesData/InternationalRoutes.js';
+import { DomesticRoutes } from '../../Constant/FooterPagesData/DomesticRoutes.js';
 
-const SearchFlightResult = () => {
+const IntFlights = () => {
   const location = useLocation();
-  const { searchDataArr,FooterFlights } = location.state;
+
+// ---------------date----------------------
+  const currentDate = new Date();
+  const futureDate = new Date(currentDate);
+  futureDate.setDate(futureDate.getDate() + 5);
+  const futureDateString = futureDate.toISOString().split('T')[0];
+// ---------------date----------------------
+
+
+  const { searchDataArr: initialSearchDataArr ,FooterFlights = true } = location.state || {};
   const {filterDataArr} = useSelector((state) => state.updateFilterReducer);
   const [showTimerModal, setShowTimerModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showSubLoader ,setSubLoader] = useState(true);
   const [apiData, setApiData] = useState([]);
   const [alterRates, setAlerRates] = useState([]);
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const [depart, setDepart] = useState('');
+  const [arrival, setArrival] = useState('');
+  const [filteredRoutes, setFilteredRoutes] = useState([]);
+  const [searchDataArr, setSearchDataArr] = useState(initialSearchDataArr || {
+    "adults": 1,
+    "children": 0,
+    "infants": 0,
+    "classtype": "Economy",
+    "tripType": "OneWay",
+    "departure": [],
+    "arrival": [],
+    "date": [futureDateString]
+  });
+
+
   const totalResults = apiData.length;
-  
+  const { from } = useParams();
   const navigate = useNavigate();
+
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
      window.scrollTo(0, 0);
   };
 
- 
+  useEffect(() => {
+    const parts = from.split('from-')[1].split('-to-');
+    const departCity = parts[0].toLowerCase();
+    const arrivalCity = parts[1].toLowerCase();
 
+    const allRoutes = [...InternationRoutes ,...DomesticRoutes]
+
+    const matchedRoutes = allRoutes.filter(route => 
+      route.from.toLowerCase() === departCity && route.to.toLowerCase() === arrivalCity
+    );
+
+    setDepart(departCity);
+    setArrival(arrivalCity);
+    setFilteredRoutes(matchedRoutes);
+
+    // Update searchDataArr
+    let departureString = `${departCity} (${matchedRoutes[0]?.departCode || ''})`;
+    let arrivalString = `${arrivalCity} (${matchedRoutes[0]?.ArrivalCode || ''})`;
+
+    setSearchDataArr(prevSearchDataArr => ({
+      "adults": 1,
+      "children": 0,
+      "infants": 0,
+      "classtype": "Economy",
+      "tripType": "OneWay",
+       departure: [departureString],
+       arrival: [arrivalString],
+      "date": [futureDateString]
+    }));
+
+  },[from]);
   
-
   const fetchData = async () => {
     try {
-      setLoading(true); // Set loading to true before fetching data
+      setLoading(true); 
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
@@ -52,7 +109,8 @@ const SearchFlightResult = () => {
     
       if (FooterFlights && fetchedFlightData.length > 10) {
         setApiData(fetchedFlightData.slice(0, 7));
-      } else {
+      }
+      else {
         setApiData(fetchedFlightData);
       }
 
@@ -73,6 +131,15 @@ const SearchFlightResult = () => {
 
   },[searchDataArr]);
 
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      setSubLoader(false)
+    },5000);
+    return ()=>{
+      clearTimeout(timer);
+    };
+  },[]);
+
   const getCombinedData = apiData.map((item, index) => ({
     ...item,
     price: alterRates[index]?.price || null,
@@ -90,13 +157,6 @@ const SearchFlightResult = () => {
     setShowTimerModal(false);
   };
 
-  // if (FooterFlights===true) {
-  //   const currentUrl = window.location.href;
-  //   const newUrl = currentUrl.endsWith('/') ? `${currentUrl}kashif` : `${currentUrl}/kashif`;
-  
-  //   window.history.pushState({ path: newUrl }, '', newUrl);
-  // }
-
   return (
     <div className='container'>
       {loading ? (
@@ -106,9 +166,9 @@ const SearchFlightResult = () => {
           {getCombinedData.length > 0 ? (
             <Fragment>
               <div className="container">
-                <ItemsToShowProvider totalResults={totalResults} apiData={getCombinedData} searchDataArr={searchDataArr} filterDataArr={filterDataArr}>
-                  <UserTripInfo />
-                  <div className="row  m-0 ">
+                <ItemsToShowProvider totalResults={totalResults} apiData={getCombinedData} searchDataArr={searchDataArr} filterDataArr={filterDataArr} >
+                  <UserTripInfo/>
+                  <div className="row  m-0">
                     <div className="col-md-3 px-0 mt-2 align-self-stretch bg-white">
                       <SideBarFilters />
                     </div>
@@ -125,11 +185,13 @@ const SearchFlightResult = () => {
               </div>
             </Fragment>
           ) : (
+            showSubLoader ? <Loader/> :
             <div className='text-center py-5 bg-white'>
               <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
               <h2>No Flights Found For This Search</h2>
               <p>Please try again, with different airports or dates</p>
             </div>
+            
           )}
         </div>
       )}
@@ -145,4 +207,4 @@ const SearchFlightResult = () => {
   );
 };
 
-export default SearchFlightResult;
+export default IntFlights;

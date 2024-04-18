@@ -36,7 +36,7 @@ const FlightSearch = (props) => {
     const excludedPage = '/searchflightresult'; // Relative path of the "UserTripInfo" page
     return location.pathname !== excludedPage;
   }
-  let { main_flight_rsult, resultpage, searchDataArr } = props;
+  let { main_flight_rsult, resultpage, searchDataArr} = props;
 
   let tripTypeVal = 1;
   let classtypeVal = 'Economy';
@@ -427,9 +427,29 @@ const FlightSearch = (props) => {
   const handleSelecor =() =>{
     setDivVisible(false);
   }
+
+//   let userFlight = false;
+// if (window.location.pathname.match(/^\/flights\/cheap-flights-from-[a-zA-Z]+-to-[a-zA-Z]+$/))  {
+//     userFlight = true;
+// }
+let userFlight = false;
+
+// if (window.location.pathname.match(/^\/flights\/cheap-flights-from-[a-zA-Z]+-to-[a-zA-Z]+$/) || 
+//     window.location.pathname.endsWith('-flights') || window.location.pathname.endsWith(')')) {
+//     userFlight = true;
+// }
+if (
+  window.location.pathname.match(/^\/flights\/cheap-flights-from-[a-zA-Z]+-to-[a-zA-Z]+$/) || 
+  window.location.pathname.endsWith('-flights') ||
+  window.location.pathname.includes('/flights-to-')
+) {
+  userFlight = true;
+}
+
+console.log("userFlight value:", userFlight);
   return (
     <Fragment>
-      <div className={`container ${main_flight_rsult}`}>
+      <div className={`container ${userFlight ?'' : main_flight_rsult}`}>
         <form onSubmit={handleSearchflight} className="FlightSearch_main">
           <div>
             {/* {shouldShowPrecautions() && <Precautions />} */}

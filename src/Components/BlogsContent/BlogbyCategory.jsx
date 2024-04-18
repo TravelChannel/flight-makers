@@ -2,6 +2,7 @@ import React ,{useState ,useEffect,Fragment} from 'react';
 import { GetBlogsbyCategory } from '../../API/BackendAPI/BlogsAPI/getBlogbyCategory';
 import { useNavigate } from 'react-router';
 import { useLocation } from 'react-router';
+import Loader from '../../Loader/Loader';
 const BlogbyCategory = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -75,7 +76,7 @@ const BlogbyCategory = () => {
                 </div>
                 </Fragment>
                 ):(
-            <h2 className='NoBlogFound'>No Blogs Found</h2>
+                     ''
           )
         }
         </div>

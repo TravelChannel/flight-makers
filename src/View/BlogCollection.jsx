@@ -46,7 +46,7 @@ const BlogCollection = () => {
 
   const handleBlogContent = (headerUrl) =>{
     // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
-    navigate(`/${encodeURIComponent(headerUrl)}`);
+    navigate(`/blogs/${encodeURIComponent(headerUrl)}`);
   }
   const handleChange = () => {
     setPage(prevPage => prevPage +1);
@@ -54,7 +54,7 @@ const BlogCollection = () => {
 
   const handleBlogByCategory =async(id,categoryName) =>{
     const modifiedCategoryName = categoryName.replace(/ /g, '-');
-    navigate(`/blogs/${modifiedCategoryName}`, { state: {id, categoryName } });
+    navigate(`/category/${modifiedCategoryName}`, { state: {id, categoryName } });
   }
 
   useEffect(() => {
@@ -122,7 +122,7 @@ const BlogCollection = () => {
           </div>
            </Fragment>
           ):(
-            <h2 className='NoBlogFound'>No Blogs Found</h2>
+            " "
           )
         }
       </div>

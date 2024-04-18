@@ -1,0 +1,18 @@
+export const  PopularairlineRoute = [
+    { id: 1, name: 'emirates-airline-flights', displayName: 'Emirates Airline' },
+    { id: 2, name: 'qatar-airways-flights', displayName: 'Qatar Airways' },
+    { id: 3, name: 'turkish-airlines-flights', displayName: 'Turkish Airlines' },
+    { id: 4, name: 'pakistan-international-airlines-flights', displayName: 'PIA' },
+    { id: 5, name: 'oman-air-flights', displayName: 'Oman Air' },
+    { id: 6, name: 'fly-dubai-flights', displayName: 'Fly Dubai' },
+    { id: 7, name: 'etihad-airways-flights', displayName: 'Etihad Airways' },
+    { id: 8, name: 'air-sial-flights', displayName: 'Air Sial' },
+    { id: 9, name: 'virgin-atlantic-flights', displayName: 'Virgin Atlantic' },
+    { id: 10, name: 'thai-airways-flights', displayName: 'Thai Airways' },
+    { id: 11, name: 'kuwait-airways-flights', displayName: 'Kuwait Airways' },
+    { id: 12, name: 'china-southern-airlines-flights', displayName: 'China Southern' },
+    { id: 13, name: 'saudi-arabian-airline-flights', displayName: 'Saudi Arabian' },
+    { id: 14, name: 'air-arabia-flights', displayName: 'Air Arabia' },
+    { id: 15, name: 'air-malindo-flights', displayName: 'Air Malindo' },
+    { id: 16, name: 'british-airways-flights', displayName: 'British Airways' },
+  ];

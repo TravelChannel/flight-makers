@@ -16,9 +16,9 @@ import {getBookingApi} from './GetBookingAPI';
 import { AirSialIssueTicket } from './AirsialTicketIssue';
 
 
-export const requestFetchSearchResult = async (searchDataArr) => {
+export const requestFetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
   try {
-    const flightData = await fetchSearchResult(searchDataArr);
+    const flightData = await fetchSearchResult(searchDataArr,CurrentFlightCode);
     const { tripType,departure,arrival } = searchDataArr;
     if (tripType === 'MultiCity') {
       return flightData;

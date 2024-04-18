@@ -11,10 +11,10 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const AirlinesResults = (props) => {
   const { itemsToShow, setItemsToShow, totalResults, apiData, searchDataArr } = useItemsToShow();
+  const { onItemClick} = props;
   const [selectedFlightIndex, setSelectedFlightIndex] = useState(0);
   const [isUpward, setIsUpward] = useState(true);
   const [dataArray, setDataArray] = useState(apiData);
-  const { onItemClick } = props;
   const { tripType } = searchDataArr;
   const itemsPerPage = 20;
   const lastItemRef = useRef(null);
