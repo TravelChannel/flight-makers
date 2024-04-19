@@ -9,7 +9,7 @@ import { useFormData } from '../../../../../Context/FormDataContext';
 import Box from '@mui/material/Box';
 const UserProfile = (props)=>{
   const {isLoading,checkAdmin,partialAdmin} = props;
-  const {userVerName,userCountryCode} =useFormData();
+  const {userVerName,userCountryCode,setProfileImg} =useFormData();
   const [ProfileData ,setProfileData] =useState([]);
   const [backLoading , setBackLoading] =useState(true);
   const [isOpen , setIsOpen] = useState(false);
@@ -41,6 +41,7 @@ const UserProfile = (props)=>{
               if (response.data.status === 'SUCCESS') {
                 console.log('test1',response.data.payload );
                 setProfileData(response.data.payload.userData);
+                // setProfileImg(response.data.payload.userData.imgSrc);
                 //  setUserName(ProfileData.firstName);
 
               } else {
@@ -121,7 +122,7 @@ useEffect(()=>{
                                     <div className="userProfile_bg">
                                         <div className="user_profile text-center">
                                               <div className="m-1  ">
-                                              <img src={ProfileData.imgSrc} alt="" />
+                                            {ProfileData.imgSrc ? <img src={ProfileData.imgSrc} alt="" /> :<img src={images.userProfile} alt="" />}  
                                             </div>
                                             <h3>{ProfileData.firstName}</h3>
                                             <div className='userprofile_data  mt-2'>

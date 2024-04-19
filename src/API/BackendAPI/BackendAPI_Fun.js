@@ -1,20 +1,31 @@
+// import apiClient from "./api_main";
+
+// const userDetailsBackend = ()=>{
+//  return apiClient
+//  .get(`/pnrBooking`)
+//  .then((response)=>{
+//     console.log(JSON.stringify(response));
+//     return response;
+//  })
+//  .catch((err)=>{
+//     console.log(err);
+//     throw err;
+//  });
+// };
+
+// export default userDetailsBackend ;
+
 import apiClient from "./api_main";
 
-const userDetailsBackend = (setBackLoading)=>{
-setBackLoading(true);
- return apiClient
- .get(`/pnrBooking`)
- .then((response)=>{
-    console.log(JSON.stringify(response));
-    setBackLoading(false);
-    return response;
- })
- .catch((err)=>{
-    console.log(err);
-    setBackLoading(false);
-    throw err;
- });
+const userDetailsBackend = async () => {
+  try {
+    const response = await apiClient.get("/pnrBooking");
+    console.log(JSON.stringify(response)); 
+    return response; 
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    throw error; 
+  }
 };
 
-export default userDetailsBackend ;
-
+export default userDetailsBackend;

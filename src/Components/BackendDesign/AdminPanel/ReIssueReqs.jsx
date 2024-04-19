@@ -6,6 +6,7 @@ import { AdminReIssueReq } from '../../../API/BackendAPI/allAPICalls';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
 import { useNavigate } from 'react-router';
+import { ReIssueApprovedReq } from '../../../API/BackendAPI/CustomerSupportDoneAPI/ApprovedReIssue';
 // import { useUserData } from '../../../Context/UserDataContext';
 
 const ReIssueReqs = () => {
@@ -26,17 +27,18 @@ const ReIssueReqs = () => {
     setSearch(value);
   };
 
+  const ReIssueBookingDetails = async () => {
+    try {
+      const response = await AdminReIssueReq();
+      setUserData(response);
+      console.log("ReIssueRequestResults", response);
+      setLoading(false);
+    } catch (error) {
+      console.error('ErrorReIssueRequests', error);
+    }
+  };
+
   useEffect(() => {
-    const ReIssueBookingDetails = async () => {
-      try {
-        const response = await AdminReIssueReq();
-        setUserData(response);
-        console.log("ReIssueRequestResults", response);
-        setLoading(false);
-      } catch (error) {
-        console.error('ErrorReIssueRequests', error);
-      }
-    };
     ReIssueBookingDetails();
   }, []);
 
@@ -59,6 +61,16 @@ const ReIssueReqs = () => {
   // };
   const handleUserId = (userID)=>{
     localStorage.setItem('userIDforDetails',userID);
+  }
+
+  const handleApprovedReqs = async(id) =>{
+    try{
+      const aprovedReq =await  ReIssueApprovedReq(id);
+      console.log("Result from CancellationReq",aprovedReq);
+       ReIssueBookingDetails();
+    }catch(error){
+      console.error("Error while fetching Data",error);
+    }
   }
 
   return (
@@ -113,7 +125,7 @@ const ReIssueReqs = () => {
                     <td>{`${userCountryCode?.[index]} ${userPhoneNo?.[index]}`}</td>
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
                     <td>UnPaid</td>
-                    <td>
+                    <td className='d-flex justify-content-between'>
                       {/* <button className='btn btn-primary buttons_typo'
                         onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}
                       >
@@ -128,6 +140,15 @@ const ReIssueReqs = () => {
                       >
                         View
                       </button>
+                        {
+                        items.isCancelled ? (
+                          <p>Request Approved</p>
+                        ):(
+                          <button className='btn btn-secondary buttons_typo' onClick={()=>handleApprovedReqs(items.id)}>
+                            Approved
+                          </button>
+                        )
+                      }
                     </td>
                   </tr>
                 ))}

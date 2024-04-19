@@ -27,7 +27,8 @@ import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetService
 
 
 const UserContactDetails = (props) => {
-  const {isLogin , setLogIn ,userVerName,completeUserData ,setVarName,userName,setUserName,setRoleID,setServiceCharges} = useFormData();
+  const {isLogin , setLogIn ,userVerName,completeUserData
+     ,setVarName,userName,setUserName,setRoleID,setServiceCharges,setProfileImg} = useFormData();
   // console.log('completeUserData',completeUserData);
 //  console.log("shortFlightDetailfor-lead",shortFlightDetail)
   const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
@@ -192,7 +193,9 @@ const handlePhoneNumberChange = (value, country) => {
           setDisplayContact(true);
           setLogIn(true);
           setRoleID(verificationResult.data.payload.userData.roleId);
+          setProfileImg(verificationResult.data.payload.userData.imgSrc);
           setVarName(verificationResult.data.payload.userData.phoneNumber);
+
           // setUserName(verificationResult.data.payload.userData.firstName);
         } else {
           setIsOtpTrue(false);

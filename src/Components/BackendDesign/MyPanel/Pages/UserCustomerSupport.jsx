@@ -15,20 +15,36 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { dataNotfound } from '../../../../Constant/images';
 import { AdminSideCustomerSupp } from '../../../../API/BackendAPI/allAPICalls';
-
+import userDetailsBackend from '../../../../API/BackendAPI/BackendAPI_Fun';
 const UserCustomerSupport = (props) => {
-    const {userData,isLoading} = props;
+    // const {userData,isLoading,fetchBackendData} = props;
     const [openDetails, setOpenDetails] = useState(false);
     const [open, setOpen] = useState(false);
     const [replacedButtons, setReplacedButtons] = useState({});
     const [dialogContent, setDialogContent] = useState({ title: "", description: "",userID:null});
     const [disabledButtons, setDisabledButtons] = useState({});
+    const [userData ,setUser] = useState();
+    const [isLoading ,setLoading] = useState(false);
 
-    // console.log("dialogContentdialogContent",dialogContent);
+  // ----------------------------
+  const fetchBackendData =async()=>{
+    try{
+      const userData = await userDetailsBackend();
+    console.log("ApiCalledData",userData);
+      setUser(userData);
+    }
+    catch (error){
+      console.error(error);
+    }
+  } ;
+   useEffect(()=>{
+    fetchBackendData();
+     },[]);
+// -------------------------------
 
     // console.log("userDatauserData",userData);
     const userPayLoad = userData?.data.payload;
-    // console.log('userPayLoad',userPayLoad);
+    console.log('userPayLoad123',userPayLoad);
 
     const FlightShortInfo = userPayLoad?.map((items)=>items.flightDetails);
     // console.log("FlightShortInfo",FlightShortInfo);
@@ -111,15 +127,18 @@ const UserCustomerSupport = (props) => {
         switch (dialogContent.type) {
           case "refund":
             ReFundCalled(userID);
+            fetchBackendData();
             setOpen(false);
             break;
           case "cancel":
             CancelationCalled(userID);
             setOpen(false);
+            fetchBackendData();
             setReplacedButtons(prevState => ({ ...prevState, [userID]: true })); 
             break;
           case "reissue":
             reIssueCalled(userID);
+            fetchBackendData();
             setOpen(false);
             break;
           default:
@@ -183,7 +202,9 @@ const UserCustomerSupport = (props) => {
                         <td>{items.isPaid ? 'Paid' : 'UnPaid'}</td>
                         <td>
                           <div>
-                          {!replacedButtons[items.id] ? (
+                          {items. isReqForCancellation ? (
+                            <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>
+                            ) : (
                               <button
                                 className='btn btn-primary buttons_typo user_cancelation_button'
                                 onClick={() => {
@@ -194,8 +215,6 @@ const UserCustomerSupport = (props) => {
                               >
                                 Cancel
                               </button>
-                            ) : (
-                              <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>
                             )}
                             {/* <button
                               className='btn btn-primary buttons_typo user_cancelation_button'
@@ -212,7 +231,8 @@ const UserCustomerSupport = (props) => {
                             items.isPaid ? (
                               <div>
                               <div className='mt-1'>
-                                  <button
+                              {items. isReqForRefund ? ( <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>):(
+                                <button
                                     className='btn btn-primary buttons_typo user_cancelation_button'
                                     onClick={() => {
                                       openDialogBox(items.id);
@@ -222,8 +242,10 @@ const UserCustomerSupport = (props) => {
                                   >
                                     Refund
                                   </button>
+                              )}
                                 </div>
                                 <div className='mt-1'>
+                                {items. isReqForReIssue ? ( <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>):(
                                   <button
                                     className='btn btn-primary buttons_typo user_cancelation_button'
                                     onClick={() => {
@@ -234,6 +256,7 @@ const UserCustomerSupport = (props) => {
                                   >
                                     ReIssue
                                   </button>
+                                )}
                                 </div>
                               </div>
                             ):('')

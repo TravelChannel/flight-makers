@@ -446,7 +446,7 @@ if (
   userFlight = true;
 }
 
-console.log("userFlight value:", userFlight);
+// console.log("userFlight value:", userFlight);
   return (
     <Fragment>
       <div className={`container ${userFlight ?'' : main_flight_rsult}`}>

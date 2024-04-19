@@ -6326,13 +6326,7 @@ text-align: right;
      padding-top:15px; */
 	    /* padding:10px; */
 }
-.dashbord-header-avatar {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    border-radius: 20px;
-    
-}
+
 .dashbord-header-icon {
     width: 20px;
     margin-right: 10px;
@@ -6514,6 +6508,13 @@ margin-top:3px;
 .dashbord-header-avatar {
   width: 40px;
   height: 40px;
+  cursor: pointer;
+  border-radius: 20px;
+  
+}
+.dashbord-header-avatar-2 {
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   border-radius: 20px;
   

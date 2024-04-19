@@ -41,7 +41,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { CSSTransition } from "react-transition-group";
 import CloseIcon from "@mui/icons-material/Close";
 
-
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 	 const { showHeader, setShowHeader ,roleID,setVarName} = useFormData();
@@ -107,22 +106,21 @@ const handleSubMenuClick = (id)=>{
 }
 //   ------------------------------------------
 
- // ------------------
+ // -----------------
+ const fetchBackendData =async()=>{
+	try{
+	  setLoading(true);
+	  const userData = await userDetailsBackend(setBackLoading);
+	//  console.log("ApiCalledData",userData?.data.payload);
+	console.log("ApiCalledData",userData);
+		setUser(userData);
+		setLoading(false);
+	}
+	catch (error){
+		console.error(error);
+	}
+} ;
  useEffect(()=>{
-	const fetchBackendData =async()=>{
-	  try{
-		setLoading(true);
-		const userData = await userDetailsBackend(setBackLoading);
-	  //  console.log("ApiCalledData",userData?.data.payload);
-	  console.log("ApiCalledData",userData);
-		  setUser(userData);
-		  setLoading(false);
-	  }
-	  catch (error){
-		  console.error(error);
-	  }
-  } ;
-  
   fetchBackendData();
    },[]);
 //    --------------------------
@@ -599,7 +597,7 @@ useEffect(() => {
 								{selectedSubMenu === 3 && <CancellationReqs />}
 							</Fragment>
 							) : (
-							<UserCustomerSupport userData={userData} isLoading={isLoading} />
+							<UserCustomerSupport userData={userData} isLoading={isLoading} fetchBackendData ={fetchBackendData} />
 							)}
 						</Fragment>
 						)}

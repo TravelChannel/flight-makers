@@ -3,28 +3,30 @@ import { GetRatings } from '../../../API/BackendAPI/RateUsAPI/GetRatingAPI';
 import Loader from '../../../Loader/Loader';
 import { DeleteRating } from '../../../API/BackendAPI/RateUsAPI/DeleteRating';
 import { dataNotfound } from '../../../Constant/images';
+import { ToggleRating } from '../../../API/BackendAPI/RateUsAPI/ToggleRating';
 
 const RatingList = () => {
     const [isLoading ,setLoading] = useState(false);
     const [RatingList ,setRatingList] =useState([]);
 
+
     const ArrangeDateFormat = (JourneyDate) => {
         const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
         return formattedDate;
       };
+      const handleBlogLists = async () => {
+        try {
+          setLoading(true);
+            const response = await GetRatings();
+            setRatingList(response.data.payload); 
+            setLoading(false);
+            console.log("Response from RatingList API:", response);
+        } catch (error) {
+            console.log("Error on RatingList API:", error);
+        }
+    }
 
     useEffect(() => {
-        const handleBlogLists = async () => {
-            try {
-              setLoading(true);
-                const response = await GetRatings();
-                setRatingList(response.data.payload); 
-                setLoading(false);
-                console.log("Response from RatingList API:", response);
-            } catch (error) {
-                console.log("Error on RatingList API:", error);
-            }
-        }
         handleBlogLists();
     }, []);
 
@@ -37,6 +39,17 @@ const RatingList = () => {
           console.error("PromotionError", error);
       }
       }
+
+  const handleApprovedReqs =async (id) =>{
+     try{
+        const responce = await ToggleRating(id);
+        console.log("Rating Toggle-Result",responce);
+        handleBlogLists();
+     }catch(error){
+        console.error("Error at toggleRating",error);
+     }
+  }
+
 
       return (
         isLoading ? (<Loader />) : (
@@ -68,7 +81,11 @@ const RatingList = () => {
                                 <th className="promotion_design">Review</th>
                                 <th className="promotion_design">Stars</th>
                                 <th className="promotion_design">CreatedAt</th>
+                                <th className="promotion_design">Status</th>
+                                <th className="promotion_design">Status</th>
                                 <th className="promotion_design">Action</th>
+                              
+
                             </tr>
                         </thead>
                         <tbody>
@@ -79,8 +96,16 @@ const RatingList = () => {
                                     <td>{items.review != null ? items.review : 'Null'}</td>
                                     <td>{items.stars != null ? items.stars : 'Null'}</td>
                                     <td>{ArrangeDateFormat(items.createdAt)}</td>
+                                    <td>{items.isActive === false ? 'Pending' :'Approved'}</td>
+                                    <td>
+                                                {
+                                                    <button className='btn btn-secondary buttons_typo' onClick={()=>handleApprovedReqs(items.id)}>
+                                                        Approved
+                                                    </button>
+                                                }
+                                    </td>
                                     <td className='promotions_table_btn'>
-                                        <div className='mt-2'>
+                                        <div >
                                             <button
                                                 className='btn btn-primary buttons_typo_delt '
                                                 onClick={() => handleDeletRating(items.id)}
@@ -89,10 +114,12 @@ const RatingList = () => {
                                             </button>
                                         </div>
                                     </td>
+                                   
                                 </tr>
                             ))}
+
                         </tbody>
-                    </table>
+                    </table>     
                 </div>
             )
         )

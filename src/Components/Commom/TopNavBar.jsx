@@ -9,7 +9,7 @@ import { useFormData } from "../../Context/FormDataContext";
 
 const TopNavBar = () => {
     const {isLogin , setLogIn,userName} = useFormData();
-    const {userVerName , setVarName} = useFormData();
+    const {userVerName , setVarName,profileImg} = useFormData();
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -181,7 +181,7 @@ const TopNavBar = () => {
           <div>
             {isLogin ? (
               <Link to='/UserPanel' className="pull-right">
-                <Person2 className="glyphicon" />
+              {profileImg ? <img src={profileImg} className='dashbord-header-avatar-2'/> : <Person2 className="glyphicon" />}
                 {userVerName && userName ? userName : userVerName}
               </Link>
             ) : (

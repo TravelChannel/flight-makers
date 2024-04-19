@@ -41,9 +41,10 @@ const AddCommission = () => {
   useEffect(() => {
       handleCommissionPercentage();
   }, []);
+
   useEffect(() => {
-    handleCommissionPercentage();
-}, [CommissionPassingObj]);
+      handleCommissionPercentage();
+  }, [CommissionPassingObj]);
 
 const ArrangeDateFormat = (JourneyDate) => {
   const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');

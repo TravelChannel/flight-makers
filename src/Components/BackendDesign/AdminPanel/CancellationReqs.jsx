@@ -6,11 +6,13 @@ import Loader from '../../../Loader/Loader';
 import { AdminCancellationReq } from '../../../API/BackendAPI/allAPICalls';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
-// import { useUserData } from '../../../Context/UserDataContext';
+import { CancelationApprovedReq } from '../../../API/BackendAPI/CustomerSupportDoneAPI/ApprovedCancelation';
+
 
 const CancellationReqs = () => {
   const [userData, setUserData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+
   // const { setFlightDetails, setuserDetail } = useUserData();
   const navigate = useNavigate();
 
@@ -26,17 +28,18 @@ const CancellationReqs = () => {
     setSearch(value);
   };
 
+  const CancellationBookingDetails = async () => {
+    try {
+      const response = await AdminCancellationReq();
+      setUserData(response);
+      console.log("CancellationRequestResults", response);
+      setLoading(false);
+    } catch (error) {
+      console.error('ErrorCancellationRequests', error);
+    }
+  };
+
   useEffect(() => {
-    const CancellationBookingDetails = async () => {
-      try {
-        const response = await AdminCancellationReq();
-        setUserData(response);
-        console.log("CancellationRequestResults", response);
-        setLoading(false);
-      } catch (error) {
-        console.error('ErrorCancellationRequests', error);
-      }
-    };
     CancellationBookingDetails();
   }, []);
 
@@ -64,6 +67,17 @@ const CancellationReqs = () => {
   const handleUserId = (userID)=>{
     localStorage.setItem('userIDforDetails',userID);
   }
+
+  const handleApprovedReqs = async(id) =>{
+    try{
+      const aprovedReq =await  CancelationApprovedReq(id);
+      console.log("Result from CancellationReq",aprovedReq);
+      CancellationBookingDetails();
+    }catch(error){
+      console.error("Error while fetching Data",error);
+    }
+  }
+
 
   return (
     isLoading ? (
@@ -117,12 +131,7 @@ const CancellationReqs = () => {
                     <td>{`${userCountryCode?.[index]} ${userPhoneNo?.[index]}`}</td>
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
                     <td>UnPaid</td>
-                    <td>
-                      {/* <button className='btn btn-primary buttons_typo'
-                        onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}
-                      >
-                        View
-                      </button> */}
+                    <td className='d-flex justify-content-between'>
                       <button
                         className='btn btn-primary buttons_typo'
                         onClick={() => {
@@ -132,6 +141,15 @@ const CancellationReqs = () => {
                       >
                         View
                       </button>
+                      {
+                        items.isCancelled ? (
+                          <p className='redspot_message'>Request Approved</p>
+                        ):(
+                          <button className='btn btn-secondary buttons_typo' onClick={()=>handleApprovedReqs(items.id)}>
+                            Approved
+                          </button>
+                        )
+                      }
                     </td>
                   </tr>
                 ))}
@@ -147,6 +165,7 @@ const CancellationReqs = () => {
           }
         </div>
       </div>
+
     )
   )
 }

@@ -7,13 +7,13 @@ import { Pagination,Autoplay} from "swiper";
 import StarIcon from '@mui/icons-material/Star';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import {testimonialsReview} from '../../Constant/homeData';
-import { GetRatings } from "../../API/BackendAPI/RateUsAPI/GetRatingAPI";
+import { DisplayRatings } from "../../API/BackendAPI/RateUsAPI/DisplayRatings";
 const Tesimonials = () =>{
     const [RatingList ,setRatingList] = useState([]);
     useEffect(() => {
         const handleBlogLists = async () => {
             try {
-                const response = await GetRatings();
+                const response = await DisplayRatings();
                 setRatingList(response.data.payload); 
                 console.log("Response from RatingList API:", response);
             } catch (error) {

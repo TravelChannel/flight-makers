@@ -49,7 +49,7 @@ const fetchAirsailData = async (searchDataArr) => {
         const timeoutPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 reject(new Error('Request timeout'));
-            }, 10000); // 30 seconds timeout
+            }, 1000); // 30 seconds timeout
         });
     
         const response = await Promise.race([responsePromise, timeoutPromise]);

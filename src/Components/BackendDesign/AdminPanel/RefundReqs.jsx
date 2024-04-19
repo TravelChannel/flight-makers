@@ -6,6 +6,7 @@ import Loader from '../../../Loader/Loader';
 import { AdminRefundReq } from '../../../API/BackendAPI/allAPICalls';
 import { cityNameFunct } from '../../../helpers/formatdata';
 import { dataNotfound } from '../../../Constant/images';
+import { RefundApprovedReq } from '../../../API/BackendAPI/CustomerSupportDoneAPI/ApprovedRefund';
 // import { useUserData } from '../../../Context/UserDataContext';
 
 const RefundReqs = () => {
@@ -26,17 +27,18 @@ const RefundReqs = () => {
     setSearch(value);
   };
 
+  const ReFundBookingDetails = async () => {
+    try {
+      const response = await AdminRefundReq();
+      setUserData(response);
+      console.log("ReFundRequestResults", response);
+      setLoading(false);
+    } catch (error) {
+      console.error('ErrorReFundRequests', error);
+    }
+  };
+
   useEffect(() => {
-    const ReFundBookingDetails = async () => {
-      try {
-        const response = await AdminRefundReq();
-        setUserData(response);
-        console.log("ReFundRequestResults", response);
-        setLoading(false);
-      } catch (error) {
-        console.error('ErrorReFundRequests', error);
-      }
-    };
     ReFundBookingDetails();
   }, []);
 
@@ -59,6 +61,15 @@ const RefundReqs = () => {
   // };
   const handleUserId = (userID)=>{
     localStorage.setItem('userIDforDetails',userID);
+  }
+  const handleApprovedReqs = async(id) =>{
+    try{
+      const aprovedReq =await  RefundApprovedReq(id);
+      console.log("Result from CancellationReq",aprovedReq);
+      ReFundBookingDetails();
+    }catch(error){
+      console.error("Error while fetching Data",error);
+    }
   }
   return (
     isLoading ? (
@@ -112,7 +123,7 @@ const RefundReqs = () => {
                     <td>{`${userCountryCode?.[index]} ${userPhoneNo?.[index]}`}</td>
                     <td className=" align-self-center"> {ArrangeDateFormat(items.createdAt)} </td>
                     <td>UnPaid</td>
-                    <td>
+                    <td className='d-flex justify-content-between'>
                       {/* <button className='btn btn-primary buttons_typo'
                         onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}
                       >
@@ -127,6 +138,15 @@ const RefundReqs = () => {
                       >
                         View
                       </button>
+                      {
+                        items.isCancelled ? (
+                          <p>Request Approved</p>
+                        ):(
+                          <button className='btn btn-secondary buttons_typo' onClick={()=>handleApprovedReqs(items.id)}>
+                            Approved
+                          </button>
+                        )
+                      }
                     </td>
                   </tr>
                 ))}

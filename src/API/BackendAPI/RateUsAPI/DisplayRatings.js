@@ -1,9 +1,9 @@
 import apiClient from "../api_main";
 
-export const GetRatings = async()=>{
+export const DisplayRatings = async()=>{
     try{
 
-        const responce = await apiClient.get(`/ratings/allData`);
+        const responce = await apiClient.get(`/ratings`);
         if(responce.data.status === 'SUCCESS'){
             console.log(responce.data.message, 'SUCCESS getRating');
             return responce;

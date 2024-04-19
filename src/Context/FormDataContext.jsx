@@ -18,6 +18,7 @@ export const FormDataProvider = ({ children }) => {
   const [completeUserData ,setCompleteUserData] = useState([]);
   const [serviceCharges ,setServiceCharges] = useState();
   const [searcRes ,setSearchRes] = useState({});
+  const [profileImg ,setProfileImg] = useState(null);
  
 
   return (
@@ -35,6 +36,7 @@ export const FormDataProvider = ({ children }) => {
        completeUserData ,setCompleteUserData,
        serviceCharges ,setServiceCharges,
        searcRes ,setSearchRes,
+       profileImg ,setProfileImg
        }}>
       {children}
     </FormDataContext.Provider>

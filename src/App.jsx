@@ -16,7 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import MetaPage from "./View/MetaPage";
 import { MetaPageData } from "./Constant/MetaPageData";
 const App = () => {
-  const { showHeader,isLogin,setLogIn , userVerName,setVarName ,setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData} = useFormData();
+  const { showHeader,isLogin,setLogIn , userVerName,setVarName ,
+    setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData,setProfileImg} = useFormData();
   // ---------------------------------------
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -59,6 +60,7 @@ const App = () => {
   
         console.log("personName", PersonName);
         setUserCountryCOde(response.data.payload.userData.countryCode);
+        setProfileImg(response.data.payload.userData.imgSrc);
         setRoleID(response.data.payload.userData.roleId);
         setVarName(userPhone);
         setUserName(PersonName);

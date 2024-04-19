@@ -9,7 +9,7 @@ import * as images from '../../../Constant/images';
 const UserDashBoard = ({ btnText, onClick }) => {
     const [isModel , setModel] = useState(false);
     const [isLogOut , setLogOut] = useState(false);
-    const {isLogin , setLogIn,setVarName} = useFormData();
+    const {isLogin , setLogIn,setVarName,profileImg} = useFormData();
 
 
     const navigate = useNavigate();
@@ -51,9 +51,17 @@ const UserDashBoard = ({ btnText, onClick }) => {
                     src={SettingsIcon}
                     alt='settings-icon'
                     className='dashbord-header-icon' />
-                <img
+              {
+                profileImg ? (
+                    <img
                     className='dashbord-header-avatar'
-                    src={images.userProfile} onClick = {openUserModel} />      
+                    src={profileImg} onClick = {openUserModel} /> 
+                ):(
+                    <img
+                    className='dashbord-header-avatar'
+                    src={images.userProfile} onClick = {openUserModel} /> 
+                )
+              }     
             </div>
            
         </div>
