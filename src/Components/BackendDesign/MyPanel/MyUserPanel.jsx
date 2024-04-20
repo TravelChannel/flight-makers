@@ -40,6 +40,7 @@ import RatingList from '../AdminPanel/RatingList';
 import MenuIcon from "@mui/icons-material/Menu";
 import { CSSTransition } from "react-transition-group";
 import CloseIcon from "@mui/icons-material/Close";
+import AdminControl from '../AdminPanel/AdminControl';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -368,8 +369,21 @@ useEffect(() => {
 											</div>
 											)
 											}
+
+											{
+										checkAdmin === true || partialAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(10)}>
+											<RecordVoiceOverIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Admin Controls </p>
+											</div>
+
+										</div>
+										):('')
+									}
 									<div className='left_menu_content'>
-											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
 											<LogoutIcon className='menu_content_icon' />
 												<p className='d-flex align-self-center menu_content_typo'>Logout</p>
 											</div>
@@ -559,8 +573,20 @@ useEffect(() => {
                   		</div>
 						 )
 				  		}
+						{
+										checkAdmin === true || partialAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(10)}>
+											<RecordVoiceOverIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Admin Controls </p>
+											</div>
+
+										</div>
+										):('')
+									}
 				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -620,6 +646,9 @@ useEffect(() => {
 
 				{selectedMenuItem === 9 && ( !checkAdmin && !partialAdmin ? <RateUs /> :<RatingList/>)
 				}
+
+				{selectedMenuItem === 10 && 
+				<AdminControl />}
 				 </div>
 
 				 <Dialog

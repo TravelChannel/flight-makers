@@ -16,10 +16,10 @@ const RatingList = () => {
       };
       const handleBlogLists = async () => {
         try {
-          setLoading(true);
+        //   setLoading(true);
             const response = await GetRatings();
             setRatingList(response.data.payload); 
-            setLoading(false);
+            // setLoading(false);
             console.log("Response from RatingList API:", response);
         } catch (error) {
             console.log("Error on RatingList API:", error);
@@ -82,7 +82,7 @@ const RatingList = () => {
                                 <th className="promotion_design">Stars</th>
                                 <th className="promotion_design">CreatedAt</th>
                                 <th className="promotion_design">Status</th>
-                                <th className="promotion_design">Status</th>
+                                <th className="promotion_design">Operation</th>
                                 <th className="promotion_design">Action</th>
                               
 
@@ -100,7 +100,7 @@ const RatingList = () => {
                                     <td>
                                                 {
                                                     <button className='btn btn-secondary buttons_typo' onClick={()=>handleApprovedReqs(items.id)}>
-                                                        Approved
+                                                   {items.isActive === false ? 'Approved' :'DisApproved' } 
                                                     </button>
                                                 }
                                     </td>

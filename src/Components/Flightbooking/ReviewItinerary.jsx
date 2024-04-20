@@ -14,9 +14,8 @@ const ReviewItinerary = () => {
                         <h5 className="iti_heading_size">Itinerary Details</h5>
                     </div>
                 </div>
-                <div className='d-flex justify-content-between w-100'>
-                <div className='w-75'></div>
-                <div className='d-flex justify-content-start px-2 w-25 summary_detail'>  
+                <div className='d-flex justify-content-end w-100'>
+                <div className='d-flex justify-content-start px-2  summary_detail'>  
                         <p><PermIdentityIcon className='summry_detail_icon'/></p>
                         <div className='d-flex jusitfy-content-start align-self-center summary_content'>
                             <p className='px-1'>{`${flightData.adults} Adult`}</p>
