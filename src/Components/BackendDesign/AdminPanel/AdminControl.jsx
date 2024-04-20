@@ -10,7 +10,7 @@ const AdminControl = () => {
         try{
             const responce = await getAllControls();
             console.log("getControl-resp",responce);
-            setApiData(responce);
+            setApiData(responce.data.payload.data);
         }catch(error){
             console.error("Error while Fetching Data",error);
         }
@@ -19,14 +19,19 @@ const AdminControl = () => {
         handleGetApiData();
     },[]);
 
-    const handleGeneralTasks = async() =>{
+    const handleGeneralTasks = async(id) =>{
         try{
-            const responce = await ToggleControl(1);
+            const responce = await ToggleControl(id);
             console.log("getControl-resp",responce);
         }catch(error){
             console.error("Error while Fetching Data",error);
         }
     }
+
+    const ArrangeDateFormat = (JourneyDate) => {
+        const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
+        return formattedDate;
+      };
   return (
     <div className='m-3'>
         <div className='dashboard-content-header'>
@@ -52,22 +57,26 @@ const AdminControl = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                                <td>1</td>
-                                <td>Admin Panel</td>
-                                <td>IsOn</td>
-                                <td>CreatedAt</td>
+                       {
+                        getApiData.map((items ,index)=>(
+                            <tr key={index} >
+                                <td>{`${index+1}`}</td>
+                                <td>{items.description}</td>
+                                <td>{ArrangeDateFormat(items.createdAt)}</td>
+                                <td>{items.flag === false ? 'False' : 'True'}</td>
                                 <td className='promotions_table_btn'>
                                         <div >
                                             <button
                                                 className='btn btn-primary buttons_typo_delt '
-                                                onClick = {handleGeneralTasks}
+                                                onClick = {()=>handleGeneralTasks(items.id)}
                                             >
-                                                Activate
+                                               {items.flag === false ? 'DeActivate' : 'Activate'}
                                             </button>
                                         </div>
                                     </td>
                             </tr>
+                        ))
+                       }
 
                         </tbody>
            </table> 

@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router';
 import Loader from '../Loader/Loader';
 import { BlogByPagination } from '../API/BackendAPI/BlogsAPI/BlogByPagination';
 import { GetCategory } from '../API/BackendAPI/BlogsAPI/getCategory';
+
+import * as images from '../Constant/images';
+import { Link } from 'react-router-dom';
 const BlogCollection = () => {
   const navigate = useNavigate();
   const { setShowHeader, setTopNavBar } = useFormData();
@@ -78,6 +81,11 @@ const BlogCollection = () => {
     isLoading ? (<Loader/>) :(
       <div className='my_custom_section bg-white'>
       <div className=" blog_main_section">
+      <div className='mt-1'>
+        <Link to = '/'>
+        <img src={images.fmBlogLogo} alt="" width='200px' />
+        </Link>
+      </div>
             <div className="sec_content_blog overlay_blog">
               <h1 className="blog_heading">Your Journey Begins Here</h1>
               <p className="blog_main">Travel More</p>
