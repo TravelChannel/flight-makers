@@ -42,11 +42,15 @@ const UserTripInfo = () => {
               <div className="mobile_top_search d-flex justify-content-between">
                 <div>
                   <div className="d-flex justify-content-start">
-                    <p className="SF_mob_city_code">{searchDataArr.departure}</p>
+                    <p className="SF_mob_city_code">{searchDataArr.departure[0]}  </p>
                     <span><ArrowRightAltIcon /></span>
-                    <p className="SF_mob_city_code">{searchDataArr.arrival}
-                     {/* <span className="SF_mob_city_col">(Karachi)</span> */}
-                     </p>
+                    <p className="SF_mob_city_code">{searchDataArr.departure[1] || null} </p>
+                    {/* <span><ArrowRightAltIcon /></span> */}
+                    {searchDataArr.departure[1] ? <span>&&</span>:''}
+                    <p className="SF_mob_city_code">{searchDataArr.arrival[0]}</p>
+                    <span><ArrowRightAltIcon /></span>
+                    <p className="SF_mob_city_code">{searchDataArr.arrival[1] || null}</p>
+
                   </div>
                   <div className="mob_top_detail d-flex justify-content-start">
                     {/* <p> 08 Dec • 1 traveller • Economy</p> */}

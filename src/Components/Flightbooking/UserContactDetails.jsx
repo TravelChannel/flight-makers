@@ -23,6 +23,7 @@ import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
 // import { verifyOTPRes } from '../../API/index';
 import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
 import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetServiceCharges';
+import { CustomerDetailLead } from '../../API/BackendAPI/LeadCreationAPI/CustomerDetailLead';
 
 
 
@@ -408,11 +409,13 @@ useEffect(() => {
     return modifiedItem;
   });
 
-  const handleNavigation =() => {
+  const handleNavigation =async() => {
 
     try{
       const finalObject= generateBookingObject(); 
       setBackendFinalOBJ(finalObject);
+      // const LeadCreationResp = await CustomerDetailLead(finalObject);
+      // console.log('LeadCreationResp',LeadCreationResp);
       navigate('/bookingpayment');
       window.scrollTo(0, 0);
     }catch(error){

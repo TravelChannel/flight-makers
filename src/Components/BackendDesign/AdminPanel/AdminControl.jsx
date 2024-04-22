@@ -5,6 +5,7 @@ import { ToggleControl } from '../../../API/BackendAPI/AdminControlsAPI/ToggleCo
 const AdminControl = () => {
 
     const [getApiData ,setApiData] = useState([]);
+    const [flagStatus ,setFlagStatus] = useState(null);
 
     const handleGetApiData = async() =>{
         try{
@@ -23,6 +24,7 @@ const AdminControl = () => {
         try{
             const responce = await ToggleControl(id);
             console.log("getControl-resp",responce);
+            handleGetApiData();
         }catch(error){
             console.error("Error while Fetching Data",error);
         }
@@ -63,7 +65,7 @@ const AdminControl = () => {
                                 <td>{`${index+1}`}</td>
                                 <td>{items.description}</td>
                                 <td>{ArrangeDateFormat(items.createdAt)}</td>
-                                <td>{items.flag === false ? 'False' : 'True'}</td>
+                                <td>{items.flag === false ? <p className='enable_status'>Enable</p> :  <p className='disable_status'> Disable</p>}</td>
                                 <td className='promotions_table_btn'>
                                         <div >
                                             <button

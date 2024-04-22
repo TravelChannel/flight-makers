@@ -148,9 +148,9 @@ const handleAirLinesData = (id, airlineName) => {
                         <div itemProp="address" itemScope itemype="http://schema.org/PostalAddress colorGrey2">
                             <p itemProp="streetAddress " className="underText font_size_11 colorGrey2">
                                 &copy; 2024 <span itemProp="name colorGrey2">Faremakers</span>  All rights reserved
-                                <br /> 53/A-1 , Block E/1 Gulberg 3,
+                                {/* <br /> 53/A-1 , Block E/1 Gulberg 3,
                                 <br /><span itemProp="addressLocality colorGrey2">Lahore</span>,
-                                <span itemProp="addressCountry colorGrey2">Pakistan</span>
+                                <span itemProp="addressCountry colorGrey2">Pakistan</span> */}
                             </p>
                         </div>
                     </div>

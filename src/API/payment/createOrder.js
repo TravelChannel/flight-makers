@@ -3,7 +3,7 @@ export const createOrderApi = (getToken) => {
     return new Promise((resolve, reject) => {
       const PNRNumber = JSON.parse(localStorage.getItem('PNRNumber'));
       const totalPrice = JSON.parse(localStorage.getItem("totalTicketPrice"));
-      console.log(PNRNumber)
+      console.log('PNRNumber-at-create-order',PNRNumber);
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 

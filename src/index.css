@@ -7501,5 +7501,14 @@ margin-top:10px;
   font-size: 18px !important; 
   color:gray;
   cursor:pointer;
-
+}
+.enable_status{
+  color:green;
+  font-size:14px;
+  font-weight:600;
+}
+.disable_status{
+  color:Red;
+  font-size:14px;
+  font-weight:600;
 }

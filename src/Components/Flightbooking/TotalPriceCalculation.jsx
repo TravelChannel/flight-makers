@@ -7,7 +7,7 @@ const TotalPriceCalculation = () => {
     const {extraBagg } = useContext(TicketPriceContext);
     const {serviceCharges} =useFormData();
 
-    // console.log("PriceCalPage",serviceCharges);
+    // console.log("PriceCalPage",{serviceCharges});
     const classtype = flightData.classtype;
     const classType =
         classtype === 'Economy'

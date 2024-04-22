@@ -35,6 +35,10 @@ const BlogbyCategory = () => {
         blogByCategory();
     },[]);
 
+    useEffect(()=>{
+      blogByCategory();
+  },[page]);
+
     const handleBlogContent = (headerUrl) =>{
         // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
         navigate(`/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
