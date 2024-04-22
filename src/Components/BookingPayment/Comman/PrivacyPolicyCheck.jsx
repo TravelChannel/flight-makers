@@ -193,6 +193,7 @@ const PrivacyPolicyCheck = (props) => {
             // setPNRLoading(false);
             
           }
+          localStorage.setItem("PNRNumber", JSON.stringify(getPNRNumber));
           return getPNRNumber;
       };
 
@@ -208,7 +209,7 @@ const PrivacyPolicyCheck = (props) => {
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
               if (respServerPnrBooking.data.status === 'SUCCESS') {
                   console.log("respServerPnrBooking", respServerPnrBooking);
-                  localStorage.setItem("PNRNumber", JSON.stringify(pnrNum));
+                  // localStorage.setItem("PNRNumber", JSON.stringify(pnrNum));
                   toast.success("PNR Created Successfully", { autoClose: 2000 });
               } else{
                 console.log('anccccc')
