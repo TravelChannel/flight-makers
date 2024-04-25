@@ -95,11 +95,11 @@ const SideBarFilters = () => {
                     <Filters />
                   </div>
                 </div>
-                {/* <div className="disply_mob_filter_card overlay">
-                  <div className=" d-flex justify-content-center  mob_filter_button " >
+                <div className="disply_mob_filter_card overlay">
+                  <div className=" d-flex justify-content-center  mob_filter_button " onClick={closeFilters} >
                     <h4>APPLY</h4>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </CSSTransition>

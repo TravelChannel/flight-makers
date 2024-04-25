@@ -5,7 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { CSSTransition } from "react-transition-group";
 import FlightSearch from "../Home/FlightSearch";
 import { useItemsToShow } from './Comman/Context';
-
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
 const UserTripInfo = () => {
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -31,6 +31,12 @@ const UserTripInfo = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
   return (
     <Fragment>
 
@@ -41,22 +47,20 @@ const UserTripInfo = () => {
             <div className="trip_detail_hero mobile">
               <div className="mobile_top_search d-flex justify-content-between">
                 <div>
-                  <div className="d-flex justify-content-start">
-                    <p className="SF_mob_city_code">{searchDataArr.departure[0]}  </p>
-                    <span><ArrowRightAltIcon /></span>
-                    <p className="SF_mob_city_code">{searchDataArr.departure[1] || null} </p>
-                    {/* <span><ArrowRightAltIcon /></span> */}
-                    {searchDataArr.departure[1] ? <span>&&</span>:''}
-                    <p className="SF_mob_city_code">{searchDataArr.arrival[0]}</p>
-                    <span><ArrowRightAltIcon /></span>
-                    <p className="SF_mob_city_code">{searchDataArr.arrival[1] || null}</p>
+                  <div className="d-flex justify-content-center">
+                      <p className="SF_mob_city_code">{searchDataArr.departure[0]}  </p>
+                            <span><SyncAltIcon/></span>
+                      <p className="SF_mob_city_code">{searchDataArr.arrival[0]}</p>
+                      {/* <span><ArrowRightAltIcon /></span>
+                      <p className="SF_mob_city_code">{searchDataArr.arrival[1] || null}</p> */}
 
                   </div>
                   <div className="mob_top_detail d-flex justify-content-start">
                     {/* <p> 08 Dec • 1 traveller • Economy</p> */}
-                    <p className="mob_data_typo">{searchDataArr.date}</p>
-                    <p className="mob_data_typo"> •{travellers} travellers</p>
-                    <p className="mob_data_typo"> •{searchDataArr.classtype}</p>
+                    <p className="mob_data_typo">•{formatDate(searchDataArr.date[0])}</p>
+                    {searchDataArr.date[1] && <p className="mob_data_typo">•{formatDate(searchDataArr.date[1])}</p>} 
+                    <p className="mob_data_typo">•{travellers} travellers</p>
+                    <p className="mob_data_typo">•{searchDataArr.classtype}</p>
                   </div>
                 </div>
                 <div className="d-flex align-self-center">
@@ -91,7 +95,7 @@ const UserTripInfo = () => {
               <CloseIcon onClick={handleCloseCard} className="mob_cross_border" />
             </div>
             <div className="edit_search_mob">
-              <FlightSearch resultpage="true" searchDataArr={searchDataArr} />
+            <FlightSearch main_flight_rsult="main_flight_rsult" resultpage="true" searchDataArr ={searchDataArr}/>
             </div>
           </div>
         </div>

@@ -48,6 +48,7 @@ const PrivacyPolicyCheck = (props) => {
         // const pnrNum = await generatePnrNum();
     try {
       const pnrNum = await generatePnrNum();
+      console.log("pnrNum:", pnrNum);
         if(!pnrNum){
             console.log("erroratGetPNR");
           throw new Error(
@@ -73,15 +74,25 @@ const PrivacyPolicyCheck = (props) => {
           // setPNRLoading(true);
           const paymentToken = await requestGetpaymentToken(paymentCode);
           console.log('paymentTokenpaymentToken', paymentToken.createOrder);
+
+          if (!paymentToken) {
+            console.log("Error: paymentToken");
+            throw new Error("Error paymentToken");
+          }
           // console.log(paymentToken.token);
           const createOrder = paymentToken.createOrder;
           const OrderId = createOrder.id;
           const getPaymentToken1 = paymentToken.getPaymentToken;
 
-          console.log("paymentTokenResult",getPaymentToken1.token);
-          console.log("you are searching for me",createOrder);
-
+          console.log("paymentTokenResult", getPaymentToken1.token);
+          console.log("you are searching for me", createOrder);
+    
+          console.log("-------------------------Start------------------------------");
+          console.log("OrderId", OrderId);
+          console.log("pnrNum", pnrNum);
           handleBackendData(OrderId,pnrNum);
+          console.log("------------------------End-------------------------------");
+
 
           if (paymentType === "paypro") {
             window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
@@ -126,14 +137,16 @@ const PrivacyPolicyCheck = (props) => {
             userLocation : userLocation,
             };
             handleBackendData(OrderId,pnrNum);
-            navigate('/bookingDetail', { state: { data: DatatoPass } });
             window.scrollTo(0,0);
+            navigate('/bookingDetail', { state: { data: DatatoPass } });
+           
         }catch(error){
                 console.error(error);
                 setPNRLoading(true);
         }finally {
+          
                  setPNRLoading(true);
-            window.scrollTo(0,0);
+                 window.scrollTo(0,0);
           }
       }
       // ---------------------------------------

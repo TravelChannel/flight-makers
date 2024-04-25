@@ -17,6 +17,8 @@ const BlogCollection = () => {
   const [isNextPage ,setNextPage] = useState();
   const [airlineOptions, setAirlineOptions] = useState([]);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const getBlogbypage = async () =>{
     try{
       const obj = {
@@ -77,6 +79,16 @@ const BlogCollection = () => {
     handleGetCategory();
 }, []);
 
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+  window.addEventListener("resize", handleResize);
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  }
+}, [])
   return (
     isLoading ? (<Loader/>) :(
       <div className='my_custom_section bg-white'>
@@ -109,7 +121,7 @@ const BlogCollection = () => {
       {blogData.length ? 
           (
            <Fragment>
-           <div className="d-flex justify-content-start flex-wrap ">
+           <div className={`${isMobile ? 'd-flex justify-content-between  flex-wrap':'d-flex justify-content-start  flex-wrap'}`}>
               {blogData.map((items,index)=>(
                       <div className="blog1" key={index} onClick={()=>handleBlogContent(items.headerUrl)}>
                         <div className="blogimg">

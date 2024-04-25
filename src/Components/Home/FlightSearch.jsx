@@ -964,8 +964,23 @@ if (
 
           </div>
           <div className="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type='submit' className={`btn btn-primary colorWhite btn_searchFlight mt-3 ${searchFormValid() ? 'c-pointer' : 'c-not-allowed-btn'}`} disabled={!searchFormValid()}>SEARCH</button>
+            <button 
+            type='button'
+             className={`btn btn-primary colorWhite btn_searchFlight mt-3 ${searchFormValid() ? 'c-pointer' : 'c-not-allowed-btn'}`}
+              disabled={!searchFormValid()}
+              onClick={updateFlightResult}
+              >SEARCH
+              </button>
           </div>
+          {/* <div className="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button
+                  onClick={updateFlightResult}
+                  type='button'
+                  className={`btn btn-primary colorWhite btn_searchFligh mt-3 ${searchFormValid() ? 'c-pointer' : 'c-not-allowed-btn'}`}
+                  disabled={!searchFormValid()}>
+                   Search
+                </button>
+          </div> */}
           {shouldShowPrecautions() && <Precautions />}
 
         </form>

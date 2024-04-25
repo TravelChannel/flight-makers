@@ -14,7 +14,8 @@ import { useFormData } from "../Context/FormDataContext.jsx";
 import { AirSialTravDetial } from "../API/index.js";
 import { useNavigate } from "react-router-dom";
 import { getDetailByOrderId } from "../API/BackendAPI/CommissionAPI/GetDetailbyOrderId.js";
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const GetPNRItinerary = () => {
     const navigate = useNavigate();
@@ -28,7 +29,7 @@ const GetPNRItinerary = () => {
     const urlParams = new URLSearchParams(search);
     const id= urlParams.get("order");
     console.log("id from URl",id);
-    // const id =14433435;
+    // const id =15937209;
 
    
     // ----------------------------------
@@ -39,8 +40,11 @@ const [pnrData , setPnrData] = useState({});
 const [airSialData ,setAirSialData] = useState({});
 
 const [usersDetail ,setUsersDetails] = useState([]);
-const [isMobile , setIsMobile] = useState();
+const [isMobile , setIsMobile] = useState(window.innerWidth < 667);
+const [isSmallMobile , setSmallMobile] = useState(window.innerWidth < 480);
+
 const { setShowHeader } = useFormData();
+const [allPassangers ,setAllPassangers] = useState([]);
 
 useEffect(()=>{
     const handleResize = ()=>{
@@ -50,7 +54,18 @@ useEffect(()=>{
     return()=>{
         window.removeEventListener('resize', handleResize);
     }
-},[])
+},[]);
+useEffect(()=>{
+    const handleResize = ()=>{
+        setSmallMobile(window.innerWidth < 480);
+    };
+    window.addEventListener('resize', handleResize);
+    return()=>{
+        window.removeEventListener('resize', handleResize);
+    }
+},[]);
+
+
 
 // useEffect(() => {
 //     const url = window.location.href;
@@ -92,6 +107,31 @@ const totalDuration = (durationInMinutes)=>{
     const formattedMinutes = String(minutes).padStart(2, '0');
     return `${formattedHours}h:${formattedMinutes}m`;
 }
+
+
+const downloadPDF = () => {
+    const input = document.getElementById('pdf-content');
+  
+    html2canvas(input, { scale: 3 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/jpeg'); // Change image type to 'JPEG'
+  
+      const pdf = new jsPDF('p', 'mm', 'a4', true);
+  
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+  
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+  
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+  
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 30;
+  
+      pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      pdf.save('invoice.pdf');
+    });
+  };
 // ----------------------------------------------
 const flightDetails = pnrData?.flights?.map((flight, index) =>{
     const correspondingBaggage  =pnrData?.fareOffers?.[0];
@@ -156,18 +196,20 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
             {flight.meals ? flight.meals.map((disc, index) => disc.description) : "Nill"}
             </p>
             <p>
-            <span className="span_verify_prior mt-2">Hand Baggage Allowence: </span>
+            <span className="span_verify_prior mt-2">Hand Baggage Allowance: </span>
             {correspondingBaggage.cabinBaggageAllowance?.totalWeightInKilograms
                 ? `${correspondingBaggage.cabinBaggageAllowance.totalWeightInKilograms} KG`
-                : (correspondingBaggage.cabinBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms &&
-                    `${correspondingBaggage.checkedBaggageAllowance.baggagePieces[0].maximumWeightInKilograms} KG`)}
+                : (correspondingBaggage.cabinBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms
+                ? `${correspondingBaggage.cabinBaggageAllowance.baggagePieces[0].maximumWeightInKilograms} KG`
+                : 'null')}
             </p>
             <p>
             <span className="span_verify_prior mt-2">Checked Baggage Allowance: </span>
             {correspondingBaggage.checkedBaggageAllowance?.totalWeightInKilograms
                 ? `${correspondingBaggage.checkedBaggageAllowance.totalWeightInKilograms} KG`
-                : (correspondingBaggage.checkedBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms &&
-                    `${correspondingBaggage.checkedBaggageAllowance.baggagePieces[0].maximumWeightInKilograms} KG`)}
+                : (correspondingBaggage.checkedBaggageAllowance?.baggagePieces?.[0]?.maximumWeightInKilograms
+                ? `${correspondingBaggage.checkedBaggageAllowance.baggagePieces[0].maximumWeightInKilograms} KG`
+                : 'null')}
             </p>
 
         </div>
@@ -181,11 +223,11 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
 
 
 
-const location = useLocation();
-const searchParams = new URLSearchParams(location.search);
-const inputPnr = searchParams.get('inputPNR');
+// const location = useLocation();
+// const searchParams = new URLSearchParams(location.search);
+// const inputPnr = searchParams.get('inputPNR');
 
-    const qrCodeValue = inputPnr;
+    const qrCodeValue = id;
     const qrCodeSize = 70;
     const encryptText = (text) => {
         const myKey = 'KashifHussainTheCreatorofThisFareMakersSite';
@@ -263,12 +305,11 @@ const inputPnr = searchParams.get('inputPNR');
             console.log("extra_Bagg", extra_Bagg);
     
             if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
-                // const activepnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
-                const userDetailsResponse = await USerDetailResp(userPnr); // Wait for user detail response
+                const userDetailsResponse = await USerDetailResp(userPnr); 
                 const userDetails111 = userDetailsResponse?.data?.payload?.pnrDetail;
                 console.log('userDetails111',userDetails111);
 
-                await fetchData(userDetails111, userPnr); // Pass user details to fetchData
+                await fetchData(userDetails111, userPnr); 
                 const airSialUserDetail = await airsialBookingDetail();
                 console.log('airSialUserDetail',airSialUserDetail);
                 setAirSialData(airSialUserDetail);
@@ -287,6 +328,7 @@ const inputPnr = searchParams.get('inputPNR');
     
     const USerDetailResp = async (userPnr) => {
         try{
+            
             const responce = await GetDetailByPNR(userPnr);
             console.log("responceofCurrentBooking", responce.data.payload.pnrDetail);
             setUsersDetails(responce.data.payload.pnrDetail);
@@ -301,8 +343,6 @@ const inputPnr = searchParams.get('inputPNR');
             try {
                 const airsialtravllersDetail = await AirSialTravDetial(usersDetail, activepnrNumber);
                 console.log("airsialtravllersDetail", airsialtravllersDetail);
-                // setAirsialData(airsialtravllersDetail);
-                // setLoading(false);
             } catch (error) {
                 console.error("Error", error);
             }
@@ -311,8 +351,12 @@ const inputPnr = searchParams.get('inputPNR');
     const getuserDatabyID = async() =>{
         try{
             const responce = await getDetailByOrderId(id);
-            setUserPnr(responce.data.payload.pnr)
+            console.log("responce",responce);
+            setUserPnr(responce.data.payload.pnr);
+            setAllPassangers(responce.data.payload.pnrDetail);
             console.log('userPNR',responce.data.payload.pnr);
+            // const extra_Bagg = responce.data.payload.flightDetails;
+            // console.log('extra_Bagg_backend',extra_Bagg);
 
         }catch(error){
             console.error("error while getting data",error);
@@ -414,7 +458,7 @@ const handleNavigate = () =>{
             isLoading ? (
                 <Loader/>
             ):(
-                <div className="container bg-white p-5">
+                <div className="container bg-white p-5" id="pdf-content">
                     <div className="ticket_display">
                     {
                         isMobile ? (
@@ -451,24 +495,76 @@ const handleNavigate = () =>{
                         </div>
                         )
                     }
-                        
-                        {/* <h6 className="text-danger mt-3">Payment is Pending</h6> */}
-                        <div className="d-flex justify-content-between mt-5">
+                    {
+                        isSmallMobile ? (
+                            <div className="d-flex justify-content-between mt-5">
+                                <div className="">
+                                    {
+                                        isAirSial ? (
+                                            <div className="d-flex justify-content-start">
+                                                <p className="ticket_depart_date">{ArrangeDateFormat(outboundDepartureDate)}</p>
+                                                {inboundDepartDate !=='N/A' && (
+                                                    <>
+                                                        <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
+                                                        <p className="ticket_depart_date">{ArrangeDateFormat(inboundDepartDate)}</p>
+                                                    </>
+                                                )}
+                                            </div>
+                                        ):(
+                                            <div className="">
+                                                <p className="ticket_depart_date">{`Depart: ${ArrangeDateFormat(pnrData?.startDate)}`}</p>
+                                                {/* <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  */}
+                                                <p className="ticket_depart_date">{`Arrival:  ${ArrangeDateFormat(pnrData?.endDate)}`}</p>
+                                            </div>
+                                            
+                                        )
+                                    }
+                                  </div>
+                                    <div className="">
+                                                    {
+                                                        isAirSial ?(
+                                                            <div className="d-flex justify-content-start">
+                                                            <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </p>
+                                                            {
+                                                                inboundOrigion !=='N/A'&& (
+                                                                    <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </p>
+                                                                )
+                                                            }
+                                                            </div>
+                                                        ):(
+                                                            <div>
+                                                            {
+                                                            pnrData?.journeys &&
+                                                            pnrData?.journeys.map((items, index) => (
+                                                                <p key={index} className="journeys_spacing ticket_depart_date" >
+                                                                {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
+                                                                </p>
+                                                            ))
+                                                            }
+                                                            </div>
+                                                        )
+                                                    }
+                                    </div>  
+                                </div>
+                        ):(
+                            <div className="d-flex justify-content-between mt-5">
                             <div className="d-flex justify-content-start">
                                 {
                                     isAirSial ? (
                                         <div className="d-flex justify-content-start">
-                                            <h4>{ArrangeDateFormat(outboundDepartureDate)}</h4>
+                                            <p className="ticket_depart_date">{ArrangeDateFormat(outboundDepartureDate)}</p>
                                             {inboundDepartDate !=='N/A' && (
                                                 <>
                                                     <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
-                                                    <h4>{ArrangeDateFormat(inboundDepartDate)}</h4>
+                                                    <p className="ticket_depart_date">{ArrangeDateFormat(inboundDepartDate)}</p>
                                                 </>
                                             )}
                                         </div>
                                     ):(
                                        <div className="d-flex justify-content-start">
-                                       <h4>{ArrangeDateFormat(pnrData.startDate)}</h4> <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  <h4>{ArrangeDateFormat(pnrData.endDate)}</h4>
+                                        <p className="ticket_depart_date">{ArrangeDateFormat(pnrData?.startDate)}</p>
+                                        <ArrowRightIcon className="align-self-center ticket_right_arrrow"/> 
+                                         <p className="ticket_depart_date">{ArrangeDateFormat(pnrData?.endDate)}</p>
                                        </div>
                                     )
                                 }
@@ -477,21 +573,21 @@ const handleNavigate = () =>{
                           {
                             isAirSial ?(
                                 <div className="d-flex justify-content-start">
-                                <h4  className="journeys_spacing">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </h4>
+                                <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </p>
                                 {
                                     inboundOrigion !=='N/A'&& (
-                                        <h4  className="journeys_spacing">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </h4>
+                                        <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </p>
                                     )
                                 }
                                 </div>
                             ):(
                                 <>
                                 {
-                                pnrData.journeys &&
-                                pnrData.journeys.map((items, index) => (
-                                    <h4 key={index} className="journeys_spacing">
+                                pnrData?.journeys &&
+                                pnrData?.journeys.map((items, index) => (
+                                    <p key={index} className="journeys_spacing ticket_depart_date" >
                                     {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
-                                    </h4>
+                                    </p>
                                 ))
                                 }
                                 </>
@@ -499,20 +595,85 @@ const handleNavigate = () =>{
                           }
                             </div>    
                         </div>
+                        )
+                    }
+                        
+                        {/* <div className="d-flex justify-content-between mt-5">
+                            <div className="d-flex justify-content-start">
+                                {
+                                    isAirSial ? (
+                                        <div className="d-flex justify-content-start">
+                                            <p className="ticket_depart_date">{ArrangeDateFormat(outboundDepartureDate)}</p>
+                                            {inboundDepartDate !=='N/A' && (
+                                                <>
+                                                    <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
+                                                    <p className="ticket_depart_date">{ArrangeDateFormat(inboundDepartDate)}</p>
+                                                </>
+                                            )}
+                                        </div>
+                                    ):(
+                                       <div className="d-flex justify-content-start">
+                                        <p className="ticket_depart_date">{ArrangeDateFormat(pnrData?.startDate)}</p>
+                                        <ArrowRightIcon className="align-self-center ticket_right_arrrow"/> 
+                                         <p className="ticket_depart_date">{ArrangeDateFormat(pnrData?.endDate)}</p>
+                                       </div>
+                                    )
+                                }
+                            </div>
+                            <div className="d-flex justify-content-end ">
+                          {
+                            isAirSial ?(
+                                <div className="d-flex justify-content-start">
+                                <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[outboundOrigion]} → {cityNameFunct[outboundDes]} </p>
+                                {
+                                    inboundOrigion !=='N/A'&& (
+                                        <p  className="journeys_spacing ticket_depart_date">{cityNameFunct[inboundOrigion]} → {cityNameFunct[inboundDes]} </p>
+                                    )
+                                }
+                                </div>
+                            ):(
+                                <>
+                                {
+                                pnrData?.journeys &&
+                                pnrData?.journeys.map((items, index) => (
+                                    <p key={index} className="journeys_spacing ticket_depart_date" >
+                                    {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
+                                    </p>
+                                ))
+                                }
+                                </>
+                            )
+                          }
+                            </div>    
+                        </div> */}
                         <table className="table table-bordered mt-3">
                             <thead>
                             <tr>
                                 <th>Passenger</th>
-                                <th>Seats</th>
                                 {isAirSial ? (
                                     <th>CNIC</th>
                                 ) : (
                                     <th>Passport-No</th>
                                 )}
+                                <th>gender</th>
+
                                 <th>eTicket Receipt(s)</th>
                             </tr>
                             </thead>
-                           {
+                            <tbody>
+                                {
+                                    allPassangers.map((items ,index)=>(
+                                        <tr key={index}>
+                                            <td>{`${items.firstName} ${items.lastName}`}</td>
+                                            {/* <td>{adultDetails.booking_status}</td> */}
+                                            <td>{items.passportNo}</td>
+                                            <td>{items.gender}</td>
+                                            <td>___</td>
+                                        </tr> 
+                                    ))
+                                }
+                            </tbody>
+                           {/* {
                             isAirSial ? (
                                 <>
                                 <tbody>
@@ -531,9 +692,9 @@ const handleNavigate = () =>{
                                <>
                                <tbody>
                                
-                               {pnrData.travelers && pnrData.travelers.map((traveler, index) => (
-                                   <React.Fragment key={index}>
-                                       {traveler.identityDocuments.map((document, documentIndex) => (
+                               {pnrData.travelers && pnrData?.travelers?.map((traveler, index) => (
+                                   <Fragment key={index}>
+                                       {traveler?.identityDocuments?.map((document, documentIndex) => (
                                            <tr key={`${index}-${documentIndex}`}>
                                                <td>{`${document.givenName} ${document.surname}`}</td>
                                                <td>{pricingStatusName}</td>
@@ -541,16 +702,16 @@ const handleNavigate = () =>{
                                                <td>___</td>
                                            </tr>
                                        ))}
-                                   </React.Fragment>
+                                   </Fragment>
                                ))}
                                </tbody>
                                </>
                             )
-                           }
+                           } */}
                         </table>
                         <div className="d-flex justify-content-between mt-3">
                             <h6><span>Booking Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
-                            <h6><span>Airline Reference:</span> DCPK*8PY9Y6</h6>
+                            <h6><span>Airline Reference:</span>-</h6>
                         </div>
                         <div >
                           {
@@ -697,6 +858,12 @@ const handleNavigate = () =>{
                             }
                             <p className="border-top mt-3 pt-3 E_Ticket_disc"><span className="span_verify_prior">www.Faremakers.com </span>Powered By Travel Channel International (Pvt.) Ltd. Pakistan. Which is Nationwide IATA accredited company, Founded in 2003 & successfully operating the business in Lahore, Karachi & Islamabad. Our Goal is Making Travel Simple & Easy through Giving Best Travel Services all over the Pakistan.</p>
                         </div>
+                    </div>
+
+                    <div className="d-flex justify-content-center">
+                        <button className='btn btn-primary m-2 download_typography' onClick={() => downloadPDF()}>
+                                Download as PDF
+                        </button>
                     </div>
 
                 </div>

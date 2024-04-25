@@ -8,7 +8,6 @@ const requestOptions = {
   headers: myHeaders,
   redirect: "follow"
 };
-
 try {
     const responce = await fetch("https://fmcrm.azurewebsites.net/Handlers/FMConnectApis.ashx?type=89&from=LHE&to=KHI&name=Mr Arman Ahmed&phone=03235268422&email=arman@faremakers.com&adult=1&child=0&infant=0&airline=PF&classtype=Economy&TripTypeId=1&depDate=27-06-2024&retDate=01-01-1900", requestOptions);
     const result = await responce.json();

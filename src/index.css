@@ -3544,7 +3544,7 @@ background-color: none !important;
   color:#dd4d40;
 }
 .mob_icon_size{
-  margin-right:5px;
+  /* margin-right:5px; */
 }
 .mob_filters_main_heading{
   font-size: 14px;
@@ -7511,4 +7511,9 @@ margin-top:10px;
   color:Red;
   font-size:14px;
   font-weight:600;
+}
+.ticket_depart_date{
+  font-size:18px;
+  font-weight: 600;
+  color:#010101;
 }

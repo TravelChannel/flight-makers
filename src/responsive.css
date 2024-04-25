@@ -313,6 +313,17 @@
   margin-right: 10px;
   font-size: 12px !important;
 }
+
+.blog1 {
+  background-color: #fff;
+  cursor: pointer;
+  margin: 15px;
+  padding-bottom: 10px;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  width: 40%;
+}
   }
 
   @media only screen and (max-width: 667px) {
@@ -956,5 +967,13 @@
     margin:0px 3px !important;
     font-size: 11px !important;
   }
+}
+
+@media only screen and (max-width:530px){
+  .ticket_depart_date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #010101;
+}
 }
 

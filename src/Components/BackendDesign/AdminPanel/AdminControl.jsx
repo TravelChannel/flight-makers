@@ -65,14 +65,14 @@ const AdminControl = () => {
                                 <td>{`${index+1}`}</td>
                                 <td>{items.description}</td>
                                 <td>{ArrangeDateFormat(items.createdAt)}</td>
-                                <td>{items.flag === false ? <p className='enable_status'>Enable</p> :  <p className='disable_status'> Disable</p>}</td>
+                                <td>{items.flag === true ? <p className='enable_status'>Enable</p> :  <p className='disable_status'> Disable</p>}</td>
                                 <td className='promotions_table_btn'>
                                         <div >
                                             <button
                                                 className='btn btn-primary buttons_typo_delt '
                                                 onClick = {()=>handleGeneralTasks(items.id)}
                                             >
-                                               {items.flag === false ? 'DeActivate' : 'Activate'}
+                                               {items.flag === true ? 'DeActivate' : 'Activate'}
                                             </button>
                                         </div>
                                     </td>
