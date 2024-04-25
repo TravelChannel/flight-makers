@@ -52,7 +52,9 @@ const SignUp = () => {
        
           console.error('errorOTP',error);
           setLoading(false);
-          alert('error while Sending OTP');
+          // alert('error while Sending OTP' ,error);
+          alert(`Error while sending OTP: ${error.message}`);
+
           navigate('/signup')
         }
       }
@@ -79,7 +81,7 @@ const SignUp = () => {
                           isOTP ?(''):(
                               <div className="signup">
                           <form>
-                              <label className='label_signup' for="chk" aria-hidden="true">Sign up</label>
+                              <label className='label_signup2' for="chk" aria-hidden="true">Login</label>
                               {/* <input className='signupinput' type="text" name="txt" placeholder="User name" /> */}
                               <div className='signup_ph_input d-flex justify-content-center' >
                               <PhoneInput
@@ -101,7 +103,7 @@ const SignUp = () => {
                       <div className="login">
                       
                           <form>
-                              <label className='label_signup' for="chk" aria-hidden="true">Login</label>
+                              <label className='label_signup'>Login</label>  
                              <div >
                              <p className='otp_message_set text-center sign_up_message_color'>Enter OTP sent to the number: {phoneNumber}</p>
                              <div className='login_otp'>
@@ -112,7 +114,7 @@ const SignUp = () => {
                              </div>
                               {/* <input className='signupinput' type="email" name="email" placeholder="Email" />
                               <input className='signupinput' type="password" name="pswd" placeholder="Password" /> */}
-                              <button className='submit_log_button'>Login</button>
+                              {/* <button className='submit_log_button'>Login</button> */}
                           </form>
                       </div>
                   </div>

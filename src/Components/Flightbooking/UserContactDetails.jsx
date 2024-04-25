@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AllCountrySelection from './Comman/AllCountrySelection';
-import { InputAdornment } from '@mui/material';
+import { Alert, InputAdornment } from '@mui/material';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import DialogContent from '@material-ui/core/DialogContent';
 import CloseIcon from '@mui/icons-material/Close';
@@ -297,15 +297,13 @@ useEffect(() => {
 
 
   const sendOTPHandller = async() => {
-    try{
       const OTPResponce = await sendOTPCode(getOTPData); 
-      console.log('OTPResponce',OTPResponce);
-      setOTPResend(true);
-    }catch(error){
-         
-      console.error('errorOTP',error);
-    }
-    
+        if(OTPResponce?.data?.status === 'SUCCESS'){
+          console.log('OTPResponce',OTPResponce);
+          setOTPResend(true);
+        }else{
+          alert("Error While Sending OTP ,Please Try Again");
+        }
   }
   // const handleChange = (event) => {
   //   setGender(event.target.value);

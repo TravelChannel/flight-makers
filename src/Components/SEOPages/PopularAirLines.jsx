@@ -231,13 +231,11 @@ const PopularAirLines = () => {
   // ------------------------------------------------
 
 const handleDestinationClick = (destination,DepartCode,ArrivalCode ) =>{
-
-  // console.log("deeeeeeeeepart",DepartCode);
-  // console.log("arriiiiiivel",ArrivalCode)
   const cityNameMatch = destination.match(/to\s(.*?)(?=\s\()/);
   const cityName = cityNameMatch ? cityNameMatch[1].trim().replace(/\s+/g, '-') : '';
   // navigate(`/${airlineName}/flights-to-${cityName.toLowerCase()}`, { state: { searchDataArr:{}, FooterFlights:true ,DepartCode,ArrivalCode} });
   navigate(`/${airlineName}/flights-to-${cityName.toLowerCase()}?Departure=${DepartCode}&Arrival=${ArrivalCode}`, { state: { searchDataArr: {}, FooterFlights: true } });
+  window.scrollTo(0, 0);
 
 }
   // ----------------------------------------------

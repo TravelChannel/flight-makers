@@ -44,29 +44,72 @@ const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digi
 const formattedCurrentDateTime = currentDateTime.toLocaleString(undefined, options);
 const formattedFutureDateTime = futureDateTime.toLocaleString(undefined, options);
 // --------------------------------------------------------
+console.log("hello-world1111");
+// const downloadPDF = () => {
+ 
+//   const input = document.getElementById('pdf-content');
+
+//   html2canvas(input, { scale: 3 }).then((canvas) => {
+//     const imgData = canvas.toDataURL('image/jpeg'); 
+
+//     const pdf = new jsPDF('p', 'mm', 'a4', true);
+
+//     const pdfWidth = pdf.internal.pageSize.getWidth();
+//     const pdfHeight = pdf.internal.pageSize.getHeight();
+
+//     const imgWidth = canvas.width;
+//     const imgHeight = canvas.height;
+
+//     let ratio = 1;
+
+//     // Adjust scaling for mobile devices
+//     if (window.innerWidth < 768) { // Adjust this threshold as needed
+//       ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+//     } else {
+//       // For desktop, keep the original scaling
+//       ratio = Math.min(1, pdfWidth / imgWidth);
+//     }
+
+//     const imgX = (pdfWidth - imgWidth * ratio) / 2;
+//     const imgY = (pdfHeight - imgHeight * ratio) / 2;
+
+//     pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+//     pdf.save('invoice.pdf');
+//   });
+// };
+
 const downloadPDF = () => {
   const input = document.getElementById('pdf-content');
+
+  // A4 dimensions in mm
+  const pdfWidth = 210;
+  const pdfHeight = 297;
 
   html2canvas(input, { scale: 3 }).then((canvas) => {
     const imgData = canvas.toDataURL('image/jpeg'); // Change image type to 'JPEG'
 
-    const pdf = new jsPDF('p', 'mm', 'a4', true);
-
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
+    const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight], true);
 
     const imgWidth = canvas.width;
     const imgHeight = canvas.height;
 
-    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+    // Calculate scaling ratio based on aspect ratio
+    const ratioWidth = pdfWidth / imgWidth;
+    const ratioHeight = pdfHeight / imgHeight;
+    const ratio = Math.min(ratioWidth, ratioHeight);
 
-    const imgX = (pdfWidth - imgWidth * ratio) / 2;
-    const imgY = 30;
+    const scaledWidth = imgWidth * ratio;
+    const scaledHeight = imgHeight * ratio;
 
-    pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+    const imgX = (pdfWidth - scaledWidth) / 2;
+    const imgY = (pdfHeight - scaledHeight) / 2;
+
+    pdf.addImage(imgData, 'JPEG', imgX, imgY, scaledWidth, scaledHeight);
     pdf.save('invoice.pdf');
   });
 };
+
+
 
 useEffect(() => {
   const GetUsersDetail = async () => {
@@ -127,7 +170,7 @@ const backNavigation = () =>{
                 <div className="custom_detials_main">
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>Order ID </h6>
-                    <h6 className='custom_sub_details'>{`#000${orderId}`}</h6>
+                    <h6 className='custom_sub_details'>{`#${orderId ? orderId : '0000'}`}</h6>
                   </div>
                   <div className=' d-flex justify-content-between custom_itinerary_details'>
                     <h6>

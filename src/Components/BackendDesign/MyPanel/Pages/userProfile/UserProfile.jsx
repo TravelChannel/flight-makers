@@ -89,9 +89,9 @@ useEffect(()=>{
                           <header>
                               <h3>{`${userCountryCode} ${userVerName} `}</h3>
                               <div className="image">
-                                  <img src={ProfileData.imgSrc} alt='abc' />
+                              {ProfileData.imgSrc ? <img src={ProfileData.imgSrc} alt="" /> :<img src={images.userProfile} alt="" />}  
                               </div>
-                              <h3 className='profile_itenty' >{`${ProfileData.firstName} ${ProfileData.lastName} `}</h3>
+                              <h3 className='profile_itenty'>{`${ProfileData.firstName ? ProfileData.firstName : 'F.Name'} ${ProfileData.lastName ? ProfileData.lastName : 'L.Name'}`}</h3>
                           </header>
                       <div className='d-flex justify-content-around'>
                                   <div className="content">

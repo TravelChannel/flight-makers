@@ -5540,6 +5540,16 @@ input::placeholder
 	font-size: 2.3em;
 	justify-content: center;
 	display: flex;
+	margin-top: 120px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.label_signup2{
+  color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
 	margin: 60px;
 	font-weight: bold;
 	cursor: pointer;
@@ -7516,4 +7526,22 @@ margin-top:10px;
   font-size:18px;
   font-weight: 600;
   color:#010101;
+}
+.fd_price_color{
+  color:#2c67b3;
+}
+
+.payment_failed_responce{
+  font-size:18px;
+  font-weight:600;
+  color:#36c;
+  text-align: center;
+  justify-content: center;
+}
+.customer_support_No{
+  padding-left:5px;
+  font-size:20px;
+  font-weight:600;
+  color:#F26223;
+  text-decoration: underline;
 }

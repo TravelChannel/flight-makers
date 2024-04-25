@@ -40,6 +40,7 @@ const [pnrData , setPnrData] = useState({});
 const [airSialData ,setAirSialData] = useState({});
 
 const [usersDetail ,setUsersDetails] = useState([]);
+const [TicketConfirmed ,setTicketConfirmed] = useState(false);
 const [isMobile , setIsMobile] = useState(window.innerWidth < 667);
 const [isSmallMobile , setSmallMobile] = useState(window.innerWidth < 480);
 
@@ -354,7 +355,10 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
             console.log("responce",responce);
             setUserPnr(responce.data.payload.pnr);
             setAllPassangers(responce.data.payload.pnrDetail);
+            setTicketConfirmed(responce.data.payload.isPaid)
             console.log('userPNR',responce.data.payload.pnr);
+
+            console.log("userPaymentConfirmation",responce.data.payload.isPaid);
             // const extra_Bagg = responce.data.payload.flightDetails;
             // console.log('extra_Bagg_backend',extra_Bagg);
 
@@ -458,8 +462,11 @@ const handleNavigate = () =>{
             isLoading ? (
                 <Loader/>
             ):(
-                <div className="container bg-white p-5" id="pdf-content">
-                    <div className="ticket_display">
+                <div className="container bg-white p-5" >
+                    {/* {  
+                        TicketConfirmed ?( */}
+                     <Fragment>
+                     <div className="ticket_display" id="pdf-content">
                     {
                         isMobile ? (
                             <Fragment>
@@ -512,9 +519,9 @@ const handleNavigate = () =>{
                                             </div>
                                         ):(
                                             <div className="">
-                                                <p className="ticket_depart_date">{`Depart: ${ArrangeDateFormat(pnrData?.startDate)}`}</p>
+                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.startDate)}`}</p>
                                                 {/* <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  */}
-                                                <p className="ticket_depart_date">{`Arrival:  ${ArrangeDateFormat(pnrData?.endDate)}`}</p>
+                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.endDate)}`}</p>
                                             </div>
                                             
                                         )
@@ -653,11 +660,10 @@ const handleNavigate = () =>{
                                 {isAirSial ? (
                                     <th>CNIC</th>
                                 ) : (
-                                    <th>Passport-No</th>
+                                    <th>Passport#</th>
                                 )}
                                 <th>gender</th>
-
-                                <th>eTicket Receipt(s)</th>
+                                {isSmallMobile ? <th>Receipt(s)</th> : <th>eTicket Receipt(s)</th>}
                             </tr>
                             </thead>
                             <tbody>
@@ -709,10 +715,19 @@ const handleNavigate = () =>{
                             )
                            } */}
                         </table>
-                        <div className="d-flex justify-content-between mt-3">
-                            <h6><span>Booking Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
-                            <h6><span>Airline Reference:</span>-</h6>
-                        </div>
+                           {
+                            isSmallMobile ?(
+                                <div className="d-flex justify-content-between mt-3">
+                                <h6><span>Booking-Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
+                                <h6><span>Airline-Reference:</span>-</h6>
+                            </div>
+                            ):(
+                                <div className="d-flex justify-content-between mt-3">
+                                  <h6><span>Booking-Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
+                                  <h6><span>Airline-Reference:</span>-</h6>
+                               </div>
+                            )
+                           }
                         <div >
                           {
                             isAirSial ?(
@@ -859,15 +874,24 @@ const handleNavigate = () =>{
                             <p className="border-top mt-3 pt-3 E_Ticket_disc"><span className="span_verify_prior">www.Faremakers.com </span>Powered By Travel Channel International (Pvt.) Ltd. Pakistan. Which is Nationwide IATA accredited company, Founded in 2003 & successfully operating the business in Lahore, Karachi & Islamabad. Our Goal is Making Travel Simple & Easy through Giving Best Travel Services all over the Pakistan.</p>
                         </div>
                     </div>
-
                     <div className="d-flex justify-content-center">
                         <button className='btn btn-primary m-2 download_typography' onClick={() => downloadPDF()}>
                                 Download as PDF
                         </button>
                     </div>
-
+                     </Fragment>
+                        {/* ):(
+                            <div>
+                                <h4 className='payment_failed_responce'>
+                                We apologize for the inconvenience, but there was an error processing your payment. If you have completed your payment, please contact our Support Team for further assistance at  <span className="customer_support_No">03111147111</span>
+                                </h4>
+                            </div>
+                        ) */}
+                    {/* } */}
+                    
                 </div>
 
+                
             )
            }
 

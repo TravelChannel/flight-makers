@@ -48,8 +48,11 @@ const OTPCode = (props) => {
       try {
         const verificationResult = await verifyOTPRes(props.getOTPData,enteredOtp);
         console.log('verificationResult',verificationResult);
-        
+
         if (verificationResult.data.status ==='SUCCESS') {
+          const AccessToken  = verificationResult.data.payload.accessToken;
+          console.log("AccessToken",AccessToken);
+          document.cookie = `AccessToken=${AccessToken}; path=/;`;
           setIsOtpTrue(true);
           setLogIn(true);
           setVarName(verificationResult.data.payload.userData.phoneNumber);
@@ -143,7 +146,7 @@ const OTPCode = (props) => {
                     <p className={`${fromSingUp ?('otp_message text-center'):('otp_message')}`}> {isOtpTrue ? (<span className="success_message">OTP successfull</span>) : (<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
                   )
                   }
-                </div>
+           </div>
                   <div className={`otp_resend_time ${fromSingUp ? ('text-center sign_up_message_color'):('')}`}>
                     Have Not Received OTP ?{' '}
                     {isTimerRunning ? (
