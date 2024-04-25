@@ -52,7 +52,7 @@ const OTPCode = (props) => {
         if (verificationResult.data.status ==='SUCCESS') {
           const AccessToken  = verificationResult.data.payload.accessToken;
           console.log("AccessToken",AccessToken);
-          document.cookie = `AccessToken=${AccessToken}; path=/;`;
+          document.cookie = `user_token=${AccessToken}; path=/;`;
           setIsOtpTrue(true);
           setLogIn(true);
           setVarName(verificationResult.data.payload.userData.phoneNumber);

@@ -718,14 +718,14 @@ const handleNavigate = () =>{
                            {
                             isSmallMobile ?(
                                 <div className="d-flex justify-content-between mt-3">
-                                <h6><span>Booking-Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
-                                <h6><span>Airline-Reference:</span>-</h6>
-                            </div>
+                                  <h6><span>Booking-ID</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
+                                  <h6><span>Airline-ID:</span>-</h6>
+                               </div>
                             ):(
                                 <div className="d-flex justify-content-between mt-3">
-                                  <h6><span>Booking-Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
-                                  <h6><span>Airline-Reference:</span>-</h6>
-                               </div>
+                                    <h6><span>Booking-Reference:</span> {isAirSial ? (airSialData?.Response?.Data?.pnrDetail.PNRN):(pnrData?.request?.confirmationId)}</h6>
+                                    <h6><span>Airline-Reference:</span>-</h6>
+                                </div>
                             )
                            }
                         <div >
