@@ -190,13 +190,16 @@ const handlePhoneNumberChange = (value, country) => {
       try {
         const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
         if (verificationResult.data.status==='SUCCESS') {
+          const AccessToken  = verificationResult.data.payload.accessToken;
+          console.log("AccessToken",AccessToken);
+          document.cookie = `user_token=${AccessToken}; path=/;`;
           setIsOtpTrue(true);
           setDisplayContact(true);
           setLogIn(true);
           setRoleID(verificationResult.data.payload.userData.roleId);
           setProfileImg(verificationResult.data.payload.userData.imgSrc);
           setVarName(verificationResult.data.payload.userData.phoneNumber);
-
+         
           // setUserName(verificationResult.data.payload.userData.firstName);
         } else {
           setIsOtpTrue(false);
@@ -412,7 +415,12 @@ useEffect(() => {
     try{
       const finalObject= generateBookingObject(); 
       setBackendFinalOBJ(finalObject);
-      // const LeadCreationResp = await CustomerDetailLead(finalObject);
+      const PassLeadCreation = {
+        leadData: finalObject.leadCreationData,
+        userData: finalObject.pnrBookings
+      };
+      console.log("PassLeadCreation",PassLeadCreation);
+      // const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
       // console.log('LeadCreationResp',LeadCreationResp);
       navigate('/bookingpayment');
       window.scrollTo(0, 0);

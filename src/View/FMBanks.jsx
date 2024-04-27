@@ -1,8 +1,26 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import * as images from '../../src/Constant/images';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import ContactSources from '../Components/Commom/ContactSources';
+import Cookies from 'js-cookie';
 const FMBanks = () => {
+  const [accessToken, setAccessToken] = useState(null);
+
+  useEffect(() => {
+    const token = Cookies.get('Access_token');
+    if (token) {
+      setAccessToken(token);
+    } else {
+      console.log('Access Token not found in cookie.');
+    }
+  }, []);
+ 
+                {/* ------------------------------------------------------- */}
+                const storedAccessToken = localStorage.getItem('AccessToken');
+
+
+
+           {/* ------------------------------------------------------------------------------ */}
   return (
     <div className='container'>
        <div className='contact_us_heading d-flex justify-content-center'>
@@ -68,6 +86,18 @@ const FMBanks = () => {
                 </div>
            
             </div>
+
+                {/* ------------------------------------------------------- */}
+
+                <div className='mt-3'>
+                  <h5>Token From LocalStorage: <span>{storedAccessToken}</span></h5>
+                </div>
+                <div className='mt-3'>
+                <h5>Access Token from Cookies: <span> {accessToken}</span></h5>
+                </div>
+
+           {/* ------------------------------------------------------------------------------ */}
+
         </div>
 
     </div>

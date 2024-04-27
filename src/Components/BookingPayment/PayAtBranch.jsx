@@ -50,6 +50,7 @@ const PayAtBranch = (props) => {
     }
   };
 
+  let payAtBranchID  = 1;
   useEffect(() => {
     handleChange({ target: { value: branchName } });
   }, [branchName]);
@@ -100,7 +101,7 @@ const PayAtBranch = (props) => {
     </div>
     {(props.subChild) ?
       <div className='privacy_policy_hero'>
-         <PrivacyPolicyCheck checked={checked} setChecked={setChecked} branchLabel = {branchLabel}/>
+         <PrivacyPolicyCheck checked={checked} setChecked={setChecked} branchLabel = {branchLabel} payAtBranchID = {payAtBranchID}/>
       </div>
       :
       null

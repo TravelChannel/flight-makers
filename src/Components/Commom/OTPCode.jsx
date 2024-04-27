@@ -5,6 +5,7 @@ import { Navigate ,useNavigate} from 'react-router-dom';
 import { useFormData } from '../../Context/FormDataContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import apiClient from '../../API/BackendAPI/api_main';
 
 const OTPCode = (props) => {
 
@@ -43,6 +44,17 @@ const OTPCode = (props) => {
       //   "otp": enteredOtp
       // }
       // console.log('OtpResponceOBJ',OtpResponceOBJ);
+
+
+      // ---------------------------
+   const setHeader = (userToken = null) => {
+
+    console.log("userToken111",userToken);
+    apiClient.defaults.headers.common.Authorization = `Bearer ${userToken}`;
+    console.log('apiClient222',apiClient);
+  }
+
+      // ----------------------------------
       
 
       try {
@@ -52,7 +64,9 @@ const OTPCode = (props) => {
         if (verificationResult.data.status ==='SUCCESS') {
           const AccessToken  = verificationResult.data.payload.accessToken;
           console.log("AccessToken",AccessToken);
-          document.cookie = `user_token=${AccessToken}; path=/;`;
+          document.cookie = `Access_token=${AccessToken}; path=/;`;
+          localStorage.setItem("AccessToken",AccessToken);
+          setHeader(verificationResult.data.payload.accessToken);
           setIsOtpTrue(true);
           setLogIn(true);
           setVarName(verificationResult.data.payload.userData.phoneNumber);

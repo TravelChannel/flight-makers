@@ -9,7 +9,8 @@ import axios from "axios";
 
 const apiClient = axios.create({
 	// baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
-	baseURL: 'http://localhost:5000/api/',
+	   baseURL: 'http://localhost:5000/api/',
+	// baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
 	withCredentials: true,
 	// baseURL: 'http://192.168.18.65/KBD_Backend/api', /// Danish
 	// baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain
@@ -20,6 +21,7 @@ const apiClient = axios.create({
 	// 	Authorization: `Bearer ${Cookies.get('userToken')}`,
 	// },
 });
+
 
 // const _titleError = (
 // 	<span className='d-flex align-items-center'>

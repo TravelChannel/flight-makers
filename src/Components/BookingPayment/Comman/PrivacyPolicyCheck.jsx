@@ -26,7 +26,7 @@ const PrivacyPolicyCheck = (props) => {
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const [isLoading ,setLoading] = useState(false);
 
-    const { checked, setChecked, isEmpty,paymentType,branchLabel,userLocation} = props;
+    const { checked, setChecked, isEmpty,paymentType,branchLabel,userLocation,payAtBranchID} = props;
     const handleChange = (event) => {
         setChecked(event.target.checked);
     };
@@ -113,6 +113,14 @@ const PrivacyPolicyCheck = (props) => {
       const BookingDetail =async ()=>{
         setPNRLoading(true);
         let OrderId =null;
+        let sendSmsBranch=false;
+        let sendSmsCod = false;
+        if (payAtBranchID === 1) {
+          sendSmsBranch = true;
+          
+        } else {
+          sendSmsCod = true;
+        }
         try{
             const pnrNum = await generatePnrNum();
             if(!pnrNum){
@@ -136,10 +144,7 @@ const PrivacyPolicyCheck = (props) => {
             branchlabel : branchLabel,
             userLocation : userLocation,
             };
-            handleBackendData(OrderId,pnrNum);
-            window.scrollTo(0,0);
-            navigate('/bookingDetail', { state: { data: DatatoPass } });
-           
+            handleBackendData(OrderId,pnrNum,sendSmsBranch,sendSmsCod,DatatoPass);  
         }catch(error){
                 console.error(error);
                 setPNRLoading(true);
@@ -210,12 +215,17 @@ const PrivacyPolicyCheck = (props) => {
           return getPNRNumber;
       };
 
-      const handleBackendData = async(OrderId,pnrNum)=>{
+      const handleBackendData = async(OrderId,pnrNum,sendSmsBranch,sendSmsCod,DatatoPass)=>{
         let updatedBackendFinalOBJ = {};
         updatedBackendFinalOBJ = {
           ...backendFinalOBJ,
           pnr: pnrNum,
-          OrderId:OrderId
+          OrderId:OrderId,
+          sendSmsBranch:sendSmsBranch,
+          sendSmsCod:sendSmsCod,
+          branchLabel:branchLabel,
+          userLocation:userLocation
+
         };
 
         console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
@@ -224,6 +234,8 @@ const PrivacyPolicyCheck = (props) => {
                   console.log("respServerPnrBooking", respServerPnrBooking);
                   // localStorage.setItem("PNRNumber", JSON.stringify(pnrNum));
                   toast.success("PNR Created Successfully", { autoClose: 2000 });
+                  navigate('/bookingDetail', { state: { data: DatatoPass } });
+                  window.scrollTo(0,0);
               } else{
                 console.log('anccccc')
                 alert("Error:something went wrong, Please Try Again ");
