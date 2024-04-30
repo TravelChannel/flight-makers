@@ -57,7 +57,7 @@ const UserLists = () => {
           />
         </div>
       </div>
-      <div className='promotion_table mt-3 text-center'>
+      <div className='promotion_table mt-3 text-center table-responsive '>
         <table className='table table-bordered'>
           <thead>
             <tr className='head_details'>

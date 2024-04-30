@@ -6,6 +6,7 @@ import { UserLogOut } from '../../../API/BackendAPI/allAPICalls';
 import { useNavigate } from 'react-router';
 import { useFormData } from '../../../Context/FormDataContext';
 import * as images from '../../../Constant/images';
+import Cookies from 'js-cookie';
 const UserDashBoard = ({ btnText, onClick }) => {
     const [isModel , setModel] = useState(false);
     const [isLogOut , setLogOut] = useState(false);
@@ -26,9 +27,13 @@ const UserDashBoard = ({ btnText, onClick }) => {
     const UserLogout =async () =>{
 
         const logout =await UserLogOut();
+        console.log("logout-resp",logout);
+       if(logout.data.status==='SUCCESS'){
         setLogOut(true);
         setLogIn(false);
         setVarName('');
+        Cookies.remove('Access_token');
+       }
     }
 
     if(isLogOut){

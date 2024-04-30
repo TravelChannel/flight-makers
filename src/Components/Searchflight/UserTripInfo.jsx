@@ -45,15 +45,18 @@ const UserTripInfo = () => {
         <Fragment>
           <div className="container background_mob_color">
             <div className="trip_detail_hero mobile">
-              <div className="mobile_top_search d-flex justify-content-between">
+              <div className="mobile_top_search ">
                 <div>
-                  <div className="d-flex justify-content-center">
-                      <p className="SF_mob_city_code">{searchDataArr.departure[0]}  </p>
-                            <span><SyncAltIcon/></span>
-                      <p className="SF_mob_city_code">{searchDataArr.arrival[0]}</p>
-                      {/* <span><ArrowRightAltIcon /></span>
-                      <p className="SF_mob_city_code">{searchDataArr.arrival[1] || null}</p> */}
-
+                  <div className="d-flex justify-content-between">
+                      <div className= 'd-flex justify-content-start'>
+                          <p className="SF_mob_city_code">{searchDataArr.departure[0]}  </p>
+                                <span>{searchDataArr.date[1] ? <SyncAltIcon/> : <ArrowRightAltIcon/>}</span>
+                          <p className="SF_mob_city_code">{searchDataArr.arrival[0]}</p>
+                         
+                      </div>
+                      <div className="d-flex align-self-center">
+                        <span className=" mob_icon_size" onClick={handleEditNote}> <BorderColorIcon className="mob_top_icon" /> Change</span>
+                      </div>
                   </div>
                   <div className="mob_top_detail d-flex justify-content-start">
                     {/* <p> 08 Dec • 1 traveller • Economy</p> */}
@@ -62,9 +65,6 @@ const UserTripInfo = () => {
                     <p className="mob_data_typo">•{travellers} travellers</p>
                     <p className="mob_data_typo">•{searchDataArr.classtype}</p>
                   </div>
-                </div>
-                <div className="d-flex align-self-center">
-                  <span className=" mob_icon_size" onClick={handleEditNote}> <BorderColorIcon className="mob_top_icon" /> Change</span>
                 </div>
               </div>
             </div>

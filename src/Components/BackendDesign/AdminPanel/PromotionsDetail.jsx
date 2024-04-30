@@ -84,7 +84,7 @@ const ArrangeDateFormat = (JourneyDate) => {
                            <img src={images.announcement} alt="" width='32px' /> Add  Promotion
                    </button>
                 </div>
-                    <div className="promotion_table text-center">
+                    <div className="promotion_table text-center table-responsive ">
                         <table className="table table-bordered ">
                             <thead>
                                <tr>

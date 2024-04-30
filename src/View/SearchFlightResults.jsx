@@ -27,7 +27,7 @@ const SearchFlightResult = () => {
   const navigate = useNavigate();
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
-     window.scrollTo(0, 0);
+    //  window.scrollTo(0, 0);
   };
 
  

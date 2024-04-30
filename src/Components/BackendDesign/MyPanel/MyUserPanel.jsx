@@ -41,6 +41,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { CSSTransition } from "react-transition-group";
 import CloseIcon from "@mui/icons-material/Close";
 import AdminControl from '../AdminPanel/AdminControl';
+import Cookies from 'js-cookie';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -81,9 +82,15 @@ const [isLoading , setLoading]=useState(false);
 // --------------
 const userLogout = async()=>{
     const logout  = await UserLogOut();
-    setLogout(true);
-    setLogIn(false);
-	setVarName('');
+	if(logout.data.status==='SUCCESS'){
+		setLogout(true);
+		setLogIn(false);
+		setVarName('');
+        Cookies.remove('Access_token');
+       }
+    // setLogout(true);
+    // setLogIn(false);
+	// setVarName('');
 }
 if (isLogOut) {
     navigate('/');
@@ -193,7 +200,7 @@ useEffect(() => {
 
 					<CSSTransition in={menu} timeout={1000} classNames="fade" unmountOnExit>
 						<div className="disply_mob_menu">
-							<div className="d-flex justify-content-between p-3">
+							<div className="d-flex justify-content-between">
 								<Link to={'/'} className="hdrLogomob ">
 									<img src={images.default} className="imgView" alt="FM-LOGO" width="120px"/>
 									<span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span>

@@ -98,51 +98,53 @@ const handleDeletCommission = async(id) =>{
                             <img src={images.announcement} alt="" width='32px' /> Add  Commission
                     </button>
            </div>
-        <table className="table table-bordered mt-2">
-                    <thead>
-                        <tr> 
-                            {/* <th className="promotion_design">Serial No</th> */}
-                            <th className="promotion_design" >ID</th>
-                            <th className="promotion_design">Percentage Applied</th>
-                            <th className="promotion_design">Airline</th>
-                            <th className="promotion_design">FareClass</th>
-                            <th className="promotion_design">Sector</th>
-                            <th className="promotion_design">StartDate</th>
-                            <th className="promotion_design">EndDate</th>
-                            <th className="promotion_design">isActive</th>
-                            <th  className="promotion_design" >Action</th>
+           <div className='table-responsive '>
+            <table className="table table-bordered mt-2">
+                      <thead>
+                          <tr> 
+                              {/* <th className="promotion_design">Serial No</th> */}
+                              <th className="promotion_design" >ID</th>
+                              <th className="promotion_design">Percentage Applied</th>
+                              <th className="promotion_design">Airline</th>
+                              <th className="promotion_design">FareClass</th>
+                              <th className="promotion_design">Sector</th>
+                              <th className="promotion_design">StartDate</th>
+                              <th className="promotion_design">EndDate</th>
+                              <th className="promotion_design">isActive</th>
+                              <th  className="promotion_design" >Action</th>
 
+                          </tr>
+                      </thead>
+                      <tbody>
+                      {
+                        CommissionPassingObj.map((items,index)=>(
+                          <tr key={index}>
+                            <td>{items.id}</td>
+                            <td>{items.percentage != null ? `${items.percentage}%` : 'Null'}</td>
+                            <td>{items.airlineId && items.airline?.name || 'null'}</td>
+                            <td>{items.fareClassId && items.fareClass?.name || 'null'} </td>
+                            <td>{items.sectorId && items.sector?.name || 'null'} </td>
+                            <td>{ArrangeDateFormat(items.startDate)}</td>
+                            <td>{ArrangeDateFormat(items.endDate)}</td>
+                            <td>{items.isActive != null ? (items.isActive ? 'True' : 'False') : 'null'}</td>
+                            <td>
+                                <div className='mt-2'>
+                                    <button className='btn btn-primary buttons_typo_delt ' onClick={()=>handleDeletCommission(items.id)} >
+                                                    Delete
+                                    </button>
+                                    {/* <td className='disable_button'>
+                                              {
+                                                  items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleToggleCommission(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleToggleCommission(items.id)}>Activate</button>)
+                                              }
+                                    </td> */}
+                                </div>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    {
-                      CommissionPassingObj.map((items,index)=>(
-                        <tr key={index}>
-                          <td>{items.id}</td>
-                          <td>{items.percentage != null ? `${items.percentage}%` : 'Null'}</td>
-                          <td>{items.airlineId && items.airline?.name || 'null'}</td>
-                          <td>{items.fareClassId && items.fareClass?.name || 'null'} </td>
-                          <td>{items.sectorId && items.sector?.name || 'null'} </td>
-                          <td>{ArrangeDateFormat(items.startDate)}</td>
-                          <td>{ArrangeDateFormat(items.endDate)}</td>
-                          <td>{items.isActive != null ? (items.isActive ? 'True' : 'False') : 'null'}</td>
-                          <td>
-                               <div className='mt-2'>
-                                  <button className='btn btn-primary buttons_typo_delt ' onClick={()=>handleDeletCommission(items.id)} >
-                                                  Delete
-                                  </button>
-                                  {/* <td className='disable_button'>
-                                            {
-                                                items.isActive ? (<button className='btn btn-primary btn_promotion_model  mx-2' onClick={()=>handleToggleCommission(items.id)}>Deactivate</button>):(<button className='btn btn-danger btn_promotion_model_active  mx-2' onClick={()=>handleToggleCommission(items.id)}>Activate</button>)
-                                            }
-                                  </td> */}
-                               </div>
-                          </td>
-                      </tr>
-                      ))
-                    }
-                    </tbody>
-                </table>
+                        ))
+                      }
+                      </tbody>
+                  </table>
+           </div>
 
                 {
                     isOpen && (

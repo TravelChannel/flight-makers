@@ -925,6 +925,9 @@
     height: 50px !important;
     width: 50px !important;
   }
+  .acive_bg_spacing {
+    margin: 10px 0px;
+}
 }
 
 @media only screen and (max-width:800px){

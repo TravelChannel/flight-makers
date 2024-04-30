@@ -176,7 +176,7 @@ useEffect(()=>{
                 </Fragment>
               )
             }
-            <div className="rotate-icon w-25">
+            <div className="rotate-icon ">
               <h6 onClick={toggleArrowDirection} className="text-right ad_price_detail ad_header_font">
                 <b>Price</b>
                 {isUpward ? (

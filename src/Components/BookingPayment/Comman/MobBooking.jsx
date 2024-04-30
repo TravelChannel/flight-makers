@@ -8,6 +8,7 @@ import { CSSTransition } from "react-transition-group";
 import SideBarMenu from '../SideBarMenu';
 const MobBooking = () => {
   const [showDetail , setShowDetail]= useState(false);
+  let FromBookingPage = true;
 
   const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
     // -----------------------
@@ -17,6 +18,12 @@ const MobBooking = () => {
    const handleCloseCard = ()=>{
     setShowDetail(false);
    }
+
+   const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  };
     // -----------------------
     let matchedAirline = '';
     flightData.schedualDetGet.forEach((val) => {
@@ -44,7 +51,9 @@ const MobBooking = () => {
                 <h6 className="short_font_size">{item.arrivalLocation}</h6>
               </div>
               <div>
-                <p className="short_font_date">{item.departureDate}</p>
+                {/* <p className="short_font_date">{item.departureDate}</p> */}
+                <p className="short_font_date">{formatDate(item.departureDate)}</p>
+
               </div>
             </div>
           </div>
@@ -82,7 +91,7 @@ const MobBooking = () => {
                                 </div>
                               </div>
                               <div className='mob_flight_card'>
-                                <ShortFlightDetail/>
+                                <ShortFlightDetail FromBookingPage ={FromBookingPage} />
                               </div>
                             </div>
                           </div>

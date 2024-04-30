@@ -1,22 +1,22 @@
 import apiClient from './api_main';
 
 export const UserBookingDetails = async (finalObject) => {
-    console.log("hellloWorld", finalObject);
+    console.log("FinalObjectat-at-API", finalObject);
     
     try {
         const response = await apiClient.post(`/pnrBooking`, finalObject);
         
         if (response.data.status === 'SUCCESS') {
             console.log(response.data.message, 'success');
-            return response; // Returning the response if successful
+            return response; 
         } else {
             console.log(response.data.message, 'danger');
-			alert("error while sending data to database")
-            return null; // Returning null or handle the error as needed
+			// alert("error while sending data to database");
+            return null; 
         }
     } catch (error) {
         console.error(error.message, 'Danger');
-        throw error; // Re-throwing the error to be handled by the caller
+        throw error; 
     }
 }
 // ---------------------ReFund API Called-----------------------
@@ -96,23 +96,38 @@ export const updateUserProfile = async (userUpdatedObject) => {
 };
 // -------------------------------user Logout--------------------------------
 
-export const UserLogOut =async()=>{
-	apiClient
-			.post(`/auth/logout`)
-			.then((res) => {
-				if (res.data.status === 'SUCCESS') {
+// export const UserLogOut =async()=>{
+// 	apiClient
+// 			.post(`/auth/logout`)
+// 			.then((res) => {
+// 				if (res.data.status === 'SUCCESS') {
 
-					console.log( res.data.message, 'logout success');
+// 					console.log( res.data.message, 'logout success');
+// 					return res;
 
-				} else {
-					console.log(res.data.message, 'logout danger');
-				}
-			})
-			.catch((err) => {
-				console.error( err.message, 'Danger');
-			});
+// 				} else {
+// 					console.log(res.data.message, 'logout danger');
+// 				}
+// 			})
+// 			.catch((err) => {
+// 				console.error( err.message, 'Danger');
+// 			});
 
-}
+// }
+export const UserLogOut = async () => {
+	try {
+	  const res = await apiClient.post(`/auth/logout`);
+	  if (res.data.status === 'SUCCESS') {
+		console.log(res.data.message, 'logout success');
+		return res; // Return the response if needed
+	  } else {
+		console.log(res.data.message, 'logout danger');
+	  }
+	} catch (err) {
+	  console.error(err.message, 'Danger'); // Log any error that occurs during the request
+	  throw err; // Re-throw the error to propagate it to the caller
+	}
+  }
 
 // -----------------------------Customer Support Admin Side --------------------------------
 // ---Cancelation Req----

@@ -83,9 +83,9 @@ const [isSmallMobile , setSmallMobile] = useState(window.innerWidth < 485);
             )
           }
         </div>
-        <div className='user_table_details'>
+        <div className='user_table_details table-responsive '>
           {filteredUserPayload?.length ? (
-            <table className='table table-bordered  table_custom'>
+            <table className='table table-bordered table_custom'>
               <thead className='thead_typo'>
                 <tr>
                 { isMobile ? '':<th>Serail No</th>}

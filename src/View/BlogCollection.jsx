@@ -52,6 +52,7 @@ const BlogCollection = () => {
   const handleBlogContent = (headerUrl) =>{
     // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
     navigate(`/blogs/${encodeURIComponent(headerUrl)}`);
+    window.scrollTo(0,0);
   }
   const handleChange = () => {
     setPage(prevPage => prevPage +1);

@@ -44,8 +44,6 @@ const PrivacyPolicyCheck = (props) => {
     }, []);
     const payOnlineHandler = async () => {
       setPNRLoading(true);
-        // const pnrNum = await generatePnrNum();
-        // const pnrNum = await generatePnrNum();
     try {
       const pnrNum = await generatePnrNum();
       console.log("pnrNum:", pnrNum);
@@ -90,7 +88,15 @@ const PrivacyPolicyCheck = (props) => {
           console.log("-------------------------Start------------------------------");
           console.log("OrderId", OrderId);
           console.log("pnrNum", pnrNum);
-          handleBackendData(OrderId,pnrNum);
+          const handleBackendResp =  await handleBackendData(OrderId,pnrNum);
+            if(!handleBackendResp){
+              console.log('handleBackendResp',handleBackendResp);
+              console.log("erroratsendBackendData");
+              throw new Error(
+                'Error Generating Pnr Num',
+              );
+            }
+       
           console.log("------------------------End-------------------------------");
 
 
@@ -99,15 +105,15 @@ const PrivacyPolicyCheck = (props) => {
           } else {
             window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
           }
-        
+          setPNRLoading(false);
         } catch (error) {
 
           console.error(error,error.message);
           console.log("catch");
-          setLoading(false);
+          setPNRLoading(false);
 
         }
-        setLoading(false);
+        // setLoading(false);
       };
 
       const BookingDetail =async ()=>{
@@ -140,18 +146,28 @@ const PrivacyPolicyCheck = (props) => {
 
             //   const AirSialTicketIsssue = await AirSialTicketIssued();
             // }
+
+            const handleBackendResp2 =  await handleBackendData(OrderId,pnrNum,sendSmsBranch,sendSmsCod); 
+            if(!handleBackendResp2){
+              console.log('handleBackendResp',handleBackendResp2);
+              throw new Error(
+                'Error Generating Pnr Num',
+              );
+            }
             const DatatoPass ={
             branchlabel : branchLabel,
             userLocation : userLocation,
             };
-            handleBackendData(OrderId,pnrNum,sendSmsBranch,sendSmsCod,DatatoPass);  
+            navigate('/bookingDetail', { state: { data: DatatoPass } });
+            setPNRLoading(false);
+            window.scrollTo(0,0);
         }catch(error){
                 console.error(error);
-                setPNRLoading(true);
+                console.log("catch2");
+                setPNRLoading(false);
         }finally {
-          
-                 setPNRLoading(true);
-                 window.scrollTo(0,0);
+                 setPNRLoading(false);
+                //  window.scrollTo(0,0);
           }
       }
       // ---------------------------------------
@@ -215,7 +231,7 @@ const PrivacyPolicyCheck = (props) => {
           return getPNRNumber;
       };
 
-      const handleBackendData = async(OrderId,pnrNum,sendSmsBranch,sendSmsCod,DatatoPass)=>{
+      const handleBackendData = async(OrderId,pnrNum,sendSmsBranch,sendSmsCod)=>{
         let updatedBackendFinalOBJ = {};
         updatedBackendFinalOBJ = {
           ...backendFinalOBJ,
@@ -228,18 +244,16 @@ const PrivacyPolicyCheck = (props) => {
 
         };
 
-        console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
+             console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
-              if (respServerPnrBooking.data.status === 'SUCCESS') {
-                  console.log("respServerPnrBooking", respServerPnrBooking);
-                  // localStorage.setItem("PNRNumber", JSON.stringify(pnrNum));
-                  toast.success("PNR Created Successfully", { autoClose: 2000 });
-                  navigate('/bookingDetail', { state: { data: DatatoPass } });
-                  window.scrollTo(0,0);
-              } else{
-                console.log('anccccc')
-                alert("Error:something went wrong, Please Try Again ");
-              }
+            if (respServerPnrBooking.data.status !== 'SUCCESS') {
+              throw new Error('Error: Server response status is not SUCCESS');
+            }
+          
+            console.log("respServerPnrBooking", respServerPnrBooking);
+            toast.success("PNR Created Successfully", { autoClose: 2000 });
+            return true;
+          // };
       }
 
       const handleTermsandConditions = () =>{

@@ -47,41 +47,43 @@ const AdminControl = () => {
                                 />
                             </div>
         </div>
-        <table className="table table-bordered mt-5">
-                        <thead>
-                            <tr>
-                                <th className="promotion_design" >Serial No</th>
-                                <th className="promotion_design">Discription</th>
-                                <th className="promotion_design">CreatedAt</th>
-                                <th className="promotion_design">Flag</th>
-                                <th className="promotion_design">Action</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                       {
-                        getApiData.map((items ,index)=>(
-                            <tr key={index} >
-                                <td>{`${index+1}`}</td>
-                                <td>{items.description}</td>
-                                <td>{ArrangeDateFormat(items.createdAt)}</td>
-                                <td>{items.flag === true ? <p className='enable_status'>Enable</p> :  <p className='disable_status'> Disable</p>}</td>
-                                <td className='promotions_table_btn'>
-                                        <div >
-                                            <button
-                                                className='btn btn-primary buttons_typo_delt '
-                                                onClick = {()=>handleGeneralTasks(items.id)}
-                                            >
-                                               {items.flag === true ? 'DeActivate' : 'Activate'}
-                                            </button>
-                                        </div>
-                                    </td>
-                            </tr>
-                        ))
-                       }
+                 <div className='table-responsive '>
+                 <table className="table table-bordered mt-5">
+                            <thead>
+                                <tr>
+                                    <th className="promotion_design" >Serial No</th>
+                                    <th className="promotion_design">Discription</th>
+                                    <th className="promotion_design">CreatedAt</th>
+                                    <th className="promotion_design">Flag</th>
+                                    <th className="promotion_design">Action</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                        {
+                            getApiData.map((items ,index)=>(
+                                <tr key={index} >
+                                    <td>{`${index+1}`}</td>
+                                    <td>{items.description}</td>
+                                    <td>{ArrangeDateFormat(items.createdAt)}</td>
+                                    <td>{items.flag === true ? <p className='enable_status'>Enable</p> :  <p className='disable_status'> Disable</p>}</td>
+                                    <td className='promotions_table_btn'>
+                                            <div >
+                                                <button
+                                                    className='btn btn-primary buttons_typo_delt '
+                                                    onClick = {()=>handleGeneralTasks(items.id)}
+                                                >
+                                                {items.flag === true ? 'DeActivate' : 'Activate'}
+                                                </button>
+                                            </div>
+                                        </td>
+                                </tr>
+                            ))
+                        }
 
-                        </tbody>
-           </table> 
+                            </tbody>
+                     </table> 
+                 </div>
     </div>
   )
 }

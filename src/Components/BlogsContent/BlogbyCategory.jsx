@@ -19,7 +19,8 @@ const BlogbyCategory = () => {
             if(responce.data.status === 'SUCCESS'){
               console.log('getBlogDataBy-Category',responce);
               const newBlogData = responce.data.payload.blogs;
-              setBlogData(newBlogData);
+              // setBlogData(newBlogData);
+              setBlogData(prevBlogData => [...prevBlogData, ...newBlogData]);
               setNextPage(responce.data.payload.hasNextPage);
               
               console.log("newBlogData",newBlogData);
@@ -42,6 +43,7 @@ const BlogbyCategory = () => {
     const handleBlogContent = (headerUrl) =>{
         // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
         navigate(`/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
+        window.scrollTo(0,0);
       }
       const handleChange = () => {
         setPage(prevPage => prevPage +1);

@@ -166,20 +166,20 @@ const Header = () => {
                         </div>
                     </div>
                     <ul >
-                      <li><a href="/about-us" className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</a></li>
-                      <li><a href="/contact-us" className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</a></li>
-                      <li><a href="/customer-support" className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/> Support</a></li>
-                      <li><a href="/banks" className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</a></li>
-                      <li><a href="/blogs" className="mob_menu_txtcolor"><BookOutlinedIcon className="mob_menu_icon"/>Blogs</a></li>
+                    <li onClick={() => { window.location.href = '/about-us' }} className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</li>
+                      <li onClick={()=>{window.location.href = '/contact-us'}} className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</li>
+                      <li onClick={()=>{window.location.href = '/customer-support'}} className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/>Support</li>
+                      <li onClick = {()=>{window.location.href = '/banks'}} className="mob_menu_txtcolor"><AccountBalanceIcon className="mob_menu_icon"/> Banks</li>
+                      <li onClick={()=>{window.location.href = '/blogs'}} className="mob_menu_txtcolor"><BookOutlinedIcon className="mob_menu_icon"/>Blogs</li>
 
                       {
                         isLogin ? (
-                          <li>
-                          <a href="/UserPanel" className="mob_menu_txtcolor"><Person2  className="mob_menu_icon" />
-                            {userVerName && userName ? userName : userVerName}</a>
+                          <li onClick={()=>{window.location.href = '/UserPanel'}} className="mob_menu_txtcolor">
+                            <Person2  className="mob_menu_icon" />
+                            {userVerName && userName ? userName : userVerName}
                           </li>
                         ):(
-                          <li><a href="/signup" className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</a></li>
+                          <li onClick={()=>{window.location.href = '/signup'}} className="mob_menu_txtcolor"><LoginIcon className="mob_menu_icon"/> Login</li>
                         )
                       }
                     </ul>

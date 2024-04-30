@@ -9,6 +9,7 @@ import { useFormData } from '../../Context/FormDataContext';
 const ShortFlightDetail = (props) => {
 const [isMobile , setIsMobile] = useState(window.innerWidth < 769 && window.innerWidth >= 500);
 const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
+ const {FromBookingPage} = props;
     const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
     const flightdepDates = flightData.schedualDetGet.map(values => values[0].departure.time.slice(0, 5));
     const flightarrDates = flightData.schedualDetGet.map(values => values[values.length - 1].arrival.time.slice(0, 5));
@@ -135,9 +136,11 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
                             ))}
                     </div>  )
                         }
-                    {isMobile || isSmallScreen ?(<div className=' d-flex align-self-center ' onClick={HandleDetail}>
-                             <ExpandCircleDownOutlinedIcon className='expandmore_round'  fontSize='large' />
-                        </div>):(
+                    {isMobile || isSmallScreen ?(
+                        <div className=' d-flex align-self-center ' onClick={HandleDetail}>
+                           {FromBookingPage ? '' : <ExpandCircleDownOutlinedIcon className='expandmore_round'  fontSize='large' />}  
+                        </div>
+                        ):(
                         <div className=' d-flex align-self-center ' onClick={HandleDetail}>
                              <ExpandCircleDownOutlinedIcon className='expandmore_round'  fontSize='large' />
                         </div>)}

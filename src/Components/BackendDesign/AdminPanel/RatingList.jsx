@@ -73,6 +73,7 @@ const RatingList = () => {
                             />
                         </div>
                     </div>
+                    <div className='table-responsive '>
                     <table className="table table-bordered mt-5">
                         <thead>
                             <tr>
@@ -119,7 +120,8 @@ const RatingList = () => {
                             ))}
 
                         </tbody>
-                    </table>     
+                    </table>
+                    </div>     
                 </div>
             )
         )

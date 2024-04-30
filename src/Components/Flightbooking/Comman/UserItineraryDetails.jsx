@@ -165,7 +165,11 @@ const UserItineraryDetails = () => {
                                                                 Remaining Seats
                                                             </span>
                                                         </p>
-                                                        <p className="fd_airport_name fd_space_baggages">{flightdetails.baggageAllowance[index].pieceCount} {flightdetails.baggageAllowance[index].weight} {flightdetails.baggageAllowance[index].unit}</p>
+                                                        {seatAvailable && seatAvailable.length > 0 ? (
+                                                        <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
+                                                            ) : (
+                                                                <p className='fd_airport_name fd_space_baggages'>...</p>
+                                                            )}
                                                       </div>
                                                     </div>
                                                    

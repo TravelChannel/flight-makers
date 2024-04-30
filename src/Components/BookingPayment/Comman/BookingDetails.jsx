@@ -111,19 +111,41 @@ const downloadPDF = () => {
 
 
 
-useEffect(() => {
-  const GetUsersDetail = async () => {
-    try {
-      const response = await GetDetailByPNR(activepnrNumber);
-      console.log("userDetailbyPNR", response);
-      setOrderId(response.data.payload.id);
-    } catch (error) {
-      console.error("error in ffetching Data",error);
-    }
-  };
+// useEffect(() => {
+//   const GetUsersDetail = async () => {
+//     try {
+//       const response = await GetDetailByPNR(activepnrNumber);
+//       console.log("userDetailbyPNR", response);
+//       setOrderId(response.data.payload.id);
+//     } catch (error) {
+//       console.error("error in ffetching Data",error);
+//     }
+//   };
   
-  GetUsersDetail();
+//   GetUsersDetail();
+// }, []);
+
+useEffect(() => {
+  const delay = 3000; // 3 seconds delay (adjust as needed)
+  
+  const timerId = setTimeout(async () => {
+    const GetUsersDetail = async () => {
+      try {
+        const response = await GetDetailByPNR(activepnrNumber);
+        console.log("userDetailbyPNR", response);
+        setOrderId(response.data.payload.id);
+      } catch (error) {
+        console.error("error in fetching Data", error);
+      }
+    };
+    
+    GetUsersDetail();
+  }, delay);
+  
+  return () => clearTimeout(timerId); // Cleanup function to clear the timer
 }, []);
+
+
 useEffect(() => {
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth < 768);
@@ -133,6 +155,9 @@ useEffect(() => {
   return () => {
     window.removeEventListener('resize', handleResize);
   };
+}, []);
+useEffect(() => {
+  window.scrollTo(0, 0);
 }, []);
 
 const backNavigation = () =>{

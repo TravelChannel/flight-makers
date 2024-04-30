@@ -31,10 +31,13 @@ const BookingPayment = () => {
       return () => {
          window.removeEventListener('resize', handleResize);
       }
-   }, [])
+   }, []);
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
    return (
-      isPNRLoading ?(<Loader/>):(
+      isPNRLoading ? (<Loader/>):(
          <div className='container'>
          <div className="book_payment_hero">
             <div className="paymethodes_main">
