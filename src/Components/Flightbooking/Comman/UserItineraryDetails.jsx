@@ -14,7 +14,7 @@ const UserItineraryDetails = () => {
     const [seatAvailable, setSeatAvailable] = useState([]);
 
     const flightdetails = JSON.parse(localStorage.getItem("bookingTicket"));
-    const seatsType = flightdetails.fare.passengerInfoList.flatMap(item => item.passengerInfo.passengerType);
+    const seatsType = flightdetails?.fare?.passengerInfoList?.flatMap(item => item.passengerInfo.passengerType);
     const conSeatsType = seatsType.join(', ');
     console.log("flightdetails",flightdetails);
     useEffect(()=>{
@@ -50,6 +50,8 @@ const UserItineraryDetails = () => {
     //     console.log("newArrivalLocations",newArrivalLocations);
     //     setArrivalLocations(newArrivalLocations);
     // }, []);
+
+    const segment =flightdetails.classSegment;
 
   return (
     <div className="iti_review_main">
@@ -96,6 +98,8 @@ const UserItineraryDetails = () => {
                             {item.map((itm, idx) => {
                                 const airlineName = itm.carrier.marketing;
                                 const matchedAirline = airlinesName.find(airline => airline.id === airlineName);
+                                const depDate = flightdetails.groupDescription[index].departureDate;
+
                                 return (
                                     <Fragment>
                                         <div className="row">
@@ -106,6 +110,8 @@ const UserItineraryDetails = () => {
                                                         <p className="iti_flight_no">{matchedAirline ? matchedAirline.name : airlineName}</p>
                                                         <p className="iti_flight_no">{`${airlineName}-${itm.carrier.marketingFlightNumber}`}</p>
                                                         <p className="iti_flight_no">{flightdetails.classtype}</p>
+
+
                                                     </div>
                                                     <div className="seprator">
                                                         <DonutLargeIcon className="donut_size" />
@@ -118,6 +124,7 @@ const UserItineraryDetails = () => {
                                                              <span className="iti_city_code">{itm.departure.airport}</span>
                                                             {isSmallMob ? (<div className="iti_airport_name ">{airportNameFunct[itm.departure.airport]}</div>):(<span className="iti_airport_name">{airportNameFunct[itm.departure.airport]}</span>)}
                                                         </div>
+
                                                         <div className="iti_content_spacing">
                                                             <QueryBuilderOutlinedIcon /> {elapsedTimeFunct(itm.elapsedTime)}
                                                         </div>
@@ -149,14 +156,14 @@ const UserItineraryDetails = () => {
                                                       <div>
                                                         <div>
                                                             {
-                                                                flightdetails.baggageAllowance[index].pieceCount ? (
+                                                                flightdetails?.baggageAllowance[index]?.pieceCount ? (
                                                                 <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
                                                                 ) : (
                                                                 <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
                                                                 )
                                                             }
                                                             </div>
-                                                            <p className="fd_airport_name fd_space_baggages mob_iti_text">{flightdetails.baggageAllowance[index].pieceCount} {flightdetails.baggageAllowance[index].weight} {flightdetails.baggageAllowance[index].unit}</p>
+                                                            <p className="fd_airport_name fd_space_baggages mob_iti_text">{flightdetails?.baggageAllowance[index]?.pieceCount} {flightdetails?.baggageAllowance[index]?.weight} {flightdetails?.baggageAllowance[index]?.unit}</p>
 
                                                       </div>
                                                       <div>
@@ -182,7 +189,7 @@ const UserItineraryDetails = () => {
                                                         <p className="fd_airport_name fd_space_baggages">No of Seats</p>
                                                         <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
                                                         {
-                                                            flightdetails.baggageAllowance[index].pieceCount ? (
+                                                            flightdetails?.baggageAllowance[index]?.pieceCount ? (
                                                             <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
                                                             ) : (
                                                             <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
@@ -199,7 +206,7 @@ const UserItineraryDetails = () => {
                                                         <p className="fd_airport_name fd_space_baggages iti_difference">
                                                             {conSeatsType}
                                                         </p>
-                                                        <p className="fd_airport_name fd_space_baggages">{flightdetails.baggageAllowance[index].pieceCount} {flightdetails.baggageAllowance[index].weight} {flightdetails.baggageAllowance[index].unit}</p>
+                                                        <p className="fd_airport_name fd_space_baggages">{flightdetails?.baggageAllowance[index]?.pieceCount} {flightdetails?.baggageAllowance[index]?.weight} {flightdetails?.baggageAllowance[index]?.unit}</p>
                                                         {seatAvailable && seatAvailable.length > 0 ? (
                                                         <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
                                                     ) : (
@@ -220,6 +227,8 @@ const UserItineraryDetails = () => {
                                                 <div className="fd_line"></div>
                                             </div>
                                         }
+
+
                                     </Fragment>
                                 )
                             })}
@@ -227,7 +236,6 @@ const UserItineraryDetails = () => {
                     </div>
                 )
                 )}
-
             </div>
   )
 }

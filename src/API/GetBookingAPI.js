@@ -1,9 +1,9 @@
-export const getBookingApi = async () => {
+export const getBookingApi = async (userPnr) => {
     
 
-    const pnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
+    // const pnrNumber = JSON.parse(localStorage.getItem("PNRNumber"));
 
-    console.log("sabre pnrNumber",pnrNumber);
+    console.log("sabre pnrNumber",userPnr);
     const storedAuthtoken = JSON.parse(localStorage.getItem("AuthToken"))
     const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
@@ -12,7 +12,7 @@ export const getBookingApi = async () => {
     myHeaders.append("Authorization", `Bearer ${authToken}`);
 
     var raw = JSON.stringify({
-        "confirmationId":pnrNumber
+        "confirmationId":userPnr
     });
 
     var requestOptions = {

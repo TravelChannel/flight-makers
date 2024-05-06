@@ -173,9 +173,9 @@ export const requestGetpaymentToken = async (paymentCode) => {
     console.error("Responce error", error);
   }
 }
-export const requestGetBooking = async () => {
+export const requestGetBooking = async (userPnr) => {
   try {
-    const result = await getBookingApi();
+    const result = await getBookingApi(userPnr);
     return result;
   }
   catch (error) {

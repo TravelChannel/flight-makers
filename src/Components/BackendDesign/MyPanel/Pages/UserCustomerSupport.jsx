@@ -231,8 +231,8 @@ const UserCustomerSupport = (props) => {
                             items.isPaid ? (
                               <div>
                               <div className='mt-1'>
-                              {items. isReqForRefund ? ( <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>):(
-                                <button
+                              {items. isReqForRefund ? ( <p className='redspot_message'>Refund Request  <br/> Submitted</p>):(
+                                  <button
                                     className='btn btn-primary buttons_typo user_cancelation_button'
                                     onClick={() => {
                                       openDialogBox(items.id);
@@ -245,7 +245,7 @@ const UserCustomerSupport = (props) => {
                               )}
                                 </div>
                                 <div className='mt-1'>
-                                {items. isReqForReIssue ? ( <p className='redspot_message'>Cancellation Request  <br/> Submitted</p>):(
+                                {items. isReqForReIssue ? ( <p className='redspot_message'>ReIssue Request  <br/> Submitted</p>):(
                                   <button
                                     className='btn btn-primary buttons_typo user_cancelation_button'
                                     onClick={() => {

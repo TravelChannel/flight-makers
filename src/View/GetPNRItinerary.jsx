@@ -6,6 +6,7 @@ import QRCode from 'qrcode.react';
 import CryptoJS from 'crypto-js';
 import { useLocation } from "react-router-dom";
 import { requestGetBooking } from "../API/index.js";
+import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import Loader from '../Loader/Loader.jsx';
 import { airportNameFunct,cityNameFunct } from "../helpers/formatdata.js";
 import { airsialBookingDetail } from "../API/index.js";
@@ -19,8 +20,9 @@ import jsPDF from 'jspdf';
 
 const GetPNRItinerary = () => {
     const navigate = useNavigate();
+    const [userPnr ,setUserPnr]  = useState(null);
 
-    const [userPnr ,setUserPnr]  = useState();
+    const [aFlightDetails ,setAFlightDetails] = useState([]);
 
     // console.log("pnrpnr",userPnr);
 
@@ -28,6 +30,7 @@ const GetPNRItinerary = () => {
     const { search } = useLocation();
     const urlParams = new URLSearchParams(search);
     const id= urlParams.get("order");
+    // const id= urlParams.get("id");
     console.log("id from URl",id);
     // const id =15937209;
 
@@ -298,25 +301,25 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
 
 
     // -------------------------------------
-    const fetchBookingDetails = async () => {
+    const fetchBookingDetails = async (pnrNum) => {
         try {
-            setLoading(true);
-            setShowHeader(false);
+            // setLoading(true);
+            // setShowHeader(false);
             const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
             console.log("extra_Bagg", extra_Bagg);
     
             if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF") {
-                const userDetailsResponse = await USerDetailResp(userPnr); 
+                const userDetailsResponse = await USerDetailResp(pnrNum); 
                 const userDetails111 = userDetailsResponse?.data?.payload?.pnrDetail;
                 console.log('userDetails111',userDetails111);
 
-                await fetchData(userDetails111, userPnr); 
+                await fetchData(userDetails111, pnrNum); 
                 const airSialUserDetail = await airsialBookingDetail();
                 console.log('airSialUserDetail',airSialUserDetail);
                 setAirSialData(airSialUserDetail);
                 setAirSial(true);
             } else {
-                const userDetails = await requestGetBooking();
+                const userDetails = await requestGetBooking(pnrNum);
                 console.log("userDetails", userDetails);
                 setPnrData(userDetails);
             }
@@ -351,25 +354,34 @@ const flightDetails = pnrData?.flights?.map((flight, index) =>{
     };
     const getuserDatabyID = async() =>{
         try{
+            setLoading(true);
+            setShowHeader(false);
             const responce = await getDetailByOrderId(id);
             console.log("responce",responce);
+            setAFlightDetails(responce.data.payload.flightDetails);
+            console.log("FlightDetails1112",responce.data.payload.flightDetails);
             setUserPnr(responce.data.payload.pnr);
+            // console.log('pnr-1',responce.data.payload.pnr);
+            await fetchBookingDetails(responce.data.payload.pnr)
             setAllPassangers(responce.data.payload.pnrDetail);
             setTicketConfirmed(responce.data.payload.isPaid)
             console.log('userPNR',responce.data.payload.pnr);
-
             console.log("userPaymentConfirmation",responce.data.payload.isPaid);
-            // const extra_Bagg = responce.data.payload.flightDetails;
-            // console.log('extra_Bagg_backend',extra_Bagg);
 
         }catch(error){
             console.error("error while getting data",error);
+        }finally {
+            setLoading(false);
         }
     }
     
+    // useEffect(() => {
+    //     getuserDatabyID();
+    //     fetchBookingDetails();
+    // }, []);
+
     useEffect(() => {
         getuserDatabyID();
-        fetchBookingDetails();
     }, []);
 
     // -------------------------------------
@@ -540,14 +552,24 @@ const handleNavigate = () =>{
                                                             </div>
                                                         ):(
                                                             <div>
-                                                            {
+                                                            {/* {
                                                             pnrData?.journeys &&
                                                             pnrData?.journeys.map((items, index) => (
                                                                 <p key={index} className="journeys_spacing ticket_depart_date" >
                                                                 {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
                                                                 </p>
                                                             ))
-                                                            }
+                                                            } */}
+
+                                                            {aFlightDetails?.schedualDetGet?.map((item, index) => (
+                                                                    <div key={index}>
+                                                                        <div className='d-flex justify-content-start journeys_spacing ticket_depart_date'>
+                                                                            <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.departureLocation]}</h5> 
+                                                                            <span className="airport_spacing"><RedoOutlinedIcon /></span> 
+                                                                            <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.arrivalLocation]}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                ))}
                                                             </div>
                                                         )
                                                     }
@@ -589,14 +611,26 @@ const handleNavigate = () =>{
                                 </div>
                             ):(
                                 <>
-                                {
+                                {/* {
                                 pnrData?.journeys &&
                                 pnrData?.journeys.map((items, index) => (
                                     <p key={index} className="journeys_spacing ticket_depart_date" >
                                     {cityNameFunct[items.firstAirportCode]} → {cityNameFunct[items.lastAirportCode]}
                                     </p>
                                 ))
-                                }
+                                } */}
+                          {/* ------------------------ */}
+                                {aFlightDetails?.schedualDetGet?.map((item, index) => (
+                                        <div key={index}>
+                                            <div className='d-flex justify-content-start journeys_spacing ticket_depart_date'>
+                                                <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.departureLocation]}</h5> 
+                                                <span className="airport_spacing"><RedoOutlinedIcon /></span> 
+                                                <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.arrivalLocation]}</h5>
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                {/* --------------------- */}
                                 </>
                             )
                           }

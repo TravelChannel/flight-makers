@@ -420,12 +420,12 @@ useEffect(() => {
         userData: finalObject.pnrBookings
       };
       console.log("PassLeadCreation",PassLeadCreation);
-      // const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
-      // console.log('LeadCreationResp',LeadCreationResp);
+      const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
+      console.log('LeadCreationResp',LeadCreationResp);
       navigate('/bookingpayment');
       window.scrollTo(0, 0);
     }catch(error){
-      console.error("error While Creating FinalOBJ",error)
+      console.error("error While Creating FinalOBJ",error);
     }
     
   }

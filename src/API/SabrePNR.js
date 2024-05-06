@@ -6,10 +6,19 @@ export const SabrePNRCreate = async (formData) => {
 
 
     const flightDetails = JSON.parse(localStorage.getItem("bookingTicket"));
-    const { adults, children, infants,classtype } = flightDetails;
+    const { adults, children, infants,classtype, classSegment} = flightDetails;
     const userDetails = formData;
 
     console.log("userDetailsatSabrePNR",userDetails);
+
+    console.log('Details-to-Check',flightDetails);
+
+    console.log("classSegment-v3",classSegment);
+
+   
+
+    const flightSegmentDates = flightDetails.flightSegmentDates;
+    console.log("StopsDetailatPage",flightSegmentDates);
     // ----------------------------
     const PersonName = [];
 
@@ -244,9 +253,17 @@ console.log("userData",userDetails);
     const flightArrival = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.arrival.airport));
     const flightDepature = schedualDetGet.flatMap((flight) => flight.map((segment) => segment.departure.airport));
 
-    const oddIndexedSegments = flightSegments.filter((segment, index) => index % 2 !== 0);
+    console.log("FlightSegment",flightSegments);
+
+    // const oddIndexedSegments = flightSegments.filter((segment, index) => index % 2 !== 0);
+    const oddIndexedSegments = flightSegments;
+
     console.log("flightName1",flightName);
     console.log("flightName2",flightName2);
+
+
+    console.log("FlightSegment",flightSegments);
+    console.log('oddIndexedSegments', oddIndexedSegments);
 
 
     // const flights = oddIndexedSegments.flatMap((item, index) => [
@@ -275,13 +292,13 @@ console.log("userData",userDetails);
     // ]);
     
 
-    const flights = oddIndexedSegments.flatMap((item, index) => [
+    const flights = flightSegmentDates.flatMap((item, index) => [
         {
-            ArrivalDateTime: `${item.date}T${item.arrival}`,
-            DepartureDateTime: `${item.date}T${item.departure}`,
+            ArrivalDateTime: `${item.arrivalDate}T${item.arrival}`,
+            DepartureDateTime: `${item.departureDate}T${item.departure}`,
             FlightNumber: `${flightNumber[index]}`,
             NumberInParty: `${passengerDet}`,
-            ResBookDesigCode: `${classType}`,
+            ResBookDesigCode: `${classSegment[index]}`,
             Status: "NN",
             DestinationLocation: {
                 LocationCode: flightArrival[index],
@@ -296,7 +313,8 @@ console.log("userData",userDetails);
             OperatingAirline: {
                 Code: flightName[index],
             },
-            MarriageGrp: flightName[0] === flightName2[0] ? "I" : "O"
+            MarriageGrp: "I"
+            // MarriageGrp: flightName[0] === flightName2[0] ? "I" : "O"
         },
     ]);
     

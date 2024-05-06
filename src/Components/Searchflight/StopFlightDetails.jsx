@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import { elapsedTimeFunct, airportNameFunct, cityNameFunct, calculateDuration, formatCompleteDate, addTimeToPreviousDate, formatDateToISO, checkTimeToNextDate } from '../../helpers/formatdata';
+import { elapsedTimeFunct, airportNameFunct, cityNameFunct, calculateDuration, formatCompleteDate,addTimeToPreviousDepartDate, addTimeToPreviousDate, formatDateToISO, checkTimeToNextDate } from '../../helpers/formatdata';
 import { useItemsToShow } from './Comman/Context';
 import airlinesData from '../../Constant/airlineName';
 
@@ -13,12 +13,18 @@ const StopFlightDetails = (props) => {
 
   const seatsAvailable = activeFlightDet.seatsAvailables;
 
+  const classSegment = activeFlightDet.classSegment;
+  console.log("Active-class-Segment",classSegment);
+
   const allArrivalTimes = activeFlightDet.schedualDetGet.map(flightArray =>
     flightArray.map(flightInfo => flightInfo.arrival.time.slice(0, 5))
   );
+
+  console.log('allArrivalTimes',allArrivalTimes);
   const allDepartureTimes = activeFlightDet.schedualDetGet.map(flightArray =>
     flightArray.map(flightInfo => flightInfo.departure.time.slice(0, 5))
   );
+  console.log('allDepartTime',allDepartureTimes);
   const allTravelDates = activeFlightDet.groupDescription.map(flightArray =>
     flightArray.departureDate);
 
@@ -68,7 +74,7 @@ const StopFlightDetails = (props) => {
     return nextDate.toISOString().split('T')[0];
   };
   
-  
+
   const flightSegments = []; // Array to store flight segments
   // Add start segment for each date
   for (let i = 0; i < allTravelDates.length; i++) {
@@ -81,7 +87,6 @@ const StopFlightDetails = (props) => {
     generateSegmentsForDate(allDepartureTimes[i], allArrivalTimes[i], allTravelDates[i]);
   }
 
-  // console.log(flightSegments);
 
   useEffect(() => {
     const handleResize = () => {
@@ -96,7 +101,11 @@ const StopFlightDetails = (props) => {
     <Fragment>
       {activeFlightDet.schedualDetGet.map((val, idx) => {
         let currentDate = activeFlightDet.groupDescription[idx].departureDate;
+        console.log("CurrentDates",currentDate);
         let updatedDate = '', updatenextLevel = '', updatedLastDate = '';
+
+        let currentDepDateTime='', currentArrDateTime='', stopoverTime='' ; 
+
         return (
           <div key={idx} className="fd_more_detail">
             <div className="d-flex justify-content-between text-center bg-lighterBlue p-1">
@@ -112,23 +121,34 @@ const StopFlightDetails = (props) => {
               </div>
             </div>
             {val.map((info, Idxs) => {
+                
               if (Idxs === 0) {
-                const newDate = addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-                updatedDate = newDate;
 
-                if (Idxs < val.length - 1) {
-                  const formattedDate = formatDateToISO(updatedDate);
-                  const newDate2 = addTimeToPreviousDate(formattedDate, info.arrival.time.slice(0, 5), val[Idxs + 1].departure.time.slice(0, 5));
-                  updatenextLevel = newDate2;
-                }
-              }
-              if (Idxs === 2) {
-                updatedLastDate = addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), val[Idxs].departure.time.slice(0, 5));
-              }
+                currentDepDateTime = formatCompleteDate(currentDate);
+                      
+                currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+                currentDate = currentArrDateTime;
+                //const newDate = addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+                //updatedDate = newDate;
 
+                //if (Idxs < val.length - 1) {
+                //  const formattedDate = formatDateToISO(updatedDate);
+                //  const newDate2 = addTimeToPreviousDate(formattedDate, info.arrival.time.slice(0, 5), val[Idxs + 1].departure.time.slice(0, 5));
+                //  updatenextLevel = newDate2;
+                //}
+              }
+              else if (Idxs > 0){
+                stopoverTime = calculateDuration(info.departure.time, val[Idxs - 1].arrival.time);
+
+                currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5));
+                currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+                currentDate = currentArrDateTime;
+              }
+              //else if (Idxs > 1) {
+                //updatedLastDate = addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), val[Idxs].departure.time.slice(0, 5));
+                //}
               const airlineName = info.carrier.marketing;
               const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
-
               return (
                 <Fragment key={Idxs}>
                   <div key={Idxs} className="fd_stops_detail d-flex justify-content-between  w-100">
@@ -141,13 +161,21 @@ const StopFlightDetails = (props) => {
                     </div>
                     <div className="text-center align-self-center stop_width_2">
                       <span className="fd_airport_size">{info.departure.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.departure.time.slice(0, 5)}</span>
-                      {Idxs === 0 ?
-                        <p className="fd_flight_date">{formatCompleteDate(currentDate)} </p>
-                        :
-                        Idxs === 1 ?
-                          <p className="fd_flight_date">{addTimeToPreviousDate(updatedDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
-                          :
-                          <p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
+                      {
+                        //Idxs === 0 ?
+                        //<p className="fd_flight_date">{formatCompleteDate(currentDate)} </p>
+                        <p className="fd_flight_date">{formatCompleteDate(currentDepDateTime)} </p>
+                      
+                         
+
+                        //:
+                        //Idxs === 1 ?
+                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatedDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
+                          //:
+                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
+
+
+                          
                       }
                       <p className="fd_airport_name">{airportNameFunct[info.departure.airport]}</p>
                     </div>
@@ -157,13 +185,15 @@ const StopFlightDetails = (props) => {
                     </div>
                     <div className="text-center align-self-center stop_width_4">
                       <span className="fd_airport_size">{info.arrival.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.arrival.time.slice(0, 5)}</span>
-                      {Idxs === 0 ?
-                        <p className="fd_flight_date">{addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
-                        :
-                        Idxs === 1 ?
-                          <p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
-                          :
-                          <p className="fd_flight_date">{addTimeToPreviousDate(updatedLastDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
+                      {
+                        //Idxs === 0 ?
+                        //<p className="fd_flight_date">{addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
+                        <p className="fd_flight_date">{formatCompleteDate(currentArrDateTime)} </p>
+                        //:
+                        //Idxs === 1 ?
+                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
+                          //:
+                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatedLastDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
                       }
                       <p className="fd_airport_name">{airportNameFunct[info.arrival.airport]}</p>
                     </div>
@@ -183,7 +213,8 @@ const StopFlightDetails = (props) => {
                           </div>
                           <div className="align-self-center stop_width_6">
                             <p className="fd_airport_name">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                            <p className="fd_airport_name">{classtype}</p>
+                            {/* <p className="fd_airport_name">{classtype} </p> */}
+                            <p className="fd_airport_name">{`${classtype} ( ${classSegment[Math.min(idx * 2 + Idxs, classSegment.length - 1)]})`} </p>
                             <p className="fd_airport_name fd_space_baggages">{activeFlightDet.baggageAllowance[idx].pieceCount} {activeFlightDet.baggageAllowance[idx].weight} {activeFlightDet.baggageAllowance[idx].unit}</p>
                           </div>
                         </Fragment>
@@ -206,7 +237,8 @@ const StopFlightDetails = (props) => {
                         </div>
                         <div className='d-flex justify-content-around'>
                           <p className="fd_airport_name ">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                          <p className="fd_airport_name">{classtype}</p>
+                          {/* <p className="fd_airport_name">{classtype}</p> */}
+                          <p className="fd_airport_name">{`${classtype} ( ${classSegment[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]})`} </p>
                           <p className="fd_airport_name fd_space_baggages">{activeFlightDet.baggageAllowance[idx].pieceCount} {activeFlightDet.baggageAllowance[idx].weight} {activeFlightDet.baggageAllowance[idx].unit}</p>
                         </div>
                       </div>
@@ -230,6 +262,7 @@ const StopFlightDetails = (props) => {
       })}
     </Fragment>
   );
+
 };
 
 export default StopFlightDetails;

@@ -196,6 +196,11 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
       const groupDescription = result.groupedItineraryResponse.itineraryGroups[0].groupDescription.legDescriptions;
       //Geting schedules
       const itinerGroup = result.groupedItineraryResponse.itineraryGroups.map(item => item.itineraries.map(itinerary => itinerary.legs.map(leg => leg.ref)));
+
+      console.log("itinerGroup-v1",itinerGroup);
+
+    
+
       const legDes = result.groupedItineraryResponse.legDescs.map(legDesc => legDesc);
       const scheduleDes = result.groupedItineraryResponse.scheduleDescs.map((scheduleDesc) => scheduleDesc);
 
@@ -211,11 +216,22 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
       // This function is used to giving the name of array and index assign
       const modifiedData = matchingData.map(item => item.map((innerArray, index) => ({ schedualDetGet: innerArray, })));
 
-
+  console.log("pricingDetails",pricingDetails);
 
       // Geting baggageAllowance
-      const baggageref = pricingDetails.map(bag => bag.fare.passengerInfoList[0].passengerInfo.baggageInformation.map(baggInfo => baggInfo.allowance.ref));
+      const baggageref = pricingDetails.map(bag => bag?.fare?.passengerInfoList[0]?.passengerInfo?.baggageInformation?.map(baggInfo => baggInfo.allowance.ref));
       const baggageval = result.groupedItineraryResponse.baggageAllowanceDescs;
+
+
+        // -------------------------------------------------------------------------------------
+        // const  fareSegments = pricingDetails.map(classSegments =>classSegments?.fare.passengerInfoList[0]?.passengerInfo?.fareComponents);
+        // console.log('fareSegments-v1',fareSegments);
+ 
+ 
+ 
+ 
+ 
+       // -------------------------------------------------------------------------------------
 
       // Geting Seats                             
       const seatsAvailable = pricingDetails.map(priceing =>
@@ -227,18 +243,50 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
       );
 
 
+      // ----------------------------------------------------------
+      const classSegments = pricingDetails.map(priceing =>
+        priceing.fare.passengerInfoList[0]?.passengerInfo.fareComponents?.flatMap(fareC =>
+          fareC.segments?.flatMap(segm =>
+            segm.segment?.bookingCode || []
+          ) || []
+        ) || []
+      );
+
+      console.log("classSegments-v2",classSegments);
+
+      // ----------------------------------------------------------
+
+
+
       // console.log(seatsAvailable);
       // Function to get values in proper format
+      
       const getBaggageValues = (refArray) => {
-        const descriptions = refArray.map(ref => {
-          const matchingItems = baggageval.filter(item => item.id === ref);
-          return matchingItems.length > 0 ? matchingItems[0] : null;
-        });
-        return descriptions;
+     try{
+      const descriptions = refArray.map(ref => {
+        try{
+         const matchingItems = baggageval.filter(item => item.id === ref);
+         return matchingItems.length > 0 ? matchingItems[0] : null;
+        }catch(error){
+             console.error(error);
+        }
+       });
+       return descriptions;
+     }catch(error){
+      const descriptions='';
+      console.log(error);
+     }
       };
 
       // Use getBaggageValues function to get the values in proper format
-      const baggageValues = baggageref.map(refArray => getBaggageValues(refArray));
+    
+var baggageValues=null;
+      try{
+        baggageValues  =  baggageref?.map(refArray => getBaggageValues(refArray));
+      }catch(error){
+        baggageValues ='';
+          console.error("baggageValues",error);
+      }
 
 
       // This function is used to remove the extra values
@@ -257,9 +305,10 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
           const pricingData = newPricingDetails[innerIndex];
           const baggageAllowance = baggageValues[innerIndex];
           const seatsAvailables = seatsAvailable[innerIndex];
-
+          const classSegment = classSegments[innerIndex];
+        
           // Combine the item, pricingData, and baggageValues into a single object
-          return { ...item, ...pricingData, groupDescription, baggageAllowance, seatsAvailables };
+          return { ...item, ...pricingData, groupDescription, baggageAllowance, seatsAvailables, classSegment };
         })
       );
 

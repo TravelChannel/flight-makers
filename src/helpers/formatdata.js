@@ -55,6 +55,7 @@ export const formatCompleteDate = (dateValue) => {
       day: 'numeric',
       year: "numeric"
     };
+    // console.log("date1",dateObject);
     return dateObject.toLocaleString('en-US', options);
 };
 
@@ -106,8 +107,44 @@ export const addTimeToPreviousDate = (previousDate, time1, time2) => {
   const newHour = Math.floor(totalMinutesDiff / 60);
   const newMinute = totalMinutesDiff % 60;
   dateObject.setHours(hour1 + newHour, minute1 + newMinute);
-
+// console.log("date2",dateObject);
   return dateObject.toLocaleString('en-US', options);
+};
+
+export const addTimeToPreviousDepartDate = (previousDate, time1, time2) => {
+  const [hour1, minute1] = time1.split(":").map(Number);
+  const [hour2, minute2] = time2.split(":").map(Number);
+
+  // Convert time1 and time2 into minutes since midnight
+  const totalMinutes1 = hour1 * 60 + minute1;
+  const totalMinutes2 = hour2 * 60 + minute2;
+
+  // Calculate the time difference between time2 and time1
+  let totalMinutesDiff = totalMinutes2 - totalMinutes1;
+
+  const dateObject = new Date(previousDate);
+
+  // If the total minutes difference is negative and time2 is on the next day
+  if (totalMinutesDiff < 0 && hour2 < hour1) {
+    dateObject.setDate(dateObject.getDate() + 1);
+  }
+
+  // If time2 is greater than 23:59 or less than 01:00, change the date
+  if (totalMinutes2 >= 1440 || totalMinutes2 < 60) {
+    dateObject.setDate(dateObject.getDate() + 1);
+  }
+
+  // Adjust the time
+  const newHour = Math.floor(totalMinutesDiff / 60);
+  const newMinute = totalMinutesDiff % 60;
+  dateObject.setHours(hour1 + newHour, minute1 + newMinute);
+
+  // Format the date as "YYYY-MM-DD"
+  const year = dateObject.getFullYear();
+  const month = String(dateObject.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObject.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
 };
 
 export const convertTimeToMinutes = (timeString) => {
@@ -149,3 +186,14 @@ export const checkTimeToNextDate = (previousDate, time1, time2) => {
 
   return `${year}-${month}-${day}`;
 };
+
+
+// ------------------------
+
+export const changeDateFormat = (inputDate) =>{
+  const date = new Date(inputDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}

@@ -3,7 +3,18 @@ import * as images from '../../src/Constant/images';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import ContactSources from '../Components/Commom/ContactSources';
 import Cookies from 'js-cookie';
+import { getDetailByOrderId } from '../API/BackendAPI/CommissionAPI/GetDetailbyOrderId';
 const FMBanks = () => {
+
+  useEffect(()=>{
+    const APiResp = async()=>{
+      let OrderId = 16297416;
+      const resp = await getDetailByOrderId(OrderId);
+      console.log("OrderId-Resp",resp);
+    }
+    APiResp();
+  },[]);
+  
   return (
     <div className='container'>
        <div className='contact_us_heading d-flex justify-content-center'>

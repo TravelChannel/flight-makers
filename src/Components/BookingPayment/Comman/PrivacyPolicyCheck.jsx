@@ -256,17 +256,17 @@ const PrivacyPolicyCheck = (props) => {
           // };
       }
 
-      const handleTermsandConditions = () =>{
-        navigate('/terms-and-conditions');
-        window.scrollTo(0,0);
-      }
-      const handleBookingPolicy = () =>{
-        navigate('/terms-of-service');
-      }
-      const handlePrivacyPolicy = () =>{
-        navigate('/refund-policy');
-        window.scrollTo(0,0);
-      }
+      // const handleTermsandConditions = () =>{
+      //   navigate('/terms-and-conditions');
+      //   window.scrollTo(0,0);
+      // }
+      // const handleBookingPolicy = () =>{
+      //   navigate('/terms-of-service');
+      // }
+      // const handlePrivacyPolicy = () =>{
+      //   navigate('/refund-policy');
+      //   window.scrollTo(0,0);
+      // }
     return (
         <Fragment>
            <div>
@@ -281,10 +281,21 @@ const PrivacyPolicyCheck = (props) => {
                                         inputProps={{ 'aria-label': 'controlled' }}
                                     />
                                 </div>
-                                <div className='privacy_policy_content '>
+                                {/* <div className='privacy_policy_content '>
                                     <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked' onClick = {handleBookingPolicy}>booking policy,</span> <span className='privacy_policy_linked' onClick={handlePrivacyPolicy}>privacy policy</span>, and <span className='privacy_policy_linked' onClick={handleTermsandConditions}>terms and conditions</span> of faremakers.
                                     </p>
-                                </div>
+                                </div> */}
+                                <div className='privacy_policy_content '>
+                                    <p>
+                                      I acknowledge and accept the rules, restrictions, 
+                                      <span className='privacy_policy_linked' onClick={() => window.open('/term-and-condition', '_blank')}> terms and conditions, </span> 
+                                      
+                                      <span className='privacy_policy_linked' onClick={() => window.open('/terms-of-service', '_blank')}> terms of Services </span>, 
+                                      and 
+                                      <span className='privacy_policy_linked' onClick={() => window.open('/refund-policy', '_blank')}> Refund Policy </span>, 
+                                      of faremakers.
+                                  </p>
+                              </div>
                             </div>
                             <div>
                             {!checked ? (<p className='warning_terms_alert'>Please accept the terms and conditions to proceed with this booking. </p>
@@ -335,8 +346,16 @@ const PrivacyPolicyCheck = (props) => {
                                 />
                             </div>
                             <div className='privacy_policy_content align-self-center'>
-                                <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked' onClick = {handleBookingPolicy}>booking policy,</span> <span className='privacy_policy_linked' onClick={handlePrivacyPolicy}>privacy policy</span>, and <span className='privacy_policy_linked' onClick={handleTermsandConditions}>terms and conditions</span> of faremakers.
-                                </p>
+                                {/* <p>I acknowledge and accept the rules, restrictions, <span className='privacy_policy_linked' onClick = {handleBookingPolicy}>booking policy,</span> <span className='privacy_policy_linked' onClick={handlePrivacyPolicy}>privacy policy</span>, and <span className='privacy_policy_linked' onClick={handleTermsandConditions}>terms and conditions</span> of faremakers.
+                                </p> */}
+                                <p>
+                                  I acknowledge and accept the rules, restrictions, 
+                                  <span className='privacy_policy_linked' onClick={() => window.open('/refund-policy', '_blank')}> booking policy</span>, 
+                                  <span className='privacy_policy_linked' onClick={() => window.open('/terms-of-service', '_blank')}> privacy policy</span>, 
+                                  and 
+                                  <span className='privacy_policy_linked' onClick={() => window.open('/terms-and-conditions', '_blank')}> terms and conditions</span> 
+                                  of faremakers.
+                              </p>
                             </div>
                         </div>
                         <div>

@@ -1,12 +1,13 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import StopFlightDetails from './StopFlightDetails';
-import { elapsedTimeFunct, checkTimeToNextDate } from '../../helpers/formatdata';
+// import { elapsedTimeFunct, checkTimeToNextDate } from '../../helpers/formatdata';
 import OneWay from './Comman/OneWay';
 import Round from './Comman/Round';
 import Multi from './Comman/Multi';
 import { useItemsToShow } from './Comman/Context';
 import airlinesData from '../../Constant/airlineName';
 import { useNavigate } from 'react-router';
+import { elapsedTimeFunct, airportNameFunct, cityNameFunct, calculateDuration, formatCompleteDate,changeDateFormat,addTimeToPreviousDate, formatDateToISO, checkTimeToNextDate } from '../../helpers/formatdata';
 
 const ActiveFlight = (props) => {
   const { apiData, searchDataArr } = useItemsToShow();
@@ -32,10 +33,10 @@ const ActiveFlight = (props) => {
   }, [])
 
 
-  const allArrivalTimes = activeFlightDet.schedualDetGet.map(flightArray =>
+  const allArrivalTimes = activeFlightDet?.schedualDetGet?.map(flightArray =>
     flightArray.map(flightInfo => flightInfo.arrival.time.slice(0, 5))
   );
-  const allDepartureTimes = activeFlightDet.schedualDetGet.map(flightArray =>
+  const allDepartureTimes = activeFlightDet?.schedualDetGet?.map(flightArray =>
     flightArray.map(flightInfo => flightInfo.departure.time.slice(0, 5))
   );
   const allTravelDates = activeFlightDet.groupDescription.map(flightArray =>
@@ -78,8 +79,10 @@ const ActiveFlight = (props) => {
       }
     }
   };
+
   const flightSegments = [];
   for (let i = 0; i < allTravelDates.length; i++) {
+    
     const startSegment = {
       departure: allDepartureTimes[i][0],
       date: allTravelDates[i]
@@ -87,6 +90,65 @@ const ActiveFlight = (props) => {
     flightSegments.push(startSegment);
     generateSegmentsForDate(allDepartureTimes[i], allArrivalTimes[i], allTravelDates[i]);
   }
+
+
+// ---------------------------------
+
+const flightSegmentDates=[];
+
+activeFlightDet.schedualDetGet.map((val, idx) => {
+  
+  let currentDate = activeFlightDet.groupDescription[idx].departureDate;
+  let currentDepDateTime='', currentArrDateTime='', stopoverTime='' ; 
+
+  {val.map((info, Idxs) => {
+    if (Idxs === 0) {
+
+      currentDepDateTime = formatCompleteDate(currentDate);
+            
+      currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+      currentDate = currentArrDateTime;
+      //const newDate = addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+      //updatedDate = newDate;
+
+      //if (Idxs < val.length - 1) {
+      //  const formattedDate = formatDateToISO(updatedDate);
+      //  const newDate2 = addTimeToPreviousDate(formattedDate, info.arrival.time.slice(0, 5), val[Idxs + 1].departure.time.slice(0, 5));
+      //  updatenextLevel = newDate2;
+      //}
+    }
+    else if (Idxs > 0){
+      stopoverTime = calculateDuration(info.departure.time, val[Idxs - 1].arrival.time);
+
+      currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5));
+      currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
+      currentDate = currentArrDateTime;
+    }
+
+    const airlineName = info.carrier.marketing;
+    const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
+
+    const segment = {};
+    if(Idxs==0)
+    {
+      segment.departureDate =changeDateFormat(currentDepDateTime) ;
+      segment.arrivalDate = changeDateFormat(currentArrDateTime);
+    }
+    else if(Idxs> 0) {
+      segment.departureDate = changeDateFormat(currentDepDateTime);
+      segment.arrivalDate = changeDateFormat (currentArrDateTime);
+      }
+    segment.departure = info.departure.time.slice(0, 5);
+    segment.arrival = info.arrival.time.slice(0, 5);
+
+    flightSegmentDates.push(segment);
+
+  })
+}
+})
+
+console.log("selecteddates",flightSegmentDates);
+// ---------------------------------
 
 
 
@@ -109,8 +171,12 @@ const ActiveFlight = (props) => {
     const mergedFlightDet = {
       ...activeFlightDet,
       ...newSearchDataArr,
-      ...flightStopdetails
+      ...flightStopdetails,  
+      flightSegmentDates: flightSegmentDates
+
     };
+
+    console.log("mergedFlightDet",mergedFlightDet);
     localStorage.setItem("bookingTicket", JSON.stringify(mergedFlightDet));
     navigate('/flightbooking');
     window.scrollTo(0, 0);
