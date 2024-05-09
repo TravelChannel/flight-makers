@@ -12,6 +12,15 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
     const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
   const arrivalCode = arrival.map((arr) => arr.substring(arr.indexOf('(') + 1, arr.indexOf(')')));
 
+
+  // ------------
+
+const TotalSeatsRequired = [
+  adults +children +infants
+];
+
+console.log("TotalSeatsRequired",TotalSeatsRequired);
+  // --------------
   
   console.log(searchDataArr);
   classType =
@@ -102,18 +111,22 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
 
   const originDestinationInformation = departureCode?.map((dep, index) => ({
     DepartureDateTime: `${date[index]}T00:00:00`,
+    "DepartureWindow": "00002359",
     DestinationLocation: {
       LocationCode: arrivalCode[index % arrivalCode.length]
     },
     OriginLocation: {
       LocationCode: dep
     },
-    RPH: String(index),
+    RPH: String(index+1),
     TPA_Extensions: {
       CabinPref: {
         Cabin: classType,
         PreferLevel: "Only"
       },
+      "SegmentType": {
+        "Code": "O"
+    },
       "IncludeVendorPref": airlinesToPass
     }
   }));
@@ -128,6 +141,8 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
 
   const raw = JSON.stringify({
     "OTA_AirLowFareSearchRQ": {
+      "AvailableFlightsOnly": true,
+      "ResponseType": "OTA",
       "OriginDestinationInformation": originDestinationInformation,
       "POS": {
         "Source": [
@@ -139,7 +154,9 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
               },
               "ID": "1",
               "Type": "1"
-            }
+            },
+            "ISOCountry": "PK",
+            "ISOCurrency": "PKR"
           }
         ]
       },
@@ -148,16 +165,42 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
           "RequestType": {
             "Name": "200ITINS"
           }
+        },
+        "RichContent":{
+          "FlightAmenities":true,
+          "SeatInfo":true,
+          "UniversalProductAttributes":true,
+          "UniversalTicketingAttributes":true
         }
       },
       "TravelPreferences": {
-        "TPA_Extensions": {
-          "DataSources": {
-            "ATPCO": "Enable",
-            "LCC": "Disable",
-            "NDC": "Disable"
+        "ETicketDesired": true,
+        "ValidInterlineTicket": true,
+        "MaxStopsQuantity": 2,
+        "AncillaryFees": {
+              "Enable": true,
+              "Summary": true,
+              "AncillaryFeeGroup": [
+                  {"Code": "BG"},
+                  { "Code": "IE" },
+                  { "Code": "ML" },
+                  { "Code": "SA" },
+                  { "Code": "UN" },
+              ]
           },
-          "NumTrips": {}
+        "TPA_Extensions": {
+          // "DataSources": {
+          //   "ATPCO": "Enable",
+          //   "LCC": "Disable",
+          //   "NDC": "Disable"
+          // },
+          // "NumTrips": {}
+          "OnlineIndicator": {
+            "Ind": false
+            },
+            "TripType": {
+                "Value": "Return"
+            }
         }
       },
       "TravelerInfoSummary": {
@@ -166,11 +209,34 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
             "PassengerTypeQuantity": passengerTypeQuantity
           }
         ],
-        "SeatsRequested": [
-          1
-        ]
+        "PriceRequestInformation": {
+          "CurrencyCode": "PKR",
+          "NegotiatedFaresOnly": false,
+          "ProcessThruFaresOnly": true,
+          "TPA_Extensions": {
+              //"BrandedFareIndicators": {
+              //    "MultipleBrandedFares": false
+              //},
+              "Priority": {
+                  "Price": {
+                      "Priority": 1
+                  },
+                  "DirectFlights": {
+                      "Priority": 2
+                  },
+                  "Time": {
+                      "Priority": 3
+                  },
+                  "Vendor": {
+                      "Priority": 4
+                  }
+              }
+          }
       },
-      "Version": "3"
+      "SpecificPTC_Indicator": true,
+        "SeatsRequested": TotalSeatsRequired
+      },
+      "Version": "5"
     }
   });
 
@@ -181,6 +247,8 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
     redirect: 'follow'
   };
 
+
+  console.log("Bargaain-finder-Request",raw);
   try {
     const response = await fetch("https://api.havail.sabre.com/v5/offers/shop", requestOptions);
     const result = await response.json();

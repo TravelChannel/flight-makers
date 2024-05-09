@@ -11,9 +11,9 @@ const StopFlightDetails = (props) => {
   const { classtype } = searchDataArr;
   const { activeFlightDet, refFlag } = props;
 
-  const seatsAvailable = activeFlightDet.seatsAvailables;
+  const seatsAvailable = activeFlightDet?.seatsAvailables;
 
-  const classSegment = activeFlightDet.classSegment;
+  const classSegment = activeFlightDet?.classSegment;
   console.log("Active-class-Segment",classSegment);
 
   const allArrivalTimes = activeFlightDet.schedualDetGet.map(flightArray =>
@@ -120,143 +120,154 @@ const StopFlightDetails = (props) => {
                 {refFlag ? <p className="fd_more_refund">{activeFlightDet.fare.passengerInfoList[0].passengerInfo.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p> : null}
               </div>
             </div>
+           
             {val.map((info, Idxs) => {
-                
-              if (Idxs === 0) {
-
-                currentDepDateTime = formatCompleteDate(currentDate);
-                      
-                currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-                currentDate = currentArrDateTime;
-                //const newDate = addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-                //updatedDate = newDate;
-
-                //if (Idxs < val.length - 1) {
-                //  const formattedDate = formatDateToISO(updatedDate);
-                //  const newDate2 = addTimeToPreviousDate(formattedDate, info.arrival.time.slice(0, 5), val[Idxs + 1].departure.time.slice(0, 5));
-                //  updatenextLevel = newDate2;
-                //}
-              }
-              else if (Idxs > 0){
-                stopoverTime = calculateDuration(info.departure.time, val[Idxs - 1].arrival.time);
-
-                currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5));
-                currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-                currentDate = currentArrDateTime;
-              }
-              //else if (Idxs > 1) {
-                //updatedLastDate = addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), val[Idxs].departure.time.slice(0, 5));
-                //}
-              const airlineName = info.carrier.marketing;
-              const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
-              return (
-                <Fragment key={Idxs}>
-                  <div key={Idxs} className="fd_stops_detail d-flex justify-content-between  w-100">
-                    <div className="fd_airport_logo align-self-center text-center stop_width_1">
-                      <img className='airline-logo' src={matchedAirline ? matchedAirline.logo : airlineName} alt="" />
-                      <p className="fd_airport_name">{info.carrier.marketing}</p>
-                      <div className="fd_flightNo">
-                        <p className="fd_airport_name">{`${airlineName}-${info.carrier.marketingFlightNumber}`}</p>
+                if (Idxs === 0) {
+  
+                  currentDepDateTime = formatCompleteDate(currentDate);
+                        
+                  currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info?.departure.time.slice(0, 5), info?.arrival.time.slice(0, 5));
+                  currentDate = currentArrDateTime;
+                }
+                else if (Idxs > 0){
+                  stopoverTime = calculateDuration(info?.departure.time, val[Idxs - 1].arrival.time);
+  
+                  currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info?.departure.time.slice(0, 5));
+                  currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info?.departure.time.slice(0, 5), info?.arrival.time.slice(0, 5));
+                  currentDate = currentArrDateTime;
+                }
+                const airlineName = info?.carrier.marketing;
+                const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
+                return (
+                  <Fragment key={Idxs}>
+                    <div key={Idxs} className="fd_stops_detail d-flex justify-content-between  w-100">
+                      <div className="fd_airport_logo align-self-center text-center stop_width_1">
+                        <img className='airline-logo' src={matchedAirline ? matchedAirline.logo : airlineName} alt="" />
+                        <p className="fd_airport_name">{info?.carrier?.marketing}</p>
+                        <div className="fd_flightNo">
+                          <p className="fd_airport_name">{`${airlineName}-${info?.carrier?.marketingFlightNumber}`}</p>
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-center align-self-center stop_width_2">
-                      <span className="fd_airport_size">{info.departure.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.departure.time.slice(0, 5)}</span>
+                      <div className="text-center align-self-center stop_width_2">
+                        <span className="fd_airport_size">{info.departure.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.departure.time.slice(0, 5)}</span>
+                        {
+                          <p className="fd_flight_date">{formatCompleteDate(currentDepDateTime)} </p>
+                        }
+                        <p className="fd_airport_name">{airportNameFunct[info?.departure?.airport]}</p>
+                      </div>
+                      <div className="align-self-center stop_width_3">
+                        <AccessTimeIcon className="d-flex align-items-center fd_clock" />
+                        <p className="fd_flight_date">{elapsedTimeFunct(info.elapsedTime)}</p>
+                      </div>
+                      <div className="text-center align-self-center stop_width_4">
+                        <span className="fd_airport_size">{info?.arrival?.airport}</span>&nbsp;<span className="fd_airport_size_time">{info?.arrival?.time.slice(0, 5)}</span>
+                        {
+                          <p className="fd_flight_date">{formatCompleteDate(currentArrDateTime)} </p>
+                        }
+                        <p className="fd_airport_name">{airportNameFunct[info?.arrival?.airport]}</p>
+                      </div>
+                      {/* {
+                        !isMobile && (
+                          <Fragment>
+                            <div className="align-self-center stop_width_5">
+                              <p className="fd_airport_name fd_space_baggages">Seat Availab</p>
+                              <p className="fd_airport_name fd_space_baggages">Class Type</p>
+                              {
+                                activeFlightDet?.baggageAllowance[idx]?.pieceCount ? (
+                                  <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
+                                ) : (
+                                  <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                                )
+                              }
+                            </div>
+                            <div className="align-self-center stop_width_6">
+                              <p className="fd_airport_name">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
+                              <p className="fd_airport_name">{classtype || ''} </p>
+                              <p className="fd_airport_name fd_space_baggages">
+                              {activeFlightDet?.baggageAllowance[idx]?.pieceCount} {activeFlightDet?.baggageAllowance[idx]?.weight} {activeFlightDet?.baggageAllowance[idx]?.unit}</p>
+                            </div>
+                          </Fragment>
+                        )
+                      } */}
                       {
-                        //Idxs === 0 ?
-                        //<p className="fd_flight_date">{formatCompleteDate(currentDate)} </p>
-                        <p className="fd_flight_date">{formatCompleteDate(currentDepDateTime)} </p>
-                      
-                         
-
-                        //:
-                        //Idxs === 1 ?
-                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatedDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
-                          //:
-                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5))} </p>
-
-
-                          
-                      }
-                      <p className="fd_airport_name">{airportNameFunct[info.departure.airport]}</p>
-                    </div>
-                    <div className="align-self-center stop_width_3">
-                      <AccessTimeIcon className="d-flex align-items-center fd_clock" />
-                      <p className="fd_flight_date">{elapsedTimeFunct(info.elapsedTime)}</p>
-                    </div>
-                    <div className="text-center align-self-center stop_width_4">
-                      <span className="fd_airport_size">{info.arrival.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.arrival.time.slice(0, 5)}</span>
-                      {
-                        //Idxs === 0 ?
-                        //<p className="fd_flight_date">{addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
-                        <p className="fd_flight_date">{formatCompleteDate(currentArrDateTime)} </p>
-                        //:
-                        //Idxs === 1 ?
-                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatenextLevel, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
-                          //:
-                          //<p className="fd_flight_date">{addTimeToPreviousDate(updatedLastDate, info.departure.time.slice(0, 5), val[Idxs].arrival.time.slice(0, 5))} </p>
-                      }
-                      <p className="fd_airport_name">{airportNameFunct[info.arrival.airport]}</p>
-                    </div>
-                    {
-                      !isMobile && (
-                        <Fragment>
-                          <div className="align-self-center stop_width_5">
-                            <p className="fd_airport_name fd_space_baggages">Seat Availab</p>
-                            <p className="fd_airport_name fd_space_baggages">Class Type</p>
-                            {
-                              activeFlightDet.baggageAllowance[idx].pieceCount ? (
-                                <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                              ) : (
-                                <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                              )
-                            }
-                          </div>
-                          <div className="align-self-center stop_width_6">
-                            <p className="fd_airport_name">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                            {/* <p className="fd_airport_name">{classtype} </p> */}
-                            <p className="fd_airport_name">{`${classtype} ( ${classSegment[Math.min(idx * 2 + Idxs, classSegment.length - 1)]})`} </p>
-                            <p className="fd_airport_name fd_space_baggages">{activeFlightDet.baggageAllowance[idx].pieceCount} {activeFlightDet.baggageAllowance[idx].weight} {activeFlightDet.baggageAllowance[idx].unit}</p>
-                          </div>
-                        </Fragment>
-                      )
-                    }
-                  </div>
-                  {isMobile && (
-                    <Fragment>
-                      <div className="mob_card_detail_main">
-                        <div className='d-flex justify-content-around'>
-                          <p className="fd_airport_name fd_space_baggages">Seats Availabe</p>
-                          <p className="fd_airport_name fd_space_baggages">Class Type</p>
-                          {
-                            activeFlightDet.baggageAllowance[idx].pieceCount ? (
-                              <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                            ) : (
-                              <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                            !isMobile && (
+                              <Fragment>
+                                <div className="align-self-center stop_width_5">
+                                  <p className="fd_airport_name fd_space_baggages">Seat Availab</p>
+                                  <p className="fd_airport_name fd_space_baggages">Class Type</p>
+                                  {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ? (
+                                    <p className="fd_airport_name fd_space_baggages">
+                                      {activeFlightDet.baggageAllowance[idx].pieceCount ? (
+                                        'Piece Counts'
+                                      ) : (
+                                        'Check-in baggage'
+                                      )}
+                                    </p>
+                                  ) : null}
+                                </div>
+                                <div className="align-self-center stop_width_6">
+                                  <p className="fd_airport_name">
+                                    {seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}
+                                  </p>
+                                  <p className="fd_airport_name">{classtype || ''}</p>
+                                  {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ? (
+                                    <p className="fd_airport_name fd_space_baggages">
+                                      {activeFlightDet.baggageAllowance[idx].pieceCount}
+                                      {activeFlightDet.baggageAllowance[idx].weight}
+                                      {activeFlightDet.baggageAllowance[idx].unit}
+                                    </p>
+                                  ) : null}
+                                </div>
+                              </Fragment>
                             )
                           }
+                    </div>
+                    {isMobile && (
+                      <Fragment>
+                        <div className="mob_card_detail_main">
+                          <div className='d-flex justify-content-around'>
+                            <p className="fd_airport_name fd_space_baggages">Seats Availabe</p>
+                            <p className="fd_airport_name fd_space_baggages">Class Type</p>
+                            {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet?.baggageAllowance[idx] ? (
+                              <p className="fd_airport_name fd_space_baggages">
+                              {
+                              activeFlightDet?.baggageAllowance[idx]?.pieceCount ? (
+                                "Piece Counts"
+                              ) : (
+                                "Check-in baggage"
+                              )
+                            }
+                            </p>
+                            ):(null)
+                            }
+                          
+                          </div>
+                          <div className='d-flex justify-content-around'>
+                            <p className="fd_airport_name ">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
+                            <p className="fd_airport_name">{classtype}</p>
+                        {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ?(
+                          
+                          <p className="fd_airport_name fd_space_baggages">{activeFlightDet?.baggageAllowance[idx]?.pieceCount} {activeFlightDet?.baggageAllowance[idx]?.weight} {activeFlightDet?.baggageAllowance[idx]?.unit}</p>
+                        ):(null)
+                        }
+                          </div>
                         </div>
-                        <div className='d-flex justify-content-around'>
-                          <p className="fd_airport_name ">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                          {/* <p className="fd_airport_name">{classtype}</p> */}
-                          <p className="fd_airport_name">{`${classtype} ( ${classSegment[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]})`} </p>
-                          <p className="fd_airport_name fd_space_baggages">{activeFlightDet.baggageAllowance[idx].pieceCount} {activeFlightDet.baggageAllowance[idx].weight} {activeFlightDet.baggageAllowance[idx].unit}</p>
+                      </Fragment>)}
+                    <div>
+                      {Idxs < val.length - 1 &&
+                        <div className="fd_line_structure">
+                          <div className="fd_line"></div>
+                          <div className="fd_icon_wrapper">
+                            <p className="fd_middle_border"><DirectionsRunIcon /> {`Short layover ${calculateDuration(info.arrival.time, val[Idxs + 1].departure.time)}`}</p>
+                          </div>
+                          <div className="fd_line"></div>
                         </div>
-                      </div>
-                    </Fragment>)}
-                  <div>
-                    {Idxs < val.length - 1 &&
-                      <div className="fd_line_structure">
-                        <div className="fd_line"></div>
-                        <div className="fd_icon_wrapper">
-                          <p className="fd_middle_border"><DirectionsRunIcon /> {`Short layover ${calculateDuration(info.arrival.time, val[Idxs + 1].departure.time)}`}</p>
-                        </div>
-                        <div className="fd_line"></div>
-                      </div>
-                    }
-                  </div>
-                </Fragment>
-              );
-            })}
+                      }
+                    </div>
+                  </Fragment>
+                );
+              })}
+          
           </div>
         );
       })}

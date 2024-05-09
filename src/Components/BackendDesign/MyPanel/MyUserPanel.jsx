@@ -87,6 +87,7 @@ const userLogout = async()=>{
 		setLogIn(false);
 		setVarName('');
         Cookies.remove('Access_token');
+		// localStorage.removeItem("Access_token");
        }
     // setLogout(true);
     // setLogIn(false);

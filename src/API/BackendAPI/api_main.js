@@ -17,10 +17,23 @@ const apiClient = axios.create({
   // baseURL: 'http://192.168.18.128/KBD_Backend/api', // Hashim
   // baseURL: 'http://localhost/KBD_Backend/api',
   // timeout: 900000,
-  headers: {
-    Authorization: `Bearer ${Cookies.get("Access_token")}`,
-  },
+  
+  // headers: {
+  //      Authorization: `Bearer ${Cookies.get("Access_token")}`,
+  // },
 });
+apiClient.interceptors.request.use(
+  function(config) {
+      const accessToken = Cookies.get("Access_token");
+      if (accessToken) {
+          config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+      return config;
+  },
+  function(error) {
+      return Promise.reject(error);
+  }
+);
 
 // const _titleError = (
 // 	<span className='d-flex align-items-center'>

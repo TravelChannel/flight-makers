@@ -26,7 +26,6 @@ import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetService
 import { CustomerDetailLead } from '../../API/BackendAPI/LeadCreationAPI/CustomerDetailLead';
 
 
-
 const UserContactDetails = (props) => {
   const {isLogin , setLogIn ,userVerName,completeUserData
      ,setVarName,userName,setUserName,setRoleID,setServiceCharges,setProfileImg} = useFormData();
@@ -192,13 +191,15 @@ const handlePhoneNumberChange = (value, country) => {
         if (verificationResult.data.status==='SUCCESS') {
           const AccessToken  = verificationResult.data.payload.accessToken;
           console.log("AccessToken",AccessToken);
-          document.cookie = `user_token=${AccessToken}; path=/;`;
+          document.cookie = `Access_token=${AccessToken}; path=/;`;
+          // localStorage.setItem("Access_token", AccessToken);
           setIsOtpTrue(true);
           setDisplayContact(true);
           setLogIn(true);
           setRoleID(verificationResult.data.payload.userData.roleId);
           setProfileImg(verificationResult.data.payload.userData.imgSrc);
           setVarName(verificationResult.data.payload.userData.phoneNumber);
+          // window.location.reload();
          
           // setUserName(verificationResult.data.payload.userData.firstName);
         } else {
@@ -413,6 +414,7 @@ useEffect(() => {
   const handleNavigation =async() => {
 
     try{
+      setLoading(true);
       const finalObject= generateBookingObject(); 
       setBackendFinalOBJ(finalObject);
       const PassLeadCreation = {
@@ -420,9 +422,10 @@ useEffect(() => {
         userData: finalObject.pnrBookings
       };
       console.log("PassLeadCreation",PassLeadCreation);
-      const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
-      console.log('LeadCreationResp',LeadCreationResp);
+      // const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
+      // console.log('LeadCreationResp',LeadCreationResp);
       navigate('/bookingpayment');
+      setLoading(false);
       window.scrollTo(0, 0);
     }catch(error){
       console.error("error While Creating FinalOBJ",error);

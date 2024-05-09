@@ -687,68 +687,70 @@ const handleNavigate = () =>{
                           }
                             </div>    
                         </div> */}
-                        <table className="table table-bordered mt-3">
-                            <thead>
-                            <tr>
-                                <th>Passenger</th>
-                                {isAirSial ? (
-                                    <th>CNIC</th>
-                                ) : (
-                                    <th>Passport#</th>
-                                )}
-                                <th>gender</th>
-                                {isSmallMobile ? <th>Receipt(s)</th> : <th>eTicket Receipt(s)</th>}
-                            </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    allPassangers.map((items ,index)=>(
-                                        <tr key={index}>
-                                            <td>{`${items.firstName} ${items.lastName}`}</td>
-                                            {/* <td>{adultDetails.booking_status}</td> */}
-                                            <td>{items.passportNo}</td>
-                                            <td>{items.gender}</td>
-                                            <td>___</td>
-                                        </tr> 
-                                    ))
-                                }
-                            </tbody>
-                           {/* {
-                            isAirSial ? (
-                                <>
-                                <tbody>
-                                    {Object.values(airSialData?.Response?.Data?.pnrNames?.adult || {}).map((adultDetails, index) => (
-                                        <tr key={index}>
-                                            <td>{adultDetails.name}</td>
-                                            <td>{adultDetails.booking_status}</td>
-                                            <td>{adultDetails.nic}</td>
-                                            <td>___</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                                </>
+                     <div className="table-responsive ">
+                            <table className="table table-bordered mt-3">
+                                    <thead>
+                                    <tr>
+                                        <th>Passenger</th>
+                                        {isAirSial ? (
+                                            <th>CNIC</th>
+                                        ) : (
+                                            <th>Passport#</th>
+                                        )}
+                                        <th>gender</th>
+                                        {isSmallMobile ? <th>Receipt(s)</th> : <th>eTicket Receipt(s)</th>}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            allPassangers.map((items ,index)=>(
+                                                <tr key={index}>
+                                                    <td>{`${items.firstName} ${items.lastName}`}</td>
+                                                    {/* <td>{adultDetails.booking_status}</td> */}
+                                                    <td>{items.passportNo}</td>
+                                                    <td>{items.gender}</td>
+                                                    <td>___</td>
+                                                </tr> 
+                                            ))
+                                        }
+                                    </tbody>
+                                {/* {
+                                    isAirSial ? (
+                                        <>
+                                        <tbody>
+                                            {Object.values(airSialData?.Response?.Data?.pnrNames?.adult || {}).map((adultDetails, index) => (
+                                                <tr key={index}>
+                                                    <td>{adultDetails.name}</td>
+                                                    <td>{adultDetails.booking_status}</td>
+                                                    <td>{adultDetails.nic}</td>
+                                                    <td>___</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                        </>
 
-                            ):(
-                               <>
-                               <tbody>
-                               
-                               {pnrData.travelers && pnrData?.travelers?.map((traveler, index) => (
-                                   <Fragment key={index}>
-                                       {traveler?.identityDocuments?.map((document, documentIndex) => (
-                                           <tr key={`${index}-${documentIndex}`}>
-                                               <td>{`${document.givenName} ${document.surname}`}</td>
-                                               <td>{pricingStatusName}</td>
-                                               <td>{document.documentNumber}</td>
-                                               <td>___</td>
-                                           </tr>
-                                       ))}
-                                   </Fragment>
-                               ))}
-                               </tbody>
-                               </>
-                            )
-                           } */}
-                        </table>
+                                    ):(
+                                    <>
+                                    <tbody>
+                                    
+                                    {pnrData.travelers && pnrData?.travelers?.map((traveler, index) => (
+                                        <Fragment key={index}>
+                                            {traveler?.identityDocuments?.map((document, documentIndex) => (
+                                                <tr key={`${index}-${documentIndex}`}>
+                                                    <td>{`${document.givenName} ${document.surname}`}</td>
+                                                    <td>{pricingStatusName}</td>
+                                                    <td>{document.documentNumber}</td>
+                                                    <td>___</td>
+                                                </tr>
+                                            ))}
+                                        </Fragment>
+                                    ))}
+                                    </tbody>
+                                    </>
+                                    )
+                                } */}
+                                </table>
+                     </div>
                            {
                             isSmallMobile ?(
                                 <div className="d-flex justify-content-between mt-3">

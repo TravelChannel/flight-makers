@@ -63,7 +63,7 @@ const OTPCode = (props) => {
           const AccessToken = verificationResult.data.payload.accessToken;
           console.log("AccessToken", AccessToken);
           document.cookie = `Access_token=${AccessToken}; path=/;`;
-          localStorage.setItem("AccessToken", AccessToken);
+          localStorage.setItem("Access_token", AccessToken);
           // setHeader(verificationResult.data.payload.accessToken);
           setIsOtpTrue(true);
           setLogIn(true);

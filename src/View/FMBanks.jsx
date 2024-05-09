@@ -14,7 +14,9 @@ const FMBanks = () => {
     }
     APiResp();
   },[]);
-  
+
+  const PnrNumber =JSON.parse(localStorage.getItem('PNRNumber'));
+
   return (
     <div className='container'>
        <div className='contact_us_heading d-flex justify-content-center'>
@@ -79,6 +81,10 @@ const FMBanks = () => {
                   <ContactSources/>
                 </div>
            
+            </div>
+
+            <div>
+              {`PnrNumber ${PnrNumber}`}
             </div>
 
 

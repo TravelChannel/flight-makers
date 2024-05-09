@@ -140,81 +140,96 @@ const UserItineraryDetails = () => {
                                             </div>
                                            {
                                            isMobile ? (
-                                              <div className="iti_content_spacing">
-                                                <div className='iti_mob_border'>
-                                                    <div className="d-flex justify-content-between">
-                                                        <div>
-                                                        <p className="fd_airport_name fd_space_baggages">No of Seats</p>
-                                                        <p className="fd_airport_name fd_space_baggages ">{`${flightdetails.adults+flightdetails.children+flightdetails.infants}`}</p>
-                                                        </div>
-                                                      <div>
-                                                        <p className="fd_airport_name fd_space_baggages ">Seats Types</p>
-                                                        <p className="fd_airport_name fd_space_baggages ">
-                                                                {conSeatsType}
-                                                        </p>
-                                                      </div>
-                                                      <div>
-                                                        <div>
-                                                            {
-                                                                flightdetails?.baggageAllowance[index]?.pieceCount ? (
-                                                                <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                                                                ) : (
-                                                                <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                                                                )
-                                                            }
+                                            <div className="iti_content_spacing">
+                                                    <div className='iti_mob_border'>
+                                                        <div className="d-flex justify-content-between">
+                                                            <div>
+                                                                <p className="fd_airport_name fd_space_baggages">No of Seats</p>
+                                                                <p className="fd_airport_name fd_space_baggages ">
+                                                                    {flightdetails && flightdetails.adults && flightdetails.children && flightdetails.infants
+                                                                        ? `${flightdetails.adults + flightdetails.children + flightdetails.infants}`
+                                                                        : '...'}
+                                                                </p>
                                                             </div>
-                                                            <p className="fd_airport_name fd_space_baggages mob_iti_text">{flightdetails?.baggageAllowance[index]?.pieceCount} {flightdetails?.baggageAllowance[index]?.weight} {flightdetails?.baggageAllowance[index]?.unit}</p>
-
-                                                      </div>
-                                                      <div>
-                                                        <p className="fd_airport_name fd_space_baggages">
-                                                            <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
-                                                                Remaining Seats
-                                                            </span>
-                                                        </p>
-                                                        {seatAvailable && seatAvailable.length > 0 ? (
-                                                        <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
+                                                            <div>
+                                                                <p className="fd_airport_name fd_space_baggages ">Seats Types</p>
+                                                                <p className="fd_airport_name fd_space_baggages ">
+                                                                    {conSeatsType || '...'}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <div>
+                                                                    {flightdetails && flightdetails.baggageAllowance && flightdetails.baggageAllowance[index]
+                                                                        ? flightdetails.baggageAllowance[index].pieceCount
+                                                                            ? <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
+                                                                            : <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                                                                        : null}
+                                                                </div>
+                                                                <p className="fd_airport_name fd_space_baggages mob_iti_text">
+                                                                    {flightdetails && flightdetails.baggageAllowance && flightdetails.baggageAllowance[index]
+                                                                        ? `${flightdetails.baggageAllowance[index].pieceCount || ''} ${flightdetails.baggageAllowance[index].weight || ''} ${flightdetails.baggageAllowance[index].unit || ''}`
+                                                                        : '...'}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="fd_airport_name fd_space_baggages">
+                                                                    <span className={seatAvailable && seatAvailable[index] && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                                        Remaining Seats
+                                                                    </span>
+                                                                </p>
+                                                                <p className={`fd_airport_name fd_space_baggages ${seatAvailable && seatAvailable.length > 0 && seatAvailable[index] && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>
+                                                                    {seatAvailable && seatAvailable.length > 0 && seatAvailable[index] ? `${seatAvailable[index]}` : '...'}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ):(  
+                                                <div className="col-md-3 iti_content_spacing">
+                                                    <div className='d-flex justify-content-between'>
+                                                        <div className="">
+                                                            <p className="fd_airport_name fd_space_baggages">No of Seats</p>
+                                                            <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
+                                                            {
+                                                                flightdetails && flightdetails.baggageAllowance && flightdetails.baggageAllowance[index] ? (
+                                                                    <p className="fd_airport_name fd_space_baggages">
+                                                                        {flightdetails.baggageAllowance[index].pieceCount ? (
+                                                                            'Piece Counts'
+                                                                        ) : (
+                                                                            'Check-in baggage'
+                                                                        )}
+                                                                    </p>
+                                                                ) : null
+                                                            }
+                                                            <p className="fd_airport_name fd_space_baggages">
+                                                                <span className={seatAvailable && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                                    Remaining Seats
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        <div className="">
+                                                            <p className="fd_airport_name fd_space_baggages">{`${flightdetails?.adults + flightdetails?.children + flightdetails?.infants}`}</p>
+                                                            <p className="fd_airport_name fd_space_baggages iti_difference">
+                                                                {conSeatsType}
+                                                            </p>
+                                                            {flightdetails && flightdetails.baggageAllowance && flightdetails.baggageAllowance[index] ? (
+                                                                <p className="fd_airport_name fd_space_baggages">
+                                                                    {flightdetails.baggageAllowance[index].pieceCount}{' '}
+                                                                    {flightdetails.baggageAllowance[index].weight}{' '}
+                                                                    {flightdetails.baggageAllowance[index].unit}
+                                                                </p>
+                                                            ) : null}
+                                                            {seatAvailable && seatAvailable.length > 0 ? (
+                                                                <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>
+                                                                    {seatAvailable[index]}
+                                                                </p>
                                                             ) : (
                                                                 <p className='fd_airport_name fd_space_baggages'>...</p>
                                                             )}
-                                                      </div>
-                                                    </div>
-                                                   
-                                                </div>
-                                            </div>
-                                            ):(  
-                                            <div className="col-md-3 iti_content_spacing">
-                                                <div className='d-flex justify-content-between'>
-                                                    <div className="">
-                                                        <p className="fd_airport_name fd_space_baggages">No of Seats</p>
-                                                        <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
-                                                        {
-                                                            flightdetails?.baggageAllowance[index]?.pieceCount ? (
-                                                            <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                                                            ) : (
-                                                            <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                                                            )
-                                                        }
-                                                        <p className="fd_airport_name fd_space_baggages">
-                                                        <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
-                                                            Remaining Seats
-                                                        </span>
-                                                    </p>
-                                                    </div>
-                                                    <div className="">
-                                                        <p className="fd_airport_name fd_space_baggages">{`${flightdetails.adults+flightdetails.children+flightdetails.infants}`}</p>
-                                                        <p className="fd_airport_name fd_space_baggages iti_difference">
-                                                            {conSeatsType}
-                                                        </p>
-                                                        <p className="fd_airport_name fd_space_baggages">{flightdetails?.baggageAllowance[index]?.pieceCount} {flightdetails?.baggageAllowance[index]?.weight} {flightdetails?.baggageAllowance[index]?.unit}</p>
-                                                        {seatAvailable && seatAvailable.length > 0 ? (
-                                                        <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>{`${seatAvailable[index]}`}</p>
-                                                    ) : (
-                                                        <p className='fd_airport_name fd_space_baggages'>...</p>
-                                                    )}
+                                                             {/* <p className="fd_airport_name">{`( ${flightdetails.classSegment[Math.min(index * 2 + idx, flightdetails.classSegment.length - 1)]})`}</p> */}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                             )
                                            }
                                         </div>

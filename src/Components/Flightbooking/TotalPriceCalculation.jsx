@@ -40,6 +40,15 @@ const TotalPriceCalculation = () => {
 
     const exchangeRateUsed = flightData.fare.passengerInfoList[0]?.passengerInfo.currencyConversion?.exchangeRateUsed?.toFixed(2);
     localStorage.setItem("totalTicketPrice", JSON.stringify(totalTicketPrice));
+
+    const userAmount = {
+        BaseFare:ticketPrice,
+        taxAmount :taxAmount,
+        ServiceCharges:calculatedServiceFees,
+        totalTicketPrice:totalTicketPrice
+    }
+    localStorage.setItem("UserAmount", JSON.stringify(userAmount));
+    // console.log("Amount Object",userAmount);
     // console.log(exchangeRateUsed)
     return (
         <Fragment>

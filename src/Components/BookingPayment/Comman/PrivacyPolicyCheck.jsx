@@ -32,6 +32,10 @@ const PrivacyPolicyCheck = (props) => {
     };
     const gettingTicketPrice = JSON.parse(localStorage.getItem("totalTicketPrice"));
     const totalTicketPrice = Number(gettingTicketPrice).toLocaleString();
+
+    const UserAmount  = JSON.parse(localStorage.getItem("UserAmount"));
+
+    console.log("UserAmount",UserAmount);
     useEffect(() => {
         const handleSize = () => {
             setMobile(window.innerWidth < 768);
@@ -91,7 +95,7 @@ const PrivacyPolicyCheck = (props) => {
           const handleBackendResp =  await handleBackendData(OrderId,pnrNum);
             if(!handleBackendResp){
               console.log('handleBackendResp',handleBackendResp);
-              console.log("erroratsendBackendData");
+              alert("Error While Sending Data to the Backend");
               throw new Error(
                 'Error Generating Pnr Num',
               );
@@ -100,11 +104,11 @@ const PrivacyPolicyCheck = (props) => {
           console.log("------------------------End-------------------------------");
 
 
-          if (paymentType === "paypro") {
-            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
-          } else {
-            window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
-          }
+          // if (paymentType === "paypro") {
+          //   window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
+          // } else {
+          //   window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
+          // }
           setPNRLoading(false);
         } catch (error) {
 
@@ -216,6 +220,9 @@ const PrivacyPolicyCheck = (props) => {
               }
               else {
                 getPNRNumber = PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID;  // sabre pnr
+                const pnrPayment = PNRRespon.CreatePassengerNameRecordRS?.AirPrice?.[0].PriceQuote.PricedItinerary?.TotalAmount;
+                UserAmount.pnrPayment = pnrPayment;
+                console.log("PnrPayment-v2",UserAmount);
               }
     
       
@@ -240,13 +247,15 @@ const PrivacyPolicyCheck = (props) => {
           sendSmsBranch:sendSmsBranch,
           sendSmsCod:sendSmsCod,
           branchLabel:branchLabel,
-          userLocation:userLocation
+          userLocation:userLocation,
+          Amount:UserAmount
 
         };
 
-             console.log("ADDED PNR OBj",updatedBackendFinalOBJ);
+             console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
             if (respServerPnrBooking.data.status !== 'SUCCESS') {
+              alert("Error Sending Data to Backend");
               throw new Error('Error: Server response status is not SUCCESS');
             }
           

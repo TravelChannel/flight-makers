@@ -19,6 +19,13 @@ export const SabrePNRCreate = async (formData) => {
 
     const flightSegmentDates = flightDetails.flightSegmentDates;
     console.log("StopsDetailatPage",flightSegmentDates);
+
+
+    const MarriageGrpDepartDate = flightDetails.groupDescription[0]?.departureDate;
+    const MarriageGrpArrivalDate = flightDetails.groupDescription[1]?.departureDate;
+
+    console.log('MarriageGrpDepartDate',MarriageGrpDepartDate);
+    console.log("MarriageGrpArrivalDate",MarriageGrpArrivalDate);
     // ----------------------------
     const PersonName = [];
 
@@ -292,8 +299,45 @@ console.log("userData",userDetails);
     // ]);
     
 
-    const flights = flightSegmentDates.flatMap((item, index) => [
-        {
+    // const flights = flightSegmentDates.flatMap((item, index) => [
+    //     {
+    //         ArrivalDateTime: `${item.arrivalDate}T${item.arrival}`,
+    //         DepartureDateTime: `${item.departureDate}T${item.departure}`,
+    //         FlightNumber: `${flightNumber[index]}`,
+    //         NumberInParty: `${passengerDet}`,
+    //         ResBookDesigCode: `${classSegment[index]}`,
+    //         Status: "NN",
+    //         DestinationLocation: {
+    //             LocationCode: flightArrival[index],
+    //         },
+    //         MarketingAirline: {
+    //             Code: flightName[index],
+    //             FlightNumber: `${flightNumber[index]}`,
+    //         },
+    //         OriginLocation: {
+    //             LocationCode: flightDepature[index],
+    //         },
+    //         OperatingAirline: {
+    //             Code: flightName[index],
+    //         },
+    //         MarriageGrp: "I"
+    //     },
+    // ]);
+
+
+    let isFirstMarriageGrpDepartDate = true; 
+    const flights = flightSegmentDates.flatMap((item, index) => {
+        let MarriageGrp;
+        if (index === 0) {
+            MarriageGrp = "O";
+        } else {
+            MarriageGrp = isFirstMarriageGrpDepartDate && item.departureDate === MarriageGrpArrivalDate ? "O" : "I";
+        }
+        if (isFirstMarriageGrpDepartDate && item.departureDate === MarriageGrpArrivalDate) {
+            isFirstMarriageGrpDepartDate = false;
+        }
+    
+        return [{
             ArrivalDateTime: `${item.arrivalDate}T${item.arrival}`,
             DepartureDateTime: `${item.departureDate}T${item.departure}`,
             FlightNumber: `${flightNumber[index]}`,
@@ -313,10 +357,9 @@ console.log("userData",userDetails);
             OperatingAirline: {
                 Code: flightName[index],
             },
-            MarriageGrp: "I"
-            // MarriageGrp: flightName[0] === flightName2[0] ? "I" : "O"
-        },
-    ]);
+            MarriageGrp: MarriageGrp 
+        }];
+    });
     
     console.log(flights);
     console.log("flights",flights);

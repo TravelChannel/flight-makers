@@ -6577,7 +6577,7 @@ tbody, td, tfoot, th, thead, tr{
 .user_cancelation_button{
   background-color: transparent;
   color:#000;
-  padding:5px 35px !important;
+  padding:5px 38px !important;
   font-weight:600;
 }
 /* .user_ReIssue_button{
@@ -7545,3 +7545,14 @@ margin-top:10px;
   color:#F26223;
   text-decoration: underline;
 }
+
+
+
+
+.table th, .table td {
+  max-width: 250px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
