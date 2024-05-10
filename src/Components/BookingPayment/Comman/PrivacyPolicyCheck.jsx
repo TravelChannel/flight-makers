@@ -251,7 +251,6 @@ const PrivacyPolicyCheck = (props) => {
           Amount:UserAmount
 
         };
-
              console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
             if (respServerPnrBooking.data.status !== 'SUCCESS') {
