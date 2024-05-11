@@ -9,8 +9,8 @@ import Cookies from "js-cookie";
 
 const apiClient = axios.create({
   // baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
-  // baseURL: "http://localhost:5000/api/",
-  baseURL: "http://192.168.100.10:5000/api/",
+  baseURL: "http://localhost:5000/api/",
+  // baseURL: "http://192.168.100.10:5000/api/",
 
   // baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
   withCredentials: true,
