@@ -1,5 +1,8 @@
 export const reviewItinerary = async () => {
 
+  const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
+  const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
+
   const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
   // console.log(flightData);
   const {groupDescription,schedualDetGet,adults,children,infants} = flightData;
@@ -64,12 +67,15 @@ export const reviewItinerary = async () => {
   
   // console.log(OriginDestinationInformation)
   
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+  const myHeaders = new Headers();
+  myHeaders.append('Content-Type', 'application/json');
+  myHeaders.append('Authorization',
+    `Bearer ${authToken}`);
+  myHeaders.append('Accept-Encoding', 'identity'); 
 
   var raw = JSON.stringify({
     "OTA_AirLowFareSearchRQ": {
-      "Version": "4.3.0",
+      "Version": "4",
       "POS": {
         "Source": [
           {
@@ -107,18 +113,15 @@ export const reviewItinerary = async () => {
       },
       "TPA_Extensions": {
         "IntelliSellTransaction": {
-          "Debug": false,
-          "RequestType": {
-            "Name": "200ITINS"
-          },
-          "ServiceTag": {
-            "Name": "REVALIDATE"
-          },
-          "CompressResponse": {
-            "Value": true
-          }
+            "Debug": false,
+            "RequestType": {
+                "Name": "200ITINS"
+            },
+            "ServiceTag": {
+                "Name": "REVALIDATE"
+            },
         }
-      }
+    }
     }
   });
 
@@ -130,8 +133,9 @@ export const reviewItinerary = async () => {
   };
   
   try {
-    const response = await fetch("http://10.30.254.93:5000/api/proxyApi/reValidateApiProxy", requestOptions);
+    const response = await fetch("https://api.havail.sabre.com/v4/shop/flights/revalidate", requestOptions);
     const result = await response.json();
+    console.log("result", result);
     // console.log(raw);
     return result;
   }

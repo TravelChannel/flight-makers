@@ -95,20 +95,18 @@ const PrivacyPolicyCheck = (props) => {
           const handleBackendResp =  await handleBackendData(OrderId,pnrNum);
             if(!handleBackendResp){
               console.log('handleBackendResp',handleBackendResp);
-              alert("Error While Sending Data to the Backend");
+              handleShowErrorAlert('Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details...');
               throw new Error(
                 'Error Generating Pnr Num',
               );
             }
        
           console.log("------------------------End-------------------------------");
-
-
-          // if (paymentType === "paypro") {
-          //   window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
-          // } else {
-          //   window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
-          // }
+          if (paymentType === "paypro") {
+            window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
+          } else {
+            window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
+          }
           setPNRLoading(false);
         } catch (error) {
 
@@ -198,14 +196,19 @@ const PrivacyPolicyCheck = (props) => {
 
             if (PNRRespon?.Success === false) {
               const message = PNRRespon.Response.message
-              handleShowErrorAlert(message);
+              // handleShowErrorAlert(message);
+              console.log("PNR-Message-1",message);
+              handleShowErrorAlert('Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details.');
             }
             else if(PNRRespon?.status === "NotProcessed") {
-              handleShowErrorAlert("Incomplete");
+              // handleShowErrorAlert("Incomplete");
+              handleShowErrorAlert('Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details.');
             }
             else if (PNRRespon?.CreatePassengerNameRecordRS?.ApplicationResults?.status === "Incomplete") {
-              const message = PNRRespon.CreatePassengerNameRecordRS.ApplicationResults.Warning[0].SystemSpecificResults[0].Message[0].content
-              handleShowErrorAlert(message);
+              const message = PNRRespon.CreatePassengerNameRecordRS.ApplicationResults.Warning[0].SystemSpecificResults[0].Message[0].content;
+              // handleShowErrorAlert(message);
+              console.log("PNR-Message-2",message);
+              handleShowErrorAlert('Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details.');
             }
             else {
               if (PNRRespon?.Success === true) {
@@ -251,16 +254,17 @@ const PrivacyPolicyCheck = (props) => {
           Amount:UserAmount
 
         };
-             console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
+          console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
             if (respServerPnrBooking.data.status !== 'SUCCESS') {
-              alert("Error Sending Data to Backend");
+              handleShowErrorAlert("Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details...");
               throw new Error('Error: Server response status is not SUCCESS');
-            }
-          
+            }else if(respServerPnrBooking.data.payload.isAmountEqual){
+            console.log("checkForPayment",respServerPnrBooking.data.payload.isAmountEqual);
             console.log("respServerPnrBooking", respServerPnrBooking);
             toast.success("PNR Created Successfully", { autoClose: 2000 });
             return true;
+            }
           // };
       }
 

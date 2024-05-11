@@ -583,7 +583,7 @@ if (
                     ))}
                   </Select>
                   <span>
-                    <svg class="swipCircle" onClick={handleSwapCity}><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"></path></svg>
+                    <svg className="swipCircle" onClick={handleSwapCity}><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"></path></svg>
                   </span>
                   <Select
                     value={arrival}
@@ -714,7 +714,7 @@ if (
           <div className="recent_searches_main d-flex justify-content-start flex-wrap mt-1">
             {shouldShowPrecautions() && <RecentSearches />}
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-12 text_center_btn">
+          <div className="col-xs-12 col-sm-12 col-md-12 text_center_btn">
             {shouldShowPrecautions() && <SearchButton onButtonClick={searchFormValid} />}
           </div>
         </form>
@@ -843,7 +843,7 @@ if (
                   ))}
                 </Select>
                 <span>
-                  <svg class="swipCircleMob" onClick={handleSwapCity}><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"></path></svg>
+                  <svg className="swipCircleMob" onClick={handleSwapCity}><path d="M16 17.01V10h-2v7.01h-3L15 21l4-3.99h-3zM9 3L5 6.99h3V14h2V6.99h3L9 3z"></path></svg>
                 </span>
                 <Select
                   value={arrival}

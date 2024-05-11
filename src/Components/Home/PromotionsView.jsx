@@ -54,8 +54,8 @@ const PromotionsView = () =>{
                 {
                     PromotionData.map((item,index) =>
                     {
-                        return(
-                          <div className="bg-white mb-2">
+                        return( 
+                          <div key={index} className="bg-white mb-2">
                           <SwiperSlide className="PromotionSlide " style={{ backgroundImage: `url(${item.img})` }}>
                                 <div className="d-flex justify-content-between">
                                     <h5 className="mr-2 nameSpaceFix promotionDisplay text-start">{item.title}</h5>

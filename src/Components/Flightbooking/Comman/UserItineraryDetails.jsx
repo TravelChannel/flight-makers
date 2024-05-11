@@ -28,22 +28,25 @@ const UserItineraryDetails = () => {
         }
     },[])
 
-    useEffect(() => {
-        async function updateSeatAvailability() {
-            try {
-                const requestItinerary = await requestReviewItinerary();
-                // const PNRRespon = await requestPNRCreate();
-                // console.log(PNRRespon);
-                const seats = requestItinerary.OTA_AirLowFareSearchRS.PricedItineraries.PricedItinerary[0].AirItineraryPricingInfo[0].FareInfos.FareInfo.map(item => item.TPA_Extensions.SeatsRemaining.Number);
-                setSeatAvailable(seats);
-            } catch (error) {
-                console.error("Error updating seat availability:", error);
-            }
-        }
-        updateSeatAvailability();
-        const intervalId = setInterval(updateSeatAvailability, 60000);
-        return () => clearInterval(intervalId);
-    }, []);
+    // useEffect(() => {
+    //     async function updateSeatAvailability() {
+    //         try {
+    //             const requestItinerary = await requestReviewItinerary();
+
+    //             console.log("requestItinerary-Detail",requestItinerary);
+    //             // const PNRRespon = await requestPNRCreate();
+    //             // console.log(PNRRespon);
+    //             const seats = requestItinerary?.OTA_AirLowFareSearchRQ?.PricedItineraries.PricedItinerary[0]?.AirItineraryPricingInfo[0]?.FareInfos?.FareInfo?.map(item => item.TPA_Extensions.SeatsRemaining.Number);
+    //             setSeatAvailable(seats);
+    //         } catch (error) {
+    //             console.error("Error updating seat availability:", error);
+    //         }
+    //     }
+    //     updateSeatAvailability();
+    //     const intervalId = setInterval(updateSeatAvailability, 60000);
+    //     return () => clearInterval(intervalId);
+    // }, []);
+    
 
     // useEffect(() => {
     //     const newArrivalLocations = flightdetails.groupDescription.map(item => item.arrivalLocation);
@@ -145,11 +148,12 @@ const UserItineraryDetails = () => {
                                                         <div className="d-flex justify-content-between">
                                                             <div>
                                                                 <p className="fd_airport_name fd_space_baggages">No of Seats</p>
-                                                                <p className="fd_airport_name fd_space_baggages ">
+                                                                {/* <p className="fd_airport_name fd_space_baggages ">
                                                                     {flightdetails && flightdetails.adults && flightdetails.children && flightdetails.infants
                                                                         ? `${flightdetails.adults + flightdetails.children + flightdetails.infants}`
                                                                         : '...'}
-                                                                </p>
+                                                                </p> */}
+                                                                <p className="fd_airport_name fd_space_baggages">{`${flightdetails?.adults + flightdetails?.children + flightdetails?.infants}`}</p>
                                                             </div>
                                                             <div>
                                                                 <p className="fd_airport_name fd_space_baggages ">Seats Types</p>

@@ -59,7 +59,7 @@ const Tesimonials = () =>{
                     {
                         return(
                            
-                            <SwiperSlide className="testimonialSlide">
+                            <SwiperSlide key = {index} className="testimonialSlide">
                                 <div className="d-flex justify-content-between">
                                     <h5 className="mr-2 nameSpaceFix text-start">{item.userName}</h5>
                                     <span className="ratingStar">

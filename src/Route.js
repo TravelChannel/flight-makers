@@ -42,10 +42,6 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/searchflightresult/" element={<SearchFlightResult />} />
         <Route path="/flights/:from" element={<IntFlights/>} />
-        <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
-
-       
-
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
         <Route path="/about-us" element={<About />} />
@@ -67,7 +63,7 @@ const AppRouter = () => {
         <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
         <Route path="blogs/:headerUrl" element={<BlogContent />} />
-        <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+    
      
         {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
@@ -77,7 +73,8 @@ const AppRouter = () => {
         {/* <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} /> */}
         <Route path="/:airlineName" element={<PopularAirLines/>} />
         <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
-        
+        <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+        <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
 
         {/* Catch-all route for unknown routes */}
         
