@@ -63,20 +63,13 @@ const AppRouter = () => {
         <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
         <Route path="blogs/:headerUrl" element={<BlogContent />} />
-    
-     
-        {/* <Route path="/userPanel" element={<UserPanel/>} /> */}
         <Route path="/userPanel" element={<MyUserPanel/>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
-        {/* <Route path="/flights/:flightName" element={<FlightsSearchEngine/>} /> */}
-        {/* <Route path="/flights/:flightName" element={<SearchFlightResult />} /> */}
-        {/* <Route path="/flights/:domesticflightName" element={<DomesticFlightsEngine/>} /> */}
         <Route path="/:airlineName" element={<PopularAirLines/>} />
-        <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} />
-        <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
         <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
+        <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+        {/* <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} /> */}
 
-        {/* Catch-all route for unknown routes */}
         
       </Routes>
     </Fragment>

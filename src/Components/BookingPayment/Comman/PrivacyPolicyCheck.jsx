@@ -102,11 +102,15 @@ const PrivacyPolicyCheck = (props) => {
             }
        
           console.log("------------------------End-------------------------------");
+
+
           if (paymentType === "paypro") {
             window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
           } else {
             window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
           }
+
+
           setPNRLoading(false);
         } catch (error) {
 

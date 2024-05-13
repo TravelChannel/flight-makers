@@ -42,7 +42,8 @@ const BlogbyCategory = () => {
 
     const handleBlogContent = (headerUrl) =>{
         // const formattedTitle = mainTitle.replace(/\s+/g, '-'); 
-        navigate(`/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
+        // navigate(`/${encodeURIComponent(modifiedCategoryName)}/${encodeURIComponent(headerUrl)}`);
+        navigate(`/blogs/${encodeURIComponent(headerUrl)}`);
         window.scrollTo(0,0);
       }
       const handleChange = () => {

@@ -425,8 +425,8 @@ useEffect(() => {
       const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
       console.log('LeadCreationResp',LeadCreationResp);
       navigate('/bookingpayment');
-      setLoading(false);
       window.scrollTo(0, 0);
+      setLoading(false);
     }catch(error){
       console.error("error While Creating FinalOBJ",error);
     }
