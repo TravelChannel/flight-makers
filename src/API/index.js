@@ -159,11 +159,11 @@ export const requestTravelerInfo = async (userInfodetails) =>
   }
 }
 
-export const requestGetpaymentToken = async (paymentCode) => {
+export const requestGetpaymentToken = async (paymentCode,userPhoneNum) => {
   try {
     const getToken = await getTokenApi();
-    const createOrder = await createOrderApi(getToken);
-    const getPaymentToken = await getPaymentTokenApi(getToken,createOrder,paymentCode);
+    const createOrder = await createOrderApi(getToken,paymentCode);
+    const getPaymentToken = await getPaymentTokenApi(getToken,createOrder,paymentCode ,userPhoneNum);
      return {
       createOrder: createOrder,
       getPaymentToken: getPaymentToken

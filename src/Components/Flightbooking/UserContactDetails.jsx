@@ -424,9 +424,10 @@ useEffect(() => {
       console.log("PassLeadCreation",PassLeadCreation);
       const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
       console.log('LeadCreationResp',LeadCreationResp);
+      setLoading(false);
       navigate('/bookingpayment');
       window.scrollTo(0, 0);
-      setLoading(false);
+     
     }catch(error){
       console.error("error While Creating FinalOBJ",error);
     }
@@ -441,7 +442,6 @@ useEffect(() => {
 //         'OperatingAirline': OperatingAirlines,
 //         'ClassType': flightDetails.classtype
 //     };
-
 //     console.log("CommissionData", CommissionData);
 //     setMajorData(CommissionData);
 // }, []);

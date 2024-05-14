@@ -55,28 +55,29 @@ const Tesimonials = () =>{
                 className="mySwiper"
                 >
                 {
-                    testimonialsReview.map((item,index) =>
+                    RatingList.map((item,index) =>
                     {
                         return(
                            
                             <SwiperSlide key = {index} className="testimonialSlide">
                                 <div className="d-flex justify-content-between">
-                                    <h5 className="mr-2 nameSpaceFix text-start">{item.userName}</h5>
-                                    <span className="ratingStar">
-                                        <StarIcon/>
-                                        <StarIcon/>
-                                        <StarIcon/>
-                                        <StarIcon/>
-                                        <StarIcon/>
-                                    </span>
+                                    {/* <h5 className="mr-2 nameSpaceFix text-start">{item.userName}</h5> */}
+                                    <h5 className="mr-2 nameSpaceFix text-start">{item.title}</h5>
+                                    <div className="d-flex justify-content-start">
+                                        {Array.from({ length: item.stars }, (_, index) => (
+                                        <span key={index}  className="ratingStar "><StarIcon /></span>
+                                    ))}
+                                   </div>
                                 </div>
                                 <div className="d-flex justify-content-start verfiedIcon mt-2">
                                     <VerifiedIcon/>
                                     <p className="ml-1 light_colour">Verified Customer</p>
                                 </div>
-                                <div className="wrapper"><p className="mt-4 text-start truncate">{item.description}</p></div>
+                                {/* <div className="wrapper"><p className="mt-4 text-start truncate">{item.description}</p></div> */}
+                                <div className="wrapper"><p className="mt-4 text-start truncate">{item.review}</p></div>
                                 
-                                <p className="text-end mt-3 light_colour">{item.date}</p>
+                                {/* <p className="text-end mt-3 light_colour">{item.date}</p> */}
+                                <p className="text-end mt-3 light_colour">{ArrangeDateFormat(item.createdAt)}</p>
                             </SwiperSlide>
                         );
                     }

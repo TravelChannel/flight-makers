@@ -38,7 +38,6 @@ const AppRouter = () => {
   return (
     <Fragment>
       <Routes>
-     
         <Route path="/" element={<Home />} />
         <Route path="/searchflightresult/" element={<SearchFlightResult />} />
         <Route path="/flights/:from" element={<IntFlights/>} />
@@ -70,7 +69,6 @@ const AppRouter = () => {
         <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
         {/* <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} /> */}
 
-        
       </Routes>
     </Fragment>
   );

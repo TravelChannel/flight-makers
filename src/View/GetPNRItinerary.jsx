@@ -46,6 +46,7 @@ const [usersDetail ,setUsersDetails] = useState([]);
 const [TicketConfirmed ,setTicketConfirmed] = useState(false);
 const [isMobile , setIsMobile] = useState(window.innerWidth < 667);
 const [isSmallMobile , setSmallMobile] = useState(window.innerWidth < 480);
+const [isBreakFlex ,setBreakFlex] = useState(window.innerWidth < 767);
 
 const { setShowHeader } = useFormData();
 const [allPassangers ,setAllPassangers] = useState([]);
@@ -53,6 +54,7 @@ const [allPassangers ,setAllPassangers] = useState([]);
 useEffect(()=>{
     const handleResize = ()=>{
         setIsMobile(window.innerWidth < 667);
+        setBreakFlex(window.innerWidth < 767)
     };
     window.addEventListener('resize', handleResize);
     return()=>{
@@ -475,8 +477,8 @@ const handleNavigate = () =>{
                 <Loader/>
             ):(
                 <div className="container bg-white p-5" >
-                    {/* {  
-                        TicketConfirmed ?( */}
+                    {  
+                        TicketConfirmed ?(
                      <Fragment>
                      <div className="ticket_display" id="pdf-content">
                     {
@@ -515,31 +517,9 @@ const handleNavigate = () =>{
                         )
                     }
                     {
-                        isSmallMobile ? (
-                            <div className="d-flex justify-content-between mt-5">
-                                <div className="">
-                                    {
-                                        isAirSial ? (
-                                            <div className="d-flex justify-content-start">
-                                                <p className="ticket_depart_date">{ArrangeDateFormat(outboundDepartureDate)}</p>
-                                                {inboundDepartDate !=='N/A' && (
-                                                    <>
-                                                        <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
-                                                        <p className="ticket_depart_date">{ArrangeDateFormat(inboundDepartDate)}</p>
-                                                    </>
-                                                )}
-                                            </div>
-                                        ):(
-                                            <div className="">
-                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.startDate)}`}</p>
-                                                {/* <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  */}
-                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.endDate)}`}</p>
-                                            </div>
-                                            
-                                        )
-                                    }
-                                  </div>
-                                    <div className="">
+                        isBreakFlex ? (
+                            <div className="mt-5">
+                                    <div className=" d-flex justify-content-center">
                                                     {
                                                         isAirSial ?(
                                                             <div className="d-flex justify-content-start">
@@ -563,7 +543,7 @@ const handleNavigate = () =>{
 
                                                             {aFlightDetails?.schedualDetGet?.map((item, index) => (
                                                                     <div key={index}>
-                                                                        <div className='d-flex justify-content-start journeys_spacing ticket_depart_date'>
+                                                                        <div className='d-flex justify-content-start journeys_spacing segment_spacing ticket_depart_date'>
                                                                             <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.departureLocation]}</h5> 
                                                                             <span className="airport_spacing"><RedoOutlinedIcon /></span> 
                                                                             <h5 className="iti_city_font">{cityNameFunct[aFlightDetails?.groupDescription[index]?.arrivalLocation]}</h5>
@@ -573,7 +553,29 @@ const handleNavigate = () =>{
                                                             </div>
                                                         )
                                                     }
-                                    </div>  
+                                    </div> 
+                                    <div className="d-flex justify-content-center">
+                                    {
+                                        isAirSial ? (
+                                            <div className="d-flex justify-content-start">
+                                                <p className="ticket_depart_date">{ArrangeDateFormat(outboundDepartureDate)}</p>
+                                                {inboundDepartDate !=='N/A' && (
+                                                    <>
+                                                        <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  
+                                                        <p className="ticket_depart_date">{ArrangeDateFormat(inboundDepartDate)}</p>
+                                                    </>
+                                                )}
+                                            </div>
+                                        ):(
+                                            <div className="">
+                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.startDate)}`}</p>
+                                                {/* <ArrowRightIcon className="align-self-center ticket_right_arrrow"/>  */}
+                                                <p className="ticket_depart_date">{`•${ArrangeDateFormat(pnrData?.endDate)}`}</p>
+                                            </div>
+                                            
+                                        )
+                                    }
+                                  </div> 
                                 </div>
                         ):(
                             <div className="d-flex justify-content-between mt-5">
@@ -916,14 +918,14 @@ const handleNavigate = () =>{
                         </button>
                     </div>
                      </Fragment>
-                        {/* ):(
+                        ):(
                             <div>
                                 <h4 className='payment_failed_responce'>
                                 We apologize for the inconvenience, but there was an error processing your payment. If you have completed your payment, please contact our Support Team for further assistance at  <span className="customer_support_No">03111147111</span>
                                 </h4>
                             </div>
-                        ) */}
-                    {/* } */}
+                        )
+                    }
                     
                 </div>
 

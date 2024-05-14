@@ -83,10 +83,9 @@ const FMBanks = () => {
            
             </div>
 
-            <div>
+            {/* <div>
               {`PnrNumber ${PnrNumber}`}
-            </div>
-
+            </div> */}
 
         </div>
 

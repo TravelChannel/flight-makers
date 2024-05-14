@@ -167,9 +167,6 @@ useEffect(() => {
 	  };
 // ------------------------------------------------
 
-
-
-
 	return(
 		<div className='container'>
 			<div className={isMobile ? '' : 'd-flex justify-content-start'}>
@@ -305,7 +302,6 @@ useEffect(() => {
 									}
 
 									{/* ---------------- */}
-
 									<div className='left_menu_content'>
 											<div className='left_menu_content'>
 													{checkAdmin || partialAdmin ? (

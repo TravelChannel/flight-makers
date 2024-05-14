@@ -34,6 +34,9 @@ const SearchFlightResult = () => {
     try {
       setLoading(true); // Set loading to true before fetching data
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
+
+        console.log("Data to pass",searchDataArr);
+
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
   
@@ -59,6 +62,7 @@ const SearchFlightResult = () => {
       setLoading(false);
     }
   };
+
   
   useEffect(() => {
     fetchData();

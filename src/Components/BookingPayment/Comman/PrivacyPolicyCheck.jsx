@@ -22,6 +22,17 @@ const PrivacyPolicyCheck = (props) => {
     console.log("formData get",formData);
     console.log("getFinalOBJ",backendFinalOBJ.pnrBookings);
 
+// ----------------------------Temporary---------------------------------------------------
+      let userPhoneNum;
+      try{
+        userPhoneNum = backendFinalOBJ?.pnrBookings[0]?.phoneNumber ;
+        console.log("userPhoneNum",userPhoneNum);
+      }catch(error){
+        console.log("error",error);
+      }
+// ----------------------------Temporary---------------------------------------------------
+
+
     const [isMobile, setMobile] = useState(window.innerWidth < 768);
     const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
     const [isLoading ,setLoading] = useState(false);
@@ -62,19 +73,22 @@ const PrivacyPolicyCheck = (props) => {
       
         switch (paymentType) {
           case "paypro":
-            paymentCode = 117547;
+            paymentCode = 124774;
+            // paymentCode = 117547;
             iframe_id = 134320; // Only set for "paypro"
             break;
           case "easypaisa":
-            paymentCode = 118906;
+            // paymentCode = 118906;
+            paymentCode = 124780;
             break;
           default:
-            paymentCode = 118909;
+            // paymentCode = 118909;
+            paymentCode = 124777;
             break;
         }
       
           // setPNRLoading(true);
-          const paymentToken = await requestGetpaymentToken(paymentCode);
+          const paymentToken = await requestGetpaymentToken(paymentCode, userPhoneNum);
           console.log('paymentTokenpaymentToken', paymentToken.createOrder);
 
           if (!paymentToken) {
@@ -157,7 +171,7 @@ const PrivacyPolicyCheck = (props) => {
             if(!handleBackendResp2){
               console.log('handleBackendResp',handleBackendResp2);
               throw new Error(
-                'Error Generating Pnr Num',
+                'Error in backend Data Function',
               );
             }
             const DatatoPass ={
@@ -259,15 +273,19 @@ const PrivacyPolicyCheck = (props) => {
 
         };
           console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
+       
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);
+            console.log("checkForPayment1",respServerPnrBooking.data.payload.isAmountEqual);
             if (respServerPnrBooking.data.status !== 'SUCCESS') {
               handleShowErrorAlert("Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details...");
               throw new Error('Error: Server response status is not SUCCESS');
             }else if(respServerPnrBooking.data.payload.isAmountEqual){
-            console.log("checkForPayment",respServerPnrBooking.data.payload.isAmountEqual);
+            console.log("checkForPayment2",respServerPnrBooking.data.payload.isAmountEqual);
             console.log("respServerPnrBooking", respServerPnrBooking);
             toast.success("PNR Created Successfully", { autoClose: 2000 });
             return true;
+            } else{
+              handleShowErrorAlert("Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details....");
             }
           // };
       }

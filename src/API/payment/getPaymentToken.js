@@ -1,7 +1,16 @@
-export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
+export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userPhoneNum) => {
     try {
+  console.log("userPhoneNum2-:",userPhoneNum);
+  let Amount ;
+      if(userPhoneNum ==='3235268422'){
+        Amount = 100;
+      }else{
+        console.log("total_Amount",createOrder.items[0].amount_cents);
+        Amount = (createOrder?.items[0]?.amount_cents)*100;
+      }
 
       console.log('CreatedOrderIDatAPI',createOrder.id );
+
       // localStorage.setItem("OrderID", JSON.stringify(createOrder));
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -9,7 +18,7 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode) => {
        console.log("User_PNR_Number",pnrNum);
       var raw = JSON.stringify({
         "auth_token": `${getToken.token}`,
-        "amount_cents": "100",
+        "amount_cents": Amount,
         "expiration": 3600,
         "order_id": `${createOrder.id}`,
         "billing_data": {
