@@ -26,7 +26,6 @@ const PrivacyPolicyCheck = (props) => {
       let userPhoneNum;
       try{
         userPhoneNum = backendFinalOBJ?.pnrBookings[0]?.phoneNumber ;
-        console.log("userPhoneNum",userPhoneNum);
       }catch(error){
         console.log("error",error);
       }
@@ -46,7 +45,7 @@ const PrivacyPolicyCheck = (props) => {
 
     const UserAmount  = JSON.parse(localStorage.getItem("UserAmount"));
 
-    console.log("UserAmount",UserAmount);
+    // console.log("UserAmount",UserAmount);
     useEffect(() => {
         const handleSize = () => {
             setMobile(window.innerWidth < 768);

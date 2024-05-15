@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import {dataNotfound} from '../Constant/images';
 import TimerModal from '../Components/Searchflight/Comman/TimerRecall';
 import StaticFlightSearchData from '../Components/SEOPages/StaticFlightSearchData.jsx';
+import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
 
 const SearchFlightResult = () => {
   const location = useLocation();
@@ -54,9 +55,10 @@ const SearchFlightResult = () => {
       } else {
         setApiData(fetchedFlightData);
       }
-
+// ------------------------Store Search Log Data ----------------
+     const StoreSearchLogs =  await  SearchLogs(searchDataArr);
+     console.log("StoreSearchLogs12",StoreSearchLogs)
       setLoading(false);
-
     } catch (error) {
       console.error(error);
       setLoading(false);

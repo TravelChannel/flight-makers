@@ -34,6 +34,7 @@ import BlogbyCategory from './Components/BlogsContent/BlogbyCategory';
 
 import IntFlights from './Components/SEOPages/IntAndDomFlights';
 import SubPopularAirline from './Components/SEOPages/SubPopularAirline';
+import WebsiteUnderConstruction from './View/WebsiteUnderConstruction';
 const AppRouter = () => {
   return (
     <Fragment>
@@ -67,6 +68,7 @@ const AppRouter = () => {
         <Route path="/:airlineName" element={<PopularAirLines/>} />
         <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
         <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
+       <Route  path = '/UnderConstruction'  element = {<WebsiteUnderConstruction/>}/>
         {/* <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} /> */}
 
       </Routes>

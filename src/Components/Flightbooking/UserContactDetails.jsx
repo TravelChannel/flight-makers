@@ -180,7 +180,7 @@ const handlePhoneNumberChange = (value, country) => {
     } else if (index === otpInputs.current.length - 1 && sanitizedValue) {
       const enteredOtp = newOtpValues.join('');
       // setUserOtp(enteredOtp);
-      console.log("enteredOtpenteredOtp",enteredOtp);
+      // console.log("enteredOtpenteredOtp",enteredOtp);
       // const OtpResponceOBJ = {
       //   "phoneNumber": getOTPData.phoneNumber,
       //   "countryCode":getOTPData.countryCode,
@@ -190,7 +190,7 @@ const handlePhoneNumberChange = (value, country) => {
         const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
         if (verificationResult.data.status==='SUCCESS') {
           const AccessToken  = verificationResult.data.payload.accessToken;
-          console.log("AccessToken",AccessToken);
+          // console.log("AccessToken",AccessToken);
           document.cookie = `Access_token=${AccessToken}; path=/;`;
           // localStorage.setItem("Access_token", AccessToken);
           setIsOtpTrue(true);
@@ -462,7 +462,7 @@ useEffect(() => {
   const getServiceCharges = async() =>{
     try{
       const responce = await GetServiceCharges(CommissionData);
-      console.log("ServiceChargesData from Backend", responce);
+      // console.log("ServiceChargesData from Backend", responce);
       setServiceCharges(responce.data.payload);
 
     }catch(error){

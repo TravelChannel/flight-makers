@@ -450,7 +450,7 @@ useEffect(() => {
                   </div>
                    <div className='left_menu_content'>
 						<div className='left_menu_content'>
-								{checkAdmin || partialAdmin ? (
+								{checkAdmin ? (
 									<div className={`d-flex justify-content-start menu_complete_content ${selectedMenuItem === 5 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(5)}>
 									<WalletIcon className='menu_content_icon' />
 									<p className='d-flex align-self-center menu_content_typo' onClick={displaySubMenu} >Customer Support</p>
@@ -462,7 +462,7 @@ useEffect(() => {
 									</div>
 								)}
 
-								{isSubMenu  && (checkAdmin || partialAdmin) && (
+								{isSubMenu  && (checkAdmin) && (
 									<Fragment>
 										<div className='admin_submenu'>
 											<p
@@ -539,7 +539,7 @@ useEffect(() => {
 						</div>
                   </div>
 				  {/* ------------------------ */}
-				  {checkAdmin || partialAdmin ?
+				  {checkAdmin ?
 				  (
 					<div className='left_menu_content'>
                   		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 8 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(8)}>
@@ -578,7 +578,7 @@ useEffect(() => {
 						 )
 				  		}
 						{
-										checkAdmin === true || partialAdmin === true ?
+										checkAdmin === true  ?
 										(
 											<div className='left_menu_content'>
 											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 10 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(10)}>
@@ -620,7 +620,7 @@ useEffect(() => {
 				<VerifiedBookings checkAdmin = {checkAdmin}/>}
 				{selectedMenuItem === 5 && (
 						<Fragment>
-							{checkAdmin || partialAdmin ? (
+							{checkAdmin ? (
 							<Fragment>
 								{selectedSubMenu === 1 && <ReIssueReqs />}
 								{selectedSubMenu === 2 && <RefundReqs />}

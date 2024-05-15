@@ -7550,12 +7550,29 @@ margin-top:10px;
 }
 
 
-
-
 .table th, .table td {
   max-width: 250px; 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.under_construction_message1{
+  font-size: 18px;
+  font-weight: 600; 
+  /* color:#36C; */
+}
+.contact_typograpy{
+  color:#2c67b3;
+  font-family: Lato, sans-serif;
+}
+.under_construction_message2{
+  font-size: 30px;
+  font-weight: 600; 
+  color:#F26223;
+}
+.main_construction{
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
 }
 
