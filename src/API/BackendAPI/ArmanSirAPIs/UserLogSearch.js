@@ -1,28 +1,36 @@
 export const saveFlightSearchLogs = async (raw) => {
-    console.log("raw",raw);
-    const url = 'https://faremakers.azurewebsites.net/api/Activity/SaveFlihtSearchLogs';
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
+  try {
+    const { adults, children, infants, classtype, tripType, departure, arrival, date } = raw;
    
+      const departureStr = JSON.stringify(departure);
+      const arrivalStr = JSON.stringify(arrival);
+      const dateStr = JSON.stringify(date);
   
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body:JSON.stringify(raw), 
-      redirect: 'follow'
-    };
-  
-    try {
-      const response = await fetch(url, requestOptions);
+      const encodedDeparture = encodeURIComponent(departureStr);
+      const encodedArrival = encodeURIComponent(arrivalStr);
+      const encodedDate = encodeURIComponent(dateStr);
+      const url = `https://fmcrm.azurewebsites.net/Handlers/FMConnectApis.ashx?type=97&tripType=${tripType}&adults=${adults}&children=${children}&infants=${infants}&classtype=${classtype}&departure=${encodedDeparture}&arrival=${encodedArrival}&date=${encodedDate}`;
+
+
+      console.log("api-url",url);
+      
+      const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          redirect: 'follow'
+      });
+
       if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
+          throw new Error(`Error: ${response.status} ${response.statusText}`);
       }
+
       const result = await response.json();
       console.log('Success:', result);
       return result;
-    } catch (error) {
+  } catch (error) {
       console.error('Error:', error);
       throw error;
-    }
-  };
-  
+  }
+};

@@ -34,13 +34,13 @@ const SearchFlightResult = () => {
 
   const fetchData = async () => {
     try {
-      setLoading(true); // Set loading to true before fetching data
+      setLoading(true);
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
 
         console.log("Data to pass",searchDataArr);
         // ------------------------Store Search Log Data ----------------
-     const StoreSearchLogs =  await  SearchLogs(searchDataArr);
-    // const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
+    //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
+    const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
      console.log("StoreSearchLogs12",StoreSearchLogs)
 
       const futureDate = date[0] + 'T00:00:00';
