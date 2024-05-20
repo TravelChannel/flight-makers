@@ -1507,8 +1507,8 @@ hr{
 }
 
 .hotel_img{
-  /* width:35px; */
-  width: 24px;
+  width:35px;
+  /* width: 24px; */
   vertical-align: middle;
   border: 0;
 }

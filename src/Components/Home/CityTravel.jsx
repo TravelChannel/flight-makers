@@ -12,7 +12,7 @@ const RecentTravel = () =>
                         cityTravelling.map((item,index) => {
                             return(
                                 <div key={index} className="cityImagesBox">
-                                        <img src={item.imagesCity} alt="" type = "image/webp" />
+                                        <img src={item.imagesCity} alt="" />
                                         <div className="imageOverlay">
                                         <h4>{item.cityName}</h4>
                                     </div>

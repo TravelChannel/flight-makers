@@ -5,35 +5,35 @@ import whatsappicon from '../assets/icon/whatsapp-logo.png';
 import cautionicon from '../assets/icon/caution.png';
 
 // ------------------------Payment-------------------------
-import hbllogo from '../assets/paymentlogo/paymentlogo (1).webp';
-import payprologo from '../assets/paymentlogo/paymentlogo (2).webp';
-import digicertlogo from '../assets/paymentlogo/paymentlogo (6).webp';
-import iatalogo from '../assets/paymentlogo/paymentlogo (5).webp';
-import mastercardlogo from '../assets/paymentlogo/paymentlogo (4).webp';
-import visacardlogo from '../assets/paymentlogo/paymentlogo (3).webp';
-import jazzcash_Logo from '../assets/paymentlogo/jazzcashlogo.webp'
-import easypaisa_logo from '../assets/paymentlogo/easypaisa.webp';
+import hbllogo from '../assets/paymentlogo/paymentlogo (1).png';
+import payprologo from '../assets/paymentlogo/paymentlogo (2).png';
+import digicertlogo from '../assets/paymentlogo/paymentlogo (6).png';
+import iatalogo from '../assets/paymentlogo/paymentlogo (5).png';
+import mastercardlogo from '../assets/paymentlogo/paymentlogo (4).png';
+import visacardlogo from '../assets/paymentlogo/paymentlogo (3).png';
+import jazzcash_Logo from '../assets/paymentlogo/jazzcashlogo.png'
+import easypaisa_logo from '../assets/paymentlogo/easypaisa.png';
 
 // -----------------------Flight, Hotel icon--------------------
 import hotellogo from '../assets/hotel-mobile.webp';
-import planelogo from '../assets/plane-mobile.webp';
-import planeImage from '../assets/plane.webp';
+import planelogo from '../assets/plane-mobile.png';
+import planeImage from '../assets/plane.png';
 import hotelImage from '../assets/hotel-sign.webp';
 import sunUmbrellaImage from '../assets/sun-umbrella.png';
 import qaterLogo from '../assets/icon/QR.gif';
-import MallLogo from '../assets/MALL-icon-150x150_wi8.webp';
+import MallLogo from '../assets/MALL-icon-150x150_wi8.png';
 import MallLogoBlue from '../assets/mall-icon-mob.png';
-import MallIconMob from '../assets/mall-icon-mob.webp';
+import MallIconMob from '../assets/mall-icon-mob.png';
 import liveIcon from '../assets/live-icon.png';
 import liveIconMob from '../assets/Live-streaming-icon-blue.png';
 
 // ----------------------City images------------------------------
-import dubaiPics from '../assets/city/Dubai.webp'
+import dubaiPics from '../assets/city/Dubai.png'
 // import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.jpg'
-import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.webp'
-import karachiPics from '../assets/city/quaid-azam-bright.webp'
-import islamabadPics from '../assets/city/shah-faisal-mosque.webp'
-import londonPics from '../assets/city/tower-bridge-london-england_980x650.webp'
+import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.png'
+import karachiPics from '../assets/city/quaid-azam-bright.png'
+import islamabadPics from '../assets/city/shah-faisal-mosque.png'
+import londonPics from '../assets/city/tower-bridge-london-england_980x650.png'
 
 // ----------------------flight booking images------------------------------
 import pakistanMap from '../assets/pakistan-map.png';
@@ -46,8 +46,8 @@ import bankpic from '../assets/online-banking-150x150.png';
 
 
 // ----------------------Slider otp Images------------------------------
-import otpSlider2 from '../assets/slider2.webp';
-import otpSlider3 from '../assets/slider3.webp';
+import otpSlider2 from '../assets/slider2.png';
+import otpSlider3 from '../assets/slider3.png';
 
 // ----------------------Mobile Images------------------------------
 import caution from '../assets/icon/caution.png';

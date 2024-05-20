@@ -16,7 +16,6 @@ const Home = () => {
     <Fragment>
       <div className="container">
         <FlightSearch resultpage={false} />
-        <RecentTravel/>
         <BookingOptions/>
         <AppQR/>
         <CityTravel/>
