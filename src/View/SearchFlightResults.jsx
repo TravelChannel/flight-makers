@@ -39,8 +39,8 @@ const SearchFlightResult = () => {
 
         console.log("Data to pass",searchDataArr);
         // ------------------------Store Search Log Data ----------------
-    //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
-    const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
+     const StoreSearchLogs =  await  SearchLogs(searchDataArr);
+    // const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
      console.log("StoreSearchLogs12",StoreSearchLogs)
 
       const futureDate = date[0] + 'T00:00:00';
