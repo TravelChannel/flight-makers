@@ -42,6 +42,8 @@ import { CSSTransition } from "react-transition-group";
 import CloseIcon from "@mui/icons-material/Close";
 import AdminControl from '../AdminPanel/AdminControl';
 import Cookies from 'js-cookie';
+import LogSearches from '../AdminPanel/LogSearches';
+import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
 
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
@@ -386,8 +388,21 @@ useEffect(() => {
 										</div>
 										):('')
 									}
+
+									{
+										checkAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(11)}>
+											<YoutubeSearchedForIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>SearchLogs </p>
+											</div>
+
+										</div>
+										):('')
+									}
 									<div className='left_menu_content'>
-											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 12 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
 											<LogoutIcon className='menu_content_icon' />
 												<p className='d-flex align-self-center menu_content_typo'>Logout</p>
 											</div>
@@ -589,13 +604,26 @@ useEffect(() => {
 										</div>
 										):('')
 									}
-				  <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+						
+									{
+										checkAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 11 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(11)}>
+											<YoutubeSearchedForIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>SearchLogs </p>
+											</div>
+
+										</div>
+										):('')
+									}
+				       <div className='left_menu_content'>
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 12 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
 
-                  </div>
+                       </div>
 				 </div>
 				)
 			 }
@@ -605,7 +633,7 @@ useEffect(() => {
 				 		<UserDashBoard/> 
 				 		</div>
 				{selectedMenuItem === 1 && (
-					<UserBookingsDetails userData={userData} isLoading ={isLoading} checkAdmin = {checkAdmin}/>
+					<UserBookingsDetails  checkAdmin = {checkAdmin}/>
 						)}
           		{selectedMenuItem === 2 && 
 				<UserProfile  isLoading ={isLoading} checkAdmin = {checkAdmin} partialAdmin = {partialAdmin}/>
@@ -653,6 +681,9 @@ useEffect(() => {
 
 				{selectedMenuItem === 10 && 
 				<AdminControl />}
+
+				{selectedMenuItem === 11 && 
+				<LogSearches />}
 				 </div>
 
 				 <Dialog
@@ -676,7 +707,6 @@ useEffect(() => {
                             </Button>
                             </DialogActions>
                         </Dialog>
-
 			</div>
 		 </div>
 		)

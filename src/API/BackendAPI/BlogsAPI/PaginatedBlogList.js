@@ -3,7 +3,7 @@ import apiClient from "../api_main";
 export const PaginatedBlogList = async(obj)=>{
     try{
          console.log("page",obj);
-        const responce = await apiClient.get(`/blogs/findAllPaginated?page=${obj.page}&pageSize=${obj.pageSize}`);
+        const responce = await apiClient.get(`/blogs/findAllPaginated?pageNumber=${obj.page}&pageSize=${obj.pageSize}`);
         if(responce.data.status === 'SUCCESS'){
             console.log(responce.data.message, 'PaginatedBlogList-SUCCESS');
             return responce;

@@ -10,19 +10,19 @@ import {testimonialsReview} from '../../Constant/homeData';
 import { GetAllPromotions } from "../../API/BackendAPI/allAPICalls";
 const PromotionsView = () =>{
   const [PromotionData ,setPromotionData] = useState([]);
-    useEffect(() => {
-        const getPromotionsDetail = async () => {
-            try {
-                const response = await GetAllPromotions();
-                console.log("promotionResponce",response);
-                setPromotionData(response.data.payload);
-            } catch (error) {
-                console.log('Error in getAllPromotions', error);
-            }
-        };
+    // useEffect(() => {
+    //     const getPromotionsDetail = async () => {
+    //         try {
+    //             const response = await GetAllPromotions();
+    //             console.log("promotionResponce",response);
+    //             setPromotionData(response.data.payload);
+    //         } catch (error) {
+    //             console.log('Error in getAllPromotions', error);
+    //         }
+    //     };
     
-        getPromotionsDetail();
-    }, []);
+    //     getPromotionsDetail();
+    // }, []);
     return (
         <Fragment>
             <div className="component_container"> 
@@ -52,7 +52,7 @@ const PromotionsView = () =>{
                 className="mySwiper"
                 >
                 {
-                    PromotionData.map((item,index) =>
+                    PromotionData?.map((item,index) =>
                     {
                         return( 
                           <div key={index} className="bg-white mb-2">

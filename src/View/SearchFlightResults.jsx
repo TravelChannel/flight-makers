@@ -13,6 +13,7 @@ import {dataNotfound} from '../Constant/images';
 import TimerModal from '../Components/Searchflight/Comman/TimerRecall';
 import StaticFlightSearchData from '../Components/SEOPages/StaticFlightSearchData.jsx';
 import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
+import { saveFlightSearchLogs } from '../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
 
 const SearchFlightResult = () => {
   const location = useLocation();
@@ -37,6 +38,10 @@ const SearchFlightResult = () => {
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
 
         console.log("Data to pass",searchDataArr);
+        // ------------------------Store Search Log Data ----------------
+    //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
+    const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
+     console.log("StoreSearchLogs12",StoreSearchLogs)
 
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
@@ -55,9 +60,6 @@ const SearchFlightResult = () => {
       } else {
         setApiData(fetchedFlightData);
       }
-// ------------------------Store Search Log Data ----------------
-     const StoreSearchLogs =  await  SearchLogs(searchDataArr);
-     console.log("StoreSearchLogs12",StoreSearchLogs)
       setLoading(false);
     } catch (error) {
       console.error(error);

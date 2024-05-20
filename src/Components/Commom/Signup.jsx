@@ -45,7 +45,8 @@ const SignUp = () => {
             setFromSignUp(true);
             setLoading(false);
           }else{
-            alert('error while fetching Data');
+            console.log("error while fetching Data")
+            // alert('error while fetching Data');
           }
         
         }catch(error){ 
@@ -53,9 +54,8 @@ const SignUp = () => {
           console.error('errorOTP',error);
           setLoading(false);
           // alert('error while Sending OTP' ,error);
-          alert(`Error while sending OTP: ${error.message}`);
-
-          navigate('/signup')
+          // alert(`Error while sending OTP: ${error.message}`);
+          navigate('/signup');
         }
       }
       const backToNumber = ()=>{

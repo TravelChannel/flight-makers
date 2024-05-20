@@ -185,13 +185,13 @@ const UserCompleteDetail = () => {
                                                         <div>
                                                             <p className="fd_airport_name fd_space_baggages ">Seats Types</p>
                                                             <p className="fd_airport_name fd_space_baggages ">
-                                                                    {conSeatsType}
+                                                                    {conSeatsType || '...'}
                                                             </p>
                                                         </div>
-                                                        <div>
+                                                        {/* <div>
                                                             <div>
                                                                 {
-                                                                    flightDetails.baggageAllowance[index].pieceCount ? (
+                                                                 flightDetails.baggageAllowance[index].pieceCount ? (
                                                                     <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
                                                                     ) : (
                                                                     <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
@@ -200,15 +200,39 @@ const UserCompleteDetail = () => {
                                                                 </div>
                                                                 <p className="fd_airport_name fd_space_baggages mob_iti_text">{flightDetails.baggageAllowance[index].pieceCount} {flightDetails.baggageAllowance[index].weight} {flightDetails.baggageAllowance[index].unit}</p>
 
-                                                        </div>
-                                                        <div>
+                                                        </div> */}
+                                                            <div>
+                                                                <div>
+                                                                    {flightDetails && flightDetails.baggageAllowance && flightDetails.baggageAllowance[index]
+                                                                        ? flightDetails.baggageAllowance[index].pieceCount
+                                                                            ? <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
+                                                                            : <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
+                                                                        : null}
+                                                                </div>
+                                                                <p className="fd_airport_name fd_space_baggages mob_iti_text">
+                                                                    {flightDetails && flightDetails.baggageAllowance && flightDetails.baggageAllowance[index]
+                                                                        ? `${flightDetails.baggageAllowance[index].pieceCount || ''} ${flightDetails.baggageAllowance[index].weight || ''} ${flightDetails.baggageAllowance[index].unit || ''}`
+                                                                        : '...'}
+                                                                </p>
+                                                            </div>
+                                                        {/* <div>
                                                             <p className="fd_airport_name fd_space_baggages">
                                                                 <span className={seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
                                                                     Remaining Seats
                                                                 </span>
                                                             </p>
                                                             <p className="fd_airport_name fd_space_baggages">{flightDetails.baggageAllowance[index].pieceCount} {flightDetails.baggageAllowance[index].weight} {flightDetails.baggageAllowance[index].unit}</p>
-                                                        </div>
+                                                        </div> */}
+                                                        <div>
+                                                                <p className="fd_airport_name fd_space_baggages">
+                                                                    <span className={seatAvailable && seatAvailable[index] && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                                        Remaining Seats
+                                                                    </span>
+                                                                </p>
+                                                                <p className={`fd_airport_name fd_space_baggages ${seatAvailable && seatAvailable.length > 0 && seatAvailable[index] && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>
+                                                                    {seatAvailable && seatAvailable.length > 0 && seatAvailable[index] ? `${seatAvailable[index]}` : '...'}
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     
                                                     </div>
@@ -216,7 +240,7 @@ const UserCompleteDetail = () => {
                                                 ):(  
                                                 <div className="col-md-3 iti_content_spacing">
                                                     <div className='d-flex justify-content-between'>
-                                                        <div className="">
+                                                        {/* <div className="">
                                                             <p className="fd_airport_name fd_space_baggages">No of Seats</p>
                                                             <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
                                                             {
@@ -231,8 +255,28 @@ const UserCompleteDetail = () => {
                                                                 Remaining Seats
                                                             </span>
                                                         </p>
-                                                        </div>
+                                                        </div> */}
                                                         <div className="">
+                                                            <p className="fd_airport_name fd_space_baggages">No of Seats</p>
+                                                            <p className="fd_airport_name fd_space_baggages iti_difference">Seats Types</p>
+                                                            {
+                                                                flightDetails && flightDetails.baggageAllowance && flightDetails.baggageAllowance[index] ? (
+                                                                    <p className="fd_airport_name fd_space_baggages">
+                                                                        {flightDetails.baggageAllowance[index].pieceCount ? (
+                                                                            'Piece Counts'
+                                                                        ) : (
+                                                                            'Check-in baggage'
+                                                                        )}
+                                                                    </p>
+                                                                ) : null
+                                                            }
+                                                            <p className="fd_airport_name fd_space_baggages">
+                                                                <span className={seatAvailable && seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}>
+                                                                    Remaining Seats
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                        {/* <div className="">
                                                             <p className="fd_airport_name fd_space_baggages">{`${flightDetails.adults+flightDetails.children+flightDetails.infants}`}</p>
                                                             <p className="fd_airport_name fd_space_baggages iti_difference">
                                                                 {conSeatsType}
@@ -243,6 +287,28 @@ const UserCompleteDetail = () => {
                                                         ) : (
                                                             <p className='fd_airport_name fd_space_baggages'>...</p>
                                                         )}
+
+                                                        </div> */}
+                                                        <div className="">
+                                                            <p className="fd_airport_name fd_space_baggages">{`${flightDetails?.adults + flightDetails?.children + flightDetails?.infants}`}</p>
+                                                            <p className="fd_airport_name fd_space_baggages iti_difference">
+                                                                {conSeatsType}
+                                                            </p>
+                                                            {flightDetails && flightDetails.baggageAllowance && flightDetails.baggageAllowance[index] ? (
+                                                                <p className="fd_airport_name fd_space_baggages">
+                                                                    {flightDetails.baggageAllowance[index].pieceCount}{' '}
+                                                                    {flightDetails.baggageAllowance[index].weight}{' '}
+                                                                    {flightDetails.baggageAllowance[index].unit}
+                                                                </p>
+                                                            ) : null}
+                                                            {seatAvailable && seatAvailable.length > 0 ? (
+                                                                <p className={`fd_airport_name fd_space_baggages ${seatAvailable[index] < 5 ? 'text-danger' : 'text-success'}`}>
+                                                                    {seatAvailable[index]}
+                                                                </p>
+                                                            ) : (
+                                                                <p className='fd_airport_name fd_space_baggages'>...</p>
+                                                            )}
+                                                             {/* <p className="fd_airport_name">{`( ${flightdetails.classSegment[Math.min(index * 2 + idx, flightdetails.classSegment.length - 1)]})`}</p> */}
                                                         </div>
                                                     </div>
                                                 </div>

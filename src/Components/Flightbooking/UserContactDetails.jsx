@@ -188,7 +188,7 @@ const handlePhoneNumberChange = (value, country) => {
       // }
       try {
         const verificationResult = await verifyOTPRes(getOTPData,enteredOtp);
-        if (verificationResult.data.status==='SUCCESS') {
+        if (verificationResult.data.status ==='SUCCESS') {
           const AccessToken  = verificationResult.data.payload.accessToken;
           // console.log("AccessToken",AccessToken);
           document.cookie = `Access_token=${AccessToken}; path=/;`;
@@ -275,7 +275,7 @@ useEffect(() => {
     const timer = setTimeout(() => {
       setShowMessage(false);
       setIsOtpTrue(null);
-    }, 1000);
+    }, 3000);
 
     // Make sure otpInputs.current[0] is not null before accessing focus
     if (numberOfInputs > 0 && otpInputs.current[0]) {
@@ -306,7 +306,8 @@ useEffect(() => {
           console.log('OTPResponce',OTPResponce);
           setOTPResend(true);
         }else{
-          alert("Error While Sending OTP ,Please Try Again");
+          console.log("Error While Sending OTP")
+          // alert("Error While Sending OTP ,Please Try Again");
         }
   }
   // const handleChange = (event) => {
@@ -412,7 +413,6 @@ useEffect(() => {
   });
 
   const handleNavigation =async() => {
-
     try{
       setLoading(true);
       const finalObject= generateBookingObject(); 
@@ -521,6 +521,7 @@ useEffect(() => {
                       <button type="button" onClick={sendOTPHandller} className="btn btn-primary iti_otp_button">
                         Get OTP
                       </button>
+                    
                     </div>
                       )
                     }
@@ -529,7 +530,7 @@ useEffect(() => {
                     isLogin ?(''):(
                    <div>
                     <div className="user_contact_info">
-                      <p className="iti_mob_title">OTP (Authentication Code) 1111</p>
+                      <p className="iti_mob_title">OTP (Authentication Code)</p>
                     </div>
                     <div className="iti_otp_main d-flex justify-content-start">
                       {Array.from({ length: 6 }).map((_, index) => (
@@ -553,7 +554,7 @@ useEffect(() => {
                  </div>
                 <div className='otp_message_placeholder'>
                   {showMessage && (
-                    <p className="otp_message"> {isOtpTrue ? (<span className="success_message">OTP successfull</span>) : (<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
+                    <p className="otp_message"> {isOtpTrue ? (<span className="success_message">OTP successfull</span>):(<span className='failer_message'>Please Enter a Valid OTP</span>)}</p>
                   )
                   }
                 </div>

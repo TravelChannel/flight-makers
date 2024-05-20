@@ -169,41 +169,117 @@ const FlightSearch = (props) => {
     setArrival(departure);
   };
 
-  const handleDepartureSearch = (value) => {
-    setDeparture(value);
-    const filteredCities = value.length >= 3 ? concatenatedAirportsValues.filter((city) => {
-      const concatenatedValue = city.airport;
-      const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
-      const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
-      const airportName = concatenatedValue.split(',')[1]?.trim();
-      return (
-        iataCode && iataCode.toLowerCase() === value.toLowerCase()
-      ) || (
-          cityName.toLowerCase().startsWith(value.toLowerCase())
-        ) || (
-          airportName && airportName.toLowerCase().startsWith(value.toLowerCase())
-        );
-    }) : [];
-    setSearchResults(filteredCities);
-  };
+//   const handleDepartureSearch = (value) => {
+//     setDeparture(value);
+
+//     const filteredCities = value.length >= 3 ? concatenatedAirportsValues.filter((city) => {
+//       const concatenatedValue = city.airport;
+//       const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
+//       const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
+//       const airportName = concatenatedValue.split(',')[1]?.trim();
+//       if (iataCode && iataCode.toLowerCase() === value.toLowerCase()) {
+//         return true;
+//       }
+//       return (
+//         cityName.toLowerCase().startsWith(value.toLowerCase()) ||
+//         (airportName && airportName.toLowerCase().startsWith(value.toLowerCase()))
+//       );
+//     }) : [];
+
+//     setSearchResults(filteredCities);
+// };
+
+const handleDepartureSearch = (value) => {
+  setDeparture(value);
+
+  if (value.length >= 3) {
+      const filteredCities = concatenatedAirportsValues.filter((city) => {
+          const concatenatedValue = city.airport;
+          const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
+          const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
+          const airportName = concatenatedValue.split(',')[1]?.trim();
+
+          return (
+              (iataCode && iataCode.toLowerCase().includes(value.toLowerCase())) ||
+              cityName.toLowerCase().startsWith(value.toLowerCase()) ||
+              (airportName && airportName.toLowerCase().startsWith(value.toLowerCase()))
+          );
+      });
+
+      // Separate into groups
+      const iataMatches = filteredCities.filter((city) => {
+          const iataCode = city.airport.match(/\((.*?)\)/)?.[1]?.trim();
+          return iataCode && iataCode.toLowerCase().includes(value.toLowerCase());
+      });
+
+      const otherMatches = filteredCities.filter((city) => {
+          const iataCode = city.airport.match(/\((.*?)\)/)?.[1]?.trim();
+          return !(iataCode && iataCode.toLowerCase().includes(value.toLowerCase()));
+      });
+
+      // Combine with IATA matches on top
+      const sortedCities = [...iataMatches, ...otherMatches];
+
+      setSearchResults(sortedCities);
+  } else {
+      setSearchResults([]);
+  }
+};
+
+
+  // const handleArrivalSearch = (value) => {
+
+  //   const filteredCities = value.length >= 3 ? concatenatedAirportsValues.filter((city) => {
+  //     const concatenatedValue = city.airport;
+  //     const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
+  //     const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
+  //     const airportName = concatenatedValue.split(',')[1]?.trim();
+  //     return (
+  //       iataCode && iataCode.toLowerCase() === value.toLowerCase()
+  //     ) || (
+  //         cityName.toLowerCase().startsWith(value.toLowerCase())
+  //       ) || (
+  //         airportName && airportName.toLowerCase().startsWith(value.toLowerCase())
+  //       );
+  //   }) : [];
+  //   setSearchResults(filteredCities);
+  // };
 
   const handleArrivalSearch = (value) => {
+    if (value.length >= 3) {
+        const filteredCities = concatenatedAirportsValues.filter((city) => {
+            const concatenatedValue = city.airport;
+            const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
+            const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
+            const airportName = concatenatedValue.split(',')[1]?.trim();
 
-    const filteredCities = value.length >= 3 ? concatenatedAirportsValues.filter((city) => {
-      const concatenatedValue = city.airport;
-      const iataCode = concatenatedValue.match(/\((.*?)\)/)?.[1]?.trim();
-      const cityName = concatenatedValue.replace(/\(.*?\)/, '').trim();
-      const airportName = concatenatedValue.split(',')[1]?.trim();
-      return (
-        iataCode && iataCode.toLowerCase() === value.toLowerCase()
-      ) || (
-          cityName.toLowerCase().startsWith(value.toLowerCase())
-        ) || (
-          airportName && airportName.toLowerCase().startsWith(value.toLowerCase())
-        );
-    }) : [];
-    setSearchResults(filteredCities);
-  };
+            return (
+                (iataCode && iataCode.toLowerCase().includes(value.toLowerCase())) ||
+                cityName.toLowerCase().startsWith(value.toLowerCase()) ||
+                (airportName && airportName.toLowerCase().startsWith(value.toLowerCase()))
+            );
+        });
+
+        // Separate into groups
+        const iataMatches = filteredCities.filter((city) => {
+            const iataCode = city.airport.match(/\((.*?)\)/)?.[1]?.trim();
+            return iataCode && iataCode.toLowerCase().includes(value.toLowerCase());
+        });
+
+        const otherMatches = filteredCities.filter((city) => {
+            const iataCode = city.airport.match(/\((.*?)\)/)?.[1]?.trim();
+            return !(iataCode && iataCode.toLowerCase().includes(value.toLowerCase()));
+        });
+
+        // Combine with IATA matches on top
+        const sortedCities = [...iataMatches, ...otherMatches];
+
+        setSearchResults(sortedCities);
+    } else {
+        setSearchResults([]);
+    }
+};
+
 
   const handleDepartureSelect = (selectedValue) => {
     if (!selectedValue) {

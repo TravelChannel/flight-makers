@@ -62,12 +62,13 @@ const OtpModel = () => {
         setOTP(true);
         setLoading(false);
       }else{
-        alert(OTPResponce.data.message);
+        console.log("error while Sending Data");
+        // alert(OTPResponce.data.message);
       }
     
     }catch(error){ 
       console.error('errorOTP',error);
-      alert("Error while Sending OTP");
+      // alert("Error while Sending OTP");
       setLoading(false);
       navigate('/');
     }

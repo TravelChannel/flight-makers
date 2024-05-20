@@ -15,19 +15,11 @@ const Home = () => {
     return (
     <Fragment>
       <div className="container">
-       {/* {
-        !isLogin ? (
-          <ModelOTP/> 
-        ):('')
-       }  */}
         <FlightSearch resultpage={false} />
         <RecentTravel/>
-        <PromotionsView/>
         <BookingOptions/>
-        {/* <Notification/> */}
         <AppQR/>
         <CityTravel/>
-        <Tesimonials/>
       </div>
     </Fragment>);
     

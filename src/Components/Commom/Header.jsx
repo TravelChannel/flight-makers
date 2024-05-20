@@ -71,18 +71,12 @@ const Header = () => {
                     </span>
                   </Link>
                 </li>
-                <li
-                  className={`${isScrolled ? "showText" : "hideIndex"}`}
-                >
-                  <Link to="">
-                    <img
-                      src={image.planelogo}
-                      className="w-35"
-                      alt="FLIGHTS-LOGO"
-                    />
+                <li className={`${isScrolled ? "showText" : "hideIndex"}`}>
+                  <a href="https://www.faremakers.com/" target="_blank" rel="noopener noreferrer">
+                    <img src={image.planelogo} className="w-35" alt="FLIGHTS-LOGO" />
                     <br />
                     <span className="iconText menuItem">Flights</span>
-                  </Link>
+                  </a>
                 </li>
                 {/* <li
                   id="hotels"
@@ -98,19 +92,12 @@ const Header = () => {
                     <span className="iconText menuItem">Hotels</span>
                   </Link>
                 </li> */}
-                <li
-                  id="hotels"
-                  className={`${isScrolled ? "showText" : "hideIndex"}`}
-                >
-                  <Link to="">
-                    <img
-                      src={image.MallIconMob}
-                      className="w-35"
-                      alt="HOTEL-LOGO"
-                    />
-                    <br />
-                    <span className="iconText menuItem">Mall</span>
-                  </Link>
+                <li className={`${isScrolled ? "showText" : "hideIndex"}`}>
+                    <a href="https://www.faremakersmall.com/" target="_blank" rel="noopener noreferrer">
+                      <img src={image.MallIconMob} className="w-35" alt="FLIGHTS-LOGO" />
+                      <br />
+                      <span className="iconText menuItem">Mall</span>
+                    </a>
                 </li>
                 {/* <li
                   id="hotels"
@@ -165,7 +152,7 @@ const Header = () => {
                                 <CloseIcon onClick={closeMenu} />
                         </div>
                     </div>
-                    <ul >
+                    <ul>
                     <li onClick={() => { window.location.href = '/about-us' }} className="mob_menu_txtcolor"><GroupsIcon className="mob_menu_icon"/> About Us</li>
                       <li onClick={()=>{window.location.href = '/contact-us'}} className="mob_menu_txtcolor"><WifiCallingIcon className="mob_menu_icon"/> Contact Us</li>
                       <li onClick={()=>{window.location.href = '/customer-support'}} className="mob_menu_txtcolor"><SupportAgentIcon className="mob_menu_icon"/>Support</li>

@@ -15,6 +15,7 @@ import StaticFlightSearchData from './StaticFlightSearchData.jsx';
 import { useParams } from 'react-router-dom';
 import { InternationRoutes } from '../../Constant/FooterPagesData/InternationalRoutes.js';
 import { DomesticRoutes } from '../../Constant/FooterPagesData/DomesticRoutes.js';
+import { SearchLogs } from '../../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
 
 const IntFlights = () => {
   const location = useLocation();
@@ -95,8 +96,13 @@ const IntFlights = () => {
     try {
       setLoading(true); 
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
+
+    
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
+      console.log("abbbbbc",searchDataArr);
+      const StoreSearchLogs =  await SearchLogs(searchDataArr);
+      console.log("StoreSearchLogs12",StoreSearchLogs);
   
       const fetchedFlightData = await requestFetchSearchResult(searchDataArr);
 

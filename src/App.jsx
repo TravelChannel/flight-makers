@@ -15,6 +15,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MetaPage from "./View/MetaPage";
 import { MetaPageData } from "./Constant/MetaPageData";
+
+import { sendCrashSMS } from "./API/BackendAPI/ArmanSirAPIs/SMSonCrash";
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,
     setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData,setProfileImg} = useFormData();
@@ -71,6 +73,8 @@ const App = () => {
       }
     } catch (error) {
       console.error('Error fetching data:', error);
+      // const crashResponce = await sendCrashSMS();
+      // console.log('crashResponce',crashResponce);
     }
   };
   

@@ -18,7 +18,7 @@ const About = () => {
           <GrassIcon className='about_us_icon align-self-center'/><h3>About Us</h3>
           </div>
           <div className='about_container'>
-            <img src={images.FMAbout} alt="" width ='500px'  />
+            <img src={images.FMAbout} alt=""  />
           </div>
           <h5 className='about_details'>Why Choose Us  </h5>
           <div className='about_us_content'>

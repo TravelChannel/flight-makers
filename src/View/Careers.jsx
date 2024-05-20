@@ -18,7 +18,7 @@ const Careers = () => {
                 </h5>
             </div>
             <div>
-                <img src={images.career} alt="" width='330px'/>
+                <img src={images.career} alt="" className='career_img_prop'/>
             </div>
         </div>
     </div>

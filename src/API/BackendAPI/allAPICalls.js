@@ -11,7 +11,7 @@ export const UserBookingDetails = async (finalObject) => {
             return response; 
         } else {
             console.log(response.data.message, 'danger');
-			alert("error while sending data to database",response.data.message);
+			// alert("error while sending data to database",response.data.message);
             return null; 
         }
     } catch (error) {

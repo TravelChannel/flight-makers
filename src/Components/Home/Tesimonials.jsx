@@ -10,18 +10,18 @@ import {testimonialsReview} from '../../Constant/homeData';
 import { DisplayRatings } from "../../API/BackendAPI/RateUsAPI/DisplayRatings";
 const Tesimonials = () =>{
     const [RatingList ,setRatingList] = useState([]);
-    useEffect(() => {
-        const handleBlogLists = async () => {
-            try {
-                const response = await DisplayRatings();
-                setRatingList(response.data.payload); 
-                console.log("Response from RatingList API:", response);
-            } catch (error) {
-                console.log("Error on RatingList API:", error);
-            }
-        }
-        handleBlogLists();
-    }, []);
+    // useEffect(() => {
+    //     const handleBlogLists = async () => {
+    //         try {
+    //             const response = await DisplayRatings();
+    //             setRatingList(response.data.payload); 
+    //             console.log("Response from RatingList API:", response);
+    //         } catch (error) {
+    //             console.log("Error on RatingList API:", error);
+    //         }
+    //     }
+    //     handleBlogLists();
+    // }, []);
     const ArrangeDateFormat = (JourneyDate) => {
         const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
         return formattedDate;

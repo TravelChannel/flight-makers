@@ -5,34 +5,35 @@ import whatsappicon from '../assets/icon/whatsapp-logo.png';
 import cautionicon from '../assets/icon/caution.png';
 
 // ------------------------Payment-------------------------
-import hbllogo from '../assets/paymentlogo/paymentlogo (1).png';
-import payprologo from '../assets/paymentlogo/paymentlogo (2).png';
-import digicertlogo from '../assets/paymentlogo/paymentlogo (6).png';
-import iatalogo from '../assets/paymentlogo/paymentlogo (5).png';
-import mastercardlogo from '../assets/paymentlogo/paymentlogo (4).png';
-import visacardlogo from '../assets/paymentlogo/paymentlogo (3).png';
-import jazzcash_Logo from '../assets/paymentlogo/jazzcashlogo.png'
-import easypaisa_logo from '../assets/paymentlogo/easypaisa.png';
+import hbllogo from '../assets/paymentlogo/paymentlogo (1).webp';
+import payprologo from '../assets/paymentlogo/paymentlogo (2).webp';
+import digicertlogo from '../assets/paymentlogo/paymentlogo (6).webp';
+import iatalogo from '../assets/paymentlogo/paymentlogo (5).webp';
+import mastercardlogo from '../assets/paymentlogo/paymentlogo (4).webp';
+import visacardlogo from '../assets/paymentlogo/paymentlogo (3).webp';
+import jazzcash_Logo from '../assets/paymentlogo/jazzcashlogo.webp'
+import easypaisa_logo from '../assets/paymentlogo/easypaisa.webp';
 
 // -----------------------Flight, Hotel icon--------------------
-import hotellogo from '../assets/hotel-mobile.png';
-import planelogo from '../assets/plane-mobile.png';
-import planeImage from '../assets/plane.png';
-import hotelImage from '../assets/hotel-sign.png';
+import hotellogo from '../assets/hotel-mobile.webp';
+import planelogo from '../assets/plane-mobile.webp';
+import planeImage from '../assets/plane.webp';
+import hotelImage from '../assets/hotel-sign.webp';
 import sunUmbrellaImage from '../assets/sun-umbrella.png';
 import qaterLogo from '../assets/icon/QR.gif';
-import MallLogo from '../assets/MALL-icon-150x150_wi8.png';
+import MallLogo from '../assets/MALL-icon-150x150_wi8.webp';
 import MallLogoBlue from '../assets/mall-icon-mob.png';
-import MallIconMob from '../assets/mall-icon-mob.png';
+import MallIconMob from '../assets/mall-icon-mob.webp';
 import liveIcon from '../assets/live-icon.png';
 import liveIconMob from '../assets/Live-streaming-icon-blue.png';
 
 // ----------------------City images------------------------------
-import dubaiPics from '../assets/city/Dubai.jpg'
-import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.jpg'
-import karachiPics from '../assets/city/quaid-azam-bright.png'
-import islamabadPics from '../assets/city/shah-faisal-mosque.jpg'
-import londonPics from '../assets/city/tower-bridge-london-england_980x650.jpg'
+import dubaiPics from '../assets/city/Dubai.webp'
+// import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.jpg'
+import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.webp'
+import karachiPics from '../assets/city/quaid-azam-bright.webp'
+import islamabadPics from '../assets/city/shah-faisal-mosque.webp'
+import londonPics from '../assets/city/tower-bridge-london-england_980x650.webp'
 
 // ----------------------flight booking images------------------------------
 import pakistanMap from '../assets/pakistan-map.png';
@@ -45,8 +46,8 @@ import bankpic from '../assets/online-banking-150x150.png';
 
 
 // ----------------------Slider otp Images------------------------------
-import otpSlider2 from '../assets/slider2.png';
-import otpSlider3 from '../assets/slider3.png';
+import otpSlider2 from '../assets/slider2.webp';
+import otpSlider3 from '../assets/slider3.webp';
 
 // ----------------------Mobile Images------------------------------
 import caution from '../assets/icon/caution.png';
@@ -72,13 +73,13 @@ import extra_Bagg from '../assets/extra_baggages/double-baggage.jpg';
 
 import UAN from '../assets/icon/UAN-icon.png';
 import Mail from '../assets/icon/email-icon.png';
-import FMAbout from '../../src/assets/FMAbout.png';
-import SCBank from '../../src/assets/icon/SCBank.png';
+import FMAbout from '../../src/assets/FMAbout.webp';
+import SCBank from '../../src/assets/icon/SCBank.webp';
 import MBBank from '../../src/assets/icon/MB-bank.png';
 
 
 import refundPolicy from '../../src/assets/refundPolicy.jpeg';
-import career from '../../src/assets/careers.png';
+import career from '../../src/assets/careers.webp';
 
 import userProfile from '../../src/assets/userProfile.jpg'; 
 import announcement from '../../src/assets/announcement.png';
@@ -88,13 +89,12 @@ import saiRouteMap from '../../src/assets/sairouteMap.jpg';
 
 // --------------------Blogs------------------------------------
 
-import blogimg1 from '../../src/assets/Blogs/banner2.png';
-import blogimg2 from '../../src/assets/Blogs/girlb.jpg';
-import blogimg3 from '../../src/assets/Blogs/forest.jpg';
-import blogimg4 from '../../src/assets/Blogs/kashmir.jpg';
+// import blogimg1 from '../../src/assets/Blogs/banner2.png';
+// import blogimg2 from '../../src/assets/Blogs/girlb.jpg';
+// import blogimg3 from '../../src/assets/Blogs/forest.jpg';
+// import blogimg4 from '../../src/assets/Blogs/kashmir.jpg';
 
 import blogBackGround from '../../src/assets/Blogs/intro.png';
-
 import fmBlogLogo from '../../src/assets/fm_blog.png';
 import underConstruction from '../../src/assets/worker-with-briefcase-blocked-way.jpg';
 import gearImage from '../../src/assets/gears.jpg';
@@ -109,5 +109,5 @@ export default faremakerlogo ;
 
 export {bankicon,whatsappicon,cautionicon, hbllogo,payprologo,iatalogo,mastercardlogo,digicertlogo,visacardlogo,jazzcash_Logo,hotellogo,planelogo,UAN,Mail,FMAbout,SCBank,MBBank,
     planeImage,hotelImage,sunUmbrellaImage,qaterLogo,dubaiPics,lahorePics,karachiPics,islamabadPics,londonPics,pakistanMap,mobileScaner,officeLocation
-    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogimg1,blogimg2,blogimg3,blogimg4,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot
+    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot
 };
