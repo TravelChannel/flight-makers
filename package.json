@@ -1,5 +1,6 @@
 {
   "name": "faremaker-react",
+  "homepage": "https://faremakersmalls.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
