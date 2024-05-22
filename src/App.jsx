@@ -15,7 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import MetaPage from "./View/MetaPage";
 import { MetaPageData } from "./Constant/MetaPageData";
-
+import Cookies from "js-cookie";
 import { sendCrashSMS } from "./API/BackendAPI/ArmanSirAPIs/SMSonCrash";
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,
@@ -52,9 +52,12 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const response = await VerificationAPi();  
+      // const response = await VerificationAPi();  
+      const response = Cookies.get("Access_token") ? await VerificationAPi() :false
       console.log("Verification-API", response);
-      if (response.data.status === 'SUCCESS') {
+      if (response.data.status === 'SUCCESS') 
+        // if(response)
+        {
         console.log('User is logged in');
         setLogIn(true);
         const userPhone = response.data.payload.userData.phoneNumber;
@@ -73,8 +76,6 @@ const App = () => {
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      // const crashResponce = await sendCrashSMS();
-      // console.log('crashResponce',crashResponce);
     }
   };
   

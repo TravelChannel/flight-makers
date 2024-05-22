@@ -43,7 +43,8 @@ import { dataNotfound } from '../../Constant/images.js';
 import TimerModal from '../Searchflight/Comman/TimerRecall.jsx';
 import StaticFlightSearchData from './StaticFlightSearchData.jsx';
 // import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
-import { SearchLogs } from '../../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
+// import { SearchLogs } from '../../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
+import { saveFlightSearchLogs } from '../../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
 // ---------------------------------------------------------------------
 const airlineComponents = {
   'air-arabia-flights':AirArabiaFlights,
@@ -160,7 +161,8 @@ const PopularAirLines = () => {
       
 
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
-      const StoreSearchLogs =  await SearchLogs(searchDataArr);
+      // const StoreSearchLogs =  await SearchLogs(searchDataArr);
+      const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
       console.log("StoreSearchLogs12",StoreSearchLogs);
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
@@ -189,14 +191,14 @@ const PopularAirLines = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-    const timer = setTimeout(() => {
-      setShowTimerModal(true);
-    }, 4000000);
-    return () => clearTimeout(timer);
+  // useEffect(() => {
+  //   fetchData();
+  //   const timer = setTimeout(() => {
+  //     setShowTimerModal(true);
+  //   }, 4000000);
+  //   return () => clearTimeout(timer);
 
-  },[]);
+  // },[]);
   useEffect(() => {
     fetchData();
     const timer = setTimeout(() => {

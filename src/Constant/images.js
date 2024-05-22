@@ -28,12 +28,12 @@ import liveIcon from '../assets/live-icon.png';
 import liveIconMob from '../assets/Live-streaming-icon-blue.png';
 
 // ----------------------City images------------------------------
-import dubaiPics from '../assets/city/Dubai.png'
+import dubaiPics from '../assets/city/Dubai.png';
 // import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.jpg'
-import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.png'
-import karachiPics from '../assets/city/quaid-azam-bright.png'
-import islamabadPics from '../assets/city/shah-faisal-mosque.png'
-import londonPics from '../assets/city/tower-bridge-london-england_980x650.png'
+import lahorePics from '../assets/city/lahore-lahore-city-lhr-lahore-pakistan.png';
+import karachiPics from '../assets/city/quaid-azam-bright.png';
+import islamabadPics from '../assets/city/shah-faisal-mosque.png';
+import londonPics from '../assets/city/tower-bridge-london-england_980x650.png';
 
 // ----------------------flight booking images------------------------------
 import pakistanMap from '../assets/pakistan-map.png';
@@ -64,7 +64,6 @@ import dataNotfound from '../assets/data_not_found.png';
 // -----------------------Itineray Details Images  --------------------
 import passport_Fname from '../assets/ItineraryDetails/passport_Fname.png';
 import passport_Lname  from '../assets/ItineraryDetails/passport_Lname.png';
-
 
 //---------------------Extra Baggages ---------------------------
 import nill_Bagg from '../assets/extra_baggages/no-baggage.jpg';

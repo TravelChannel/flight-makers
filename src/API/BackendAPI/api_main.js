@@ -19,7 +19,7 @@ const apiClient = axios.create({
   // baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain
   // baseURL: 'http://192.168.18.128/KBD_Backend/api', // Hashim
   // baseURL: 'http://localhost/KBD_Backend/api',
-  // timeout: 900000,
+  timeout: 60000,
   
   // headers: {
   //      Authorization: `Bearer ${Cookies.get("Access_token")}`,

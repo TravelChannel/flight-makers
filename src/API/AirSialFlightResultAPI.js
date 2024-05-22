@@ -45,7 +45,8 @@ const fetchAirsailData = async (searchDataArr) => {
         redirect: 'follow'
     };
     try {
-        const responsePromise = fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions);
+        // const responsePromise = fetch("http://demo.airsial.com.pk/starter/asmis/booking", requestOptions);
+        const responsePromise = null;
         const timeoutPromise = new Promise((resolve, reject) => {
             setTimeout(() => {
                 reject(new Error('Request timeout'));

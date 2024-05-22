@@ -16,7 +16,7 @@ import { useParams } from 'react-router-dom';
 import { InternationRoutes } from '../../Constant/FooterPagesData/InternationalRoutes.js';
 import { DomesticRoutes } from '../../Constant/FooterPagesData/DomesticRoutes.js';
 import { SearchLogs } from '../../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
-
+import { saveFlightSearchLogs } from '../../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
 const IntFlights = () => {
   const location = useLocation();
 
@@ -101,7 +101,8 @@ const IntFlights = () => {
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
       console.log("abbbbbc",searchDataArr);
-      const StoreSearchLogs =  await SearchLogs(searchDataArr);
+      // const StoreSearchLogs =  await SearchLogs(searchDataArr);
+      const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
       console.log("StoreSearchLogs12",StoreSearchLogs);
   
       const fetchedFlightData = await requestFetchSearchResult(searchDataArr);
