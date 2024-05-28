@@ -24,6 +24,7 @@ const SearchFlightResult = () => {
   const [apiData, setApiData] = useState([]);
   const [alterRates, setAlerRates] = useState([]);
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+
   const totalResults = apiData.length;
   
   const navigate = useNavigate();
@@ -31,6 +32,8 @@ const SearchFlightResult = () => {
     setSelectedItemIndex(index);
      window.scrollTo(0, 0);
   };
+  
+
 
   const fetchData = async () => {
     try {
@@ -40,8 +43,9 @@ const SearchFlightResult = () => {
         console.log("Data to pass",searchDataArr);
         // ------------------------Store Search Log Data ----------------
     //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
-    const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
-     console.log("StoreSearchLogs12",StoreSearchLogs)
+     const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
+     console.log("StoreSearchLogs12",StoreSearchLogs);
+
 
       const futureDate = date[0] + 'T00:00:00';
       const futureDate1 = date[1] + 'T00:00:00';
@@ -100,6 +104,8 @@ const SearchFlightResult = () => {
   
   //   window.history.pushState({ path: newUrl }, '', newUrl);
   // }
+
+
 
   return (
     <div className='container'>
