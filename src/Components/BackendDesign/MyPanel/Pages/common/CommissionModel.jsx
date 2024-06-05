@@ -13,7 +13,7 @@ import { DatePicker } from 'antd';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const CommissionModel = (props) => {
-    const { isOpen, setIsOpen ,setCommPassingObj,CommissionPassingObj} = props;
+    const { isOpen, setIsOpen ,setCommPassingObj,CommissionPassingObj ,  handleCommissionPercentage} = props;
     const [isTitle, setTitle] = useState();
     const [selectedAirlineOption, setSelectedAirlineOption] = useState(null);
     const [selectedFareClassOption, setSelectedFareClassOption] = useState(null);
@@ -147,8 +147,9 @@ const CommissionModel = (props) => {
         try {
                       console.log('kashifG',PassCommData);
                         const response = await AddCommissionPercentage(PassCommData);
-                        const updatedCommissionObj = [...CommissionPassingObj, response.data.payload];
-                        setCommPassingObj(updatedCommissionObj);
+                        // const updatedCommissionObj = [...CommissionPassingObj, response.data.payload];
+                        // setCommPassingObj(updatedCommissionObj);
+                        handleCommissionPercentage();
                         console.log("Response from Commission API:", response);
                         toast.success('Commission Added Successfully!', {autoClose: 2000});
                     } catch (error) {

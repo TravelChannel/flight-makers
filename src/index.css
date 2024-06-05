@@ -7590,4 +7590,9 @@ margin-top:10px;
   width: 100%;
   display:block;
 }
+.date_format_styling{
+   font-size: 12px;
+    color: #999;
+    padding-right: 130px;
+}
 

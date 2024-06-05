@@ -2,8 +2,8 @@ import React,{useState,useEffect} from 'react';
 import * as images from '../../src/Constant/images';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import ContactSources from '../Components/Commom/ContactSources';
-import Cookies from 'js-cookie';
 import { getDetailByOrderId } from '../API/BackendAPI/CommissionAPI/GetDetailbyOrderId';
+import CalculateCheckSum from '../Components/SwichFlow/CalculateCheckSum';
 const FMBanks = () => {
 
   useEffect(()=>{
@@ -86,6 +86,10 @@ const FMBanks = () => {
             {/* <div>
               {`PnrNumber ${PnrNumber}`}
             </div> */}
+
+            <div>
+              <CalculateCheckSum/>
+            </div>
 
         </div>
 

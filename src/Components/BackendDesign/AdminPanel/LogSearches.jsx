@@ -47,8 +47,8 @@ const [isEndDate ,setEndDate] = useState('');
       const obj = {
         page:page,
         pageSize:pageSize,
-        startDate:isStartDate || null,
-        endDate:isEndDate || null
+        startDate:isStartDate || '',
+        endDate:isEndDate || ''
       }
 
       // console.log("obj-to-pass",obj);

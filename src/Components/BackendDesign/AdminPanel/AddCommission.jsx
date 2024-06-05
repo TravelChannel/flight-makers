@@ -1,4 +1,4 @@
-import React ,{useState,useEffect} from 'react'
+import React ,{useState,useEffect , useRef} from 'react'
 import * as images from '../../../Constant/images';
 import CommissionModel from '../MyPanel/Pages/common/CommissionModel';
 import { GetCommission } from '../../../API/BackendAPI/CommissionAPI/GetCommissions';
@@ -6,12 +6,16 @@ import { Deletecommission } from '../../../API/BackendAPI/CommissionAPI/DeleteCo
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toggleCommission } from '../../../API/BackendAPI/CommissionAPI/ToggleStatus';
+
+
 const AddCommission = () => {
 
     const [isOpen , setIsOpen] = useState(false);
     const [isUpdate , setUpdate] = useState(false);
 
     const [CommissionPassingObj ,setCommPassingObj] = useState([]);
+
+    const changeCount = useRef(0);
    
     // const PassCommData = {
     //   percentage: CommissionPassingObj.percentage,
@@ -42,9 +46,11 @@ const AddCommission = () => {
       handleCommissionPercentage();
   }, []);
 
-  useEffect(() => {
-      handleCommissionPercentage();
-  }, [CommissionPassingObj]);
+  // useEffect(() => {
+  //     handleCommissionPercentage();
+  // }, [CommissionPassingObj]);
+
+
 
 const ArrangeDateFormat = (JourneyDate) => {
   const formattedDate = new Date(JourneyDate).toLocaleDateString('en-GB');
@@ -152,6 +158,7 @@ const handleDeletCommission = async(id) =>{
                         isOpen={isOpen} setIsOpen ={setIsOpen}
                         CommissionPassingObj ={CommissionPassingObj} 
                         setCommPassingObj = {setCommPassingObj}
+                        handleCommissionPercentage = { handleCommissionPercentage}
                         // promotionData={promotionData} setPromotionData={setPromotionData}
                         // isUpdate ={isUpdate} setUpdate={setUpdate} 
                         // updateID = {updateID}  
@@ -159,6 +166,8 @@ const handleDeletCommission = async(id) =>{
                     )
                 }
       </div>
+
+     
   )
 }
 

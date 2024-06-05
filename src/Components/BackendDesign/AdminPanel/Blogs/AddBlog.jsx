@@ -7,6 +7,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Input } from "antd";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+// ----------------------------
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import 'quill/dist/quill.core.css'; 
+// -------------------------------
 import { GetCategory } from "../../../../API/BackendAPI/BlogsAPI/getCategory";
 import { useParams } from "react-router";
 import Loader from "../../../../Loader/Loader";
@@ -33,12 +39,20 @@ const AddBlog = () => {
   const [isClick ,setisClick] = useState(false);
   const [isSuccess ,setIsSuccess] = useState(false);
   const [isLoading ,setLoading] = useState(false);
+
+  const [quillContent, setQuilContent] = useState('');
 //  ----------------------------------
   const handleChange = (event, editor) => {
     const data = editor.getData();
     setEditorData(data);
 
   };
+
+  const handleQuillChange = (value) => {
+      setQuilContent(value);
+    //  console.log("content",content);
+};
+
   const handleAuthor = (event) => {
     const value = event.target.value;
     setAuthorName(value);
@@ -114,7 +128,7 @@ const AddBlog = () => {
     headerUrl: isSlug,
     shortDescription:shortDesc,
     img: "",
-    description :editorData,
+    description :quillContent,
     blogTypeId:isCatogory?.value,
     author:AuthorName
   };
@@ -174,6 +188,7 @@ const onSubmit = async () => {
           setSlug('');
           setShortDesc('');
           setEditorData('');
+          setQuilContent('');
           setFocused(false);
           setTitleFocused(false);
           setContentFocus(false);
@@ -181,9 +196,32 @@ const onSubmit = async () => {
           setInputValue("");
           setisClick(false);
     } catch (error) {
+      setLoading(false);
         console.error("Error:", error.message);
     }
 }
+
+// -------------------------------
+const modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'},{ 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, 
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image'], 
+    ['color', 'background'],
+    ['align', 'direction'], 
+    ['code-block'], 
+    ['video'], 
+     [{ 'table': 'table' }] 
+    ['undo', 'redo'], 
+    ['clean']
+],
+  // imageResize: {} 
+};
+// -------------------------------
+
 
   return (
    isLoading ? (<Loader/>):(
@@ -271,11 +309,18 @@ const onSubmit = async () => {
    <div className="Blog_title_body">
      <p className="title_typograpy">Content</p>
      <div className="horizontal-line"></div>
-           <CKEditor
+           {/* <CKEditor
              editor={ClassicEditor}
              data={editorData}
              onChange={handleChange}
-           />
+           /> */}
+
+                  <ReactQuill
+                        value={quillContent}
+                        onChange={handleQuillChange}
+                        modules={modules}
+                        theme="snow"
+                    />
    </div>
      <div className="d-flex justify-content-center m-3">
              <button

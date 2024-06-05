@@ -12,6 +12,12 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from 'react-toastify';
 import Loader from '../../../../../Loader/Loader';
 
+// ----------------------------
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import 'quill/dist/quill.core.css'; 
+// -------------------------------
+
 const EditBlogModel = (props) => {
     const {isOpen,setIsOpen ,blogID,handleBlogLists } = props;
     const fileInputRef = useRef(null);
@@ -33,6 +39,7 @@ const EditBlogModel = (props) => {
     const [getCurrentCat ,setCurrentCat] = useState();
     const [isLoading ,setLoading] = useState(false);
 
+    const [quillContent, setQuilContent] = useState('');
 
     const toggleModal = () => {
         setIsOpen(!isOpen);
@@ -47,7 +54,8 @@ const EditBlogModel = (props) => {
           setUpdateAuthor(responce.data.payload.author);
           setUpdateSlug(responce.data.payload.headerUrl);
           setupdateShortDesc(responce.data.payload.shortDescription);
-          setUpdateContent(responce.data.payload.description);
+          // setUpdateContent(responce.data.payload.description);
+          setQuilContent(responce.data.payload.description);
           setImgSrc(responce.data.payload.img);
           setCurrentCat(responce.data.payload.blogTypeId);
         }catch(error){
@@ -158,7 +166,7 @@ const EditBlogModel = (props) => {
         headerUrl: updateSlug,
         shortDescription:updateShortDesc,
         img:imgSrc,
-        description :updateContent,
+        description :quillContent,
         blogTypeId:isCatogory?.value,
         author:updateAuthor
       };
@@ -205,6 +213,33 @@ const EditBlogModel = (props) => {
         }
         }
 
+
+        // -----------------
+        const handleQuillChange = (value) => {
+          setQuilContent(value);
+        //  console.log("content",content);
+    };
+        // -------------------
+// -------------------------------
+const modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'},{ 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, 
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image'], 
+    ['color', 'background'], 
+    ['align', 'direction'], 
+    ['code-block'], 
+    ['video'],
+     [{ 'table': 'table' }] 
+    ['undo', 'redo'], 
+    ['clean']
+    ],
+  // imageResize: {} 
+};
+// -------------------------------
 
   return (
       <div>
@@ -299,10 +334,16 @@ const EditBlogModel = (props) => {
                 <div className="Blog_title_body">
                     <p className="title_typograpy">Content</p>
                     <div className="horizontal-line"></div>
-                        <CKEditor
+                        {/* <CKEditor
                             editor={ClassicEditor}
                             data={updateContent}
                             onChange={handleChange}
+                        /> */}
+                        <ReactQuill
+                        value={quillContent}
+                        onChange={handleQuillChange}
+                        modules={modules}
+                        theme="snow"
                         />
                 </div>
                 <div className="d-flex justify-content-center m-3">

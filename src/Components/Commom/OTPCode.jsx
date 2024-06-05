@@ -6,13 +6,15 @@ import { useFormData } from "../../Context/FormDataContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import apiClient from "../../API/BackendAPI/api_main";
+import { sendOTPCode } from "../../API/BackendAPI/allAPICalls";
+
 
 const OTPCode = (props) => {
-  const { fromSingUp, setIsOpen } = props;
-  const { setLogIn, setVarName, setUserName } = useFormData();
+  const { fromSingUp, setIsOpen,getOTPData } = props;
+  const { setLogIn, setVarName, setUserName} = useFormData();
   console.log("coming from SignUp", fromSingUp);
   const navigate = useNavigate();
-  console.log("ellllllllo123", props.getOTPData);
+  // console.log("ellllllllo123",getOTPData);
 
   const [isColorChange, setIsColorChange] = useState("");
   const [isOtpTrue, setIsOtpTrue] = useState("");
@@ -21,7 +23,8 @@ const OTPCode = (props) => {
   const [showMessage, setShowMessage] = useState("");
   const [OTPResend, setOTPResend] = useState(false);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const [currentTime, setCurrentTime] = useState(10);
+  const [currentTime, setCurrentTime] = useState(30);
+  const [isOTP ,setOTP] = useState(false);
 
   const otpInputs = useRef([]);
   const handleOtp = async (index, value) => {
@@ -93,9 +96,25 @@ const OTPCode = (props) => {
   const handleInputFocus = (index) => {
     setIsColorChange(index);
   };
-  const HandleGetOTP = () => {
+  const HandleGetOTP =async () => {
     setCurrentTime(10);
     setIsTimerRunning(true);
+    try{
+      const OTPResponce = await sendOTPCode(getOTPData); 
+      console.log('OTPResponce',OTPResponce);
+      if(OTPResponce.data.status === 'SUCCESS'){
+        setOTP(true);
+      }else{
+        console.log("error while fetching Data")
+        // alert('error while fetching Data');
+      }
+    
+    }catch(error){ 
+      console.error('errorOTP',error);
+      // alert('error while Sending OTP' ,error);
+      // alert(`Error while sending OTP: ${error.message}`);
+      navigate('/signup');
+    }
   };
 
   useEffect(() => {
@@ -132,6 +151,10 @@ const OTPCode = (props) => {
   const sendOTPHandller = () => {
     setOTPResend(true);
   };
+
+  // -----------------------------
+
+  // ----------------------------
   return (
     <Fragment>
       <div

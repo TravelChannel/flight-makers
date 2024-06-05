@@ -103,7 +103,7 @@ const handleChange = (event, value) => {
           </div>
         </div>
         
-        {blogData && blogData.length > 0 ?(
+        {/* {blogData && blogData.length > 0 ?( */}
           <table className="table table-bordered mt-5">
                       <thead>
                           <tr> 
@@ -153,11 +153,10 @@ const handleChange = (event, value) => {
                               }
                       </tbody>
                   </table>
-                  ):(
+                  {/* ):(
                         <h3 className='text-center lists_empty_message'>Sorry, there are no blogs to display at this page .</h3>
                       )
-                    }
-
+                    } */}
                 <div className='d-flex justify-content-center py-3'>
                       <Stack spacing={2}>
                         <Pagination

@@ -16,10 +16,10 @@ const RatingList = () => {
       };
       const handleBlogLists = async () => {
         try {
-        //   setLoading(true);
+          setLoading(true);
             const response = await GetRatings();
             setRatingList(response.data.payload); 
-            // setLoading(false);
+            setLoading(false);
             console.log("Response from RatingList API:", response);
         } catch (error) {
             console.log("Error on RatingList API:", error);
@@ -50,7 +50,12 @@ const RatingList = () => {
      }
   }
 
-
+//   useEffect(() => {
+//     setTimeout(() => {
+//         setLoading(false);
+//     }, 30000);
+//   }, []);
+  
       return (
         isLoading ? (<Loader />) : (
             RatingList.length === 0 ? (
