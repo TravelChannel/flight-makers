@@ -4,13 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination,Autoplay} from "swiper";
-import {OTPSliderData} from '../../Constant/homeData';
 import { ArrangeCallImages } from "../../Constant/homeData";
 
 
 
-const OTPSlider = () =>
-{
+const ArrangeCallSlider = () =>{
     return (
         <Fragment  className="slider_background">
             <div> 
@@ -30,10 +28,10 @@ const OTPSlider = () =>
                 className="mySwiper"
                 >
                 {
-                    OTPSliderData.map((item,index) =>
+                    ArrangeCallImages.map((item,index) =>
                     {
                         return(
-                          <SwiperSlide  >
+                          <SwiperSlide>
                               <div className="slider_background">
                                <img alt="Slider Img" src={item.OTPImages}/>
                               </div>
@@ -49,4 +47,4 @@ const OTPSlider = () =>
     );
 }
 
-export default OTPSlider;
+export default ArrangeCallSlider;

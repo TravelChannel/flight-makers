@@ -1,9 +1,11 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useRef} from 'react';
 import * as images from '../../src/Constant/images';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import ContactSources from '../Components/Commom/ContactSources';
 import { getDetailByOrderId } from '../API/BackendAPI/CommissionAPI/GetDetailbyOrderId';
 import CalculateCheckSum from '../Components/SwichFlow/CalculateCheckSum';
+import InputMask from 'inputmask';
+import ArrangeCallPage from '../Components/Commom/ArrangeCallPage';
 const FMBanks = () => {
 
   useEffect(()=>{
@@ -16,6 +18,7 @@ const FMBanks = () => {
   },[]);
 
   const PnrNumber =JSON.parse(localStorage.getItem('PNRNumber'));
+
 
   return (
     <div className='container'>
@@ -87,11 +90,17 @@ const FMBanks = () => {
               {`PnrNumber ${PnrNumber}`}
             </div> */}
 
-            <div>
+            {/* <div>
               <CalculateCheckSum/>
-            </div>
+            </div> */}
+
+            {/* <div>
+              <ArrangeCallPage/>
+            </div> */}
 
         </div>
+
+
 
     </div>
   )

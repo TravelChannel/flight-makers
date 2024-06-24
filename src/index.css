@@ -2646,6 +2646,17 @@ box-shadow: -1px 3px 4px 2px rgba(0, 0, 0, 0.2);
   background-color: #D6E8FC;
   border-radius:4px;
 }
+.SwichlogoBackground{
+  background-color: #D6E8FC;
+  padding:20px 10px;
+  border-radius:4px;
+  margin-bottom:30px
+}
+.BeforeSwichlogoSelection{
+  padding:20px 10px;
+  border-radius:4px;
+  margin-bottom:30px
+}
 .acive_bg_spacing{
   margin:10px 20px;
 }
@@ -4811,7 +4822,9 @@ color: #0a53be;
   border-radius:4px
 }
 .payment_sidebar{
-  width:21%;
+  /* width:21%; */
+  width:23%;
+
 }
 .sidebar_booking_sepration{
   width:4%;
@@ -7245,9 +7258,13 @@ transform: translateY(-15px);
 .prom_date_picker{
   margin-left:10px;
 }
-.comm_date_picker{
+.comm_date_picker2{
   margin-left: 86px;
-margin-top:10px;
+  margin-top:10px;
+}
+.comm_date_picker2{
+  margin-top:20px;
+  margin-left:0;
 }
 .parent-element .ant-picker {
   width:91% !important;
@@ -7596,3 +7613,122 @@ margin-top:10px;
     padding-right: 130px;
 }
 
+.arrange-call-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index:5;
+}
+.call_btn_bg{
+  /* background-color: white;
+  border-radius: 10px 10px 30px 10px ;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.5); */
+}
+.btn_inner_typo{
+  margin:0px 20px 20px 20px;
+}
+.call_close_btn{
+  color:gray !important;
+  cursor:pointer
+}
+
+.pump_up_animation{
+  animation: pumpUp 1.5s ease-in-out infinite;
+}
+@keyframes pumpUp {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.image_container{
+  cursor: pointer;
+  width: 250px;
+  height: 80px;
+  background-image: url('assets/Arrange-A-Call-250.png');
+  background-position: 0 75px;
+}
+.call_title_typo{
+  font-size: 14px;
+  font-weight: 600;
+  color: #010101;
+  padding-left: 6px;
+}
+.GetOTP_btn2{
+  /* margin: auto 20px; */
+  /* padding: 5px 100px; */
+  width: 100%;
+  /* margin-right: 18px; */
+  /* margin-right: 38px; */
+  margin-top: 47px;
+  height: 40px;
+  background-color: #f26223;
+  border: none;
+  transition: none;
+  animation: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif;
+}
+.mendatory{
+  color:red;
+}
+
+.parent-element1 .react-tel-input .form-control{
+   width: 365px !important;
+}
+
+.parent-3 .ant-picker{
+  width:52% !important;
+  margin-right: 4px;
+  border: 1px solid #d9d9d9 !important;
+  border-radius: 4px;
+}
+.manage_call_parent .modal-content {
+ width:114% !important;
+}
+.inputs_parents .ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+   border: 1px solid #d9d9d9  !important;
+   border-radius:4px;
+}
+.inputs_parents .css-dev-only-do-not-override-1wazalj.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  width: 99%;
+  height: 32px;
+  padding: 0 11px;
+}
+
+.call_name_input .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width: 98% !important;
+}
+.call_name_input .css-1v4ccyo 
+{
+  width: 364px !important;
+}
+
+.call_page_margin{
+  margin:20px 10px !important;
+}
+.parental-element .react-tel-input .form-control {
+  width: 540px !important;
+}
+
+.dail_call_parent .GetOTP_btn2 {
+  width: 95%;
+  margin-top: 47px;
+  height: 40px;
+  background-color: #36c;
+  border: none;
+  transition: none;
+  animation: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif;
+}
+.dail_call_parent .GetOTP_btn2:hover{
+  background-color: #F26223;
+
+}
+
+.blogs_content_allignment{
+  text-align: justify;
+}

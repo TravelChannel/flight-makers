@@ -17,39 +17,15 @@ import MetaPage from "./View/MetaPage";
 import { MetaPageData } from "./Constant/MetaPageData";
 import Cookies from "js-cookie";
 import { sendCrashSMS } from "./API/BackendAPI/ArmanSirAPIs/SMSonCrash";
+import ArrangeCall from "./Components/Home/ArrangeCall";
+
+
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,
-    setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData,setProfileImg} = useFormData();
+    setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData,setProfileImg,isMobile, setMobile} = useFormData();
+
+
   // ---------------------------------------
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await VerificationAPi();  
-  //       console.log("Verification-API",response);
-  //       if (response.data.status === 'SUCCESS') {
-  //         console.log('User is logged in');
-  //         setLogIn(true);
-  //         const userPhone = response.data.payload.userData.phoneNumber;
-  //         const PersonName =  response.data.payload.userData.firstName;
-
-  //         console.log("personName",PersonName);
-  //         setUserCountryCOde(response.data.payload.userData.countryCode);
-  //         setRoleID(response.data.payload.userData.roleId);
-  //         setVarName(userPhone);
-  //         setUserName(PersonName);
-  //         setCompleteUserData(response.data.payload.userData);
-  //         console.log("userPhone-verification",userPhone);
-  //       } else {
-  //         console.log('User is not logged in');
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
-
-  //   fetchData();  
-  // }, []); 
-
   const fetchData = async () => {
     try {
       // const response = await VerificationAPi();  
@@ -111,6 +87,19 @@ const App = () => {
   const searchParams = new URLSearchParams(location.search);
   const inputPNR = searchParams.get('inputPNR');
 
+  useEffect(() => {
+    const handleSize = () => {
+      setMobile(window.innerWidth <490);
+    };
+    if (typeof window !== 'undefined') {
+      setMobile(window.innerWidth <490);
+      window.addEventListener('resize', handleSize);
+      return () => {
+        window.removeEventListener('resize', handleSize);
+      };
+    }
+  }, []);
+
   return (
     <Fragment>
       <div className="backgradiant">
@@ -118,8 +107,9 @@ const App = () => {
         <MetaPage metaPageData={MetaPageData}>
             {!inputPNR && isTopNavBar && <TopNavBar/>}
             {!inputPNR && showHeader && <Header />}
+           { !isMobile &&<ArrangeCall/>}
             <Routes />
-            <ToastContainer />
+            {<ToastContainer/>}
             {!inputPNR && <Footer/>}
         </MetaPage>
         </div>

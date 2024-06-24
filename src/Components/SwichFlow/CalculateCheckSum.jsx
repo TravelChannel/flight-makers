@@ -54,7 +54,7 @@ const CalculateCheckSum = () => {
     }
   return (
     <div className='mt-3'>
-        <div className='text-center '>CalculateCheckSum</div>
+        <div className='text-center'>CalculateCheckSum</div>
             <div className='d-flex justify-content-center '>
             <button onClick={generateUrl} className='btn btn-primary'>Generate URL</button>
             <div className='mt-3'>

@@ -9,7 +9,7 @@ import AppQR from '../Components/Home/AppQR.jsx';
 import ModelOTP from "../Components/Home/ModelOtp.jsx";
 import PromotionsView from "../Components/Home/PromotionsView.jsx";
 import { useFormData } from "../Context/FormDataContext.jsx";
-
+import ArrangeCall from "../Components/Home/ArrangeCall.jsx";
 const Home = () => {
   const {isLogin , setLogIn} = useFormData();
     return (
@@ -19,6 +19,7 @@ const Home = () => {
         <BookingOptions/>
         <AppQR/>
         <CityTravel/>
+        {/* <ArrangeCall/> */}
       </div>
     </Fragment>);
     

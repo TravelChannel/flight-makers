@@ -14,6 +14,8 @@ import visacardlogo from '../assets/paymentlogo/paymentlogo (3).png';
 import jazzcash_Logo from '../assets/paymentlogo/jazzcashlogo.png'
 import easypaisa_logo from '../assets/paymentlogo/easypaisa.png';
 
+import swichLogo from '../assets/paymentlogo/swich-logo.png';
+
 // -----------------------Flight, Hotel icon--------------------
 import hotellogo from '../assets/hotel-mobile.webp';
 import planelogo from '../assets/plane-mobile.png';
@@ -98,6 +100,12 @@ import fmBlogLogo from '../../src/assets/fm_blog.png';
 import underConstruction from '../../src/assets/worker-with-briefcase-blocked-way.jpg';
 import gearImage from '../../src/assets/gears.jpg';
 import Robot from '../../src/assets/robot.jpg';
+import ArrangeCall from '../../src/assets/Arrange-A-Call.png';
+
+import ArrangeCallimg1 from '../../src/assets/ARRANGE-CALL-1.png';
+import ArrangeCallimg2 from '../../src/assets/ARRANGE-CALL-2.png';
+import ArrangeCallimg3 from '../../src/assets/ARRANGE-CALL-3.png';
+
 
 export const extra_baggages = [
     nill_Bagg,   
@@ -108,5 +116,5 @@ export default faremakerlogo ;
 
 export {bankicon,whatsappicon,cautionicon, hbllogo,payprologo,iatalogo,mastercardlogo,digicertlogo,visacardlogo,jazzcash_Logo,hotellogo,planelogo,UAN,Mail,FMAbout,SCBank,MBBank,
     planeImage,hotelImage,sunUmbrellaImage,qaterLogo,dubaiPics,lahorePics,karachiPics,islamabadPics,londonPics,pakistanMap,mobileScaner,officeLocation
-    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot
+    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot,swichLogo,ArrangeCall,ArrangeCallimg1,ArrangeCallimg2,ArrangeCallimg3
 };

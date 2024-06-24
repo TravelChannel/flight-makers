@@ -120,6 +120,21 @@ const OTPSliderData=[
         OTPImages: images.otpSlider3,
     }
 ]
+
+const ArrangeCallImages=[
+  {
+      id:1,
+      OTPImages: images.ArrangeCallimg1,
+  },
+  {
+      id:2,
+      OTPImages: images.ArrangeCallimg2,
+  },
+  {
+      id:3,
+      OTPImages: images.ArrangeCallimg3,
+  }
+]
 const countries = [
     { code: 'AD', label: 'Andorra', phone: '376' },
     {
@@ -548,4 +563,4 @@ const countries = [
  
 
 export default recentTravelData;
-export { cityTravelling ,testimonialsReview,OTPSliderData,countries };
+export { cityTravelling ,testimonialsReview,OTPSliderData,countries,ArrangeCallImages};

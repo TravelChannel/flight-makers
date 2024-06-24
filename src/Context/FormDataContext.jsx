@@ -19,7 +19,7 @@ export const FormDataProvider = ({ children }) => {
   const [serviceCharges ,setServiceCharges] = useState();
   const [searcRes ,setSearchRes] = useState({});
   const [profileImg ,setProfileImg] = useState(null);
- 
+  const [isMobile, setMobile] = useState(false);
 
   return (
     <FormDataContext.Provider value={{ 
@@ -36,7 +36,8 @@ export const FormDataProvider = ({ children }) => {
        completeUserData ,setCompleteUserData,
        serviceCharges ,setServiceCharges,
        searcRes ,setSearchRes,
-       profileImg ,setProfileImg
+       profileImg ,setProfileImg,
+       isMobile, setMobile
        }}>
       {children}
     </FormDataContext.Provider>

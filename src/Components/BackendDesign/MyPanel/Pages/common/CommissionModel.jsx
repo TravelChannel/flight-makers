@@ -254,7 +254,6 @@ const CommissionModel = (props) => {
                                     className='promStartCalander'
                                     value={startDate}
                                     onChange={handleStartDateChange}
-                                    // disabledDate={disabledStartDate}
                                     />
                                     <DatePicker
                                     placeholder="End Date"
@@ -263,7 +262,7 @@ const CommissionModel = (props) => {
                                     onChange={handleEndDateChange}
                                     disabledDate={(current) => current && current < startDate}
                                     />
-                                </div>
+                           </div>
                         </div>
                         <div className='d-flex justify-content-end'>
                             <button className='btn btn-primary btn_promotion_model' onClick={handleCloseModel}>ADD</button>

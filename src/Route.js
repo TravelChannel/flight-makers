@@ -35,6 +35,7 @@ import BlogbyCategory from './Components/BlogsContent/BlogbyCategory';
 import IntFlights from './Components/SEOPages/IntAndDomFlights';
 import SubPopularAirline from './Components/SEOPages/SubPopularAirline';
 import WebsiteUnderConstruction from './View/WebsiteUnderConstruction';
+import ArrangeCallPage from './Components/Commom/ArrangeCallPage';
 const AppRouter = () => {
   return (
     <Fragment>
@@ -48,6 +49,7 @@ const AppRouter = () => {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/RequestCall" element={<Contact />} />
         <Route path="/job-careers" element={<Careers />} />
+        <Route path="/arrangeCall" element={<ArrangeCallPage />} />
         <Route path="/customer-support" element={<Customersupport />} />
         <Route path="/customer-support/:title" element={<Customersupport />} />
         <Route path="/flights" element={<Flights />} />

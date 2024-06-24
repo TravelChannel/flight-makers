@@ -87,5 +87,12 @@ export const MetaPageData = [
         "description": "",
         "keywords": "",
         "snacks": []
+      },
+      {
+        "url": "/blogs/pia-is-increasing-its-flights-to-saudi-arabia",
+        "title": "pia is increasing its flights to saudi arabia",
+        "description": "abc",
+        "keywords": "",
+        "snacks": []
       }
 ]
