@@ -63,7 +63,6 @@ console.log("TotalSeatsRequired",TotalSeatsRequired);
     { "Code": "CX" },
     { "Code": "CZ" },
     { "Code": "EK" },
-    { "Code": "OD" },
     { "Code": "EY" },
     { "Code": "GF" },
     { "Code": "KL" },

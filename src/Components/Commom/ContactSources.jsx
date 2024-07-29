@@ -3,7 +3,7 @@ import * as images from '../../Constant/images';
 const ContactSources = () => {
   return (
    <Fragment>
-     <h5 className='contact_details'>Need Any Help ? Contact with Us</h5>
+     <h5 className='branches_details'>Need Any Help ? Contact with Us</h5>
     <div className='d-flex justify-content-around  contact_links flex-wrap'>
     <div className='contact_container'>
         <a href="tel:03111147111">

@@ -38,7 +38,7 @@ const ArrangeCallModel = (props) => {
     const [isChange ,setChange] = useState(true);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-     const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState([]);
 
     const toggleModal = () => {
         setIsOpen(!isOpen);

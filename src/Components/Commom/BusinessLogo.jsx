@@ -13,12 +13,12 @@ const BusinessLogo = () => {
                                     <h6 className='text-white'>Flights</h6>
                                   </Link>
                                 </li>
-                                <li className="trip_tab">
+                                {/* <li className="trip_tab">
                                     <Link to="https://www.faremakersmall.com/" target='blank'>
                                       <img src={images.MallLogo} alt="Hotel" className="hotel_img" />
                                       <h6 className='text-white'>Mall</h6>
                                     </Link>
-                                </li>
+                                </li> */}
                                 {/* <li className="trip_tab">
                                     <Link to="https://fastsports.tv/Live" target='blank'>
                                       <img src={images.liveIcon} alt="Hotel" className="hotel_img" />

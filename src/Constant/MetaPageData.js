@@ -94,5 +94,12 @@ export const MetaPageData = [
         "description": "abc",
         "keywords": "",
         "snacks": []
+      },
+      {
+        "url": "/flights/cheap-flights-from-lahore-to-london",
+        "title": "Cheap Flights From Lahore To London",
+        "description": "",
+        "keywords": "",
+        "snacks": []
       }
 ]

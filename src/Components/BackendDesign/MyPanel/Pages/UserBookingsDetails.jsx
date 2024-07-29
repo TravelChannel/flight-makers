@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment,useRef } from 'react';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import UndoIcon from '@mui/icons-material/Undo';
 import { useNavigate } from 'react-router';
@@ -14,6 +14,7 @@ import userDetailsBackend from '../../../../API/BackendAPI/BackendAPI_Fun';
 
 const UserBookingsDetails = (props) => {
   const {checkAdmin } = props;
+  // const initialized = useRef(false);
   const [search, setSearch] = useState('');
   const [searchPnr ,setSearchPnr] = useState('');
 const [isMobile , setIsMobile] = useState(window.innerWidth < 645);
@@ -87,22 +88,25 @@ const [userData ,setUser] = useState();
 
   // ----------------------------------------------
 
-  const fetchBackendData =async()=>{
-    try{
+  const fetchBackendData = async () => {
+    try {
       setLoading(true);
       const userData = await userDetailsBackend();
-    //  console.log("ApiCalledData",userData?.data.payload);
-      console.log("ApiCalledData",userData);
+      console.log("ApiCalledData", userData);
       setUser(userData?.data.payload);
       setLoading(false);
-    }
-    catch (error){
+    } catch (error) {
       console.error(error);
     }
-  } ;
-   useEffect(()=>{
-    fetchBackendData();
-     },[]);
+  };
+
+  useEffect(() => {
+      fetchBackendData();
+      console.log("mount-1")
+     return ()=>{
+      console.log("component-unMount");
+     }
+  }, []);
 
 
     //  const userPayLoad = userData?.data.payload;

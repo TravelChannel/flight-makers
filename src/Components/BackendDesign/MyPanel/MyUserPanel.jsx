@@ -123,7 +123,7 @@ const handleSubMenuClick = (id)=>{
 	  setLoading(true);
 	  const userData = await userDetailsBackend(setBackLoading);
 	//  console.log("ApiCalledData",userData?.data.payload);
-	console.log("ApiCalledData",userData);
+	console.log("ApiCalledData-1",userData);
 		setUser(userData);
 		setLoading(false);
 	}
@@ -131,9 +131,9 @@ const handleSubMenuClick = (id)=>{
 		console.error(error);
 	}
 } ;
- useEffect(()=>{
-  fetchBackendData();
-   },[]);
+//  useEffect(()=>{
+//   fetchBackendData();
+//    },[]);
 //    --------------------------
 // const userUpdatedName = userData?.data?.payload?.[0]?.user?.firstName;
 // setUserName(userUpdatedName);
@@ -141,7 +141,7 @@ const handleSubMenuClick = (id)=>{
 useEffect(() => {
     // const roleID = userData?.data?.payload?.userData?.roleId;
 	console.log("roleIDatPanel",roleID);
-    if (roleID === 1) {
+	if (roleID === 1) {
         setCheckAdmin(true); // Grant full admin access
     } else if (roleID === 3) {
         setPartialAdmin(true); // Grant partial admin access

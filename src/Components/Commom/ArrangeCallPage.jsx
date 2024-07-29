@@ -257,9 +257,9 @@ const ArrangeCallPage = () => {
          <div className='row m-2'>
                 <div className="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div className='call_name_input call_page_margin'>
-                        <p className="call_title_typo">Name:</p>
-                        <TextField id="outlined-basic"  variant="outlined" size='small' placeholder='Enter your Full Name' onChange={handleUserName}  value = {isLogin && isChange ? userName:callUserName}/>
-                        </div>
+                          <p className="call_title_typo">Name:</p>
+                          <TextField id="outlined-basic"  variant="outlined" size='small' placeholder='Enter your Full Name' onChange={handleUserName}  value = {isLogin && isChange ? userName:callUserName}/>
+                          </div>
                         <div className='call_page_margin parental-element'>
                         <p className="call_title_typo">Phone No <span className ="mendatory">*</span>:</p>
                          <PhoneInput

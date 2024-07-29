@@ -1,20 +1,3 @@
-// import apiClient from "./api_main";
-
-// const userDetailsBackend = ()=>{
-//  return apiClient
-//  .get(`/pnrBooking`)
-//  .then((response)=>{
-//     console.log(JSON.stringify(response));
-//     return response;
-//  })
-//  .catch((err)=>{
-//     console.log(err);
-//     throw err;
-//  });
-// };
-
-// export default userDetailsBackend ;
-
 import apiClient from "./api_main";
 
 const userDetailsBackend = async () => {

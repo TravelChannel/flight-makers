@@ -10,19 +10,22 @@ import {testimonialsReview} from '../../Constant/homeData';
 import { GetAllPromotions } from "../../API/BackendAPI/allAPICalls";
 const PromotionsView = () =>{
   const [PromotionData ,setPromotionData] = useState([]);
-    // useEffect(() => {
-    //     const getPromotionsDetail = async () => {
-    //         try {
-    //             const response = await GetAllPromotions();
-    //             console.log("promotionResponce",response);
-    //             setPromotionData(response.data.payload);
-    //         } catch (error) {
-    //             console.log('Error in getAllPromotions', error);
-    //         }
-    //     };
-    
-    //     getPromotionsDetail();
-    // }, []);
+    useEffect(() => {
+        const getPromotionsDetail = async () => {
+            try {
+                const response = await GetAllPromotions();
+                console.log("promotionResponce",response);
+                setPromotionData(response.data.payload);
+            } catch (error) {
+                console.log('Error in getAllPromotions', error);
+            }
+        };
+        const delay = setTimeout(() => {
+          getPromotionsDetail();
+      }, 3000); // 3000 ms = 3 seconds delay
+
+      return () => clearTimeout(delay); 
+    }, []);
     return (
         <Fragment>
             <div className="component_container"> 
@@ -56,13 +59,13 @@ const PromotionsView = () =>{
                     {
                         return( 
                           <div key={index} className="bg-white mb-2">
-                          <SwiperSlide className="PromotionSlide " style={{ backgroundImage: `url(${item.img})` }}>
+                          <SwiperSlide className="PromotionSlide customSlide " style={{ backgroundImage: `url(${item.img})` }}>
                                 <div className="d-flex justify-content-between">
                                     <h5 className="mr-2 nameSpaceFix promotionDisplay text-start">{item.title}</h5>
                                 </div>
                                 <div className="wrapper"><p className="mt-4 text-start truncate">{item.description}</p></div>
                                 {/* <p className="text-end mt-3 light_colour">{item.date}</p> */}
-                            </SwiperSlide>
+                           </SwiperSlide>
                           </div>
                         );
                     }

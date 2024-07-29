@@ -1,37 +1,16 @@
 import React, { useEffect, useState ,Fragment} from 'react';
-import FlightSearch from '../Home/FlightSearch';
 import FlightIcon from '@mui/icons-material/Flight';
 import airlinesName from '../../Constant/airlineName';
 import { useLocation, useNavigate } from 'react-router';
 import SEOAirlinesData from '../../Constant/SEOAirlinesData';
-// import { SeoAirLinesData } from '../../API/BackendAPI/SEOAirlinesData';
 import { useParams } from 'react-router';
 // ----------------------------------------------------
-import AirArabiaFlights from './popAirlinesComponents/AirArabiaFlights';
-import AirChinaFlights from './popAirlinesComponents/AirChinaFlights';
-import AirBlueLines from '../SEOPages/popAirlinesComponents/AirBlueLines';
-import AirMalindoFlights from '../SEOPages/popAirlinesComponents/AirMalindoFlights';
-import AirSialFlights from '../SEOPages/popAirlinesComponents/AirSialFlights';
-import BritishAirwaysFlights from './popAirlinesComponents/BritishAirwaysFlights';
-import ChinaSouthernFlights from './popAirlinesComponents/ChinaSouthernFlights';
 import EmiratesFlights from './popAirlinesComponents/EmiratesFlights';
-import EtihadFlights from './popAirlinesComponents/EtihadFlights';
-import FlyDubaiFlights from './popAirlinesComponents/FlyDubaiFlights';
-import KuwaitFlights from './popAirlinesComponents/KuwaitFlights';
-import OmanFlights from './popAirlinesComponents/OmanFlights';
 import PiaFlights from './popAirlinesComponents/PiaFlights';
 import QatarFlights from './popAirlinesComponents/QatarFlights';
-import SaudiAirlineFlights from './popAirlinesComponents/SaudiAirlineFlights';
-import SereneFlights from './popAirlinesComponents/SereneFlights';
-import ShaheenFlights from './popAirlinesComponents/ShaheenFlights';
-import ThaiFlights from './popAirlinesComponents/ThaiFlights';
-import TurkishFlights from './popAirlinesComponents/TurkishFlights';
-import VirginFlights from './popAirlinesComponents/VirginFlights';
 // ------------------------------------------------------------------------------
 import { requestFetchSearchResult ,requestFetchAlternateRates } from '../../API/index.js';
 import { useSelector } from 'react-redux';
-import { InternationRoutes } from '../../Constant/FooterPagesData/InternationalRoutes.js';
-import { DomesticRoutes } from '../../Constant/FooterPagesData/DomesticRoutes.js';
 import SideBarFilters from '../Searchflight/SideBarFilters.jsx';
 import DateComparision from '../Searchflight/DateComparision.jsx';
 import AirlinesResults from '../Searchflight/AirlinesResults.jsx';
@@ -41,42 +20,25 @@ import UserTripInfo from '../Searchflight/UserTripInfo.jsx';
 import { ItemsToShowProvider } from '../Searchflight/Comman/Context.js';
 import { dataNotfound } from '../../Constant/images.js';
 import TimerModal from '../Searchflight/Comman/TimerRecall.jsx';
-import StaticFlightSearchData from './StaticFlightSearchData.jsx';
-// import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
-// import { SearchLogs } from '../../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
 import { saveFlightSearchLogs } from '../../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
+import Pop_AirLinesData from './popAirlinesComponents/common/AirlinesJason.js';
+import AirlineDataComponent from './popAirlinesComponents/common/AirlineDataComponent.jsx';
 // ---------------------------------------------------------------------
 const airlineComponents = {
-  'air-arabia-flights':AirArabiaFlights,
-  'air-china-flights': AirChinaFlights,
   'emirates-airline-flights' : EmiratesFlights,
   'qatar-airways-flights' :QatarFlights,
-  'turkish-airlines-flights' :TurkishFlights,
   'pakistan-international-airlines-flights' :PiaFlights,
-  'oman-air-flights' :OmanFlights,
-  'fly-dubai-flights' :FlyDubaiFlights,
-  'etihad-airways-flights' :EtihadFlights,
-  'shaheen-air-flights' :ShaheenFlights,
-  'airblue-flights' :AirBlueLines,
-  'air-sial-flights' :AirSialFlights,
-  'virgin-atlantic-flights' :VirginFlights,
-  'thai-airways-flights' :ThaiFlights,
-  'serene-air-flights' :SereneFlights,
-  'kuwait-airways-flights' :KuwaitFlights,
-  'china-southern-airlines-flights' :ChinaSouthernFlights,
-  'saudi-arabian-airline-flights' :SaudiAirlineFlights,
-  'air-malindo-flights' :AirMalindoFlights,
-  'british-airways-flights' :BritishAirwaysFlights,
 };
 
 const PopularAirLines = () => {
+  const location = useLocation();
+  const { airlineName } = useParams();
+  const navigate = useNavigate();
+  
   const [flightData, setFlightData] = useState({});
   const [airlineLogoData, setAirLineLogoData] = useState({});
-  // const [SEOAirlinesData ,setSEOAirLinesData] = useState([]);
-
-  // ---------------------------
-  const location = useLocation();
-
+  // -----------------------------------------
+   console.log("AirlineDataComponent",Pop_AirLinesData);
   // ---------------date----------------------
     const currentDate = new Date();
     const futureDate = new Date(currentDate);
@@ -92,10 +54,6 @@ const PopularAirLines = () => {
     const [apiData, setApiData] = useState([]);
     const [alterRates, setAlerRates] = useState([]);
     const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-    const [depart, setDepart] = useState('');
-    const [arrival, setArrival] = useState('');
-    const [filteredRoutes, setFilteredRoutes] = useState([]);
-    const [CurrentFlightCode ,setCurrentFlightCode] = useState(null);
     const [searchDataArr, setSearchDataArr] = useState(initialSearchDataArr || {
       "adults": 1,
       "children": 0,
@@ -109,22 +67,30 @@ const PopularAirLines = () => {
   
   // -----------------------------
 
-  const { airlineName } = useParams();
+  const currentAirlineData =Pop_AirLinesData.find((flightData)=>flightData.flightname===airlineName);
+
+  console.log("currentAirlineData",currentAirlineData);
 
   console.log("airlineName",airlineName);
   const formattedAirlineName = airlineName.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-  const navigate = useNavigate();
 
   const flightID = location.state && location.state.id;
   
-  console.log("fllightIDCurr",flightID);
-  console.log("SEOAirlinesDataCurr",SEOAirlinesData);
-  const DynamicAirlineComponent = airlineComponents[airlineName];
+  let DynamicAirlineComponent;
+  let isDynamicPage;
+  if (airlineName === 'pakistan-international-airlines-flights' || 
+    airlineName === 'emirates-airline-flights' || 
+    airlineName === 'qatar-airways-flights') {
+  DynamicAirlineComponent = airlineComponents[airlineName];
+  isDynamicPage=false;
+   
+} else {
+  isDynamicPage=true;
+}
 
   // -------------------------------------------
   const totalResults = apiData.length;
   const { from } = useParams();
-  // const navigate = useNavigate();
 
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
@@ -386,7 +352,7 @@ const handleDestinationClick = (destination,DepartCode,ArrivalCode ) =>{
     </div>
 
     <div>
-    <DynamicAirlineComponent/>
+    {!isDynamicPage? <DynamicAirlineComponent/> : <AirlineDataComponent currentAirlineData={currentAirlineData}/> }
   </div>
   </div>
   )

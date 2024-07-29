@@ -92,13 +92,13 @@ const Header = () => {
                     <span className="iconText menuItem">Hotels</span>
                   </Link>
                 </li> */}
-                <li className={`${isScrolled ? "showText" : "hideIndex"}`}>
+                {/* <li className={`${isScrolled ? "showText" : "hideIndex"}`}>
                     <a href="https://www.faremakersmall.com/" target="_blank" rel="noopener noreferrer">
                       <img src={image.MallIconMob} className="w-35" alt="FLIGHTS-LOGO" />
                       <br />
                       <span className="iconText menuItem">Mall</span>
                     </a>
-                </li>
+                </li> */}
                 {/* <li
                   id="hotels"
                   className={`${isScrolled ? "showText" : "hideIndex"}`}

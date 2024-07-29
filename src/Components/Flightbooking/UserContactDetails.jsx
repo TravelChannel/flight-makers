@@ -421,6 +421,7 @@ useEffect(() => {
         leadData: finalObject.leadCreationData,
         userData: finalObject.pnrBookings
       };
+      localStorage.setItem('userDetails', JSON.stringify(finalObject.pnrBookings[0]));
       console.log("PassLeadCreation",PassLeadCreation);
       const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
       console.log('LeadCreationResp',LeadCreationResp);

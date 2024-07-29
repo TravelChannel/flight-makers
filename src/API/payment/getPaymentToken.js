@@ -1,6 +1,9 @@
 export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userPhoneNum) => {
     try {
   console.log("userPhoneNum2-:",userPhoneNum);
+
+  const userDetail = JSON.parse(localStorage.getItem("userDetails"));
+  console.log("userDetail---222",userDetail);
   let Amount ;
       if(userPhoneNum ==='3235268422'){
         Amount = 100;
@@ -23,25 +26,27 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userP
         "order_id": `${createOrder.id}`,
         "billing_data": {
           "pnrNum" :`${pnrNum}`,
-          "userName" : 'Kashif Hussain',
+          "userName" : `${userDetail?.firstName || ''} ${userDetail?.lastName || 'Faremakers'}` ,
           "apartment": `${pnrNum}`,
-          "email": "claudette09@exa.com",
-          "floor": "42",
-          "first_name": "Clifford",
-          "street": "Ethan Land",
+          "email": `${userDetail?.userEmail || 'support@faremakers.com'}`,
+          "floor": "1",
+          "first_name": `${userDetail?.firstName || 'Faremakers'}`,
+          "street": "Gulberg3",
           "building": "8028",
-          "phone_number": "+86(8)9135210487",
+          "phone_number":`0${userDetail?.phoneNumber || '3111147111'}`,
           "shipping_method": "PKG",
           "postal_code": "01898",
-          "city": "Jaskolskiburgh",
-          "country": "CR",
-          "last_name": "Nicolas",
-          "state": "Utah"
+          "city": "Lahore",
+          "country": "PK",
+          "last_name": `${userDetail?.lastName || 'Faremakers'}`,
+          "state": "Pakistan"
         },
         "currency": "PKR",
         "integration_id": paymentCode,
         "lock_order_when_paid": "false"
       });
+
+      console.log("rawData-BookingPayment",raw);
   
       var requestOptions = {
         method: 'POST',

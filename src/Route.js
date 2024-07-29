@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useEffect } from 'react';
 import Home from './View/Home';
 import SearchFlightResult from './View/SearchFlightResults';
 import About from './View/About';
@@ -36,7 +36,13 @@ import IntFlights from './Components/SEOPages/IntAndDomFlights';
 import SubPopularAirline from './Components/SEOPages/SubPopularAirline';
 import WebsiteUnderConstruction from './View/WebsiteUnderConstruction';
 import ArrangeCallPage from './Components/Commom/ArrangeCallPage';
+
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 const AppRouter = () => {
+
+  const checkAccessToken = Cookies.get('Access_token') ? true:false;
+
   return (
     <Fragment>
       <Routes>
@@ -47,7 +53,7 @@ const AppRouter = () => {
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
         <Route path="/about-us" element={<About />} />
         <Route path="/contact-us" element={<Contact />} />
-        <Route path="/RequestCall" element={<Contact />} />
+        <Route path="/RequestCall" element={<ArrangeCallPage />} />
         <Route path="/job-careers" element={<Careers />} />
         <Route path="/arrangeCall" element={<ArrangeCallPage />} />
         <Route path="/customer-support" element={<Customersupport />} />
@@ -65,17 +71,35 @@ const AppRouter = () => {
         <Route path="/updateblog/:id" element={<AddBlog/>} />
         <Route path="/blogs" element={<BlogCollection/>} />
         <Route path="blogs/:headerUrl" element={<BlogContent />} />
-        <Route path="/userPanel" element={<MyUserPanel/>} />
+        <Route path="/userPanel" element={<AdminElement><MyUserPanel/></AdminElement>} />
         <Route path="/userDetails" element={<UserCompleteDetail/>} />
-        <Route path="/:airlineName" element={<PopularAirLines/>} />
-        <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
+       
         <Route path="/category/:modifiedCategoryName" element={<BlogbyCategory/>} />
        <Route  path = '/UnderConstruction'  element = {<WebsiteUnderConstruction/>}/>
+       <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
+       <Route path="/:airlineName" element={<PopularAirLines/>} />
+       
+       <Route path = "*" element= {<div>Page Not Found</div>}/>
+      
         {/* <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} /> */}
 
       </Routes>
     </Fragment>
   );
+
+  function AdminElement({children}) {
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (!checkAccessToken) {
+        navigate('/signup');
+      }
+    }, [checkAccessToken]);
+    if(checkAccessToken){
+      return <>{children}</>
+    }else{
+      return null;
+    }
+  }
 };
 
 export default AppRouter;

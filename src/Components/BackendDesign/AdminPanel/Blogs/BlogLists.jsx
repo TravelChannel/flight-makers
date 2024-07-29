@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import EditBlogModel from '../../MyPanel/Pages/common/EditBlogModel';
 import { PaginatedBlogList } from '../../../../API/BackendAPI/BlogsAPI/PaginatedBlogList';
 import { Stack, Pagination } from '@mui/material';
+import SiteMapData from '../../../../API/BackendAPI/SiteMapAPI/SiteMapData';
 const BlogLists = () => {
 
   const navigate = useNavigate();
@@ -85,6 +86,16 @@ const handleEditModel = (id)=>{
 const handleChange = (event, value) => {
   setPage(value);
 };
+
+// -----------Sitemap API Access------------
+// const handleSiteMapData = async() =>{
+// try{
+//   const responce = await SiteMapData();
+//   console.log("sitemap-responce",responce);
+// }catch(error){
+// console.error("Error while Fetching SiteMap Data");
+// }
+// }
 // -----------------
   return (
     isLoading ?(<Loader/>):

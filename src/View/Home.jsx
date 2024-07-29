@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import FlightSearch from "../Components/Home/FlightSearch.jsx";
 import RecentTravel from'../Components/Home/RecentTravel.jsx';
 import CityTravel from'../Components/Home/CityTravel.jsx';
@@ -17,8 +17,10 @@ const Home = () => {
       <div className="container">
         <FlightSearch resultpage={false} />
         <BookingOptions/>
+        <PromotionsView/>
         <AppQR/>
         <CityTravel/>
+        {/* <Tesimonials/> */}
         {/* <ArrangeCall/> */}
       </div>
     </Fragment>);

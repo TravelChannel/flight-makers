@@ -2367,7 +2367,20 @@ width:45px;
   text-align:center;
   font-size:18px;
   font-weight:600;
+  /* color:#36c; */
+  color:#F26223;
+
+
+}
+.branches_details{
+  padding-top:10px;
+  padding-bottom:10px;
+  text-align:center;
+  font-size:18px;
+  font-weight:600;
+  /* color:#F26223; */
   color:#36c;
+
 }
 .contact_detail_icon{
   margin-right:8px;
@@ -7674,7 +7687,7 @@ transform: translateY(-15px);
 }
 
 .parent-element1 .react-tel-input .form-control{
-   width: 365px !important;
+   width: 370px !important;
 }
 
 .parent-3 .ant-picker{
@@ -7697,18 +7710,19 @@ transform: translateY(-15px);
 }
 
 .call_name_input .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-  width: 98% !important;
+  width: 99% !important;
 }
+
 .call_name_input .css-1v4ccyo 
 {
-  width: 364px !important;
+  width: 370px !important;
 }
 
 .call_page_margin{
   margin:20px 10px !important;
 }
 .parental-element .react-tel-input .form-control {
-  width: 540px !important;
+  width: 549px !important;
 }
 
 .dail_call_parent .GetOTP_btn2 {
@@ -7722,13 +7736,168 @@ transform: translateY(-15px);
   box-shadow: none;
   font-size: 14px;
   font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif; */
 }
 .dail_call_parent .GetOTP_btn2:hover{
   background-color: #F26223;
 
 }
 
+/* ----------------------------------Blogs Search Engine Start------------------------------------------ */
 .blogs_content_allignment{
+  text-align: justify;
+}
+.search_engine_header  {
+    width: 100%;
+    background: #fef4cc;
+    font-weight: 600;
+    font-size: 14px;
+    color: #4d4d4d;
+    padding: 8px 16px;
+}
+.search_engine_supreme{
+  margin-right:10px;
+  border-left: 1px solid rgba(0,0,0,.2);
+  border-right: 1px solid rgba(0,0,0,.2);
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgb(0 0 0 / 10%);
+}
+.SE_Triptypes ul li {
+ cursor:pointer;
+ margin:5px 10px;
+}
+.icon_background_active_2 {
+  background: #c6c6c6;
+  color: #0c53af;
+  border-radius: 50px;
+  padding: 2px 5px;
+}
+.SE_User_detail{
+  margin-top:10px;
+}
+.se_triptype_alignment{
+  font-size:14px;
+}
+.SE_Input_fields{
+  padding: 0px 5px;
+}
+.SE_Date_pickers{
+  padding: 0px 5px;
+}
+.SE_submit_btn{
+  padding: 0px 5px 10px 5px;
+}
+.se_head_title{
+  align-self: center;
+  font-size: 16px;
+}
+.tower_width{
+  width: 50px;
+}
+/* ----------------------------------Blogs Search Engine End------------------------------------------ */
+.customSlide {
+  width: 300px !important;
+  height: 200px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+}
+
+/* --------------------Footer Static Pages Data Start------------------------------------ */
+.airline_heading{
+  font-weight: 700;
+  text-align: center;
+}
+.airline_span_heading{
+  font-size:18px;
+  color:#000;
+  font-weight: 600;
+}
+.airline_span_heading_v2{
+  font-size:16px;
+  color:#000;
+  font-weight: 600;
+}
+.airlines_list_styling ul li{
+  list-style-type: disc;
+  margin: 10px 20px;
+  font-size:16px
+}
+.ul_spacing ul li{
+  padding:3px 0px;  
+}
+.href_link_typo{
+  color:#0a53be;
+  padding:0px 2px;
+}
+.order_list_styling li{
+  list-style-type: decimal;
+  padding:3px 0px;
+}
+
+.faq-section {
+  margin-top: 20px;
+}
+.faq-question {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.faq-answer {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.additional-faqs {
+  list-style-type: disc;
+  /* margin-left: 20px; */
+}
+.faqs_sec_heading{
+  font-size:18px;
+  font-weight: 600;
+  color:#000;
+}
+
+/* -----------------Emirates--------------------------------- */
+.airlines_subHeading{
+  font-size:18px;
+  font-weight:600;
+
+}
+.airline_logoColor_head{
+   font-size: 24px;
+   font-weight: 600;
+   color:#F26223; 
+}
+.airline_body_color{
+  color:#36c;
+}
+.airline_table_background th{
+  background-color: #36c;
+  color:white
+}
+/* --------------------Footer Static Pages Data End------------------------------------ */
+
+/* --------International and Domestics Routes CSS------------------------------------- */
+.main_routes_section{
+  padding:10px;
+}
+.routes_main_heading{
+  text-align:center;
+  font-weight:600;
+  color:#010101;
+}
+.section_heading{
+  font-weight:600;
+  font-size:22px;
+}
+.route_sec_para{
+  text-align: justify;
+}
+.rotue_faq_ques{
+  font-size:18px;
+  font-weight:600;
+  color:#010101;
   text-align: justify;
 }

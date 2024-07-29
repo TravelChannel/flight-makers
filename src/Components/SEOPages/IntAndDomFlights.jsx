@@ -193,11 +193,18 @@ const IntFlights = () => {
             </Fragment>
           ) : (
             showSubLoader ? <Loader/> :
+            <Fragment>
             <div className='text-center py-5 bg-white'>
               <img className='dataNotfound' src={dataNotfound} alt='dataNotfound' />
               <h2>No Flights Found For This Search</h2>
               <p>Please try again, with different airports or dates</p>
             </div>
+            <div>
+               {
+                FooterFlights ? (<StaticFlightSearchData/>):('')
+                }
+            </div>
+            </Fragment>
             
           )}
         </div>

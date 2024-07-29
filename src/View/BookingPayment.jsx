@@ -12,6 +12,8 @@ import MobBooking from '../Components/BookingPayment/Comman/MobBooking';
 import { TicketPriceProvider } from '../Components/Flightbooking/Comman/Context';
 import { useFormData } from '../Context/FormDataContext';
 import Loader from '../Loader/Loader';
+// import CalculateCheckSum from '../Components/SwichFlow/CalculateCheckSum';
+import PayThorughSwich from '../Components/SwichFlow/PayThorughSwich';
 
 const BookingPayment = () => {
 
@@ -62,6 +64,7 @@ const BookingPayment = () => {
                               <div>
                                  {subMenuSelected === 'hbl_banking' && <PayOnline  />}
                                  {subMenuSelected === 'jazzCash' && <JazzCashPay />}
+                                 {selectedMethode === 'Pay_Through_Swich' && <PayThorughSwich/>}
                                  {selectedMethode === 'pay_at_branch' && <PayAtBranch subChild={true}/>}
                                  {selectedMethode === 'cash_on_delivary' && <CashOnDelivary/>}
                               </div>

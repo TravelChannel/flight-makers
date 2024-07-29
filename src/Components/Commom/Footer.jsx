@@ -30,6 +30,10 @@ const handleAirLinesData = (id, airlineName) => {
     window.scrollTo(0,0);
 
   };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+};
   
   
 //   const handleLinkClick = (searchDataArr) => {
@@ -72,16 +76,46 @@ const handleAirLinesData = (id, airlineName) => {
         <div className={`footerBox ${!isTopNavBar ? '':'container '}`}>
         <div className="postion_reltive">
             {/* ******************************************************** */}
+            <div className="row d-sm-block ">
+              <span className="footer_destination">Quick Links </span>
+              <div>
+                <div className="footerLink_internationl">
+                    <Link to='/term-and-condition' onClick={scrollToTop}>
+                        <span>Terms and Conditions</span>
+                    </Link>
+                   <Link to='/customer-support' onClick={scrollToTop}> 
+                        <span>Customer Support</span>
+                   </Link>
+                   <Link to ='/refund-policy' onClick={scrollToTop}>
+                         <span>Refund Policy</span>   
+                   </Link>
+                    <Link to ='/terms-of-service' onClick={scrollToTop}>
+                        <span>Terms of Service</span>
+                    </Link>
+                    <Link to ='/RequestCall' onClick={scrollToTop}>
+                        <span>Request Call</span>
+                    </Link>
+                    <Link to ='/FAQs' onClick={scrollToTop}>
+                        <span>FAQs</span>
+                    </Link>
+                    <Link to ='/job-careers' onClick={scrollToTop}>
+                         <span>Careers</span>
+                    </Link>
+                </div>
+              </div>
+            </div>
             <div className="row d-sm-block "> 
               <span className="footer_destination">Popular Airlines </span>
                 <div > 
-                    <div className="footerLink_internationl">
-                        {PopularairlineRoute.map(({ id, name, displayName }) => (
-                        <span key={id} onClick={() => handleAirLinesData(id, name)}>
-                            {displayName}
+                <div className="footerLink_internationl">
+                    {PopularairlineRoute.map(({ id, name, displayName ,imgPath}) => (
+                        <span key={id} onClick={() => handleAirLinesData(id, name)}  >
+                        {/* {displayName} */}
+                        <img src={imgPath} alt="" width='100px' className="my-3" />
                         </span>
-                        ))}
+                    ))}
                     </div>
+
                </div>
               <span className="footer_destination">International Destinations</span>
                 <div className=" mb-3"> 
