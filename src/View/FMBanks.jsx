@@ -6,6 +6,7 @@ import { getDetailByOrderId } from '../API/BackendAPI/CommissionAPI/GetDetailbyO
 import CalculateCheckSum from '../Components/SwichFlow/CalculateCheckSum';
 import InputMask from 'inputmask';
 import ArrangeCallPage from '../Components/Commom/ArrangeCallPage';
+import { PaymentFailedAPI } from '../API/BackendAPI/ArmanSirAPIs/PaymentFailed';
 const FMBanks = () => {
 
   useEffect(()=>{
@@ -18,6 +19,18 @@ const FMBanks = () => {
   },[]);
 
   const PnrNumber =JSON.parse(localStorage.getItem('PNRNumber'));
+
+  // const handlePaymentFailureAPI = async() =>{
+  //   let pnr = 'KWVCRY';
+  //   try{
+  //     const responce  = await PaymentFailedAPI(pnr);
+  //     console.log("paymetn-failed-api",responce);
+  //   }catch(error){
+  //     console.error("error while fetch data");
+  //     throw error;
+  //   }
+
+  // }
 
 
   return (
@@ -96,6 +109,10 @@ const FMBanks = () => {
 
             {/* <div>
               <ArrangeCallPage/>
+            </div> */}
+
+            {/* <div>
+              <button className='btn btn-primary' onClick ={handlePaymentFailureAPI}> Click to Test API</button>
             </div> */}
 
         </div>

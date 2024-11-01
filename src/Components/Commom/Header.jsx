@@ -12,9 +12,11 @@ import { CSSTransition } from "react-transition-group";
 import { useFormData } from "../../Context/FormDataContext";
 import Person2 from '@mui/icons-material/Person2';
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import { useUserData } from "../../Context/UserDataContext";
+
 const Header = () => {
-  const {isLogin , setLogIn,userName} = useFormData();
-    const {userVerName , setVarName} = useFormData();
+  const {isLogin , setLogIn,userName,userVerName , setVarName} = useFormData();
+    const {cityBanner} = useUserData();
   const [menu, setMenu] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

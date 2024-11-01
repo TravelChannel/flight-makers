@@ -1,8 +1,10 @@
-export const fetchPriceRates = async (departure, arrival,futureDate,futureDate1,tripType,adults,children,infants) => {
+export const fetchPriceRates = async(departure, arrival,futureDate,futureDate1,tripType,adults,children,infants) => {
     const departureCode = departure.substring(departure.indexOf('(') + 1, departure.indexOf(')'));
     const arrivalCode = arrival.substring(arrival.indexOf('(') + 1, arrival.indexOf(')'));
     const storedAuthtoken = JSON.parse(localStorage.getItem("AuthToken"));
     const accessToken = storedAuthtoken ? storedAuthtoken.access_token : null;
+
+    console.log("log ----access-token",accessToken);
     // console.log(tripType);
 
     const originDestinationInfo = futureDate1 !== undefined && futureDate1 !== "undefinedT00:00:00"
@@ -96,7 +98,7 @@ export const fetchPriceRates = async (departure, arrival,futureDate,futureDate1,
             "DataSources": {
               "ATPCO": "Enable",
               "LCC": "Enable",
-              "NDC": "Enable"
+              "NDC": "Disable"
             },
             "NumTrips": {}
           }
@@ -117,15 +119,17 @@ export const fetchPriceRates = async (departure, arrival,futureDate,futureDate1,
       method: 'POST',
       headers: myHeaders,
       body: raw,
+      cache: 'no-cache',
       redirect: 'follow'
     };
   
+    // console.log("log1-----check",raw);
     return fetch("https://api.havail.sabre.com/v6.1.0/shop/altdates/flights?mode=live", requestOptions)
       .then(response => response.json())
       .then(result => {
-        const priceRates = result.groupedItineraryResponse.itineraryGroups.flatMap((itineraryGroup) =>
-          itineraryGroup.itineraries.flatMap((itinerary) =>
-            itinerary.pricingInformation.flatMap((pricingInfo) => {
+        const priceRates = result?.groupedItineraryResponse?.itineraryGroups?.flatMap((itineraryGroup) =>
+          itineraryGroup?.itineraries?.flatMap((itinerary) =>
+            itinerary?.pricingInformation?.flatMap((pricingInfo) => {
               const exchangeRateUSD = pricingInfo.fare.passengerInfoList[0].passengerInfo.currencyConversion.exchangeRateUsed;
               const priceRate = pricingInfo.fare.totalFare.totalPrice / exchangeRateUSD;
               // console.log(pricingInfo.fare.totalFare.totalPrice);
@@ -133,16 +137,14 @@ export const fetchPriceRates = async (departure, arrival,futureDate,futureDate1,
             })
           )
         );
-        const getDates = result.groupedItineraryResponse.itineraryGroups.map((item) => item.groupDescription.legDescriptions);
-        const getPrice = result.groupedItineraryResponse.itineraryGroups.map((item) => item.itineraries.flatMap((itiner) => itiner.pricingInformation.flatMap((pricingInf) => pricingInf.fare.totalFare.totalPrice)));
+        const getDates = result?.groupedItineraryResponse?.itineraryGroups?.map((item) => item.groupDescription.legDescriptions);
+        const getPrice = result?.groupedItineraryResponse?.itineraryGroups?.map((item) => item?.itineraries?.flatMap((itiner) => itiner.pricingInformation?.flatMap((pricingInf) => pricingInf.fare.totalFare.totalPrice)));
         
-        const combinedArray = getDates.map((date, index) => ({
+        const combinedArray = getDates?.map((date, index) => ({
           date: date,
           price: getPrice[index],
           
         }));
-        
-        // console.log(result);
         const data = tripType === undefined ? priceRates : combinedArray;
         return data;
       })

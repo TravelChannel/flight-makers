@@ -18,13 +18,21 @@ import { MetaPageData } from "./Constant/MetaPageData";
 import Cookies from "js-cookie";
 import { sendCrashSMS } from "./API/BackendAPI/ArmanSirAPIs/SMSonCrash";
 import ArrangeCall from "./Components/Home/ArrangeCall";
-
+import { GetGclidID } from "./API/BackendAPI/ArmanSirAPIs/GetGclidID";
+import { useUserData } from "./Context/UserDataContext";
 
 const App = () => {
   const { showHeader,isLogin,setLogIn , userVerName,setVarName ,
     setUserName,setUserCountryCOde,isTopNavBar,setRoleID,setCompleteUserData,setProfileImg,isMobile, setMobile} = useFormData();
+    const {setGclid ,setGclidID} = useUserData();
 
+    // let urlParams = new URLSearchParams(window.location.search);
+    // console.log("urlParams",urlParams);
 
+    const GetQueryParam  = (param) =>{
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
   // ---------------------------------------
   const fetchData = async () => {
     try {
@@ -58,7 +66,28 @@ const App = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const gclidApiResp = async(gclidValue) =>{
+   try{
+    const responce = await GetGclidID(gclidValue);
+    const GclidID = responce[0].loggID;
+    console.log('GclidID',GclidID);
+    setGclid(gclidValue);
+    setGclidID(GclidID)
+   }catch(error){
+    console.error("Eror While Fetching gclid ID",error);
+   }
+    
+  }
   
+  useEffect(() => {
+    const gclidValue = GetQueryParam('gclid');
+    console.log("gclidValue-v1",gclidValue);
+    if(gclidValue){
+     gclidApiResp(gclidValue);
+    } 
+
+  }, []);
   // useEffect(() => {
   //   fetchData();
   // }, [userVerName]);

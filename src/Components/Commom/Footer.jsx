@@ -7,12 +7,77 @@ import { useFormData } from "../../Context/FormDataContext";
 import { InternationRoutes } from "../../Constant/FooterPagesData/InternationalRoutes";
 import { DomesticRoutes } from "../../Constant/FooterPagesData/DomesticRoutes";
 import { PopularairlineRoute } from "../../Constant/FooterPagesData/PopularAirLines";
-import { iataCode } from "../../Constant/FooterPagesData/IATACode";
-import IntFlights from "../SEOPages/IntAndDomFlights";
+import { useUserData } from "../../Context/UserDataContext";
+
 const Footer = () =>{
     const {isTopNavBar} = useFormData();
     // const [flightID ,setFlightID] = useState('');
-const navigate = useNavigate();
+    const {whtsAppMessage ,gclidID} =useUserData();
+
+    // console.log("userMessageData-v1",whtsAppMessage);
+        const navigate = useNavigate();
+
+        //  const UserSearchData = JSON.parse(localStorage.getItem('searchDataArr'));
+        const lowestFairValue = JSON.parse(localStorage.getItem('LowestFairValue'));
+
+        // console.log("lowestFairValue-ID----Footer",lowestFairValue);                                                                  
+        //  console.log("UserSearchData---footer",whtsAppMessage);                                                                                                             
+
+        //  -------------Sectors Detail for whatsapp--------------------
+        
+        // Check if whtsAppMessage and its properties are defined
+        const leavingFrom = whtsAppMessage?.departure?.[0];
+        const goingTo = whtsAppMessage?.arrival?.[0];
+        const departureCode = leavingFrom?.substring(leavingFrom.indexOf('(') + 1, leavingFrom.indexOf(')'));
+        const arrivalCode = goingTo?.substring(goingTo.indexOf('(') + 1, goingTo.indexOf(')'));
+
+        // Helper function to format dates
+        const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+        };
+
+        const departDate = whtsAppMessage?.date ? formatDate(whtsAppMessage.date[0]) : '';
+        const ArrivalDate = whtsAppMessage?.date ? formatDate(whtsAppMessage.date[1]) :'';
+
+        const fallbackArrivalDate = '01/01/1999';
+        const fallbackDate = formatDate(fallbackArrivalDate);
+
+        // Determine the traveling class
+        let TravelingClass = whtsAppMessage?.classtype;
+
+        TravelingClass = TravelingClass === 'Economy'
+        ? 'Y'
+        : TravelingClass === 'Business class'
+            ? 'C'
+            : TravelingClass === 'First class'
+            ? 'C'
+            : TravelingClass === 'Premium economy'
+                ? 'Y'
+                : null;
+
+        // Traveler details
+        const Adults = whtsAppMessage?.adults;
+        const childs = whtsAppMessage?.children;
+        const infants = whtsAppMessage?.infants;
+
+        // Build the message
+        const message = departureCode && arrivalCode
+        ? whtsAppMessage.date[1]
+            ? `Our Website shows you are interested to go from: ${departureCode}-${arrivalCode} with Travelling Dates: ${departDate}-${ArrivalDate} and Class of Travel: ${TravelingClass} ref: ${lowestFairValue}. Please send this message, Our representative will contact you.`
+            : `Our Website shows you are interested to go from: ${departureCode}-${arrivalCode} with Travelling Date: ${departDate} and Class of Travel: ${TravelingClass} ref: ${lowestFairValue}. Please send this message, Our representative will contact you.`
+        : gclidID ? `Our Website shows you are interested in traveling. Please send this message, Our representative will contact you. ref: ${gclidID}` :'Our Website shows you are interested in traveling. Please send this message, Our representative will contact you.';
+    
+            // console.log(message);
+
+// ---------------Whatsap URL Built----------------
+        // setWhatsAppMessage(message);
+         const whatsappUrl = `https://wa.me/923111147111?text=${encodeURIComponent(message)}`;
+
+
 // const handleAirLinesData = (id, airlinename) => {
 //     console.log("currrentairlinename",airlinename);
 //     navigate('/popularairlines', { state: { id: `${id}`, airlinename } });
@@ -68,8 +133,11 @@ const handleAirLinesData = (id, airlineName) => {
 
     //   console.log('searchDataArr',searchDataArr);
     window.scrollTo(0, 0);
-    // navigate('/searchflightresult', { state: { searchDataArr, FooterFlights:true} });
-    navigate(`/flights/cheap-flights-from-${from.toLowerCase()}-to-${to.toLowerCase()}`, { state: { searchDataArr:{}, FooterFlights:true} });
+    navigate(`/flights/${from.toLowerCase()}-to-${to.toLowerCase()}`, { state: { searchDataArr:{}, FooterFlights:true} });
+    
+    // navigate(`/flights/cheap-flights-from-${from.toLowerCase()}-to-${to.toLowerCase()}`, { state: { searchDataArr:{}, FooterFlights:true} });
+    // navigate(`/flights/${from.toLowerCase()}-to-${to.toLowerCase()}`, { state: { searchDataArr:{}, FooterFlights:true} });
+
   };
     return(
         <Fragment>
@@ -128,6 +196,13 @@ const handleAirLinesData = (id, airlineName) => {
                         </span>
                     ))}
                 </ul>
+                {/* -------------test page------------- */}
+                <div >
+                        <Link to={`flights/lahore-to-abuDhabi`} style={{ color: '#337ab7', fontSize: '15px' }}>
+                            Lahore-AbuDhabi
+                        </Link>
+                </div>
+                {/* ------------------------------ */}
                 </div>
               <span className="footer_destination">Domestic Destinations</span>
               <div className=" mb-3"> 
@@ -169,10 +244,10 @@ const handleAirLinesData = (id, airlineName) => {
                     <div className="custbrandLogos d-flex justify-content-start flex-wrap g-4">
                         <div className="payment_box "><img src={image.hbllogo} alt="Payment logo" /></div>
                         <div className="payment_box "><img src={image.payprologo} alt="Payment logo"/></div>
-                        <div className="payment_box "><img src={image.digicertlogo} alt="Payment logo"  /></div>
-                        <div className="payment_box "><img src={image.iatalogo} alt="Payment logo" /></div>
+                        <div className="payment_box "><img src={image.digicertlogo} alt="Payment logo"/></div>
+                        <div className="payment_box "><img src={image.iatalogo} alt="Payment logo"/></div>
                         <div className="payment_box "><img src={image.mastercardlogo} alt="Payment logo"/></div>
-                        <div className="payment_box "><img src={image.visacardlogo} alt="Payment logo"  /> </div>
+                        <div className="payment_box "><img src={image.visacardlogo} alt="Payment logo"/> </div>
                     </div>
                 </div>
             </div>
@@ -198,12 +273,16 @@ const handleAirLinesData = (id, airlineName) => {
             <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
         </div> */}
         <div className="whatsapp_chat">
-            <a href="https://wa.me/923111147111">
+            <a
+             href={whatsappUrl}
+             >
                 <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
             </a>
         </div>
         <div className="whatsapp_chat">
-            <a href="https://wa.me/923111147111">
+            <a
+             href={whatsappUrl}
+             >
                 <img className="whatsapp inlineDiv" src={image.whatsappicon} height="60" width="60" alt="Whatsapp logo" />
             </a>
         </div>

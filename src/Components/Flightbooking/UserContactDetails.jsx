@@ -24,11 +24,14 @@ import { sendOTPCode } from '../../API/BackendAPI/allAPICalls';
 import { verifyOTPRes } from '../../API/BackendAPI/allAPICalls';
 import { GetServiceCharges } from '../../API/BackendAPI/CommissionAPI/GetServiceCharges';
 import { CustomerDetailLead } from '../../API/BackendAPI/LeadCreationAPI/CustomerDetailLead';
-
+import { useUserData } from '../../Context/UserDataContext';
 
 const UserContactDetails = (props) => {
   const {isLogin , setLogIn ,userVerName,completeUserData
      ,setVarName,userName,setUserName,setRoleID,setServiceCharges,setProfileImg} = useFormData();
+
+  const {whtsAppMessage} = useUserData();
+  
   // console.log('completeUserData',completeUserData);
 //  console.log("shortFlightDetailfor-lead",shortFlightDetail)
   const [phoneNumber, setPhoneNumber] = useState(isLogin ? userVerName:'');
@@ -426,8 +429,8 @@ useEffect(() => {
       const LeadCreationResp = await CustomerDetailLead(PassLeadCreation);
       console.log('LeadCreationResp',LeadCreationResp);
       setLoading(false);
-      navigate('/bookingpayment');
       window.scrollTo(0, 0);
+      navigate('/bookingpayment');  
      
     }catch(error){
       console.error("error While Creating FinalOBJ",error);

@@ -271,6 +271,13 @@ const PrivacyPolicyCheck = (props) => {
           Amount:UserAmount
 
         };
+
+        if (window.fbq) {
+          window.fbq('track', 'PayNow', {
+            buttonName: 'PayNow',
+            payInfo:formData
+          });
+        }
           console.log("Final Pnr-Booking-Object",updatedBackendFinalOBJ);
        
             const respServerPnrBooking = await UserBookingDetails(updatedBackendFinalOBJ);

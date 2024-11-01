@@ -25,16 +25,15 @@ const LahoreBranches = [
     //     uan:'03 111 147 111',
     //     email:'support@faremakers.com'
     // },
-    
-
-    {
-        id: '3',
-        officeName: "DHA FF",
-        timing :"09AM - 06PM (Mon - Sat)",
-        address:'Plot-211, Block CCA FF Market Defence Housing Society (D.H.A.) Phase 4 Lahore, Pakistan',
-        uan:'03 111 147 111',
-        email:'support@faremakers.com'
-    },
+   
+    // {
+    //     id: '3',
+    //     officeName: "DHA FF",
+    //     timing :"09AM - 06PM (Mon - Sat)",
+    //     address:'Plot-211, Block CCA FF Market Defence Housing Society (D.H.A.) Phase 4 Lahore, Pakistan',
+    //     uan:'03 111 147 111',
+    //     email:'support@faremakers.com'
+    // },
     {
         id: '4',
         officeName: "Shimla Hill",
@@ -44,14 +43,14 @@ const LahoreBranches = [
         uan:'03 111 147 111',
         email:'support@faremakers.com'
     },
-    // {
-    //     id: '9',
-    //     officeName: "DHA Y Block",
-    //     timing :"09AM - 06PM (Mon - Sat)",
-    //     address:'Office No. 11, Y Block Commercial Plaza Round Market Phase 3 DHA Lahore, Pakistan',
-    //     uan:'03 111 147 111',
-    //     email:'support@faremakers.com'
-    // },
+    {
+        id: '9',
+        officeName: "DHA Y Block",
+        timing :"09AM - 06PM (Mon - Sat)",
+        address:'Office No. 11, Y Block Commercial Plaza Round Market Phase 3 DHA Lahore, Pakistan',
+        uan:'03 111 147 111',
+        email:'support@faremakers.com'
+    },
     {
         id: '5',
         officeName: "DHA H Block",

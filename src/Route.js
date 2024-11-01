@@ -39,6 +39,8 @@ import ArrangeCallPage from './Components/Commom/ArrangeCallPage';
 
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
+
+import LahoreToAbuDhabi from './Components/Commom/LahoreToAbuDhabi';
 const AppRouter = () => {
 
   const checkAccessToken = Cookies.get('Access_token') ? true:false;
@@ -49,6 +51,7 @@ const AppRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="/searchflightresult/" element={<SearchFlightResult />} />
         <Route path="/flights/:from" element={<IntFlights/>} />
+        {/* <Route path="/:from" element={<IntFlights/>} /> */}
         <Route path="/flightbooking" element={<FlightTicketBooking />} />
         <Route path ="/bookingDetail" element = {<BookingDetails/>}/>
         <Route path="/about-us" element={<About />} />
@@ -79,25 +82,30 @@ const AppRouter = () => {
        <Route path="/:airlineName/:cityName" element={<SubPopularAirline/>} />
        <Route path="/:airlineName" element={<PopularAirLines/>} />
        
-       <Route path = "*" element= {<div>Page Not Found</div>}/>
+       <Route path = "*" element= {<div>{<WebsiteUnderConstruction/>}</div>}/>
       
         {/* <Route path="/:modifiedCategoryName/:headerUrl" element={<BlogContent/>} /> */}
+        <Route path="/flights/lahore-to-abuDhabi" element={<LahoreToAbuDhabi/>} />
+
 
       </Routes>
     </Fragment>
   );
-
   function AdminElement({children}) {
     const navigate = useNavigate();
     useEffect(() => {
       if (!checkAccessToken) {
         navigate('/signup');
+        console.log("User is Login ")
       }
     }, [checkAccessToken]);
     if(checkAccessToken){
-      return <>{children}</>
+      console.log("User is Login ")
+      return <>
+         {children}
+      </>
     }else{
-      return null;
+      navigate('/signup');
     }
   }
 };

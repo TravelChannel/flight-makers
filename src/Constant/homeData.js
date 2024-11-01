@@ -34,29 +34,73 @@ const recentTravelData = [
 const cityTravelling = [
     {
         id: 1,
-        cityName: 'Lahore',
-        imagesCity: images.lahorePics
+        cityName: 'Dubai',
+        imagesCity: images.Dubai,
+        from:'Lahore',
+        to:'Dubai'
     },
     {
         id: 2,
-        cityName: 'Karachi',
-        imagesCity: images.karachiPics
+        cityName: 'London',
+        imagesCity: images.London,
+        from:'Lahore',
+        to:'London'
     },
     {
         id: 3,
-        cityName: 'Islamabad',
-        imagesCity: images.islamabadPics
+        cityName: 'New York',
+        imagesCity: images.NewYork,
+        from:'Lahore',
+        to:'newyork'
     },
     {
         id: 4,
-        cityName: 'Dubai',
-        imagesCity: images.dubaiPics
+        cityName: 'Toronto',
+        imagesCity: images.Toronto,
+        from:'Lahore',
+        to:'Toronto'
     },
+    
     {
-        id: 5,
-        cityName: 'London',
-        imagesCity: images.londonPics
-    }
+      id: 5,
+      cityName: 'Sydney',
+      imagesCity: images.sydney,
+      from:'Lahore',
+      to:'Sydney'
+  },
+];
+
+const CityBackgroundImages = [
+  {
+    id: 1,
+    pathName:'cheap-flights-from-lahore-to-dubai',
+    backGroundImg :require('../../src/assets/city/banners/dubai.png'),
+    Heading: 'Well Come to Dubai'
+  },
+  {
+    id: 2,
+    pathName:'cheap-flights-from-lahore-to-london',
+    backGroundImg :require('../../src/assets/city/banners/london.png'),
+    Heading: 'Well Come to London'
+  },
+  {
+    id: 3,
+    pathName:'cheap-flights-from-lahore-to-newyork',
+    backGroundImg :require('../../src/assets/city/banners/newYork.png'),
+    Heading: 'Well Come to New York'
+  },
+  {
+    id: 4,
+    pathName:'cheap-flights-from-lahore-to-toronto',
+    backGroundImg :require('../../src/assets/city/banners/toronto.png'),
+    Heading: 'Well Come to Toronto'
+  },
+  {
+    id: 5,
+    pathName:'cheap-flights-from-lahore-to-sydney',
+    backGroundImg :require('../../src/assets/city/banners/sydney.png'),
+    Heading: 'Well Come to Sydney'
+  },
 ];
 
 
@@ -563,4 +607,4 @@ const countries = [
  
 
 export default recentTravelData;
-export { cityTravelling ,testimonialsReview,OTPSliderData,countries,ArrangeCallImages};
+export { cityTravelling ,testimonialsReview,OTPSliderData,countries,ArrangeCallImages, CityBackgroundImages};

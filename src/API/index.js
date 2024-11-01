@@ -66,6 +66,7 @@ export const requestFetchSearchResult = async (searchDataArr,CurrentFlightCode) 
 
 export const requestFetchAlternateRates = async (departureCode, arrivalCode, futureDate, futureDate1, tripType, adults, children, infants) => {
   try {
+    // console.log("log1---check",departureCode,arrivalCode,futureDate);
     const alternateRates = await fetchPriceRates(departureCode, arrivalCode, futureDate, futureDate1, tripType, adults, children, infants);
     return alternateRates;
   } catch (error) {

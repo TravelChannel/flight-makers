@@ -98,9 +98,6 @@ const Tesimonials = () =>{
 export default Tesimonials;
 
 
-                           
-
-
 // ------------------API-----------------------------
                             {/* <SwiperSlide className="testimonialSlide">
                             <div className="d-flex justify-content-between">

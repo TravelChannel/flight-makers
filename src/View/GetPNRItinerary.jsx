@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { getDetailByOrderId } from "../API/BackendAPI/CommissionAPI/GetDetailbyOrderId.js";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { PaymentFailedAPI } from "../API/BackendAPI/ArmanSirAPIs/PaymentFailed.js";
 
 const GetPNRItinerary = () => {
     const navigate = useNavigate();
@@ -465,6 +466,22 @@ const totalPassangers = totalAdults + totalChilds + totalinfants;
 // console.log("toatlPassangers",totalPassangers);
 
 // ---------------------------------------------------------
+const handlePaymentFailureAPI = async() =>{
+    try{
+      const responce  = await PaymentFailedAPI(userPnr);
+      console.log("paymetn-failed-api",responce);
+    }catch(error){
+      console.error("error while fetch data");
+      throw error;
+    }
+  }
+ if(!TicketConfirmed){
+    // ----------Log 1--------------------
+    handlePaymentFailureAPI();
+    // ----------Log 2--------------------
+
+ }
+// ------------------------------------------------------------
 
 const handleNavigate = () =>{
     navigate('/');
@@ -478,7 +495,7 @@ const handleNavigate = () =>{
             ):(
                 <div className="container bg-white p-5" >
                     {  
-                        TicketConfirmed ?(
+                        TicketConfirmed ? (
                      <Fragment>
                      <div className="ticket_display" id="pdf-content">
                     {

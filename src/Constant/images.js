@@ -115,6 +115,15 @@ import piaLogo from '../../src/assets/footerFlightsLogo/PIA.png';
 import qatarLogo from '../../src/assets/footerFlightsLogo/qatar.png';
 
 
+// --------------City Updated Images --------------------------
+import sydney from '../../src/assets/city/updated/sydney.png';
+import London from '../../src/assets/city/updated/london.png';
+import Dubai from '../../src/assets/city/updated/dubai.png';
+import NewYork from '../../src/assets/city/updated/newYork.png';
+import Toronto from '../../src/assets/city/updated/toronto.png';
+
+// ----------------City BackGround Banners---------------------------
+// import cityBanner from '../../src/assets/city/banners/hero-image_2.jpg';
 
 export const extra_baggages = [
     nill_Bagg,   
@@ -125,5 +134,5 @@ export default faremakerlogo ;
 
 export {bankicon,whatsappicon,cautionicon, hbllogo,payprologo,iatalogo,mastercardlogo,digicertlogo,visacardlogo,jazzcash_Logo,hotellogo,planelogo,UAN,Mail,FMAbout,SCBank,MBBank,
     planeImage,hotelImage,sunUmbrellaImage,qaterLogo,dubaiPics,lahorePics,karachiPics,islamabadPics,londonPics,pakistanMap,mobileScaner,officeLocation
-    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot,swichLogo,ArrangeCall,ArrangeCallimg1,ArrangeCallimg2,ArrangeCallimg3,LahoreTower,OtherCitiesImg,emirateLogo,piaLogo,qatarLogo
+    ,bikepic,bankpic,QRBanner,MallLogo,otpSlider2,otpSlider3,caution,mobBanking,MallLogoBlue,MallIconMob,liveIcon,liveIconMob,AppStore,easypaisa_logo,Googleplay,AirAsiaFlag,dataNotfound,passport_Fname,passport_Lname,nill_Bagg,standerd_Bagg,extra_Bagg,refundPolicy,career,userProfile,announcement,destinationMap,saiRouteMap,blogBackGround,fmBlogLogo,underConstruction,gearImage,Robot,swichLogo,ArrangeCall,ArrangeCallimg1,ArrangeCallimg2,ArrangeCallimg3,LahoreTower,OtherCitiesImg,emirateLogo,piaLogo,qatarLogo,sydney,London,Dubai,NewYork,Toronto
 };

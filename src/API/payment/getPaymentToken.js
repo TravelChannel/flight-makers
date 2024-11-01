@@ -5,13 +5,12 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userP
   const userDetail = JSON.parse(localStorage.getItem("userDetails"));
   console.log("userDetail---222",userDetail);
   let Amount ;
-      if(userPhoneNum ==='3235268422'){
+      if(userPhoneNum ==='3235268422' || userPhoneNum ==='3408922375' ){
         Amount = 100;
       }else{
         console.log("total_Amount",createOrder.items[0].amount_cents);
         Amount = (createOrder?.items[0]?.amount_cents)*100;
       }
-
       console.log('CreatedOrderIDatAPI',createOrder.id );
 
       // localStorage.setItem("OrderID", JSON.stringify(createOrder));

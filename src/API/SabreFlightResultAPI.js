@@ -1,10 +1,8 @@
+
 const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
 
-  console.log("Array at Sabre API",searchDataArr);
-
-
-
   const { departure, arrival, classtype, adults, children, infants, date } = searchDataArr;
+  // console.log("date v-3",date);
   let classType = '';
   const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
   const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
@@ -16,7 +14,7 @@ const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
   // ------------
 
 const TotalSeatsRequired = [
-  adults +children +infants
+  adults + children + infants
 ];
 
 console.log("TotalSeatsRequired",TotalSeatsRequired);
@@ -59,7 +57,6 @@ console.log("TotalSeatsRequired",TotalSeatsRequired);
   // --------------------------
    const includeVendorPref  = [
     { "Code": "AZ" },
-    { "Code": "CA" },
     { "Code": "CX" },
     { "Code": "CZ" },
     { "Code": "EK" },
@@ -188,11 +185,11 @@ console.log("TotalSeatsRequired",TotalSeatsRequired);
               ]
           },
         "TPA_Extensions": {
-          // "DataSources": {
-          //   "ATPCO": "Enable",
-          //   "LCC": "Disable",
-          //   "NDC": "Disable"
-          // },
+          "DataSources": {
+            "ATPCO": "Enable",
+            "LCC": "Enable",
+            "NDC": "Disable"
+          },
           // "NumTrips": {}
           "OnlineIndicator": {
             "Ind": false
@@ -251,7 +248,8 @@ console.log("TotalSeatsRequired",TotalSeatsRequired);
   try {
     const response = await fetch("https://api.havail.sabre.com/v5/offers/shop", requestOptions);
     const result = await response.json();
-    // console.log("kashi", result.groupedItineraryResponse.statistics.itineraryCount);
+    console.log("kashi-v3", result);
+    // console.log("kashi-v3", result.groupedItineraryResponse.statistics.itineraryCount);
     if (result.groupedItineraryResponse.statistics.itineraryCount === 0) {
       const updatedArray = [];
       return updatedArray;
@@ -283,7 +281,22 @@ console.log("TotalSeatsRequired",TotalSeatsRequired);
       // This function is used to giving the name of array and index assign
       const modifiedData = matchingData.map(item => item.map((innerArray, index) => ({ schedualDetGet: innerArray, })));
 
-  console.log("pricingDetails",pricingDetails);
+  // console.log("pricingDetails",pricingDetails);
+
+// ------------------------------------Extract Lowest Fair for Whatsapp Message-----------------
+  // const lowestFair = pricingDetails[0].fare?.totalFare?.totalPrice;
+  // let IdtoPass = 0;
+  // try{
+  //   const whatsAppApiResp = await WhatsappLowestFair(lowestFair);
+  //   console.log("whatsAppApiResp-v1",whatsAppApiResp);
+  //   IdtoPass = whatsAppApiResp[0]?.loggID;
+  //   console.log("IdtoPass",IdtoPass);
+
+  // }catch(error){
+  //   console.error("Error While Fetching whatsApp-API",error);
+  // }
+  // localStorage.setItem("LowestFairValue", JSON.stringify(IdtoPass));
+// ------------------------------------Extract Lowest Fair for Whatsapp Message end-----------------
 
       // Geting baggageAllowance
       const baggageref = pricingDetails.map(bag => bag?.fare?.passengerInfoList[0]?.passengerInfo?.baggageInformation?.map(baggInfo => baggInfo.allowance.ref));

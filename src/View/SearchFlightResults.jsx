@@ -14,9 +14,13 @@ import TimerModal from '../Components/Searchflight/Comman/TimerRecall';
 import StaticFlightSearchData from '../Components/SEOPages/StaticFlightSearchData.jsx';
 import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.js';
 import { saveFlightSearchLogs } from '../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
-
+import { useUserData } from '../Context/UserDataContext.jsx';
+import { WhatsappLowestFair } from '../API/BackendAPI/ArmanSirAPIs/WhtsappLowestFair.js';
 const SearchFlightResult = () => {
   const location = useLocation();
+
+  const  {setWhatsAppMessage,gclid, gclidID} = useUserData();
+
   const { searchDataArr,FooterFlights } = location.state;
   const {filterDataArr} = useSelector((state) => state.updateFilterReducer);
   const [showTimerModal, setShowTimerModal] = useState(false);
@@ -26,7 +30,6 @@ const SearchFlightResult = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   const totalResults = apiData.length;
-  
   const navigate = useNavigate();
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
@@ -39,7 +42,7 @@ const SearchFlightResult = () => {
     try {
       setLoading(true);
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
-
+     
         console.log("Data to pass",searchDataArr);
         // ------------------------Store Search Log Data ----------------
     //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
@@ -52,6 +55,26 @@ const SearchFlightResult = () => {
   
       const fetchedFlightData = await requestFetchSearchResult(searchDataArr);
 
+      // ---------------get LowestFairfromSabre -----------------------
+      const LowestFairfromSabre = fetchedFlightData[0]?.fare?.totalFare?.totalPrice;
+      console.log("LowestFairfromSabre",LowestFairfromSabre);
+  // console.log("sabre Lowest Fair",lowestFair);
+        let IdtoPass = 0;
+        try{
+          const whatsAppApiResp = await WhatsappLowestFair(LowestFairfromSabre , gclid , gclidID);
+          // console.log("whatsAppApiResp-v1",whatsAppApiResp);
+          IdtoPass = whatsAppApiResp[0]?.loggID;
+          // console.log("IdtoPass",IdtoPass);
+
+        }catch(error){
+          console.error("Error While Fetching whatsApp-API",error);
+        }
+        localStorage.setItem("LowestFairValue", JSON.stringify(IdtoPass));
+            // --------------------------------------------------------------
+      
+      setWhatsAppMessage(searchDataArr)
+      // localStorage.setItem('searchDataArr', JSON.stringify(searchDataArr));
+
       if(tripType === "OneWay" || tripType === "Round")
       {
         const alternateRates = await requestFetchAlternateRates(departure[0], arrival[0], futureDate, futureDate1, tripType,adults,children,infants);
@@ -61,6 +84,7 @@ const SearchFlightResult = () => {
     
       if (FooterFlights && fetchedFlightData.length > 10) {
         setApiData(fetchedFlightData.slice(0, 7));
+        console.log("v---2");
       } else {
         setApiData(fetchedFlightData);
       }

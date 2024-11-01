@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import DomesticFlightsJason from './DomesticFlightsJason';
 
+
 const StaticFlightSearchData = () => {
   const { from } = useParams();
   const CurrentAirlineData = DomesticFlightsJason.find((flightData) => flightData.flightName === from);

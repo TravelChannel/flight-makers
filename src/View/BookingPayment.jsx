@@ -14,7 +14,7 @@ import { useFormData } from '../Context/FormDataContext';
 import Loader from '../Loader/Loader';
 // import CalculateCheckSum from '../Components/SwichFlow/CalculateCheckSum';
 import PayThorughSwich from '../Components/SwichFlow/PayThorughSwich';
-
+import ScrollToTop from '../Components/CustomHooks/ScrollToTop';
 const BookingPayment = () => {
 
    const {isPNRLoading} =useFormData();
@@ -25,6 +25,8 @@ const BookingPayment = () => {
    // const [isEmpty, setIsEmpty] = useState(true);
    // const [showPrivacyPolicy ,setPrivacyPolicy ] = useState(true);
 
+   
+   ScrollToTop();
    useEffect(() => {
       const handleResize = () => {
          setIsMobile(window.innerWidth < 768);
@@ -34,9 +36,9 @@ const BookingPayment = () => {
          window.removeEventListener('resize', handleResize);
       }
    }, []);
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+   // useEffect(() => {
+   //    window.scrollTo(0, 0);
+   //  }, []);
 
    return (
       isPNRLoading ? (<Loader/>):(

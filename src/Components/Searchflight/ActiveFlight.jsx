@@ -175,6 +175,12 @@ console.log("selecteddates",flightSegmentDates);
       flightSegmentDates: flightSegmentDates
 
     };
+    if (window.fbq) {
+      window.fbq('track', 'bookNow', {
+        buttonName: 'bookNowButton',
+        FlightDetails:searchDataArr
+      });
+    }
 
     console.log("mergedFlightDet",mergedFlightDet);
     localStorage.setItem("bookingTicket", JSON.stringify(mergedFlightDet));

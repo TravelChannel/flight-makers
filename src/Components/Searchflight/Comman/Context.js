@@ -67,8 +67,9 @@ export function ItemsToShowProvider({ children, totalResults, apiData, searchDat
   }
 
   console.log('filteredApiData',filteredApiData);
-  // console.log(apiData);
 
+  
+  // console.log(apiData);
   function checkFilterTiming(arrivalTime, selectedTimings) {
     console.log("arrivalTime",arrivalTime);
     console.log(",selectedTimings",selectedTimings);

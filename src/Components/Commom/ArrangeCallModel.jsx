@@ -102,7 +102,7 @@ const ArrangeCallModel = (props) => {
               "arrival": arrivalCode || 'DXB',
               "departDate": formatDateToString(startDate),
               "returnDate": formatDateToString(endDate),
-              "airline": "SV",
+              "airline": "ArrangeCall",
               "classType": "Economy",
               "adult": 1,
               "child": 0,

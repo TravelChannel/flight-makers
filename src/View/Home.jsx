@@ -20,7 +20,7 @@ const Home = () => {
         <PromotionsView/>
         <AppQR/>
         <CityTravel/>
-        {/* <Tesimonials/> */}
+        <Tesimonials/>
         {/* <ArrangeCall/> */}
       </div>
     </Fragment>);

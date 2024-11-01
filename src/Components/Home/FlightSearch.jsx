@@ -99,12 +99,25 @@ const FlightSearch = (props) => {
           const grtData = currentDate.toISOString().slice(0, 10);
           const formattedFutureDate = grtData + "T00:00:00";
           futureDates.push(formattedFutureDate);
+
         }
         setPriceRates([]);
+        // for (const futureDate of futureDates) {
+        //   const rates = await requestFetchAlternateRates(departure, arrival, futureDate);
+        //   setPriceRates((prevRates) => [...prevRates, ...rates]);
+        // }
+        //  ------------Code added to handle Rate Error-----------------
         for (const futureDate of futureDates) {
           const rates = await requestFetchAlternateRates(departure, arrival, futureDate);
-          setPriceRates((prevRates) => [...prevRates, ...rates]);
+          if (Array.isArray(rates)) {
+            setPriceRates((prevRates) => [...prevRates, ...rates]);
+          } else if (rates) {
+            setPriceRates((prevRates) => [...prevRates, rates]);
+          } else {
+            console.error('Error: rates is invalid', rates);
+          }
         }
+        // ---------------------------------------------------------------
       } catch (error) {
       }
     };
@@ -116,7 +129,8 @@ const FlightSearch = (props) => {
       //   handleDateChange();
       // }
     }
-  }, [departure, arrival]);
+  }, [arrival]);
+  //first useEffect call on both departure and arrival but to handle rate error i convert it to arrival only
 
 
 
@@ -474,10 +488,19 @@ const handleDepartureSearch = (value) => {
       activeClassTab
     );
 
+    //Create History
+    const existingSessionData = JSON.parse(localStorage.getItem('searchData')) || [];
+    const updatedSessionData = [...existingSessionData, searchDataArr];
+    const limitedSessionData = updatedSessionData.slice(-5);
+
+    console.log("limitedSessionData--v1",limitedSessionData);
+    localStorage.setItem('searchData', JSON.stringify(limitedSessionData));
+    // localStorage.setItem('searchDataArr', JSON.stringify(searchDataArr));
     navigate('/searchflightresult', { state: { searchDataArr } });
   };
   //  On update result button
   const updateFlightResult = () => {
+   
     const searchDataArr = generateSearchData(
       tripActiveTab,
       departure,
@@ -486,16 +509,25 @@ const handleDepartureSearch = (value) => {
       additionalFields,
       activeClassTab
     );
-    console.log('hashim',searchDataArr);
+    // localStorage.setItem('searchDataArr', JSON.stringify(searchDataArr));
+    // console.log('hashim',searchDataArr);
 
     setcheckUpdate(false);
-    console.log(searchDataArr);
+    // console.log(searchDataArr);
     
     //Create History
     const existingSessionData = JSON.parse(localStorage.getItem('searchData')) || [];
     const updatedSessionData = [...existingSessionData, searchDataArr];
-    const limitedSessionData = updatedSessionData.slice(-3);
+    const limitedSessionData = updatedSessionData.slice(-5);
+
+    // console.log("limitedSessionData--v1",limitedSessionData);
     localStorage.setItem('searchData', JSON.stringify(limitedSessionData));
+
+    if (window.fbq) {
+      window.fbq('track', 'SearchButtonClick', {
+        buttonName: 'SearchButton',
+      });
+    }
 
     navigate('/searchflightresult', { state: { searchDataArr } });
   };
@@ -517,7 +549,8 @@ let userFlight = false;
 if (
   window.location.pathname.match(/^\/flights\/cheap-flights-from-[a-zA-Z]+-to-[a-zA-Z]+$/) || 
   window.location.pathname.endsWith('-flights') ||
-  window.location.pathname.includes('/flights-to-')
+  window.location.pathname.includes('/flights-to-') ||
+  window.location.pathname.includes('/flights/') 
 ) {
   userFlight = true;
 }
@@ -637,10 +670,6 @@ if (
             <div className="search_flight_calander">
               {(tripActiveTab === 1 || tripActiveTab === 2) && (
                 <div className="d-flex justify-content-between searchFlightField">
-
-
-
-                
                   <Select
                     value={departure}
                     placeholder="Leaving From"

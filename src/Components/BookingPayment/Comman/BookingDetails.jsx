@@ -11,10 +11,12 @@ import { GetDetailByPNR } from '../../../API/BackendAPI/GetDetailbyPNR';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 import { useNavigate } from 'react-router';
 import Tooltip from '@material-ui/core/Tooltip';
+import ScrollToTop from '../../CustomHooks/ScrollToTop';
 const BookingDetails = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+  ScrollToTop();
   const [currentDate , setCurrentDate] = useState(false);
   const [orderId ,setOrderId] = useState();
 const {formData ,setFormData,backendFinalOBJ}= useFormData();
@@ -155,9 +157,6 @@ useEffect(() => {
   return () => {
     window.removeEventListener('resize', handleResize);
   };
-}, []);
-useEffect(() => {
-  window.scrollTo(0, 0);
 }, []);
 
 const backNavigation = () =>{

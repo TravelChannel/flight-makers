@@ -24,23 +24,28 @@ const Contact = () => {
             <img src={images.LahoreTower} alt="" className='tower_width'/>
             <h5 className='contact_details branches_heading align-self-center'> City</h5>
           </div>
-         {
-            LahoreBranches.map((items,index)=>(
-                <div className={`col-lg-4 col-md-6 col-sm-12  offices_detail_main`}>
-                {/* ${index===ContactUsDetails.length-1 ? 'offset-md-4':''} */}
-                    <div className='offices_header d-flex justify-content-between'>
-                        <p className="office_name" key={items.id}>{items.officeName}</p>
-                        <p className="office_name" key={items.id}>{items.timing}</p>
-                    </div>
-                    <div className="offices_details text-center">
-                    <p className="underText" key={items.id}>{items.address}</p>
-                    <p className="underText" key={items.id}>{items.city}</p>
-                    <p className="underText" key={items.id}>{items.uan}</p>
-                    <p className="underText" key={items.id}>{items.email}</p>
-                    </div>
-              </div>
-           ))
-         }
+          {
+              LahoreBranches.map((item, index) => (
+                  <div
+                      key={item.id}
+                      className={`col-lg-4 col-md-6 col-sm-12 offices_detail_main`}
+                  >
+                    {/* ${
+                          index === LahoreBranches.length - 1 ? 'offset-md-4' : ''
+                      } */}
+                      <div className='offices_header d-flex justify-content-between'>
+                          <p className="office_name">{item.officeName}</p>
+                          <p className="office_name">{item.timing}</p>
+                      </div>
+                      <div className="offices_details text-center">
+                          <p className="underText">{item.address}</p>
+                          <p className="underText">{item.city}</p>
+                          <p className="underText">{item.uan}</p>
+                          <p className="underText">{item.email}</p>
+                      </div>
+                  </div>
+              ))
+          }
             
          </div>
          <div className='row'>

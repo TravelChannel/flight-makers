@@ -43,10 +43,50 @@ const RecentSearches = () => {
         dispatch(infantsdecNumber());
       }
     }
+
+    // console.log("hwllooooo-----v1",searchDataArr);
+// ---------------------------------------------------
+   const  Dates = searchDataArr?.date;
+
+   const currentDate = new Date();
+
+const updatedDates = [];
+
+for (let i = 0; i < Dates.length; i++) {
+  let parsedDate = new Date(Dates[i]);
+
+  // If the first date is in the past, set it to 4 days from the current date
+  if (i === 0) {
+    if (parsedDate < currentDate) {
+      parsedDate = new Date(currentDate);
+      parsedDate.setDate(parsedDate.getDate() + 4);
+    }
+  } else {
+    // For subsequent dates, ensure they are not before the previous date
+    const previousDate = new Date(updatedDates[i - 1]);
+    if (parsedDate <= previousDate || parsedDate < currentDate) {
+      parsedDate = new Date(previousDate);
+      parsedDate.setDate(parsedDate.getDate() + 1);
+    }
+  }
+
+  // Add the updated date to the array in 'YYYY-MM-DD' format
+  updatedDates.push(parsedDate.toISOString().split('T')[0]);
+}
+
+// Update the date property in searchDataArr with the updatedDates
+searchDataArr.date = updatedDates;
+
+// console.log('Updated searchDataArr:', searchDataArr);
+
+  //  ---------------------------------------------------
+    // console.log('Dates-v1',Dates);
     navigate('/searchflightresult', { state: { searchDataArr } });
   };
   useEffect(() => {
     const localStorageData = localStorage.getItem('searchData');
+
+    console.log("localStorageData-v1",localStorageData);
     if (localStorageData) {
       const parsedData = JSON.parse(localStorageData);
       setLocalStorageData(parsedData.reverse());
@@ -55,38 +95,40 @@ const RecentSearches = () => {
 
   return (
     <Fragment>
-      <div className="recent_searches">
-        <label> Recent Searches: </label>
-      </div>
+     <div className="recent_searches">
+  <label> Recent Searches: </label>
+</div>
       {localStorageData.length > 0 ? (
         <div className="d-flex justify-content-center flex-wrap">
           {localStorageData.map((search, index) => (
             <div key={index} className="d-flex justify-content-center flex-wrap">
-              {Array.isArray(search.departure) && Array.isArray(search.arrival) ? (
-                <Fragment>
-                  {search.departure.map((departure, idx) => (
-                    <li key={idx} className="searches_inline_div" onClick={() => handleSearchClick(index)}>
-                      {`${departure}`}
-                      {search.arrival[idx] && (
-                        <span className='text-white'>
-                          <ArrowForwardIcon className="searches_forward_icon" />
-                          {`${search.arrival[idx]}`}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </Fragment>
-              ) : (
-                <li className="searches_inline_div" onClick={() => handleSearchClick(index)}>
-                  {search.departure}
-                  {search.arrival && (
-                    <span className='text-white'>
-                      <ArrowForwardIcon className="searches_forward_icon" />
-                      {search.arrival}
-                    </span>
-                  )}
-                </li>
-              )}
+              <li className="searches_inline_div" onClick={() => handleSearchClick(index)}>
+                {/* Check if departure is an array and has more than one element */}
+                {Array.isArray(search.departure) && search.departure.length > 1 ? (
+                  <>
+                    {/* Display only the first departure */}
+                    {`${search.departure[0]}`}
+                    {search.arrival[0] && (
+                      <span className='text-white'>
+                        <ArrowForwardIcon className="searches_forward_icon" />
+                        {/* Display only the first arrival */}
+                        {`${search.arrival[0]}`}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {/* If not an array or only one element, display normally */}
+                    {`${search.departure}`}
+                    {search.arrival && (
+                      <span className='text-white'>
+                        <ArrowForwardIcon className="searches_forward_icon" />
+                        {`${search.arrival}`}
+                      </span>
+                    )}
+                  </>
+                )}
+              </li>
             </div>
           ))}
         </div>
