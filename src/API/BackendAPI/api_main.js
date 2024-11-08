@@ -8,35 +8,34 @@ import Cookies from "js-cookie";
 // import { demoPages } from '../menu';
 
 const apiClient = axios.create({
-
   //   baseURL: 'https://fmnodebackend.azurewebsites.net/api/',
 
-       baseURL: "http://localhost:5000/api/",
+  baseURL: "http://localhost:5000/api/",
 
-    //   baseURL:"https://api.faremakers.com/api/", 
+  //   baseURL:"https://api.faremakers.com/api/",
 
-   //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
-   //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
-       withCredentials: true,
-   // baseURL: 'http://192.168.18.65/KBD_Backend/api', /// Danish
-   // baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain
-   // baseURL: 'http://192.168.18.128/KBD_Backend/api', // Hashi
-   // baseURL: 'http://localhost/KBD_Backend/api',
+  //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
+  //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
+  withCredentials: true,
+  // baseURL: 'http://192.168.18.65/KBD_Backend/api', /// Danish
+  // baseURL: 'http://192.168.18.94/KBD_Backend/api', // Husnain
+  // baseURL: 'http://192.168.18.128/KBD_Backend/api', // Hashi
+  // baseURL: 'http://localhost/KBD_Backend/api',
   timeout: 60000,
   // headers: {
   //      Authorization: `Bearer ${Cookies.get("Access_token")}`,
   // },
 });
 apiClient.interceptors.request.use(
-  function(config) {
-      const accessToken = Cookies.get("Access_token");
-      if (accessToken) {
-          config.headers.Authorization = `Bearer ${accessToken}`;
-      }
-      return config;
+  function (config) {
+    const accessToken = Cookies.get("Access_token");
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
+    return config;
   },
-  function(error) {
-      return Promise.reject(error);
+  function (error) {
+    return Promise.reject(error);
   }
 );
 
