@@ -54,23 +54,25 @@ const App = () => {
       const response = Cookies.get("Access_token")
         ? await VerificationAPi()
         : false;
-      console.log("Verification-API", response);
-      if (response.data.status === "SUCCESS") {
+      const {
+        data: {
+          status,
+          payload: { userData },
+        },
+      } = response;
+      console.log("status", status);
+      console.log("userData", userData);
+      if (status === "SUCCESS") {
         // if(response)
         console.log("User is logged in");
         setLogIn(true);
-        const userPhone = response.data.payload.userData.phoneNumber;
-        const PersonName = response.data.payload.userData.firstName;
-
-        console.log("personName", PersonName);
-        setUserCountryCOde(response.data.payload.userData.countryCode);
-        setProfileImg(response.data.payload.userData.imgSrc);
-        setRoleID(response.data.payload.userData.roleId);
-        setUserID(response.data.payload.userData.id);
-        setVarName(userPhone);
-        setUserName(PersonName);
-        setCompleteUserData(response.data.payload.userData);
-        console.log("userPhone-verification", userPhone);
+        setUserCountryCOde(userData.countryCode);
+        setProfileImg(userData.imgSrc);
+        setRoleID(userData.roleId);
+        setUserID(userData.id);
+        setVarName(userData.phoneNumber);
+        setUserName(userData.firstName);
+        setCompleteUserData(userData);
       } else {
         console.log("User is not logged in");
       }

@@ -1,4 +1,4 @@
-import { React, Fragment, useState, useEffect } from "react";
+import { React, Fragment, useState, useEffect, useRef } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { requestGetpaymentToken } from "../../../API/index";
 import { useNavigate } from "react-router";
@@ -15,17 +15,20 @@ import { AirSialTravDetial } from "../../../API/index";
 import { airsialBookingDetail } from "../../../API/index";
 import { AirSialTicketIssued } from "../../../API/index";
 import apiClient from "../../../API/BackendAPI/api_main";
+import { v4 as uuidv4 } from "uuid";
 
 const PrivacyPolicyCheck = (props) => {
   const navigate = useNavigate();
-  const { formData, backendFinalOBJ, setPNRLoading, userID } = useFormData();
-
+  const { formData, userVerName, backendFinalOBJ, setPNRLoading, userID } =
+    useFormData();
+  const formRef = useRef(null);
   const [isMobile, setMobile] = useState(window.innerWidth < 768);
   const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
   const [isLoading, setLoading] = useState(false);
-  const [orderId, setOrderId] = useState("");
+  const [orderId, setOrderId] = useState(uuidv4());
   const [formFields, setFormFields] = useState("");
   const [userPhoneNum, setUserPhoneNum] = useState("");
+  let [handleBackendResp, sethandleBackendResp] = useState("");
   const {
     checked,
     setChecked,
@@ -45,43 +48,101 @@ const PrivacyPolicyCheck = (props) => {
 
   const UserAmount = JSON.parse(localStorage.getItem("UserAmount"));
 
-  // console.log("UserAmount",UserAmount);
   useEffect(() => {
-    const handleSize = () => {
-      setMobile(window.innerWidth < 768);
-      setBtnCenter(window.innerWidth < 468);
-    };
-    window.addEventListener("resize", handleSize);
+    const updateIsMobile = () => setMobile(window.innerWidth < 768);
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
 
-    // ----------------------------Temporary--------------------------------------------------
+  useEffect(() => {
+    if (paymentType === "jazzcash" || paymentType === "paypro")
+      fetchJazzCashFormData();
+  }, [paymentType, orderId]);
+
+  const fetchJazzCashFormData = async () => {
+    const requestBody = {
+      pp_TxnType: "",
+      pp_BillReference: orderId, // replace with dynamically generated order ID if needed
+      pp_CustomerID: userID, // replace with actual customer ID
+      pp_Amount: UserAmount.totalTicketPrice,
+      pp_CustomerMobile: userVerName,
+    };
+
     try {
-      console.log(formData);
-      setUserPhoneNum(backendFinalOBJ?.pnrBookings[0]?.phoneNumber);
-      console.log("nabeel logged userphone number", userPhoneNum);
-      console.log(userPhoneNum);
+      // Await the response from the API call using apiClient
+      const response = await apiClient.post(
+        "/payment/PaymentAtJazzCash",
+        requestBody
+      );
+      // The response is already processed by your interceptor
+      // You can access the response data like this
+      const params = response.data.serviceResponse; // Assuming the response contains the JSON in the data
+      setFormFields(params);
     } catch (error) {
-      console.log("error", error);
+      // Handle any errors that occur during the fetch
+      console.error("Error Fetching Payment Form:", error);
+    } finally {
+      // Ensure loading state is reset regardless of success or failure
+      setPNRLoading(false);
     }
-    // ----------------------------Temporary---------------------------------------------------
+  };
 
-    // Only fetch JazzCash data if paymentType is 'jazzcash'
-    setOrderId(`ORD-${Date.now()}`);
-    fetchJazzCashFormData();
+  async function submitJazzCashForm(url, fields) {
+    // Create a form element
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = url;
 
-    return () => {
-      window.removeEventListener("resize", handleSize);
-    };
-  }, [paymentType, backendFinalOBJ, formData]);
-  const payOnlineHandler = async () => {
+    // Loop through the JSON fields and append them to the form
+    for (const key in fields) {
+      if (fields.hasOwnProperty(key)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = fields[key];
+        form.appendChild(input);
+      }
+    }
+
+    // Append the form to the document and submit it
+    document.body.appendChild(form);
+    form.submit();
+
+    // Optional: Remove the form after submission to keep the DOM clean
+    document.body.removeChild(form);
+  }
+
+  const handleSubmit = async () => {
+    // Check if required conditions are met
+    if (!checked || isEmpty) return;
+
+    try {
+      // First, call payOnlineHandler
+      let pnrstatus = await payOnlineHandler();
+      // If payment type is "jazzcash", submit the form
+      if (formFields && pnrstatus === 1) {
+        submitJazzCashForm(
+          "https://payments.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform",
+          formFields
+        );
+      } else {
+        // Handle the error in case payOnlineHandler fails
+        toast.error("Booking failed. Please try again later.");
+      }
+    } catch (error) {
+      // Handle the error in case payOnlineHandler fails
+      toast.error("Booking failed. Please try again later.");
+    }
+  };
+
+  const payOnlineHandlerbk = async () => {
     setPNRLoading(true);
     try {
-      const pnrNum = "test";
-      // const pnrNum = await generatePnrNum();
-      // console.log("pnrNum:", pnrNum);
-      // if (!pnrNum) {
-      //   console.log("erroratGetPNR");
-      //   throw new Error("Error Generating Pnr Num");
-      // }
+      //const pnrNum = "test";
+      const pnrNum = await generatePnrNum();
+      if (!pnrNum) {
+        throw new Error("Error Generating Pnr Num");
+      }
       let paymentCode;
       let iframe_id;
 
@@ -103,99 +164,90 @@ const PrivacyPolicyCheck = (props) => {
           paymentCode = 124777;
           break;
       }
-
-      if (paymentType === "jazzcash") {
-        console.log("OrderId", orderId);
-        console.log("pnrNum", pnrNum);
-        const handleBackendResp = await handleBackendData(orderId, pnrNum);
-        if (!handleBackendResp) {
-          console.log("handleBackendResp", handleBackendResp);
-          handleShowErrorAlert(
-            "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
-          );
-          throw new Error("Error Generating Pnr Num");
-        }
+      handleBackendResp = await handleBackendData(orderId, pnrNum);
+      if (!handleBackendResp) {
+        handleShowErrorAlert(
+          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+        );
+        throw new Error("Error Generating Pnr Num");
       } else {
-        // setPNRLoading(true);
-        const paymentToken = await requestGetpaymentToken(
-          paymentCode,
-          userPhoneNum
-        );
-        console.log("paymentTokenpaymentToken", paymentToken.createOrder);
-
-        if (!paymentToken) {
-          console.log("Error: paymentToken");
-          throw new Error("Error paymentToken");
-        }
-        // console.log(paymentToken.token);
-        const createOrder = paymentToken.createOrder;
-        const OrderId = createOrder.id;
-        const getPaymentToken1 = paymentToken.getPaymentToken;
-
-        console.log("paymentTokenResult", getPaymentToken1.token);
-        console.log("you are searching for me", createOrder);
-
-        console.log(
-          "-------------------------Start------------------------------"
-        );
-        console.log("OrderId", OrderId);
-        console.log("pnrNum", pnrNum);
-        const handleBackendResp = await handleBackendData(OrderId, pnrNum);
-        if (!handleBackendResp) {
-          console.log("handleBackendResp", handleBackendResp);
-          handleShowErrorAlert(
-            "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
-          );
-          throw new Error("Error Generating Pnr Num");
-        }
-
-        console.log(
-          "------------------------End-------------------------------"
-        );
-
-        if (paymentType === "paypro") {
-          window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
-        } else {
-          window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
-        }
-
-        setPNRLoading(false);
       }
+      // if (paymentType === "jazzcash") {
+      // } else {
+      //   // setPNRLoading(true);
+      //   const paymentToken = await requestGetpaymentToken(
+      //     paymentCode,
+      //     userPhoneNum
+      //   );
+      //   //console.log("paymentTokenpaymentToken", paymentToken.createOrder);
+
+      //   if (!paymentToken) {
+      //     console.log("Error: paymentToken");
+      //     throw new Error("Error paymentToken");
+      //   }
+      //   // console.log(paymentToken.token);
+      //   const createOrder = paymentToken.createOrder;
+      //   const OrderId = createOrder.id;
+      //   const getPaymentToken1 = paymentToken.getPaymentToken;
+
+      //   //console.log("paymentTokenResult", getPaymentToken1.token);
+      //   //console.log("you are searching for me", createOrder);
+
+      //   //console.log("-------------------Start-------------");
+      //   //console.log("OrderId", OrderId);
+      //   //console.log("pnrNum", pnrNum);
+      //   const handleBackendResp = await handleBackendData(OrderId, pnrNum);
+      //   if (!handleBackendResp) {
+      //     //console.log("handleBackendResp", handleBackendResp);
+      //     handleShowErrorAlert(
+      //       "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+      //     );
+      //     throw new Error("Error Generating Pnr Num");
+      //   }
+      //   //console.log("-------------End----------------------");
+
+      //   if (paymentType === "paypro") {
+      //     window.location.href = `https://pakistan.paymob.com/api/acceptance/iframes/${iframe_id}?payment_token=${getPaymentToken1.token}`;
+      //   } else {
+      //     window.location.href = `https://pakistan.paymob.com/iframe/${getPaymentToken1.token}`;
+      //   }
+
+      //   setPNRLoading(false);
+      // }
     } catch (error) {
       console.error(error, error.message);
       console.log("catch");
       setPNRLoading(false);
     }
-    // setLoading(false);
+    setLoading(false);
   };
 
-  const fetchJazzCashFormData = async () => {
-    console.log(UserAmount.totalTicketPrice);
-    const requestBody = {
-      pp_TxnType: "",
-      pp_BillReference: orderId, // replace with dynamically generated order ID if needed
-      pp_CustomerID: userID, // replace with actual customer ID
-      pp_Amount: UserAmount.totalTicketPrice,
-      pp_CustomerMobile: userPhoneNum,
-    };
-
+  const payOnlineHandler = async () => {
+    setPNRLoading(true);
     try {
-      // Await the response from the API call using apiClient
-      const response = await apiClient.post(
-        "/payment/PaymentAtJazzCash",
-        requestBody
-      );
-      // The response is already processed by your interceptor
-      // You can access the response data like this
-      const params = response.data.serviceResponse; // Assuming the response contains the HTML in the data
-      console.log("nabeel_testing");
-      setFormFields(params);
-    } catch (error) {
-      // Handle any errors that occur during the fetch
-      console.error("Error Fetching Payment Form:", error);
-    } finally {
-      // Ensure loading state is reset regardless of success or failure
+      let pnrNum = await generatePnrNum();
+      if (!pnrNum) {
+        throw new Error("Error Generating Pnr Num");
+      }
+
+      handleBackendResp = await handleBackendData(orderId, pnrNum);
+      if (!handleBackendResp) {
+        handleShowErrorAlert(
+          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+        );
+        throw new Error("Error Generating Pnr Num");
+        return 0;
+      }
       setPNRLoading(false);
+      return 1;
+    } catch (error) {
+      console.error(error, error.message);
+      handleShowErrorAlert(
+        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+      );
+      console.log("catch");
+      setPNRLoading(false);
+      return 0;
     }
   };
 
@@ -373,6 +425,7 @@ const PrivacyPolicyCheck = (props) => {
         respServerPnrBooking.data.payload.isAmountEqual
       );
       console.log("respServerPnrBooking", respServerPnrBooking);
+      sethandleBackendResp(respServerPnrBooking);
       toast.success("PNR Created Successfully", { autoClose: 2000 });
       return true;
     } else {
@@ -381,6 +434,10 @@ const PrivacyPolicyCheck = (props) => {
       );
     }
     // };
+  };
+
+  const handleFormSubmit = () => {
+    console.log(formRef.current);
   };
 
   // const handleTermsandConditions = () =>{
@@ -460,10 +517,9 @@ const PrivacyPolicyCheck = (props) => {
                   total inclusive, of all taxes
                 </p>
               </div>
-              <div className="move_payment_button ">
+              <div className="move_payment_button">
                 <form
-                  method="post"
-                  action="https://sandbox.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform"
+                  ref={formRef} // Attach the ref to the form
                 >
                   {Object.entries(formFields).map(([key, value]) => (
                     <input
@@ -473,39 +529,41 @@ const PrivacyPolicyCheck = (props) => {
                       value={value || ""}
                     />
                   ))}
-                  <button type="submit" className="btn btn-primary">
+
+                  {/* <button type="submit" className="btn btn-primary">
                     Pay With Jazz Cash
-                  </button>
-                </form>
-                <button
-                  onClick={() => {
-                    if (
+                  </button> */}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (
+                        paymentType === "paypro" ||
+                        paymentType === "easypaisa" ||
+                        paymentType === "jazzcash"
+                      ) {
+                        handleSubmit();
+                      } else {
+                        BookingDetail();
+                      }
+                    }}
+                    type="submit"
+                    className={`btn btn-primary pay_now_btn ${
+                      !checked ? "disable_cursr" : "activ_cursor"
+                    }`}
+                    disabled={!checked || isEmpty}
+                  >
+                    {
+                      // Display button text based on paymentType
                       paymentType === "paypro" ||
                       paymentType === "easypaisa" ||
-                      paymentType === "jazzcash"
-                    ) {
-                      payOnlineHandler();
-                    } else {
-                      BookingDetail();
+                      paymentType === "jazzcash" ? (
+                        <p>Pay Now</p>
+                      ) : (
+                        <p>Submit</p>
+                      )
                     }
-                  }}
-                  type="button"
-                  className={`btn btn-primary pay_now_btn ${
-                    !checked ? "disable_cursr" : "activ_cursor"
-                  }`}
-                  disabled={!checked || isEmpty}
-                >
-                  {
-                    // Display button text based on paymentType
-                    paymentType === "paypro" ||
-                    paymentType === "easypaisa" ||
-                    paymentType === "jazzcash" ? (
-                      <p>Pay Now</p>
-                    ) : (
-                      <p>Submit</p>
-                    )
-                  }
-                </button>
+                  </button>
+                </form>
               </div>
             </div>
           </div>
@@ -579,7 +637,55 @@ const PrivacyPolicyCheck = (props) => {
                   total inclusive, of all taxes
                 </p>
               </div>
-              <div className="move_payment_button p-3">
+              <div className="move_payment_button">
+                <form
+                  ref={formRef} // Attach the ref to the form
+                >
+                  {Object.entries(formFields).map(([key, value]) => (
+                    <input
+                      key={key}
+                      type="hidden"
+                      name={key}
+                      value={value || ""}
+                    />
+                  ))}
+
+                  {/* <button type="submit" className="btn btn-primary">
+                    Pay With Jazz Cash
+                  </button> */}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (
+                        paymentType === "paypro" ||
+                        paymentType === "easypaisa" ||
+                        paymentType === "jazzcash"
+                      ) {
+                        handleSubmit();
+                      } else {
+                        BookingDetail();
+                      }
+                    }}
+                    type="submit"
+                    className={`btn btn-primary pay_now_btn ${
+                      !checked ? "disable_cursr" : "activ_cursor"
+                    }`}
+                    disabled={!checked || isEmpty}
+                  >
+                    {
+                      // Display button text based on paymentType
+                      paymentType === "paypro" ||
+                      paymentType === "easypaisa" ||
+                      paymentType === "jazzcash" ? (
+                        <p>Pay Now</p>
+                      ) : (
+                        <p>Submit</p>
+                      )
+                    }
+                  </button>
+                </form>
+              </div>
+              {/* <div className="move_payment_button p-3">
                 <button
                   onClick={() => {
                     if (
@@ -609,7 +715,7 @@ const PrivacyPolicyCheck = (props) => {
                     )
                   }
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

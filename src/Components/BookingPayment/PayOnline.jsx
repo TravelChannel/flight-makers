@@ -20,7 +20,7 @@ const PayOnline = () => {
             className={`paypro_main ${
               changeLogoColor === "paypro" ? "logoBackground" : ""
             }`}
-            onClick={() => methode_change("jazzcash")}
+            onClick={() => methode_change("paypro")}
           >
             {" "}
             <img
