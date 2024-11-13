@@ -66,7 +66,7 @@ export const FormDataProvider = ({ children }) => {
 
 export const useFormData = () => {
   const context = useContext(FormDataContext);
-  console.log(context);
+  //console.log(context);
   if (!context) {
     throw new Error("useFormData must be used within a FormDataProvider");
   }

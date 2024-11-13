@@ -2,7 +2,7 @@ import apiClient from "./api_main";
 
 const userDetailsBackend = async () => {
   try {
-    const response = await apiClient.get("/pnrBooking");
+    const response = await apiClient.get("/pnrBooking?page=2&pageSize=10");
     console.log(JSON.stringify(response));
     return response;
   } catch (error) {

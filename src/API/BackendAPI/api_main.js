@@ -13,7 +13,6 @@ const apiClient = axios.create({
   //baseURL: "http://localhost:5000/api/",
 
   baseURL: "https://api.faremakers.com/api/",
-
   //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
   //  baseURL: 'https://faremakersnode-fmnode-back.azurewebsites.net/api/',
   withCredentials: true,
