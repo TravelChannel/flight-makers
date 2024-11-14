@@ -5,7 +5,8 @@ import { DeleteBlog } from '../../../../API/BackendAPI/BlogsAPI/DeleteBlogs';
 import { useNavigate } from 'react-router';
 import EditBlogModel from '../../MyPanel/Pages/common/EditBlogModel';
 import { PaginatedBlogList } from '../../../../API/BackendAPI/BlogsAPI/PaginatedBlogList';
-import { Stack, Pagination } from '@mui/material';
+// import { Stack, Pagination } from '@mui/material';
+import {Stack, Pagination} from '@mui/material'
 import SiteMapData from '../../../../API/BackendAPI/SiteMapAPI/SiteMapData';
 const BlogLists = () => {
 
@@ -66,7 +67,7 @@ const handleBlogLists = async () => {
       }
       const response = await PaginatedBlogList(obj);
       setBlogData(response.data.payload.blogs); 
-      setPageCount(response.data.payload.count);
+      setPageCount(response.data.payload.count.totalPages);
       // setLoading(false);
       console.log("Response from Get Blog API:", response);
   } catch (error) {

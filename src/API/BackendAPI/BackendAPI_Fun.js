@@ -1,8 +1,9 @@
 import apiClient from "./api_main";
 
-const userDetailsBackend = async () => {
+const userDetailsBackend = async (obj) => {
   try {
-    const response = await apiClient.get("/pnrBooking?page=2&pageSize=10");
+    console.log("check_pagination_obj",obj);
+    const response = await apiClient.get(`/pnrBooking?page=${obj.page}&pageSize=${obj.pageSize}`);
     console.log(JSON.stringify(response));
     return response;
   } catch (error) {

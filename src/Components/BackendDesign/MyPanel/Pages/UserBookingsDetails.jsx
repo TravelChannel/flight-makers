@@ -3,6 +3,7 @@ import RedoOutlinedIcon from "@mui/icons-material/RedoOutlined";
 import UndoIcon from "@mui/icons-material/Undo";
 import { useNavigate } from "react-router";
 import Loader from "../../../../Loader/Loader";
+import { Stack, Pagination } from '@mui/material';
 // import { useUserData } from '../../../../Context/UserDataContext';
 import {
   cityNameFunct,
@@ -23,6 +24,8 @@ const UserBookingsDetails = (props) => {
   const [isSmallMobile, setSmallMobile] = useState(window.innerWidth < 485);
   const [isLoading, setLoading] = useState(false);
   const [userData, setUser] = useState();
+  const [page, setPage] = useState(1); 
+  const [pageCount ,setPageCount] = useState();
   // const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
   const navigate = useNavigate();
 
@@ -86,12 +89,28 @@ const UserBookingsDetails = (props) => {
 
   // ----------------------------------------------
 
+  // ------------Pagination Code ------------------
+  // const quotient = Math.floor(pageCount / 10);
+  // const remainder = pageCount % 10;
+
+  // const totalPageCount = quotient + (remainder > 0 ? 1 : 0);
+  // console.log("total-page-count",totalPageCount);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+  // -------------------------------------------------
   const fetchBackendData = async () => {
     try {
       setLoading(true);
-      const userData = await userDetailsBackend();
+      const pageSize = 10;
+      const obj = {
+        page:page,
+        pageSize:pageSize
+      }
+      const userData = await userDetailsBackend(obj);
       console.log("ApiCalledData", userData);
-      setUser(userData?.data.payload);
+      setUser(userData?.data.payload?.data);
+      setPageCount(userData?.data.payload?.meta.totalPages);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -104,7 +123,7 @@ const UserBookingsDetails = (props) => {
     return () => {
       //console.log("component-unMount");
     };
-  }, []);
+  }, [page]);
 
   //  const userPayLoad = userData?.data.payload;
   //  console.log("userPayLoad",userPayLoad);
@@ -136,6 +155,7 @@ const UserBookingsDetails = (props) => {
       console.error("Error while Getting Api Data");
     }
   };
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -181,97 +201,113 @@ const UserBookingsDetails = (props) => {
       </div>
       <div className="user_table_details table-responsive ">
         {userData?.length ? (
-          <table className="table table-bordered table_custom">
-            <thead className="thead_typo">
-              <tr>
-                {isMobile ? "" : <th>No</th>}
-                <th>PNRID</th>
-                {checkAdmin ? <th>PNR-No</th> : ""}
-                {checkAdmin ? <th>Name</th> : ""}
-                {/* <th>User ID</th> */}
-                <th>Flight Segment</th>
-                <th>Amount</th>
-                {isMobile ? "" : <th>CreatedAt</th>}
-                <th>PayMethode</th>
-                {isSmallMobile ? "" : <th>Status</th>}
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody className="thead_typo">
-              {userData.map((items, index) => (
-                <tr key={index}>
-                  {isMobile ? "" : <td>{`${index + 1}`}</td>}
-                  <td className="">{items.id}</td>
-                  {checkAdmin ? <td className="">{items.pnr}</td> : ""}
-                  {checkAdmin ? (
-                    <td className="">{`${items.pnrDetail[0].firstName} ${items.pnrDetail[0].lastName} `}</td>
-                  ) : (
-                    ""
-                  )}
-                  {/* <td className="">{items.userId}</td> */}
-                  <td>
-                    {items?.flightDetails?.groupDescription?.map(
-                      (itms, itmsIndex) => (
-                        <Fragment key={itmsIndex}>
-                          <div className="d-flex justify-content-center">
-                            <p className="table_flight_font admin_side_font">
-                              {cityNameFunct[itms.departureLocation]}
-                            </p>
-                            <span className="airport_spacing admin_side_font">
-                              {itmsIndex === 0 ? (
-                                <RedoOutlinedIcon />
-                              ) : (
-                                <UndoIcon />
-                              )}
-                            </span>
-                            <p className="table_flight_font">
-                              {cityNameFunct[itms.arrivalLocation]}
-                            </p>
-                          </div>
-                        </Fragment>
-                      )
-                    )}
-                  </td>
-                  <td>{`${items.totalTicketPrice.toLocaleString()} PKR`}</td>
-                  {isMobile ? (
-                    ""
-                  ) : (
-                    <td className=" align-self-center">
-                      {" "}
-                      {ArrangeDateFormat(items.createdAt)} <br />{" "}
-                      {ArrangeTimeFormat(items.createdAt)}{" "}
-                    </td>
-                  )}
-                  <td>
-                    {items.sendSmsBranch
-                      ? "PayAtBranch"
-                      : items.sendSmsCod
-                      ? "COD"
-                      : "Online"}
-                  </td>
-                  {isSmallMobile ? (
-                    ""
-                  ) : (
-                    <td>{items.isPaid ? "Paid" : "UnPaid"}</td>
-                  )}
-                  <td>
-                    {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
-
-                    <button
-                      className="btn btn-primary buttons_typo"
-                      onClick={() => {
-                        handleUserId(items.id);
-                        window.open("/userDetails", "_blank");
-                      }}
-                    >
-                      View
-                    </button>
-                    {/* </button> */}
-                  </td>
+          <Fragment>
+            <table className="table table-bordered table_custom">
+              <thead className="thead_typo">
+                <tr>
+                  {isMobile ? "" : <th>No</th>}
+                  <th>PNRID</th>
+                  {checkAdmin ? <th>PNR-No</th> : ""}
+                  {checkAdmin ? <th>Name</th> : ""}
+                  {/* <th>User ID</th> */}
+                  <th>Flight Segment</th>
+                  <th>Amount</th>
+                  {isMobile ? "" : <th>CreatedAt</th>}
+                  <th>PayMethod</th>
+                  {isSmallMobile ? "" : <th>Status</th>}
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="thead_typo">
+                {userData.map((items, index) => (
+                  <tr key={index}>
+                    {isMobile ? "" : <td>{`${index + 1}`}</td>}
+                    <td className="">{items.id}</td>
+                    {checkAdmin ? <td className="">{items.pnr}</td> : ""}
+                    {checkAdmin ? (
+                      <td className="">{`${items.pnrDetail[0].firstName} ${items.pnrDetail[0].lastName} `}</td>
+                    ) : (
+                      ""
+                    )}
+                    {/* <td className="">{items.userId}</td> */}
+                    <td>
+                      {items?.flightDetails?.groupDescription?.map(
+                        (itms, itmsIndex) => (
+                          <Fragment key={itmsIndex}>
+                            <div className="d-flex justify-content-center">
+                              <p className="table_flight_font admin_side_font">
+                                {cityNameFunct[itms.departureLocation]}
+                              </p>
+                              <span className="airport_spacing admin_side_font">
+                                {itmsIndex === 0 ? (
+                                  <RedoOutlinedIcon />
+                                ) : (
+                                  <UndoIcon />
+                                )}
+                              </span>
+                              <p className="table_flight_font">
+                                {cityNameFunct[itms.arrivalLocation]}
+                              </p>
+                            </div>
+                          </Fragment>
+                        )
+                      )}
+                    </td>
+                    <td>{`${items.totalTicketPrice.toLocaleString()} PKR`}</td>
+                    {isMobile ? (
+                      ""
+                    ) : (
+                      <td className=" align-self-center">
+                        {" "}
+                        {ArrangeDateFormat(items.createdAt)} <br />{" "}
+                        {ArrangeTimeFormat(items.createdAt)}{" "}
+                      </td>
+                    )}
+                    <td>
+                      {items.sendSmsBranch
+                        ? "PayAtBranch"
+                        : items.sendSmsCod
+                        ? "COD"
+                        : "Online"}
+                    </td>
+                    {isSmallMobile ? (
+                      ""
+                    ) : (
+                      <td>{items.isPaid ? "Paid" : "UnPaid"}</td>
+                    )}
+                    <td>
+                      {/* <button className='btn btn-primary buttons_typo' onClick={() => UserFurtherDetail(items.pnrDetail, items.flightDetails)}> */}
+
+                      <button
+                        className="btn btn-primary buttons_typo"
+                        onClick={() => {
+                          handleUserId(items.id);
+                          window.open("/userDetails", "_blank");
+                        }}
+                      >
+                        View
+                      </button>
+                      {/* </button> */}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className='d-flex justify-content-center py-3'>
+                      <Stack spacing={1}>
+                        <Pagination
+                        count={pageCount} 
+                        page={page} 
+                        onChange={handleChange}
+                          color="primary"
+                          size="medium" 
+                          shape="rounded"
+                          //  showFirstButton 
+                          //  showLastButton
+                          />
+                      </Stack>
+            </div>
+          </Fragment>
         ) : (
           <div className="text-center py-5 bg-white">
             <img
