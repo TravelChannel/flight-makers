@@ -8,6 +8,10 @@ const StaticFlightSearchData = () => {
   const CurrentAirlineData = DomesticFlightsJason.find((flightData) => flightData.flightName === from);
 
   // Function to generate FAQ schema JSON-LD
+  const aggregateRating = {
+    ratingValue: "4.2", // Average rating
+    reviewCount: "62" // Number of reviews
+  };
   const generateFAQSchema = (faqs) => {
     return {
       "@context": "https://schema.org",
@@ -19,7 +23,14 @@ const StaticFlightSearchData = () => {
           "@type": "Answer",
           "text": faq.answer
         }
-      }))
+      })),
+      ...(aggregateRating && {
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": aggregateRating.ratingValue,
+          "reviewCount": aggregateRating.reviewCount
+        }
+      })
     };
   };
 

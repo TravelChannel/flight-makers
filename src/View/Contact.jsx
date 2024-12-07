@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{Fragment} from 'react';
 import ConnectWithoutContactTwoToneIcon from '@mui/icons-material/ConnectWithoutContactTwoTone';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -15,9 +15,12 @@ const Contact = () => {
         <ConnectWithoutContactTwoToneIcon className='contact_detail_icon align-self-center'/><h3>Contact Us</h3>
         </div>
         <div className='contact_us_body'>
-          <ContactSources/>
-         <h5 className='branches_details branches_heading '>You can also Visit Our Nearest Branch:</h5>
+          <ContactSources/>    
 
+         <h5 className='branches_details branches_heading '>You can also Visit Our Nearest Branch:</h5>
+         <div className="highlight-container">
+             <p className="highlight-message">Our head office is open on Sunday as well, from 9:00 AM to 2:00 PM. We look forward to serving you!</p>
+          </div>
          <div className='row'>
           <div className='d-flex justify-content-center my-1'>
           <h5 className='contact_details branches_heading align-self-center'>Lahore </h5>
@@ -32,10 +35,27 @@ const Contact = () => {
                   >
                     {/* ${
                           index === LahoreBranches.length - 1 ? 'offset-md-4' : ''
-                      } */}
-                      <div className='offices_header d-flex justify-content-between'>
-                          <p className="office_name">{item.officeName}</p>
-                          <p className="office_name">{item.timing}</p>
+                      } */} 
+                      <div className={`offices_header ${item.status ? '':'d-flex justify-content-between'}`}>
+                           {
+                            item.status ? (
+                              <div className='d-flex justify-content-between'>
+                                  <div >
+                                      <p className="office_name">{item.officeName}</p>
+                                      <p className="office_name">{item.timing}</p>
+                                  </div>
+                                  <div className='status_background'>
+                                      <p className='contactUS_status' >Temporarily Closed*</p>
+                                  </div>
+                              </div>
+                            ):(
+                             <Fragment>
+                              <p className="office_name">{item.officeName}</p>
+                              <p className="office_name">{item.timing}</p>
+                             </Fragment>
+                            )
+                           }
+                            
                       </div>
                       <div className="offices_details text-center">
                           <p className="underText">{item.address}</p>

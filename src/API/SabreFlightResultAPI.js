@@ -1,13 +1,15 @@
 
 const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
 
+  console.log("searchDataArr_v1",searchDataArr);
+
   const { departure, arrival, classtype, adults, children, infants, date } = searchDataArr;
   // console.log("date v-3",date);
   let classType = '';
   const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
   const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
-    const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
+  const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
   const arrivalCode = arrival.map((arr) => arr.substring(arr.indexOf('(') + 1, arr.indexOf(')')));
 
 

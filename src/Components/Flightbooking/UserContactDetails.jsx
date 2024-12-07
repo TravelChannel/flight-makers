@@ -337,6 +337,7 @@ const UserContactDetails = (props) => {
   const travelFormValid = () => {
     for (let i = 0; i < passengerDetails; i++) {
       const formDataItem = formData[i];
+      const title = formDataItem && formDataItem[`title${i}`];
       const fname = formDataItem && formDataItem[`fname${i}`];
       const lname = formDataItem && formDataItem[`lname${i}`];
       const gender = formDataItem && formDataItem[`gender${i}`];
@@ -346,6 +347,7 @@ const UserContactDetails = (props) => {
       const expiredate = formDataItem && formDataItem[`PassportExpiryDate${i}`];
 
       if (
+        !title ||
         !fname ||
         !lname ||
         !gender ||
@@ -374,6 +376,7 @@ const UserContactDetails = (props) => {
         passportExpiryDate: formDataItem[`PassportExpiryDate${i}`],
         firstName: formDataItem[`fname${i}`],
         lastName: formDataItem[`lname${i}`],
+        title: formDataItem[`title${i}`],
         gender: formDataItem[`gender${i}`],
         cnic: formDataItem[`cnic${i}`],
         passportNo: formDataItem[`passport${i}`],
@@ -644,12 +647,12 @@ const UserContactDetails = (props) => {
                                   </span>
                                   {isSmallScreen ? (
                                     <span className="adult_precautions  align-self-center">
-                                      {" "}
+                                      
                                       Important : <br />
                                     </span>
                                   ) : (
                                     <span className="adult_precautions  align-self-center">
-                                      {" "}
+                                      
                                       Important :
                                     </span>
                                   )}
@@ -660,12 +663,42 @@ const UserContactDetails = (props) => {
                                         : ""
                                     }`}
                                   >
-                                    {" "}
+                                    
                                     Enter your name as it mentioned on your
-                                    passport{" "}
+                                    passport
                                   </span>
                                 </div>
                                 <div className="row p-0 m-0">
+                                  <div className="col-md-4 mb-3 ">
+                                      <FormControl
+                                        className="fname_textfield"
+                                        size="small"
+                                      >
+                                        <InputLabel id="demo-simple-select-helper-label">
+                                          Title
+                                        </InputLabel>
+                                        <Select
+                                          labelId="demo-simple-select-helper-label"
+                                          id="demo-simple-select-helper"
+                                          value={
+                                            formData[index] &&
+                                            formData[index][`title${index}`]
+                                              ? formData[index][`title${index}`]
+                                              : ""
+                                          }
+                                          label="Title"
+                                          name={`title${index}`}
+                                          onChange={(e) =>
+                                            handleInputChange(e, index)
+                                          }
+                                        >
+                                          <MenuItem value={"Mr"}>Mr</MenuItem>
+                                          <MenuItem value={"Mrs"}>Mrs</MenuItem>
+                                          <MenuItem value={"Ms"}>Ms</MenuItem>
+
+                                        </Select>
+                                      </FormControl>
+                                    </div>
                                   <div className="col-md-4 mb-3">
                                     <TextField
                                       id="outlined-fname-input"
@@ -782,9 +815,8 @@ const UserContactDetails = (props) => {
                                         className="dialog_header d-flex justify-content-between"
                                       >
                                         <span className="dialog_fname_headind align-self-center">
-                                          {" "}
                                           Your SurName
-                                        </span>{" "}
+                                        </span>
                                         <div className="Dialog_close_icon align-self-center">
                                           <CloseIcon />
                                         </div>
@@ -798,7 +830,7 @@ const UserContactDetails = (props) => {
                                       </DialogContent>
                                     </Popover>
                                   </div>
-                                  <div className="col-md-4 mb-3">
+                                  <div className="col-md-4 mb-3 mt-3">
                                     <FormControl
                                       className="fname_textfield"
                                       size="small"

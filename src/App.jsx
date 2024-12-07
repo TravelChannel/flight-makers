@@ -42,7 +42,7 @@ const App = () => {
 
   // let urlParams = new URLSearchParams(window.location.search);
   // console.log("urlParams",urlParams);
-  //nabeel testing
+  
 
   const GetQueryParam = (param) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -150,13 +150,13 @@ const App = () => {
     <Fragment>
       <div className="backgradiant">
         <div className="container-fluid">
-          <MetaPage metaPageData={MetaPageData}>
-            {!inputPNR && isTopNavBar && <TopNavBar />}
-            {!inputPNR && showHeader && <Header />}
-            {!isMobile && <ArrangeCall />}
-            <Routes />
-            {<ToastContainer />}
-            {!inputPNR && <Footer />}
+           <MetaPage metaPageData={MetaPageData}>
+              {!inputPNR && isTopNavBar && <TopNavBar />}
+              {!inputPNR && showHeader && <Header />}
+              {!isMobile && <ArrangeCall />}
+              <Routes />
+              {<ToastContainer />}
+              {!inputPNR && <Footer />}
           </MetaPage>
         </div>
       </div>

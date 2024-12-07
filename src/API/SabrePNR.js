@@ -34,7 +34,8 @@ export const SabrePNRCreate = async (formData) => {
     // Determine passenger type dynamically based on index
     if (index < adults) {
       passengerType = "ADT";
-      nameReference = "Mr";
+      // nameReference = "Mr";
+      nameReference =passenger[`title${index}`] ;
     } else if (index < adults + children) {
       passengerType = "CNN";
       nameReference = "C09";
@@ -63,7 +64,7 @@ export const SabrePNRCreate = async (formData) => {
     PersonName.push(person);
   });
 
-  console.log("kashifHussain", PersonName);
+  console.log("Travellers_Details_v1", PersonName);
 
   //  ---------------------------------------
   const months = [
@@ -91,7 +92,8 @@ export const SabrePNRCreate = async (formData) => {
     // Determine passenger type dynamically based on index
     if (index < adults) {
       passengerType = "ADT";
-      nameReference = "Mr";
+      // nameReference = "Mr";
+      nameReference =passenger[`title${index}`] ;
     } else if (index < adults + children) {
       passengerType = "CNN";
       nameReference = "MSTR*C09";

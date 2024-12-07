@@ -42,15 +42,20 @@ const ReIssueReqs = () => {
     ReIssueBookingDetails();
   }, []);
 
-  const userPayLoad = userData?.data?.payload;
-  const userCountryCode = userPayLoad?.map((items) => items.user.countryCode);
-  const userPhoneNo = userPayLoad?.map((items) => items.user.phoneNumber);
+  // const userPayLoad = userData?.data?.payload ;
+  // const userCountryCode = userPayLoad?.map((items) => items.user.countryCode) || [];
+  // const userPhoneNo = userPayLoad?.map((items) => items.user.phoneNumber) || [];
+  
+  const userPayLoad = Array.isArray(userData?.data?.payload) ? userData?.data?.payload : [];
+  const userCountryCode = userPayLoad.map((items) => items.user.countryCode);
+  const userPhoneNo = userPayLoad.map((items) => items.user.phoneNumber);
+
 
   const filteredUserData = userPayLoad?.filter((items) =>
     items.id?.toLowerCase().includes(search.toLowerCase()) ||
     items.userId?.toLowerCase().includes(search.toLowerCase()) ||
-    userCountryCode?.[userPayLoad.indexOf(items)]?.toLowerCase().includes(search.toLowerCase()) ||
-    userPhoneNo?.[userPayLoad.indexOf(items)]?.toLowerCase().includes(search.toLowerCase()) ||
+    userCountryCode?.[userPayLoad?.indexOf(items)]?.toLowerCase().includes(search.toLowerCase()) ||
+    userPhoneNo?.[userPayLoad?.indexOf(items)]?.toLowerCase().includes(search.toLowerCase()) ||
     ArrangeDateFormat(items.createdAt).toLowerCase().includes(search.toLowerCase())
   );
 
@@ -105,7 +110,7 @@ const ReIssueReqs = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredUserData.map((items, index) => (
+                {filteredUserData?.map((items, index) => (
                   <tr key={index}>
                     <td className="">{items.id}</td>
                     <td className="">{items.userId}</td>

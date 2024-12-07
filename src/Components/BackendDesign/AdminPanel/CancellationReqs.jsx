@@ -43,11 +43,13 @@ const CancellationReqs = () => {
     CancellationBookingDetails();
   }, []);
 
-  const userPayLoad = userData?.data?.payload;
-  const FlightShortInfo = userPayLoad?.map((items) => items.flightDetails);
+  // const userPayLoad = userData?.data?.payload;
+  // const userCountryCode = userPayLoad?.map((items) => items.user.countryCode);
+  // const userPhoneNo = userPayLoad?.map((items) => items.user.phoneNumber);
 
-  const userCountryCode = userPayLoad?.map((items) => items.user.countryCode);
-  const userPhoneNo = userPayLoad?.map((items) => items.user.phoneNumber);
+  const userPayLoad = Array.isArray(userData?.data?.payload) ? userData?.data?.payload : [];
+  const userCountryCode = userPayLoad.map((items) => items.user.countryCode);
+  const userPhoneNo = userPayLoad.map((items) => items.user.phoneNumber);
 
   const filteredUserData = userPayLoad?.filter((items) =>
     items.id?.toLowerCase().includes(search.toLowerCase()) ||

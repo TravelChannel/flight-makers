@@ -22,7 +22,7 @@ export const  sendOTP = async(getOTPData)=>{
         // const responce = await fetch("http://localhost:5000/api/auth/requestOtp", requestOptions);
         const responce = await fetch("https://faremakersnode-fmnode-back.azurewebsites.net/api/auth/requestOtp", requestOptions);
         const result = await responce.json();
-        console.log("OTPResults",result);
+        console.log("OTPResults1232331424");
         return result;
     }catch (error) {
         console.error("OTPSentCode", error);

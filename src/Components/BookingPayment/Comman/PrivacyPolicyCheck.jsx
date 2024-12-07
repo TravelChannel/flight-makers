@@ -44,8 +44,8 @@ const PrivacyPolicyCheck = (props) => {
   const gettingTicketPrice = JSON.parse(
     localStorage.getItem("totalTicketPrice")
   );
+  // console.log("gettingTicketPrice---v1",gettingTicketPrice);
   const totalTicketPrice = Number(gettingTicketPrice).toLocaleString();
-
   const UserAmount = JSON.parse(localStorage.getItem("UserAmount"));
 
   useEffect(() => {
@@ -426,7 +426,7 @@ const PrivacyPolicyCheck = (props) => {
       );
       console.log("respServerPnrBooking", respServerPnrBooking);
       sethandleBackendResp(respServerPnrBooking);
-      toast.success("PNR Created Successfully", { autoClose: 2000 });
+      // toast.success("PNR Created Successfully", { autoClose: 2000 });
       return true;
     } else {
       handleShowErrorAlert(

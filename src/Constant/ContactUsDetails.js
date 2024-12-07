@@ -8,14 +8,6 @@ const LahoreBranches = [
         uan:'03 111 147 111',
         email:'support@faremakers.com'
     },
-    {
-        id: '2',
-        officeName: "Kalma Chowk Office",
-        timing :"09AM - 06PM (Mon - Sat)",
-        address:'3-UGF, Century Tower, Kalma Chowk, Main Boulevard, Gulberg-III, Lahore, Pakistan',
-        uan:'03 111 147 111',
-        email:'support@faremakers.com'
-    },
 
     // {
     //     id: '4',
@@ -66,6 +58,16 @@ const LahoreBranches = [
         address:'03 GF, Akbari Shoping Mall, Hunza Block, Allama Iqbal Town,Lahore, Pakistan',
         uan:'03 111 147 111',
         email:'support@faremakers.com'
+    },
+    
+    {
+        id: '2',
+        officeName: "Kalma Chowk Office",
+        // timing :"09AM - 06PM (Mon - Sat)",
+        address:'3-UGF, Century Tower, Kalma Chowk, Main Boulevard, Gulberg-III, Lahore, Pakistan',
+        uan:'03 111 147 111',
+        email:'support@faremakers.com',
+        status:'Temporarily Closed'
     },
     // {
     //     id: '12',

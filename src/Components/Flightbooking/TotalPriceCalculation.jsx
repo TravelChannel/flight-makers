@@ -7,6 +7,7 @@ const TotalPriceCalculation = () => {
     const {extraBagg } = useContext(TicketPriceContext);
     const {serviceCharges} =useFormData();
 
+       
     // console.log("PriceCalPage",{serviceCharges});
     const classtype = flightData.classtype;
     const classType =
@@ -38,6 +39,16 @@ const TotalPriceCalculation = () => {
     const calculatedServiceFees = servicefees(taxfees);
     const totalTicketPrice = totalAmount.toFixed(0);
 
+    // console.log('totalTicketPrice---v1',totalTicketPrice);
+
+     // calculation of Bank charges 
+    //  const bankPercentage = 2.32;
+    //  const BankCharges = Math.round((totalTicketPrice * bankPercentage) / 100);
+    //  console.log("BankCharges-calculated-v1",BankCharges);
+
+
+
+
     const exchangeRateUsed = flightData.fare.passengerInfoList[0]?.passengerInfo.currencyConversion?.exchangeRateUsed?.toFixed(2);
     localStorage.setItem("totalTicketPrice", JSON.stringify(totalTicketPrice));
 
@@ -67,6 +78,7 @@ const TotalPriceCalculation = () => {
                             <p>Base Fare</p>
                             <p>Taxes</p>
                             <p>Extra Baggages</p>
+                            {/* <p>Bank Charges</p> */}
                             <p>Service Charges</p>
                            
                         </div>
@@ -74,6 +86,7 @@ const TotalPriceCalculation = () => {
                             <p>{`${ticketPrice.toLocaleString()} PKR`}</p>
                             <p>{`${taxAmount.toLocaleString()} PKR`}</p>
                             <p>{`${extraBagg.toLocaleString()} PKR`}</p>
+                            {/* <p>{`${BankCharges.toLocaleString()} PKR`}</p> */}
                             <p>{`${Number(calculatedServiceFees).toLocaleString()} PKR`}</p>
                             
                         </div>

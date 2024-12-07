@@ -15,8 +15,8 @@ const SignUp = () => {
     const [userData ,setUser] = useState(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [countryCode, setCountryCode] = useState('');
-     const [isOTP ,setOTP] = useState(false);
-     const [fromSingUp , setFromSignUp] = useState(false);
+    const [isOTP ,setOTP] = useState(false);
+    const [fromSingUp , setFromSignUp] = useState(false);
 
     // const navigate = useNavigate();
     const handlePhoneNumberChange = (value, country) => {

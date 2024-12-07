@@ -7,6 +7,7 @@ export const GetServiceCharges = async (CommissionData) => {
         
         if (response.data.status === 'SUCCESS') {
             console.log(response.data.message, 'success');
+            console.log("payment-api-data",response);
             return response; 
         } else {
             console.log(response.data.message, 'danger');
