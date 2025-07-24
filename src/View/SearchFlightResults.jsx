@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState,Fragment } from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
 import SideBarFilters from "../Components/Searchflight/SideBarFilters";
@@ -16,8 +17,14 @@ import { SearchLogs } from '../API/BackendAPI/SearchesLogCreationAPI/SearchLogs.
 import { saveFlightSearchLogs } from '../API/BackendAPI/ArmanSirAPIs/UserLogSearch.js';
 import { useUserData } from '../Context/UserDataContext.jsx';
 import { WhatsappLowestFair } from '../API/BackendAPI/ArmanSirAPIs/WhtsappLowestFair.js';
+
+import { MasterPriceTravelResults } from '../API/AmadeousAPI/index.js';
+import AmadeusCalanderData from '../Components/AmadeusComponents/AmadeusCalanderData.jsx';
+import { set } from 'lodash';
+import { useAmadeusData } from '../Context/AmadeusContext.jsx';
 const SearchFlightResult = () => {
   const location = useLocation();
+  const {setSearchDetail} = useAmadeusData();
 
   const  {setWhatsAppMessage,gclid, gclidID} = useUserData();
 
@@ -29,66 +36,39 @@ const SearchFlightResult = () => {
   const [alterRates, setAlerRates] = useState([]);
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
-  const totalResults = apiData.length;
+  const totalResults = apiData?.length || 0;
   const navigate = useNavigate();
   const handleItemClick = (index) => {
     setSelectedItemIndex(index);
      window.scrollTo(0, 0);
   };
+
   
-
-
   const fetchData = async () => {
     try {
       setLoading(true);
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
-     
         console.log("Data to pass",searchDataArr);
+        setSearchDetail(searchDataArr);
+
         // ------------------------Store Search Log Data ----------------
-    //  const StoreSearchLogs =  await  SearchLogs(searchDataArr);
-     const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
-     console.log("StoreSearchLogs12",StoreSearchLogs);
 
-
-      const futureDate = date[0] + 'T00:00:00';
-      const futureDate1 = date[1] + 'T00:00:00';
-  
-      const fetchedFlightData = await requestFetchSearchResult(searchDataArr);
-
-      // ---------------get LowestFairfromSabre -----------------------
-      const LowestFairfromSabre = fetchedFlightData[0]?.fare?.totalFare?.totalPrice;
-      console.log("LowestFairfromSabre",LowestFairfromSabre);
-  // console.log("sabre Lowest Fair",lowestFair);
-        let IdtoPass = 0;
-        try{
-          const whatsAppApiResp = await WhatsappLowestFair(LowestFairfromSabre , gclid , gclidID);
-          // console.log("whatsAppApiResp-v1",whatsAppApiResp);
-          IdtoPass = whatsAppApiResp[0]?.loggID;
-          // console.log("IdtoPass",IdtoPass);
-
-        }catch(error){
-          console.error("Error While Fetching whatsApp-API",error);
-        }
-        localStorage.setItem("LowestFairValue", JSON.stringify(IdtoPass));
-            // --------------------------------------------------------------
-      
-      setWhatsAppMessage(searchDataArr)
-      // localStorage.setItem('searchDataArr', JSON.stringify(searchDataArr));
-
-      if(tripType === "OneWay" || tripType === "Round")
-      {
-        const alternateRates = await requestFetchAlternateRates(departure[0], arrival[0], futureDate, futureDate1, tripType,adults,children,infants);
-        setAlerRates(alternateRates);
-      }
-
+     const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr); 
     
-      if (FooterFlights && fetchedFlightData.length > 10) {
-        setApiData(fetchedFlightData.slice(0, 7));
-        console.log("v---2");
-      } else {
-        setApiData(fetchedFlightData);
-      }
-      setLoading(false);
+     console.log("SearchLogs",StoreSearchLogs);
+
+      // Sabre Bargain Finder Max API Called 
+      // const fetchedFlightData = await requestFetchSearchResult(searchDataArr);
+
+      // Amadeous API Called 
+      const  fetchedFlightData = await MasterPriceTravelResults(searchDataArr);
+          if(fetchedFlightData===null){
+            setLoading(false);
+          }else{
+            setApiData(fetchedFlightData);
+            console.log("MPBodyAccess_kashi", fetchedFlightData);
+            setLoading(false);
+          }  
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -105,10 +85,12 @@ const SearchFlightResult = () => {
 
   },[searchDataArr]);
 
-  const getCombinedData = apiData.map((item, index) => ({
-    ...item,
-    price: alterRates[index]?.price || null,
-  }));
+  // const getCombinedData = apiData.map((item, index) => ({
+  //   ...item,
+  //   price: alterRates[index]?.price || null,
+  // }));
+  const getCombinedData =  apiData;
+  // console.log("getCombinedData_____k1",getCombinedData);
 
   const handleRefresh = () => {
     window.location.reload();
@@ -121,15 +103,6 @@ const SearchFlightResult = () => {
   const closeModal = () => {
     setShowTimerModal(false);
   };
-
-  // if (FooterFlights===true) {
-  //   const currentUrl = window.location.href;
-  //   const newUrl = currentUrl.endsWith('/') ? `${currentUrl}kashif` : `${currentUrl}/kashif`;
-  
-  //   window.history.pushState({ path: newUrl }, '', newUrl);
-  // }
-
-
 
   return (
     <div className='container'>
@@ -148,12 +121,13 @@ const SearchFlightResult = () => {
                     </div>
                     <div className="col-md-9 mt-2 pr-0 mypadding">
                       <ActiveFlight selectedItemIdx={selectedItemIndex} />
-                      <DateComparision alternateRates={alterRates} />
+                      {/* <AmadeusCalanderData/> */}
+                      <DateComparision />
                       <AirlinesResults onItemClick={handleItemClick}/>
                       {
                         FooterFlights ? (<StaticFlightSearchData/>):('')
                       }
-                    </div>
+                   </div>
                   </div>
                 </ItemsToShowProvider>
                 
@@ -180,4 +154,4 @@ const SearchFlightResult = () => {
   );
 };
 
-export default SearchFlightResult;
+export default React.memo(SearchFlightResult);

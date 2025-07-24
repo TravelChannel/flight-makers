@@ -27,7 +27,7 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userP
           "pnrNum" :`${pnrNum}`,
           "userName" : `${userDetail?.firstName || ''} ${userDetail?.lastName || 'Faremakers'}` ,
           "apartment": `${pnrNum}`,
-          "email": `${userDetail?.userEmail || 'support@faremakers.com'}`,
+          "email": `${userDetail?.userEmail || 'support@flightmakers.com'}`,
           "floor": "1",
           "first_name": `${userDetail?.firstName || 'Faremakers'}`,
           "street": "Gulberg3",
@@ -40,7 +40,7 @@ export const getPaymentTokenApi = async (getToken,createOrder,paymentCode ,userP
           "last_name": `${userDetail?.lastName || 'Faremakers'}`,
           "state": "Pakistan"
         },
-        "currency": "PKR",
+        "currency": "$",
         "integration_id": paymentCode,
         "lock_order_when_paid": "false"
       });

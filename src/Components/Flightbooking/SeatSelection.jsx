@@ -104,33 +104,33 @@ const SeatSelection = () => {
                 <div className="display_free_category">
                     <div className='d-flex justify-content-start'>
                         <div className="first_cata_box cata_box_size"></div>
-                         <p className="seat_category_titles align-self-center">500 PKR</p>
+                         <p className="seat_category_titles align-self-center">500 $</p>
                     </div>
                 </div> 
                 <div className="display_free_category">
                     <div className='d-flex justify-content-start'>
                         <div className="sec_cata_box cata_box_size"></div>
-                         <p className="seat_category_titles align-self-center">1000 PKR</p>
+                         <p className="seat_category_titles align-self-center">1000 $</p>
                     </div>
                 </div> 
                 <div className="display_free_category">
                     <div className='d-flex justify-content-start'>
                         <div className="third_cata_box cata_box_size"></div>
-                         <p className="seat_category_titles align-self-center">2000 PKR</p>
+                         <p className="seat_category_titles align-self-center">2000 $</p>
                     </div>
                 </div> 
                 <div className="display_free_category">
                     <div className='d-flex justify-content-start'>
                         <div className="fourth_cata_box cata_box_size">
                         </div>
-                         <p className="seat_category_titles align-self-center">5000 PKR</p>
+                         <p className="seat_category_titles align-self-center">5000 $</p>
                     </div>
                 </div> 
                 <div className="display_free_category">
                     <div className='d-flex justify-content-start'>
                         <div className="last_cata_box cata_box_size">
                         </div>
-                         <p className="seat_category_titles align-self-center">8000 PKR</p>
+                         <p className="seat_category_titles align-self-center">8000 $</p>
                     </div>
                 </div>        
            </div>

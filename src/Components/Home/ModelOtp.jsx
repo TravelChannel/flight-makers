@@ -91,7 +91,7 @@ const OtpModel = () => {
         isLoading ?(<Loader/>):(
           <div>
           <ModalHeader toggle={toggleModal}>
-        <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
+        <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block"></span></div>
         </ModalHeader>
             <ModalBody>
               <div className='row'>
@@ -119,11 +119,11 @@ const OtpModel = () => {
                       <h4 className=" model_heading pb-4"> Lets Get Started</h4>
                     <div >
                     <PhoneInput
-                            country={'pk'}
+                            country={'us'}
                             value={`+${countryCode} ${phoneNumber}`} // Display the formatted phone number
                             onChange={(value, country) => handlePhoneNumberChange(value, country)}
                             placeholder="Enter your phone number"
-                            onlyCountries={['pk']}
+                            onlyCountries={['us']}
                           />
                       </div>
                       <div className="otp_btn_container">

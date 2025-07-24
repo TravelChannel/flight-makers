@@ -10,6 +10,7 @@ import PiaFlights from './popAirlinesComponents/PiaFlights';
 import QatarFlights from './popAirlinesComponents/QatarFlights';
 // ------------------------------------------------------------------------------
 import { requestFetchSearchResult ,requestFetchAlternateRates } from '../../API/index.js';
+import { MasterPriceTravelResults } from '../../API/AmadeousAPI/index.js';
 import { useSelector } from 'react-redux';
 import SideBarFilters from '../Searchflight/SideBarFilters.jsx';
 import DateComparision from '../Searchflight/DateComparision.jsx';
@@ -119,6 +120,7 @@ const PopularAirLines = () => {
     try {
       setLoading(true);
       const selectedFlight = SEOAirlinesData?.find((flight) => flight.flightname === airlineName);
+      console.log("selectedFlight---c1",selectedFlight);
       setFlightData(selectedFlight);
       // setCurrentFlightCode(selectedFlight?.flightCode);
       const airlinesData = airlinesName?.find((airline) => airline.id === selectedFlight?.flightCode);
@@ -127,22 +129,15 @@ const PopularAirLines = () => {
       
 
       const { departure, arrival, date, tripType,adults,children,infants } = searchDataArr;
+
+      console.log("searchDataArr--c2", searchDataArr);
       // const StoreSearchLogs =  await SearchLogs(searchDataArr);
       const StoreSearchLogs =  await  saveFlightSearchLogs(searchDataArr);
-      console.log("StoreSearchLogs12",StoreSearchLogs);
-      const futureDate = date[0] + 'T00:00:00';
-      const futureDate1 = date[1] + 'T00:00:00';
   
-      const fetchedFlightData = await requestFetchSearchResult(searchDataArr ,selectedFlight?.flightCode);
-
-      if(tripType === "OneWay" || tripType === "Round")
-      {
-        const alternateRates = await requestFetchAlternateRates(departure[0], arrival[0], futureDate, futureDate1, tripType,adults,children,infants);
-        setAlerRates(alternateRates);
-      }
-
-    
-      if (FooterFlights && fetchedFlightData.length > 5) {
+      const fetchedFlightData = await MasterPriceTravelResults(searchDataArr ,selectedFlight?.flightCode);
+      if(fetchedFlightData===null){
+        setLoading(false);
+      }else if (FooterFlights && fetchedFlightData.length > 5) {
         setApiData(fetchedFlightData.slice(0, 5));
       }
       else {

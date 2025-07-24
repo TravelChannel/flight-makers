@@ -63,7 +63,7 @@ const AirlineDataComponent = (props) => {
           <ol className="order_list_styling" key={idx}>
             <li>
               <span className="airline_span_heading_v2">{itm.point_head ?? 'Default point head'}</span>
-              <a href="http://www.Faremakers.com" target="_blank" className="href_link_typo">
+              <a href="http://www.flightmakers.com" target="_blank" className="href_link_typo">
                 {itm.point_data ?? 'Default point data'}
               </a>
             </li>

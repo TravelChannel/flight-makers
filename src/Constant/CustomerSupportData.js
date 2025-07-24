@@ -4,7 +4,7 @@ import WriteToUs from "../Components/Commom/WriteToUs";
 
 const menuItems = [
     { title: 'Write to Us', component:<WriteToUs/> ,path:'write-to-us'},
-    { title: 'FAQ', component: <FAQs/> ,path:'FAQs'},
+    // { title: 'FAQ', component: <FAQs/> ,path:'FAQs'},
     // Add more menu items as needed
 ];
 

@@ -38,13 +38,13 @@ const ExtraBaggages = () => {
                                 <p class="card-text ">{item.WEIGHT} Kg</p>
                                 <p className='descriptions_baggage'>
                                     {
-                                        // index === 0 ? `0 Piece(s) ( 0KG ) If you select Nill-Baggage ${item.AMOUNT} PKR` : `${item.DESCRIPTION} each for Adult & Child`
+                                        // index === 0 ? `0 Piece(s) ( 0KG ) If you select Nill-Baggage ${item.AMOUNT} $` : `${item.DESCRIPTION} each for Adult & Child`
                                         `${item.PIECE} Piece(s) (not more than ${item.WEIGHT} KG) each for Adult & Child`
                                     }
                                 </p>
                                 <p>
                                     {
-                                        `${parseInt(item.AMOUNT).toLocaleString()} PKR`
+                                        `${parseInt(item.AMOUNT).toLocaleString()} $`
                                     }
                                 </p>
                                 <p class="btn btn-primary mt-3">Select</p>
@@ -62,7 +62,7 @@ const ExtraBaggages = () => {
                                 <h5 className="card-title">{item.SUB_CLASS_DESC}</h5>
                                 <p className="card-text">{item.WEIGHT} Kg</p>
                                 <p className='descriptions_baggage'>{`${item.PIECE} Piece(s) (not more than ${item.WEIGHT} KG) each for Adult & Child`}</p>
-                                <p>{`${parseInt(item.AMOUNT).toLocaleString()} PKR`}</p>
+                                <p>{`${parseInt(item.AMOUNT).toLocaleString()} $`}</p>
                                 <p className="btn btn-primary mt-3">Select</p>
                                 </div>
                             </div>

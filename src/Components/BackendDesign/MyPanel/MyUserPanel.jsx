@@ -44,7 +44,8 @@ import AdminControl from '../AdminPanel/AdminControl';
 import Cookies from 'js-cookie';
 import LogSearches from '../AdminPanel/LogSearches';
 import YoutubeSearchedForIcon from '@mui/icons-material/YoutubeSearchedFor';
-
+import GenerateSitemap from '../AdminPanel/GenerateSitemap/GenerateSitemap';
+import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 const MyUserPanel = ()=>{
 	 const [selectedMenuItem, setSelectedMenuItem] = useState(1);
 	 const { showHeader, setShowHeader ,roleID,setVarName} = useFormData();
@@ -203,7 +204,7 @@ useEffect(() => {
 							<div className="d-flex justify-content-between">
 								<Link to={'/'} className="hdrLogomob ">
 									<img src={images.default} className="imgView" alt="FM-LOGO" width="120px"/>
-									<span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span>
+									{/* <span id="logotext" className="colorBlue d-block"></span> */}
 								</Link>
 								<div className="menu_cross_icon">
 										<CloseIcon onClick={closeMenu} />
@@ -617,8 +618,21 @@ useEffect(() => {
 										</div>
 										):('')
 									}
+
+										{
+										checkAdmin === true ?
+										(
+											<div className='left_menu_content'>
+											<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 12 ? 'user_active_content' : ''}`} onClick={() => handleMenuItemClick(12)}>
+											<LocalPrintshopIcon className='menu_content_icon' />
+												<p className='d-flex align-self-center menu_content_typo'>Generate SiteMap </p>
+											</div>
+
+										</div>
+										):('')
+									}
 				       <div className='left_menu_content'>
-                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 12 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
+                  		<div className={`d-flex justify-content-start menu_complete_content ${ selectedMenuItem === 13 ? 'user_active_content' : ''}`}  onClick={handleClickOpen} >
                   		<LogoutIcon className='menu_content_icon' />
                   			<p className='d-flex align-self-center menu_content_typo'>Logout</p>
                   		</div>
@@ -684,6 +698,9 @@ useEffect(() => {
 
 				{selectedMenuItem === 11 && 
 				<LogSearches />}
+
+					{selectedMenuItem === 12 && 
+				<GenerateSitemap/>}
 				 </div>
 
 				 <Dialog

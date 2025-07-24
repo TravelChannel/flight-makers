@@ -281,6 +281,7 @@
     "for-each": "^0.3.3",
     "fork-ts-checker-webpack-plugin": "^6.5.3",
     "form-data": "^3.0.1",
+    "formik": "^2.4.6",
     "forwarded": "^0.2.0",
     "fraction.js": "^4.2.0",
     "fresh": "^0.5.2",
@@ -965,7 +966,8 @@
     "yaml": "^1.10.2",
     "yargs": "^16.2.0",
     "yargs-parser": "^20.2.9",
-    "yocto-queue": "^0.1.0"
+    "yocto-queue": "^0.1.0",
+    "yup": "^1.6.1"
   },
   "scripts": {
     "start": "cross-env CI=false react-scripts start",

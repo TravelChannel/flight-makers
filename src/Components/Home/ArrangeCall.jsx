@@ -20,7 +20,9 @@ const ArrangeCall = () => {
                     <div className='d-flex justify-content-end' onClick ={handleCloseModel}>
                         <BackspaceIcon className='call_close_btn'/>
                     </div>
-                    <div className="image_container" onClick={handleArrangeCall}></div>
+                    <div className="image_container" onClick={handleArrangeCall}>
+                        <img src={images.customer_support} />
+                    </div>
                     {/* <button className='btn btn-primary btn_inner_typo pump_up_animation'> Arrange a Call</button> */}
                </div> 
                

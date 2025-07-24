@@ -306,9 +306,6 @@ h1,h2,h3,h4,h5,h6,p,div
     width: 100%;
     max-width: 192px;
     height: auto;
-    max-height: 47px;
-    border-radius: 20px 0px 0px 20px;
-    box-shadow: -1px 1px 4px 2px rgba(0,0,0,.4);
   }
   
   .map_image_graph{
@@ -954,7 +951,7 @@ h1,h2,h3,h4,h5,h6,p,div
     height: 16px;
     width: 16px;
     display: inline-block;
-    background-image: url(https://www.faremakers.com/Content/images/Logos/favicon.ico);
+    background-image: url(https://www.flightmakers.com/Content/images/Logos/favicon.ico);
     background-repeat: no-repeat;
     margin-top: -2px;
     vertical-align: middle;
@@ -2143,6 +2140,15 @@ width:45px;
   background-color: #eaf5ff;
 
 }
+.inputArrivalFlightMob_2,.inputDeprturFlightMob_2
+{
+
+  width: 101%;
+  height: 50px;
+  margin-bottom:8px;
+  background-color: #eaf5ff;
+
+}
 .inputArrivalFlightMob
 {
 
@@ -2162,6 +2168,22 @@ width:45px;
   transform: translateY(-50%);
 }
 .inputArrivalFlightMob .ant-select-selector::before {
+  content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23808080' class='icon-2'%3E%3Cmask id='mask0_160_1644' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24' style='mask-type: alpha;'%3E%3Crect width='24' height='24' fill='%23D9D9D9'%3E%3C/rect%3E%3C/mask%3E%3Cg mask='url(%23mask0_160_1644)'%3E%3Cpath d='M3.5 20.5004V19.5004H20.5V20.5004H3.5ZM18.975 15.4004L3.5 11.1254V6.70039L4.3 6.92539L5 9.05039L10.5 10.6004V2.65039L11.625 2.92539L14.375 11.6754L19.625 13.1504C19.8917 13.2171 20.1043 13.3587 20.263 13.5754C20.421 13.7921 20.5 14.0337 20.5 14.3004C20.5 14.6837 20.3377 14.9921 20.013 15.2254C19.6877 15.4587 19.3417 15.5171 18.975 15.4004Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  position: absolute;
+  left: 12px;
+  top: 56%;
+  transform: translateY(-50%);
+}
+
+.inputDeprturFlightMob_2  .ant-select-selector::before {
+  content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewBox='0 0 20 17' fill='%23808080'%3E%3Cpath d='M1.37578 16.4977V15.4977H18.3758V16.4977H1.37578ZM2.95078 11.4227L0.675781 7.49766L1.52578 7.29766L3.32578 8.84766L8.72578 7.39766L4.67578 0.547657L5.75078 0.222656L12.6008 6.34766L17.8258 4.94766C18.2091 4.84766 18.5551 4.91832 18.8638 5.15966C19.1718 5.40166 19.3258 5.71432 19.3258 6.09766C19.3258 6.36432 19.2508 6.59766 19.1008 6.79766C18.9508 6.99766 18.7508 7.13099 18.5008 7.19766L2.95078 11.4227Z'%3E%3C/path%3E%3C/svg%3E");
+  position: absolute;
+  left: 12px;
+  top: 56%;
+  transform: translateY(-50%);
+}
+
+.inputArrivalFlightMob_2 .ant-select-selector::before {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23808080' class='icon-2'%3E%3Cmask id='mask0_160_1644' maskUnits='userSpaceOnUse' x='0' y='0' width='24' height='24' style='mask-type: alpha;'%3E%3Crect width='24' height='24' fill='%23D9D9D9'%3E%3C/rect%3E%3C/mask%3E%3Cg mask='url(%23mask0_160_1644)'%3E%3Cpath d='M3.5 20.5004V19.5004H20.5V20.5004H3.5ZM18.975 15.4004L3.5 11.1254V6.70039L4.3 6.92539L5 9.05039L10.5 10.6004V2.65039L11.625 2.92539L14.375 11.6754L19.625 13.1504C19.8917 13.2171 20.1043 13.3587 20.263 13.5754C20.421 13.7921 20.5 14.0337 20.5 14.3004C20.5 14.6837 20.3377 14.9921 20.013 15.2254C19.6877 15.4587 19.3417 15.5171 18.975 15.4004Z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   position: absolute;
   left: 12px;
@@ -3021,6 +3043,8 @@ box-shadow: -1px 3px 4px 2px rgba(0, 0, 0, 0.2);
   font-weight: 700;
 }
 .fd_clock{
+  width: 32px !important;  
+  height: 32px !important;
   color:#686767;
   text-align: center;
   margin:auto;
@@ -3082,7 +3106,7 @@ box-shadow: -1px 3px 4px 2px rgba(0, 0, 0, 0.2);
   padding-left:5px;
 }
 .dc_para_size{
-  font-size:12px;
+  font-size:13px;
   text-align: center;
   cursor: pointer;
   
@@ -3093,8 +3117,9 @@ box-shadow: -1px 3px 4px 2px rgba(0, 0, 0, 0.2);
   font-size:13px;
 }
 .dc_para_color,.dc_date_color{
-  color:#999;
+  color:rgb(153, 153, 153);;
   cursor: pointer;
+  font-family: Lato, sans-serif;
 
 }
 .dc_dates_spacing{
@@ -3439,8 +3464,8 @@ background-color: none !important;
 .hdrLogomob img {
   max-width: 220px;
   /* width: 100%; */
-  border:1px solid white;
-  border-radius: 17px 0px 0px 17px;
+  /* border:1px solid white;
+  border-radius: 17px 0px 0px 17px; */
   /* margin:5px; */
 
 }
@@ -3854,8 +3879,8 @@ margin-top:7px;
 .refundableTicket2_mob
 {
   text-align: center;
-  font-size: 12px;
-  color: green;
+  font-size: 11px;  
+  color: #f26223;
 }
 .nonrefundableTicket2_mob
 {
@@ -3989,6 +4014,7 @@ margin-top:7px;
 }
 .flight_complete_details{
   padding-top:20px;
+  padding-top:20px;
 }
 .iti_flight_no{
   font-size:12px;
@@ -3997,7 +4023,9 @@ margin-top:7px;
 .vertical-line {
   width: 1px;
   height: 90px;
+  height: 90px;
   position: relative;
+  margin:0px 20px;
   margin:0px 20px;
   background-image: linear-gradient(to bottom, gray 50%, transparent 50%);
   background-size: 1px 10px;
@@ -4005,7 +4033,9 @@ margin-top:7px;
 .iti_mob_line{
   width: 1px;
   height: 160px;
+  height: 160px;
   position: relative;
+  margin:0px 20px;
   margin:0px 20px;
   background-image: linear-gradient(to bottom, gray 50%, transparent 50%);
   background-size: 1px 10px;
@@ -4019,6 +4049,7 @@ margin-top:7px;
   background-size: 1px 10px;
 }
 .donut_size{
+  font-size:14px !important; 
   font-size:14px !important; 
   color:gray !important;
 }
@@ -4998,7 +5029,7 @@ color: #0a53be;
   width:27%;
 }
 .stop_width_3{
-  width: 8%
+  width: 30px;
 }
 .stop_width_5{
   width:15%;
@@ -5784,10 +5815,11 @@ filter: blur(5px);
 }
 .refundableTicket2
 {
-  font-size: 12px;
+  font-size: 11px;
   color: green;
   margin-right: 10px;
   margin-top: 5px;
+  font-weight: 600;
 }
 .nonrefundableTicket2
 {
@@ -6828,7 +6860,7 @@ margin:10px 12px;
   border-radius: 5px;
   line-height: 25px;
   height: 40px !important;
-  width: 282px !important;
+  width: 282px;
   outline: none;
 }
 .sign_up_message_color{
@@ -7663,13 +7695,30 @@ transform: translateY(-15px);
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
 }
-.image_container{
+.image_container_bk{
   cursor: pointer;
   width: 250px;
   height: 80px;
-  background-image: url('assets/Arrange-A-Call-250.png');
+  /* background-image: url('assets/Arrange-A-Call-250.png'); */
+  background-image: url('assets/icon/whatsapp-logo.png');
   background-position: 0 75px;
 }
+
+.image_container {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  /* background-image: url('assets/Arrange-A-Call-250.png'); */
+  /* background-image: url('assets/customer_support.png');
+  background-position: 0px 60px; */
+}
+
+.image_container img{
+  width: 100%;
+    border-radius: 26px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .call_title_typo{
   font-size: 14px;
   font-weight: 600;
@@ -7700,6 +7749,10 @@ transform: translateY(-15px);
 .parent-element1 .react-tel-input .form-control{
    width: 370px !important;
 }
+.parent-element2 .react-tel-input .form-control{
+  width: 100% !important;
+  max-width: 100%;
+}
 
 .parent-3 .ant-picker{
   width:52% !important;
@@ -7708,7 +7761,11 @@ transform: translateY(-15px);
   border-radius: 4px;
 }
 .manage_call_parent .modal-content {
- width:114% !important;
+ width:100% !important;
+}
+
+.flightMaker_Container {
+  width:40%;
 }
 .inputs_parents .ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
    border: 1px solid #d9d9d9  !important;
@@ -7722,6 +7779,9 @@ transform: translateY(-15px);
 
 .call_name_input .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
   width: 99% !important;
+}
+.flightmaker_input .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  width:60% !important;
 }
 
 .call_name_input .css-1v4ccyo 
@@ -7749,7 +7809,19 @@ transform: translateY(-15px);
   font-weight: 500;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, Arial, sans-serif; */
 }
-.dail_call_parent .GetOTP_btn2:hover{
+.flightMaker_Req_submit {
+  width: 62%;
+  margin: 32px 0px;
+  height: 40px;
+  background-color: #36c !important;
+  border: none;
+  transition: none;
+  animation: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+.dail_call_parent .GetOTP_btn2 .flightMaker_Req_submit:hover{
   background-color: #F26223;
 
 }

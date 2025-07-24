@@ -6,20 +6,21 @@ import * as flightimg from '../../Constant/flightImages';
 import { elapsedTimeFunct } from '../../helpers/formatdata'
 import airlinesData from '../../Constant/airlineName';
 import { useFormData } from '../../Context/FormDataContext';
+import { convertDateFormat,convertTimeFormat } from '../../helpers/formatdata';
 const ShortFlightDetail = (props) => {
 const [isMobile , setIsMobile] = useState(window.innerWidth < 769 && window.innerWidth >= 500);
 const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
  const {FromBookingPage} = props;
     const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
-    const flightdepDates = flightData.schedualDetGet.map(values => values[0].departure.time.slice(0, 5));
-    const flightarrDates = flightData.schedualDetGet.map(values => values[values.length - 1].arrival.time.slice(0, 5));
-    const elapsedTime = flightData.schedualDetGet.map(values => values.reduce((sum, val) => sum + val.elapsedTime, 0));
-    const stops = flightData.schedualDetGet.map(item => item.length - 1);
+    const flightdepDates = flightData.groupDescription.map(values => values.departTime.slice(0, 5));
+    const flightarrDates = flightData.groupDescription.map(values => values.arrivalTime.slice(0, 5));
+    // const elapsedTime = flightData.schedualDetGet.map(values => values.reduce((sum, val) => sum + val.elapsedTime, 0));
+    // const stops = flightData.schedualDetGet.map(item => item.length - 1);
 
 
     let matchedAirline = '';
-    flightData.schedualDetGet.forEach((val) => {
-        const airlineName = val[0].carrier.marketing;
+    flightData.groupDescription.forEach((val) => {
+        const airlineName = val.marketingCarrier;
         const airline = airlinesData.find(airline => airline.id === airlineName);
         if (airline) {
             matchedAirline = airline;
@@ -59,19 +60,19 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
                                 </div>
                                 <div className="">
                                     <div className="d-flex justify-content-start">
-                                        <h6 className="short_font_size">{item.departureLocation}</h6>
+                                        <h6 className="short_font_size">{item.departure}</h6>
                                         <span className="airport_spacing"><RedoOutlinedIcon /></span>
-                                        <h6 className="short_font_size">{item.arrivalLocation}</h6>
+                                        <h6 className="short_font_size">{item.arrival}</h6>
                                     </div>
                                     <div>
-                                        <p className="short_font_date">{item.departureDate}</p>
+                                        <p className="short_font_date">{convertDateFormat(item.departDate)}</p>
                                     </div>
                                 </div>
                                 <div className=" flight_time_main">
-                                    <span className="short_flight_timing">{flightdepDates[index]}</span> - <span className="short_flight_timing">{flightarrDates[index]}</span>
-                                    <div className="flight_timing_content">
+                                    <span className="short_flight_timing">{convertTimeFormat(flightdepDates[index])}</span> - <span className="short_flight_timing">{convertTimeFormat(flightarrDates[index])}</span>
+                                    {/* <div className="flight_timing_content">
                                         <span className='short_font_date'>{elapsedTimeFunct(elapsedTime[index])}</span> <span className='short_font_date'>{stops[index] === 0 ? "Non-Stop" : `${stops[index]}-Stops`}</span>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                                 ))}
@@ -84,19 +85,19 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
                             <div key={index} className='d-flex justify-content-between mb-3'>
                             <div className="">
                                     <div className="d-flex justify-content-start">
-                                        <h6 className="short_font_size">{item.departureLocation}</h6>
+                                        <h6 className="short_font_size">{item.departure}</h6>
                                         <span className="airport_spacing"><RedoOutlinedIcon /></span>
-                                        <h6 className="short_font_size">{item.arrivalLocation}</h6>
+                                        <h6 className="short_font_size">{item.arrival}</h6>
                                     </div>
                                     <div>
-                                        <p className="short_font_date">{item.departureDate}</p>
+                                        <p className="short_font_date">{convertDateFormat(item.departDate)}</p>
                                     </div>
                             </div>
                             <div className=" flight_time_main">
-                                    <span className="short_flight_timing">{flightdepDates[index]}</span> - <span className="short_flight_timing">{flightarrDates[index]}</span>
-                                    <div className="flight_timing_content">
+                                    <span className="short_flight_timing">{convertTimeFormat(flightdepDates[index])}</span> - <span className="short_flight_timing">{convertTimeFormat(flightarrDates[index])}</span>
+                                    {/* <div className="flight_timing_content">
                                         <span className='short_font_date'>{elapsedTimeFunct(elapsedTime[index])}</span> <span className='short_font_date'>{stops[index] === 0 ? "Non-Stop" : `${stops[index]}-Stops`}</span>
-                                    </div>
+                                    </div> */}
                             </div>
                             <div className="d-flex justify-content-start">
                                     <img src={matchedAirline ? matchedAirline.logo : null} alt="" width="32px" height="32px" />
@@ -118,18 +119,18 @@ const [isSmallScreen ,setSmallScreen] = useState(window.innerWidth <500);
                                 </div>
                                 <div className="mob_short_padding">
                                         <div className="d-flex justify-content-start">
-                                            <h6 className="short_font_size">{item.departureLocation}</h6>
+                                            <h6 className="short_font_size">{item.departure}</h6>
                                             <span className="airport_spacing"><RedoOutlinedIcon /></span>
-                                            <h6 className="short_font_size">{item.arrivalLocation}</h6>
+                                            <h6 className="short_font_size">{item.arrival}</h6>
                                         </div>
                                         <div>
-                                            <p className="short_font_date">{item.departureDate}</p>
+                                            <p className="short_font_date">{convertDateFormat(item.departDate)}</p>
                                         </div>
                                         <div className=" flight_time_main mob_short_padding">
-                                            <span className="short_flight_timing">{flightdepDates[index]}</span> - <span className="short_flight_timing">{flightarrDates[index]}</span>
-                                            <div className="flight_timing_content">
+                                            <span className="short_flight_timing">{convertTimeFormat(flightdepDates[index])}</span> - <span className="short_flight_timing">{convertTimeFormat(flightarrDates[index])}</span>
+                                            {/* <div className="flight_timing_content">
                                                 <span className='short_font_date'>{elapsedTimeFunct(elapsedTime[index])}</span> <span className='short_font_date'>{stops[index] === 0 ? "Non-Stop" : `${stops[index]}-Stops`}</span>
-                                            </div>
+                                            </div> */}
                                       </div>
                                 </div>
                         </div>

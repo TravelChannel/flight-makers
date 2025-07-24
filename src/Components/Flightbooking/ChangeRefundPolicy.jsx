@@ -72,10 +72,10 @@ const ChangeRefundPolicy = () => {
                   <span className="cancelation_heading">Amount Refundable</span>
                 </div>
                 <div className="bar_width d-flex justify-content-center">
-                  <p className="refund_p_font">5000 pkr</p>
+                  <p className="refund_p_font">5000 $</p>
                 </div>
                 <div className="bar_width d-flex justify-content-center">
-                  <p className="refund_p_font"> 8000pkr</p>
+                  <p className="refund_p_font"> 8000$</p>
                 </div>
                 <div className="bar_width d-flex justify-content-center">
                   <p className="refund_p_font"> 10000kpr</p>
@@ -127,10 +127,10 @@ const ChangeRefundPolicy = () => {
                   <span className="cancelation_heading">Reshedule Charges</span>
                 </div>
                 <div className="change_policy_width d-flex justify-content-center">
-                  <p className="refund_p_font">5000pkr</p>
+                  <p className="refund_p_font">5000$</p>
                 </div>
                 <div className="change_policy_width d-flex justify-content-center">
-                  <p className="refund_p_font"> 8000pkr</p>
+                  <p className="refund_p_font"> 8000$</p>
                 </div>
                 <div className="change_policy_width d-flex justify-content-center">
                   <p className="refund_p_font"> 10000kpr</p>

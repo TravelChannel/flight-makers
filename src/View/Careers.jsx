@@ -12,8 +12,8 @@ const Careers = () => {
                 <h3 className='hiring_heading text-center pb-3'>We are Hiring !</h3>
                 <h5>
                     If you want to apply, please send your resume at:
-                    <a className='career_link' href='mailto:careers@faremakers.com'>
-                    careers@faremakers.com
+                    <a className='career_link' href='mailto:careers@flightmakers.com'>
+                    careers@flightmakers.com
                     </a>
                 </h5>
             </div>

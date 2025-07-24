@@ -3,7 +3,7 @@
         id:1,
         flightName:'lahore-to-dubai',
         mainHeading:'Cheap Flights from Lahore to Dubai',
-        Paragraph1:'Are you planning a trip from Lahore to Dubai and looking for the best flight deals? Faremakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Dubai. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
+        Paragraph1:'Are you planning a trip from Lahore to Dubai and looking for the best flight deals? flightmakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Dubai. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
         section1:[
             {
                 heading:'lahore-to-dubai',
@@ -12,7 +12,7 @@
                     {
                       point_head: "Pakistan International Airlines (PIA): ",
                       point_data:
-                        "<p>Known for its direct flights and excellent service, PIA offers <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\"> Lahore to Dubai ticket price </a>PIA comfortable journey from Lahore to Dubai. </p>",
+                        "<p>Known for its direct flights and excellent service, PIA offers <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\"> Lahore to Dubai ticket price </a>PIA comfortable journey from Lahore to Dubai. </p>",
                     },
                     {
                       point_head: "Emirates: ",
@@ -41,7 +41,7 @@
         section2:[
            {
             heading:'Tips for Finding Affordable Air Travel from Lahore to Dubai',
-            Paragraph1:'Finding cheap flights from Lahore to Dubai is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+            Paragraph1:'Finding cheap flights from Lahore to Dubai is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
             unOrderList: [
                     {
                       point_head: "Book in Advance:",
@@ -81,7 +81,7 @@
                     },
                     {
                         question:'Which airlines offer the most frequent flights from Lahore to Dubai?',
-                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on lahore to dubai flights.'
+                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on lahore to dubai flights.'
                     },
                     {
                         question:'What is the average lahore to dubai ticket price?',
@@ -89,7 +89,7 @@
                     },
                     {
                         question:'How can I find the best lahore to dubai ticket price today?',
-                        answer:'To find the best lahore to dubai ticket price today, visit Faremakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
+                        answer:'To find the best lahore to dubai ticket price today, visit flightmakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
                     }, 
                 ]
                 
@@ -98,7 +98,7 @@
         section4:[
             {
                 heading:'Conclusion',
-                Paragraph1:'Booking your flight from Lahore to Dubai has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on lahore to dubai flights. Book your flight today and enjoy your journey from Lahore to Dubai with peace of mind.  <br/> For more information or to book your flight visit Faremakers.com or contact our support team.',
+                Paragraph1:'Booking your flight from Lahore to Dubai has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on lahore to dubai flights. Book your flight today and enjoy your journey from Lahore to Dubai with peace of mind.  <br/> For more information or to book your flight visit flightmakers.com or contact our support team.',
             }
         ],
     },
@@ -106,7 +106,7 @@
         id:2,
         flightName:'lahore-to-london',
         mainHeading:'Cheap Flights from Lahore to London',
-        Paragraph1:'<p>Are you planning a trip from Lahore to London and looking for the best flight deals?  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com </a> offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to London. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money. </p>',
+        Paragraph1:'<p>Are you planning a trip from Lahore to London and looking for the best flight deals?  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com </a> offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to London. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money. </p>',
         section1:[
             {
                 heading:'Best Airlines for Lahore to London Flights',
@@ -115,7 +115,7 @@
                     {
                       point_head: "Pakistan International Airlines (PIA): ",
                       point_data:
-                        "<p>Known for its direct flights and excellent service, <a href=\"https://www.faremakers.com/pakistan-international-airlines-flights\" target=\"_blank\" style=\"color: blue;\"> PIA </a> offers a comfortable journey from Lahore to London. </p>",
+                        "<p>Known for its direct flights and excellent service, <a href=\"https://www.flightmakers.com/pakistan-international-airlines-flights\" target=\"_blank\" style=\"color: blue;\"> PIA </a> offers a comfortable journey from Lahore to London. </p>",
                     },
                     {
                       point_head: "British Airways:  ",
@@ -125,12 +125,12 @@
                     {
                       point_head: "Qatar Airways: ",
                       point_data:
-                       "<p>With a layover in Doha, <a href=\"https://www.faremakers.com/qatar-airways-flights\" target=\"_blank\" style=\"color: blue;\"> Qatar Airways </a> provides a luxurious flying experience with competitive prices. </p>",
+                       "<p>With a layover in Doha, <a href=\"https://www.flightmakers.com/qatar-airways-flights\" target=\"_blank\" style=\"color: blue;\"> Qatar Airways </a> provides a luxurious flying experience with competitive prices. </p>",
                     },
                     {
                       point_head: "Emirates: ",
                       point_data:
-                       "<p>Fly via Dubai with , <a href=\"https://www.faremakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\"> Emirates </a> and enjoy world-class in-flight services and amenities. </p>",
+                       "<p>Fly via Dubai with , <a href=\"https://www.flightmakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\"> Emirates </a> and enjoy world-class in-flight services and amenities. </p>",
                     },
                     {
                         point_head: "Turkish Airlines",
@@ -144,7 +144,7 @@
         section2:[
            {
             heading:'Tips for Finding Affordable Air Travel from Lahore to London',
-            Paragraph1:'Finding cheap flights from Lahore to London is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+            Paragraph1:'Finding cheap flights from Lahore to London is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
             unOrderList: [
                     {
                       point_head: "Book in Advance:",
@@ -188,7 +188,7 @@
                     },
                     {
                         question:'How can I find the cheapest flights from Lahore to London?',
-                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on discount flights.'
+                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on discount flights.'
                     },
                     {
                         question:'Are there any direct flights from Lahore to London?',
@@ -205,7 +205,7 @@
         section4:[
             {
                 heading:'Conclusion',
-                Paragraph1:'Booking your flight from Lahore to London has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on discount flights. Book your flight today and enjoy your journey from Lahore to London with peace of mind. <br/> For more information or to book your flight, visit Faremakers.com or contact our support team.',
+                Paragraph1:'Booking your flight from Lahore to London has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on discount flights. Book your flight today and enjoy your journey from Lahore to London with peace of mind. <br/> For more information or to book your flight, visit flightmakers.com or contact our support team.',
             }
         ],
     },
@@ -213,7 +213,7 @@
         id:3,
         flightName:'lahore-to-toronto',
         mainHeading:'Cheap Flights from Lahore to Toronto',
-        Paragraph1:'Are you planning a trip from Lahore to Toronto and looking for the best flight deals? Faremakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Toronto. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
+        Paragraph1:'Are you planning a trip from Lahore to Toronto and looking for the best flight deals? flightmakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Toronto. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
         section1:[
             {
                 heading:'Best Airlines for Lahore to Toronto Flights',
@@ -222,7 +222,7 @@
                     {
                       point_head: "Pakistan International Airlines (PIA): ",
                       point_data:
-                        "<p>Known for its direct flights and excellent service, PIA offers a comfortable journey from , <a href=\"https://www.faremakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\"> Lahore to Toronto</a> Additionally, PIA flight Toronto to Lahore provides great return flight options. </p>",
+                        "<p>Known for its direct flights and excellent service, PIA offers a comfortable journey from , <a href=\"https://www.flightmakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\"> Lahore to Toronto</a> Additionally, PIA flight Toronto to Lahore provides great return flight options. </p>",
                     },
                     {
                       point_head: "Emirates:",
@@ -251,12 +251,12 @@
         section2:[
            {
             heading:'Tips for Finding Affordable Air Travel from Lahore to Toronto',
-            Paragraph1:'Finding cheap flights from Lahore to Toronto is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+            Paragraph1:'Finding cheap flights from Lahore to Toronto is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
             unOrderList: [
                     {
                       point_head: "Book in Advance:",
                       point_data:
-                       "<p>The earlier you book, the more likely you are to find lower prices. Try to book your plane tickets at least 3-4 weeks ahead of your travel date to secure the best , <a href=\"https://www.faremakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\"> Lahore to Toronto</a> </p>",
+                       "<p>The earlier you book, the more likely you are to find lower prices. Try to book your plane tickets at least 3-4 weeks ahead of your travel date to secure the best , <a href=\"https://www.flightmakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\"> Lahore to Toronto</a> </p>",
                     },
                     {
                       point_head: "Use Fare Comparison Tools: ",
@@ -295,7 +295,7 @@
                     },
                     {
                         question:'How can I find the cheapest flights from Lahore to Toronto?',
-                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights from Lahore to Toronto.'
+                        answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights from Lahore to Toronto.'
                     },
                     {
                         question:'What is the average Lahore to Toronto ticket price?',
@@ -303,7 +303,7 @@
                     }, 
                     {
                         question:'How can I find the best Lahore to Toronto ticket price today?',
-                        answer:'To find the best Lahore to Toronto ticket price today, visit Faremakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
+                        answer:'To find the best Lahore to Toronto ticket price today, visit flightmakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
                     },
                 ]
                 
@@ -312,7 +312,7 @@
         section4:[
             {
                 heading:'Conclusion',
-                Paragraph1:'<p>Booking your flight from Lahore to Toronto has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on cheapest flight from Lahore to Toronto. Book your flight today and enjoy your journey from Lahore to Toronto with peace of mind.,<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+                Paragraph1:'<p>Booking your flight from Lahore to Toronto has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts on cheapest flight from Lahore to Toronto. Book your flight today and enjoy your journey from Lahore to Toronto with peace of mind.,<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
             }
         ],
     },
@@ -320,7 +320,7 @@
       id:4,
       flightName:'lahore-to-boston',
       mainHeading:'Cheap Flights from Lahore to Boston',
-      Paragraph1:'Are you planning a trip from Lahore to Boston and looking for the best flight deals? Faremakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Boston. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
+      Paragraph1:'Are you planning a trip from Lahore to Boston and looking for the best flight deals? flightmakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Boston. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
       section1:[
           {
               heading:'Best Airlines for Lahore to Boston Flights',
@@ -358,7 +358,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Air Travel from Lahore to Boston',
-          Paragraph1:'Finding cheap flights from Lahore to Boston is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to Boston is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -402,7 +402,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Boston?',
-                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
+                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Boston?',
@@ -410,7 +410,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'To find the best ticket price today, visit Faremakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
+                      answer:'To find the best ticket price today, visit flightmakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.'
                   },
               ]
               
@@ -419,7 +419,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Boston has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Boston with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Boston has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Boston with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
     },
@@ -427,7 +427,7 @@
       id:5,
       flightName:'lahore-to-perth',
       mainHeading:'Cheap Flights from Lahore to Perth',
-      Paragraph1:'Are you planning a trip from Lahore to Perth and looking for the best flight deals? Faremakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Perth. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
+      Paragraph1:'Are you planning a trip from Lahore to Perth and looking for the best flight deals? flightmakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to Perth. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
       section1:[
           {
               heading:'Best Airlines for Lahore to Perth Flights',
@@ -465,7 +465,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Air Travel from Lahore to Perth',
-          Paragraph1:'Finding cheap flights from Lahore to Perth is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to Perth is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -509,7 +509,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Perth?',
-                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
+                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Perth?',
@@ -517,7 +517,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
+                      answer:'<p>To find the best ticket price today, visit <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
                   },
               ]
               
@@ -526,19 +526,19 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Boston has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Boston with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Boston has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Boston with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'Save on Your Next Flight:',
-            Paragraph1:'<p>Explore more about  <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Dubai </a> for more options. </p>',
+            Paragraph1:'<p>Explore more about  <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Dubai </a> for more options. </p>',
 
-            Paragraph2:'<p>Find affordable <a href=\"https://www.faremakers.com/flights/lahore-to-islamabad\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Islamabad  </a> and enjoy great discounts. </p>',
+            Paragraph2:'<p>Find affordable <a href=\"https://www.flightmakers.com/flights/lahore-to-islamabad\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Islamabad  </a> and enjoy great discounts. </p>',
 
-            Paragraph3:'<p>Learn more about  <a href=\"https://www.faremakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Toronto</a> and get the cheapest tickets available. </p>',
+            Paragraph3:'<p>Learn more about  <a href=\"https://www.flightmakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to Toronto</a> and get the cheapest tickets available. </p>',
 
-            Paragraph4:'<p>Check the latest offers on  <a href=\"https://www.faremakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to New York </a> for a budget-friendly trip. </p>',
+            Paragraph4:'<p>Check the latest offers on  <a href=\"https://www.flightmakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">flights from Lahore to New York </a> for a budget-friendly trip. </p>',
         }
     ],
     },
@@ -546,7 +546,7 @@
       id:7,
       flightName:'lahore-to-newyork',
       mainHeading:'Cheap Flights from Lahore to New York',
-      Paragraph1:'Are you planning a trip from Lahore to New York and looking for the best flight deals? Faremakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to New York. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
+      Paragraph1:'Are you planning a trip from Lahore to New York and looking for the best flight deals? flightmakers.com offers you a comprehensive solution to find the cheapest and most convenient flights from Lahore to New York. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.',
       section1:[
           {
               heading:'Best Airlines for Lahore to New York Flights',
@@ -565,7 +565,7 @@
                   {
                     point_head: "Qatar Airways: ",
                     point_data:
-                     "<p>With a stopover in Doha, <a href=\"https://www.faremakers.com/qatar-airways-flights\" target=\"_blank\" style=\"color: blue;\"> Qatar Airways</a> provides a luxurious flying experience with competitive prices.</p>",
+                     "<p>With a stopover in Doha, <a href=\"https://www.flightmakers.com/qatar-airways-flights\" target=\"_blank\" style=\"color: blue;\"> Qatar Airways</a> provides a luxurious flying experience with competitive prices.</p>",
                   },
                   {
                     point_head: "Turkish Airlines:  ",
@@ -584,7 +584,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Air Travel from Lahore to New York',
-          Paragraph1:'Finding cheap flights from Lahore to New York is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to New York is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -628,7 +628,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to New York?',
-                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
+                      answer:'To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights.'
                   },
                   {
                       question:'What is the average ticket price from Lahore to New York?',
@@ -636,7 +636,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
                   },
               ]
               
@@ -645,7 +645,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to New York has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to New York with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to New York has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to New York with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
     },
@@ -653,7 +653,7 @@
       id:8,
       flightName:'lahore-to-melbourne',
       mainHeading:'Cheap Flights from Lahore to Melbourne',
-      Paragraph1:'Planning a trip from Lahore to Melbourne? Look no further! Faremakers.com offers you the best deals on flights from Lahore to Melbourne, ensuring a smooth and affordable booking experience. Whether you are traveling for business or leisure, we provide the cheapest flight options tailored to your needs.',
+      Paragraph1:'Planning a trip from Lahore to Melbourne? Look no further! flightmakers.com offers you the best deals on flights from Lahore to Melbourne, ensuring a smooth and affordable booking experience. Whether you are traveling for business or leisure, we provide the cheapest flight options tailored to your needs.',
       section1:[
           {
               heading:'Best Airlines for Lahore to Melbourne Flights',
@@ -691,7 +691,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Lahore to Melbourne',
-          Paragraph1:'Finding cheap flights from Lahore to Melbourne is simple with Faremakers.com. Here are some tips to help you secure the best fares:',
+          Paragraph1:'Finding cheap flights from Lahore to Melbourne is simple with flightmakers.com. Here are some tips to help you secure the best fares:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -701,7 +701,7 @@
                   {
                     point_head: "Use Fare Comparison Tools: ",
                     point_data:
-                      "Faremakers.com lets you compare fares across different airlines to find the best deals available.",
+                      "flightmakers.com lets you compare fares across different airlines to find the best deals available.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -735,7 +735,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Melbourne?',
-                      answer:'<p>To find the cheapest flights, book early, use  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> fare comparison tools, remain flexible with your travel dates, and look for ongoing deals and promotions. </p>'
+                      answer:'<p>To find the cheapest flights, book early, use  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> fare comparison tools, remain flexible with your travel dates, and look for ongoing deals and promotions. </p>'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Melbourne?',
@@ -743,7 +743,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
+                      answer:'<p>To find the best ticket price today, visit <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals. </p>'
                   },
               ]
               
@@ -752,17 +752,17 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Melbourne has never been more convenient. Faremakers.com offers you the best options to find cheap flights, ensuring a hassle-free and enjoyable booking process. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on a memorable journey from Lahore to Melbourne!<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Melbourne has never been more convenient. flightmakers.com offers you the best options to find cheap flights, ensuring a hassle-free and enjoyable booking process. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on a memorable journey from Lahore to Melbourne!<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p><a href=\"https://www.faremakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> and enjoy significant savings. </p>',
+            Paragraph1:'<p><a href=\"https://www.flightmakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> and enjoy significant savings. </p>',
 
-            Paragraph2:'<p>Check out our special offers on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai  </a> for an affordable trip. </p>',
+            Paragraph2:'<p>Check out our special offers on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai  </a> for an affordable trip. </p>',
 
-            Paragraph3:'<p>Learn more about affordable flights from <a href=\"https://www.faremakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore to Karachi</a> and save more. </p>',
+            Paragraph3:'<p>Learn more about affordable flights from <a href=\"https://www.flightmakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore to Karachi</a> and save more. </p>',
         }
     ],
     },
@@ -770,7 +770,7 @@
       id:9,
       flightName:'lahore-to-manchester',
       mainHeading:'Cheap Flights from Lahore to Manchester',
-      Paragraph1:'<p>Are you planning a trip from Lahore to <a href=\"https://www.faremakers.com/flights/lahore-to-manchester\" target=\"_blank\" style=\"color: blue;\"> Manchester </a>and looking for the best flight deals? Faremakers.com offers a comprehensive solution to find the cheapest and most convenient flights from Lahore to Manchester. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.</p>',
+      Paragraph1:'<p>Are you planning a trip from Lahore to <a href=\"https://www.flightmakers.com/flights/lahore-to-manchester\" target=\"_blank\" style=\"color: blue;\"> Manchester </a>and looking for the best flight deals? flightmakers.com offers a comprehensive solution to find the cheapest and most convenient flights from Lahore to Manchester. Our platform provides you with a seamless booking experience, ensuring you get the best value for your money.</p>',
       section1:[
           {
               heading:'Best Airlines for Lahore to Manchester Flights',
@@ -779,7 +779,7 @@
                   {
                     point_head: "Pakistan International Airlines (PIA): ",
                     point_data:
-                      "<p>Known for its reliable service, <a href=\"https://www.faremakers.com/pakistan-international-airlines-flights\" target=\"_blank\" style=\"color: blue;\"> PIA </a>offers connections to Manchester through its partner airlines.</p>",
+                      "<p>Known for its reliable service, <a href=\"https://www.flightmakers.com/pakistan-international-airlines-flights\" target=\"_blank\" style=\"color: blue;\"> PIA </a>offers connections to Manchester through its partner airlines.</p>",
                   },
                   {
                     point_head: "Emirates:",
@@ -808,7 +808,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Air Travel from Lahore to Manchester',
-          Paragraph1:'Finding cheap flights from Lahore to Manchester is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to Manchester is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -852,7 +852,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Manchester?',
-                      answer:'<p>To find the cheapest flights, book in advance, use fare comparison tools on Faremakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights. </p>'
+                      answer:'<p>To find the cheapest flights, book in advance, use fare comparison tools on flightmakers.com, be flexible with your travel dates, and look for special deals and promotions on cheap flights. </p>'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Manchester?',
@@ -860,7 +860,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.</p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com and use our fare comparison tool. Additionally, check for any ongoing promotions or special deals.</p>'
                   },
               ]
               
@@ -869,17 +869,17 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Manchester has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Manchester with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Manchester has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Dont miss out on our special offers and discounts. Book your flight today and enjoy your journey from Lahore to Manchester with peace of mind.<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p>Explore more about flights from <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai</a> for more options. </p>',
+            Paragraph1:'<p>Explore more about flights from <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai</a> for more options. </p>',
 
-            Paragraph2:'<p>Learn more about flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Lahore to Toronto  </a> and get the cheapest tickets available.</p>',
+            Paragraph2:'<p>Learn more about flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Lahore to Toronto  </a> and get the cheapest tickets available.</p>',
 
-            Paragraph3:'<p>Check the latest offers on flights from   <a href=\"https://www.faremakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\"> Lahore to New York  </a> for a budget-friendly trip.</p>',
+            Paragraph3:'<p>Check the latest offers on flights from   <a href=\"https://www.flightmakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\"> Lahore to New York  </a> for a budget-friendly trip.</p>',
         }
     ],
     },
@@ -887,7 +887,7 @@
       id:10,
       flightName:'lahore-to-atlanta',
       mainHeading:'Cheap Flights from Lahore to Atlanta',
-      Paragraph1:'<p>Looking for the best deals on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-atlanta\" target=\"_blank\" style=\"color: blue;\"> Lahore to Atlanta </a> ? <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com </a> offers an easy and efficient way to find affordable and convenient flights from Lahore to Atlanta. Whether you’re traveling for business or leisure, we ensure you get the best value for your money.</p>',
+      Paragraph1:'<p>Looking for the best deals on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-atlanta\" target=\"_blank\" style=\"color: blue;\"> Lahore to Atlanta </a> ? <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com </a> offers an easy and efficient way to find affordable and convenient flights from Lahore to Atlanta. Whether you’re traveling for business or leisure, we ensure you get the best value for your money.</p>',
       section1:[
           {
               heading:'Best Airlines for Lahore to Atlanta Flights',
@@ -925,17 +925,17 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Lahore to Atlanta',
-          Paragraph1:'Finding cheap flights from Lahore to Atlanta is simple with Faremakers.com. Follow these tips to secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to Atlanta is simple with flightmakers.com. Follow these tips to secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
                     point_data:
-                     "<p>To get the best prices, book your  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\">plane tickets</a> at least 3-4 weeks before your travel date. </p>",
+                     "<p>To get the best prices, book your  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\">plane tickets</a> at least 3-4 weeks before your travel date. </p>",
                   },
                   {
                     point_head: "Use Fare Comparison Tools: ",
                     point_data:
-                      "Faremakers.com allows you to compare fares across different airlines to find the best deals.",
+                      "flightmakers.com allows you to compare fares across different airlines to find the best deals.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -945,7 +945,7 @@
                   {
                     point_head: "Look for Special Deals: ",
                     point_data:
-                      "<p>Sign up for fare alerts to stay informed about the latest promotions and discounts on <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\">cheap flights. </a> </p>",
+                      "<p>Sign up for fare alerts to stay informed about the latest promotions and discounts on <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\">cheap flights. </a> </p>",
                   },
                   {
                       point_head: "Join Loyalty Programs: ",
@@ -969,7 +969,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Atlanta?',
-                      answer:'<p>To find the cheapest flights, book early, use <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\">www.Faremakers.com</a> fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions. </p>'
+                      answer:'<p>To find the cheapest flights, book early, use <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\">www.flightmakers.com</a> fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions. </p>'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Atlanta?',
@@ -977,7 +977,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
                   },
               ]
               
@@ -986,18 +986,18 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Atlanta has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Lahore to Atlanta!<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Atlanta has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Lahore to Atlanta!<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p>Discover the best fares on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Lahore to Toronto </a> for a seamless travel experience. </p>',
+            Paragraph1:'<p>Discover the best fares on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Lahore to Toronto </a> for a seamless travel experience. </p>',
 
-            Paragraph2:'<p>Explore more options for flights from   <a href=\"https://www.faremakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> with our exclusive deals.</p>',
+            Paragraph2:'<p>Explore more options for flights from   <a href=\"https://www.flightmakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> with our exclusive deals.</p>',
 
-            Paragraph3:'<p>Check out our offers on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\"> Lahore to Dubai </a> for an affordable journey.</p>',
-            Paragraph4:'<p>Learn more about cheap flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\"> Lahore to Karachi  </a> and save on your next trip.</p>',
+            Paragraph3:'<p>Check out our offers on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\"> Lahore to Dubai </a> for an affordable journey.</p>',
+            Paragraph4:'<p>Learn more about cheap flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\"> Lahore to Karachi  </a> and save on your next trip.</p>',
         }
     ],
     },
@@ -1005,7 +1005,7 @@
       id:11,
       flightName:'peshawar-to-dubai',
       mainHeading:'Cheap Flights from Peshawar to Dubai',
-      Paragraph1:'<p>Are you planning to travel from Peshawar to Dubai? Faremakers.com offers the most convenient platform to find affordable and seamless flights from Peshawar to Dubai. Whether youre traveling for business or leisure, our platform ensures you get the best deals and the most suitable options for your journey.</p>',
+      Paragraph1:'<p>Are you planning to travel from Peshawar to Dubai? flightmakers.com offers the most convenient platform to find affordable and seamless flights from Peshawar to Dubai. Whether youre traveling for business or leisure, our platform ensures you get the best deals and the most suitable options for your journey.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Dubai Flights',
@@ -1043,7 +1043,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Peshawar to Dubai',
-          Paragraph1:'Finding cheap flights from Peshawar to Dubai is simple with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Peshawar to Dubai is simple with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -1053,7 +1053,7 @@
                   {
                     point_head: "Use Fare Comparison Tools: ",
                     point_data:
-                      "Faremakers.com allows you to compare fares across different airlines to find the best deals available.",
+                      "flightmakers.com allows you to compare fares across different airlines to find the best deals available.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -1087,7 +1087,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Peshawar to Dubai?',
-                      answer:'<p>To find the cheapest flights, book early, use Faremakers.com’s fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions. </p>'
+                      answer:'<p>To find the cheapest flights, book early, use flightmakers.com’s fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions. </p>'
                   },
                   {
                       question:'What is the average ticket price from Peshawar to Dubai?',
@@ -1095,7 +1095,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
                   },
               ]
               
@@ -1104,17 +1104,17 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Peshawar to Dubai has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on a memorable journey from Peshawar to Dubai!<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Peshawar to Dubai has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on a memorable journey from Peshawar to Dubai!<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p>Discover amazing deals on flights from   <a href=\"https://www.faremakers.com/flights/peshawar-to-london\" target=\"_blank\" style=\"color: blue;\">Peshawar to London</a> for a seamless travel experience. </p>',
+            Paragraph1:'<p>Discover amazing deals on flights from   <a href=\"https://www.flightmakers.com/flights/peshawar-to-london\" target=\"_blank\" style=\"color: blue;\">Peshawar to London</a> for a seamless travel experience. </p>',
 
-            Paragraph2:'<p>Explore more options for flights from  <a href=\"https://www.faremakers.com/flights/peshawar-to-newyork\" target=\"_blank\" style=\"color: blue;\">Peshawar to New York</a> with our best offers.</p>',
+            Paragraph2:'<p>Explore more options for flights from  <a href=\"https://www.flightmakers.com/flights/peshawar-to-newyork\" target=\"_blank\" style=\"color: blue;\">Peshawar to New York</a> with our best offers.</p>',
 
-            Paragraph3:'<p>Find great offers on flights from  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Peshawar to Lahore </a> and travel with ease.</p>',
+            Paragraph3:'<p>Find great offers on flights from  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> Peshawar to Lahore </a> and travel with ease.</p>',
             
         }
     ],
@@ -1123,7 +1123,7 @@
       id:12,
       flightName:'peshawar-to-london',
       mainHeading:'Cheap Flights from Peshawar to London',
-      Paragraph1:'<p>Are you planning to travel from Peshawar to London? Faremakers.com provides the best platform to find affordable and convenient flights from Peshawar to London. Whether you are flying for business or leisure, we ensure you get the best deals for your journey.</p>',
+      Paragraph1:'<p>Are you planning to travel from Peshawar to London? flightmakers.com provides the best platform to find affordable and convenient flights from Peshawar to London. Whether you are flying for business or leisure, we ensure you get the best deals for your journey.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to London Flights',
@@ -1161,7 +1161,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Peshawar to London',
-          Paragraph1:'Finding cheap flights from Peshawar to London is simple with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Peshawar to London is simple with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -1171,7 +1171,7 @@
                   {
                     point_head: "Use Fare Comparison Tools:  ",
                     point_data:
-                      "Faremakers.com allows you to compare fares across different airlines to find the best deals available.",
+                      "flightmakers.com allows you to compare fares across different airlines to find the best deals available.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -1205,7 +1205,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Peshawar to London?',
-                      answer:'<p>To find the cheapest flights, book early, use Faremakers.com fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions.</p>'
+                      answer:'<p>To find the cheapest flights, book early, use flightmakers.com fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions.</p>'
                   },
                   {
                       question:'What is the average ticket price from Peshawar to London?',
@@ -1213,7 +1213,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
                   },
               ]
               
@@ -1222,15 +1222,15 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Peshawar to London has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Peshawar to London!<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Peshawar to London has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Peshawar to London!<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p>Discover amazing deals on flights from  <a href=\"https://www.faremakers.com/flights/peshawar-to-dubai\" target=\"_blank\" style=\"color: blue;\">Peshawar to Dubai</a> for a seamless travel experience. </p>',
+            Paragraph1:'<p>Discover amazing deals on flights from  <a href=\"https://www.flightmakers.com/flights/peshawar-to-dubai\" target=\"_blank\" style=\"color: blue;\">Peshawar to Dubai</a> for a seamless travel experience. </p>',
 
-            Paragraph2:'<p>Save on flights from  <a href=\"https://www.faremakers.com/flights/peshawar-to-newyork\" target=\"_blank\" style=\"color: blue;\">Peshawar to Karachi</a> with our special deals.</p>',
+            Paragraph2:'<p>Save on flights from  <a href=\"https://www.flightmakers.com/flights/peshawar-to-newyork\" target=\"_blank\" style=\"color: blue;\">Peshawar to Karachi</a> with our special deals.</p>',
             
         }
     ],
@@ -1239,7 +1239,7 @@
       id:13,
       flightName:'lahore-to-doha',
       mainHeading:'Cheap Flights from Lahore to Doha',
-      Paragraph1:'<p>Are you planning to travel from Lahore to Doha? Faremakers.com offers you the best options for finding affordable and convenient flights from Lahore to Doha. Whether you are flying for business or leisure, our platform ensures you get the best deals for your trip.</p>',
+      Paragraph1:'<p>Are you planning to travel from Lahore to Doha? flightmakers.com offers you the best options for finding affordable and convenient flights from Lahore to Doha. Whether you are flying for business or leisure, our platform ensures you get the best deals for your trip.</p>',
       section1:[
           {
               heading:'Best Airlines for Lahore to Doha Flights',
@@ -1277,7 +1277,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Lahore to Doha',
-          Paragraph1:'Finding cheap flights from Lahore to Doha is easy with Faremakers.com. Here are some tips to help you secure the best deals:',
+          Paragraph1:'Finding cheap flights from Lahore to Doha is easy with flightmakers.com. Here are some tips to help you secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -1287,7 +1287,7 @@
                   {
                     point_head: "Use Fare Comparison Tools:  ",
                     point_data:
-                      "Faremakers.com allows you to compare fares across different airlines to find the best deals available.",
+                      "flightmakers.com allows you to compare fares across different airlines to find the best deals available.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -1321,7 +1321,7 @@
                   },
                   {
                       question:'How can I find the cheapest flights from Lahore to Doha?',
-                      answer:'<p>To find the cheapest flights, book early, use Faremakers.com fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions.</p>'
+                      answer:'<p>To find the cheapest flights, book early, use flightmakers.com fare comparison tools, stay flexible with your travel dates, and look for ongoing deals and promotions.</p>'
                   },
                   {
                       question:'What is the average ticket price from Lahore to Doha?',
@@ -1329,7 +1329,7 @@
                   }, 
                   {
                       question:'How can I find the best ticket price today?',
-                      answer:'<p>To find the best ticket price today, visit Faremakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
+                      answer:'<p>To find the best ticket price today, visit flightmakers.com, use our fare comparison tool, and check for any current promotions or special deals.</p>'
                   },
               ]
               
@@ -1338,17 +1338,17 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking your flight from Lahore to Doha has never been easier. Faremakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Lahore to Doha!<br/> For more information or to book your flight, visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
+              Paragraph1:'<p>Booking your flight from Lahore to Doha has never been easier. flightmakers.com provides you with the best options to find cheap flights, ensuring a hassle-free and enjoyable booking experience. Don’t miss out on our exclusive deals and discounts. Book your flight today and embark on an unforgettable journey from Lahore to Doha!<br/> For more information or to book your flight, visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> or contact our support team. Contact us <span style=\"color: #F26223;\">03111-147-111.</span> </p>',
           }
       ],
       section5:[
         {
             heading:'',
-            Paragraph1:'<p>Discover amazing deals on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai</a> for a seamless travel experience. </p>',
+            Paragraph1:'<p>Discover amazing deals on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-dubai\" target=\"_blank\" style=\"color: blue;\">Lahore to Dubai</a> for a seamless travel experience. </p>',
 
-            Paragraph2:'<p>Explore more options for flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> with our best offers</p>',
+            Paragraph2:'<p>Explore more options for flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-newyork\" target=\"_blank\" style=\"color: blue;\">Lahore to New York</a> with our best offers</p>',
 
-            Paragraph3:'<p>Save on flights from  <a href=\"https://www.faremakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore to Karachi</a> with our special deals.</p>',
+            Paragraph3:'<p>Save on flights from  <a href=\"https://www.flightmakers.com/flights/lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore to Karachi</a> with our special deals.</p>',
             
         }
     ],
@@ -1357,7 +1357,7 @@
       id:14,
       flightName:'peshawar-to-manchester',
       mainHeading:'Cheap Flights from Peshawar to Manchester',
-      Paragraph1:'<p>Are you planning a trip from Peshawar to Manchester? Faremakers.com provides you with the best options for cheap flights from Peshawar to Manchester. Our platform ensures that you find the most affordable and convenient flights available.</p>',
+      Paragraph1:'<p>Are you planning a trip from Peshawar to Manchester? flightmakers.com provides you with the best options for cheap flights from Peshawar to Manchester. Our platform ensures that you find the most affordable and convenient flights available.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Manchester Flights',
@@ -1395,7 +1395,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Manchester',
-          Paragraph1:'Booking cheap flights from Peshawar to Manchester is easy with Faremakers.com. Follow these tips:',
+          Paragraph1:'Booking cheap flights from Peshawar to Manchester is easy with flightmakers.com. Follow these tips:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -1405,7 +1405,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Faremakers.com allows you to compare prices from various airlines.",
+                      "flightmakers.com allows you to compare prices from various airlines.",
                   },
                   {
                     point_head: "Travel Flexibility",
@@ -1438,11 +1438,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Manchester? ',
-                      answer:'Book early, use Faremakers.com’s fare comparison tools, and keep an eye out for promotions.'
+                      answer:'Book early, use flightmakers.com’s fare comparison tools, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Manchester? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1451,7 +1451,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Finding cheap flights from Peshawar to Manchester is easy with Faremakers.com. We offer the best deals and a seamless booking experience. Don’t miss out on our exclusive offers—book your flight today and enjoy your journey from Peshawar to Manchester!<br/> </p>',
+              Paragraph1:'<p>Finding cheap flights from Peshawar to Manchester is easy with flightmakers.com. We offer the best deals and a seamless booking experience. Don’t miss out on our exclusive offers—book your flight today and enjoy your journey from Peshawar to Manchester!<br/> </p>',
           }
       ]
     },
@@ -1459,7 +1459,7 @@
       id:15,
       flightName:'peshawar-to-toronto',
       mainHeading:'Cheap Flights from Peshawar to Toronto',
-      Paragraph1:'<p>Planning to fly from Peshawar to Toronto? Faremakers.com provides you with a variety of options to find cheap flights from Peshawar to Toronto. Our platform makes it easy to compare and book your flights with just a few clicks.</p>',
+      Paragraph1:'<p>Planning to fly from Peshawar to Toronto? flightmakers.com provides you with a variety of options to find cheap flights from Peshawar to Toronto. Our platform makes it easy to compare and book your flights with just a few clicks.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Toronto Flights',
@@ -1497,7 +1497,7 @@
       section2:[
          {
           heading:'Tips for Finding Affordable Flights from Peshawar to Toronto',
-          Paragraph1:'Booking cheap flights from Peshawar to Toronto is simple with Faremakers.com. Follow these tips:',
+          Paragraph1:'Booking cheap flights from Peshawar to Toronto is simple with flightmakers.com. Follow these tips:',
           unOrderList: [
                   {
                     point_head: "Book in Advance:",
@@ -1507,7 +1507,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Faremakers.com helps you compare prices from various airlines to find the best deals.",
+                      "flightmakers.com helps you compare prices from various airlines to find the best deals.",
                   },
                   {
                     point_head: "Travel Flexibility",
@@ -1540,11 +1540,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Toronto? ',
-                      answer:'Book early, use Faremakers.com’s fare comparison tools, and keep an eye out for promotions.'
+                      answer:'Book early, use flightmakers.com’s fare comparison tools, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Toronto? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1553,7 +1553,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Book your cheap flights from Peshawar to Toronto with Faremakers.com and enjoy a stress-free travel experience. We provide you with the best options, ensuring you get the best value for your money. Book now and enjoy a memorable journey from Peshawar to Toronto!</p>',
+              Paragraph1:'<p>Book your cheap flights from Peshawar to Toronto with flightmakers.com and enjoy a stress-free travel experience. We provide you with the best options, ensuring you get the best value for your money. Book now and enjoy a memorable journey from Peshawar to Toronto!</p>',
           }
       ]
     },
@@ -1561,7 +1561,7 @@
       id:16,
       flightName:'peshawar-to-newyork',
       mainHeading:'Cheap Flights from Peshawar to New York',
-      Paragraph1:'<p>Looking for the best flight deals from Peshawar to New York? Faremakers.com is here to help you find cheap flights from Peshawar to New York with ease. Our platform offers a user-friendly interface to compare and book your flights efficiently.</p>',
+      Paragraph1:'<p>Looking for the best flight deals from Peshawar to New York? flightmakers.com is here to help you find cheap flights from Peshawar to New York with ease. Our platform offers a user-friendly interface to compare and book your flights efficiently.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to New York Flights',
@@ -1599,7 +1599,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to New York',
-          Paragraph1:'Securing cheap flights from Peshawar to New York is easy with Faremakers.com. Here are some tips:',
+          Paragraph1:'Securing cheap flights from Peshawar to New York is easy with flightmakers.com. Here are some tips:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -1609,7 +1609,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines and choose the best deal.",
+                      "Use flightmakers.com to compare fares from different airlines and choose the best deal.",
                   },
                   {
                     point_head: "Flexible Dates: ",
@@ -1638,7 +1638,7 @@
                   },
                   {
                       question:'How do I find the cheapest flights from Peshawar to New York? ',
-                      answer:'<p>Book early, compare fares on Faremakers.com, and look out for promotions.</p>'
+                      answer:'<p>Book early, compare fares on flightmakers.com, and look out for promotions.</p>'
                   },
                   {
                       question:'What is the average ticket price from Peshawar to New York? ',
@@ -1646,7 +1646,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to New York? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1655,7 +1655,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Finding cheap flights from Peshawar to New York is simple with Faremakers.com. We offer the best deals and a seamless booking experience. Don’t miss out on our exclusive offers—book your Tickets.</p>',
+              Paragraph1:'<p>Finding cheap flights from Peshawar to New York is simple with flightmakers.com. We offer the best deals and a seamless booking experience. Don’t miss out on our exclusive offers—book your Tickets.</p>',
           }
       ]
     },
@@ -1663,7 +1663,7 @@
       id:17,
       flightName:'peshawar-to-boston',
       mainHeading:'Cheap Flights from Peshawar to Boston',
-      Paragraph1:'<p>Planning to travel from Peshawar to Boston? Faremakers.com is your one-stop solution for booking cheap flights from Peshawar to Boston. We offer competitive prices, ensuring you get the best deal on your plane tickets.</p>',
+      Paragraph1:'<p>Planning to travel from Peshawar to Boston? flightmakers.com is your one-stop solution for booking cheap flights from Peshawar to Boston. We offer competitive prices, ensuring you get the best deal on your plane tickets.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Boston Flights',
@@ -1701,7 +1701,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Boston',
-          Paragraph1:'Booking cheap flights from Peshawar to Boston is easy with Faremakers.com. Here are some tips to help you save on your airfare:',
+          Paragraph1:'Booking cheap flights from Peshawar to Boston is easy with flightmakers.com. Here are some tips to help you save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -1711,7 +1711,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines and find the best option.",
+                      "Use flightmakers.com to compare fares from different airlines and find the best option.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -1744,11 +1744,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Boston? ',
-                      answer:'Book early, compare fares on Faremakers.com, and monitor special promotions for the best deals.'
+                      answer:'Book early, compare fares on flightmakers.com, and monitor special promotions for the best deals.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Boston? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1757,7 +1757,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Finding cheap flights from Peshawar to Boston has never been easier. Faremakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Boston!</p>',
+              Paragraph1:'<p>Finding cheap flights from Peshawar to Boston has never been easier. flightmakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Boston!</p>',
           }
       ]
     },
@@ -1765,7 +1765,7 @@
       id:17,
       flightName:'peshawar-to-boston',
       mainHeading:'Cheap Flights from Peshawar to Boston',
-      Paragraph1:'<p>Planning to travel from Peshawar to Boston? Faremakers.com is your one-stop solution for booking cheap flights from Peshawar to Boston. We offer competitive prices, ensuring you get the best deal on your plane tickets.</p>',
+      Paragraph1:'<p>Planning to travel from Peshawar to Boston? flightmakers.com is your one-stop solution for booking cheap flights from Peshawar to Boston. We offer competitive prices, ensuring you get the best deal on your plane tickets.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Boston Flights',
@@ -1803,7 +1803,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Boston',
-          Paragraph1:'Booking cheap flights from Peshawar to Boston is easy with Faremakers.com. Here are some tips to help you save on your airfare:',
+          Paragraph1:'Booking cheap flights from Peshawar to Boston is easy with flightmakers.com. Here are some tips to help you save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -1813,7 +1813,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines and find the best option.",
+                      "Use flightmakers.com to compare fares from different airlines and find the best option.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -1846,11 +1846,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Boston? ',
-                      answer:'Book early, compare fares on Faremakers.com, and monitor special promotions for the best deals.'
+                      answer:'Book early, compare fares on flightmakers.com, and monitor special promotions for the best deals.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Boston? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1859,7 +1859,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Finding cheap flights from Peshawar to Boston has never been easier. Faremakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Boston!</p>',
+              Paragraph1:'<p>Finding cheap flights from Peshawar to Boston has never been easier. flightmakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Boston!</p>',
           }
       ]
     },
@@ -1867,7 +1867,7 @@
       id:18,
       flightName:'peshawar-to-perth',
       mainHeading:'Cheap Flights from Peshawar to Perth',
-      Paragraph1:'<p>Planning to travel from Peshawar to Perth? Faremakers.com makes it easy for you to find cheap flights from Peshawar to Perth. Our platform offers the best deals and a seamless booking experience, ensuring you get the most value for your money.</p>',
+      Paragraph1:'<p>Planning to travel from Peshawar to Perth? flightmakers.com makes it easy for you to find cheap flights from Peshawar to Perth. Our platform offers the best deals and a seamless booking experience, ensuring you get the most value for your money.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Perth Flights',
@@ -1905,7 +1905,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Perth',
-          Paragraph1:'Securing cheap flights from Peshawar to Perth is simple with Faremakers.com. Here are some tips:',
+          Paragraph1:'Securing cheap flights from Peshawar to Perth is simple with flightmakers.com. Here are some tips:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -1915,7 +1915,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare fares from various airlines.",
+                      "Use flightmakers.com to compare fares from various airlines.",
                   },
                   {
                     point_head: "Flexible Dates:",
@@ -1948,11 +1948,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Perth? ',
-                      answer:'Book early, compare fares on Faremakers.com, and take advantage of promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and take advantage of promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Perth? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -1961,7 +1961,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Book your cheap flights from Peshawar to Perth with Faremakers.com today! We offer the best deals, ensuring you get a hassle-free booking experience. Dont miss out on our exclusive offers—book now and enjoy a smooth journey from Peshawar to Perth.</p>',
+              Paragraph1:'<p>Book your cheap flights from Peshawar to Perth with flightmakers.com today! We offer the best deals, ensuring you get a hassle-free booking experience. Dont miss out on our exclusive offers—book now and enjoy a smooth journey from Peshawar to Perth.</p>',
           }
       ]
     },
@@ -1969,7 +1969,7 @@
       id:19,
       flightName:'peshawar-to-melbourne',
       mainHeading:'Cheap Flights from Peshawar to Melbourne',
-      Paragraph1:'<p>Planning a trip from Peshawar to Melbourne? Faremakers.com is your go-to platform for finding cheap flights from Peshawar to Melbourne. We make the booking process easy and provide the best deals available.</p>',
+      Paragraph1:'<p>Planning a trip from Peshawar to Melbourne? flightmakers.com is your go-to platform for finding cheap flights from Peshawar to Melbourne. We make the booking process easy and provide the best deals available.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Melbourne Flights',
@@ -2007,7 +2007,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Melbourne',
-          Paragraph1:'Finding cheap flights from Peshawar to Melbourne is simple with Faremakers.com. Here are some tips:',
+          Paragraph1:'Finding cheap flights from Peshawar to Melbourne is simple with flightmakers.com. Here are some tips:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2017,7 +2017,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare fares from various airlines.",
+                      "Use flightmakers.com to compare fares from various airlines.",
                   },
                   {
                     point_head: "Flexible Dates:",
@@ -2050,11 +2050,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Melbourne? ',
-                      answer:'Book early, compare fares on Faremakers.com, and take advantage of promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and take advantage of promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Melbourne? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2063,7 +2063,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Book your cheap flights from Peshawar to Melbourne with Faremakers.com today! We offer the best deals, ensuring you get a hassle-free booking experience. Dont miss out on our exclusive offers—book now and enjoy your journey from Peshawar to Melbourne.</p>',
+              Paragraph1:'<p>Book your cheap flights from Peshawar to Melbourne with flightmakers.com today! We offer the best deals, ensuring you get a hassle-free booking experience. Dont miss out on our exclusive offers—book now and enjoy your journey from Peshawar to Melbourne.</p>',
           }
       ]
     },
@@ -2071,7 +2071,7 @@
       id:20,
       flightName:'peshawar-to-atlanta',
       mainHeading:'Cheap Flights from Peshawar to Atlanta',
-      Paragraph1:'<p>Looking for the best flight deals from Peshawar to Atlanta? Faremakers.com is here to help you find cheap flights from Peshawar to Atlanta with ease. Our platform offers a user-friendly interface to compare and book your flights efficiently.</p>',
+      Paragraph1:'<p>Looking for the best flight deals from Peshawar to Atlanta? flightmakers.com is here to help you find cheap flights from Peshawar to Atlanta with ease. Our platform offers a user-friendly interface to compare and book your flights efficiently.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Atlanta Flights',
@@ -2109,7 +2109,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Atlanta',
-          Paragraph1:'Faremakers.com simplifies the process of finding cheap flights from Peshawar to Atlanta. Here are some tips to save on your airfare:',
+          Paragraph1:'flightmakers.com simplifies the process of finding cheap flights from Peshawar to Atlanta. Here are some tips to save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2119,7 +2119,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Faremakers.com allows you to compare prices from various airlines to find the best option.",
+                      "flightmakers.com allows you to compare prices from various airlines to find the best option.",
                   },
                   {
                     point_head: "Flexible Dates:",
@@ -2152,11 +2152,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Atlanta? ',
-                      answer:'Book early, use Faremakers.com’s fare comparison tools, and monitor promotions for the best deals.'
+                      answer:'Book early, use flightmakers.com’s fare comparison tools, and monitor promotions for the best deals.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Atlanta?  ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2165,7 +2165,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Finding cheap flights from Peshawar to Atlanta has never been easier. Faremakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Atlanta!</p>',
+              Paragraph1:'<p>Finding cheap flights from Peshawar to Atlanta has never been easier. flightmakers.com offers the best deals and a smooth booking process. Book your flight today and enjoy a seamless journey from Peshawar to Atlanta!</p>',
           }
       ]
     },
@@ -2173,7 +2173,7 @@
       id:21,
       flightName:'peshawar-to-doha',
       mainHeading:'Cheap Flights from Peshawar to Doha',
-      Paragraph1:'<p>Planning to travel from Peshawar to Doha? Faremakers.com is your ultimate destination for booking cheap flights from Peshawar to Doha. Our platform offers the best deals, ensuring a hassle-free booking experience.</p>',
+      Paragraph1:'<p>Planning to travel from Peshawar to Doha? flightmakers.com is your ultimate destination for booking cheap flights from Peshawar to Doha. Our platform offers the best deals, ensuring a hassle-free booking experience.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Doha Flights',
@@ -2206,7 +2206,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Doha',
-          Paragraph1:'Finding cheap flights from Peshawar to Doha is easy with Faremakers.com. Here are some tips:',
+          Paragraph1:'Finding cheap flights from Peshawar to Doha is easy with flightmakers.com. Here are some tips:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2216,7 +2216,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Faremakers.com allows you to compare prices from different airlines to find the best option.",
+                      "flightmakers.com allows you to compare prices from different airlines to find the best option.",
                   },
                   {
                     point_head: "Flexible Dates:",
@@ -2249,11 +2249,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Doha?  ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for special promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for special promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Doha? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2262,7 +2262,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Booking cheap flights from Peshawar to Doha is a breeze with Faremakers.com. Take advantage of our best deals and enjoy a seamless travel experience. Book your flight today and embark on a comfortable journey from Peshawar to Doha.</p>',
+              Paragraph1:'<p>Booking cheap flights from Peshawar to Doha is a breeze with flightmakers.com. Take advantage of our best deals and enjoy a seamless travel experience. Book your flight today and embark on a comfortable journey from Peshawar to Doha.</p>',
           }
       ]
     },
@@ -2270,7 +2270,7 @@
       id:22,
       flightName:'peshawar-to-losangeles',
       mainHeading:'Cheap Flights from Peshawar to Los Angeles',
-      Paragraph1:'<p>Are you planning to fly from Peshawar to Los Angeles? Faremakers.com is your trusted platform to find cheap flights from Peshawar to Los Angeles. We ensure that you find the best deals and a smooth booking process.</p>',
+      Paragraph1:'<p>Are you planning to fly from Peshawar to Los Angeles? flightmakers.com is your trusted platform to find cheap flights from Peshawar to Los Angeles. We ensure that you find the best deals and a smooth booking process.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Los Angeles Flights',
@@ -2308,7 +2308,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Los Angeles',
-          Paragraph1:'Booking cheap flights from Peshawar to Los Angeles is easy with Faremakers.com. Follow these tips to save on your airfare:',
+          Paragraph1:'Booking cheap flights from Peshawar to Los Angeles is easy with flightmakers.com. Follow these tips to save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2318,7 +2318,7 @@
                   {
                     point_head: "Compare Fares:",
                     point_data:
-                      "Use Faremakers.com to compare prices from various airlines and find the best option.",
+                      "Use flightmakers.com to compare prices from various airlines and find the best option.",
                   },
                   {
                     point_head: "Flexible Dates:",
@@ -2351,11 +2351,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Los Angeles? ',
-                      answer:'Book early, use Faremakers.com’s fare comparison tools, and take advantage of promotions.'
+                      answer:'Book early, use flightmakers.com’s fare comparison tools, and take advantage of promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Los Angeles? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2364,7 +2364,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com is your go-to platform for finding cheap flights from Peshawar to Los Angeles. With our best deals and a hassle-free booking process, you can secure your flight today and enjoy a smooth journey from Peshawar to Los Angeles.</p>',
+              Paragraph1:'<p>flightmakers.com is your go-to platform for finding cheap flights from Peshawar to Los Angeles. With our best deals and a hassle-free booking process, you can secure your flight today and enjoy a smooth journey from Peshawar to Los Angeles.</p>',
           }
       ]
     },
@@ -2372,7 +2372,7 @@
       id:23,
       flightName:'peshawar-to-jeddah',
       mainHeading:'Cheap Flights from Peshawar to Jeddah',
-      Paragraph1:'<p>Looking to fly from Peshawar to Jeddah? Faremakers.com is here to help you find cheap flights from Peshawar to Jeddah with ease. Our platform offers a seamless booking experience and the best deals available.</p>',
+      Paragraph1:'<p>Looking to fly from Peshawar to Jeddah? flightmakers.com is here to help you find cheap flights from Peshawar to Jeddah with ease. Our platform offers a seamless booking experience and the best deals available.</p>',
       section1:[
           {
               heading:'Best Airlines for Peshawar to Jeddah Flights',
@@ -2405,7 +2405,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Jeddah',
-          Paragraph1:'Booking cheap flights from Peshawar to Jeddah is easy with Faremakers.com. Follow these tips to save on your airfare:',
+          Paragraph1:'Booking cheap flights from Peshawar to Jeddah is easy with flightmakers.com. Follow these tips to save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2415,7 +2415,7 @@
                   {
                     point_head: "Compare Prices",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines.",
+                      "Use flightmakers.com to compare fares from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2448,11 +2448,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Jeddah? ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for special promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for special promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Jeddah?  ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2461,7 +2461,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com makes finding cheap flights from Peshawar to Jeddah a breeze. Take advantage of our best deals and book your flight today for a comfortable journey from Peshawar to Jeddah.</p>',
+              Paragraph1:'<p>flightmakers.com makes finding cheap flights from Peshawar to Jeddah a breeze. Take advantage of our best deals and book your flight today for a comfortable journey from Peshawar to Jeddah.</p>',
           }
       ]
     },
@@ -2469,7 +2469,7 @@
       id:24,
       flightName:'peshawar-to-istanbul',
       mainHeading:'Cheap Flights from Peshawar to Istanbul',
-      Paragraph1:'<p>Planning to fly from Peshawar to Istanbul? Faremakers.com is your trusted source for finding cheap flights from Peshawar to Istanbul. We ensure you get the best deals and a smooth booking process.</p>',
+      Paragraph1:'<p>Planning to fly from Peshawar to Istanbul? flightmakers.com is your trusted source for finding cheap flights from Peshawar to Istanbul. We ensure you get the best deals and a smooth booking process.</p>',
       section1:[
           {
               heading:'Top Airlines for Peshawar to Istanbul Flights',
@@ -2507,7 +2507,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Peshawar to Istanbul',
-          Paragraph1:'Booking cheap flights from Peshawar to Istanbul is simple with Faremakers.com. Here are some tips to help you save on your airfare:',
+          Paragraph1:'Booking cheap flights from Peshawar to Istanbul is simple with flightmakers.com. Here are some tips to help you save on your airfare:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2517,7 +2517,7 @@
                   {
                     point_head: "Compare Prices",
                     point_data:
-                      "Use Faremakers.com to compare prices from various airlines and choose the best option.",
+                      "Use flightmakers.com to compare prices from various airlines and choose the best option.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2550,11 +2550,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Istanbul?  ',
-                      answer:'Book early, use Faremakers.com fare comparison tools, and take advantage of promotions.'
+                      answer:'Book early, use flightmakers.com fare comparison tools, and take advantage of promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Peshawar to Istanbul? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a> to book your flight quickly and easily.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a> to book your flight quickly and easily.</p>'
                   },
               ]
               
@@ -2563,7 +2563,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com is your go-to platform for finding cheap flights from Peshawar to Istanbul. With our best deals and a hassle-free booking process, you can secure your flight today and enjoy a smooth journey from Peshawar to Istanbul.</p>',
+              Paragraph1:'<p>flightmakers.com is your go-to platform for finding cheap flights from Peshawar to Istanbul. With our best deals and a hassle-free booking process, you can secure your flight today and enjoy a smooth journey from Peshawar to Istanbul.</p>',
           }
       ]
     },
@@ -2572,7 +2572,7 @@
       id:25,
       flightName:'faisalabad-to-losangeles',
       mainHeading:'Cheap Flights from Faisalabad to Los Angeles',
-      Paragraph1:'<p>Are you planning a trip from Faisalabad to Los Angeles? Faremakers.com is here to help you find the best deals on cheap flights from Faisalabad to Los Angeles. Whether you’re traveling for business, leisure, or a special occasion, our platform ensures you get the most competitive prices on your airline tickets.</p>',
+      Paragraph1:'<p>Are you planning a trip from Faisalabad to Los Angeles? flightmakers.com is here to help you find the best deals on cheap flights from Faisalabad to Los Angeles. Whether you’re traveling for business, leisure, or a special occasion, our platform ensures you get the most competitive prices on your airline tickets.</p>',
       section1:[
           {
               heading:'Top Airlines for Faisalabad to Los Angeles Flights',
@@ -2610,7 +2610,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Faisalabad to Los Angeles',
-          Paragraph1:'Booking cheap flights from Faisalabad to Los Angeles is easy with Faremakers.com. Follow these tips to secure the best deals:',
+          Paragraph1:'Booking cheap flights from Faisalabad to Los Angeles is easy with flightmakers.com. Follow these tips to secure the best deals:',
           unOrderList: [
                   {
                     point_head: "Book Early:",
@@ -2620,7 +2620,7 @@
                   {
                     point_head: "Compare Prices",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines to find the best deal.",
+                      "Use flightmakers.com to compare fares from different airlines to find the best deal.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2653,11 +2653,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Los Angeles? ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for special promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for special promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Faisalabad to Los Angeles?',
-                      answer:'<p>You can easily book your flight at   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a></p>'
+                      answer:'<p>You can easily book your flight at   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a></p>'
                   },
               ]
               
@@ -2666,7 +2666,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com makes finding cheap flights from Faisalabad to Los Angeles simple and convenient. Take advantage of our best deals and book your flight today for a hassle-free journey from Faisalabad to Los Angeles.</p>',
+              Paragraph1:'<p>flightmakers.com makes finding cheap flights from Faisalabad to Los Angeles simple and convenient. Take advantage of our best deals and book your flight today for a hassle-free journey from Faisalabad to Los Angeles.</p>',
           }
       ]
     },
@@ -2674,7 +2674,7 @@
       id:26,
       flightName:'faisalabad-to-jeddah',
       mainHeading:'Cheap Flights from Faisalabad to Jeddah',
-      Paragraph1:'<p>Planning to travel from Faisalabad to Jeddah? Faremakers.com offers the best deals on cheap flights from Faisalabad to Jeddah, ensuring a smooth and affordable travel experience.</p>',
+      Paragraph1:'<p>Planning to travel from Faisalabad to Jeddah? flightmakers.com offers the best deals on cheap flights from Faisalabad to Jeddah, ensuring a smooth and affordable travel experience.</p>',
       section1:[
           {
               heading:'Top Airlines for Faisalabad to Jeddah Flights',
@@ -2717,7 +2717,7 @@
                   {
                     point_head: "Compare Prices",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2750,11 +2750,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Jeddah? ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Faisalabad to Jeddah? ',
-                      answer:'<p>You can easily book your flight at   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a></p>'
+                      answer:'<p>You can easily book your flight at   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a></p>'
                   },
               ]
               
@@ -2763,7 +2763,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Faisalabad to Jeddah. Book your flight today and enjoy a seamless journey from Faisalabad to Jeddah.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Faisalabad to Jeddah. Book your flight today and enjoy a seamless journey from Faisalabad to Jeddah.</p>',
           }
       ]
     },
@@ -2771,7 +2771,7 @@
       id:27,
       flightName:'faisalabad-to-istanbul',
       mainHeading:'Cheap Flights from Faisalabad to Istanbul',
-      Paragraph1:'<p>If you’re looking to travel from Faisalabad to Istanbul, Faremakers.com offers you the best deals on cheap flights from Faisalabad to Istanbul. Whether it’s for business, leisure, or exploring the rich history of Istanbul, we’ve got you covered.</p>',
+      Paragraph1:'<p>If you’re looking to travel from Faisalabad to Istanbul, flightmakers.com offers you the best deals on cheap flights from Faisalabad to Istanbul. Whether it’s for business, leisure, or exploring the rich history of Istanbul, we’ve got you covered.</p>',
       section1:[
           {
               heading:'Top Airlines for Faisalabad to Istanbul Flights',
@@ -2809,7 +2809,7 @@
       section2:[
          {
           heading:'Tips for Finding Cheap Flights from Faisalabad to Istanbul',
-          Paragraph1:'Finding affordable flights from Faisalabad to Istanbul is easy with Faremakers.com. Here are some tips:',
+          Paragraph1:'Finding affordable flights from Faisalabad to Istanbul is easy with flightmakers.com. Here are some tips:',
           unOrderList: [
                   {
                     point_head: "Book Early",
@@ -2819,7 +2819,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare fares from different airlines.",
+                      "Use flightmakers.com to compare fares from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2852,11 +2852,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Istanbul? ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Faisalabad to Istanbul? ',
-                      answer:'<p>You can easily book your flight at   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a></p>'
+                      answer:'<p>You can easily book your flight at   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a></p>'
                   },
               ]
               
@@ -2865,7 +2865,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com makes finding cheap flights from Faisalabad to Istanbul simple and hassle-free. Book your flight today and enjoy your journey from Faisalabad to Istanbul with ease.</p>',
+              Paragraph1:'<p>flightmakers.com makes finding cheap flights from Faisalabad to Istanbul simple and hassle-free. Book your flight today and enjoy your journey from Faisalabad to Istanbul with ease.</p>',
           }
       ]
     },
@@ -2875,7 +2875,7 @@
       id:28,
       flightName:'karachi-to-london',
       mainHeading:'Cheap Flights from Karachi to London',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to London? Faremakers.com offers a seamless booking experience with the best deals on airline tickets for this route. Whether you’re traveling for business, education, or leisure, we ensure you get the most affordable fares.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to London? flightmakers.com offers a seamless booking experience with the best deals on airline tickets for this route. Whether you’re traveling for business, education, or leisure, we ensure you get the most affordable fares.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to London Flights',
@@ -2923,7 +2923,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from various airlines.",
+                      "Use flightmakers.com to compare prices from various airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -2956,11 +2956,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to London?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to London? ',
-                      answer:'<p>visit  <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>visit  <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -2969,7 +2969,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to London. Book your flight today and enjoy a hassle-free journey from Karachi to London with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to London. Book your flight today and enjoy a hassle-free journey from Karachi to London with the best deals.</p>',
           }
       ]
     },
@@ -2977,7 +2977,7 @@
       id:29,
       flightName:'karachi-to-dubai',
       mainHeading:'Cheap Flights from Karachi to Dubai',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Dubai? Faremakers.com offers a seamless booking experience with the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or a special event, we ensure you get the most affordable fares.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Dubai? flightmakers.com offers a seamless booking experience with the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or a special event, we ensure you get the most affordable fares.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Dubai Flights',
@@ -3025,7 +3025,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3058,11 +3058,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Dubai?',
-                      answer:'Book early, compare fares on Faremakers.com, and keep an eye out for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Dubai? ',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3071,7 +3071,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Dubai. Book your flight today and enjoy a smooth journey with our best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Dubai. Book your flight today and enjoy a smooth journey with our best deals.</p>',
           }
       ]
     },
@@ -3079,7 +3079,7 @@
       id:30,
       flightName:'karachi-to-toronto',
       mainHeading:'Cheap Flights from Karachi to Toronto',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Toronto? Faremakers.com offers the best deals on airline tickets for this route. Whether you re traveling for business, family visits, or leisure, we ensure you get the most affordable fares.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Toronto? flightmakers.com offers the best deals on airline tickets for this route. Whether you re traveling for business, family visits, or leisure, we ensure you get the most affordable fares.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Toronto Flights',
@@ -3127,7 +3127,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3160,11 +3160,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Toronto?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Toronto?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3173,7 +3173,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Toronto. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Toronto. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3181,7 +3181,7 @@
       id:30,
       flightName:'karachi-to-newyork',
       mainHeading:'Cheap Flights from Karachi to New York',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to New York? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or education, we ensure you get the most affordable fares to New York.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to New York? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or education, we ensure you get the most affordable fares to New York.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to New York Flights',
@@ -3229,7 +3229,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3262,11 +3262,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to New York? ',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to New York?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3275,7 +3275,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to New York. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to New York. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3283,7 +3283,7 @@
       id:30,
       flightName:'karachi-to-boston',
       mainHeading:'Cheap Flights from Karachi to Boston',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Boston? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, academic purposes, or leisure, we ensure you get the most affordable fares to Boston.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Boston? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, academic purposes, or leisure, we ensure you get the most affordable fares to Boston.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Boston Flights',
@@ -3331,7 +3331,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3364,11 +3364,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Boston?',
-                      answer:'Book early, compare fares on Faremakers.com, and keep an eye out for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Boston?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3377,7 +3377,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Boston. Book your flight today and enjoy a hassle-free journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Boston. Book your flight today and enjoy a hassle-free journey with the best deals.</p>',
           }
       ]
     },
@@ -3385,7 +3385,7 @@
       id:30,
       flightName:'karachi-to-perth',
       mainHeading:'Cheap Flights from Karachi to Perth',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Perth? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or family visits, we ensure you get the most affordable fares to Perth.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Perth? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or family visits, we ensure you get the most affordable fares to Perth.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Perth Flights',
@@ -3433,7 +3433,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3466,11 +3466,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Perth?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Perth?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3479,7 +3479,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Perth. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Perth. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3487,7 +3487,7 @@
       id:30,
       flightName:'karachi-to-manchester',
       mainHeading:'Cheap Flights from Karachi to Manchester',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Manchester? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Manchester.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Manchester? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Manchester.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Manchester Flights',
@@ -3535,7 +3535,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3568,11 +3568,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Manchester?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Manchester?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3581,7 +3581,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Manchester. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Manchester. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3589,7 +3589,7 @@
       id:30,
       flightName:'karachi-to-melbourne',
       mainHeading:'Cheap Flights from Karachi to Melbourne',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Melbourne? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to Melbourne.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Melbourne? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to Melbourne.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Melbourne Flights',
@@ -3637,7 +3637,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3670,11 +3670,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Melbourne?',
-                      answer:'Book early, compare fares on Faremakers.com, and keep an eye out for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Melbourne?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3683,7 +3683,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Melbourne. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Melbourne. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3691,7 +3691,7 @@
       id:30,
       flightName:'karachi-to-atlanta',
       mainHeading:'Cheap Flights from Karachi to Atlanta',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Atlanta? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or to visit family, we ensure you get the most affordable fares to Atlanta.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Atlanta? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or to visit family, we ensure you get the most affordable fares to Atlanta.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Atlanta Flights',
@@ -3739,7 +3739,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3772,11 +3772,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Atlanta?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Atlanta?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3785,7 +3785,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Atlanta. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Atlanta. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3793,7 +3793,7 @@
       id:30,
       flightName:'karachi-to-doha',
       mainHeading:'Cheap Flights from Karachi to Doha',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Doha? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Doha.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Doha? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Doha.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Doha Flights',
@@ -3841,7 +3841,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3874,11 +3874,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Doha?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Istanbul?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3887,7 +3887,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Doha. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Doha. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3895,7 +3895,7 @@
       id:30,
       flightName:'karachi-to-losangeles',
       mainHeading:'Cheap Flights from Karachi to Los Angeles',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Los Angeles? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Los Angeles.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Los Angeles? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Los Angeles.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Los Angeles Flights',
@@ -3943,7 +3943,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -3976,11 +3976,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Los Angeles?',
-                      answer:'Book early, compare fares on Faremakers.com, and keep an eye out for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Los Angeles?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -3989,7 +3989,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Los Angeles. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Los Angeles. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -3997,7 +3997,7 @@
       id:30,
       flightName:'karachi-to-jeddah',
       mainHeading:'Cheap Flights from Karachi to Jeddah',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Jeddah? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for Umrah, business, or leisure, we ensure you get the most affordable fares to Jeddah.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Jeddah? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for Umrah, business, or leisure, we ensure you get the most affordable fares to Jeddah.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Jeddah Flights',
@@ -4045,7 +4045,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4078,11 +4078,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Jeddah?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Jeddah?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4091,7 +4091,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Jeddah. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Jeddah. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -4099,7 +4099,7 @@
       id:30,
       flightName:'karachi-to-istanbul',
       mainHeading:'Cheap Flights from Karachi to Istanbul',
-      Paragraph1:'<p>Looking for cheap flights from Karachi to Istanbul? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or to explore the vibrant culture of Istanbul, we ensure you get the most affordable fares.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Karachi to Istanbul? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, vacation, or to explore the vibrant culture of Istanbul, we ensure you get the most affordable fares.</p>',
       section1:[
           {
               heading:'Top Airlines for Karachi to Istanbul Flights',
@@ -4147,7 +4147,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4180,11 +4180,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Istanbul?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Karachi to Istanbul?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4193,7 +4193,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Karachi to Istanbul. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Karachi to Istanbul. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -4203,7 +4203,7 @@
       id:30,
       flightName:'quetta-to-london',
       mainHeading:'Cheap Flights from Quetta to London',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to London? Faremakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to London.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to London? flightmakers.com offers the best deals on airline tickets for this route. Whether you’re traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to London.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to London Flights',
@@ -4251,7 +4251,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4284,11 +4284,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to London?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to London?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4297,7 +4297,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Quetta to London. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Quetta to London. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -4305,7 +4305,7 @@
       id:30,
       flightName:'quetta-to-dubai',
       mainHeading:'Looking for cheap flights from Quetta to Dubai?',
-      Paragraph1:'<p>Faremakers.com offers the best deals on airline tickets for this route. Whether you re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Dubai.</p>',
+      Paragraph1:'<p>flightmakers.com offers the best deals on airline tickets for this route. Whether you re traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Dubai.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Dubai Flights',
@@ -4348,7 +4348,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4385,7 +4385,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to London?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4394,7 +4394,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com makes it easy to find cheap flights from Quetta to Dubai. Book your flight today and enjoy the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com makes it easy to find cheap flights from Quetta to Dubai. Book your flight today and enjoy the best deals.</p>',
           }
       ]
     },
@@ -4402,7 +4402,7 @@
       id:30,
       flightName:'quetta-to-toronto',
       mainHeading:'Looking for cheap flights from Quetta to Toronto?',
-      Paragraph1:'<p>Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Toronto.</p>',
+      Paragraph1:'<p>flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Toronto.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Toronto Flights',
@@ -4445,7 +4445,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4482,7 +4482,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Toronto?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4491,7 +4491,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com helps you find affordable flights from Quetta to Toronto. Book now for the best deals..</p>',
+              Paragraph1:'<p>flightmakers.com helps you find affordable flights from Quetta to Toronto. Book now for the best deals..</p>',
           }
       ]
     },
@@ -4499,7 +4499,7 @@
       id:30,
       flightName:'quetta-to-newyork',
       mainHeading:'Cheap Flights from Quetta to New York',
-      Paragraph1:'<p>Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to New York.</p>',
+      Paragraph1:'<p>flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to New York.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to New York Flights',
@@ -4542,7 +4542,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4579,7 +4579,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to New York?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4588,7 +4588,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies finding cheap flights from Quetta to New York. Book your flight today for the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies finding cheap flights from Quetta to New York. Book your flight today for the best deals.</p>',
           }
       ]
     },
@@ -4596,7 +4596,7 @@
       id:30,
       flightName:'quetta-to-boston',
       mainHeading:'Cheap Flights from Quetta to Boston',
-      Paragraph1:'<p>Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Boston.</p>',
+      Paragraph1:'<p>flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Boston.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Boston Flights',
@@ -4639,7 +4639,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4676,7 +4676,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Boston?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4685,7 +4685,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com helps you find affordable flights from Quetta to Boston. Book now for the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com helps you find affordable flights from Quetta to Boston. Book now for the best deals.</p>',
           }
       ]
     },
@@ -4693,7 +4693,7 @@
       id:30,
       flightName:'quetta-to-perth',
       mainHeading:'Cheap Flights from Quetta to Perth',
-      Paragraph1:'<p>Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to Perth.</p>',
+      Paragraph1:'<p>flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, vacation, or visiting family, we ensure you get the most affordable fares to Perth.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Perth Flights',
@@ -4736,7 +4736,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4773,7 +4773,7 @@
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Perth?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4782,7 +4782,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies finding cheap flights from Quetta to Perth. Book today for the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies finding cheap flights from Quetta to Perth. Book today for the best deals.</p>',
           }
       ]
     },
@@ -4790,7 +4790,7 @@
       id:30,
       flightName:'quetta-to-manchester',
       mainHeading:'Cheap Flights from Quetta to Manchester',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Manchester? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Manchester.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Manchester? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Manchester.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Manchester Flights',
@@ -4838,7 +4838,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4871,11 +4871,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Manchester?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Manchester?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4884,7 +4884,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Quetta to Manchester. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Quetta to Manchester. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -4892,7 +4892,7 @@
       id:30,
       flightName:'quetta-to-melbourne',
       mainHeading:'Cheap Flights from Quetta to Melbourne',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Melbourne? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Melbourne.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Melbourne? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Melbourne.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Melbourne Flights',
@@ -4940,7 +4940,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -4973,11 +4973,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Melbourne?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Melbourne?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -4986,7 +4986,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Quetta to Melbourne. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Quetta to Melbourne. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -4994,7 +4994,7 @@
       id:30,
       flightName:'quetta-to-atlanta',
       mainHeading:'Cheap Flights from Quetta to Atlanta',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Atlanta? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Atlanta.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Atlanta? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Atlanta.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Atlanta Flights',
@@ -5042,7 +5042,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -5075,11 +5075,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Atlanta?',
-                      answer:'Book early, compare fares on Faremakers.com, and look for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and look for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Atlanta?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -5088,7 +5088,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies finding cheap flights from Quetta to Atlanta. Book your flight today and enjoy a smooth journey with the best deals..</p>',
+              Paragraph1:'<p>flightmakers.com simplifies finding cheap flights from Quetta to Atlanta. Book your flight today and enjoy a smooth journey with the best deals..</p>',
           }
       ]
     },
@@ -5096,7 +5096,7 @@
       id:30,
       flightName:'quetta-to-doha',
       mainHeading:'Cheap Flights from Quetta to Doha',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Doha? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Doha.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Doha? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, a family visit, or leisure, we ensure you get the most affordable fares to Doha.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Doha Flights',
@@ -5144,7 +5144,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -5177,11 +5177,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Doha?',
-                      answer:'Book early, compare fares on Faremakers.com, and keep an eye out for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and keep an eye out for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Doha?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -5190,7 +5190,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com makes it easy to find cheap flights from Quetta to Doha. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com makes it easy to find cheap flights from Quetta to Doha. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -5198,7 +5198,7 @@
       id:30,
       flightName:'quetta-to-losangeles',
       mainHeading:'Cheap Flights from Quetta to Los Angeles',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Los Angeles? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Los Angeles.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Los Angeles? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to visit family, we ensure you get the most affordable fares to Los Angeles.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Los Angeles Flights',
@@ -5246,7 +5246,7 @@
                   {
                     point_head: "Compare Prices: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Travel Dates: ",
@@ -5279,11 +5279,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Los Angeles?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Los Angeles?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -5292,7 +5292,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Quetta to Los Angeles. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Quetta to Los Angeles. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -5300,7 +5300,7 @@
       id:30,
       flightName:'quetta-to-jeddah',
       mainHeading:'Cheap Flights from Quetta to Jeddah',
-      Paragraph1:'<p>Looking for cheap flights from Quetta to Jeddah? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for Umrah, business, or leisure, we ensure you get the most affordable fares to Jeddah.</p>',
+      Paragraph1:'<p>Looking for cheap flights from Quetta to Jeddah? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for Umrah, business, or leisure, we ensure you get the most affordable fares to Jeddah.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Jeddah Flights',
@@ -5348,7 +5348,7 @@
                   {
                     point_head: "Compare Fares: ",
                     point_data:
-                      "Use Faremakers.com to compare prices from different airlines.",
+                      "Use flightmakers.com to compare prices from different airlines.",
                   },
                   {
                     point_head: "Flexible Dates: ",
@@ -5381,11 +5381,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Jeddah?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Jeddah?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -5394,7 +5394,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies the process of finding cheap flights from Quetta to Jeddah. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies the process of finding cheap flights from Quetta to Jeddah. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },
@@ -5402,7 +5402,7 @@
       id:30,
       flightName:'quetta-to-istanbul',
       mainHeading:'Cheap Flights from Quetta to Istanbul',
-      Paragraph1:'<p> Looking for cheap flights from Quetta to Istanbul? Faremakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to explore Istanbuls rich history and culture, we ensure you get the most affordable fares.</p>',
+      Paragraph1:'<p> Looking for cheap flights from Quetta to Istanbul? flightmakers.com offers the best deals on airline tickets for this route. Whether you are traveling for business, leisure, or to explore Istanbuls rich history and culture, we ensure you get the most affordable fares.</p>',
       section1:[
           {
               heading:'Top Airlines for Quetta to Istanbul Flights',
@@ -5450,7 +5450,7 @@
                   {
                     point_head: "Compare Fares: ",
                     point_data:
-                      "Use Faremakers.com to find the best prices from various airlines.",
+                      "Use flightmakers.com to find the best prices from various airlines.",
                   },
                   {
                     point_head: "Flexible Dates: ",
@@ -5483,11 +5483,11 @@
                   },
                   {
                       question:'How can I find the cheapest flights to Istanbul?',
-                      answer:'Book early, compare fares on Faremakers.com, and watch for promotions.'
+                      answer:'Book early, compare fares on flightmakers.com, and watch for promotions.'
                   }, 
                   {
                       question:'Where can I book my flight from Quetta to Istanbul?',
-                      answer:'<p>Visit   <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\"> Faremakers.com</a>to book your flight with ease.</p>'
+                      answer:'<p>Visit   <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\"> flightmakers.com</a>to book your flight with ease.</p>'
                   },
               ]
               
@@ -5496,7 +5496,7 @@
       section4:[
           {
               heading:'Conclusion',
-              Paragraph1:'<p>Faremakers.com simplifies finding cheap flights from Quetta to Istanbul. Book your flight today and enjoy a smooth journey with the best deals.</p>',
+              Paragraph1:'<p>flightmakers.com simplifies finding cheap flights from Quetta to Istanbul. Book your flight today and enjoy a smooth journey with the best deals.</p>',
           }
       ]
     },

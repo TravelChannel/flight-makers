@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import {cityNameFunct} from '../../../helpers/formatdata';
 const MultiCity = (props) => {
     const {index,imageFlight,flightName,departureTime,departureAirport,elapsedTime,stops,arrivalTime,arrivalAirport} = props;
+    
     return (
         <Fragment>
             <div className="ad_width_bwteen_right">

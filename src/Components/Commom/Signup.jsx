@@ -85,11 +85,11 @@ const SignUp = () => {
                               {/* <input className='signupinput' type="text" name="txt" placeholder="User name" /> */}
                               <div className='signup_ph_input d-flex justify-content-center' >
                               <PhoneInput
-                                      country={'pk'}
+                                      country={'us'}
                                       value={`+${countryCode} ${phoneNumber}`} 
                                       onChange={(value, country) => handlePhoneNumberChange(value, country)}
                                       placeholder="Enter your phone number"
-                                      onlyCountries={['pk']}
+                                      onlyCountries={['us' ,'pk']}
                                   />
                               </div>
                               {/* <input className='signupinput' type="email" name="email" placeholder="Email" /> */}

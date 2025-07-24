@@ -65,12 +65,12 @@ const TopNavBar = () => {
                         <div className="inlineDiv support w-9">
                             <img className="whatsappImage" src={images.whatsappicon} alt="whatsappicon icon" />
                         </div>
-                        Whatsapp: 03111147111
+                        Whatsapp: +1 (484) 312-1100
                     </div>
                     <div className="col-xs-3 col-sm-3 col-md-2 boxelem pull-right" id="cautionTextNumber">
                         <div className="text-center cautionDesk">
                             <img src={images.cautionicon} alt="caution icon" />
-                            <span>We only call from one number : 03111147111</span></div>
+                            <span>We only call from one number : +1 (484) 312-1100</span></div>
                     </div>
                 </div>
             </div> */}
@@ -81,12 +81,12 @@ const TopNavBar = () => {
                             <div className="inlineDiv support w-9">
                                 <img className="whatsappImage" src={images.whatsappicon} alt="whatsappicon icon" />
                             </div>
-                            Whatsapp: 03111147111
+                            Whatsapp: +1 (484) 312-1100
                         </div>
                         <div className="  pull-right" id="cautionTextNumber">
                             <div className="text-center cautionDesk">
                                 <img src={images.cautionicon} alt="caution icon" />
-                                <span>We only call from one number : 03111147111</span></div>
+                                <span>We only call from one number : +1 (484) 312-1100</span></div>
                         </div>
                     </div>
                         <div>
@@ -137,30 +137,30 @@ const TopNavBar = () => {
         <div className="d-flex justify-content-between colorBlue2">
           <div>
           <div className="pull-right">
-                <a href="https://wa.me/923111147111" target ='_blank'>
+                <a href="https://wa.me/+14843121100" target ='_blank'>
                     <div className="inlineDiv support w-9">
                         <img className="whatsappImage" src={images.whatsappicon} alt="whatsappicon icon" />
                     </div>
-                    <span>Whatsapp: 03111147111</span>
+                    <span>Whatsapp: +1 (484) 312-1100</span>
                 </a>
             </div>
             <div className="pull-right" id="cautionTextNumber">
               <div className="text-center cautionDesk">
-                <a href="tel:03111147111">
+                <a href="tel:+1 (484) 312-1100">
                   <img src={images.cautionicon} alt="caution icon" />
-                  <span>We only call from one number : 03111147111</span>
+                  <span>We only call from one number : +1 (484) 312-1100</span>
                 </a>
               </div>
             </div>
           </div>
-          <div>
+          {/* <div>
             <Link className="pull-right text-center colorRed" to='/banks'>
               <div className="inlineDiv support">
                 <img className="bank_icon_st" src={images.bankicon} alt="bank icon" />
               </div>
               Banks
             </Link>
-          </div>
+          </div> */}
           <div>
             <Link to='/customer-support' className="d-flex justify-content-center pull-right" >
               <div className="support">

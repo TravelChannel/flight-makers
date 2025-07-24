@@ -14,9 +14,9 @@ const Refundpolicy = () => {
             </div>
              <ReuseableTermsAndCondition TermsConditionsData = {RefundPolicyData} />
         </div>
-        <div className=' refund_detail_image text-center'>
+        {/* <div className=' refund_detail_image text-center'>
             <img src={images.refundPolicy} alt=""  width='60%'/>
-        </div>
+        </div> */}
     </div>
    </Fragment>
   )

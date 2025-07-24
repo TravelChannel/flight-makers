@@ -17,7 +17,7 @@ const Flights = () => {
           <BookingOptions/>
         </div>
         <div className='heading_color_blue  footer_flight_details '>
-          <p>Get the Popular Airlines Tickets on Faremakers</p>
+          <p>Get the Popular Airlines Tickets on flightmakers</p>
         </div>
         <div className='popular_airlines_main'>
           {AirLinesDetails.map((items, index) => (

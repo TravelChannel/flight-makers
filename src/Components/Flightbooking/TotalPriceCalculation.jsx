@@ -4,7 +4,7 @@ import { TicketPriceContext } from './Comman/Context';
 import { useFormData } from '../../Context/FormDataContext';
 const TotalPriceCalculation = () => {
     const flightData = JSON.parse(localStorage.getItem("bookingTicket"));
-    const {extraBagg } = useContext(TicketPriceContext);
+    // const {extraBagg } = useContext(TicketPriceContext);
     const {serviceCharges} =useFormData();
 
        
@@ -21,15 +21,19 @@ const TotalPriceCalculation = () => {
                         ? 'S'
                         : null;
 
-    const destination = [flightData.groupDescription[0].arrivalLocation, flightData.groupDescription[0].departureLocation];
-    const airline = flightData.fare.governingCarriers.split(" ")[0];
-    // console.log(classType,destination,airline);
-    const ticketPrice = flightData.fare.totalFare.equivalentAmount;
-    const taxAmount = flightData.fare.totalFare.totalTaxAmount;
-    let totalAmount = ticketPrice + taxAmount + extraBagg;
-    const servicefees = (taxfees=0) => {
+    // const destination = [flightData.groupDescription[0].arrivalLocation, flightData.groupDescription[0].departureLocation];
+    // const airline = flightData.fare.governingCarriers.split(" ")[0];
 
-        const serviecFees = (totalAmount * taxfees) / 100;
+    // console.log(classType,destination,airline);
+    const ticketPrice = parseFloat(flightData?.recommendation?.recPriceInfo?.monetaryDetail[0].amount);
+    const taxAmount = parseFloat(flightData?.recommendation?.recPriceInfo?.monetaryDetail[1].amount);
+    // let totalAmount = ticketPrice + taxAmount + extraBagg;
+    let totalAmount = ticketPrice;
+    const baseFare = ticketPrice - taxAmount;
+
+
+    const servicefees = (taxfees=0) => {
+        const serviecFees = Math.round((totalAmount * taxfees) / 100);
         totalAmount = totalAmount + serviecFees;
         return serviecFees.toFixed(0);
     };
@@ -37,7 +41,7 @@ const TotalPriceCalculation = () => {
     // const taxfees = calculateTax(destination, airline, classType);
     const taxfees = serviceCharges
     const calculatedServiceFees = servicefees(taxfees);
-    const totalTicketPrice = totalAmount.toFixed(0);
+    const totalTicketPrice = totalAmount;
 
     // console.log('totalTicketPrice---v1',totalTicketPrice);
 
@@ -47,13 +51,11 @@ const TotalPriceCalculation = () => {
     //  console.log("BankCharges-calculated-v1",BankCharges);
 
 
-
-
-    const exchangeRateUsed = flightData.fare.passengerInfoList[0]?.passengerInfo.currencyConversion?.exchangeRateUsed?.toFixed(2);
+    // const exchangeRateUsed = flightData.fare.passengerInfoList[0]?.passengerInfo.currencyConversion?.exchangeRateUsed?.toFixed(2);
     localStorage.setItem("totalTicketPrice", JSON.stringify(totalTicketPrice));
 
     const userAmount = {
-        BaseFare:ticketPrice,
+        BaseFare:baseFare,
         taxAmount :taxAmount,
         ServiceCharges:calculatedServiceFees,
         totalTicketPrice:totalTicketPrice
@@ -69,7 +71,6 @@ const TotalPriceCalculation = () => {
                         <div>
                             <p className="tp_title">Total Price </p>
                         </div>
-
                         <h4 className='price_quantity'>{`${Number(totalTicketPrice).toLocaleString()} PKR`}</h4>
                     </div>
                     <div className='tp_sepration_line'></div>
@@ -77,18 +78,17 @@ const TotalPriceCalculation = () => {
                         <div className="tp_fair_detail">
                             <p>Base Fare</p>
                             <p>Taxes</p>
-                            <p>Extra Baggages</p>
+                            {/* <p>Extra Baggages</p> */}
                             {/* <p>Bank Charges</p> */}
                             <p>Service Charges</p>
                            
                         </div>
                         <div className="tp_fair_detail">
-                            <p>{`${ticketPrice.toLocaleString()} PKR`}</p>
+                            <p>{`${baseFare.toLocaleString()} PKR`}</p>
                             <p>{`${taxAmount.toLocaleString()} PKR`}</p>
-                            <p>{`${extraBagg.toLocaleString()} PKR`}</p>
+                            {/* <p>{`${extraBagg.toLocaleString()} PKR`}</p> */}
                             {/* <p>{`${BankCharges.toLocaleString()} PKR`}</p> */}
-                            <p>{`${Number(calculatedServiceFees).toLocaleString()} PKR`}</p>
-                            
+                            <p>{`${Number(calculatedServiceFees).toLocaleString()} USD`}</p> 
                         </div>
                     </div>
 

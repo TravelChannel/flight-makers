@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
 const FlightBookingHeader = (props) => {
-    const {pageTitle , icons, setTimer} = props;
+    const {pageTitle , icons} = props;
+     const setTimer = 3000;
     const[timerRunning, setTimerRunning] = useState(setTimer);
     const [isMobile , setIsMobile] = useState(window.innerWidth<500)
     const navigate = useNavigate();

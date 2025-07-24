@@ -1,12 +1,12 @@
 const Pop_AirLinesData = [
   {
-    flightname: "oman-air-flights",
+    flightname: "Lufthansa",
     mainHeading: "Oman Air (WY) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Oman Air Flights with Faremakers",
+        heading: "Book Cheap Oman Air Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Oman Air flights? Look no further! At Faremakers, we offer the best Oman Air flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Oman Air flights? Look no further! At flightmakers, we offer the best Oman Air flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -53,11 +53,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Oman Air Air Tickets",
         paragraph:
-          "Booking cheap Oman Air air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Oman Air air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -102,7 +102,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Oman Air flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Oman Air bookings to help you find the best Oman Air fares.",
           },
@@ -133,7 +133,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -149,7 +149,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Oman Air?  ",
-            answer: "You can book a flight with Oman Air through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Oman Air flights.",
+            answer: "You can book a flight with Oman Air through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Oman Air flights.",
           },
           {
             question: "Can I change my Oman Air flight after booking?  ",
@@ -165,7 +165,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Oman Air flights? ",
-            answer: "Yes, Oman Air frequently offers special promotions and discounts. Check the Oman Air website or Faremakers for the latest deals on Oman Air flights to get the best Oman Air flight deals.",
+            answer: "Yes, Oman Air frequently offers special promotions and discounts. Check the Oman Air website or flightmakers for the latest deals on Oman Air flights to get the best Oman Air flight deals.",
           },
         ],
       },
@@ -176,9 +176,9 @@ const Pop_AirLinesData = [
     mainHeading: "Turkish Airlines (TK) Online Booking & Cheap Reservation",
     section1: [
       {
-        heading: "Book Cheap Turkish Airlines Flights with Faremakers",
+        heading: "Book Cheap Turkish Airlines Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Turkish Airlines flights? Look no further! At Faremakers, we offer the best Turkish Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Turkish Airlines flights? Look no further! At flightmakers, we offer the best Turkish Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -225,11 +225,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Turkish Airlines Air Tickets",
         paragraph:
-          "Booking cheap Turkish Airlines air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Turkish Airlines air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -274,7 +274,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Turkish Airlines flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Turkish Airlines bookings to help you find the best Turkish Airlines fares.",
           },
@@ -301,7 +301,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -317,7 +317,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Turkish Airlines?   ",
-            answer: "You can book a flight with Turkish Airlines through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Turkish Airlines flights.",
+            answer: "You can book a flight with Turkish Airlines through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Turkish Airlines flights.",
           },
           {
             question: "Can I change my Turkish Airlines flight after booking? ",
@@ -333,7 +333,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Turkish Airlines flights? ",
-            answer: "Yes, Turkish Airlines frequently offers special promotions and discounts. Check the Turkish Airlines website or Faremakers for the latest deals on Turkish Airlines flights to get the best Turkish Airlines flight deals.",
+            answer: "Yes, Turkish Airlines frequently offers special promotions and discounts. Check the Turkish Airlines website or flightmakers for the latest deals on Turkish Airlines flights to get the best Turkish Airlines flight deals.",
           },
         ],
       },
@@ -344,8 +344,8 @@ const Pop_AirLinesData = [
     mainHeading: "Etihad Airways (EY) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Etihad Airways Flights with Faremakers",
-        paragraph:'Are you looking for the best price on Etihad Airways flights? Look no further! At <a href="https://www.faremakers.com/" target="_blank" style="color: blue;">Faremakers</a>, we offer the best Etihad Airways flight deals, ensuring you get the cheapest flights without compromising on quality.',
+        heading: "Book Cheap Etihad Airways Flights with flightmakers",
+        paragraph:'Are you looking for the best price on Etihad Airways flights? Look no further! At <a href="https://www.flightmakers.com/" target="_blank" style="color: blue;">flightmakers</a>, we offer the best Etihad Airways flight deals, ensuring you get the cheapest flights without compromising on quality.',
       },
     ],
     section2: [
@@ -385,7 +385,7 @@ const Pop_AirLinesData = [
         paragraph1:
           "Etihad Airways aims to connect people and cultures through safe, reliable, and innovative air travel, delivering a world-class experience to passengers.",
         paragraph2: `Fly from Lahore to popular destinations such as Abu Dhabi, 
-              <a href="https://www.faremakers.com/flights/cheap-flights-from-lahore-to-london" target="_blank" style="color: blue;">London</a>, 
+              <a href="https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-london" target="_blank" style="color: blue;">London</a>, 
               New York, Sydney, and many more. Etihad Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.`,
       },
     ],
@@ -393,11 +393,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Etihad Airways Air Tickets",
         paragraph:
-          "Booking cheap Etihad Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Etihad Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -442,7 +442,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Etihad Airways flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Etihad Airways bookings to help you find the best Etihad Airways fares.",
           },
@@ -468,7 +468,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -484,7 +484,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Etihad Airways? ?  ",
-            answer: "You can book a flight with Etihad Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Etihad Airways flights.",
+            answer: "You can book a flight with Etihad Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Etihad Airways flights.",
           },
           {
             question: "Can I change my Etihad Airways flight after booking? ",
@@ -500,7 +500,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Etihad Airways flights?",
-            answer: "Yes, Etihad Airways frequently offers special promotions and discounts. Check the Etihad Airways website or Faremakers for the latest deals on Etihad Airways flights to get the best Etihad Airways flight deals.",
+            answer: "Yes, Etihad Airways frequently offers special promotions and discounts. Check the Etihad Airways website or flightmakers for the latest deals on Etihad Airways flights to get the best Etihad Airways flight deals.",
           },
         ],
       },
@@ -511,9 +511,9 @@ const Pop_AirLinesData = [
     mainHeading: "Flydubai (FZ) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Flydubai Flights with Faremakers",
+        heading: "Book Cheap Flydubai Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Flydubai flights? Look no further! At Faremakers, we offer the best Flydubai flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Flydubai flights? Look no further! At flightmakers, we offer the best Flydubai flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -560,11 +560,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Flydubai Air Tickets",
         paragraph:
-          "Booking cheap Flydubai air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Flydubai air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -609,7 +609,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Flydubai flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Flydubai bookings to help you find the best Flydubai fares.",
           },
@@ -640,7 +640,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -656,7 +656,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Flydubai? ",
-            answer: "You can book a flight with Flydubai through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Flydubai flights.",
+            answer: "You can book a flight with Flydubai through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Flydubai flights.",
           },
           {
             question: "Can I change my Flydubai flight after booking? ",
@@ -672,7 +672,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Flydubai flights? ",
-            answer: "Yes, Flydubai frequently offers special promotions and discounts. Check the Flydubai website or Faremakers for the latest deals on Flydubai flights to get the best Flydubai flight deals.",
+            answer: "Yes, Flydubai frequently offers special promotions and discounts. Check the Flydubai website or flightmakers for the latest deals on Flydubai flights to get the best Flydubai flight deals.",
           },
         ],
       },
@@ -684,9 +684,9 @@ const Pop_AirLinesData = [
     mainHeading: "AirSial (PF) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap AirSial Flights with Faremakers",
+        heading: "Book Cheap AirSial Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on AirSial flights? Look no further! At Faremakers, we offer the best AirSial flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on AirSial flights? Look no further! At flightmakers, we offer the best AirSial flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -733,11 +733,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap AirSial Air Tickets",
         paragraph:
-          "Booking cheap AirSial air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap AirSial air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -782,7 +782,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on AirSial flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Flydubai bookings to help you find the best Flydubai fares.",
           },
@@ -806,7 +806,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -822,7 +822,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with AirSial? ",
-            answer: "You can book a flight with AirSial through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on AirSial flights.",
+            answer: "You can book a flight with AirSial through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on AirSial flights.",
           },
           {
             question: "Can I change my AirSial flight after booking?  ",
@@ -838,7 +838,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for AirSial flights? ",
-            answer: "Yes, AirSial frequently offers special promotions and discounts. Check the AirSial website or Faremakers for the latest deals on AirSial flights to get the best AirSial flight deals.",
+            answer: "Yes, AirSial frequently offers special promotions and discounts. Check the AirSial website or flightmakers for the latest deals on AirSial flights to get the best AirSial flight deals.",
           },
         ],
       },
@@ -849,9 +849,9 @@ const Pop_AirLinesData = [
     mainHeading: "Air Arabia (G9) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Air Arabia Flights with Faremakers",
+        heading: "Book Cheap Air Arabia Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Air Arabia flights? Look no further! At Faremakers, we offer the best Air Arabia flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Air Arabia flights? Look no further! At flightmakers, we offer the best Air Arabia flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -891,18 +891,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "Air Arabia aims to provide safe, reliable, and value-for-money air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>Fly from Lahore to popular destinations such as Sharjah, Abu Dhabi, Dubai, <a href=\"https://www.faremakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\">Muscat</a>, and many more. Air Arabia offers direct and connecting flights to major cities across the region, making your travel experience seamless and enjoyable.</p>",
+          "<p>Fly from Lahore to popular destinations such as Sharjah, Abu Dhabi, Dubai, <a href=\"https://www.flightmakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\">Muscat</a>, and many more. Air Arabia offers direct and connecting flights to major cities across the region, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap Air Arabia Air Tickets",
         paragraph:
-          "Booking cheap Air Arabia air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Air Arabia air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -947,7 +947,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Air Arabia flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Air Arabia bookings to help you find the best Air Arabia fares.",
           },
@@ -973,7 +973,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -989,7 +989,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Air Arabia?  ",
-            answer: "You can book a flight with Air Arabia through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Air Arabia flights.",
+            answer: "You can book a flight with Air Arabia through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Air Arabia flights.",
           },
           {
             question: "Can I change my Air Arabia flight after booking? ",
@@ -1005,7 +1005,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Air Arabia flights? ",
-            answer: "Yes, Air Arabia frequently offers special promotions and discounts. Check the Air Arabia website or Faremakers for the latest deals on Air Arabia flights to get the best Air Arabia flight deals.",
+            answer: "Yes, Air Arabia frequently offers special promotions and discounts. Check the Air Arabia website or flightmakers for the latest deals on Air Arabia flights to get the best Air Arabia flight deals.",
           },
         ],
       },
@@ -1016,9 +1016,9 @@ const Pop_AirLinesData = [
     mainHeading: "Air Arabia (G9) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Air Arabia Flights with Faremakers",
+        heading: "Book Cheap Air Arabia Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Air Arabia flights? Look no further! At Faremakers, we offer the best Air Arabia flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Air Arabia flights? Look no further! At flightmakers, we offer the best Air Arabia flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1058,18 +1058,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "Air Arabia aims to provide safe, reliable, and value-for-money air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>Fly from Lahore to popular destinations such as Sharjah, Abu Dhabi, Dubai, <a href=\"https://www.faremakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\">Muscat</a>, and many more. Air Arabia offers direct and connecting flights to major cities across the region, making your travel experience seamless and enjoyable.</p>",
+          "<p>Fly from Lahore to popular destinations such as Sharjah, Abu Dhabi, Dubai, <a href=\"https://www.flightmakers.com/emirates-airline-flights\" target=\"_blank\" style=\"color: blue;\">Muscat</a>, and many more. Air Arabia offers direct and connecting flights to major cities across the region, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap Air Arabia Air Tickets",
         paragraph:
-          "Booking cheap Air Arabia air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Air Arabia air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1114,7 +1114,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Air Arabia flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Air Arabia bookings to help you find the best Air Arabia fares.",
           },
@@ -1140,7 +1140,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1156,7 +1156,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Air Arabia?  ",
-            answer: "You can book a flight with Air Arabia through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Air Arabia flights.",
+            answer: "You can book a flight with Air Arabia through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Air Arabia flights.",
           },
           {
             question: "Can I change my Air Arabia flight after booking? ",
@@ -1172,20 +1172,20 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Air Arabia flights? ",
-            answer: "Yes, Air Arabia frequently offers special promotions and discounts. Check the Air Arabia website or Faremakers for the latest deals on Air Arabia flights to get the best Air Arabia flight deals.",
+            answer: "Yes, Air Arabia frequently offers special promotions and discounts. Check the Air Arabia website or flightmakers for the latest deals on Air Arabia flights to get the best Air Arabia flight deals.",
           },
         ],
       },
     ],
   },
   {
-    flightname: "british-airways-flights",
+    flightname: "British-Airways",
     mainHeading: "British Airways (BA) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap British Airways Flights with Faremakers",
+        heading: "Book Cheap British Airways Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on British Airways flights? Look no further! At Faremakers, we offer the best British Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on British Airways flights? Look no further! At flightmakers, we offer the best British Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1225,18 +1225,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "British Airways aims to connect people and cultures through safe, reliable, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p> Fly from Lahore to popular destinations such as  <a href=\"https://www.faremakers.com/flights/cheap-flights-from-quetta-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>, New York,<a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Toronto</a> and many more. British Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
+          "<p> Fly from Lahore to popular destinations such as  <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-quetta-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>, New York,<a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Toronto</a> and many more. British Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap British Airways Air Tickets",
         paragraph:
-          "Booking cheap British Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap British Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1281,7 +1281,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on British Airways flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on British Airways bookings to help you find the best British Airways fares.",
           },
@@ -1307,7 +1307,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1322,7 +1322,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with British Airways? ",
-            answer: "You can book a flight with British Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on British Airways flights.",
+            answer: "You can book a flight with British Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on British Airways flights.",
           },
           {
             question: "Can I change my British Airways flight after booking?  ",
@@ -1338,7 +1338,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for British Airways flights? ",
-            answer: "Yes, British Airways frequently offers special promotions and discounts. Check the British Airways website or Faremakers for the latest deals on British Airways flights to get the best British Airways flight deals.",
+            answer: "Yes, British Airways frequently offers special promotions and discounts. Check the British Airways website or flightmakers for the latest deals on British Airways flights to get the best British Airways flight deals.",
           },
         ],
       },
@@ -1349,9 +1349,9 @@ const Pop_AirLinesData = [
     mainHeading: "British Airways (BA) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap British Airways Flights with Faremakers",
+        heading: "Book Cheap British Airways Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on British Airways flights? Look no further! At Faremakers, we offer the best British Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on British Airways flights? Look no further! At flightmakers, we offer the best British Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1391,18 +1391,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "British Airways aims to connect people and cultures through safe, reliable, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p> Fly from Lahore to popular destinations such as  <a href=\"https://www.faremakers.com/flights/cheap-flights-from-quetta-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>, New York,<a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Toronto</a> and many more. British Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
+          "<p> Fly from Lahore to popular destinations such as  <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-quetta-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>, New York,<a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-toronto\" target=\"_blank\" style=\"color: blue;\">Toronto</a> and many more. British Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap British Airways Air Tickets",
         paragraph:
-          "Booking cheap British Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap British Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1447,7 +1447,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on British Airways flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on British Airways bookings to help you find the best British Airways fares.",
           },
@@ -1473,7 +1473,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1488,7 +1488,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with British Airways? ",
-            answer: "You can book a flight with British Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on British Airways flights.",
+            answer: "You can book a flight with British Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on British Airways flights.",
           },
           {
             question: "Can I change my British Airways flight after booking?  ",
@@ -1504,7 +1504,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for British Airways flights? ",
-            answer: "Yes, British Airways frequently offers special promotions and discounts. Check the British Airways website or Faremakers for the latest deals on British Airways flights to get the best British Airways flight deals.",
+            answer: "Yes, British Airways frequently offers special promotions and discounts. Check the British Airways website or flightmakers for the latest deals on British Airways flights to get the best British Airways flight deals.",
           },
         ],
       },
@@ -1515,9 +1515,9 @@ const Pop_AirLinesData = [
     mainHeading: "Malindo Air (OD) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Malindo Air Flights with Faremakers",
+        heading: "Book Cheap Malindo Air Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Malindo Air flights? Look no further! At Faremakers, we offer the best Malindo Air flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Malindo Air flights? Look no further! At flightmakers, we offer the best Malindo Air flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1564,11 +1564,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Malindo Air Air Tickets",
         paragraph:
-          "Booking cheap Malindo Air air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Malindo Air air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1613,7 +1613,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Malindo Air flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Malindo Air bookings to help you find the best Malindo Air fares.",
           },
@@ -1639,7 +1639,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1654,7 +1654,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Malindo Air? ",
-            answer: "You can book a flight with Malindo Air through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Malindo Air flights.",
+            answer: "You can book a flight with Malindo Air through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Malindo Air flights.",
           },
           {
             question: "Can I change my Malindo Air flight after booking? ",
@@ -1670,7 +1670,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Malindo Air flights? ",
-            answer: "Yes, Malindo Air frequently offers special promotions and discounts. Check the Malindo Air website or Faremakers for the latest deals on Malindo Air flights to get the best Malindo Air flight deals.",
+            answer: "Yes, Malindo Air frequently offers special promotions and discounts. Check the Malindo Air website or flightmakers for the latest deals on Malindo Air flights to get the best Malindo Air flight deals.",
           },
         ],
       },
@@ -1681,9 +1681,9 @@ const Pop_AirLinesData = [
     mainHeading: "Kuwait Airways (KU) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Kuwait Airways Flights with Faremakers",
+        heading: "Book Cheap Kuwait Airways Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Kuwait Airways flights? Look no further! At Faremakers, we offer the best Kuwait Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Kuwait Airways flights? Look no further! At flightmakers, we offer the best Kuwait Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1723,18 +1723,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "Kuwait Airways aims to provide safe, innovative, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>: Fly from Lahore to popular destinations such as Kuwait City, <a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>,<a href=\"https://www.faremakers.com/flights/cheap-flights-from-islamabad-to-newyork\" target=\"_blank\" style=\"color: blue;\">New York</a>,Bangkok, and many more. Kuwait Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
+          "<p>: Fly from Lahore to popular destinations such as Kuwait City, <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-london\" target=\"_blank\" style=\"color: blue;\">London</a>,<a href=\"https://www.flightmakers.com/flights/cheap-flights-from-islamabad-to-newyork\" target=\"_blank\" style=\"color: blue;\">New York</a>,Bangkok, and many more. Kuwait Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap Kuwait Airways Air Tickets",
         paragraph:
-          "Booking cheap Kuwait Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Kuwait Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1779,7 +1779,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Kuwait Airways flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Kuwait Airways bookings to help you find the best Kuwait Airways fares.",
           },
@@ -1805,7 +1805,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1820,7 +1820,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Kuwait Airways?  ",
-            answer: "You can book a flight with Kuwait Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Kuwait Airways flights.",
+            answer: "You can book a flight with Kuwait Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Kuwait Airways flights.",
           },
           {
             question: "Can I change my Kuwait Airways flight after booking? ",
@@ -1836,7 +1836,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Kuwait Airways flights?  ",
-            answer: "Yes, Kuwait Airways frequently offers special promotions and discounts. Check the Kuwait Airways website or Faremakers for the latest deals on Kuwait Airways flights to get the best Kuwait Airways flight deals.",
+            answer: "Yes, Kuwait Airways frequently offers special promotions and discounts. Check the Kuwait Airways website or flightmakers for the latest deals on Kuwait Airways flights to get the best Kuwait Airways flight deals.",
           },
         ],
       },
@@ -1847,9 +1847,9 @@ const Pop_AirLinesData = [
     mainHeading: "China Southern Airlines (CZ) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap China Southern Airlines Flights with Faremakers",
+        heading: "Book Cheap China Southern Airlines Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on China Southern Airlines flights? Look no further! At Faremakers, we offer the best China Southern Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on China Southern Airlines flights? Look no further! At flightmakers, we offer the best China Southern Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -1889,18 +1889,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "China Southern Airlines aims to connect people and cultures through safe, reliable, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>Fly from , <a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore </a>,to popular destinations such as Beijing, Guangzhou, Shanghai, and many more. China Southern Airlines offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable</p>",
+          "<p>Fly from , <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-karachi\" target=\"_blank\" style=\"color: blue;\">Lahore </a>,to popular destinations such as Beijing, Guangzhou, Shanghai, and many more. China Southern Airlines offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap China Southern Airlines Air Tickets",
         paragraph:
-          "Booking cheap China Southern Airlines air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap China Southern Airlines air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -1945,7 +1945,7 @@ const Pop_AirLinesData = [
               ": Keep an eye out for special promotions and discounts on China Southern Airlines flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on China Southern Airlines bookings to help you find the best China Southern Airlines fares.",
           },
@@ -1971,7 +1971,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -1986,7 +1986,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with China Southern Airlines? ",
-            answer: "You can book a flight with China Southern Airlines through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on China Southern Airlines flights.",
+            answer: "You can book a flight with China Southern Airlines through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on China Southern Airlines flights.",
           },
           {
             question: "Can I change my China Southern Airlines flight after booking?",
@@ -2002,7 +2002,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for China Southern Airlines flights? ",
-            answer: "Yes, China Southern Airlines frequently offers special promotions and discounts. Check the China Southern Airlines website or Faremakers for the latest deals on China Southern Airlines flights to get the best China Southern Airlines flight deals.",
+            answer: "Yes, China Southern Airlines frequently offers special promotions and discounts. Check the China Southern Airlines website or flightmakers for the latest deals on China Southern Airlines flights to get the best China Southern Airlines flight deals.",
           },
         ],
       },
@@ -2013,9 +2013,9 @@ const Pop_AirLinesData = [
     mainHeading: "Virgin Atlantic (VS) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Virgin Atlantic Flights with Faremakers",
+        heading: "Book Cheap Virgin Atlantic Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Virgin Atlantic flights? Look no further! At Faremakers, we offer the best Virgin Atlantic flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Virgin Atlantic flights? Look no further! At flightmakers, we offer the best Virgin Atlantic flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -2062,11 +2062,11 @@ const Pop_AirLinesData = [
       {
         heading: "How to Book Cheap Virgin Atlantic Air Tickets",
         paragraph:
-          "Booking cheap Virgin Atlantic air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Virgin Atlantic air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -2074,7 +2074,7 @@ const Pop_AirLinesData = [
               "Fill in your departure and arrival cities, travel dates, and the number of passengers.",
           },
           {
-            point_head: "Search for Flights:  ",
+            point_head: "Search for Flights: ",
             point_data:
               'Click on the Search "Flights" button to view available options.',
           },
@@ -2111,7 +2111,7 @@ const Pop_AirLinesData = [
               " Keep an eye out for special promotions and discounts on Virgin Atlantic flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Virgin Atlantic bookings to help you find the best Virgin Atlantic fares.",
           },
@@ -2137,7 +2137,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -2152,7 +2152,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Virgin Atlantic? ",
-            answer: "You can book a flight with Virgin Atlantic through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Virgin Atlantic flights.",
+            answer: "You can book a flight with Virgin Atlantic through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Virgin Atlantic flights.",
           },
           {
             question: "Can I change my Virgin Atlantic flight after booking? ",
@@ -2168,7 +2168,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Virgin Atlantic flights? ",
-            answer: "Yes, Virgin Atlantic frequently offers special promotions and discounts. Check the Virgin Atlantic website or Faremakers for the latest deals on Virgin Atlantic flights to get the best Virgin Atlantic flight deals.",
+            answer: "Yes, Virgin Atlantic frequently offers special promotions and discounts. Check the Virgin Atlantic website or flightmakers for the latest deals on Virgin Atlantic flights to get the best Virgin Atlantic flight deals.",
           },
         ],
       },
@@ -2179,9 +2179,9 @@ const Pop_AirLinesData = [
     mainHeading: "Thai Airways (TG) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Thai Airways Flights with Faremakers",
+        heading: "Book Cheap Thai Airways Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Thai Airways flights? Look no further! At Faremakers, we offer the best Thai Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Thai Airways flights? Look no further! At flightmakers, we offer the best Thai Airways flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -2221,18 +2221,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "Thai Airways aims to connect people and cultures through safe, reliable, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>Fly from , <a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-london\" target=\"_blank\" style=\"color: blue;\">Lahore </a>,to popular destinations such as Bangkok, Phuket, Chiang Mai, and many more. Thai Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
+          "<p>Fly from , <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-london\" target=\"_blank\" style=\"color: blue;\">Lahore </a>,to popular destinations such as Bangkok, Phuket, Chiang Mai, and many more. Thai Airways offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable.</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap Thai Airways Air Tickets",
         paragraph:
-          "Booking cheap Thai Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Thai Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -2277,7 +2277,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Thai Airways flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Thai Airways bookings to help you find the best Thai Airways fares.",
           },
@@ -2303,7 +2303,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -2318,7 +2318,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Thai Airways? ",
-            answer: "You can book a flight with Thai Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Thai Airways flights.",
+            answer: "You can book a flight with Thai Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Thai Airways flights.",
           },
           {
             question: "Can I change my Thai Airways flight after booking? ",
@@ -2334,7 +2334,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Thai Airways flights? ",
-            answer: "Yes, Thai Airways frequently offers special promotions and discounts. Check the Thai Airways website or Faremakers for the latest deals on Thai Airways flights to get the best Thai Airways flight deals.",
+            answer: "Yes, Thai Airways frequently offers special promotions and discounts. Check the Thai Airways website or flightmakers for the latest deals on Thai Airways flights to get the best Thai Airways flight deals.",
           },
         ],
       },
@@ -2345,9 +2345,9 @@ const Pop_AirLinesData = [
     mainHeading: "Saudi Arabian Airlines (SV) Online Booking & Reservation",
     section1: [
       {
-        heading: "Book Cheap Saudi Arabian Airlines Flights with Faremakers",
+        heading: "Book Cheap Saudi Arabian Airlines Flights with flightmakers",
         paragraph:
-          "Are you looking for the best price on Saudi Arabian Airlines flights? Look no further! At Faremakers, we offer the best Saudi Arabian Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
+          "Are you looking for the best price on Saudi Arabian Airlines flights? Look no further! At flightmakers, we offer the best Saudi Arabian Airlines flight deals, ensuring you get the cheapest flights without compromising on quality.",
       },
     ],
     section2: [
@@ -2387,18 +2387,18 @@ const Pop_AirLinesData = [
         paragraph1:
           "Saudi Arabian Airlines aims to provide safe, innovative, and high-quality air travel, delivering a world-class experience to passengers.",
         paragraph2:
-          "<p>Fly from Lahore to popular destinations such as Riyadh,<a href=\"https://www.faremakers.com/flights/cheap-flights-from-peshawar-to-jeddah\" target=\"_blank\" style=\"color: blue;\">Jeddah</a>,<a href=\"https://www.faremakers.com/flights/cheap-flights-from-islamabad-to-jeddah\" target=\"_blank\" style=\"color: blue;\">Medina</a>and many more. Saudi Arabian Airlines offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable..</p>",
+          "<p>Fly from Lahore to popular destinations such as Riyadh,<a href=\"https://www.flightmakers.com/flights/cheap-flights-from-peshawar-to-jeddah\" target=\"_blank\" style=\"color: blue;\">Jeddah</a>,<a href=\"https://www.flightmakers.com/flights/cheap-flights-from-islamabad-to-jeddah\" target=\"_blank\" style=\"color: blue;\">Medina</a>and many more. Saudi Arabian Airlines offers direct and connecting flights to major cities across the globe, making your travel experience seamless and enjoyable..</p>",
       },
     ],
     section4: [
       {
         heading: "How to Book Cheap Saudi Arabian Airlines Air Tickets",
         paragraph:
-          "Booking cheap Saudi Arabian Airlines air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:",
+          "Booking cheap Saudi Arabian Airlines air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:",
         orderList: [
           {
             point_head: "Visit Our Website: ",
-            point_data: "Go to Faremakers.com and select the Flights tab.",
+            point_data: "Go to flightmakers.com and select the Flights tab.",
           },
           {
             point_head: "Enter Your Details:  ",
@@ -2443,7 +2443,7 @@ const Pop_AirLinesData = [
               "Keep an eye out for special promotions and discounts on Saudi Arabian Airlines flights.",
           },
           {
-            point_head: "Use Faremakers:  ",
+            point_head: "Use flightmakers:  ",
             point_data:
               "Our platform offers exclusive deals and discounts on Saudi Arabian Airlines bookings to help you find the best Saudi Arabian Airlines fares.",
           },
@@ -2469,7 +2469,7 @@ const Pop_AirLinesData = [
           },
           {
             point_head: "Email:",
-            point_data: "support@faremakers.com ",
+            point_data: "support@flightmakers.com ",
           },
           {
             point_head: "Head Office:",
@@ -2484,7 +2484,7 @@ const Pop_AirLinesData = [
         orderList: [
           {
             question: "How do I book a flight with Saudi Arabian Airlines? ",
-            answer: "You can book a flight with Saudi Arabian Airlines through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Saudi Arabian Airlines flights.",
+            answer: "You can book a flight with Saudi Arabian Airlines through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Saudi Arabian Airlines flights.",
           },
           {
             question: "Can I change my Saudi Arabian Airlines flight after booking? ",
@@ -2500,7 +2500,7 @@ const Pop_AirLinesData = [
           },
           {
             question: "Are there any special offers for Saudi Arabian Airlines flights? ",
-            answer: "Yes, Saudi Arabian Airlines frequently offers special promotions and discounts. Check the Saudi Arabian Airlines website or Faremakers for the latest deals on Saudi Arabian Airlines flights to get the best Saudi Arabian Airlines flight deals.",
+            answer: "Yes, Saudi Arabian Airlines frequently offers special promotions and discounts. Check the Saudi Arabian Airlines website or flightmakers for the latest deals on Saudi Arabian Airlines flights to get the best Saudi Arabian Airlines flight deals.",
           },
         ],
       },

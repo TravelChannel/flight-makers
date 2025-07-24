@@ -26,6 +26,10 @@ const Filters = () => {
     const { itemsToShow, totalResults, apiData } = useItemsToShow();
     const [filteredApiData, setFilteredApiData] = useState([]);
     const dispatch = useDispatch();
+    // --------------------------------------------
+    // console.log("apiData_at_Filters",apiData);
+    // --------------------------------------------
+
     // Callback function to update selected stops
     const handleStopsChange = (label, isChecked) => {
         setSelectedStops((prevSelectedStops) => {
@@ -110,8 +114,10 @@ const Filters = () => {
     useEffect(() => {
         if (checkState) {
             const uniqueAirlineNames = new Set();
-            const filteredData = apiData.filter(item => {
-                const airlineName = item.schedualDetGet[0][0].carrier.marketing;
+            const getData = apiData?.map((items ,index) => items.groupDescription[0]);
+            // console.log("getData_v1",getData);
+            const filteredData = getData.filter(item => {
+                const airlineName = item.marketingCarrier;
                 if (!uniqueAirlineNames.has(airlineName)) {
                     uniqueAirlineNames.add(airlineName);
                     return true;
@@ -167,18 +173,18 @@ const Filters = () => {
                     <div className="stops_ul">
                         <CheckBoxComp
                             label1="Non-Stop"
+                            onChange={(isChecked) => handleStopsChange('0', isChecked)}
+                            checked={selectedStops.includes('0')}
+                        />
+                        <CheckBoxComp
+                            label1="1 Stop"
                             onChange={(isChecked) => handleStopsChange('1', isChecked)}
                             checked={selectedStops.includes('1')}
                         />
                         <CheckBoxComp
-                            label1="1 Stop"
+                            label1="2 Stop"
                             onChange={(isChecked) => handleStopsChange('2', isChecked)}
                             checked={selectedStops.includes('2')}
-                        />
-                        <CheckBoxComp
-                            label1="2 Stop"
-                            onChange={(isChecked) => handleStopsChange('3', isChecked)}
-                            checked={selectedStops.includes('3')}
                         />
                     </div>
                 )}
@@ -224,7 +230,7 @@ const Filters = () => {
                     <div className="">
                         <div className="stops_ul">
                             {filteredApiData.map((item, index) => {
-                                const airlineName = item.schedualDetGet[0][0].carrier.marketing;
+                                const airlineName = item.marketingCarrier;
                                 const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
                                 return (
                                     <CheckBoxComp

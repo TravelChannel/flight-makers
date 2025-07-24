@@ -165,7 +165,7 @@ const handleInputImageReset = () => {
   return (
     <Modal isOpen={isOpen}  className="custom_edit_modal">
     <ModalHeader toggle={toggleModal}>
-        <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span></div>
+        <div id="logobox" className="hdrLogo"><img src={images.default} className="imgView w-91" alt="FM-LOGO"/><span id="logotext" className="colorBlue d-block"></span></div>
       </ModalHeader>
     <ModalBody>
       {

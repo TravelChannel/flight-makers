@@ -12,7 +12,7 @@ const RefundPolicyData = [
     {
         id: 3,
         heading: 'Mode of Payments',
-        data: `Payments made through credit card will be refunded directly to the card, while payments made through other modes will be paid through cheque. Please note that Faremakers.com fees, if any, will not be refundable. Also note that Faremakers.com reserves the right to deduct service fee on refunds.`
+        data: `Payments made through credit card will be refunded directly to the card, while payments made through other modes will be paid through cheque. Please note that flightmakers.com fees, if any, will not be refundable. Also note that flightmakers.com reserves the right to deduct service fee on refunds.`
     },
 ]
 

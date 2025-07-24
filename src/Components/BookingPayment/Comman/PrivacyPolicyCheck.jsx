@@ -19,13 +19,16 @@ import { v4 as uuidv4 } from "uuid";
 
 const PrivacyPolicyCheck = (props) => {
   const navigate = useNavigate();
+
   const { formData, userVerName, backendFinalOBJ, setPNRLoading, userID } =
     useFormData();
+  const { SessionData } = useAmadeusData();
   const formRef = useRef(null);
   const [isMobile, setMobile] = useState(window.innerWidth < 768);
   const [isBtnCenter, setBtnCenter] = useState(window.innerWidth < 468);
   const [isLoading, setLoading] = useState(false);
   const [orderId, setOrderId] = useState(uuidv4());
+  const [getPNR, setPNR] = useState();
   const [formFields, setFormFields] = useState("");
   const [userPhoneNum, setUserPhoneNum] = useState("");
   let [handleBackendResp, sethandleBackendResp] = useState("");
@@ -54,19 +57,23 @@ const PrivacyPolicyCheck = (props) => {
     return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
-  useEffect(() => {
-    if (paymentType === "jazzcash" || paymentType === "paypro")
-      fetchJazzCashFormData();
-  }, [paymentType, orderId]);
+  // useEffect(() => {
+  //   if (paymentType === "jazzcash" || paymentType === "paypro")
+  //     fetchJazzCashFormData();
+  // }, [orderId]);
 
-  const fetchJazzCashFormData = async () => {
+  const fetchJazzCashFormData = async (pnrNum) => {
     const requestBody = {
       pp_TxnType: "",
-      pp_BillReference: orderId, // replace with dynamically generated order ID if needed
+      pp_BillReference: pnrNum, // replace with dynamically generated order ID if needed
       pp_CustomerID: userID, // replace with actual customer ID
       pp_Amount: UserAmount.totalTicketPrice,
       pp_CustomerMobile: userVerName,
+      pp_PNR: "2",
     };
+
+    // console.log("requestBody",requestBody);
+    // debugger;
 
     try {
       // Await the response from the API call using apiClient
@@ -76,8 +83,10 @@ const PrivacyPolicyCheck = (props) => {
       );
       // The response is already processed by your interceptor
       // You can access the response data like this
-      const params = response.data.serviceResponse; // Assuming the response contains the JSON in the data
-      setFormFields(params);
+      const params = response.data.serviceResponse;
+      return params;
+      // console.log(params);
+      // setFormFields(params);
     } catch (error) {
       // Handle any errors that occur during the fetch
       console.error("Error Fetching Payment Form:", error);
@@ -89,6 +98,8 @@ const PrivacyPolicyCheck = (props) => {
 
   async function submitJazzCashForm(url, fields) {
     // Create a form element
+
+    console.log("fields", fields);
     const form = document.createElement("form");
     form.method = "POST";
     form.action = url;
@@ -119,8 +130,13 @@ const PrivacyPolicyCheck = (props) => {
     try {
       // First, call payOnlineHandler
       let pnrstatus = await payOnlineHandler();
+
+      console.log("pnrstatus--log1", pnrstatus);
       // If payment type is "jazzcash", submit the form
-      if (formFields && pnrstatus === 1) {
+
+      const formFields = await fetchJazzCashFormData(pnrstatus);
+      console.log("formFields", formFields);
+      if (formFields) {
         submitJazzCashForm(
           "https://payments.jazzcash.com.pk/CustomerPortal/transactionmanagement/merchantform",
           formFields
@@ -167,7 +183,7 @@ const PrivacyPolicyCheck = (props) => {
       handleBackendResp = await handleBackendData(orderId, pnrNum);
       if (!handleBackendResp) {
         handleShowErrorAlert(
-          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details..."
         );
         throw new Error("Error Generating Pnr Num");
       } else {
@@ -200,7 +216,7 @@ const PrivacyPolicyCheck = (props) => {
       //   if (!handleBackendResp) {
       //     //console.log("handleBackendResp", handleBackendResp);
       //     handleShowErrorAlert(
-      //       "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+      //       "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details..."
       //     );
       //     throw new Error("Error Generating Pnr Num");
       //   }
@@ -226,6 +242,7 @@ const PrivacyPolicyCheck = (props) => {
     setPNRLoading(true);
     try {
       let pnrNum = await generatePnrNum();
+      console.log("pnrNum__log2", pnrNum);
       if (!pnrNum) {
         throw new Error("Error Generating Pnr Num");
       }
@@ -233,17 +250,17 @@ const PrivacyPolicyCheck = (props) => {
       handleBackendResp = await handleBackendData(orderId, pnrNum);
       if (!handleBackendResp) {
         handleShowErrorAlert(
-          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details..."
         );
         throw new Error("Error Generating Pnr Num");
         return 0;
       }
       setPNRLoading(false);
-      return 1;
+      return pnrNum;
     } catch (error) {
       console.error(error, error.message);
       handleShowErrorAlert(
-        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details..."
       );
       console.log("catch");
       setPNRLoading(false);
@@ -262,23 +279,42 @@ const PrivacyPolicyCheck = (props) => {
       sendSmsCod = true;
     }
     try {
-      const pnrNum = await generatePnrNum();
+      console.log("sendSmsBranch", sendSmsBranch);
+      // ----------Disabaled Sabre PNR Creatoin API-----------------
+      // const pnrNum = await generatePnrNum();
+
+      //  (1) Calling Amadeus PNR Creation API ----------------------------
+
+      const fetch_PNR_Add_MultiElements =
+        await PNR_Add_MultiElements_Final_Resp(SessionData, backendFinalOBJ);
+      console.log("Amadeus PNR RESP", fetch_PNR_Add_MultiElements);
+
+      let getPnrNum =
+        fetch_PNR_Add_MultiElements?.data?.["soapenv:Envelope"]?.[
+          "soapenv:Body"
+        ]?.PNR_Reply?.pnrHeader;
+      let pnrNum = Array.isArray(getPnrNum)
+        ? getPnrNum[0]?.reservationInfo?.reservation?.controlNumber
+        : getPnrNum?.reservationInfo?.reservation?.controlNumber;
       if (!pnrNum) {
         console.log("erroratGetPNR");
         throw new Error("Error Generating Pnr Num");
       }
 
-      console.log("pnrNum123", pnrNum);
-      const extra_Bagg = JSON.parse(localStorage.getItem("bookingTicket"));
-      // if (extra_Bagg?.schedualDetGet?.[0]?.[0]?.carrier?.operating === "PF"){
-      //   const finalPNR = await fetchData(pnrNum);
+      console.log("pnrNum", pnrNum);
+      // (2) Calling PNR Retrieve API ----------------------------
 
-      //   const airSialUserDetail = await airsialBookingDetail();
-      //   console.log('airSialUserDetail',airSialUserDetail);
+      const pnrRetrieve = await PNR_Retrieve_Resp(SessionData, pnrNum);
+      // console.log("pnrRetrieve",pnrRetrieve);
 
-      //   const AirSialTicketIsssue = await AirSialTicketIssued();
-      // }
+      // (3) Calling QueuePlace PNR API ----------------------------
+      const queuePNR = await queuePNR_Resp(SessionData, pnrNum);
 
+      //  (4) Ending the session after PNR Creation-------------------
+      let signOut_SeqNum = 9;
+      const signout = await SecuritySignOutResp(SessionData, signOut_SeqNum);
+
+      // --------------------Temparary Disabled---------------------
       const handleBackendResp2 = await handleBackendData(
         OrderId,
         pnrNum,
@@ -292,6 +328,7 @@ const PrivacyPolicyCheck = (props) => {
       const DatatoPass = {
         branchlabel: branchLabel,
         userLocation: userLocation,
+        OrderId: OrderId,
       };
       navigate("/bookingDetail", { state: { data: DatatoPass } });
       setPNRLoading(false);
@@ -323,53 +360,46 @@ const PrivacyPolicyCheck = (props) => {
   //   ---------------------------------------
 
   const generatePnrNum = async () => {
-    let getPNRNumber = false;
+    let getPNRNumber = "";
     try {
       // setPNRLoading(true);
-      const PNRRespon = await requestPNRCreate(formData);
-
-      if (PNRRespon?.Success === false) {
-        const message = PNRRespon.Response.message;
-        // handleShowErrorAlert(message);
-        console.log("PNR-Message-1", message);
-        handleShowErrorAlert(
-          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details."
-        );
-      } else if (PNRRespon?.status === "NotProcessed") {
-        // handleShowErrorAlert("Incomplete");
-        handleShowErrorAlert(
-          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details."
-        );
-      } else if (
-        PNRRespon?.CreatePassengerNameRecordRS?.ApplicationResults?.status ===
-        "Incomplete"
-      ) {
+      const PNRRespon = await PNR_Add_MultiElements_Final_Resp(
+        SessionData,
+        backendFinalOBJ
+      );
+      if (PNRRespon?.success === false) {
         const message =
-          PNRRespon.CreatePassengerNameRecordRS.ApplicationResults.Warning[0]
-            .SystemSpecificResults[0].Message[0].content;
+          PNRRespon.data?.["soapenv:Envelope"]?.["soapenv:Body"]?.PNR_Reply;
         // handleShowErrorAlert(message);
         console.log("PNR-Message-2", message);
         handleShowErrorAlert(
-          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details."
+          "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details."
         );
       } else {
-        if (PNRRespon?.Success === true) {
-          getPNRNumber = PNRRespon.Response.Data; //airsial Pnr
-
-          const finalPNR = await fetchData(getPNRNumber);
-
-          const airSialUserDetail = await airsialBookingDetail(getPNRNumber);
-          console.log("airSialUserDetail", airSialUserDetail);
-
-          // const AirSialTicketIsssue = await AirSialTicketIssued(getPNRNumber);
-        } else {
-          getPNRNumber =
-            PNRRespon.CreatePassengerNameRecordRS?.ItineraryRef?.ID; // sabre pnr
+        if (PNRRespon?.success === true) {
+          // let getPnrNum = fetch_PNR_Add_MultiElements?.data?.['soapenv:Envelope']?.['soapenv:Body']?.PNR_Reply?.pnrHeader;
+          // let pnrNum = Array.isArray(getPnrNum) ? getPnrNum[0]?.reservationInfo?.reservation?.controlNumber : getPnrNum?.reservationInfo?.reservation?.controlNumber;
+          let getPnrNum =
+            PNRRespon?.data?.["soapenv:Envelope"]?.["soapenv:Body"]?.PNR_Reply
+              ?.pnrHeader;
+          getPNRNumber = Array.isArray(getPnrNum)
+            ? getPnrNum[0]?.reservationInfo?.reservation?.controlNumber
+            : getPnrNum?.reservationInfo?.reservation?.controlNumber; //Amadeus PNR
           const pnrPayment =
-            PNRRespon.CreatePassengerNameRecordRS?.AirPrice?.[0].PriceQuote
-              .PricedItinerary?.TotalAmount;
-          UserAmount.pnrPayment = pnrPayment;
+            PNRRespon?.CreatePassengerNameRecordRS?.AirPrice?.[0]?.PriceQuote
+              ?.PricedItinerary?.TotalAmount;
+          UserAmount.pnrPayment = pnrPayment || "100";
           console.log("PnrPayment-v2", UserAmount);
+        } else {
+          // -------------------------Temporary Disabeling the AirSial API-----------------------------
+
+          // const finalPNR = await fetchData(getPNRNumber);
+          // const airSialUserDetail = await airsialBookingDetail(getPNRNumber);
+          // console.log("airSialUserDetail", airSialUserDetail);
+          // ------------------------------------------------------------------------------------------------
+          console.log(
+            "you need to enable AIrSial API's to Run AIrSial Process"
+          );
         }
 
         // Creating Final Object for the Backend
@@ -407,30 +437,23 @@ const PrivacyPolicyCheck = (props) => {
     }
     console.log("Final Pnr-Booking-Object", updatedBackendFinalOBJ);
 
-    const respServerPnrBooking = await UserBookingDetails(
-      updatedBackendFinalOBJ
-    );
-    console.log(
-      "checkForPayment1",
-      respServerPnrBooking.data.payload.isAmountEqual
-    );
+    const respServerPnrBooking = await CreateBooking(updatedBackendFinalOBJ);
+    console.log("respServerPnrBooking_Check", respServerPnrBooking);
+    // console.log(
+    //   "checkForPayment1",
+    //   respServerPnrBooking.data.payload.isAmountEqual
+    // );
     if (respServerPnrBooking.data.status !== "SUCCESS") {
       handleShowErrorAlert(
-        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details..."
+        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details..."
       );
       throw new Error("Error: Server response status is not SUCCESS");
-    } else if (respServerPnrBooking.data.payload.isAmountEqual) {
-      console.log(
-        "checkForPayment2",
-        respServerPnrBooking.data.payload.isAmountEqual
-      );
-      console.log("respServerPnrBooking", respServerPnrBooking);
-      sethandleBackendResp(respServerPnrBooking);
-      // toast.success("PNR Created Successfully", { autoClose: 2000 });
+    } else if (respServerPnrBooking.data.status == "SUCCESS") {
+      console.log("Reached here");
       return true;
     } else {
       handleShowErrorAlert(
-        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline 03111147111 for further details...."
+        "Your Booking could not be retained due to an internal error from Airline. You can try another booking with different query or call our helpline +1 (484) 312-1100 for further details...."
       );
     }
     // };
@@ -475,23 +498,20 @@ const PrivacyPolicyCheck = (props) => {
                     className="privacy_policy_linked"
                     onClick={() => window.open("/term-and-condition", "_blank")}
                   >
-                    {" "}
-                    terms and conditions,{" "}
+                    terms and conditions,
                   </span>
                   <span
                     className="privacy_policy_linked"
                     onClick={() => window.open("/terms-of-service", "_blank")}
                   >
-                    {" "}
-                    terms of Services{" "}
+                    terms of Services
                   </span>
                   , and
                   <span
                     className="privacy_policy_linked"
                     onClick={() => window.open("/refund-policy", "_blank")}
                   >
-                    {" "}
-                    Refund Policy{" "}
+                    Refund Policy
                   </span>
                   , of faremakers.
                 </p>
@@ -511,7 +531,7 @@ const PrivacyPolicyCheck = (props) => {
             <div className="d-flex justify-content-end">
               <div className="align-self-center pay_content_right">
                 <h5 className="total_payment_detail">
-                  <strong>{totalTicketPrice.toLocaleString()} PKR</strong>
+                  <strong>{totalTicketPrice.toLocaleString()} $</strong>
                 </h5>
                 <p className="payment_subtitle">
                   total inclusive, of all taxes
@@ -587,7 +607,6 @@ const PrivacyPolicyCheck = (props) => {
                     className="privacy_policy_linked"
                     onClick={() => window.open("/refund-policy", "_blank")}
                   >
-                    {" "}
                     booking policy
                   </span>
                   ,
@@ -595,7 +614,6 @@ const PrivacyPolicyCheck = (props) => {
                     className="privacy_policy_linked"
                     onClick={() => window.open("/terms-of-service", "_blank")}
                   >
-                    {" "}
                     privacy policy
                   </span>
                   , and
@@ -605,7 +623,6 @@ const PrivacyPolicyCheck = (props) => {
                       window.open("/terms-and-conditions", "_blank")
                     }
                   >
-                    {" "}
                     terms and conditions
                   </span>
                   of faremakers.
@@ -631,7 +648,7 @@ const PrivacyPolicyCheck = (props) => {
             >
               <div className="align-self-center pay_content_right">
                 <h5 className="total_payment_detail">
-                  <strong> {totalTicketPrice.toLocaleString()} PKR</strong>
+                  <strong> {totalTicketPrice.toLocaleString()} $</strong>
                 </h5>
                 <p className="payment_subtitle">
                   total inclusive, of all taxes

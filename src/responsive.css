@@ -324,6 +324,15 @@
   transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
   width: 40%;
 }
+
+
+.flightMaker_Container{
+  width: 100%;
+}
+
+.custom-phone-input-login .react-tel-input .form-control {
+  max-width: 300px;
+}
   }
 
   @media only screen and (max-width: 667px) {
@@ -478,15 +487,16 @@
     }
 
     .mobileLogo {
-      width: 37%;
+      width: 65%;
       margin-top: 7px;
-      text-align: right;
+      text-align: left;
       margin-top: 8px;
       margin-bottom: 3px;
-    }
+      margin-bottom: 10px;
+  }
 
     .hdrLogo img {
-      max-width: 135px;
+      max-width: 200px;
     }
 
     .mainChatAlertSld.inlineDiv {
@@ -522,6 +532,9 @@
     }
     .banner_heading {
       font-size: 12px;
+  }
+  img.responsive-logo {
+    width: 50px !important;
   }
   }
 

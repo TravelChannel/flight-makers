@@ -7,7 +7,7 @@ export const WhatsappLowestFair = async (fair,gclid,gclidID) => {
             refID = gclidID;
         };
         // console.log("refID-v1",refID);
-        const msg =`Lowest Fare Detail: ${fair} PKR (NET FARE WITHOUT PSF)`;
+        const msg =`Lowest Fare Detail: ${fair} $ (NET FARE WITHOUT PSF)`;
         // console.log("whatsAPp-msg-1",msg);
         const encodedMsg  = encodeURIComponent(msg);
         console.log('encodedMsg-2',encodedMsg);

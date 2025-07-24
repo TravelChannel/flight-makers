@@ -10,10 +10,10 @@ const EmiratesFlights = () => {
             Emirates (EK) Online Booking & Reservation
           </h3>
           <div className="horizontal-line"></div>
-          <h3 className="text1">Book Cheap Emirates Flights with Faremakers</h3>
+          <h3 className="text1">Book Cheap Emirates Flights with flightmakers</h3>
           <p>
             Are you looking for the best price on Emirates flights? Look no
-            further! At Faremakers, we offer the best Emirates flight deals,
+            further! At flightmakers, we offer the best Emirates flight deals,
             ensuring you get the cheapest flights without compromising on
             quality
           </p>
@@ -83,15 +83,15 @@ const EmiratesFlights = () => {
           <h3 className="text1">How to Book Cheap Emirates Air Tickets</h3>
           <div className="horizontal-line"></div>
           <p>
-            Booking cheap Emirates air tickets is easy with Faremakers. Follow
+            Booking cheap Emirates air tickets is easy with flightmakers. Follow
             these simple steps to secure your reservation:
           </p>
 
           <ol className="order_list_styling">
             <li>
               <span className="airline_span_heading_v2">Visit Our Website</span>
-              : Go to <a href="http://www.Faremakers.com" target="_blank" className="href_link_typo">
-                    www.Faremakers.com
+              : Go to <a href="http://www.flightmakers.com" target="_blank" className="href_link_typo">
+                    www.flightmakers.com
                   </a> and select the 'Flights' tab.
             </li>
             <li>
@@ -125,7 +125,7 @@ const EmiratesFlights = () => {
           <div className="horizontal-line"></div>
 
           <h3 className="text1">
-            Top Emirates Flights to Pakistan (According to Faremakers.com)
+            Top Emirates Flights to Pakistan (According to flightmakers.com)
           </h3>
           <ol className="order_list_styling">
             <li>Emirates Airlines Jeddah to Islamabad</li>
@@ -143,7 +143,7 @@ const EmiratesFlights = () => {
                   <th>Destination</th>
                   <th>Departure Time (PM)</th>
                   <th>Flight Duration (hrs)</th>
-                  <th>Price (PKR)</th>
+                  <th>Price ($)</th>
                 </tr>
               </thead>
               <tbody>
@@ -244,7 +244,7 @@ const EmiratesFlights = () => {
                 Emirates flights.
               </li>
               <li>
-                <span className="airline_span_heading_v2">Use Faremakers</span>:
+                <span className="airline_span_heading_v2">Use flightmakers</span>:
                 Our platform offers exclusive deals and discounts on Emirates
                 bookings to help you find the best Emirates fares.
               </li>
@@ -260,7 +260,7 @@ const EmiratesFlights = () => {
           <p>
           Need assistance with your Emirates booking? Our customer support team is here to help. Contact us via phone, email, or live chat for any queries or concerns.
           </p>
-          <p className="airlines_list_styling">
+          {/* <p className="airlines_list_styling">
             <ul>
                 <li> 
                     <p className="airline_body_color"><span className="airline_span_heading_v2">Phone</span>: 0311-1147-111</p>
@@ -269,13 +269,13 @@ const EmiratesFlights = () => {
                     <span className="airline_span_heading_v2">
                       Email  
                     </span>
-                    <a href="mailto:support@faremakers.com" className="airline_body_color"> : support@faremakers.com</a>
+                    <a href="mailto:support@flightmakers.com" className="airline_body_color"> : support@flightmakers.com</a>
                 </li>
                 <li>
                     <p className="airline_body_color" ><span className="airline_span_heading_v2">Head Office</span>: 53-A Street 1, Block E1, Block E1, Gulberg III, Lahore, Punjab</p>
                 </li>
             </ul>
-          </p>
+          </p> */}
           <div className="horizontal-line"></div>
           <h3 className="airline_heading">
                 FAQs about Emirates Booking
@@ -286,7 +286,7 @@ const EmiratesFlights = () => {
               How do I book a flight with Emirates? 
               </p>
               <p className="faq-answer">
-              You can book a flight with Emirates through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Emirates flights.
+              You can book a flight with Emirates through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Emirates flights.
               </p>
            </div>
             <div className="horizontal-line"></div>
@@ -322,7 +322,7 @@ const EmiratesFlights = () => {
               Are there any special offers for Emirates flights? 
               </p>
               <p className="faq-answer">
-              Yes, Emirates frequently offers special promotions and discounts. Check the Emirates website or Faremakers for the latest deals on Emirates flights to get the best Emirates flight deals.
+              Yes, Emirates frequently offers special promotions and discounts. Check the Emirates website or flightmakers for the latest deals on Emirates flights to get the best Emirates flight deals.
               </p>
             </div>
             <div className="horizontal-line"></div>

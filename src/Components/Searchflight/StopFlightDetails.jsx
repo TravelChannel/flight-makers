@@ -1,9 +1,16 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import { elapsedTimeFunct, airportNameFunct, cityNameFunct, calculateDuration, formatCompleteDate,addTimeToPreviousDepartDate, addTimeToPreviousDate, formatDateToISO, checkTimeToNextDate } from '../../helpers/formatdata';
-import { useItemsToShow } from './Comman/Context';
-import airlinesData from '../../Constant/airlineName';
+import React, { Fragment, useState, useEffect } from "react";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
+import {
+  airportNameFunct,
+  cityNameFunct,
+  convertDateFormat,
+  convertTimeFormat,
+  calculateLayoverTime,
+  AmadeuselapsedTime,
+} from "../../helpers/formatdata";
+import { useItemsToShow } from "./Comman/Context";
+import airlinesData from "../../Constant/airlineName";
 
 const StopFlightDetails = (props) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 860);
@@ -11,269 +18,183 @@ const StopFlightDetails = (props) => {
   const { classtype } = searchDataArr;
   const { activeFlightDet, refFlag } = props;
 
-  const seatsAvailable = activeFlightDet?.seatsAvailables;
+  const fetchDiscription = activeFlightDet?.groupDescription;
 
-  const classSegment = activeFlightDet?.classSegment;
-  console.log("Active-class-Segment",classSegment);
-
-  const allArrivalTimes = activeFlightDet.schedualDetGet.map(flightArray =>
-    flightArray.map(flightInfo => flightInfo.arrival.time.slice(0, 5))
-  );
-
-  console.log('allArrivalTimes',allArrivalTimes);
-  const allDepartureTimes = activeFlightDet.schedualDetGet.map(flightArray =>
-    flightArray.map(flightInfo => flightInfo.departure.time.slice(0, 5))
-  );
-  console.log('allDepartTime',allDepartureTimes);
-  const allTravelDates = activeFlightDet.groupDescription.map(flightArray =>
-    flightArray.departureDate);
-
-  // let currentDate = null;  
-
-  const generateSegmentsForDate = (departureTimes, arrivalTimes, date) => {
-    let currentDate = date;
-    for (let i = 0; i < departureTimes.length; i++) {
-      const segment = {};
-      segment.departure = departureTimes[i];
-      segment.arrival = arrivalTimes[i];
-  
-      // Check if the arrival is on the next day
-      if (segment.arrival < segment.departure) {
-        // Arrival is on the next day
-        const nextDate = getNextDate(currentDate);
-        segment.date = nextDate;
-        currentDate = nextDate;  // Update the current date for the next iteration
-      } else {
-        // Arrival is on the same day
-        segment.date = currentDate;
-      }
-  
-      flightSegments.push(segment);
-      // If there is a next arrival time, calculate the next date
-      if (i < arrivalTimes.length - 1) {
-        const nextDate = checkTimeToNextDate(segment.date, arrivalTimes[i], departureTimes[i + 1]);
-        if (nextDate !== segment.date) {
-          currentDate = nextDate;  // Update the current date for the next iteration
-        }
-        const nextSegment = {
-          departure: arrivalTimes[i],
-          arrival: departureTimes[i + 1],
-          date: nextDate
-        };
-        flightSegments.push(nextSegment);
-      } else {
-        // Reset the current date if it's the last segment for this date
-        currentDate = null;
-      }
-    }
-  };
-  
-  const getNextDate = (date) => {
-    const nextDate = new Date(date);
-    nextDate.setDate(nextDate.getDate() + 1);
-    return nextDate.toISOString().split('T')[0];
-  };
-  
-
-  const flightSegments = []; // Array to store flight segments
-  // Add start segment for each date
-  for (let i = 0; i < allTravelDates.length; i++) {
-    const startSegment = {
-      departure: allDepartureTimes[i][0], // Use the first departure time
-      date: allTravelDates[i]
-    };
-    flightSegments.push(startSegment);
-    // Generate segments for the date
-    generateSegmentsForDate(allDepartureTimes[i], allArrivalTimes[i], allTravelDates[i]);
-  }
-
+  // const fetchTicketType =
+  //   activeFlightDet?.recommendation?.paxFareProduct?.fare[0]?.pricingMessage
+  //     ?.description || "";
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 860)
+      setIsMobile(window.innerWidth < 860);
     };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
-    }
-  }, [])
+    };
+  }, []);
+
+  const airlineName = activeFlightDet?.groupDescription?.map(
+    (items) => items.marketingCarrier
+  );
+  const matchedAirline = airlineName?.map((id) =>
+    airlinesData.find((airline) => airline.id === id)
+  );
   return (
     <Fragment>
-      {activeFlightDet.schedualDetGet.map((val, idx) => {
-        let currentDate = activeFlightDet.groupDescription[idx].departureDate;
-        console.log("CurrentDates",currentDate);
-        let updatedDate = '', updatenextLevel = '', updatedLastDate = '';
-
-        let currentDepDateTime='', currentArrDateTime='', stopoverTime='' ; 
-
-        return (
-          <div key={idx} className="fd_more_detail">
-            <div className="d-flex justify-content-between text-center bg-lighterBlue p-1">
-              <div className="d-flex justify-content-start">
-                <p className="fd_more_detail_size">
-                  {`${cityNameFunct[val[0].departure.airport]} → ${cityNameFunct[val[val.length - 1].arrival.airport]}`}
-                </p>
-                <p className="fd_more_detail_date">{formatCompleteDate(currentDate)}</p>
-              </div>
-              <div className="d-flex justify-content-start">
-                <p className="fd_more_detail_date"></p>
-                {refFlag ? <p className="fd_more_refund">{activeFlightDet.fare.passengerInfoList[0].passengerInfo.nonRefundable ? "NON REFUNDABLE" : "REFUNDABLE"}</p> : null}
-              </div>
+      {fetchDiscription?.map((item, index) => (
+        <div className="fd_more_detail pb-4" key={index}>
+          <div className="d-flex justify-content-between text-center bg-lighterBlue p-1">
+            <div className="d-flex justify-content-start">
+              <p className="fd_more_detail_size">{`${
+                cityNameFunct[item?.departure]
+              } → ${cityNameFunct[item?.arrival]}`}</p>
+              <p className="fd_more_detail_date">
+                {convertDateFormat(item?.departDate)}
+              </p>
             </div>
-           
-            {val.map((info, Idxs) => {
-                if (Idxs === 0) {
-  
-                  currentDepDateTime = formatCompleteDate(currentDate);
-                        
-                  currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info?.departure.time.slice(0, 5), info?.arrival.time.slice(0, 5));
-                  currentDate = currentArrDateTime;
-                }
-                else if (Idxs > 0){
-                  stopoverTime = calculateDuration(info?.departure.time, val[Idxs - 1].arrival.time);
-  
-                  currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info?.departure.time.slice(0, 5));
-                  currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info?.departure.time.slice(0, 5), info?.arrival.time.slice(0, 5));
-                  currentDate = currentArrDateTime;
-                }
-                const airlineName = info?.carrier.marketing;
-                const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
-                return (
-                  <Fragment key={Idxs}>
-                    <div key={Idxs} className="fd_stops_detail d-flex justify-content-between  w-100">
-                      <div className="fd_airport_logo align-self-center text-center stop_width_1">
-                        <img className='airline-logo' src={matchedAirline ? matchedAirline.logo : airlineName} alt="" />
-                        <p className="fd_airport_name">{info?.carrier?.marketing}</p>
-                        <div className="fd_flightNo">
-                          <p className="fd_airport_name">{`${airlineName}-${info?.carrier?.marketingFlightNumber}`}</p>
-                        </div>
-                      </div>
-                      <div className="text-center align-self-center stop_width_2">
-                        <span className="fd_airport_size">{info.departure.airport}</span>&nbsp;<span className="fd_airport_size_time">{info.departure.time.slice(0, 5)}</span>
-                        {
-                          <p className="fd_flight_date">{formatCompleteDate(currentDepDateTime)} </p>
-                        }
-                        <p className="fd_airport_name">{airportNameFunct[info?.departure?.airport]}</p>
-                      </div>
-                      <div className="align-self-center stop_width_3">
-                        <AccessTimeIcon className="d-flex align-items-center fd_clock" />
-                        <p className="fd_flight_date">{elapsedTimeFunct(info.elapsedTime)}</p>
-                      </div>
-                      <div className="text-center align-self-center stop_width_4">
-                        <span className="fd_airport_size">{info?.arrival?.airport}</span>&nbsp;<span className="fd_airport_size_time">{info?.arrival?.time.slice(0, 5)}</span>
-                        {
-                          <p className="fd_flight_date">{formatCompleteDate(currentArrDateTime)} </p>
-                        }
-                        <p className="fd_airport_name">{airportNameFunct[info?.arrival?.airport]}</p>
-                      </div>
-                      {/* {
-                        !isMobile && (
-                          <Fragment>
-                            <div className="align-self-center stop_width_5">
-                              <p className="fd_airport_name fd_space_baggages">Seat Availab</p>
-                              <p className="fd_airport_name fd_space_baggages">Class Type</p>
-                              {
-                                activeFlightDet?.baggageAllowance[idx]?.pieceCount ? (
-                                  <p className="fd_airport_name fd_space_baggages">Piece Counts</p>
-                                ) : (
-                                  <p className="fd_airport_name fd_space_baggages">Check-in baggage</p>
-                                )
-                              }
-                            </div>
-                            <div className="align-self-center stop_width_6">
-                              <p className="fd_airport_name">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                              <p className="fd_airport_name">{classtype || ''} </p>
-                              <p className="fd_airport_name fd_space_baggages">
-                              {activeFlightDet?.baggageAllowance[idx]?.pieceCount} {activeFlightDet?.baggageAllowance[idx]?.weight} {activeFlightDet?.baggageAllowance[idx]?.unit}</p>
-                            </div>
-                          </Fragment>
-                        )
-                      } */}
-                      {
-                            !isMobile && (
-                              <Fragment>
-                                <div className="align-self-center stop_width_5">
-                                  <p className="fd_airport_name fd_space_baggages">Seat Availab</p>
-                                  <p className="fd_airport_name fd_space_baggages">Class Type</p>
-                                  {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ? (
-                                    <p className="fd_airport_name fd_space_baggages">
-                                      {activeFlightDet.baggageAllowance[idx].pieceCount ? (
-                                        'Piece Counts'
-                                      ) : (
-                                        'Check-in baggage'
-                                      )}
-                                    </p>
-                                  ) : null}
-                                </div>
-                                <div className="align-self-center stop_width_6">
-                                  <p className="fd_airport_name">
-                                    {seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}
-                                  </p>
-                                  <p className="fd_airport_name">{classtype || ''}</p>
-                                  {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ? (
-                                    <p className="fd_airport_name fd_space_baggages">
-                                      {activeFlightDet.baggageAllowance[idx].pieceCount}
-                                      {activeFlightDet.baggageAllowance[idx].weight}
-                                      {activeFlightDet.baggageAllowance[idx].unit}
-                                    </p>
-                                  ) : null}
-                                </div>
-                              </Fragment>
-                            )
-                          }
-                    </div>
-                    {isMobile && (
-                      <Fragment>
-                        <div className="mob_card_detail_main">
-                          <div className='d-flex justify-content-around'>
-                            <p className="fd_airport_name fd_space_baggages">Seats Availabe</p>
-                            <p className="fd_airport_name fd_space_baggages">Class Type</p>
-                            {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet?.baggageAllowance[idx] ? (
-                              <p className="fd_airport_name fd_space_baggages">
-                              {
-                              activeFlightDet?.baggageAllowance[idx]?.pieceCount ? (
-                                "Piece Counts"
-                              ) : (
-                                "Check-in baggage"
-                              )
-                            }
-                            </p>
-                            ):(null)
-                            }
-                          
-                          </div>
-                          <div className='d-flex justify-content-around'>
-                            <p className="fd_airport_name ">{seatsAvailable[Math.min(idx * 2 + Idxs, seatsAvailable.length - 1)]}</p>
-                            <p className="fd_airport_name">{classtype}</p>
-                        {activeFlightDet && activeFlightDet.baggageAllowance && activeFlightDet.baggageAllowance[idx] ?(
-                          
-                          <p className="fd_airport_name fd_space_baggages">{activeFlightDet?.baggageAllowance[idx]?.pieceCount} {activeFlightDet?.baggageAllowance[idx]?.weight} {activeFlightDet?.baggageAllowance[idx]?.unit}</p>
-                        ):(null)
-                        }
-                          </div>
-                        </div>
-                      </Fragment>)}
-                    <div>
-                      {Idxs < val.length - 1 &&
-                        <div className="fd_line_structure">
-                          <div className="fd_line"></div>
-                          <div className="fd_icon_wrapper">
-                            <p className="fd_middle_border"><DirectionsRunIcon /> {`Short layover ${calculateDuration(info.arrival.time, val[Idxs + 1].departure.time)}`}</p>
-                          </div>
-                          <div className="fd_line"></div>
-                        </div>
-                      }
-                    </div>
-                  </Fragment>
-                );
-              })}
-          
+            {/* <div className="d-flex justify-content-start">
+            <p className="fd_more_detail_date"></p>
+            <p className="fd_more_refund">{fetchTicketType}</p>
+          </div> */}
           </div>
-        );
-      })}
+
+          {activeFlightDet?.matchedFlights[index]?.flightDetails &&
+            (Array.isArray(
+              activeFlightDet?.matchedFlights[index]?.flightDetails
+            )
+              ? activeFlightDet?.matchedFlights[index]?.flightDetails
+              : [activeFlightDet?.matchedFlights[index]?.flightDetails]
+            ).map((itm, idx, arr) => {
+              // Calculate layover time
+              let layoverTime = null;
+              if (idx < arr.length - 1) {
+                const arrivalTime =
+                  arr[idx]?.flightInformation?.productDateTime?.timeOfArrival;
+                const departureTime =
+                  arr[idx + 1]?.flightInformation?.productDateTime
+                    ?.timeOfDeparture;
+                if (arrivalTime && departureTime) {
+                  layoverTime = calculateLayoverTime(
+                    arrivalTime,
+                    departureTime
+                  );
+                }
+              }
+              return (
+                <Fragment>
+                  <div
+                    className="fd_stops_detail d-flex justify-content-between w-100"
+                    key={idx}
+                  >
+                    <div className="fd_airport_logo align-self-center text-center stop_width_1">
+                      <img
+                        className="airline-logo"
+                        src={
+                          matchedAirline
+                            ? matchedAirline[index].logo
+                            : itm?.flightInformation.companyId.marketingCarrier
+                        }
+                        alt="PK Logo"
+                      />
+                      <p className="fd_airport_name">
+                        {itm?.flightInformation.companyId.marketingCarrier}
+                      </p>
+                      <div className="fd_flightNo">
+                        <p className="fd_airport_name">
+                          {itm?.flightInformation?.flightOrtrainNumber}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="text-center align-self-center stop_width_2">
+                      <span className="fd_airport_size">
+                        {itm?.flightInformation?.location?.[0].locationId}
+                      </span>
+                      &nbsp;
+                      <span className="fd_airport_size_time">
+                        {convertTimeFormat(
+                          itm?.flightInformation?.productDateTime
+                            ?.timeOfDeparture
+                        )}
+                      </span>
+                      <p className="fd_flight_date">
+                        {convertDateFormat(
+                          itm?.flightInformation?.productDateTime
+                            ?.dateOfDeparture
+                        )}
+                      </p>
+                      <p className="fd_airport_name">
+                        {
+                          airportNameFunct[
+                            itm?.flightInformation?.location?.[0].locationId
+                          ]
+                        }
+                      </p>
+                    </div>
+
+                    <div className="align-self-center ">
+                      <svg
+                        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium d-flex align-items-center fd_clock css-i4bv87-MuiSvgIcon-root"
+                        focusable="false"
+                        aria-hidden="true"
+                        viewBox="0 0 24 24"
+                        data-testid="AccessTimeIcon"
+                      >
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
+                        <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+                      </svg>
+                      <p className="fd_flight_date">
+                        {AmadeuselapsedTime(
+                          itm?.flightInformation?.attributeDetails
+                            ?.attributeDescription
+                        ) || "00:00"}
+                      </p>
+                    </div>
+
+                    <div className="text-center align-self-center stop_width_4">
+                      <span className="fd_airport_size">
+                        {itm?.flightInformation?.location?.[1].locationId}
+                      </span>
+                      &nbsp;
+                      <span className="fd_airport_size_time">
+                        {convertTimeFormat(
+                          itm?.flightInformation?.productDateTime?.timeOfArrival
+                        )}
+                      </span>
+                      <p className="fd_flight_date">
+                        {convertDateFormat(
+                          itm?.flightInformation?.productDateTime?.dateOfArrival
+                        )}
+                      </p>
+                      <p className="fd_airport_name">
+                        {
+                          airportNameFunct[
+                            itm?.flightInformation?.location?.[1].locationId
+                          ]
+                        }
+                      </p>
+                    </div>
+                  </div>
+                  {idx < arr.length - 1 && (
+                    <div className="fd_line_structure">
+                      <div className="fd_line"></div>
+                      <div className="fd_icon_wrapper">
+                        <p className="fd_middle_border">
+                          <DirectionsRunIcon />{" "}
+                          {`Short layover: ${layoverTime}`}
+                        </p>
+                      </div>
+                      <div className="fd_line"></div>
+                    </div>
+                  )}
+                </Fragment>
+              );
+            })}
+        </div>
+      ))}
     </Fragment>
   );
-
 };
 
 export default StopFlightDetails;

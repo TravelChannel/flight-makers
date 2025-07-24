@@ -10,8 +10,8 @@ const QatarFlights = () => {
                 Qatar Airways (QR) Online Booking & Reservation
             </h3>
             <div className="horizontal-line"></div>
-            <h3 className="text1">Book Cheap Qatar Airways Flights with Faremakers</h3>
-                <p>Are you looking for the best price on Qatar Airways flights? Look no further! At Faremakers, we offer the best Qatar Airways flight deals, ensuring you get the cheapest flights without compromising on quality.</p>
+            <h3 className="text1">Book Cheap Qatar Airways Flights with flightmakers</h3>
+                <p>Are you looking for the best price on Qatar Airways flights? Look no further! At flightmakers, we offer the best Qatar Airways flight deals, ensuring you get the cheapest flights without compromising on quality.</p>
                 <div className="horizontal-line"></div>
                 <h3 className="text1">Why Choose Qatar Airways for Your Next Trip?</h3>
                 <div className="horizontal-line"></div>
@@ -63,12 +63,12 @@ const QatarFlights = () => {
                 <h3 className="text1">How to Book Cheap Qatar Airways Air Tickets</h3>
                 <div className="horizontal-line"></div>
 
-                <p>Booking cheap Qatar Airways air tickets is easy with Faremakers. Follow these simple steps to secure your reservation:</p>
+                <p>Booking cheap Qatar Airways air tickets is easy with flightmakers. Follow these simple steps to secure your reservation:</p>
                 <ol className="order_list_styling">
                     <li>
                     <span className="airline_span_heading_v2">Visit Our Website</span>
-                    : Go to <a href="http://www.Faremakers.com" target="_blank" className="href_link_typo">
-                            www.Faremakers.com
+                    : Go to <a href="http://www.flightmakers.com" target="_blank" className="href_link_typo">
+                            www.flightmakers.com
                         </a> and select the 'Flights' tab.
                     </li>
                     <li>
@@ -170,7 +170,7 @@ const QatarFlights = () => {
                             :Keep an eye out for special promotions and discounts on Qatar Airways flights.
                         </li>
                         <li>
-                            <span className="airline_span_heading_v2">Use Faremakers</span>:
+                            <span className="airline_span_heading_v2">Use flightmakers</span>:
                             Our platform offers exclusive deals and discounts on Qatar Airways bookings to help you find the best Qatar Airways fares.
                         </li>
                     </ul>
@@ -183,7 +183,7 @@ const QatarFlights = () => {
                 <h3 className="text1">Contact Us</h3>
                 <div className="horizontal-line"></div>
                 <p>Need assistance with your Qatar Airways booking? Our customer support team is here to help. Contact us via phone, email, or live chat for any queries or concerns.</p>
-                <p className="airlines_list_styling">
+                {/* <p className="airlines_list_styling">
                     <ul>
                     <li> 
                         <p className="airline_body_color"><span className="airline_span_heading_v2">Phone</span>: 0311-1147-111</p>
@@ -192,13 +192,13 @@ const QatarFlights = () => {
                         <span className="airline_span_heading_v2">
                         Email  
                         </span>
-                        <a href="mailto:support@faremakers.com" className="airline_body_color"> : support@faremakers.com</a>
+                        <a href="mailto:support@flightmakers.com" className="airline_body_color"> : support@flightmakers.com</a>
                     </li>
                     <li>
                         <p className="airline_body_color" ><span className="airline_span_heading_v2">Head Office</span>: 53-A Street 1, Block E1, Block E1, Gulberg III, Lahore, Punjab</p>
                     </li>
                     </ul>
-                </p>
+                </p> */}
                 <div className="horizontal-line"></div>
                 <h3 className="airline_heading">
                 FAQs about Qatar Airways Booking
@@ -209,7 +209,7 @@ const QatarFlights = () => {
               How do I book a flight with Qatar Airways?  
               </p>
               <p className="faq-answer">
-              You can book a flight with Qatar Airways through our website, Faremakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Qatar Airways flights.
+              You can book a flight with Qatar Airways through our website, flightmakers.com. Simply enter your travel details, search for flights, and choose the one that suits you best to get the best price on Qatar Airways flights.
               </p>
            </div>
             <div className="horizontal-line"></div>
@@ -245,7 +245,7 @@ const QatarFlights = () => {
               Are there any special offers for Qatar Airways flights? 
               </p>
               <p className="faq-answer">
-              Yes, Qatar Airways frequently offers special promotions and discounts. Check the Qatar Airways website or Faremakers for the latest deals on Qatar Airways flights to get the best Qatar Airways flight deals
+              Yes, Qatar Airways frequently offers special promotions and discounts. Check the Qatar Airways website or flightmakers for the latest deals on Qatar Airways flights to get the best Qatar Airways flight deals
               </p>
            </div>
             <div className="horizontal-line"></div>

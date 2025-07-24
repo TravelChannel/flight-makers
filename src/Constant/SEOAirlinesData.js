@@ -1,1170 +1,955 @@
 const SEOAirlinesData = [
-    {
-      id: 1,
-      flightname: "emirates-airline-flights",
-      flightCode:'EK',
-      Departure:"Lahore (LHE)",
-      Arrival:"Dubai (DXB)",
-      mainHeading:'Top Destinations of Emirates',
-      heading1:'Emirates Top Picks',
-      heading2:'Emirates Top Countries',
-      heading3:'Emirates Top Cities',
-      topPicks: [
-        { destination: "Flights to Dubai (DXB)",
-         Departure:"Karachi (KHI)",
-         Arrival:"Dubai (DXB)"
-       },
-        { destination: "Flights to Singapore (SIN)" ,
-          Departure:"Karachi (KHI)",
-          Arrival:"Singapore (SIN)"
-       },
-        { destination: 'Flights to Port Louis (MRU)',
-          Departure:"Karachi (KHI)",
-          Arrival:"Port Louis  (MRU)"
-       },
-        { destination: 'Flights to Hong Kong (HKG)',
-          Departure:"Karachi (KHI)",
-          Arrival:"Hong Kong (HKG)"
-       },
-        { destination: 'Flights to Dublin (DUB)',
-          Departure:"Dubai (DXB)",
-          Arrival:" Dublin (DUB)" 
-      }
-      ],
-      topCountries :[
-        {destination:"Flights to Abu Dhabi (AUH)",
-        Departure:"Jeddah (JED)",
-        Arrival:" Abu Dhabi (AUH)" 
-      },
-        {destination:"Flights to Auckland (AKL)",
-        Departure:"Karachi (KHI)",
-        Arrival:"Auckland (AKL)" },
-        {destination:"Flights to Melbourne (MEL)",
-        Departure:"Islamabad (ISB)",
-        Arrival:" Melbourne (MEL)" 
-      },
-        {destination:"Flights to New Delhi (DEL)",
-        Departure:"Islamabad (ISB)",
-        Arrival:" New Delhi (DEL)" },
-        {destination:"Flights to Toronto (YYZ)",
-        Departure:"Karachi (KHI)",
-        Arrival:" Toronto (YYZ)" },
-      ],
-      topCities :[
-        {destination:"Flights to Sialkot (SKT)",
-        Departure:"Karachi (KHI)",
-        Arrival:" Sialkot (SKT)"
-        },
-        {destination:"Flights to Perth (PER)",
-          Departure:"Karachi (KHI)",
-          Arrival:"Perth (PER)"},
-        {destination:"Flights to Boston (BOS)",
-          Departure:"Karachi (KHI)",
-          Arrival:"Boston (BOS)"},
-        {destination:"Flights to Brisbane (BNE)",
-          Departure:"Karachi (KHI)",
-          Arrival:"Brisbane (BNE)"
-      },
-        {destination:"Flights to Budapest (BUD)",
-        Departure:"Karachi (KHI)",
-        Arrival:" Budapest (BUD)"},
-      ]
-    },
-    {
-        id: 2,
-        flightname: "qatar-airways-flights",
-        flightCode:'QR',
-        Departure:"Lahore (LHE)",
-        Arrival:"London (LHR)",
-        mainHeading:'Qatar Airways Flights',
-        heading1:'Qatar Airways Flights To EUROPE',
-        heading2:'Qatar Airways Flights to AMERICAS',
-        heading3:'Qatar Airways Flights to ASIA',
-        topPicks: [
-          { destination: "Flights to London (LHR)",
-            Departure:"Lahore (LHE)",
-            Arrival:"London (LHR)"},
-          { destination: "Flights to Paris (PAR)",
-            Departure:"Lahore (LHE)",
-            Arrival:"Paris (PAR)"},
-          { destination: 'Flights to Barcelona (BCN)',
-            Departure:"Lahore (LHE)",
-            Arrival:"Barcelona (BCN)" },
-          { destination: 'Flights to Istanbul (IST)' ,
-            Departure:"Lahore (LHE)",
-            Arrival:"Istanbul (IST)"},
-          { destination: 'Flights to Frankfurt (FRA)',
-            Departure:"Lahore (LHE)",
-            Arrival:"Frankfurt (FRA)"}
-        ],
-        topCountries :[
-          { destination: "Flights to New York (NYC)",
-            Departure:"Lahore (LHE)",
-            Arrival:"New York (NYC)"
-        },
-          { destination: "Flights to Boston (BOS)",
-            Departure:"Lahore (LHE)",
-            Arrival:"Boston (BOS)" },
-          { destination: "Flights to Miami (MIA)",
-            Departure:"Lahore (LHE)",
-            Arrival:"Miami (MIA)" },
-          { destination: "Flights to Washington (WAS)",
-            Departure:"Lahore (LHE)",
-            Arrival:"Washington (WAS)" },
-          { destination: "Flights to Chicago (ORD)",
-            Departure:"Lahore (LHE)",
-            Arrival:"Chicago (ORD)" },
-  
-        ],
-        topCities :[
-          {
-            destination: "Flights to Bangkok (BKK)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Bangkok (BKK)"
-          },
-          {
-            destination: "Flights to Karachi (KHI)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Karachi (KHI)"
-          },
-          {
-            destination: "Flights to Kuala Lumpur (KUL)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Kuala Lumpur (KUL)"
-          },
-          {
-            destination: "Flights to Sydney (SYD)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Sydney (SYD)"
-          },
-          {
-            destination: "Flights to Hong Kong (HKG)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Hong Kong (HKG)"
-          },
-        ]
+  {
+    id: 1,
+    flightname: "emirates-airline-flights",
+    flightCode: "EK",
+    Departure: "Lahore (LHE)",
+    Arrival: "London (LHR)",
+    mainHeading: "Top Destinations of Emirates",
+    heading1: "Emirates Top Picks",
+    heading2: "Emirates Top Countries",
+    heading3: "Emirates Top Cities",
+    topPicks: [
+      {
+        destination: "Flights to Dubai (DXB)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Dubai (DXB)",
       },
       {
-        id: 3,
-        flightname: "turkish-airlines-flights",
-        flightCode:'TK',
-        Departure:"Lahore (LHE)",
-        Arrival:"London (LHR)",
-        mainHeading:'Top Destinations of Turkish Airlines',
-        heading1:'Turkish Airlines Flight to UK',
-        heading2:'Turkish Airlines Flights to USA',
-        heading3:'Turkish Airlines flights to KSA',
-        topPicks: [
-          {
-            destination: "Flights to London (LHR)",
-            Departure: "Lahore (LHE)",
-            Arrival: "London (LHR)"
-          },
-          {
-            destination: "Flights to Manchester (MAN)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Manchester (MAN)"
-          },
-          {
-            destination: "Flights to Edinburgh (EDI)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Edinburgh (EDI)"
-          },
-          {
-            destination: "Flights to Birmingham (BHX)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Birmingham (BHX)"
-          }
-        ],
-        topCountries :[
-          {
-            destination: "Flights to New York (JFK)",
-            Departure: "Lahore (LHE)",
-            Arrival: "New York (JFK)"
-          },
-          {
-            destination: "Flights to Washington DC (IAD)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Washington DC (IAD)"
-          },
-          {
-            destination: "Flights to Miami (MIA)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Miami (MIA)"
-          },
-          {
-            destination: "Flights to Boston (BOS)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Boston (BOS)"
-          }
-  
-        ],
-        topCities :[
-          {
-            destination: "Flights to Madina (MED)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Madina (MED)"
-          },
-          {
-            destination: "Flights to Riyadh (RUH)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Riyadh (RUH)"
-          },
-          {
-            destination: "Flights to Jeddah (JED)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Jeddah (JED)"
-          },
-          {
-            destination: "Flights to Dammam (DMM)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Dammam (DMM)"
-          }
-        ]
+        destination: "Flights to Singapore (SIN)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Singapore (SIN)",
       },
       {
-        id: 4,
-        flightname: "pakistan-international-airlines-flights",
-        flightCode:'PK',
-        Departure:"Lahore (LHE)",
-        Arrival:"Dubai (DXB)",
-        mainHeading:'Top Destinations of PIA',
-        heading1:'PIA Domestic Flights',
-        heading2:'PIA Flights to Saudi Arabia',
-        heading3:'PIA Flights to UAE',
-        // subheading1:"PIA Flights to UK",
-        // subheading2:'PIA Flights to Top Cities',
-        // subheading3:"PIA Flights Top Picks",
-        topPicks: [
-          {
-            destination: "Flights to Lahore (LHE)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Lahore (LHE)"
-          },
-          {
-            destination: "Flights to Karachi (KHI)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Karachi (KHI)"
-          },
-          {
-            destination: "Flights to Islamabad (ISB)",
-            Departure: "Peshawar (PEW)",
-            Arrival: "Islamabad (ISB)"
-          },
-          {
-            destination: "Flights to Peshawar (PEW)",
-            Departure: "Dubai (DXB)",
-            Arrival: "Peshawar (PEW)"
-          },
-          {
-            destination: "Flights to Multan (MUX)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Multan (MUX)"
-          }
+        destination: "Flights to Port Louis (MRU)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Port Louis  (MRU)",
+      },
+      {
+        destination: "Flights to Hong Kong (HKG)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Hong Kong (HKG)",
+      },
+      {
+        destination: "Flights to Dublin (DUB)",
+        Departure: "Dubai (DXB)",
+        Arrival: " Dublin (DUB)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Abu Dhabi (AUH)",
+        Departure: "Jeddah (JED)",
+        Arrival: " Abu Dhabi (AUH)",
+      },
+      {
+        destination: "Flights to Auckland (AKL)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Auckland (AKL)",
+      },
+      {
+        destination: "Flights to Melbourne (MEL)",
+        Departure: "Islamabad (ISB)",
+        Arrival: " Melbourne (MEL)",
+      },
+      {
+        destination: "Flights to New Delhi (DEL)",
+        Departure: "Islamabad (ISB)",
+        Arrival: " New Delhi (DEL)",
+      },
+      {
+        destination: "Flights to Toronto (YYZ)",
+        Departure: "Karachi (KHI)",
+        Arrival: " Toronto (YYZ)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Sialkot (SKT)",
+        Departure: "Karachi (KHI)",
+        Arrival: " Sialkot (SKT)",
+      },
+      {
+        destination: "Flights to Perth (PER)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Perth (PER)",
+      },
+      {
+        destination: "Flights to Boston (BOS)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Boston (BOS)",
+      },
+      {
+        destination: "Flights to Brisbane (BNE)",
+        Departure: "Karachi (KHI)",
+        Arrival: "Brisbane (BNE)",
+      },
+      {
+        destination: "Flights to Budapest (BUD)",
+        Departure: "Karachi (KHI)",
+        Arrival: " Budapest (BUD)",
+      },
+    ],
+  },
+  {
+    id: 2,
+    flightname: "qatar-airways-flights",
+    flightCode: "QR",
+    Departure: "Lahore (LHE)",
+    Arrival: "London (LHR)",
+    mainHeading: "Qatar Airways Flights",
+    heading1: "Qatar Airways Flights To EUROPE",
+    heading2: "Qatar Airways Flights to AMERICAS",
+    heading3: "Qatar Airways Flights to ASIA",
+    topPicks: [
+      {
+        destination: "Flights to London (LHR)",
+        Departure: "Lahore (LHE)",
+        Arrival: "London (LHR)",
+      },
+      {
+        destination: "Flights to Paris (PAR)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Paris (PAR)",
+      },
+      {
+        destination: "Flights to Barcelona (BCN)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Barcelona (BCN)",
+      },
+      {
+        destination: "Flights to Istanbul (IST)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Istanbul (IST)",
+      },
+      {
+        destination: "Flights to Frankfurt (FRA)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Frankfurt (FRA)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to New York (NYC)",
+        Departure: "Lahore (LHE)",
+        Arrival: "New York (NYC)",
+      },
+      {
+        destination: "Flights to Boston (BOS)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Boston (BOS)",
+      },
+      {
+        destination: "Flights to Miami (MIA)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Miami (MIA)",
+      },
+      {
+        destination: "Flights to Washington (WAS)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Washington (WAS)",
+      },
+      {
+        destination: "Flights to Chicago (ORD)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Chicago (ORD)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Karachi (KHI)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Karachi (KHI)",
+      },
+      {
+        destination: "Flights to Kuala Lumpur (KUL)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Kuala Lumpur (KUL)",
+      },
+      {
+        destination: "Flights to Sydney (SYD)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Sydney (SYD)",
+      },
+      {
+        destination: "Flights to Hong Kong (HKG)",
+        Departure: "Lahore (LHE)",
+        Arrival: "Hong Kong (HKG)",
+      },
+    ],
+  },
+  {
+    id: 3,
+    flightname: "Lufthansa",
+    flightCode: "LH",
+    Departure: "Newyork (JFK)",
+    Arrival: "Frankfurt (FRA)",
+    mainHeading: "Top Destinations of Lufthansa",
+    heading1: "Lufthansa Flights to Europe",
+    heading2: "Lufthansa Flights to Asia",
+    heading3: "Lufthansa Flights to the Middle East",
+    topPicks: [
+      {
+        destination: "Flights to Frankfurt (FRA)",
+        Departure: "New York (JFK)",
+        Arrival: "Frankfurt (FRA)",
+      },
+      {
+        destination: "Flights to Munich (MUC)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Munich (MUC)",
+      },
+      {
+        destination: "Flights to Berlin (BER)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Berlin (BER)",
+      },
+      {
+        destination: "Flights to Zurich (ZRH)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Zurich (ZRH)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Tokyo (HND)",
+        Departure: "New York (JFK)",
+        Arrival: "Tokyo (HND)",
+      },
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Mumbai (BOM)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Mumbai (BOM)",
+      },
+      {
+        destination: "Flights to Delhi (DEL)",
+        Departure: "Boston (BOS)",
+        Arrival: "Delhi (DEL)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Dubai (DXB)",
+        Departure: "New York (JFK)",
+        Arrival: "Dubai (DXB)",
+      },
+      {
+        destination: "Flights to Tel Aviv (TLV)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Tel Aviv (TLV)",
+      },
+      {
+        destination: "Flights to Istanbul (IST)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Istanbul (IST)",
+      },
+      {
+        destination: "Flights to Cairo (CAI)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Cairo (CAI)",
+      },
+    ],
+  },
+  {
+    id: 4,
+    flightname: "British-Airways",
+    flightCode: "BA",
+    Departure: "New York (JFK)",
+    Arrival: "London (LHR)",
+    mainHeading: "British Airways Top Destinations from the USA",
+    topPicks: [
+      {
+        destination: "Flights to London (LHR)",
+        Departure: "New York (JFK)",
+        Arrival: "London (LHR)",
+      },
+      {
+        destination: "Flights to Paris (CDG)",
+        Departure: "New York (JFK)",
+        Arrival: "Paris (CDG)",
+      },
+      {
+        destination: "Flights to Dubai (DXB)",
+        Departure: "New York (JFK)",
+        Arrival: "Dubai (DXB)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to India (DEL)",
+        Departure: "New York (JFK)",
+        Arrival: "Delhi (DEL)",
+      },
+      {
+        destination: "Flights to Pakistan (ISB)",
+        Departure: "New York (JFK)",
+        Arrival: "Islamabad (ISB)",
+      },
+      {
+        destination: "Flights to South Africa (JNB)",
+        Departure: "New York (JFK)",
+        Arrival: "Johannesburg (JNB)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Tokyo (HND)",
+        Departure: "New York (JFK)",
+        Arrival: "Tokyo (HND)",
+      },
+      {
+        destination: "Flights to Madrid (MAD)",
+        Departure: "New York (JFK)",
+        Arrival: "Madrid (MAD)",
+      },
+      {
+        destination: "Flights to Amsterdam (AMS)",
+        Departure: "New York (JFK)",
+        Arrival: "Amsterdam (AMS)",
+      },
+    ],
+  },
+  {
+    id: 5,
+    flightname: "Singapore-Airlines",
+    flightCode: "SQ",
+    Departure: "San Francisco (SFO)",
+    Arrival: "Singapore (SIN)",
+    mainHeading: "Top Destinations of Singapore Airlines",
+    heading1: "Singapore Airlines Flights to Asia",
+    heading2: "Singapore Airlines Flights to Australia",
+    heading3: "Singapore Airlines Flights to Europe",
+    topPicks: [
+      {
+        destination: "Flights to Singapore (SIN)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Singapore (SIN)",
+      },
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "New York (JFK)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Kuala Lumpur (KUL)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Kuala Lumpur (KUL)",
+      },
+      {
+        destination: "Flights to Manila (MNL)",
+        Departure: "Houston (IAH)",
+        Arrival: "Manila (MNL)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Sydney (SYD)",
+        Departure: "New York (JFK)",
+        Arrival: "Sydney (SYD)",
+      },
+      {
+        destination: "Flights to Melbourne (MEL)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Melbourne (MEL)",
+      },
+      {
+        destination: "Flights to Brisbane (BNE)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Brisbane (BNE)",
+      },
+      {
+        destination: "Flights to Perth (PER)",
+        Departure: "Seattle (SEA)",
+        Arrival: "Perth (PER)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to London (LHR)",
+        Departure: "New York (JFK)",
+        Arrival: "London (LHR)",
+      },
+      {
+        destination: "Flights to Frankfurt (FRA)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Frankfurt (FRA)",
+      },
+      {
+        destination: "Flights to Amsterdam (AMS)",
+        Departure: "Houston (IAH)",
+        Arrival: "Amsterdam (AMS)",
+      },
+      {
+        destination: "Flights to Zurich (ZRH)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Zurich (ZRH)",
+      },
+    ],
+  },
+  {
+    id: 6,
+    flightname: "Air-France",
+    flightCode: "AF",
+    Departure: "New York (JFK)",
+    Arrival: "Paris (CDG)",
+    mainHeading: "Top Destinations of Air France",
+    heading1: "Air France Flights to Europe",
+    heading2: "Air France Flights to Africa",
+    heading3: "Air France Flights to the Middle East",
+    topPicks: [
+      {
+        destination: "Flights to Paris (CDG)",
+        Departure: "New York (JFK)",
+        Arrival: "Paris (CDG)",
+      },
+      {
+        destination: "Flights to Lyon (LYS)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Lyon (LYS)",
+      },
+      {
+        destination: "Flights to Nice (NCE)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Nice (NCE)",
+      },
+      {
+        destination: "Flights to Marseille (MRS)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Marseille (MRS)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Casablanca (CMN)",
+        Departure: "New York (JFK)",
+        Arrival: "Casablanca (CMN)",
+      },
+      {
+        destination: "Flights to Abidjan (ABJ)",
+        Departure: "Atlanta (ATL)",
+        Arrival: "Abidjan (ABJ)",
+      },
+      {
+        destination: "Flights to Nairobi (NBO)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Nairobi (NBO)",
+      },
+      {
+        destination: "Flights to Dakar (DSS)",
+        Departure: "Miami (MIA)",
+        Arrival: "Dakar (DSS)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Beirut (BEY)",
+        Departure: "New York (JFK)",
+        Arrival: "Beirut (BEY)",
+      },
+      {
+        destination: "Flights to Dubai (DXB)",
+        Departure: "Boston (BOS)",
+        Arrival: "Dubai (DXB)",
+      },
+      {
+        destination: "Flights to Tel Aviv (TLV)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Tel Aviv (TLV)",
+      },
+      {
+        destination: "Flights to Doha (DOH)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Doha (DOH)",
+      },
+    ],
+  },
+  {
+    id: 7,
+    flightname: "KLM",
+    flightCode: "KL",
+    Departure: "New York (JFK)",
+    Arrival: "Amsterdam (AMS)",
+    mainHeading: "Top Destinations of KLM",
+    heading1: "KLM Flights to Europe",
+    heading2: "KLM Flights to Africa",
+    heading3: "KLM Flights to Asia",
+    topPicks: [
+      {
+        destination: "Flights to Amsterdam (AMS)",
+        Departure: "New York (JFK)",
+        Arrival: "Amsterdam (AMS)",
+      },
+      {
+        destination: "Flights to Brussels (BRU)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Brussels (BRU)",
+      },
+      {
+        destination: "Flights to Prague (PRG)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Prague (PRG)",
+      },
+      {
+        destination: "Flights to Copenhagen (CPH)",
+        Departure: "Atlanta (ATL)",
+        Arrival: "Copenhagen (CPH)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Johannesburg (JNB)",
+        Departure: "New York (JFK)",
+        Arrival: "Johannesburg (JNB)",
+      },
+      {
+        destination: "Flights to Cape Town (CPT)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Cape Town (CPT)",
+      },
+      {
+        destination: "Flights to Nairobi (NBO)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Nairobi (NBO)",
+      },
+      {
+        destination: "Flights to Lagos (LOS)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Lagos (LOS)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Tokyo (NRT)",
+        Departure: "New York (JFK)",
+        Arrival: "Tokyo (NRT)",
+      },
+      {
+        destination: "Flights to Shanghai (PVG)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Shanghai (PVG)",
+      },
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Houston (IAH)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Jakarta (CGK)",
+        Departure: "Seattle (SEA)",
+        Arrival: "Jakarta (CGK)",
+      },
+    ],
+  },
+  {
+    id: 8,
+    flightname: "Cathay-Pacific",
+    flightCode: "CX",
+    Departure: "Los Angeles (LAX)",
+    Arrival: "Hong Kong (HKG)",
+    mainHeading: "Top Destinations of Cathay Pacific",
+    heading1: "Cathay Pacific Flights to Asia",
+    heading2: "Cathay Pacific Flights to Oceania",
+    heading3: "Cathay Pacific Flights to Europe",
+    topPicks: [
+      {
+        destination: "Flights to Hong Kong (HKG)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Hong Kong (HKG)",
+      },
+      {
+        destination: "Flights to Taipei (TPE)",
+        Departure: "New York (JFK)",
+        Arrival: "Taipei (TPE)",
+      },
+      {
+        destination: "Flights to Manila (MNL)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Manila (MNL)",
+      },
+      {
+        destination: "Flights to Seoul (ICN)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Seoul (ICN)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Sydney (SYD)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Sydney (SYD)",
+      },
+      {
+        destination: "Flights to Melbourne (MEL)",
+        Departure: "New York (JFK)",
+        Arrival: "Melbourne (MEL)",
+      },
+      {
+        destination: "Flights to Auckland (AKL)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Auckland (AKL)",
+      },
+      {
+        destination: "Flights to Brisbane (BNE)",
+        Departure: "Seattle (SEA)",
+        Arrival: "Brisbane (BNE)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to London (LHR)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "London (LHR)",
+      },
+      {
+        destination: "Flights to Frankfurt (FRA)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Frankfurt (FRA)",
+      },
+      {
+        destination: "Flights to Zurich (ZRH)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Zurich (ZRH)",
+      },
+      {
+        destination: "Flights to Milan (MXP)",
+        Departure: "New York (JFK)",
+        Arrival: "Milan (MXP)",
+      },
+    ],
+  },
+  {
+    id: 9,
+    flightname: "Etihad-Airways",
+    flightCode: "EY",
+    Departure: "NewYork (JFK)",
+    Arrival: "Abu Dhabi (AUH)",
+    mainHeading: "Top Destinations of Etihad Airways from the USA",
+    heading1: "Etihad Airways Top Picks",
+    heading2: "Etihad Airways Top Countries",
+    heading3: "Etihad Airways Top Cities",
+    topPicks: [
+      {
+        destination: "Flights to Abu Dhabi (AUH)",
+        Departure: "New York (JFK)",
+        Arrival: "Abu Dhabi (AUH)",
+      },
+      {
+        destination: "Flights to Mumbai (BOM)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Mumbai (BOM)",
+      },
+      {
+        destination: "Flights to Cairo (CAI)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Cairo (CAI)",
+      },
+      {
+        destination: "Flights to Manila (MNL)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Manila (MNL)",
+      },
+      {
+        destination: "Flights to Islamabad (ISB)",
+        Departure: "New York (JFK)",
+        Arrival: "Islamabad (ISB)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to UAE (AUH)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Abu Dhabi (AUH)",
+      },
+      {
+        destination: "Flights to India (DEL)",
+        Departure: "New York (JFK)",
+        Arrival: "Delhi (DEL)",
+      },
+      {
+        destination: "Flights to Pakistan (KHI)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Karachi (KHI)",
+      },
+      {
+        destination: "Flights to Philippines (MNL)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Manila (MNL)",
+      },
+      {
+        destination: "Flights to Egypt (CAI)",
+        Departure: "New York (JFK)",
+        Arrival: "Cairo (CAI)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Lahore (LHE)",
+        Departure: "New York (JFK)",
+        Arrival: "Lahore (LHE)",
+      },
+      {
+        destination: "Flights to Jakarta (CGK)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Jakarta (CGK)",
+      },
+      {
+        destination: "Flights to Colombo (CMB)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Colombo (CMB)",
+      },
+      {
+        destination: "Flights to Jeddah (JED)",
+        Departure: "New York (JFK)",
+        Arrival: "Jeddah (JED)",
+      },
+    ],
+  },
+  {
+    id: 10,
+    flightname: "Japan-Airlines",
+    flightCode: "JL",
+    Departure: "Los Angeles (LAX)",
+    Arrival: "Tokyo (HND)",
+    mainHeading: "Top Destinations of Japan Airlines",
+    heading1: "Japan Airlines Flights to Japan",
+    heading2: "Japan Airlines Flights to Asia",
+    heading3: "Japan Airlines Flights to Oceania",
+    topPicks: [
+      {
+        destination: "Flights to Tokyo (HND)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Tokyo (HND)",
+      },
+      {
+        destination: "Flights to Osaka (KIX)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Osaka (KIX)",
+      },
+      {
+        destination: "Flights to Nagoya (NGO)",
+        Departure: "New York (JFK)",
+        Arrival: "Nagoya (NGO)",
+      },
+      {
+        destination: "Flights to Fukuoka (FUK)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Fukuoka (FUK)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Seoul (ICN)",
+        Departure: "Seattle (SEA)",
+        Arrival: "Seoul (ICN)",
+      },
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to Taipei (TPE)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Taipei (TPE)",
+      },
+      {
+        destination: "Flights to Manila (MNL)",
+        Departure: "New York (JFK)",
+        Arrival: "Manila (MNL)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Sydney (SYD)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Sydney (SYD)",
+      },
+      {
+        destination: "Flights to Melbourne (MEL)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Melbourne (MEL)",
+      },
+      {
+        destination: "Flights to Brisbane (BNE)",
+        Departure: "New York (JFK)",
+        Arrival: "Brisbane (BNE)",
+      },
+      {
+        destination: "Flights to Auckland (AKL)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Auckland (AKL)",
+      },
+    ],
+  },
+  {
+    id: 11,
+    flightname: "Qantas",
+    flightCode: "QF",
+    Departure: "Los Angeles (LAX)",
+    Arrival: "Sydney (SYD)",
+    mainHeading: "Top Destinations of Qantas",
+    heading1: "Qantas Flights to Australia",
+    heading2: "Qantas Flights to Asia",
+    heading3: "Qantas Flights to the Pacific",
+    topPicks: [
+      {
+        destination: "Flights to Sydney (SYD)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Sydney (SYD)",
+      },
+      {
+        destination: "Flights to Melbourne (MEL)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Melbourne (MEL)",
+      },
+      {
+        destination: "Flights to Brisbane (BNE)",
+        Departure: "Dallas (DFW)",
+        Arrival: "Brisbane (BNE)",
+      },
+      {
+        destination: "Flights to Perth (PER)",
+        Departure: "New York (JFK)",
+        Arrival: "Perth (PER)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to Tokyo (NRT)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Tokyo (NRT)",
+      },
+      {
+        destination: "Flights to Singapore (SIN)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Singapore (SIN)",
+      },
+      {
+        destination: "Flights to Jakarta (CGK)",
+        Departure: "New York (JFK)",
+        Arrival: "Jakarta (CGK)",
+      },
+      {
+        destination: "Flights to Bangkok (BKK)",
+        Departure: "Seattle (SEA)",
+        Arrival: "Bangkok (BKK)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Auckland (AKL)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Auckland (AKL)",
+      },
+      {
+        destination: "Flights to Wellington (WLG)",
+        Departure: "San Francisco (SFO)",
+        Arrival: "Wellington (WLG)",
+      },
+      {
+        destination: "Flights to Christchurch (CHC)",
+        Departure: "New York (JFK)",
+        Arrival: "Christchurch (CHC)",
+      },
+      {
+        destination: "Flights to Nadi (NAN)",
+        Departure: "Dallas (DFW)",
+        Arrival: "Nadi (NAN)",
+      },
+    ],
+  },
+  {
+    id: 12,
+    flightname: "Turkish-Airlines",
+    flightCode: "TK",
+    Departure: "New York (JFK)",
+    Arrival: "Istanbul (IST)",
+    mainHeading: "Top Destinations of Turkish Airlines from the USA",
+    heading1: "Turkish Airlines Flights to Europe",
+    heading2: "Turkish Airlines Flights to Middle East & Asia",
+    heading3: "Turkish Airlines Flights to Africa",
+    topPicks: [
+      {
+        destination: "Flights to Istanbul (IST)",
+        Departure: "New York (JFK)",
+        Arrival: "Istanbul (IST)",
+      },
+      {
+        destination: "Flights to Athens (ATH)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Athens (ATH)",
+      },
+      {
+        destination: "Flights to Rome (FCO)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Rome (FCO)",
+      },
+      {
+        destination: "Flights to Barcelona (BCN)",
+        Departure: "Houston (IAH)",
+        Arrival: "Barcelona (BCN)",
+      },
+    ],
+    topCountries: [
+      {
+        destination: "Flights to India (DEL)",
+        Departure: "New York (JFK)",
+        Arrival: "Delhi (DEL)",
+      },
+      {
+        destination: "Flights to Pakistan (LHE)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Lahore (LHE)",
+      },
+      {
+        destination: "Flights to Thailand (BKK)",
+        Departure: "Los Angeles (LAX)",
+        Arrival: "Bangkok (BKK)",
+      },
+      {
+        destination: "Flights to UAE (DXB)",
+        Departure: "New York (JFK)",
+        Arrival: "Dubai (DXB)",
+      },
+    ],
+    topCities: [
+      {
+        destination: "Flights to Cairo (CAI)",
+        Departure: "New York (JFK)",
+        Arrival: "Cairo (CAI)",
+      },
+      {
+        destination: "Flights to Nairobi (NBO)",
+        Departure: "Washington DC (IAD)",
+        Arrival: "Nairobi (NBO)",
+      },
+      {
+        destination: "Flights to Casablanca (CMN)",
+        Departure: "Chicago (ORD)",
+        Arrival: "Casablanca (CMN)",
+      },
+      {
+        destination: "Flights to Tunis (TUN)",
+        Departure: "Houston (IAH)",
+        Arrival: "Tunis (TUN)",
+      },
+    ],
+  },
+];
 
-        ],
-        topCountries :[
-          {
-            destination: "Flights to Jeddah (JED)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Jeddah (JED)"
-          },
-          {
-            destination: "Flights to Riyadh (RUH)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Riyadh (RUH)"
-          },
-          {
-            destination: "Flights to Madina (MED)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Madina (MED)"
-          },
-          {
-            destination: "Flights to Dammam (DMM)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dammam (DMM)"
-          },
-          {
-            destination: "Flights to Dhahran (DHA)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dhahran (DHA)"
-          }
-          
-  
-        ],
-        topCities :[
-          {
-            destination: "Flights to Dubai (DXB)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dubai (DXB)"
-          },
-          {
-            destination: "Flights to Abu Dhabi (AUH)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Abu Dhabi (AUH)"
-          },
-          {
-            destination: "Flights to Sharjah (SHJ)",
-            Departure: "Peshawar (PEW)",
-            Arrival: "Sharjah (SHJ)"
-          },
-          {
-            destination: "Flights to Al Ain (AAN)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Al Ain (AAN)"
-          },
-          {
-            destination: "Flights to Ras Al Khaimah (RKT)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Ras Al Khaimah (RKT)"
-          }
-
-        ],
-        // subheading1data :[
-        //     {destination:"Flights to London(LON)"},
-        //     {destination:"Flights to Manchester(MAN)"},
-        //     {destination:"Flights to Brimingham(BHX)"},
-        //   ],
-        //   subheading2data :[
-        //     {destination:"Flights to Toronto(YTO)"},
-        //     {destination:"Flights to Beijing(BJS)"},
-        //     {destination:"Flights to Paris(PAR)"},
-        //   ],
-        //   subheading3data :[
-        //     {destination:"Flights to Najaf(NJF)"},
-        //     {destination:"Flights to Muscat(MCT)"},
-        //     {destination:"Flights to Doha(DOH)"},
-
-        //   ],
-      },
-      {
-        id:5,
-        flightname: "oman-air-flights",
-        flightCode:'WY',
-        Departure:"Lahore (LHE)",
-        Arrival:"Muscat (MCT)",
-        mainHeading:'Top Destinations of Oman Air',
-        heading1:'Oman Air Flights To GULF',
-        heading2:'Oman Air Flights to SOUTH ASIA',
-        heading3:'Oman Air Flights to EUROPE',
-        topPicks: [
-          {
-            destination: "Flights to Muscat (MCT)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Muscat (MCT)"
-          },
-          {
-            destination: "Flights to Kuwait City (KWI)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Kuwait City (KWI)"
-          },
-          {
-            destination: "Flights to Doha (DOH)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Doha (DOH)"
-          },
-          {
-            destination: "Flights to Riyadh (RUH)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Riyadh (RUH)"
-          },
-          {
-            destination: "Flights to Dubai (DXB)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Dubai (DXB)"
-          }
-        ],
-        topCountries :[
-          {
-            destination: "Flights to Dhaka (DAC)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dhaka (DAC)"
-          },
-          {
-            destination: "Flights to Mumbai (BOM)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Mumbai (BOM)"
-          },
-          {
-            destination: "Flights to Islamabad (ISB)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Islamabad (ISB)"
-          },
-          {
-            destination: "Flights to Kathmandu (KTM)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Kathmandu (KTM)"
-          },
-          {
-            destination: "Flights to Colombo (CMB)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Colombo (CMB)"
-          }
-  
-        ],
-        topCities :[
-          {
-            destination: "Flights to Paris (CDG)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Paris (CDG)"
-          },
-          {
-            destination: "Flights to Berlin (TXL)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Berlin (TXL)"
-          },
-          {
-            destination: "Flights to London (LHR)",
-            Departure: "Lahore (LHE)",
-            Arrival: "London (LHR)"
-          },
-          {
-            destination: "Flights to Rome (FCO)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Rome (FCO)"
-          },
-          {
-            destination: "Flights to Zurich (ZRH)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Zurich (ZRH)"
-          }
-        ]
-      },
-      {
-        id: 6,
-        flightname: "fly-dubai-flights",
-        flightCode:'FZ',
-        Departure:"Karachi (KHI)",
-        Arrival:"Dubai (DXB)",
-        mainHeading:'Top Destinations of FlyDubai',
-        heading1:'FlyDubai Top Picks',
-        heading2:'FlyDubai Top Countries',
-        heading3:'FlyDubai Top Cities',
-        topPicks: [
-          {
-            destination: "Flights to Dubai(DXB)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dubai (DXB)"
-          },
-          {
-            destination: "Flights to Singapore (SIN)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Singapore (SIN)"
-          },
-          {
-            destination: "Flights to Mauritius (MRU)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Mauritius (MRU)"
-          },
-          {
-            destination: "Flights to Hong Kong (HKG)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Hong Kong (HKG)"
-          },
-          {
-            destination: "Flights to Dublin (DUB)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Dublin (DUB)"
-          }
-        ],
-        topCountries :[
-          {
-            destination: "Flights to United Arab Emirates (DXB)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Dubai (DXB)"
-          },
-          {
-            destination: "Flights to New Zealand (AKL)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Auckland (AKL)"
-          },
-          {
-            destination: "Flights to Australia (SYD)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Sydney (SYD)"
-          },
-          {
-            destination: "Flights to India (DEL)",
-            Departure: "Karachi (KHI)",
-            Arrival: "New Delhi (DEL)"
-          },
-          {
-            destination: "Flights to Canada (YYZ)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Toronto (YYZ)"
-          }
-  
-        ],
-        topCities :[
-          {
-            destination: "Flights to Sialkot (SKT)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Sialkot (SKT)"
-          },
-          {
-            destination: "Flights to Perth (PER)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Perth (PER)"
-          },
-          {
-            destination: "Flights to Boston (BOS)",
-            Departure: "Karachi (KHI)",
-            Arrival: "Boston (BOS)"
-          },
-          {
-            destination: "Flights to Brisbane (BNE)",
-            Departure: "Lahore (LHE)",
-            Arrival: "Brisbane (BNE)"
-          },
-          {
-            destination: "Flights to Budapest (BUD)",
-            Departure: "Islamabad (ISB)",
-            Arrival: "Budapest (BUD)"
-          }
-        ]
-      },
-      {
-        id: 7,
-        flightname: "etihad-airways-flights",
-        flightCode:'EY',
-        Departure:"Lahore (LHE)",
-        Arrival:"London (LHR)",
-        mainHeading:'Top Destinations of Etihad Airways',
-        heading1:'Etihad Airways Top Picks',
-        heading2:'Etihad Airways Top Countries',
-        heading3:'Etihad Airways Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to London (LON)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LON)'
-          },
-          {
-            destination: 'Flights to Toronto (YTO)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Toronto (YTO)'
-          },
-          {
-            destination: 'Flights to Beijing (BJS)',
-            Departure: 'Dubai (DXB)',
-            Arrival: 'Beijing (BJS)'
-          },
-          {
-            destination: 'Flights to New York (NYC)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'New York (NYC)'
-          },
-          {
-            destination: 'Flights to Istanbul (IST)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Istanbul (IST)'
-          }
-          ],
-      topCountries: [
-        {
-          destination: 'Flights to UAE (DXB)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Dubai (DXB)'
-        },
-        {
-          destination: 'Flights to UK (LON)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'London (LON)'
-        },
-        {
-          destination: 'Flights to Saudi Arabia (JED)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Jeddah (JED)'
-        },
-        {
-          destination: 'Flights to India (DEL)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'New Delhi (DEL)'
-        },
-        {
-          destination: 'Flights to Australia (SYD)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Sydney (SYD)'
-        }
-          ],
-       topCities: [
-        {
-          destination: 'Flights to Lahore (LHE)',
-          Departure: 'Karachi (KHI)',
-          Arrival: 'Lahore (LHE)'
-        },
-        {
-          destination: 'Flights to Manila (MNL)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Manila (MNL)'
-        },
-        {
-          destination: 'Flights to Medina (MED)',
-          Departure: 'Karachi (KHI)',
-          Arrival: 'Medina (MED)'
-        },
-        {
-          destination: 'Flights to Singapore (SIN)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Singapore (SIN)'
-        },
-        {
-          destination: 'Flights to Manchester (MAN)',
-          Departure: 'Lahore (LHE)',
-          Arrival: 'Manchester (MAN)'
-        }
-          ],
-      },
-      
-      {
-        id: 8,
-        flightname: "air-sial-flights",
-        flightCode:'PF',
-        Departure:"Lahore (LHE)",
-        Arrival:"Jeddah (JED)",
-        mainHeading:'Air Sial Top Destinations',
-        heading1:'Air Sial Top Picks',
-        heading2:'Air Sial Top Countries',
-        heading3:'Air Sial Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to Lahore',
-            Departure: 'Jeddah (JED)',
-            Arrival: 'Lahore (LHE)'
-          },
-          {
-            destination: 'Flights to Karachi',
-            Departure: 'Islamabad (ISB)',
-            Arrival: 'Karachi (KHI)'
-          }
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Islamabad',
-            Departure: 'Karachi (KHI)',
-            Arrival: 'Islamabad (ISB)'
-          },
-          {
-            destination: 'Flights to Sialkot',
-            Departure: 'Karachi (KHI)',
-            Arrival: 'Sialkot (SKT)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Peshawar',
-            Departure: 'Karachi (KHI)',
-            Arrival: 'Peshawar (PEW)'
-          },
-          {
-            destination: 'Flights to Sabiha',
-            Departure: 'Karachi (KHI)',
-            Arrival: 'Sabiha (SAW)'
-          }
-        ],
-      },
-      {
-        id: 9,
-        flightname: "virgin-atlantic-flights",
-        flightCode:'VS',
-        Departure:"Boston (BOS)",
-        Arrival:"London (LHR)",
-        mainHeading:'Virgin Atlantic Airways Top Destinations',
-        heading1:'Virgin Atlantic Top Picks',
-        heading2:'Virgin Atlantic Top Countries',
-        heading3:'Virgin Atlantic Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to London (LHR)',
-            Departure: 'Islamabad (ISB)',
-            Arrival: 'London (LHR)'
-          },
-          {
-            destination: 'Flights to Manchester (MAN)',
-            Departure: 'Islamabad (ISB)',
-            Arrival: 'Manchester (MAN)'
-          },
-          {
-            destination: 'Flights to Los Angeles (LAX)',
-            Departure: 'Islamabad (ISB)',
-            Arrival: 'Los Angeles (LAX)'
-          }
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Birmingham (BHX)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Birmingham (BHX)'
-          },
-          {
-            destination: 'Flights to New York (JFK)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'New York (JFK)'
-          },
-          {
-            destination: 'Flights to Shanghai (PVG)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Shanghai (PVG)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Miami (MIA)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Miami (MIA)'
-          },
-          {
-            destination: 'Flights to Boston (BOS)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Boston (BOS)'
-          },
-          {
-            destination: 'Flights to Dubai (DXB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Dubai (DXB)'
-          }
-        ],
-      },
-      {
-        id: 10,
-        flightname: "thai-airways-flights",
-        flightCode: 'TG',
-        Departure:"Lahore (LHE)",
-        Arrival:"London (LHR)",
-        mainHeading: 'Top Destinations of Thai Airline',
-        heading1: 'Thai Airline Top Picks',
-        heading2: 'Thai Airline Top Countries',
-        heading3: 'Thai Airline Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to Bangkok (BKK)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Bangkok (BKK)'
-          },
-          {
-            destination: 'Flights to London (LON)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LON)'
-          },
-          {
-            destination: 'Flights to Muscat (MCT)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Muscat (MCT)'
-          },
-          {
-            destination: 'Flights to Dubai (DXB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Dubai (DXB)'
-          },
-          {
-            destination: 'Flights to Beijing (BJS)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Beijing (BJS)'
-          }
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Sydney (SYD)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Sydney (SYD)'
-          },
-          {
-            destination: 'Flights to Beijing (BJS)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Beijing (BJS)'
-          },
-          {
-            destination: 'Flights to Karachi (KHI)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Karachi (KHI)'
-          },
-          {
-            destination: 'Flights to New Delhi (DEL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'New Delhi (DEL)'
-          },
-          {
-            destination: 'Flights to Frankfurt (FRA)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Frankfurt (FRA)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Paris (PAR)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Paris (PAR)'
-          },
-          {
-            destination: 'Flights to Oslo (OSL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Oslo (OSL)'
-          },
-          {
-            destination: 'Flights to Singapore (SIN)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Singapore (SIN)'
-          },
-          {
-            destination: 'Flights to Kuala Lumpur (KUL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Kuala Lumpur (KUL)'
-          },
-          {
-            destination: 'Flights to Jakarta (JKT)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Jakarta (JKT)'
-          }
-        ],
-      },
-      {
-        id: 11,
-        flightname: "kuwait-airways-flights",
-        flightCode: 'KU',
-        Departure:"Lahore (LHE)",
-        Arrival:"Kuwait City (KWI)",
-        mainHeading: 'Top Destinations of Kuwait Airways',
-        heading1: 'Kuwait Airways Top Picks',
-        heading2: 'Kuwait Airways Top Countries',
-        heading3: 'Kuwait Airways Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to London (LON)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LON)'
-          },
-          {
-            destination: 'Flights to New York (NYC)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'New York (NYC)'
-          },
-          {
-            destination: 'Flights to Milan (MIL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Milan (MIL)'
-          }
-          
-
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Frankfurt (FRA)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Frankfurt (FRA)'
-          },
-          {
-            destination: 'Flights to Istanbul (IST)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Istanbul (IST)'
-          },
-          {
-            destination: 'Flights to Rome (FCO)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Rome (FCO)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Baku (GYD)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Baku (GYD)'
-          },
-          {
-            destination: 'Flights to Jeddah (JED)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Jeddah (JED)'
-          },
-          {
-            destination: 'Flights to Bangkok (BKK)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Bangkok (BKK)'
-          }
-        ],
-      },
-      {
-        id: 12,
-        flightname: "china-southern-airlines-flights",
-        flightCode: 'CZ',
-        Departure:"Guangzhou (CAN)",
-        Arrival:"Sydney (SYD)",
-        mainHeading: 'China Southern Airlines Top Destinations',
-        heading1: 'China Southern Top Picks',
-        heading2: 'China Southern Top Countries',
-        heading3: 'China Southern Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to GuangZhou (CAN)',
-            Departure: 'Islamabad (ISB)',
-            Arrival: 'GuangZhou (CAN)'
-          },
-          {
-            destination: 'Flights to BeiJing (PEK)',
-            Departure: ' Dubai (DXB)',
-            Arrival: 'BeiJing (PEK)'
-          },
-          {
-            destination: 'Flights to HangZhou (HGH)',
-            Departure: 'Dubai (DXB)',
-            Arrival: 'HangZhou (HGH)'
-          }
-          
-
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Urumqi (URC)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Urumqi (URC)'
-          },
-          {
-            destination: 'Flights to Shanghai (PVG)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Shanghai (PVG)'
-          },
-          {
-            destination: 'Flights to Xian Xianyang (XIY)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Xian Xianyang (XIY)'
-          }
-
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Los Angeles (LAX)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Los Angeles (LAX)'
-          },
-          {
-            destination: 'Flights to London (LHR)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LHR)'
-          },
-          {
-            destination: 'Flights to Singapore (SIN)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Singapore (SIN)'
-          }
-
-        ],
-      },
-      {
-        id: 13,
-        flightname: "saudi-arabian-airline-flights",
-        flightCode: 'SV',
-        Departure:" Jeddah (JED)",
-        Arrival:"Riyadh (RUH)",
-        mainHeading: 'Saudi Arabian Airlines Top Destinations',
-        heading1: 'Saudi Arabian  Top Picks',
-        heading2: 'Saudi Arabian  Top Countries',
-        heading3: 'Saudi Arabian  Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to Jeddah (JED)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Jeddah (JED)'
-          },
-          {
-            destination: 'Flights to Medina (MED)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Medina (MED)'
-          },
-          {
-            destination: 'Flights to Riyadh (RUH)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Riyadh (RUH)'
-          }
-
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Dammam (DMM)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Dammam (DMM)'
-          },
-          {
-            destination: 'Flights to Madinah (MED)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Madinah (MED)'
-          },
-          {
-            destination: 'Flights to Abha (AHB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Abha (AHB)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to London (LON)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LON)'
-          },
-          {
-            destination: 'Flights to Frankfurt (FRA)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Frankfurt (FRA)'
-          },
-          {
-            destination: 'Flights to Johannesburg (JNB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Johannesburg (JNB)'
-          }
-
-        ],
-      },
-      {
-        id: 14,
-        flightname: "air-arabia-flights",
-        flightCode:'SV',
-        Departure:"Lahore (LHE)",
-        Arrival:"Dubai (DXB)",
-        mainHeading: 'Air Arabia Airlines Top Destinations',
-        heading1: 'Air Arabia  Top Picks',
-        heading2: 'Air Arabia  Top Countries',
-        heading3: 'Air Arabia  Top Cities',
-        topPicks: [
-          {
-            destination: 'Flights to Dubai (DXB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Dubai (DXB)'
-          },
-          {
-            destination: 'Flights to Abu Dhabi (AUH)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Abu Dhabi (AUH)'
-          }
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Ras Al Khaimah (RKT)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Ras Al Khaimah (RKT)'
-          },
-          {
-            destination: 'Flights to Al Ain (AAN)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Al Ain (AAN)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Jizan (GIZ)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Jizan (GIZ)'
-          },
-          {
-            destination: 'Flights to Sabiha (SAW)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Sabiha (SAW)'
-          }
-        ],
-      },
-      {
-        id: 15,
-        flightname: "air-malindo-flights",
-        flightCode: 'OD',
-        Departure:"Lahore (LHE)",
-        Arrival:"Kuala Lumpur (KUL)",
-        mainHeading: 'Air Malindo Airlines Top Destinations',
-        topPicks: [
-          {
-            destination: 'Flights to Kuala Lumpur (KUL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Kuala Lumpur (KUL)'
-          },
-          {
-            destination: 'Flights to Bangkok (BKK)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Bangkok (BKK)'
-          }
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Melbourne (MEL)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Melbourne (MEL)'
-          },
-          {
-            destination: 'Flights to Colombo (CMB)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Colombo (CMB)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Jakarta (JKT)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Jakarta (JKT)'
-          },
-          {
-            destination: 'Flights to Singapore (SIN)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Singapore (SIN)'
-          }
-        ],
-      },
-      {
-        id: 16,
-        flightname: "british-airways-flights",
-        flightCode: 'BA',
-        Departure:"Lahore (LHE)",
-        Arrival:"London (LHR)",
-        mainHeading: 'British Airways Top Destinations',
-        topPicks: [
-          {
-            destination: 'Flights to London (LHR)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'London (LHR)'
-          },
-          {
-            destination: 'Flights to New York (JFK)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'New York (JFK)'
-          },
-          {
-            destination: 'Flights to Toronto (YYZ)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Toronto (YYZ)'
-          }
-
-        ],
-        topCountries: [
-          {
-            destination: 'Flights to Washington (IAD)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Washington (IAD)'
-          },
-          {
-            destination: 'Flights to Chicago (ORD)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Chicago (ORD)'
-          },
-          {
-            destination: 'Flights to Boston (BOS)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Boston (BOS)'
-          }
-        ],
-        topCities: [
-          {
-            destination: 'Flights to Los Angeles (LAX)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Los Angeles (LAX)'
-          },
-          {
-            destination: 'Flights to Frankfurt (FRA)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Frankfurt (FRA)'
-          },
-          {
-            destination: 'Flights to Rome (FCO)',
-            Departure: 'Lahore (LHE)',
-            Arrival: 'Rome (FCO)'
-          }
-
-        ],
-      },
-     
-    
-  ];
-
-  export default  SEOAirlinesData;
+export default SEOAirlinesData;

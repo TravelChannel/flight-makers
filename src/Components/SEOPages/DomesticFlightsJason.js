@@ -62,7 +62,7 @@ const DomesticFlightsJason = [
         section1:[
             {
                 heading:'Buy Cheap Air Tickets Online',
-                Paragraph:  "<p>Finding affordable flights from Lahore to Quetta is simple with , <a href=\"https://www.faremakers.com/\" target=\"_blank\" style=\"color: blue;\">Faremakers.</a>,Our platform allows you to easily compare various flight options, helping you secure the best deals on discounted air tickets. Whether you are traveling for business or leisure, Faremakers provides the most cost-effective travel solutions.</p>"
+                Paragraph:  "<p>Finding affordable flights from Lahore to Quetta is simple with , <a href=\"https://www.flightmakers.com/\" target=\"_blank\" style=\"color: blue;\">Faremakers.</a>,Our platform allows you to easily compare various flight options, helping you secure the best deals on discounted air tickets. Whether you are traveling for business or leisure, Faremakers provides the most cost-effective travel solutions.</p>"
             }
         ],
         section2:[
@@ -89,7 +89,7 @@ const DomesticFlightsJason = [
                     },
                     {
                         question:'How long does it take to fly from Lahore to Quetta?',
-                        answer: "<p>Finding affordable flights from Lahore to Quetta is simple with , <a href=\"https://www.faremakers.com/flights/cheap-flights-from-lahore-to-quetta\" target=\"_blank\" style=\"color: blue;\">Lahore to Quetta</a>is approximately 1.5 hours. Air travel is the fastest and most efficient way to cover this distance, saving you valuable time.</p>"
+                        answer: "<p>Finding affordable flights from Lahore to Quetta is simple with , <a href=\"https://www.flightmakers.com/flights/cheap-flights-from-lahore-to-quetta\" target=\"_blank\" style=\"color: blue;\">Lahore to Quetta</a>is approximately 1.5 hours. Air travel is the fastest and most efficient way to cover this distance, saving you valuable time.</p>"
                     },
                     {
                         question:'Are there direct flights from Lahore to Quetta?',

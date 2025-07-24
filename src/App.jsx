@@ -61,8 +61,7 @@ const App = () => {
           payload: { userData },
         },
       } = response;
-      console.log("status", status);
-      console.log("userData", userData);
+      // console.log("userData", userData);
       if (status === "SUCCESS") {
         // if(response)
         console.log("User is logged in");
@@ -90,7 +89,7 @@ const App = () => {
     try {
       const responce = await GetGclidID(gclidValue);
       const GclidID = responce[0].loggID;
-      console.log("GclidID", GclidID);
+      // console.log("GclidID", GclidID);
       setGclid(gclidValue);
       setGclidID(GclidID);
     } catch (error) {
@@ -100,34 +99,34 @@ const App = () => {
 
   useEffect(() => {
     const gclidValue = GetQueryParam("gclid");
-    console.log("gclidValue-v1", gclidValue);
+    // console.log("gclidValue-v1", gclidValue);
     if (gclidValue) {
       gclidApiResp(gclidValue);
     }
   }, []);
+
+
+  // ----------------Disabeling AirSial And Sabre Auth TOkens-------------------------
+
   // useEffect(() => {
-  //   fetchData();
-  // }, [userVerName]);
+  //   const currentDate = new Date();
+  //   const storedData = JSON.parse(localStorage.getItem("AuthToken"));
+  //   requestAirsialToken();
+  //   if (!storedData) {
+  //     requestFetchAuthToken();
+  //   } else {
+  //     if (storedData.expireAuthTokenDate) {
+  //       const futureDate = new Date(storedData.expireAuthTokenDate);
+  //       if (futureDate < currentDate) {
+  //         requestFetchAuthToken();
+  //       }
+  //     } else {
+  //       requestFetchAuthToken();
+  //     }
+  //   }
+  // }, []);
 
-  // -----------------------------------------
-
-  useEffect(() => {
-    const currentDate = new Date();
-    const storedData = JSON.parse(localStorage.getItem("AuthToken"));
-    requestAirsialToken();
-    if (!storedData) {
-      requestFetchAuthToken();
-    } else {
-      if (storedData.expireAuthTokenDate) {
-        const futureDate = new Date(storedData.expireAuthTokenDate);
-        if (futureDate < currentDate) {
-          requestFetchAuthToken();
-        }
-      } else {
-        requestFetchAuthToken();
-      }
-    }
-  }, []);
+  // -----------------------------------------------------------
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);

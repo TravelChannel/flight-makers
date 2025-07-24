@@ -68,13 +68,13 @@ const Header = () => {
                       className="imgView"
                       alt="FM-LOGO"
                     />
-                    <span id="logotext" className="colorBlue d-block">
-                      Travel Channel Int'l (Pvt).Ltd
-                    </span>
+                    {/* <span id="logotext" className="colorBlue d-block">
+                      
+                    </span> */}
                   </Link>
                 </li>
                 <li className={`${isScrolled ? "showText" : "hideIndex"}`}>
-                  <a href="https://www.faremakers.com/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.flightmakers.com/" target="_blank" rel="noopener noreferrer">
                     <img src={image.planelogo} className="w-35" alt="FLIGHTS-LOGO" />
                     <br />
                     <span className="iconText menuItem">Flights</span>
@@ -128,13 +128,12 @@ const Header = () => {
               <div className="d-block mobileLogo">
                 <Link to={'/'} className="hdrLogo">
                   <img src={image.default} alt="FM-LOGO" />
-                  <div id="logotext">Travel Channel Int'l (Pvt).Ltd</div>
+                  {/* <div id="logotext"></div> */}
                 </Link>
               </div>
-              <div className="uanNum">
-                <i className="glyphicon glyphicon-phone-alt"></i>UAN : 03 111
-                147 111
-              </div>
+              {/* <div className="uanNum">
+                <i className="glyphicon glyphicon-phone-alt"></i>UAN : +1 (484) 312-1100
+              </div> */}
               <div className="CustMenuIcon inlineDiv">
                 <MenuIcon
                   className="mob_menu_color"
@@ -148,7 +147,7 @@ const Header = () => {
                     <div className="d-flex justify-content-between p-3">
                         <Link to={'/'} className="hdrLogomob ">
                             <img src={image.default} className="imgView" alt="FM-LOGO" width="120px"/>
-                            <span id="logotext" className="colorBlue d-block">Travel Channel Int'l (Pvt).Ltd</span>
+                            {/* <span id="logotext" className="colorBlue d-block"></span> */}
                         </Link>
                         <div className="menu_cross_icon">
                                 <CloseIcon onClick={closeMenu} />

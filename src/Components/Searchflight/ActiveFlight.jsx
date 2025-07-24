@@ -1,13 +1,12 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect, useMemo } from 'react';
 import StopFlightDetails from './StopFlightDetails';
-// import { elapsedTimeFunct, checkTimeToNextDate } from '../../helpers/formatdata';
 import OneWay from './Comman/OneWay';
 import Round from './Comman/Round';
 import Multi from './Comman/Multi';
 import { useItemsToShow } from './Comman/Context';
 import airlinesData from '../../Constant/airlineName';
 import { useNavigate } from 'react-router';
-import { elapsedTimeFunct, airportNameFunct, cityNameFunct, calculateDuration, formatCompleteDate,changeDateFormat,addTimeToPreviousDate, formatDateToISO, checkTimeToNextDate } from '../../helpers/formatdata';
+import { calculateTotalTime } from '../../helpers/formatdata';
 
 const ActiveFlight = (props) => {
   const { apiData, searchDataArr } = useItemsToShow();
@@ -19,7 +18,6 @@ const ActiveFlight = (props) => {
   const { [selectedItemIdx]: activeFlightDet } = apiData;
   const { tripType, classtype } = searchDataArr;
   const navigate = useNavigate();
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,133 +31,26 @@ const ActiveFlight = (props) => {
   }, [])
 
 
-  const allArrivalTimes = activeFlightDet?.schedualDetGet?.map(flightArray =>
-    flightArray.map(flightInfo => flightInfo.arrival.time.slice(0, 5))
-  );
-  const allDepartureTimes = activeFlightDet?.schedualDetGet?.map(flightArray =>
-    flightArray.map(flightInfo => flightInfo.departure.time.slice(0, 5))
-  );
-  const allTravelDates = activeFlightDet.groupDescription.map(flightArray =>
-    flightArray.departureDate);
+  // ----------------Totol Amount Calculation------------------------
+const flightFare = activeFlightDet?.recommendation?.recPriceInfo?.monetaryDetail[0]?.amount;
+const flightTax =  activeFlightDet?.recommendation?.recPriceInfo?.monetaryDetail[1]?.amount
+// const totalAmount = Number(flightFare) + Number(flightTax);
+const totalAmount = Number(flightFare);
 
-  let currentDate = null;
+// -------------------------end------------------------------------
 
-  const generateSegmentsForDate = (departureTimes, arrivalTimes, date) => {
-    for (let i = 0; i < departureTimes.length; i++) {
-      const segment = {};
-      segment.departure = departureTimes[i];
-      segment.arrival = arrivalTimes[i];
+const airlineName = activeFlightDet?.groupDescription.map((items)=>items.marketingCarrier);
+const matchedAirline = useMemo(()=>{
+  return airlineName?.map((id) => airlinesData.find((airline) => airline.id === id));
+},[airlineName]);
 
-      // Use the current date for the first segment
-      if (i === 0) {
-        segment.date = checkTimeToNextDate(date, departureTimes[i], arrivalTimes[i]);
-        // Update the currentDate after the first call to checkTimeToNextDate
-        currentDate = segment.date;
-      } else {
-        // For subsequent segments, use the updated date from the previous call
-        segment.date = checkTimeToNextDate(currentDate, arrivalTimes[i - 1], departureTimes[i]);
-        // Update the currentDate for the next iteration
-        currentDate = segment.date;
-      }
-
-      flightSegments.push(segment);
-
-      if (i < arrivalTimes.length - 1) {
-        const nextSegment = {
-          departure: arrivalTimes[i],
-          arrival: departureTimes[i + 1],
-          date: checkTimeToNextDate(currentDate, arrivalTimes[i], departureTimes[i + 1]),
-        };
-        flightSegments.push(nextSegment);
-        // Update the currentDate for the next iteration
-        currentDate = nextSegment.date;
-      } else {
-        // For the last segment, use the date from the last call
-        segment.date = currentDate;
-      }
-    }
-  };
-
-  const flightSegments = [];
-  for (let i = 0; i < allTravelDates.length; i++) {
-    
-    const startSegment = {
-      departure: allDepartureTimes[i][0],
-      date: allTravelDates[i]
-    };
-    flightSegments.push(startSegment);
-    generateSegmentsForDate(allDepartureTimes[i], allArrivalTimes[i], allTravelDates[i]);
-  }
+const totalFlightTime = activeFlightDet?.matchedFlights?.map(it => 
+  (Array.isArray(it?.flightDetails) ? it.flightDetails : [it.flightDetails]) 
+    .map(i => i?.flightInformation?.attributeDetails?.attributeDescription)
+) || [];
 
 
-// ---------------------------------
-
-const flightSegmentDates=[];
-
-activeFlightDet.schedualDetGet.map((val, idx) => {
-  
-  let currentDate = activeFlightDet.groupDescription[idx].departureDate;
-  let currentDepDateTime='', currentArrDateTime='', stopoverTime='' ; 
-
-  {val.map((info, Idxs) => {
-    if (Idxs === 0) {
-
-      currentDepDateTime = formatCompleteDate(currentDate);
-            
-      currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-      currentDate = currentArrDateTime;
-      //const newDate = addTimeToPreviousDate(currentDate, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-      //updatedDate = newDate;
-
-      //if (Idxs < val.length - 1) {
-      //  const formattedDate = formatDateToISO(updatedDate);
-      //  const newDate2 = addTimeToPreviousDate(formattedDate, info.arrival.time.slice(0, 5), val[Idxs + 1].departure.time.slice(0, 5));
-      //  updatenextLevel = newDate2;
-      //}
-    }
-    else if (Idxs > 0){
-      stopoverTime = calculateDuration(info.departure.time, val[Idxs - 1].arrival.time);
-
-      currentDepDateTime = addTimeToPreviousDate(currentDate, val[Idxs - 1].arrival.time.slice(0, 5), info.departure.time.slice(0, 5));
-      currentArrDateTime = addTimeToPreviousDate(currentDepDateTime, info.departure.time.slice(0, 5), info.arrival.time.slice(0, 5));
-      currentDate = currentArrDateTime;
-    }
-
-    const airlineName = info.carrier.marketing;
-    const matchedAirline = airlinesData.find(airline => airline.id === airlineName);
-
-    const segment = {};
-    if(Idxs==0)
-    {
-      segment.departureDate =changeDateFormat(currentDepDateTime) ;
-      segment.arrivalDate = changeDateFormat(currentArrDateTime);
-    }
-    else if(Idxs> 0) {
-      segment.departureDate = changeDateFormat(currentDepDateTime);
-      segment.arrivalDate = changeDateFormat (currentArrDateTime);
-      }
-    segment.departure = info.departure.time.slice(0, 5);
-    segment.arrival = info.arrival.time.slice(0, 5);
-
-    flightSegmentDates.push(segment);
-
-  })
-}
-})
-
-console.log("selecteddates",flightSegmentDates);
-// ---------------------------------
-
-
-
-  const flightStopdetails = { flightSegments };
-
-  const airlineNames = activeFlightDet.schedualDetGet.map(item => item[0].carrier.marketing);
-  const matchedAirline = airlineNames.map((airlineName) => {
-    const matchedAirline = airlinesData.find((airline) => airline.id === airlineName);
-    return matchedAirline;
-  }).filter((airline) => !!airline);
-
+console.log("totalFlightTime",totalFlightTime);
 
   const ShowFltDetails = () => {
     setFdCard(!fdCard);
@@ -171,8 +62,8 @@ console.log("selecteddates",flightSegmentDates);
     const mergedFlightDet = {
       ...activeFlightDet,
       ...newSearchDataArr,
-      ...flightStopdetails,  
-      flightSegmentDates: flightSegmentDates
+      // ...flightStopdetails,  
+      // flightSegmentDates: flightSegmentDates
 
     };
     if (window.fbq) {
@@ -192,7 +83,7 @@ console.log("selecteddates",flightSegmentDates);
       <Fragment>
         <div className='flight_details_hero mb-3' >
           <Round
-            activeFlightDet={activeFlightDet} bookButton={true} bookTicket={bookTicket}
+            activeFlightDet={activeFlightDet} bookButton={true} bookTicket={bookTicket} totalAmount = {totalAmount}  totalFlightTime ={totalFlightTime}
           />
           <p className='fd_heading' onClick={ShowFltDetails}>{flightDetailText}</p>
           {fdCard && (
@@ -208,15 +99,15 @@ console.log("selecteddates",flightSegmentDates);
       <Fragment>
         <div className='flight_details_hero mb-3' >
           <OneWay
-            imageFlight={matchedAirline[0] ? matchedAirline[0].logo : null}
-            flightName={matchedAirline[0] ? matchedAirline[0].name : null}
-            departureTime={activeFlightDet.schedualDetGet.map(values => values[0].departure.time.slice(0, 5))}
-            departureAirport={activeFlightDet.schedualDetGet.map(values => values[0].departure.airport)}
-            elapsedTime={`${elapsedTimeFunct(activeFlightDet.schedualDetGet.map(values => values.reduce((sum, val) => sum + val.elapsedTime, 0)))}`}
-            stops={activeFlightDet.schedualDetGet[0].length - 1 === 0 ? "Non Stop" : `${activeFlightDet.schedualDetGet[0].length - 1} Stop`}
-            arrivalTime={activeFlightDet.schedualDetGet.map(values => values[values.length - 1].arrival.time.slice(0, 5))}
-            arrivalAirport={activeFlightDet.schedualDetGet.map((values) => values[values.length - 1].arrival.airport)}
-            priceTicket={activeFlightDet.fare.totalFare.totalPrice.toLocaleString()}
+            imageFlight={matchedAirline? matchedAirline[0].logo : null}
+            flightName={activeFlightDet?.groupDescription[0]?.marketingCarrier}
+            departureTime={activeFlightDet?.groupDescription[0]?.departTime}
+            departureAirport={activeFlightDet?.groupDescription[0]?.departure}
+            elapsedTime={calculateTotalTime(totalFlightTime)}
+            stops={activeFlightDet?.groupDescription[0]?.stopCounts}
+            arrivalTime={activeFlightDet?.groupDescription[0]?.arrivalTime}
+            arrivalAirport={activeFlightDet?.groupDescription[0]?.arrival}
+            priceTicket={totalAmount}
             bookButton={true}
             bookTicket={bookTicket}
           />
@@ -233,36 +124,37 @@ console.log("selecteddates",flightSegmentDates);
     return (
       <Fragment>
         <div className='flight_details_hero border-lighter mb-3' >
-          {activeFlightDet.schedualDetGet.map((val, indx) => (
+          {activeFlightDet.groupDescription.map((val, indx) => (
+           
             <div key={indx}>
               <div className="d-flex justify-content-start w-100 ad_multi_border">
                 <Multi
                   index={indx}
-                  imageFlight={matchedAirline[indx] ? matchedAirline[indx].logo : null}
-                  flightName={matchedAirline[indx] ? matchedAirline[indx].name : null}
-                  departureTime={val[0].departure.time.slice(0, 5)}
-                  departureAirport={val[0].departure.airport}
-                  elapsedTime={elapsedTimeFunct(val.map((vale) => vale.elapsedTime).reduce((sum, time) => sum + time, 0))}
-                  stops={val.length - 1 === 0 ? "Non Stop" : `${val.length - 1} Stop`}
-                  arrivalTime={val[val.length - 1].arrival.time.slice(0, 5)}
-                  arrivalAirport={val[val.length - 1].arrival.airport}
+                  imageFlight={ matchedAirline.length > 1 ? matchedAirline[indx]?.logo : matchedAirline[0]?.logo}
+                  flightName={val?.marketingCarrier}
+                  departureTime={val?.departTime}
+                  departureAirport={val?.departure}
+                  elapsedTime={calculateTotalTime(totalFlightTime)[indx]}
+                  stops={`${val?.stopCounts} stops`}
+                  arrivalTime={val?.arrivalTime}
+                  arrivalAirport={val?.arrival}
                 />
                 {
                   !smallScreen && (
                     <div className=" text-right align-self-center ad_width_bwteen_left" >
-                      {indx === 0 && <span className="ad_total_price_size">{activeFlightDet.fare.totalFare.totalPrice.toLocaleString()} PKR</span>}
-                      {indx === activeFlightDet.schedualDetGet.length - 1 && <button className='fd_book_button' type='button' onClick={bookTicket}>Book now</button>}
+                      {indx === 0 && <span className="ad_total_price_size">{activeFlightDet?.recommendation?.recPriceInfo?.monetaryDetail[0]?.amount.toLocaleString()} PKR</span>}
+                      {indx === activeFlightDet.groupDescription.length - 1 && <button className='fd_book_button' type='button' onClick={bookTicket}>Book now</button>}
                     </div>
                   )
                 }
               </div>
-              {indx !== activeFlightDet.schedualDetGet.length - 1 && <hr className="hr_style" />}
+              {indx !== activeFlightDet.groupDescription.length - 1 && <hr className="hr_style" />}
             </div>
           ))}
 
           {smallScreen && (
             <div className='d-flex justify-content-end multi_payment_responsive '>
-              <span className="ad_total_price_size align-self-center">{activeFlightDet.fare.totalFare.totalPrice.toLocaleString()} PKR</span>
+              <span className="ad_total_price_size align-self-center">{activeFlightDet?.recommendation?.recPriceInfo?.monetaryDetail[0]?.amount.toLocaleString()} PKR</span>
               <button className='fd_book_button ' type='button' onClick={bookTicket}>Book now</button>
             </div>
           )}
@@ -297,4 +189,4 @@ console.log("selecteddates",flightSegmentDates);
 
 };
 
-export default ActiveFlight;
+export default React.memo(ActiveFlight);

@@ -59,7 +59,7 @@ const PiaFlights = () => {
               <tr>
                 <th>Destination City</th>
                 <th>Description</th>
-                <th>Approximate Fare (PKR)</th>
+                <th>Approximate Fare ($)</th>
               </tr>
             </thead>
             <tbody>
@@ -111,12 +111,12 @@ const PiaFlights = () => {
           <div className="horizontal-line"></div>
 
           <h3 className="text1">
-            Finding Cheap PIA Flights Tickets on Faremakers.com:
+            Finding Cheap PIA Flights Tickets on flightmakers.com:
           </h3>
           <div className="horizontal-line"></div>
           <p>
             To find PIA cheap flights & PIA air Ticket Booking on
-            Faremakers.com:
+            flightmakers.com:
           </p>
           <div className="airlines_list_styling ul_spacing">
             <ul>
@@ -144,9 +144,9 @@ const PiaFlights = () => {
 
               <li>
                 <span className="airline_span_heading">
-                  Sign up for Faremakers email alerts:{" "}
+                  Sign up for flightmakers email alerts:{" "}
                 </span>
-                : Faremakers frequently sends out email alerts about promotions
+                : flightmakers frequently sends out email alerts about promotions
                 and special offers. Signing up for their emails is a great way
                 to stay informed about the latest deals.
               </li>
@@ -154,7 +154,7 @@ const PiaFlights = () => {
                 <span className="airline_span_heading">
                   Use a travel search engine:{" "}
                 </span>
-                Used Travel search engines and search on Google faremakers.com
+                Used Travel search engines and search on Google flightmakers.com
                 and they can help you compare prices from different airlines and
                 find the cheapest option for your desired route.
               </li>
@@ -191,7 +191,7 @@ const PiaFlights = () => {
           <div className="horizontal-line"></div>
 
           <h3 className="text1">
-            Booking PIA Flights Online with Faremakers:{" "}
+            Booking PIA Flights Online with flightmakers:{" "}
           </h3>
           <div className="horizontal-line"></div>
           <h5>
@@ -203,11 +203,11 @@ const PiaFlights = () => {
               Visit the website and Book your Online Ticket:
             </span>
             <a
-              href="https://faremakers.com/pakistan-international-airlines-flights"
+              href="https://flightmakers.com/pakistan-international-airlines-flights"
               target="_blank"
               className="href_link_typo"
             >
-              https://faremakers.com/pakistan-international-airlines-flights
+              https://flightmakers.com/pakistan-international-airlines-flights
             </a>
           </div>
           <div>
@@ -246,7 +246,7 @@ const PiaFlights = () => {
             <table className="table table-bordered table_design">
               <tr>
                 <th>Route</th>
-                <th>Approximate Fare (PKR)</th>
+                <th>Approximate Fare ($)</th>
               </tr>
               <tbody>
                 <tr>
@@ -312,11 +312,11 @@ const PiaFlights = () => {
                 and Karachi to Los Angeles. You can find a complete list of
                 PIA's international destinations on their website:
                 <a
-                  href="https://faremakers.com/pakistan-international-airlines-flights"
+                  href="https://flightmakers.com/pakistan-international-airlines-flights"
                   target="_blank"
                   className="href_link_typo"
                 >
-                  https://faremakers.com/pakistan-international-airlines-flights
+                  https://flightmakers.com/pakistan-international-airlines-flights
                 </a>
                 .
               </p>
@@ -343,11 +343,11 @@ const PiaFlights = () => {
               <p className="faq-answer">
                 PIA Booking: Visit the website: 
                 <a
-                  href="https://faremakers.com/pakistan-international-airlines-flights"
+                  href="https://flightmakers.com/pakistan-international-airlines-flights"
                   target="_blank"
                    className="href_link_typo"
                 >
-                   https://faremakers.com/pakistan-international-airlines-flights 
+                   https://flightmakers.com/pakistan-international-airlines-flights 
                 </a> 
                    and navigate to the "Flight Schedule" section. Search for
                 flights by entering your origin and destination city, as well as
@@ -362,13 +362,13 @@ const PiaFlights = () => {
               </p>
               <p className="faq-answer">
                 The easiest way to book a PIA flight is online:
-                <br /> Visit the Faremakers website:
+                <br /> Visit the flightmakers website:
                 <a
-                  href="https://faremakers.com/pakistan-international-airlines-flights"
+                  href="https://flightmakers.com/pakistan-international-airlines-flights"
                   target="_blank"
                    className="href_link_typo"
                 >
-                  https://faremakers.com/pakistan-international-airlines-flights
+                  https://flightmakers.com/pakistan-international-airlines-flights
                 </a>
                 .
                 <ol className="order_list_styling">
@@ -434,8 +434,8 @@ const PiaFlights = () => {
                   including phone, email, or social media. The specific contact
                   information will depend on your location. You can find contact
                   details on the{" "}
-                  <a href="http://www.Faremakers.com" target="_blank" className="href_link_typo">
-                    www.Faremakers.com
+                  <a href="http://www.flightmakers.com" target="_blank" className="href_link_typo">
+                    www.flightmakers.com
                   </a>
                   .
                 </p>

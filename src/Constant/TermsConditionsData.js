@@ -24,8 +24,8 @@ const TermsConditionsData = [
     {
         id:4,
         heading: 'Promotion Codes',
-        data : `We frequently offer promotional discounts through a voucher system. Faremakers.com members or those customers that have registered on our website to receive special offers will receive promotions, discounts and vouchers that we believe will be of interest to you.
-        Please note that vouchers are the property of Faremakers.com and we maintain the right to modify or terminate promotions, discounts, and vouchers without any notice. Any such modifications or terminations will be considered final and will not be disputable.`
+        data : `We frequently offer promotional discounts through a voucher system. flightmakers.com members or those customers that have registered on our website to receive special offers will receive promotions, discounts and vouchers that we believe will be of interest to you.
+        Please note that vouchers are the property of flightmakers.com and we maintain the right to modify or terminate promotions, discounts, and vouchers without any notice. Any such modifications or terminations will be considered final and will not be disputable.`
     },
     {
         id:5,
@@ -35,9 +35,9 @@ const TermsConditionsData = [
     {
         id:5,
         heading: 'Booking Amendment',
-        data : `To make changes/amendments/cancellations to your travel orders, please call our Customer Service team. Please refer to airline fare rules or hotel booking policies while using Faremakers.com.
+        data : `To make changes/amendments/cancellations to your travel orders, please call our Customer Service team. Please refer to airline fare rules or hotel booking policies while using flightmakers.com.
         Most fares and products will have penalties for changes and cancellations. Penalties associated with changes are collected before confirmation of changes to your booking. Cancellations must be made prior to the departure date.
-        Faremakers.com will charge an additional service fee on top of airline fees when making a change. Please not that some tickets may be non-changeable. In that case you ticket becomes "use it or lose it".
+        flightmakers.com will charge an additional service fee on top of airline fees when making a change. Please not that some tickets may be non-changeable. In that case you ticket becomes "use it or lose it".
         Name Changes are not permitted once a ticket has been issued.`
     }
 ];

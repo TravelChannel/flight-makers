@@ -1,386 +1,424 @@
+const fetchSearchResult = async (searchDataArr, CurrentFlightCode) => {
+  console.log("searchDataArr_v1", searchDataArr);
 
-const fetchSearchResult = async (searchDataArr,CurrentFlightCode) => {
-
-  console.log("searchDataArr_v1",searchDataArr);
-
-  const { departure, arrival, classtype, adults, children, infants, date } = searchDataArr;
+  const { departure, arrival, classtype, adults, children, infants, date } =
+    searchDataArr;
   // console.log("date v-3",date);
-  let classType = '';
-  const storedAuthtoken = JSON.parse(localStorage.getItem('AuthToken'))
+  let classType = "";
+  const storedAuthtoken = JSON.parse(localStorage.getItem("AuthToken"));
   const authToken = storedAuthtoken ? storedAuthtoken.access_token : null;
 
-  const departureCode = departure.map((dep) => dep.substring(dep.indexOf('(') + 1, dep.indexOf(')')));
-  const arrivalCode = arrival.map((arr) => arr.substring(arr.indexOf('(') + 1, arr.indexOf(')')));
-
+  const departureCode = departure.map((dep) =>
+    dep.substring(dep.indexOf("(") + 1, dep.indexOf(")"))
+  );
+  const arrivalCode = arrival.map((arr) =>
+    arr.substring(arr.indexOf("(") + 1, arr.indexOf(")"))
+  );
 
   // ------------
 
-const TotalSeatsRequired = [
-  adults + children + infants
-];
+  const TotalSeatsRequired = [adults + children + infants];
 
-console.log("TotalSeatsRequired",TotalSeatsRequired);
+  console.log("TotalSeatsRequired", TotalSeatsRequired);
   // --------------
-  
+
   console.log(searchDataArr);
   classType =
-    classtype === 'Economy'
-      ? 'Y'
-      : classtype === 'Business class'
-        ? 'C'
-        : classtype === 'First class'
-          ? 'P'
-          : classtype === 'Premium economy'
-            ? 'S'
-            : null;
+    classtype === "Economy"
+      ? "Y"
+      : classtype === "Business class"
+      ? "C"
+      : classtype === "First class"
+      ? "P"
+      : classtype === "Premium economy"
+      ? "S"
+      : null;
 
-  console.log('ello',departureCode,arrivalCode);
+  console.log("ello", departureCode, arrivalCode);
   //  Conditionally add "CNN" (children) and "INF" (infants) objects if necessary
 
   const passengerTypeQuantity = [
     {
-      "Code": "ADT",
-      "Quantity": adults
-    }
+      Code: "ADT",
+      Quantity: adults,
+    },
   ];
   if (children > 0) {
     passengerTypeQuantity.push({
-      "Code": "CNN",
-      "Quantity": children
+      Code: "CNN",
+      Quantity: children,
     });
   }
   if (infants > 0) {
     passengerTypeQuantity.push({
-      "Code": "INF",
-      "Quantity": infants
+      Code: "INF",
+      Quantity: infants,
     });
   }
 
   // --------------------------
-   const includeVendorPref  = [
-    { "Code": "AZ" },
-    { "Code": "CX" },
-    { "Code": "CZ" },
-    { "Code": "EK" },
-    { "Code": "EY" },
-    { "Code": "GF" },
-    { "Code": "KL" },
-    { "Code": "KU" },
-    { "Code": "LX" },
-    { "Code": "PK" },
-    { "Code": "QR" },
-    { "Code": "SV" },
-    { "Code": "TG" },
-    { "Code": "TK" },
-    { "Code": "UL" },
-    { "Code": "6S" },
-    { "Code": "YO" },
-    { "Code": "FZ" },
-    { "Code": "HY" },
-    { "Code": "LH" },
-    { "Code": "WY" },
-    { "Code": "PC" },
-    { "Code": "BA" },
-    { "Code": "VS" },
-    { "Code": "KQ" },
-    { "Code": "FZ" },
-    { "Code": "AC" },
-    { "Code": "AF" },
-    { "Code": "SQ" },
-    { "Code": "DV" },
-    { "Code": "GP" },
-    { "Code": "ET" },
-    { "Code": "DL" },
-    { "Code": "AT" },
-    { "Code": "J2" },
-    { "Code": "PF" }
-   ]
+  const includeVendorPref = [
+    { Code: "AZ" },
+    { Code: "CX" },
+    { Code: "CZ" },
+    { Code: "EK" },
+    { Code: "EY" },
+    { Code: "GF" },
+    { Code: "KL" },
+    { Code: "KU" },
+    { Code: "LX" },
+    { Code: "PK" },
+    { Code: "QR" },
+    { Code: "SV" },
+    { Code: "TG" },
+    { Code: "TK" },
+    { Code: "UL" },
+    { Code: "6S" },
+    { Code: "YO" },
+    { Code: "FZ" },
+    { Code: "HY" },
+    { Code: "LH" },
+    { Code: "WY" },
+    { Code: "PC" },
+    { Code: "BA" },
+    { Code: "VS" },
+    { Code: "KQ" },
+    { Code: "FZ" },
+    { Code: "AC" },
+    { Code: "AF" },
+    { Code: "SQ" },
+    { Code: "DV" },
+    { Code: "GP" },
+    { Code: "ET" },
+    { Code: "DL" },
+    { Code: "AT" },
+    { Code: "J2" },
+    { Code: "PF" },
+  ];
 
-     // --------------Filtered Vendor Preference-------------
-     let airlinesToPass;
+  // --------------Filtered Vendor Preference-------------
+  let airlinesToPass;
   if (CurrentFlightCode) {
-    airlinesToPass = includeVendorPref.filter(airline => airline.Code === CurrentFlightCode);
+    airlinesToPass = includeVendorPref.filter(
+      (airline) => airline.Code === CurrentFlightCode
+    );
   } else {
     airlinesToPass = includeVendorPref;
   }
-  console.log("airlinesToPass",airlinesToPass);
+  console.log("airlinesToPass", airlinesToPass);
   // -----------------------------
-
 
   const originDestinationInformation = departureCode?.map((dep, index) => ({
     DepartureDateTime: `${date[index]}T00:00:00`,
-    "DepartureWindow": "00002359",
+    DepartureWindow: "00002359",
     DestinationLocation: {
-      LocationCode: arrivalCode[index % arrivalCode.length]
+      LocationCode: arrivalCode[index % arrivalCode.length],
     },
     OriginLocation: {
-      LocationCode: dep
+      LocationCode: dep,
     },
-    RPH: String(index+1),
+    RPH: String(index + 1),
     TPA_Extensions: {
       CabinPref: {
         Cabin: classType,
-        PreferLevel: "Only"
+        PreferLevel: "Only",
       },
-      "SegmentType": {
-        "Code": "O"
+      SegmentType: {
+        Code: "O",
+      },
+      IncludeVendorPref: airlinesToPass,
     },
-      "IncludeVendorPref": airlinesToPass
-    }
   }));
 
   // console.log('originDestinationInformation',originDestinationInformation)
 
   // Construct the API request based on the searchDataArr values
   const myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append('Authorization',
-    `Bearer ${authToken}`);
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Authorization", `Bearer ${authToken}`);
 
   const raw = JSON.stringify({
-    "OTA_AirLowFareSearchRQ": {
-      "AvailableFlightsOnly": true,
-      "ResponseType": "OTA",
-      "OriginDestinationInformation": originDestinationInformation,
-      "POS": {
-        "Source": [
+    OTA_AirLowFareSearchRQ: {
+      AvailableFlightsOnly: true,
+      ResponseType: "OTA",
+      OriginDestinationInformation: originDestinationInformation,
+      POS: {
+        Source: [
           {
-            "PseudoCityCode": "43ED",
-            "RequestorID": {
-              "CompanyName": {
-                "Code": "TN"
+            PseudoCityCode: "43ED",
+            RequestorID: {
+              CompanyName: {
+                Code: "TN",
               },
-              "ID": "1",
-              "Type": "1"
+              ID: "1",
+              Type: "1",
             },
-            "ISOCountry": "PK",
-            "ISOCurrency": "PKR"
-          }
-        ]
-      },
-      "TPA_Extensions": {
-        "IntelliSellTransaction": {
-          "RequestType": {
-            "Name": "200ITINS"
-          }
-        },
-        "RichContent":{
-          "FlightAmenities":true,
-          "SeatInfo":true,
-          "UniversalProductAttributes":true,
-          "UniversalTicketingAttributes":true
-        }
-      },
-      "TravelPreferences": {
-        "ETicketDesired": true,
-        "ValidInterlineTicket": true,
-        "MaxStopsQuantity": 2,
-        "AncillaryFees": {
-              "Enable": true,
-              "Summary": true,
-              "AncillaryFeeGroup": [
-                  {"Code": "BG"},
-                  { "Code": "IE" },
-                  { "Code": "ML" },
-                  { "Code": "SA" },
-                  { "Code": "UN" },
-              ]
+            ISOCountry: "PK",
+            ISOCurrency: "$",
           },
-        "TPA_Extensions": {
-          "DataSources": {
-            "ATPCO": "Enable",
-            "LCC": "Enable",
-            "NDC": "Disable"
+        ],
+      },
+      TPA_Extensions: {
+        IntelliSellTransaction: {
+          RequestType: {
+            Name: "200ITINS",
+          },
+        },
+        RichContent: {
+          FlightAmenities: true,
+          SeatInfo: true,
+          UniversalProductAttributes: true,
+          UniversalTicketingAttributes: true,
+        },
+      },
+      TravelPreferences: {
+        ETicketDesired: true,
+        ValidInterlineTicket: true,
+        MaxStopsQuantity: 2,
+        AncillaryFees: {
+          Enable: true,
+          Summary: true,
+          AncillaryFeeGroup: [
+            { Code: "BG" },
+            { Code: "IE" },
+            { Code: "ML" },
+            { Code: "SA" },
+            { Code: "UN" },
+          ],
+        },
+        TPA_Extensions: {
+          DataSources: {
+            ATPCO: "Enable",
+            LCC: "Enable",
+            NDC: "Disable",
           },
           // "NumTrips": {}
-          "OnlineIndicator": {
-            "Ind": false
-            },
-            "TripType": {
-                "Value": "Return"
-            }
-        }
+          OnlineIndicator: {
+            Ind: false,
+          },
+          TripType: {
+            Value: "Return",
+          },
+        },
       },
-      "TravelerInfoSummary": {
-        "AirTravelerAvail": [
+      TravelerInfoSummary: {
+        AirTravelerAvail: [
           {
-            "PassengerTypeQuantity": passengerTypeQuantity
-          }
+            PassengerTypeQuantity: passengerTypeQuantity,
+          },
         ],
-        "PriceRequestInformation": {
-          "CurrencyCode": "PKR",
-          "NegotiatedFaresOnly": false,
-          "ProcessThruFaresOnly": true,
-          "TPA_Extensions": {
-              //"BrandedFareIndicators": {
-              //    "MultipleBrandedFares": false
-              //},
-              "Priority": {
-                  "Price": {
-                      "Priority": 1
-                  },
-                  "DirectFlights": {
-                      "Priority": 2
-                  },
-                  "Time": {
-                      "Priority": 3
-                  },
-                  "Vendor": {
-                      "Priority": 4
-                  }
-              }
-          }
+        PriceRequestInformation: {
+          CurrencyCode: "$",
+          NegotiatedFaresOnly: false,
+          ProcessThruFaresOnly: true,
+          TPA_Extensions: {
+            //"BrandedFareIndicators": {
+            //    "MultipleBrandedFares": false
+            //},
+            Priority: {
+              Price: {
+                Priority: 1,
+              },
+              DirectFlights: {
+                Priority: 2,
+              },
+              Time: {
+                Priority: 3,
+              },
+              Vendor: {
+                Priority: 4,
+              },
+            },
+          },
+        },
+        SpecificPTC_Indicator: true,
+        SeatsRequested: TotalSeatsRequired,
       },
-      "SpecificPTC_Indicator": true,
-        "SeatsRequested": TotalSeatsRequired
-      },
-      "Version": "5"
-    }
+      Version: "5",
+    },
   });
 
   const requestOptions = {
-    method: 'POST',
+    method: "POST",
     headers: myHeaders,
     body: raw,
-    redirect: 'follow'
+    redirect: "follow",
   };
 
-
-  console.log("Bargaain-finder-Request",raw);
+  console.log("Bargaain-finder-Request", raw);
   try {
-    const response = await fetch("https://api.havail.sabre.com/v5/offers/shop", requestOptions);
+    const response = await fetch(
+      "https://api.havail.sabre.com/v5/offers/shop",
+      requestOptions
+    );
     const result = await response.json();
     console.log("kashi-v3", result);
     // console.log("kashi-v3", result.groupedItineraryResponse.statistics.itineraryCount);
     if (result.groupedItineraryResponse.statistics.itineraryCount === 0) {
       const updatedArray = [];
       return updatedArray;
-    }
-    else {
-      
+    } else {
       console.log("kashi123333", result);
       //Geting Dates Travelling
-      const groupDescription = result.groupedItineraryResponse.itineraryGroups[0].groupDescription.legDescriptions;
+      const groupDescription =
+        result.groupedItineraryResponse.itineraryGroups[0].groupDescription
+          .legDescriptions;
       //Geting schedules
-      const itinerGroup = result.groupedItineraryResponse.itineraryGroups.map(item => item.itineraries.map(itinerary => itinerary.legs.map(leg => leg.ref)));
+      const itinerGroup = result.groupedItineraryResponse.itineraryGroups.map(
+        (item) =>
+          item.itineraries.map((itinerary) =>
+            itinerary.legs.map((leg) => leg.ref)
+          )
+      );
 
-      console.log("itinerGroup-v1",itinerGroup);
+      console.log("itinerGroup-v1", itinerGroup);
 
-    
+      const legDes = result.groupedItineraryResponse.legDescs.map(
+        (legDesc) => legDesc
+      );
+      const scheduleDes = result.groupedItineraryResponse.scheduleDescs.map(
+        (scheduleDesc) => scheduleDesc
+      );
 
-      const legDes = result.groupedItineraryResponse.legDescs.map(legDesc => legDesc);
-      const scheduleDes = result.groupedItineraryResponse.scheduleDescs.map((scheduleDesc) => scheduleDesc);
+      const pricingDetails =
+        result.groupedItineraryResponse.itineraryGroups.flatMap((item) =>
+          item.itineraries.flatMap((pricing) => pricing.pricingInformation)
+        );
+      const matchSchedule = itinerGroup.map((group) =>
+        group.map((refs) =>
+          refs.map((ref) => legDes.find((obj) => obj.id === ref))
+        )
+      );
+      const matchLegsGet = matchSchedule.map((group1) =>
+        group1.map((group2) =>
+          group2.map((item) => item.schedules.map((item2) => item2.ref))
+        )
+      );
 
-
-      const pricingDetails = result.groupedItineraryResponse.itineraryGroups.flatMap(item => item.itineraries.flatMap(pricing => pricing.pricingInformation));
-      const matchSchedule = itinerGroup.map(group => group.map(refs => refs.map(ref => legDes.find(obj => obj.id === ref))));
-      const matchLegsGet = matchSchedule.map(group1 => group1.map(group2 => group2.map(item => item.schedules.map(item2 => item2.ref))));
-
-      const matchingData = matchLegsGet.map(group1 => group1.map(group2 => group2.map(refArray => refArray.flatMap(ref =>
-        scheduleDes.filter(schedule => schedule.id === ref)))));
-
+      const matchingData = matchLegsGet.map((group1) =>
+        group1.map((group2) =>
+          group2.map((refArray) =>
+            refArray.flatMap((ref) =>
+              scheduleDes.filter((schedule) => schedule.id === ref)
+            )
+          )
+        )
+      );
 
       // This function is used to giving the name of array and index assign
-      const modifiedData = matchingData.map(item => item.map((innerArray, index) => ({ schedualDetGet: innerArray, })));
+      const modifiedData = matchingData.map((item) =>
+        item.map((innerArray, index) => ({ schedualDetGet: innerArray }))
+      );
 
-  // console.log("pricingDetails",pricingDetails);
+      // console.log("pricingDetails",pricingDetails);
 
-// ------------------------------------Extract Lowest Fair for Whatsapp Message-----------------
-  // const lowestFair = pricingDetails[0].fare?.totalFare?.totalPrice;
-  // let IdtoPass = 0;
-  // try{
-  //   const whatsAppApiResp = await WhatsappLowestFair(lowestFair);
-  //   console.log("whatsAppApiResp-v1",whatsAppApiResp);
-  //   IdtoPass = whatsAppApiResp[0]?.loggID;
-  //   console.log("IdtoPass",IdtoPass);
+      // ------------------------------------Extract Lowest Fair for Whatsapp Message-----------------
+      // const lowestFair = pricingDetails[0].fare?.totalFare?.totalPrice;
+      // let IdtoPass = 0;
+      // try{
+      //   const whatsAppApiResp = await WhatsappLowestFair(lowestFair);
+      //   console.log("whatsAppApiResp-v1",whatsAppApiResp);
+      //   IdtoPass = whatsAppApiResp[0]?.loggID;
+      //   console.log("IdtoPass",IdtoPass);
 
-  // }catch(error){
-  //   console.error("Error While Fetching whatsApp-API",error);
-  // }
-  // localStorage.setItem("LowestFairValue", JSON.stringify(IdtoPass));
-// ------------------------------------Extract Lowest Fair for Whatsapp Message end-----------------
+      // }catch(error){
+      //   console.error("Error While Fetching whatsApp-API",error);
+      // }
+      // localStorage.setItem("LowestFairValue", JSON.stringify(IdtoPass));
+      // ------------------------------------Extract Lowest Fair for Whatsapp Message end-----------------
 
       // Geting baggageAllowance
-      const baggageref = pricingDetails.map(bag => bag?.fare?.passengerInfoList[0]?.passengerInfo?.baggageInformation?.map(baggInfo => baggInfo.allowance.ref));
+      const baggageref = pricingDetails.map((bag) =>
+        bag?.fare?.passengerInfoList[0]?.passengerInfo?.baggageInformation?.map(
+          (baggInfo) => baggInfo.allowance.ref
+        )
+      );
       const baggageval = result.groupedItineraryResponse.baggageAllowanceDescs;
 
+      // -------------------------------------------------------------------------------------
+      // const  fareSegments = pricingDetails.map(classSegments =>classSegments?.fare.passengerInfoList[0]?.passengerInfo?.fareComponents);
+      // console.log('fareSegments-v1',fareSegments);
 
-        // -------------------------------------------------------------------------------------
-        // const  fareSegments = pricingDetails.map(classSegments =>classSegments?.fare.passengerInfoList[0]?.passengerInfo?.fareComponents);
-        // console.log('fareSegments-v1',fareSegments);
- 
- 
- 
- 
- 
-       // -------------------------------------------------------------------------------------
+      // -------------------------------------------------------------------------------------
 
-      // Geting Seats                             
-      const seatsAvailable = pricingDetails.map(priceing =>
-        priceing.fare.passengerInfoList[0]?.passengerInfo.fareComponents?.flatMap(fareC =>
-          fareC.segments?.flatMap(segm =>
-            segm.segment?.seatsAvailable || []
+      // Geting Seats
+      const seatsAvailable = pricingDetails.map(
+        (priceing) =>
+          priceing.fare.passengerInfoList[0]?.passengerInfo.fareComponents?.flatMap(
+            (fareC) =>
+              fareC.segments?.flatMap(
+                (segm) => segm.segment?.seatsAvailable || []
+              ) || []
           ) || []
-        ) || []
       );
 
-
       // ----------------------------------------------------------
-      const classSegments = pricingDetails.map(priceing =>
-        priceing.fare.passengerInfoList[0]?.passengerInfo.fareComponents?.flatMap(fareC =>
-          fareC.segments?.flatMap(segm =>
-            segm.segment?.bookingCode || []
+      const classSegments = pricingDetails.map(
+        (priceing) =>
+          priceing.fare.passengerInfoList[0]?.passengerInfo.fareComponents?.flatMap(
+            (fareC) =>
+              fareC.segments?.flatMap(
+                (segm) => segm.segment?.bookingCode || []
+              ) || []
           ) || []
-        ) || []
       );
 
-      console.log("classSegments-v2",classSegments);
+      console.log("classSegments-v2", classSegments);
 
       // ----------------------------------------------------------
-
-
 
       // console.log(seatsAvailable);
       // Function to get values in proper format
-      
+
       const getBaggageValues = (refArray) => {
-     try{
-      const descriptions = refArray.map(ref => {
-        try{
-         const matchingItems = baggageval.filter(item => item.id === ref);
-         return matchingItems.length > 0 ? matchingItems[0] : null;
-        }catch(error){
-             console.error(error);
+        try {
+          const descriptions = refArray.map((ref) => {
+            try {
+              const matchingItems = baggageval.filter(
+                (item) => item.id === ref
+              );
+              return matchingItems.length > 0 ? matchingItems[0] : null;
+            } catch (error) {
+              console.error(error);
+            }
+          });
+          return descriptions;
+        } catch (error) {
+          const descriptions = "";
+          console.log(error);
         }
-       });
-       return descriptions;
-     }catch(error){
-      const descriptions='';
-      console.log(error);
-     }
       };
 
       // Use getBaggageValues function to get the values in proper format
-    
-var baggageValues=null;
-      try{
-        baggageValues  =  baggageref?.map(refArray => getBaggageValues(refArray));
-      }catch(error){
-        baggageValues ='';
-          console.error("baggageValues",error);
+
+      var baggageValues = null;
+      try {
+        baggageValues = baggageref?.map((refArray) =>
+          getBaggageValues(refArray)
+        );
+      } catch (error) {
+        baggageValues = "";
+        console.error("baggageValues", error);
       }
 
-
       // This function is used to remove the extra values
-      const newPricingDetails = pricingDetails.map(item => {
-        const passengerInfoList = item.fare.passengerInfoList.map(passenger => {
-          const { taxSummaries, taxes, fareComponents, baggageInformation, passengerTotalFare, ...rest } = passenger.passengerInfo;
-          return { passengerInfo: rest };
-        });
+      const newPricingDetails = pricingDetails.map((item) => {
+        const passengerInfoList = item.fare.passengerInfoList.map(
+          (passenger) => {
+            const {
+              taxSummaries,
+              taxes,
+              fareComponents,
+              baggageInformation,
+              passengerTotalFare,
+              ...rest
+            } = passenger.passengerInfo;
+            return { passengerInfo: rest };
+          }
+        );
 
         return { ...item, fare: { ...item.fare, passengerInfoList } };
       });
-
 
       const updatedArray = modifiedData.flatMap((val, outerIndex) =>
         val.map((item, innerIndex) => {
@@ -388,9 +426,16 @@ var baggageValues=null;
           const baggageAllowance = baggageValues[innerIndex];
           const seatsAvailables = seatsAvailable[innerIndex];
           const classSegment = classSegments[innerIndex];
-        
+
           // Combine the item, pricingData, and baggageValues into a single object
-          return { ...item, ...pricingData, groupDescription, baggageAllowance, seatsAvailables, classSegment };
+          return {
+            ...item,
+            ...pricingData,
+            groupDescription,
+            baggageAllowance,
+            seatsAvailables,
+            classSegment,
+          };
         })
       );
 
@@ -399,7 +444,6 @@ var baggageValues=null;
       console.log("kashi", updatedArray);
       return updatedArray;
     }
-
   } catch (error) {
     console.error("SabreFlightResultAPI", error);
   }

@@ -24,6 +24,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import './SearchEngineCSS.css';
 import { useFormData } from '../../Context/FormDataContext.jsx';
+import { MasterPriceCalanderRes } from '../../API/AmadeousAPI/index.js';
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 const dateFormat = 'YYYY-MM-DD';
@@ -88,40 +89,60 @@ const FlightSearch = (props) => {
   const countery_name = cities.map((city) => city.iso_country);
   const concatenatedAirportsValues = [];
 
+// function for handling Clander API
+  const fetchData = async (startFutureDate) => {
+    try {
+      const futureDates = [];
+      const currentDate = new Date(startFutureDate);
+      for (let i = 0; i < 2; i++) {
+        currentDate.setDate(currentDate.getDate() + i * 6);
+        const grtData = currentDate.toISOString().slice(0, 10);
+        const formattedFutureDate = grtData ;
+        futureDates.push(formattedFutureDate);
+
+      }
+      setPriceRates([]);
+
+      //  ------------API Call for Amadeus Calander-----------------
+      for (const futureDate of futureDates) {
+
+        // making object to pass in the calander api to show price in Calander
+
+        // setting 15 days ahead from current day  return date for round trip 
+        let futureDate1 = moment().add(15, 'days').format('YYYY-MM-DD');
+        const passingObj = {
+          adults:adultQuant,
+          children:childQuant,
+          infants:infantsQuant,
+          classtype:activeClassTab,
+          tripType:tripActiveTab,
+          departure:[departure,arrival],
+          arrival:[arrival,departure],
+          date:[futureDate,futureDate1]
+
+        }
+
+        // calling master Pricer Calander API to show value in calander 
+        const rates = await MasterPriceCalanderRes(passingObj); 
+        console.log("passingObj",passingObj);
+        console.log("rates",rates);
+        
+        const flightFare = rates?.map((items) => parseFloat(items?.recommendation?.recPriceInfo?.monetaryDetail[0]?.amount) || 0);
+        if (Array.isArray(flightFare)) {
+          setPriceRates((prevRates) => [...prevRates, ...flightFare]);
+        } else if (flightFare) {
+          setPriceRates((prevRates) => [...prevRates, flightFare]);
+        } else {
+          console.error('Error: rates is invalid', flightFare);
+        }
+      }
+      // ---------------------------------------------------------------
+    } catch (error) {
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async (startFutureDate) => {
-      try {
-        const futureDates = [];
-        const currentDate = new Date(startFutureDate);
-        for (let i = 0; i < 4; i++) {
-          currentDate.setDate(currentDate.getDate() + i * 6); // Adjusted to fetch data every 7 days
-          const grtData = currentDate.toISOString().slice(0, 10);
-          const formattedFutureDate = grtData + "T00:00:00";
-          futureDates.push(formattedFutureDate);
-
-        }
-        setPriceRates([]);
-        // for (const futureDate of futureDates) {
-        //   const rates = await requestFetchAlternateRates(departure, arrival, futureDate);
-        //   setPriceRates((prevRates) => [...prevRates, ...rates]);
-        // }
-        //  ------------Code added to handle Rate Error-----------------
-        for (const futureDate of futureDates) {
-          const rates = await requestFetchAlternateRates(departure, arrival, futureDate);
-          if (Array.isArray(rates)) {
-            setPriceRates((prevRates) => [...prevRates, ...rates]);
-          } else if (rates) {
-            setPriceRates((prevRates) => [...prevRates, rates]);
-          } else {
-            console.error('Error: rates is invalid', rates);
-          }
-        }
-        // ---------------------------------------------------------------
-      } catch (error) {
-      }
-    };
-    if (departure && arrival) {
+    if (departure && arrival && !resultpage) {
       const startFutureDate = new Date();
       startFutureDate.setDate(startFutureDate.getDate() + 6);
       fetchData(startFutureDate);
@@ -132,8 +153,6 @@ const FlightSearch = (props) => {
   }, [arrival]);
   //first useEffect call on both departure and arrival but to handle rate error i convert it to arrival only
 
-
-
   const handleDateChange = (dates, dateStrings) => {
     if (!dates || dates.length === 0) {
       setSelectedDates([]);
@@ -143,11 +162,11 @@ const FlightSearch = (props) => {
       setcheckUpdate(true);
     }
     setSelectedDates(dates);
-    const startDate = moment(dateStrings[0]).startOf('day').add(3, 'days');
+    const startDate = moment(dateStrings[0]).startOf('day').add(4, 'days');
     const endDate = moment(dateStrings[dateStrings.length - 1]).endOf('day');
 
     const prices = [];
-    let priceIndex = startDate.diff(moment().startOf('day').add(3, 'days'), 'days');
+    let priceIndex = startDate.diff(moment().startOf('day').add(3, 'days'), 'days'); 
 
     for (let date = startDate.clone(); date.isSameOrBefore(endDate); date.add(1, 'day')) {
       const price = priceRates[priceIndex];
@@ -158,7 +177,7 @@ const FlightSearch = (props) => {
   };
 
   const renderDateCell = (date) => {
-    const startDate = moment(selectedDates[0]).startOf('day').add(3, 'days');
+    const startDate = moment(selectedDates[0]).startOf('day').add(4, 'days');
     const priceIndex = date.diff(startDate, 'days');
     if (priceIndex >= 0 && priceIndex < priceRates.length) {
       const price = priceRates[priceIndex];
@@ -166,7 +185,8 @@ const FlightSearch = (props) => {
       return (
         <div className={isCurrentDate ? 'current-date' : ''}>
           <div>{date.date()}</div>
-          {price && <div style={{ fontSize: '10px', color: 'green' }}>${price}</div>}
+          {price && <div style={{ fontSize: '8px', color: 'green' }}>{price}</div>}
+    
         </div>
       );
     }
@@ -493,14 +513,13 @@ const handleDepartureSearch = (value) => {
     const updatedSessionData = [...existingSessionData, searchDataArr];
     const limitedSessionData = updatedSessionData.slice(-5);
 
-    console.log("limitedSessionData--v1",limitedSessionData);
+    // 
     localStorage.setItem('searchData', JSON.stringify(limitedSessionData));
     // localStorage.setItem('searchDataArr', JSON.stringify(searchDataArr));
     navigate('/searchflightresult', { state: { searchDataArr } });
   };
   //  On update result button
   const updateFlightResult = () => {
-   
     const searchDataArr = generateSearchData(
       tripActiveTab,
       departure,
@@ -1060,7 +1079,7 @@ if (
                     {additionalFields.length < 2 && handleAddField()} {/* Automatically add one field */}
                     <div className='d-flex justify-content-between'>
                       <button type='button' className='btn btn-primary my-2' onClick={handleAddField}> <AddIcon /> Add More</button>
-                      {shouldShowPrecautions() ? null : <button type='button' onClick={updateFlightResult} className={`btn btn-primary mt-3 ${searchFormValid() ? 'c-pointer' : 'c-not-allowed-btn'}`} disabled={!searchFormValid()} > <SearchIcon /> Search</button>}
+                      {/* {shouldShowPrecautions() ? null : <button type='button' onClick={updateFlightResult} className={`btn btn-primary mt-3 ${searchFormValid() ? 'c-pointer' : 'c-not-allowed-btn'}`} disabled={!searchFormValid()} > <SearchIcon /> Search</button>} */}
                     </div>
                   </Fragment>
                 )}

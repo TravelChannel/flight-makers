@@ -7,7 +7,7 @@ const TermsofServices = () => {
             <DesignServicesOutlinedIcon className='about_detail_icon '/><h3 className='fmBanks_main_heading'>Terms of Service</h3>
       </div>
       <div className="services_content">
-         <p className="services_content_typography">1. <b>Travel Channel International (Pvt.)</b> Limited is a private limited company incorporated under the laws of Islamic Republic of Pakistan ('Company'), with its brand name Faremakers.com.</p>
+         <p className="services_content_typography">1. <b>Channel Group Consulting LLC</b> is a private limited company incorporated under the laws of United States of America('Company'), with its brand name flightmakers.com.</p>
          <p className="services_content_typography">2. The website standard terms of use ('Terms of use') contained herein on this webpage and terms & conditions mentioned ("Terms & Conditions") collectively referred to as "Terms", shall govern your use of this website, including all the pages within this website ('Website'). These Terms, as may be amended from time to time, apply in full force and effect to your use of this Website. By accessing, browsing and using this Website and / or completing a reservation or making an online payment, you unconditionally and irrevocably accept and agree to these Terms governing your use of the Website ("Agreement").</p>
 
          <p className="services_content_typography">3. This Website contains material which is owned by or licensed and or copyrighted in favor of the Company. This material includes, but is not limited to, the design, layout, look, appearance and graphics and reproduction is prohibited.</p>
@@ -84,11 +84,10 @@ const TermsofServices = () => {
          <p className="services_content_typography">c. Company Address for Notices</p>
 
          <p className="services_content_typography">All notices, consent, approval or other communication under this Agreement shall be addressed to:
-         <li><b>Travel Channel International (Pvt.) Ltd.</b></li>
-         <li>3-UGF, Century Tower, Kalma Chowk</li>
-         <li>Main Boulevard, Gulberg-III</li>
-         <li>Lahore, Pakistan</li>
-         <li>Ph: (03 111 147 111)</li>
+         <li><b>Channel Group Consulting LLC</b></li>
+         <li>Street/House No: 5050 Sylvia Road Drexel Hill </li>
+         <li>United States</li>
+         <li>Ph: +1 (484) 312-1100</li>
          </p>
 
          <p className="services_content_typography">30. Failure of the Company to exercise any right/remedy or at any time to require performance of any provision from you shall in no way constitute a waiver of those rights/remedies or requirement for you to perform such provision.

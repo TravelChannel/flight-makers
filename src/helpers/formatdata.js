@@ -6,6 +6,139 @@ export const elapsedTimeFunct = (minutes) => {
     return `${hours}hr ${remainingMinutes}min`;
 
 }
+// -----------------my functions for Amadeous--------------------------
+
+// format Amadeous elapsedTIme
+export function AmadeuselapsedTime(time) {
+  let hours = parseInt(time.substring(0, 2), 10);
+  let minutes = parseInt(time.substring(2, 4), 10);
+  return `${hours}hr ${minutes}min`;
+}
+
+// amadeus function to Calculate total flight Time
+// export const calculateTotalTime = (flightTimes) => {
+//   return flightTimes.map(times => {
+//       let totalHours = 0, totalMinutes = 0;
+
+//       times.forEach(time => {
+//           let hours = parseInt(time.substring(0, 2)); // Extract hours
+//           let minutes = parseInt(time.substring(2, 4)); // Extract minutes
+
+//           totalHours += hours;
+//           totalMinutes += minutes;
+//       });
+
+//       // Convert excess minutes into hours
+//       totalHours += Math.floor(totalMinutes / 60);
+//       totalMinutes = totalMinutes % 60;
+
+//       // Format as HHMM
+//       return `${totalHours} hr ${totalMinutes} min`;
+//   });
+// };
+// ----------------------------Temporary Disabled-----------------
+// export const calculateTotalTime = (flightTimes) => {
+//   return flightTimes.map(flightSegments => { 
+//       let totalHours = 0, totalMinutes = 0;
+//       flightSegments.flat().forEach(time => {
+//           let hours = parseInt(time.substring(0, 2), 10) || 0; 
+//           let minutes = parseInt(time.substring(2, 4), 10) || 0; 
+
+//           totalHours += hours;
+//           totalMinutes += minutes;
+//       });
+//       totalHours += Math.floor(totalMinutes / 60);
+//       totalMinutes = totalMinutes % 60;
+
+//       return `${totalHours} hr ${totalMinutes} min`;
+//   });
+// };
+
+export const calculateTotalTime = (flightTimes) => {
+  return flightTimes.map((flightSegments) => {
+    let totalHours = 0;
+    let totalMinutes = 0;
+
+    flightSegments.forEach((time) => {
+      const hours = parseInt(time.substring(0, 2), 10) || 0;
+      const minutes = parseInt(time.substring(2, 4), 10) || 0;
+
+      totalHours += hours;
+      totalMinutes += minutes;
+    });
+
+    // Convert extra minutes into hours
+    totalHours += Math.floor(totalMinutes / 60);
+    totalMinutes = totalMinutes % 60;
+
+    return `${totalHours} hr ${totalMinutes} min`;
+  });
+};
+
+
+export const convertTimeFormat = (time) => {
+  if (!time) {
+    return "Invalid time";
+  }
+  const timeString = time.toString().padStart(4, '0');
+  const hours = timeString.slice(0, 2);
+  const minutes = timeString.slice(2, 4);
+  return `${hours}:${minutes}`;
+};
+
+export const convertDateFormat = (date) => {
+  const dateString = date.toString();
+  const day = dateString.slice(0, 2);
+  const month = dateString.slice(2, 4) - 1;
+  const year = "20" + dateString.slice(4, 6);
+  const dateObject = new Date(year, month, day);
+  const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+  return dateObject.toLocaleDateString('en-US', options);
+};
+
+export const EuropianDateFormat = (dateStr) => {
+  if (dateStr.length !== 6) return 'Invalid Date';
+
+  const month = dateStr.substring(0, 2);
+  const day = dateStr.substring(2, 4);
+  const year = `20${dateStr.substring(4, 6)}`;  
+
+  return `${month}-${day}-${year}`;
+};
+
+export const formatCustomDate = (dateStr) => {
+  // Assuming dateStr is in "DDMMYY" format
+  const day = dateStr.slice(0, 2);
+  const month = dateStr.slice(2, 4);
+  const year = '20' + dateStr.slice(4, 6);
+  return `${year}-${month}-${day}`;
+};
+
+export const  calculateLayoverTime = (arrivalTime, departureTime) =>{
+    if (!arrivalTime || !departureTime) return null;
+  
+    // Convert time strings to date objects (assuming HHMM format)
+    const arrHours = parseInt(arrivalTime.substring(0, 2), 10);
+    const arrMinutes = parseInt(arrivalTime.substring(2), 10);
+  
+    const depHours = parseInt(departureTime.substring(0, 2), 10);
+    const depMinutes = parseInt(departureTime.substring(2), 10);
+  
+    // Convert everything to minutes
+    const arrTotalMinutes = arrHours * 60 + arrMinutes;
+    const depTotalMinutes = depHours * 60 + depMinutes;
+  
+    let layoverMinutes = depTotalMinutes - arrTotalMinutes;
+    if (layoverMinutes < 0) layoverMinutes += 24 * 60; // Adjust for overnight layovers
+  
+    // Convert minutes to hours + minutes format
+    const hours = Math.floor(layoverMinutes / 60);
+    const minutes = layoverMinutes % 60;
+  
+    return `${hours}h ${minutes}m`;
+  }
+
+// ---------------------------end --------------------------------------
 export const airportNameFunct = cities.reduce((airport, city) => {
     airport[city.iata_code] = city.Name;
     return airport;

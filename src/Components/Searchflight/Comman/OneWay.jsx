@@ -36,7 +36,7 @@ const OneWay = (props) => {
                     </div>
                 </div>
                 <div className="w-50 text-right align-self-center">
-                {isMobile ?  <p className="fd_total_price align-self-center fd_price_color">{priceTicket} PKR </p> : <span className="fd_total_price align-self-center">{priceTicket} PKR </span>}
+                {isMobile ?  <p className="fd_total_price align-self-center fd_price_color">{priceTicket} $ </p> : <span className="fd_total_price align-self-center">{priceTicket} $ </span>}
                    
                     {bookButton ? <button className="fd_book_button" type='button' onClick={bookTicket}>Book now</button> : null}
                 </div>

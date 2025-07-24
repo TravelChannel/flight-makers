@@ -55,7 +55,7 @@ export const createOrderApi = (getToken,paymentCode) => {
         "auth_token": `${getToken.token}`,
         "delivery_needed": "false",
         "amount_cents": "100",
-        "currency": "PKR",
+        "currency": "$",
         "items": [
             {
                 "name": PNRNumber,

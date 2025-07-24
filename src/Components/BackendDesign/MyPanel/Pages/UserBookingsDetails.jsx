@@ -3,7 +3,7 @@ import RedoOutlinedIcon from "@mui/icons-material/RedoOutlined";
 import UndoIcon from "@mui/icons-material/Undo";
 import { useNavigate } from "react-router";
 import Loader from "../../../../Loader/Loader";
-import { Stack, Pagination } from '@mui/material';
+import { Stack, Pagination } from "@mui/material";
 // import { useUserData } from '../../../../Context/UserDataContext';
 import {
   cityNameFunct,
@@ -24,8 +24,8 @@ const UserBookingsDetails = (props) => {
   const [isSmallMobile, setSmallMobile] = useState(window.innerWidth < 485);
   const [isLoading, setLoading] = useState(false);
   const [userData, setUser] = useState();
-  const [page, setPage] = useState(1); 
-  const [pageCount ,setPageCount] = useState();
+  const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState();
   // const { userDetail, flightDetails, setuserDetail, setFlightDetails } = useUserData();
   const navigate = useNavigate();
 
@@ -104,9 +104,9 @@ const UserBookingsDetails = (props) => {
       setLoading(true);
       const pageSize = 10;
       const obj = {
-        page:page,
-        pageSize:pageSize
-      }
+        page: page,
+        pageSize: pageSize,
+      };
       const userData = await userDetailsBackend(obj);
       console.log("ApiCalledData", userData);
       setUser(userData?.data.payload?.data);
@@ -231,29 +231,27 @@ const UserBookingsDetails = (props) => {
                     )}
                     {/* <td className="">{items.userId}</td> */}
                     <td>
-                      {items?.flightDetails?.groupDescription?.map(
-                        (itms, itmsIndex) => (
-                          <Fragment key={itmsIndex}>
-                            <div className="d-flex justify-content-center">
-                              <p className="table_flight_font admin_side_font">
-                                {cityNameFunct[itms.departureLocation]}
-                              </p>
-                              <span className="airport_spacing admin_side_font">
-                                {itmsIndex === 0 ? (
-                                  <RedoOutlinedIcon />
-                                ) : (
-                                  <UndoIcon />
-                                )}
-                              </span>
-                              <p className="table_flight_font">
-                                {cityNameFunct[itms.arrivalLocation]}
-                              </p>
-                            </div>
-                          </Fragment>
-                        )
-                      )}
+                      {items?.flightDetail?.map((itms, itmsIndex) => (
+                        <Fragment key={itmsIndex}>
+                          <div className="d-flex justify-content-center">
+                            <p className="table_flight_font admin_side_font">
+                              {cityNameFunct[itms.departure]}
+                            </p>
+                            <span className="airport_spacing admin_side_font">
+                              {itmsIndex === 0 ? (
+                                <RedoOutlinedIcon />
+                              ) : (
+                                <UndoIcon />
+                              )}
+                            </span>
+                            <p className="table_flight_font">
+                              {cityNameFunct[itms.arrival]}
+                            </p>
+                          </div>
+                        </Fragment>
+                      ))}
                     </td>
-                    <td>{`${items.totalTicketPrice.toLocaleString()} PKR`}</td>
+                    <td>{`${items.totalTicketPrice.toLocaleString()} $`}</td>
                     {isMobile ? (
                       ""
                     ) : (
@@ -293,19 +291,19 @@ const UserBookingsDetails = (props) => {
                 ))}
               </tbody>
             </table>
-            <div className='d-flex justify-content-center py-3'>
-                      <Stack spacing={1}>
-                        <Pagination
-                        count={pageCount} 
-                        page={page} 
-                        onChange={handleChange}
-                          color="primary"
-                          size="medium" 
-                          shape="rounded"
-                          //  showFirstButton 
-                          //  showLastButton
-                          />
-                      </Stack>
+            <div className="d-flex justify-content-center py-3">
+              <Stack spacing={1}>
+                <Pagination
+                  count={pageCount}
+                  page={page}
+                  onChange={handleChange}
+                  color="primary"
+                  size="medium"
+                  shape="rounded"
+                  //  showFirstButton
+                  //  showLastButton
+                />
+              </Stack>
             </div>
           </Fragment>
         ) : (
